@@ -40,11 +40,14 @@ stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp -r * $out/bin
-    mv "$out/bin/STIG Viewer 3" $out/bin/stig-viewer-3
+    mkdir -p $out/{bin,lib}
+
+    cp -r * $out/
+    ln -sf "$out/STIG Viewer 3" $out/bin/stig-viewer-3
+    mv $out/*.so* $out/lib/
 
     wrapProgram $out/bin/stig-viewer-3 \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}"
+      --prefix LD_LIBRARY_PATH : "$out/lib" \
+      --suffix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}"
   '';
 }
