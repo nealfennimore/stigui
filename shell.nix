@@ -7,11 +7,11 @@ mkShell {
 
   ];
 
-  shellHook = ''
-
-  '';
-
   packages = [
+    curl
+    parallel
     unzip
+    yq
+    (import ./stig-viewer.nix { inherit pkgs; })
   ];
 }

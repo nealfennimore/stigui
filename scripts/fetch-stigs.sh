@@ -14,7 +14,7 @@ if [[ ! -f "data/stigs.zip" ]]; then
         ARGS+=("$archive" "${archive%.zip}")
     done
 
-    parallel -v -N2 unzip -d "{2}" "{1}" ::: "${ARGS[@]}"
+    parallel -N2 unzip -d "{2}" "{1}" ::: "${ARGS[@]}"
 
     sudo chown -R $USER: data/stigs
     sudo find data/stigs -type d -exec chmod 755 {} \;
