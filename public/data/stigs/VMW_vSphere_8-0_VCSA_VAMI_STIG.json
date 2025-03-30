@@ -1,0 +1,1820 @@
+{
+  "+p_xml": "version=\"1.0\" encoding=\"utf-8\"",
+  "+p_xml-stylesheet": "type='text/xsl' href='STIG_unclass.xsl'",
+  "Benchmark": {
+    "+@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+    "+@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "+@xmlns:cpe": "http://cpe.mitre.org/language/2.0",
+    "+@xmlns:xhtml": "http://www.w3.org/1999/xhtml",
+    "+@xmlns:dsig": "http://www.w3.org/2000/09/xmldsig#",
+    "+@xsi:schemaLocation": "http://checklists.nist.gov/xccdf/1.1 http://nvd.nist.gov/schema/xccdf-1.1.4.xsd http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd",
+    "+@id": "VMW_vSphere_8-0_VCSA_VAMI_STIG",
+    "+@xml:lang": "en",
+    "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
+    "status": {
+      "+content": "accepted",
+      "+@date": "2024-07-11"
+    },
+    "title": "VMware vSphere 8.0 vCenter Appliance Management Interface (VAMI) Security Technical Implementation Guide",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "notice": {
+      "+@id": "terms-of-use",
+      "+@xml:lang": "en"
+    },
+    "front-matter": {
+      "+@xml:lang": "en"
+    },
+    "rear-matter": {
+      "+@xml:lang": "en"
+    },
+    "reference": {
+      "+@href": "https://cyber.mil",
+      "publisher": "DISA",
+      "source": "STIG.DOD.MIL"
+    },
+    "plain-text": [
+      {
+        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+@id": "release-info"
+      },
+      {
+        "+content": "3.5",
+        "+@id": "generator"
+      },
+      {
+        "+content": "1.10.0",
+        "+@id": "conventionsVersion"
+      }
+    ],
+    "version": "2",
+    "Profile": [
+      {
+        "+@id": "MAC-1_Classified",
+        "title": "I - Mission Critical Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Public",
+        "title": "I - Mission Critical Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Sensitive",
+        "title": "I - Mission Critical Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Classified",
+        "title": "II - Mission Support Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Public",
+        "title": "II - Mission Support Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Sensitive",
+        "title": "II - Mission Support Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Classified",
+        "title": "III - Administrative Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Public",
+        "title": "III - Administrative Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Sensitive",
+        "title": "III - Administrative Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-259137",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259138",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259139",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259140",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259141",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259142",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259143",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259144",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259145",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259146",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259147",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259149",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259150",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259151",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259152",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259153",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259155",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259156",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259157",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259158",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259159",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-259160",
+            "+@selected": "true"
+          }
+        ]
+      }
+    ],
+    "Group": [
+      {
+        "+@id": "V-259137",
+        "title": "SRG-APP-000001-WSR-000001",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259137r1003685_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000001",
+          "title": "The vCenter VAMI service must limit the number of allowed simultaneous session requests.",
+          "description": "<VulnDiscussion>Denial of service (DoS) is one threat against web servers. Many DoS attacks attempt to consume web server resources in such a way that no more resources are available to satisfy legitimate requests. Mitigation against these threats is to take steps to limit the number of resources that can be consumed in certain ways.\n\nVAMI provides the \"maxConnections\" attribute of the <Connector Elements> to limit the number of concurrent Transmission Control Protocol (TCP) connections. This comes preconfigured with a tested, supported value that must be verified and maintained.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000054",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\nserver.max-connections = 1024\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62786r1003684_fix"
+          },
+          "fix": {
+            "+@id": "F-62786r1003684_fix"
+          },
+          "check": {
+            "+@system": "C-62877r1003683_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null |grep \"server.max-connections\"\n\nExample result:\n\nserver.max-connections = 1024\n\nIf \"server.max-connections\" is not configured to 1024 or less, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259138",
+        "title": "SRG-APP-000015-WSR-000014",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259138r1003688_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000004",
+          "title": "The vCenter VAMI service must use cryptography to protect the integrity of remote sessions.",
+          "description": "<VulnDiscussion>Data exchanged between the user and the web server can range from static display data to credentials used to log in the hosted application. Even when data appears to be static, the nondisplayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nTo protect the integrity and confidentiality of the remote sessions, VAMI uses Secure Sockets Layer (SSL)/Transport Layer Security (TLS).\n\nSatisfies: SRG-APP-000015-WSR-000014, SRG-APP-000315-WSR-000003</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": [
+            {
+              "+content": "CCI-001453",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002314",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nAdd or reconfigure the following value:\n\nssl.engine = \"enable\"\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62787r1003687_fix"
+          },
+          "fix": {
+            "+@id": "F-62787r1003687_fix"
+          },
+          "check": {
+            "+@system": "C-62878r1003686_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"ssl.engine\"\n\nExample result:\n\nssl.engine = \"enable\"\n\nIf \"ssl.engine\" is not set to \"enable\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259139",
+        "title": "SRG-APP-000016-WSR-000005",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259139r1003691_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000005",
+          "title": "The vCenter VAMI service must generate information to monitor remote access.",
+          "description": "<VulnDiscussion>Remote access can be exploited by an attacker to compromise the server. By recording all remote access activities, it will be possible to determine the attacker's location, intent, and degree of success.\n\nVAMI uses the \"mod_accesslog\" module to log information relating to remote requests. These logs can then be piped to external monitoring systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000067",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nAdd the following value in the \"server.modules\" section:\n\nmod_accesslog\n\nThe result should be similar to the following:\n\nserver.modules += (\"mod_accesslog\", \"mod_cgi\", \"mod_magnet\", \"mod_rewrite\")\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62788r1003690_fix"
+          },
+          "fix": {
+            "+@id": "F-62788r1003690_fix"
+          },
+          "check": {
+            "+@system": "C-62879r1003689_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/server\\.modules/,/\\)/'|grep mod_accesslog\n\nExample result:\n\n\"mod_accesslog\",\n\nIf the \"mod_accesslog\" is not present, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259140",
+        "title": "SRG-APP-000095-WSR-000056",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259140r1003694_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000010",
+          "title": "The vCenter VAMI service must produce log records containing sufficient information to establish what type of events occurred.",
+          "description": "<VulnDiscussion>Web server logging capability is critical for accurate forensic analysis. Without sufficient and accurate information, a correct replay of the events cannot be determined.\n\nAscertaining the correct type of event that occurred is important during forensic analysis. The correct determination of the event and when it occurred is important in relation to other events that happened at that same time.\n\nWithout sufficient information establishing what type of log event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nSatisfies: SRG-APP-000095-WSR-000056, SRG-APP-000096-WSR-000057, SRG-APP-000097-WSR-000058, SRG-APP-000098-WSR-000059, SRG-APP-000099-WSR-000061, SRG-APP-000100-WSR-000064, SRG-APP-000374-WSR-000172, SRG-APP-000375-WSR-000171</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": [
+            {
+              "+content": "CCI-000130",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000131",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000132",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000133",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000134",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001487",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001889",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001890",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nComment any existing accesslog.format lines by adding a \"#\" at the beginning of the line.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62789r1003693_fix"
+          },
+          "fix": {
+            "+@id": "F-62789r1003693_fix"
+          },
+          "check": {
+            "+@system": "C-62880r1003692_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"accesslog.format\"\n\nThe default commented, accesslog format is acceptable for this requirement. No output should be returned.\n\nIf the command returns any output, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259141",
+        "title": "SRG-APP-000118-WSR-000068",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259141r960930_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000019",
+          "title": "The vCenter VAMI service log files must only be accessible by privileged users.",
+          "description": "<VulnDiscussion>Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nThe web server must protect the log data from unauthorized read, write, copy, etc. This can be done by the web server if the web server is also doing the logging function. The web server may also use an external log system. In either case, the logs must be protected from access by nonprivileged users.\n\nSatisfies: SRG-APP-000118-WSR-000068, SRG-APP-000119-WSR-000069, SRG-APP-000120-WSR-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": [
+            {
+              "+content": "CCI-000162",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000163",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000164",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "At the command prompt, run the following commands for log files under /opt/vmware/var/log/lighttpd/:\n\n# chmod o-w <file>\n# chown lighttpd:lighttpd <file>\n\nAt the command prompt, run the following commands for all other log files:\n\n# chmod o-w <file>\n# chown root:root <file>\n\nNote: Substitute <file> with the listed file.",
+            "+@fixref": "F-62790r935326_fix"
+          },
+          "fix": {
+            "+@id": "F-62790r935326_fix"
+          },
+          "check": {
+            "+@system": "C-62881r935325_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following commands:\n\n# find /var/log/vmware/applmgmt/ /var/log/vmware/applmgmt-audit/ -xdev -type f -a '(' -perm -o+w -o -not -user root -o -not -group root ')' -exec ls -ld {} \\;\n# find /opt/vmware/var/log/lighttpd/ -xdev -type f -a '(' -perm -o+w -o -not -user lighttpd -o -not -group lighttpd ')' -exec ls -ld {} \\;\n\nIf any files are returned, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-259142",
+        "title": "SRG-APP-000125-WSR-000071",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259142r960948_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000022",
+          "title": "The vCenter VAMI service must off-load log records onto a different system or media from the system being logged.",
+          "description": "<VulnDiscussion>Protection of log data includes assuring log data is not accidentally lost or deleted. Backing up log records to an unrelated system or onto separate media than the system the web server is actually running on helps to assure that, in the event of a catastrophic system failure, the log records will be retained.\n\nSatisfies: SRG-APP-000125-WSR-000071, SRG-APP-000358-WSR-000063, SRG-APP-000358-WSR-000163</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": [
+            {
+              "+content": "CCI-001348",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001851",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-applmgmt.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#applmgmt.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/applmgmt.log\"\n      Tag=\"applmgmt\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt-audit.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt-audit/applmgmt-audit.log\"\n      Tag=\"applmgmt-audit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt-backup-restore-audit.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt-audit/applmgmt-br-audit.log\"\n      Tag=\"applmgmt-br-audit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami-access.log\ninput(type=\"imfile\"\n      File=\"/opt/vmware/var/log/lighttpd/access.log\"\n      Tag=\"vami-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami-error.log\ninput(type=\"imfile\"\n      File=\"/opt/vmware/var/log/lighttpd/error.log\"\n      Tag=\"vami-error\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#dcui.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/dcui.log\"\n      Tag=\"dcui\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#detwist.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/detwist.log\"\n      Tag=\"detwist\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#firewall-reload.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/firewall-reload.log\"\n      Tag=\"firewall-reload\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt_vmonsvc.std*\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/applmgmt_vmonsvc.std*\"\n      Tag=\"applmgmt_vmonsvc\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#backupSchedulerCron\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/backupSchedulerCron.log\"\n      Tag=\"backupSchedulerCron\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#progress.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/progress.log\"\n      Tag=\"progress\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#statsmoitor-alarms\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/statsmoitor-alarms.log\"\n      Tag=\"statsmoitor-alarms\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#StatsMonitor\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/StatsMonitor.log\"\n      Tag=\"StatsMonitor\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#StatsMonitorStartup.log.std*\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/StatsMonitorStartup.log.std*\"\n      Tag=\"StatsMonitor-Startup\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#PatchRunner\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/PatchRunner.log\"\n      Tag=\"PatchRunner\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#update_microservice\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/update_microservice.log\"\n      Tag=\"update_microservice\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/vami.log\"\n      Tag=\"vami\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vcdb_pre_patch\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/vcdb_pre_patch.*\"\n      Tag=\"vcdb_pre_patch\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#dnsmasq.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/dnsmasq.log\"\n      Tag=\"dnsmasq\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#procstate\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/procstate\"\n      Tag=\"procstate\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#backup.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/backup.log\"\n      Tag=\"applmgmt-backup\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#size.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/size.log\"\n      Tag=\"applmgmt-size\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#restore.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/restore.log\"\n      Tag=\"applmgmt-restore\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#reconciliation.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/reconciliation.log\"\n      Tag=\"applmgmt-reconciliation\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#pnid_change.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/pnid_change.log\"\n      Tag=\"applmgmt-pnid-change\"\n      Severity=\"info\"\n      Facility=\"local0\")",
+            "+@fixref": "F-62791r935329_fix"
+          },
+          "fix": {
+            "+@id": "F-62791r935329_fix"
+          },
+          "check": {
+            "+@system": "C-62882r935328_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "By default there is a vmware-services-applmgmt.conf rsyslog configuration file which includes the service logs when syslog is configured on vCenter that must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-applmgmt.conf\n\nExpected result:\n\n#applmgmt.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/applmgmt.log\"\n      Tag=\"applmgmt\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt-audit.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt-audit/applmgmt-audit.log\"\n      Tag=\"applmgmt-audit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt-backup-restore-audit.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt-audit/applmgmt-br-audit.log\"\n      Tag=\"applmgmt-br-audit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami-access.log\ninput(type=\"imfile\"\n      File=\"/opt/vmware/var/log/lighttpd/access.log\"\n      Tag=\"vami-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami-error.log\ninput(type=\"imfile\"\n      File=\"/opt/vmware/var/log/lighttpd/error.log\"\n      Tag=\"vami-error\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#dcui.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/dcui.log\"\n      Tag=\"dcui\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#detwist.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/detwist.log\"\n      Tag=\"detwist\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#firewall-reload.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/firewall-reload.log\"\n      Tag=\"firewall-reload\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#applmgmt_vmonsvc.std*\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/applmgmt_vmonsvc.std*\"\n      Tag=\"applmgmt_vmonsvc\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#backupSchedulerCron\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/backupSchedulerCron.log\"\n      Tag=\"backupSchedulerCron\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#progress.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/progress.log\"\n      Tag=\"progress\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#statsmoitor-alarms\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/statsmoitor-alarms.log\"\n      Tag=\"statsmoitor-alarms\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#StatsMonitor\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/StatsMonitor.log\"\n      Tag=\"StatsMonitor\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#StatsMonitorStartup.log.std*\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/statsmon/StatsMonitorStartup.log.std*\"\n      Tag=\"StatsMonitor-Startup\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#PatchRunner\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/PatchRunner.log\"\n      Tag=\"PatchRunner\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#update_microservice\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/update_microservice.log\"\n      Tag=\"update_microservice\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vami\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/vami.log\"\n      Tag=\"vami\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vcdb_pre_patch\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/vcdb_pre_patch.*\"\n      Tag=\"vcdb_pre_patch\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#dnsmasq.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/dnsmasq.log\"\n      Tag=\"dnsmasq\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#procstate\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/procstate\"\n      Tag=\"procstate\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#backup.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/backup.log\"\n      Tag=\"applmgmt-backup\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#size.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/size.log\"\n      Tag=\"applmgmt-size\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#restore.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/restore.log\"\n      Tag=\"applmgmt-restore\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#reconciliation.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/reconciliation.log\"\n      Tag=\"applmgmt-reconciliation\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#pnid_change.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/applmgmt/pnid_change.log\"\n      Tag=\"applmgmt-pnid-change\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-259143",
+        "title": "SRG-APP-000141-WSR-000081",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259143r1003697_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000031",
+          "title": "The vCenter VAMI service must explicitly disable Multipurpose Internet Mail Extensions (MIME) mime mappings based on \"Content-Type\".",
+          "description": "<VulnDiscussion>Controlling what a user of a hosted application can access is part of the security posture of the web server. Any time a user can access more functionality than is needed for the operation of the hosted application poses a security issue. A user with too much access can view information that is not needed for the user's job role, or the user could use the function in an unintentional manner.\n\nA MIME tells the web server what type of program various file types and extensions are and what external utilities or programs are needed to execute the file type. A limited number of MIME types must be configured manually, and automatic mapping must be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000381",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\nmimetype.use-xattr = \"disable\"\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62792r1003696_fix"
+          },
+          "fix": {
+            "+@id": "F-62792r1003696_fix"
+          },
+          "check": {
+            "+@system": "C-62883r1003695_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"mimetype.use-xattr\"\n\nExample result:\n\nmimetype.use-xattr=\"disable\"\n\nIf \"mimetype.use-xattr\" is not set to \"disable\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259144",
+        "title": "SRG-APP-000141-WSR-000083",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259144r1003700_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000033",
+          "title": "The vCenter VAMI service must have resource mappings set to disable the serving of certain file types.",
+          "description": "<VulnDiscussion>Resource mapping is the process of tying a particular file type to a process in the web server that can serve that type of file to a requesting client and to identify which file types are not to be delivered to a client.\n\nBy not specifying which files can and which files cannot be served to a user, VAMI could deliver sensitive files.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000381",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\nurl.access-deny = ( \"~\", \".inc\" )\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62793r1003699_fix"
+          },
+          "fix": {
+            "+@id": "F-62793r1003699_fix"
+          },
+          "check": {
+            "+@system": "C-62884r1003698_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# grep \"url.access-deny\" /var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nExample result:\n\nurl.access-deny = ( \"~\", \".inc\" )\n\nIf \"url.access-deny\" is not set to \"( \"~\", \".inc\" )\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259145",
+        "title": "SRG-APP-000141-WSR-000085",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259145r1003703_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000034",
+          "title": "The vCenter VAMI service must have Web Distributed Authoring (WebDAV) disabled.",
+          "description": "<VulnDiscussion>A web server can be installed with functionality that, by its nature, is not secure. WebDAV is an extension to the HTTP protocol that, when developed, was meant to allow users to create, change, and move documents on a server, typically a web server or web share. Allowing this functionality, development, and deployment is much easier for web authors.\n\nWebDAV is not widely used and has serious security concerns because it may allow clients to modify unauthorized files on the web server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000381",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nDelete or comment out the \"mod_webdav\" line.\n\nNote: The line may be in an included config and not in the parent config itself.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62794r1003702_fix"
+          },
+          "fix": {
+            "+@id": "F-62794r1003702_fix"
+          },
+          "check": {
+            "+@system": "C-62885r1003701_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/server\\.modules/,/\\)/'|grep mod_webdav\n\nIf any value is returned, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259146",
+        "title": "SRG-APP-000141-WSR-000086",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259146r1003706_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000035",
+          "title": "The vCenter VAMI service must protect system resources and privileged operations from hosted applications.",
+          "description": "<VulnDiscussion>Most of the attention to denial-of-service (DoS) attacks focuses on ensuring that systems and applications are not victims of these attacks. However, these systems and applications must also be secured against use to launch such an attack against others.\n\nA variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks. Limiting system resources that are allocated to any user to a bare minimum may also reduce the ability of users to launch some DoS attacks.\n\nOne DoS mitigation is to prevent VAMI from keeping idle connections open for too long.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000381",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf file.\n\nAdd or reconfigure the following value:\n\nserver.max-keep-alive-idle = 30\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62795r1003705_fix"
+          },
+          "fix": {
+            "+@id": "F-62795r1003705_fix"
+          },
+          "check": {
+            "+@system": "C-62886r1003704_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"server.max-keep-alive-idle\"\n\nExample result:\n\nserver.max-keep-alive-idle=30\n\nIf \"server.max-keep-alive-idle\" is not set to 30, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259147",
+        "title": "SRG-APP-000176-WSR-000096",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259147r961041_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000040",
+          "title": "The vCenter VAMI service must restrict access to the web server's private key.",
+          "description": "<VulnDiscussion>The web server's private key is used to prove the identity of the server to clients and securely exchange the shared secret key used to encrypt communications between the web server and clients. By gaining access to the private key, an attacker can pretend to be an authorized server and decrypt the Secure Sockets Layer (SSL) traffic between a client and the web server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000186",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "At the command prompt, run the following commands:\n\n# chown root:root /etc/applmgmt/appliance/server.pem\n# chmod 600 /etc/applmgmt/appliance/server.pem",
+            "+@fixref": "F-62796r935344_fix"
+          },
+          "fix": {
+            "+@id": "F-62796r935344_fix"
+          },
+          "check": {
+            "+@system": "C-62887r935343_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# stat -c \"%n has %a permissions and is owned by %U:%G\" /etc/applmgmt/appliance/server.pem\n\nExpected result:\n\n/etc/applmgmt/appliance/server.pem has 600 permissions and is owned by root:root\n\nIf the output does not match the expected result, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-259149",
+        "title": "SRG-APP-000246-WSR-000149",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259149r1003709_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000060",
+          "title": "The vCenter VAMI service must restrict the ability of users to launch denial-of-service (DoS) attacks against other information systems or networks.",
+          "description": "<VulnDiscussion>In UNIX and related computer operating systems, a file descriptor is an indicator used to access a file or other input/output resource, such as a pipe or network connection. File descriptors index into a per-process file descriptor table maintained by the kernel, which in turn indexes into a systemwide table of files opened by all processes, called the file table.\n\nAs a single-threaded server, Lighttpd must be limited in the number of file descriptors that can be allocated. This will prevent Lighttpd from being used in a form of DoS attack against the operating system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-001094",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\nserver.max-fds = 2048\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62798r1003708_fix"
+          },
+          "fix": {
+            "+@id": "F-62798r1003708_fix"
+          },
+          "check": {
+            "+@system": "C-62889r1003707_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"server.max-fds\"\n\nExample result:\n\nserver.max-fds=2048\n\nIf \"server.max-fds\" is not set to 2048 or less, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259150",
+        "title": "SRG-APP-000251-WSR-000157",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259150r1003712_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000061",
+          "title": "The vCenter VAMI service must set the encoding for all text mime types to UTF-8.",
+          "description": "<VulnDiscussion>Invalid user input occurs when a user inserts data or characters into a hosted application's data entry field and the hosted application is unprepared to process that data. This results in unanticipated application behavior, potentially leading to an application compromise. Invalid user input is one of the primary methods employed when attempting to compromise an application.\n\nAn attacker can also enter Unicode into hosted applications in an effort to break out of the document home or root home directory or to bypass security checks.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-001310",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nNavigate to the \"mimetype.assign\" block.\n\nReplace all the mappings whose assigned type is \"text/*\" with mappings for UTF-8 encoding. For example:\n\n  \".log\"          =>      \"text/plain; charset=utf-8\",\n  \".conf\"         =>      \"text/plain; charset=utf-8\",\n  \".text\"         =>      \"text/plain; charset=utf-8\",\n  \".txt\"          =>      \"text/plain; charset=utf-8\",\n  \".spec\"         =>      \"text/plain; charset=utf-8\",\n  \".dtd\"          =>      \"text/xml; charset=utf-8\",\n  \".xml\"          =>      \"text/xml; charset=utf-8\",\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62799r1003711_fix"
+          },
+          "fix": {
+            "+@id": "F-62799r1003711_fix"
+          },
+          "check": {
+            "+@system": "C-62890r1003710_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/mimetype\\.assign/,/\\)/'|grep \"text/\"|grep -v \"charset=utf-8\"\n\nIf the command returns any value, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259151",
+        "title": "SRG-APP-000266-WSR-000142",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259151r1003715_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000062",
+          "title": "The vCenter VAMI service must disable directory listing.",
+          "description": "<VulnDiscussion>The goal is to completely control the web user's experience in navigating any portion of the web document root directories. Ensuring all web content directories have at least the equivalent of an \"index.html\" file is a significant factor to accomplish this end.\n\nEnumeration techniques, such as Uniform Resource Locator (URL) parameter manipulation, rely on being able to obtain information about the web server's directory structure by locating directories without default pages. In this scenario, the web server will display to the user a listing of the files in the directory being accessed. By having a default hosted application web page, the anonymous web user will not obtain directory browsing information or an error message that reveals the server type and version.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-001312",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\ndir-listing.activate = \"disable\"\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62800r1003714_fix"
+          },
+          "fix": {
+            "+@id": "F-62800r1003714_fix"
+          },
+          "check": {
+            "+@system": "C-62891r1003713_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"dir-listing.activate\"\n\nExample result:\n\ndir-listing.activate = \"disable\"\n\nIf \"dir-listing.activate\" is not set to \"disable\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259152",
+        "title": "SRG-APP-000266-WSR-000159",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259152r1003718_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000063",
+          "title": "The vCenter VAMI service must not be configured to use the \"mod_status\" module.",
+          "description": "<VulnDiscussion>Any application providing too much information in error logs and in administrative messages to the screen risks compromising the data and security of the application and system.\n\nVAMI must only generate error messages that provide information necessary for corrective actions without revealing sensitive or potentially harmful information in error logs and administrative messages. The \"mod_status\" module generates the status overview of the webserver.\n\nThe information covers the following:\n\n- Uptime.\n- Average throughput.\n- Current throughput.\n- Active connections and their state.\n\nWhile this information is useful on a development system, production systems must not have \"mod_status\" enabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-001312",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf.\n\nRemove the line containing \"mod_status\".\n\nNote: The line may be in an included config and not in the parent config.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62801r1003717_fix"
+          },
+          "fix": {
+            "+@id": "F-62801r1003717_fix"
+          },
+          "check": {
+            "+@system": "C-62892r1003716_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/server\\.modules/,/\\)/'|grep mod_status\n\nIf any value is returned, this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259153",
+        "title": "SRG-APP-000266-WSR-000160",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259153r1003721_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000064",
+          "title": "The vCenter VAMI service must have debug logging disabled.",
+          "description": "<VulnDiscussion>Information needed by an attacker to begin looking for possible vulnerabilities in a web server includes any information about the web server and plug-ins or modules being used. When debugging or trace information is enabled in a production web server, information about the web server, such as web server type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any backends being used for data storage may be displayed.\n\nBecause this information may be placed in logs and general messages during normal operation of the web server, an attacker does not need to cause an error condition to gain this information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-001312",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nAdd or reconfigure the following value:\n\ndebug.log-request-handling = \"disable\"\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62802r1003720_fix"
+          },
+          "fix": {
+            "+@id": "F-62802r1003720_fix"
+          },
+          "check": {
+            "+@system": "C-62893r1003719_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:    \n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"debug.log-request-handling\"\n\nExpected result:\n\ndebug.log-request-handling = \"disable\"\n\nIf \"debug.log-request-handling\" is not set to \"disable\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259155",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259155r1003724_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000097",
+          "title": "The vCenter VAMI service must disable client initiated TLS renegotiation.",
+          "description": "<VulnDiscussion>All versions of the Secure Sockets Layer (SSL) and TLS protocols (up to and including TLS 1.2) are vulnerable to a man-in-the-middle attack (CVE-2009-3555) during a renegotiation. This vulnerability allows an attacker to \"prefix\" a chosen plaintext to the HTTP request as seen by the web server. The protocols have since been amended by RFC 5746, but the fix must be supported by both client and server to be effective.\n\nWhile Lighttpd and the underlying OpenSSL libraries are no longer vulnerable, steps must be taken to account for older clients that do not support RFC 5746. To this end, Lighttpd disables client-initiated renegotiation entirely by default. This configuration must be validated and maintained.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/var/lib/vmware/cap-lighttpd/lighttpd.conf\n\nRemove any setting for \"ssl.disable-client-renegotiation\".\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62804r1003723_fix"
+          },
+          "fix": {
+            "+@id": "F-62804r1003723_fix"
+          },
+          "check": {
+            "+@system": "C-62895r1003722_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"ssl\\.disable-client-renegotiation\"\n\nIf no line is returned, this is not a finding.\n\nIf \"ssl.disable-client-renegotiation\" is set to \"disabled\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259156",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259156r1003727_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000098",
+          "title": "The vCenter VAMI service must be configured to hide the server type and version in client responses.",
+          "description": "<VulnDiscussion>Web servers will often display error messages to client users, displaying enough information to aid in the debugging of the error. The information given back in error messages may display the web server type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any backends being used for data storage.\n\nThis information could be used by an attacker to blueprint what type of attacks might be successful. Therefore, VAMI must be configured to hide the server version at all times.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nAdd or reconfigure the following value:\n\nserver.tag = \"vami\"\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62805r1003726_fix"
+          },
+          "fix": {
+            "+@id": "F-62805r1003726_fix"
+          },
+          "check": {
+            "+@system": "C-62896r1003725_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|grep \"server.tag\"\n\nExpected result:\n\nserver.tag = \"vami\"\n\nIf \"server.tag\" is not set to \"vami\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259157",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259157r1003730_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000099",
+          "title": "The vCenter VAMI service must implement HTTP Strict Transport Security (HSTS).",
+          "description": "<VulnDiscussion>HSTS instructs web browsers to only use secure connections for all future requests when communicating with a website. Doing so helps prevent SSL protocol attacks, SSL stripping, cookie hijacking, and other attempts to circumvent SSL protection.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nIf header \"Strict-Transport-Security\" is not present, add the following line to the end of the file:\n\nsetenv.add-response-header += (\"Strict-Transport-Security\" => \"max-age=31536000; includeSubDomains; preload\")\n\nIf header \"Strict-Transport-Security\" is present and not set to \"Deny\", update the value as shown below:\n\n\"Strict-Transport-Security\" => \"max-age=31536000; includeSubDomains; preload\",\n\nNote: The last line in the parameter does not need a trailing comma if part of a multi-line configuration.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62806r1003729_fix"
+          },
+          "fix": {
+            "+@id": "F-62806r1003729_fix"
+          },
+          "check": {
+            "+@system": "C-62897r1003728_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/setenv\\.add-response-header/,/\\)/'|sed -e 's/^[ ]*//'|grep \"Strict-Transport-Security\"\n\nExample result:\n\n\"Strict-Transport-Security\" => \"max-age=31536000; includeSubDomains; preload\"\n\nIf the response header \"Strict-Transport-Security\" is missing or not configured to \"max-age=31536000; includeSubDomains; preload\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259158",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259158r1003733_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000100",
+          "title": "The vCenter VAMI service must implement prevent rendering inside a frame or iframe on another site.",
+          "description": "<VulnDiscussion>Clickjacking, also known as a “UI redress attack”, is when an attacker uses multiple transparent or opaque layers to trick a user into clicking on a button or link on another page when they were intending to click on the top level page. Thus, the attacker is “hijacking” clicks meant for their page and routing them to another page, most likely owned by another application, domain, or both.\n\nUsing a similar technique, keystrokes can also be hijacked. With a carefully crafted combination of stylesheets, iframes, and text boxes, a user can be led to believe they are typing in the password to their email or bank account but are instead typing into an invisible frame controlled by the attacker.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nIf header \"X-Frame-Options\" is not present, add the following line to the end of the file:\n\nsetenv.add-response-header += (\"X-Frame-Options\" => \"Deny\")\n\nIf header \"X-Frame-Options\" is present and not set to \"Deny\", update the value as shown below:\n\n\"X-Frame-Options\" => \"Deny\",\n\nNote: The last line in the parameter does not need a trailing comma if part of a multi-line configuration.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62807r1003732_fix"
+          },
+          "fix": {
+            "+@id": "F-62807r1003732_fix"
+          },
+          "check": {
+            "+@system": "C-62898r1003731_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/setenv\\.add-response-header/,/\\)/'|sed -e 's/^[ ]*//'|grep \"X-Frame-Options\"\n\nExample result:\n\n\"X-Frame-Options\" => \"Deny\",\n\nIf the response header \"X-Frame-Options\" is missing or not configured to \"Deny\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259159",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259159r1003736_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000101",
+          "title": "The vCenter VAMI service must protect against MIME sniffing.",
+          "description": "<VulnDiscussion>MIME sniffing was, and still is, a technique used by some web browsers to examine the content of a particular asset. This is done for the purpose of determining an asset's file format. This technique is useful in the event that there is not enough metadata information present for a particular asset, thus leaving the possibility that the browser interprets the asset incorrectly.\n\nAlthough MIME sniffing can be useful to determine an asset's correct file format, it can also cause a security vulnerability. This vulnerability can be quite dangerous both for site owners as well as site visitors. This is because an attacker can leverage MIME sniffing to send an XSS (Cross Site Scripting) attack.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nIf header \"X-Content-Type-Options\" is not present, add the following line to the end of the file:\n\nsetenv.add-response-header += (\"X-Content-Type-Options\" => \"nosniff\")\n\nIf header \"X-Content-Type-Options\" is present and not set to \"nosniff\", update the value as shown below:\n\n\"X-Content-Type-Options\" => \"nosniff\",\n\nNote: The last line in the parameter does not need a trailing comma if part of a multi-line configuration.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62808r1003735_fix"
+          },
+          "fix": {
+            "+@id": "F-62808r1003735_fix"
+          },
+          "check": {
+            "+@system": "C-62899r1003734_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/setenv\\.add-response-header/,/\\)/'|sed -e 's/^[ ]*//'|grep \"X-Content-Type-Options\"\n\nExample result:\n\n\"X-Content-Type-Options\" => \"nosniff\",\n\nIf the response header \"X-Content-Type-Options\" is missing or not configured to \"nosniff\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      },
+      {
+        "+@id": "V-259160",
+        "title": "SRG-APP-000516-WSR-000174",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-259160r1003739_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "VCLD-80-000102",
+          "title": "The vCenter VAMI service must enable Content Security Policy.",
+          "description": "<VulnDiscussion>A Content Security Policy (CSP) requires careful tuning and precise definition of the policy. If enabled, CSP has significant impact on the way browsers render pages (e.g., inline JavaScript is disabled by default and must be explicitly allowed in the policy). CSP prevents a wide range of attacks, including cross-site scripting and other cross-site injections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target VMware vSphere 8.0 VCSA VAMI",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "VMware vSphere 8.0 VCSA VAMI",
+            "identifier": "5571"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/opt/vmware/etc/lighttpd/applmgmt-lighttpd.conf\n\nIf header \"Content-Security-Policy\" is not present, add the following line to the end of the file:\n\nsetenv.add-response-header += (\"Content-Security-Policy\" => \"default-src 'self'; img-src 'self' data: https://vcsa.vmware.com; font-src 'self' data:; object-src 'none'; style-src 'self' 'unsafe-inline'\")\n\nIf header \"Content-Security-Policy\" is present and not set to \"default-src 'self'; img-src 'self' data: https://vcsa.vmware.com; font-src 'self' data:; object-src 'none'; style-src 'self' 'unsafe-inline'\", update the value as shown below:\n\n\"Content-Security-Policy\" => \"default-src 'self'; img-src 'self' data: https://vcsa.vmware.com; font-src 'self' data:; object-src 'none'; style-src 'self' 'unsafe-inline'\",\n\nNote: The last line in the parameter does not need a trailing comma if part of a multi-line configuration.\n\nRestart the service with the following command:\n\n# systemctl restart cap-lighttpd",
+            "+@fixref": "F-62809r1003738_fix"
+          },
+          "fix": {
+            "+@id": "F-62809r1003738_fix"
+          },
+          "check": {
+            "+@system": "C-62900r1003737_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_VAMI_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/cap_lighttpd/sbin/lighttpd -p -f /var/lib/vmware/cap-lighttpd/lighttpd.conf 2>/dev/null|awk '/setenv\\.add-response-header/,/\\)/'|sed -e 's/^[ ]*//'|grep \"Content-Security-Policy\"\n\nExample result:\n\n\"Content-Security-Policy\" => \"default-src 'self'; img-src 'self' data: https://vcsa.vmware.com; font-src 'self' data:; object-src 'none'; style-src 'self' 'unsafe-inline'\"\n\nIf the response header \"Content-Security-Policy\" is missing or not configured to \"default-src 'self'; img-src 'self' data: https://vcsa.vmware.com; font-src 'self' data:; object-src 'none'; style-src 'self' 'unsafe-inline'\", this is a finding.\n\nNote: The command must be run from a bash shell and not from a shell generated by the \"appliance shell\". Use the \"chsh\" command to change the shell for the account to \"/bin/bash\". Refer to KB Article 2100508 for more details:\n\nhttps://kb.vmware.com/s/article/2100508"
+          }
+        }
+      }
+    ]
+  }
+}

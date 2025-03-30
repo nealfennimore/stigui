@@ -12,7 +12,8 @@ mkShell {
     curl
     parallel
     unzip
-    yq
+    yq-go
+    jq
     (import ./stig-viewer.nix { inherit pkgs; })
   ];
 }

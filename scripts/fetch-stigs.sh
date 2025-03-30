@@ -14,17 +14,10 @@ if [[ ! -f "data/stigs.zip" ]]; then
         ARGS+=("$archive" "${archive%.zip}")
     done
 
-    parallel -N2 unzip -d "{2}" "{1}" ::: "${ARGS[@]}"
+    parallel -N2 unzip -o -d "{2}" "{1}" ::: "${ARGS[@]}"
 
     sudo chown -R $USER: data/stigs
     sudo find data/stigs -type d -exec chmod 755 {} \;
 else
     echo "STIGs already downloaded."
 fi
-
-for file in data/stigs/**/*.xml; do
-    output_file="${file%.xml}.json"
-    if [[ ! -f "$output_file" ]]; then
-        yq --xml-strict-mode -p=xml -o=json <"$file" >"$output_file"
-    fi
-done
