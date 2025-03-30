@@ -1,0 +1,52 @@
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Create .env file
+        run: |
+          echo NEXT_PUBLIC_API_URL=https://stig.neal.codes >> .env
+
+      - name: Retrieve the cached "node_modules" directory (if present)
+        uses: actions/cache@v2
+        id: node-cache
+        with:
+          path: ./node_modules
+          key: node-modules-${{ runner.os }}-${{ hashFiles('./package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm install
+        if: steps.node-cache.outputs.cache-hit != 'true'
+
+      - name: Build App
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          cname: nist-sp-800-171.neal.codes
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out  # This is the default output directory for `next export`
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
