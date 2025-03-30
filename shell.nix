@@ -8,6 +8,7 @@ mkShell {
   ];
 
   packages = [
+    nodejs_22
     curl
     parallel
     unzip
