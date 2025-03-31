@@ -96,7 +96,7 @@ export interface GroupTree {
     description: Description;
 }
 
-export type Description = string;
+export type Description = String;
 
 export interface Overrides {
 }
@@ -105,6 +105,7 @@ export enum Severity {
     High = "high",
     Low = "low",
     Medium = "medium",
+    Info = "info",
 }
 
 export enum Status {
@@ -384,13 +385,11 @@ const typeMap: any = {
     ],
     "Classification": [
         "Unclassified",
+        "Classified",
+        "Sensitive",
     ],
-    "Comments": [
-        "",
-    ],
-    "FindingDetails": [
-        "",
-    ],
+    "Comments": "",
+    "FindingDetails": "",
     "Description": [
         "<GroupDescription></GroupDescription>",
     ],
@@ -398,6 +397,7 @@ const typeMap: any = {
         "high",
         "low",
         "medium",
+        "info",
     ],
     "Status": [
         "not_a_finding",

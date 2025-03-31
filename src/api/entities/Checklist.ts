@@ -39,12 +39,20 @@ export class CKLBConverter {
 
         const classification = getClassification(profiles[0]);
 
-        const groupsById = Benchmark.Group.reduce((acc, group) => {
+        const groups = Array.isArray(Benchmark.Group) ?
+            Benchmark.Group : [Benchmark.Group];
+
+        const groupsById = groups.reduce((acc, group) => {
             acc[group['+@id']] = group;
             return acc;
         }, {} as Record<string, Group>);
 
-        const ruleIds = new Set(...profiles.flatMap((profile) => profile.select.flatMap(selection => selection['+@idref']))); 
+        const ruleIds = new Set(profiles.flatMap((profile) => {
+            if (Array.isArray(profile.select)) {
+                return profile.select.flatMap(selection => selection['+@idref']);
+            }
+            return [profile.select['+@idref']];
+        })); 
 
         const rules: Rule[] = [];
 
@@ -52,8 +60,9 @@ export class CKLBConverter {
             const group: Group = groupsById[ruleId];
     
             const ident: IdentElement[] = Array.isArray(group.Rule.ident) ? 
-                group.Rule.ident as IdentElement[] : 
-                [group.Rule.ident as IdentElement];
+                group.Rule.ident : group.Rule.ident ?
+                [group.Rule.ident] : [];
+    
     
             const rule: Rule = {
                 group_id_src: group['+@id'],
@@ -73,7 +82,7 @@ export class CKLBConverter {
                 weight: group.Rule["+@weight"],
                 check_content: group.Rule.check["check-content"],
                 check_content_ref: {
-                    href: group.Rule.check["check-content-ref"]['+@href'],
+                    href: group.Rule.check["check-content-ref"]['+@href'] || "",
                     name: group.Rule.check["check-content-ref"]['+@name'],
                 },
                 classification,
@@ -112,15 +121,18 @@ export class CKLBConverter {
             rules.push(rule);
         }
         
+        const plainText = Array.isArray(stig.Benchmark["plain-text"]) ?
+            stig.Benchmark["plain-text"] :
+            [stig.Benchmark["plain-text"]];
 
         const stigs: ChecklistStig = {
             stig_name: stig.Benchmark.title,
             display_name: stig.Benchmark['+@id'],
             stig_id: stig.Benchmark['+@id'].replaceAll('_', ' '),
-            release_info: stig.Benchmark["plain-text"].find((item) => item['+@id'] === "release-info")?.["+content"] || "",
+            release_info: plainText.find((item) => item['+@id'] === "release-info")?.["+content"] || "",
             version: stig.Benchmark.version,
             uuid: uuidv4(),
-            reference_identifier: Benchmark.Group[0].Rule.reference.identifier,
+            reference_identifier: groups[0].Rule.reference.identifier,
             size: rules.length,
             rules
         };

@@ -9,7 +9,7 @@
 
 export interface Stig {
     "+p_xml":            string;
-    "+p_xml-stylesheet": string;
+    "+p_xml-stylesheet": string | undefined;
     Benchmark:           Benchmark;
 }
 
@@ -27,20 +27,20 @@ export interface Benchmark {
     title:                  string;
     description:            string;
     notice:                 Notice;
-    "front-matter":         Matter;
-    "rear-matter":          Matter;
+    "front-matter":         Matter | undefined;
+    "rear-matter":          Matter | undefined;
     reference:              BenchmarkReference;
-    "plain-text":           PlainText[];
+    "plain-text":           PlainText[] | PlainText;
     version:                string;
     Profile:                Profile[];
-    Group:                  Group[];
+    Group:                  Group[] | Group;
 }
 
 export interface Profile {
     "+@id":      string;
     title:       string;
     description: Description;
-    select:     Select[];
+    select:     Select[] | Select;
 }
 
 export interface Group {
@@ -58,7 +58,7 @@ export interface Rule {
     title:        string;
     description:  string;
     reference:    RuleReference;
-    ident:        IdentElement[] | IdentElement;
+    ident:        IdentElement[] | IdentElement | undefined;
     fixtext:      Fixtext;
     fix:          Fix;
     check:        Check;
@@ -68,6 +68,7 @@ export enum Severity {
     High = "high",
     Low = "low",
     Medium = "medium",
+    Info = "info",
 }
 
 export interface Check {
@@ -77,7 +78,7 @@ export interface Check {
 }
 
 export interface CheckContentRef {
-    "+@href": Href;
+    "+@href": Href | undefined;
     "+@name": Name;
 }
 
@@ -115,10 +116,7 @@ export type Subject = String;
 export type Title = String;
 export type Type = String;
 
-export enum Description {
-    GroupDescriptionGroupDescription = "<GroupDescription></GroupDescription>",
-    ProfileDescriptionProfileDescription = "<ProfileDescription></ProfileDescription>",
-}
+export type Description = String;
 
 export interface Select {
     "+@idref":    string;
@@ -140,8 +138,8 @@ export interface PlainText {
 }
 
 export interface BenchmarkReference {
-    "+@href":  string;
-    publisher: Publisher;
+    "+@href":  Href | undefined;
+    publisher: Publisher | null;
     source:    string;
 }
 
@@ -317,7 +315,7 @@ function r(name: string) {
 const typeMap: any = {
     "Stig": o([
         { json: "+p_xml", js: "+p_xml", typ: "" },
-        { json: "+p_xml-stylesheet", js: "+p_xml-stylesheet", typ: "" },
+        { json: "+p_xml-stylesheet", js: "+p_xml-stylesheet", typ: u("", undefined) },
         { json: "Benchmark", js: "Benchmark", typ: r("Benchmark") },
     ], false),
     "Benchmark": o([
@@ -334,20 +332,25 @@ const typeMap: any = {
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "notice", js: "notice", typ: r("Notice") },
-        { json: "front-matter", js: "front-matter", typ: r("Matter") },
-        { json: "rear-matter", js: "rear-matter", typ: r("Matter") },
+        { json: "front-matter", js: "front-matter", typ: u(undefined, r("Matter")) },
+        { json: "rear-matter", js: "rear-matter", typ: u(undefined, r("Matter")) },
         { json: "reference", js: "reference", typ: r("BenchmarkReference") },
-        { json: "plain-text", js: "plain-text", typ: a(r("PlainText")) },
+        { json: "plain-text", js: "plain-text", typ: u(r("PlainText"), a(r("PlainText"))) },
         { json: "version", js: "version", typ: "" },
-        { json: "Profile", js: "Profile", typ: a(r("Group")) },
-        { json: "Group", js: "Group", typ: a(r("Group")) },
+        { json: "Profile", js: "Profile", typ: a(r("Profile")) },
+        { json: "Group", js: "Group", typ: u(r("Group"), a(r("Group"))) },
     ], false),
     "Group": o([
         { json: "+@id", js: "+@id", typ: "" },
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: r("Description") },
-        { json: "Rule", js: "Rule", typ: u(undefined, r("Rule")) },
-        { json: "select", js: "select", typ: u(undefined, a(r("Select"))) },
+        { json: "Rule", js: "Rule", typ: r("Rule") },
+    ], false),
+    "Profile": o([
+        { json: "+@id", js: "+@id", typ: "" },
+        { json: "title", js: "title", typ: "" },
+        { json: "description", js: "description", typ: r("Description") },
+        { json: "select", js: "select", typ: u(r("Select"), a(r("Select"))) },
     ], false),
     "Rule": o([
         { json: "+@id", js: "+@id", typ: "" },
@@ -357,7 +360,7 @@ const typeMap: any = {
         { json: "title", js: "title", typ: "" },
         { json: "description", js: "description", typ: "" },
         { json: "reference", js: "reference", typ: r("RuleReference") },
-        { json: "ident", js: "ident", typ: u(a(r("IdentElement")), r("IdentElement")) },
+        { json: "ident", js: "ident", typ: u(a(r("IdentElement")), r("IdentElement"), undefined) },
         { json: "fixtext", js: "fixtext", typ: r("Fixtext") },
         { json: "fix", js: "fix", typ: r("Fix") },
         { json: "check", js: "check", typ: r("Check") },
@@ -368,7 +371,7 @@ const typeMap: any = {
         { json: "check-content", js: "check-content", typ: "" },
     ], false),
     "CheckContentRef": o([
-        { json: "+@href", js: "+@href", typ: r("Href") },
+        { json: "+@href", js: "+@href", typ: u(undefined, r("Href")) },
         { json: "+@name", js: "+@name", typ: r("Name") },
     ], false),
     "Fix": o([
@@ -384,7 +387,7 @@ const typeMap: any = {
     ], false),
     "RuleReference": o([
         { json: "title", js: "title", typ: r("Title") },
-        { json: "publisher", js: "publisher", typ: r("Publisher") },
+        { json: "publisher", js: "publisher", typ: u(undefined, r("Publisher")) },
         { json: "type", js: "type", typ: r("Type") },
         { json: "subject", js: "subject", typ: r("Subject") },
         { json: "identifier", js: "identifier", typ: "" },
@@ -405,8 +408,8 @@ const typeMap: any = {
         { json: "+@id", js: "+@id", typ: "" },
     ], false),
     "BenchmarkReference": o([
-        { json: "+@href", js: "+@href", typ: "" },
-        { json: "publisher", js: "publisher", typ: r("Publisher") },
+        { json: "+@href", js: "+@href", typ: u(undefined, r("Href")) },
+        { json: "publisher", js: "publisher", typ: u(null, r("Publisher")) },
         { json: "source", js: "source", typ: "" },
     ], false),
     "Status": o([
@@ -417,27 +420,15 @@ const typeMap: any = {
         "high",
         "low",
         "medium",
+        "info"
     ],
-    "Href": [
-        "Anduril_NixOS_STIG.xml",
-    ],
+    "Href": "",
     "Name": [
         "M",
     ],
-    "Publisher": [
-        "DISA",
-    ],
-    "Subject": [
-        "Anduril NixOS",
-    ],
-    "Title": [
-        "DPMS Target Anduril NixOS",
-    ],
-    "Type": [
-        "DPMS Target",
-    ],
-    "Description": [
-        "<GroupDescription></GroupDescription>",
-        "<ProfileDescription></ProfileDescription>",
-    ],
+    "Publisher": "",
+    "Subject": "",
+    "Title": "",
+    "Type": "",
+    "Description": "",
 };
