@@ -14,3 +14,13 @@ for file in data/stigs/**/*.xml; do
     fi
     jq . <<<"$JSON" >"public/data/stigs/schema/$ID.json"
 done
+
+jq -s '[
+    .[].Benchmark |
+    {
+        id: .["+@id"],
+        title: .title | sub(" Security Technical Implementation Guide"; ""),
+        description: .description,
+        version: .version,
+    }
+]' public/data/stigs/schema/*.json >public/data/stigs/index.json

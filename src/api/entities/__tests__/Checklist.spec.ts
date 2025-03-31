@@ -13,10 +13,6 @@ describe('CKLBConverter', () => {
 
     for (const schema of fs.readdirSync(schemaDir)) {
         it(`should match snapshot for ${schema}`, () => {
-            if (schema === "null.json"){
-                // Skip null.json as it is not a valid schema
-                return;
-            }
             const data = fs.readFileSync(path.join(schemaDir, schema), 'utf8');
             const stig = Convert.toStig(data);
             const checklist = CKLBConverter.fromStig(stig, stig.Benchmark.Profile);
