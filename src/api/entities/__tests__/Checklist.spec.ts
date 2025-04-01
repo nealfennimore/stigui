@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Validator } from 'jsonschema';
 import path from 'path';
 import { Convert } from '../../generated/Stig';
-import { CKLBConverter } from '../Checklist';
+import Checklist from '../Checklist';
 
 describe('CKLBConverter', () => {
     const schemaDir = path.join(
@@ -25,10 +25,7 @@ describe('CKLBConverter', () => {
         it(`should match snapshot for ${schema}`, () => {
             const data = fs.readFileSync(path.join(schemaDir, schema), 'utf8');
             const stig = Convert.toStig(data);
-            const checklist = CKLBConverter.fromStig(
-                stig,
-                stig.Benchmark.Profile
-            );
+            const checklist = Checklist.fromStig(stig, stig.Benchmark.Profile);
             expect(checklist).toMatchSnapshot();
         });
 

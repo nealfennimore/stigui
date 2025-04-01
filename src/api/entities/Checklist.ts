@@ -1,8 +1,8 @@
 import {
-    Checklist,
     Stig as ChecklistStig,
     Classification,
     Convert,
+    Checklist as IChecklist,
     Rule,
     Status,
 } from '@/api/generated/Checklist';
@@ -11,13 +11,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-export const read = async (path: string) => {
-    const data = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}`
-    );
-    const checklist: Checklist = Convert.toChecklist(await data.text());
-    return checklist;
-};
 
 function getClassification(profile: Profile): Classification {
     const id = profile['+@id'];
@@ -32,12 +25,20 @@ function getClassification(profile: Profile): Classification {
     }
 }
 
-export class CKLBConverter {
+export default class Checklist extends Convert {
     static vulnDiscussionRe = new RegExp(
         '/<VulnDiscussion>(.*)</VulnDiscussion>/'
     );
 
-    static fromStig(stig: Stig, profiles: Profile[]): Checklist {
+    static read = async (path: string) => {
+        const data = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}`
+        );
+        const checklist: IChecklist = Checklist.toChecklist(await data.text());
+        return checklist;
+    };
+
+    static fromStig(stig: Stig, profiles: Profile[]): IChecklist {
         const { Benchmark } = stig;
 
         const profileIds = profiles.map((profile) => profile['+@id']);
@@ -111,7 +112,7 @@ export class CKLBConverter {
                 classification,
                 discussion:
                     group.Rule.description.match(
-                        CKLBConverter.vulnDiscussionRe
+                        Checklist.vulnDiscussionRe
                     )?.[1] || '',
                 false_positives: '',
                 false_negatives: '',
@@ -166,7 +167,7 @@ export class CKLBConverter {
             rules,
         };
 
-        const checklist: Checklist = {
+        const checklist: IChecklist = {
             title: Benchmark.title,
             id: stigId,
             stigs: [stigs],
