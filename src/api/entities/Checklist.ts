@@ -1,22 +1,31 @@
-import { Checklist, Stig as ChecklistStig, Classification, Convert, Rule, Status } from "@/api/generated/Checklist";
-import { Group, IdentElement, Profile, Stig } from "@/api/generated/Stig";
-import { v4 as uuidv4 } from "uuid";
+import {
+    Checklist,
+    Stig as ChecklistStig,
+    Classification,
+    Convert,
+    Rule,
+    Status,
+} from '@/api/generated/Checklist';
+import { Group, IdentElement, Profile, Stig } from '@/api/generated/Stig';
+import { v4 as uuidv4 } from 'uuid';
 
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 export const read = async (path: string) => {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}`);
-    const checklist: Checklist = Convert.toChecklist(await data.text())
+    const data = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}`
+    );
+    const checklist: Checklist = Convert.toChecklist(await data.text());
     return checklist;
-}
+};
 
 function getClassification(profile: Profile): Classification {
     const id = profile['+@id'];
 
-    switch (id.split("_")[1]) {
-        case "Classified":
+    switch (id.split('_')[1]) {
+        case 'Classified':
             return Classification.Classified;
-        case "Sensitive":
+        case 'Sensitive':
             return Classification.Sensitive;
         default:
             return Classification.Unclassified;
@@ -24,14 +33,20 @@ function getClassification(profile: Profile): Classification {
 }
 
 export class CKLBConverter {
-    static vulnDiscussionRe = new RegExp('/<VulnDiscussion>(.*)</VulnDiscussion>/');
+    static vulnDiscussionRe = new RegExp(
+        '/<VulnDiscussion>(.*)</VulnDiscussion>/'
+    );
 
     static fromStig(stig: Stig, profiles: Profile[]): Checklist {
         const { Benchmark } = stig;
 
         const profileIds = profiles.map((profile) => profile['+@id']);
 
-        if (!profileIds.every((id) => Benchmark.Profile.some((profile) => profile['+@id'] === id))) {
+        if (
+            !profileIds.every((id) =>
+                Benchmark.Profile.some((profile) => profile['+@id'] === id)
+            )
+        ) {
             throw new Error(`Profile not found in STIG`);
         }
 
@@ -39,72 +54,83 @@ export class CKLBConverter {
 
         const classification = getClassification(profiles[0]);
 
-        const groups = Array.isArray(Benchmark.Group) ?
-            Benchmark.Group : [Benchmark.Group];
+        const groups = Array.isArray(Benchmark.Group)
+            ? Benchmark.Group
+            : [Benchmark.Group];
 
         const groupsById = groups.reduce((acc, group) => {
             acc[group['+@id']] = group;
             return acc;
         }, {} as Record<string, Group>);
 
-        const ruleIds = new Set(profiles.flatMap((profile) => {
-            if (Array.isArray(profile.select)) {
-                return profile.select.flatMap(selection => selection['+@idref']);
-            }
-            return [profile.select['+@idref']];
-        })); 
+        const ruleIds = new Set(
+            profiles.flatMap((profile) => {
+                if (Array.isArray(profile.select)) {
+                    return profile.select.flatMap(
+                        (selection) => selection['+@idref']
+                    );
+                }
+                return [profile.select['+@idref']];
+            })
+        );
 
         const rules: Rule[] = [];
 
         for (const ruleId of ruleIds) {
             const group: Group = groupsById[ruleId];
-    
-            const ident: IdentElement[] = Array.isArray(group.Rule.ident) ? 
-                group.Rule.ident : group.Rule.ident ?
-                [group.Rule.ident] : [];
-    
-    
+
+            const ident: IdentElement[] = Array.isArray(group.Rule.ident)
+                ? group.Rule.ident
+                : group.Rule.ident
+                ? [group.Rule.ident]
+                : [];
+
             const rule: Rule = {
                 group_id_src: group['+@id'],
-                group_tree: [{
-                    id: group['+@id'],
-                    title: group.title,
-                    description: group.description,
-                }],
+                group_tree: [
+                    {
+                        id: group['+@id'],
+                        title: group.title,
+                        description: group.description,
+                    },
+                ],
                 group_id: group['+@id'],
-                severity: group.Rule["+@severity"],
+                severity: group.Rule['+@severity'],
                 group_title: group.Rule.title,
                 rule_id_src: group.Rule['+@id'],
                 rule_id: group.Rule['+@id'].replace('_rule', ''),
                 rule_version: group.Rule.version,
                 rule_title: group.Rule.title,
-                fix_text: group.Rule.fixtext["+content"],
-                weight: group.Rule["+@weight"],
-                check_content: group.Rule.check["check-content"],
+                fix_text: group.Rule.fixtext['+content'],
+                weight: group.Rule['+@weight'],
+                check_content: group.Rule.check['check-content'],
                 check_content_ref: {
-                    href: group.Rule.check["check-content-ref"]['+@href'] || "",
-                    name: group.Rule.check["check-content-ref"]['+@name'],
+                    href: group.Rule.check['check-content-ref']['+@href'] || '',
+                    name: group.Rule.check['check-content-ref']['+@name'],
                 },
                 classification,
-                discussion: group.Rule.description.match(CKLBConverter.vulnDiscussionRe)?.[1] || "",
-                false_positives: "",
-                false_negatives: "",
-                documentable: "false",
-                security_override_guidance: "",
-                potential_impacts: "",
-                third_party_tools: "",
-                ia_controls: "",
-                responsibility: "",
-                mitigations: "",
-                mitigation_control: "",
+                discussion:
+                    group.Rule.description.match(
+                        CKLBConverter.vulnDiscussionRe
+                    )?.[1] || '',
+                false_positives: '',
+                false_negatives: '',
+                documentable: 'false',
+                security_override_guidance: '',
+                potential_impacts: '',
+                third_party_tools: '',
+                ia_controls: '',
+                responsibility: '',
+                mitigations: '',
+                mitigation_control: '',
                 legacy_ids: ident.reduce((acc, item) => {
-                    if (item['+@system'] === "http://cyber.mil/legacy") {
+                    if (item['+@system'] === 'http://cyber.mil/legacy') {
                         acc.push(item['+content']);
                     }
                     return acc;
                 }, [] as string[]),
                 ccis: ident.reduce((acc, item) => {
-                    if (item['+@system'] === "http://cyber.mil/cci") {
+                    if (item['+@system'] === 'http://cyber.mil/cci') {
                         acc.push(item['+content']);
                     }
                     return acc;
@@ -114,51 +140,54 @@ export class CKLBConverter {
                 stig_uuid: stigId,
                 status: Status.NotReviewed,
                 overrides: {},
-                comments: "",
-                finding_details: "",
+                comments: '',
+                finding_details: '',
             };
 
             rules.push(rule);
         }
-        
-        const plainText = Array.isArray(stig.Benchmark["plain-text"]) ?
-            stig.Benchmark["plain-text"] :
-            [stig.Benchmark["plain-text"]];
+
+        const plainText = Array.isArray(stig.Benchmark['plain-text'])
+            ? stig.Benchmark['plain-text']
+            : [stig.Benchmark['plain-text']];
 
         const stigs: ChecklistStig = {
             stig_name: stig.Benchmark.title,
             display_name: stig.Benchmark['+@id'],
             stig_id: stig.Benchmark['+@id'].replaceAll('_', ' '),
-            release_info: plainText.find((item) => item['+@id'] === "release-info")?.["+content"] || "",
+            release_info:
+                plainText.find((item) => item['+@id'] === 'release-info')?.[
+                    '+content'
+                ] || '',
             version: stig.Benchmark.version,
             uuid: uuidv4(),
             reference_identifier: groups[0].Rule.reference.identifier,
             size: rules.length,
-            rules
+            rules,
         };
 
         const checklist: Checklist = {
-                title:        Benchmark.title,
-                id:           stigId,
-                stigs:        [stigs],
-                active:       false,
-                mode:         2,
-                has_path:     true,
-                target_data:  {
-                    classification: null,
-                    comments: "",
-                    fqdn: "",
-                    host_name: "",
-                    ip_address: "",
-                    is_web_database: false,
-                    mac_address: "",
-                    role: "",
-                    target_type: "",
-                    technology_area: "",
-                    web_db_instance: "",
-                    web_db_site: "",
-                },
-                cklb_version: "1.0",
+            title: Benchmark.title,
+            id: stigId,
+            stigs: [stigs],
+            active: false,
+            mode: 2,
+            has_path: true,
+            target_data: {
+                classification: null,
+                comments: '',
+                fqdn: '',
+                host_name: '',
+                ip_address: '',
+                is_web_database: false,
+                mac_address: '',
+                role: '',
+                target_type: '',
+                technology_area: '',
+                web_db_instance: '',
+                web_db_site: '',
+            },
+            cklb_version: '1.0',
         };
 
         return checklist;
