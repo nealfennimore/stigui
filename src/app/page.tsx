@@ -1,7 +1,7 @@
-import { Families } from "@/app/components/families";
 import { Footer } from "@/app/components/footer";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
+import { Stigs } from "@/app/components/stigs";
 import ManifestComponent from "@/app/context";
 
 export default async function Page() {
@@ -9,7 +9,7 @@ export default async function Page() {
         <ManifestComponent>
             <Navigation />
             <Main>
-                <Families />
+                <Stigs />
             </Main>
             <Footer />
         </ManifestComponent>

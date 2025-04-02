@@ -9,7 +9,7 @@ enum Table {
 }
 
 if (typeof window !== "undefined") {
-    const request = window?.indexedDB?.open("800_171_r3", version);
+    const request = window?.indexedDB?.open("stigs", version);
 
     loader = new Promise((resolve, reject) => {
         request.onerror = (event) => {

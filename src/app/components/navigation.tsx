@@ -49,7 +49,7 @@ export const Navigation = () => {
                     tabIndex={100}
                 >
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        NIST SP 800-171 Rev 3
+                        STIG
                     </span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

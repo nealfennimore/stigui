@@ -1,4 +1,5 @@
 "use client";
+import { GroupWrapper } from "@/api/entities/Stig";
 import { useManifestContext } from "@/app/context";
 import Link from "next/link";
 
@@ -9,38 +10,53 @@ interface BreadcrumbLink {
 }
 
 interface BreadcrumbsProps {
-    familyId?: string;
-    requirementId?: string;
+    group?: GroupWrapper;
+    stigId?: string;
 }
 
-export const Breadcrumbs = ({ familyId, requirementId }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
     const manifest = useManifestContext();
     const links: BreadcrumbLink[] = [
         {
-            href: "/r3",
-            text: "Families",
+            href: "/stigs",
+            text: "STIGs",
         },
     ];
 
-    if (familyId) {
-        const family = manifest?.families?.byId[familyId];
+    if (stigId) {
+        const stig = manifest.byId(stigId);
         links.push({
-            href: `/r3/family/${familyId}`,
-            text: `${family.element_identifier}: ${family.title}`,
-        });
-    } else if (requirementId) {
-        const requirement = manifest?.requirements?.byId[requirementId];
-        const family = manifest?.families?.byId[requirement.family];
-        links.push({
-            href: `/r3/family/${requirement.family}`,
-            text: `${family.element_identifier}: ${family.title}`,
-        });
-        links.push({
-            href: `/r3/requirement/${requirementId}`,
-            text: `${requirement.element_identifier}: ${requirement.title}`,
-            disabled: true,
+            href: `/stigs/${stigId}`,
+            text: `${stig.title}`,
         });
     }
+
+    if (group) {
+        links.push({
+            href: `/stigs/${stigId}/groups/${group.rule.id}`,
+            text: `${group.id}`,
+        });
+    }
+
+    // if (familyId) {
+    //     const family = manifest?.families?.byId[familyId];
+    //     links.push({
+    //         href: `/stigs/family/${familyId}`,
+    //         text: `${family.element_identifier}: ${family.title}`,
+    //     });
+    // } else if (requirementId) {
+    //     const requirement = manifest?.requirements?.byId[requirementId];
+    //     const family = manifest?.families?.byId[requirement.family];
+    //     links.push({
+    //         href: `/stigs/family/${requirement.family}`,
+    //         text: `${family.element_identifier}: ${family.title}`,
+    //     });
+    //     links.push({
+    //         href: `/stigs/requirement/${requirementId}`,
+    //         text: `${requirement.element_identifier}: ${requirement.title}`,
+    //         disabled: true,
+    //     });
+    // }
 
     return (
         <aside>

@@ -110,13 +110,13 @@ export interface RuleReference {
     identifier: string;
 }
 
-export type Publisher = String;
+export type Publisher = string;
 
-export type Subject = String;
-export type Title = String;
-export type Type = String;
+export type Subject = string;
+export type Title = string;
+export type Type = string;
 
-export type Description = String;
+export type Description = string;
 
 export interface Select {
     '+@idref': string;

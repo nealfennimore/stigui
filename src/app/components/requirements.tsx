@@ -1,6 +1,5 @@
 "use client";
 import { useManifestContext } from "@/app/context";
-import { IDB } from "@/app/db";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
@@ -16,37 +15,37 @@ export const Requirements = ({ familyId }: { familyId: string }) => {
     }
 
     useEffect(() => {
-        async function fetchInitialState() {
-            const ids = requirements.map((r) => r.element_identifier);
-            const idbRequirements = await IDB.requirements.getAll(
-                IDBKeyRange.bound(ids[0], ids[ids.length - 1])
-            );
+        // async function fetchInitialState() {
+        //     const ids = requirements.map((r) => r.element_identifier);
+        //     const idbRequirements = await IDB.requirements.getAll(
+        //         IDBKeyRange.bound(ids[0], ids[ids.length - 1])
+        //     );
 
-            let unfinishedWork =
-                idbRequirements.length && ids.length !== idbRequirements.length;
-            const status = idbRequirements?.reduce((acc, cur) => {
-                const securityRequirements =
-                    manifest.securityRequirements.byRequirements[cur.id];
-                const values = Object.values(cur.bySecurityRequirementId);
-                if (
-                    securityRequirements.length !== values.length &&
-                    !unfinishedWork
-                ) {
-                    unfinishedWork = true;
-                }
-                acc[cur.id] = values;
-                return acc;
-            }, {});
+        //     let unfinishedWork =
+        //         idbRequirements.length && ids.length !== idbRequirements.length;
+        //     const status = idbRequirements?.reduce((acc, cur) => {
+        //         const securityRequirements =
+        //             manifest.securityRequirements.byRequirements[cur.id];
+        //         const values = Object.values(cur.bySecurityRequirementId);
+        //         if (
+        //             securityRequirements.length !== values.length &&
+        //             !unfinishedWork
+        //         ) {
+        //             unfinishedWork = true;
+        //         }
+        //         acc[cur.id] = values;
+        //         return acc;
+        //     }, {});
 
-            if (unfinishedWork) {
-                status["all"] = ["needs-work"];
-            } else {
-                status["all"] = Object.values(status).flat();
-            }
+        //     if (unfinishedWork) {
+        //         status["all"] = ["needs-work"];
+        //     } else {
+        //         status["all"] = Object.values(status).flat();
+        //     }
 
-            setStatus(status);
-        }
-        fetchInitialState();
+        //     setStatus(status);
+        // }
+        // fetchInitialState();
     }, [familyId]);
 
     return (

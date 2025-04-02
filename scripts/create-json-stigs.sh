@@ -23,4 +23,4 @@ jq -s '[
         description: .description,
         version: .version,
     }
-]' public/data/stigs/schema/*.json >public/data/stigs/index.json
+]' public/data/stigs/schema/*.json >public/data/stigs/manifest.json
