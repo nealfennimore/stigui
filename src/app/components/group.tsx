@@ -1,10 +1,6 @@
 "use client";
-import { useManifestContext } from "@/app/context/manifest";
-import { useRouter } from "next/navigation";
-import { use } from "react";
+import { useStigContext } from "@/app/context/stig";
 import { Breadcrumbs } from "./breadcrumbs";
-
-
 
 export const GroupView = ({
     stigId,
@@ -13,16 +9,13 @@ export const GroupView = ({
     stigId: string;
     groupId: string;
 }) => {
-    const manifest = useManifestContext();
-    const router = useRouter();
-    const stig = use(manifest?.getStig(stigId))
-    const group = use(manifest?.getGroup(stigId, groupId))
+    const stig = useStigContext();
+    const group = stig.groups.find((group) => group.id === groupId);
 
     if (!stig || !group) {
         return null;
     }
-
-
+    
     return (
         <>
             <Breadcrumbs stigId={stigId} group={group} />

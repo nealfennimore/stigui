@@ -4,6 +4,7 @@ import { GroupView } from "@/app/components/group";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import ManifestComponent from "@/app/context/manifest";
+import StigComponent from "@/app/context/stig";
 
 export async function generateStaticParams() {
     const manifest = await Framework.Manifest.init();
@@ -28,7 +29,9 @@ export default async function Page({ params }) {
         <ManifestComponent>
             <Navigation />
             <Main>
-                <GroupView stigId={stig_id} groupId={group_id} />
+                <StigComponent stigId={stig_id}>
+                    <GroupView stigId={stig_id} groupId={group_id} />
+                </StigComponent>
             </Main>
             <Footer />
         </ManifestComponent>
