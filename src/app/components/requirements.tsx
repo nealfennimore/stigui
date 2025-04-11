@@ -1,5 +1,5 @@
 "use client";
-import { useManifestContext } from "@/app/context";
+import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";

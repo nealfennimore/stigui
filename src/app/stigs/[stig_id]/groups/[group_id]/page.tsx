@@ -3,7 +3,7 @@ import { Footer } from "@/app/components/footer";
 import { GroupView } from "@/app/components/group";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
-import ManifestComponent from "@/app/context";
+import ManifestComponent from "@/app/context/manifest";
 
 export async function generateStaticParams() {
     const manifest = await Framework.Manifest.init();

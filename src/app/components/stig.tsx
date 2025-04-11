@@ -1,8 +1,8 @@
 "use client";
-import { useManifestContext } from "@/app/context";
+import { useManifestContext } from "@/app/context/manifest";
+import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 
 
@@ -13,9 +13,7 @@ export const StigView = ({
     stigId: string;
 }) => {
     const manifest = useManifestContext();
-
-    const router = useRouter();
-    const stig = use(manifest?.getStig(stigId))
+    const stig = useStigContext();
     const {title} = manifest.byId(stigId);
 
     if (!stig) {

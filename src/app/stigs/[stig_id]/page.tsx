@@ -3,7 +3,8 @@ import { Footer } from "@/app/components/footer";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import { StigView } from "@/app/components/stig";
-import ManifestComponent from "@/app/context";
+import ManifestComponent from "@/app/context/manifest";
+import StigComponent from "@/app/context/stig";
 
 export async function generateStaticParams() {
     const manifest = await Framework.Manifest.init();
@@ -20,7 +21,9 @@ export default async function Page({ params }) {
         <ManifestComponent>
             <Navigation />
             <Main>
-                <StigView stigId={stig_id} />
+                <StigComponent stigId={stig_id}>
+                    <StigView stigId={stig_id} />
+                </StigComponent>
             </Main>
             <Footer />
         </ManifestComponent>

@@ -18,7 +18,6 @@ const cacheFirst = async (request, event) => {
 const allowList = ['', 'json'];
 
 self.addEventListener('fetch', (event) => {
-    console.log(event.request.destination);
     if (allowList.includes(event.request.destination)) {
         const url = new URL(event.request.url);
         if (url.pathname.startsWith('/data')) {

@@ -1,5 +1,5 @@
 "use client";
-import { useManifestContext } from "@/app/context";
+import { useManifestContext } from "@/app/context/manifest";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import { Breadcrumbs } from "./breadcrumbs";

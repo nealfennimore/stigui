@@ -1,6 +1,6 @@
 "use client";
 import { GroupWrapper } from "@/api/entities/Stig";
-import { useManifestContext } from "@/app/context";
+import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
 
 interface BreadcrumbLink {
