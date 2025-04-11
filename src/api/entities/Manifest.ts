@@ -51,16 +51,16 @@ export class ManifestStore {
     }
 }
 
+let manifestPromise = fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json`
+).then((r) => r.json());
 let cache: ManifestStore | null = null;
 export class Manifest {
     static async init() {
         if (cache) {
             return cache;
         }
-        const data = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json`
-        );
-        cache = new ManifestStore((await data.json()) as IManifest[]);
+        cache = new ManifestStore((await manifestPromise) as IManifest[]);
         return cache;
     }
 }

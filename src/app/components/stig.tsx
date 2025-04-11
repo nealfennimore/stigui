@@ -2,7 +2,7 @@
 import { useManifestContext } from "@/app/context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { use } from "react";
+import { Suspense, use } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 
 
@@ -23,7 +23,7 @@ export const StigView = ({
     }
 
     return (
-        <>
+        <Suspense fallback={<div>Loading...</div>}>
             <Breadcrumbs stigId={stigId} />
             <h3 className="text-3xl mt-6">
                 {title}
@@ -105,6 +105,6 @@ export const StigView = ({
                     next={next}
                 />
             </section> */}
-        </>
+        </Suspense>
     );
 };
