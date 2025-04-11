@@ -25,11 +25,10 @@ export class RuleWrapper {
         return this._rule.title;
     }
     get description() {
-        return (
-            this._rule.description.match(
-                /<VulnDiscussion>(.*)<\/VulnDiscussion>/
-            )?.[1] || this._rule.description
-        );
+        const [_, description] = this._rule.description.match(
+            /<VulnDiscussion>(.*)<\/VulnDiscussion>/
+        ) ?? [null, null];
+        return description ? description : this._rule.description;
     }
     get severity() {
         return this._rule['+@severity'];
