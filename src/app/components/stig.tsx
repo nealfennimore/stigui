@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
+import { Table, defaultSort } from "./table";
 
 const SeverityPriority = {
     [Severity.High]: 4,
@@ -15,9 +16,12 @@ const SeverityPriority = {
     [Severity.Info]: 1,
 };
 
-const bySeverity = (a: GroupWrapper, b: GroupWrapper) => {
-    const value =
-        SeverityPriority[b.rule.severity] - SeverityPriority[a.rule.severity];
+const bySeverity = (a: Severity, b: Severity) => {
+    return SeverityPriority[b] - SeverityPriority[a];
+};
+
+const byGroupSeverity = (a: GroupWrapper, b: GroupWrapper) => {
+    const value = bySeverity(a.rule.severity, b.rule.severity);
     if (value !== 0) {
         return value;
     }
@@ -104,60 +108,52 @@ export const StigView = ({ stigId }: { stigId: string }) => {
 
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                        <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                            <tr>
-                                <th scope="col" className="px-6 py-3">
-                                    Group ID
-                                </th>
-                                <th
-                                    scope="col"
-                                    className="px-6 py-3 text-center"
-                                >
-                                    Severity
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Title
-                                </th>
-                                <th scope="col" className="px-6 py-3">
-                                    Description
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {Object.values(groups)
-                                ?.sort(bySeverity)
-                                .map((group) => (
-                                    <tr
-                                        key={`${group.id}`}
-                                        className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200"
+                    <Table
+                        sorters={[
+                            defaultSort,
+                            bySeverity,
+                            defaultSort,
+                            defaultSort,
+                        ]}
+                        tableHeaders={[
+                            {
+                                text: "Group ID",
+                            },
+                            {
+                                text: "Severity",
+                                className: "text-center",
+                            },
+                            {
+                                text: "Title",
+                            },
+                            {
+                                text: "Description",
+                            },
+                        ]}
+                        tableBody={Object.values(groups)
+                            ?.sort(byGroupSeverity)
+                            .map((group) => ({
+                                values: [
+                                    group.id,
+                                    group.rule.severity,
+                                    group.rule.title,
+                                    group.rule.description,
+                                ],
+                                columns: [
+                                    <Link
+                                        className="flex flex-col"
+                                        href={`/stigs/${stigId}/groups/${group.id}`}
                                     >
-                                        <td
-                                            scope="row"
-                                            className="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white"
-                                        >
-                                            <Link
-                                                className="flex flex-col"
-                                                href={`/stigs/${stigId}/groups/${group.id}`}
-                                            >
-                                                {group.id}
-                                            </Link>
-                                        </td>
-                                        <td className="px-6 py-4 text-center">
-                                            <SeverityBadge
-                                                severity={group.rule.severity}
-                                            />
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {group.rule.title}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-pre-line">
-                                            {group.rule.description}
-                                        </td>
-                                    </tr>
-                                ))}
-                        </tbody>
-                    </table>
+                                        {group.id}
+                                    </Link>,
+                                    <SeverityBadge
+                                        severity={group.rule.severity}
+                                    />,
+                                    group.rule.title,
+                                    group.rule.description,
+                                ],
+                            }))}
+                    />
                 </div>
             </section>
         </>
