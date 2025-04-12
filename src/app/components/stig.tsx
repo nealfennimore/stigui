@@ -60,7 +60,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                         type="button"
                         className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-s-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                             Classification.Public === classificationLevel
-                                ? "dark:bg-zinc-500"
+                                ? "dark:bg-zinc-500 bg-zinc-200"
                                 : ""
                         }`}
                         onClick={() =>
@@ -73,7 +73,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                         type="button"
                         className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-t border-b border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                             Classification.Classified === classificationLevel
-                                ? "dark:bg-zinc-500"
+                                ? "dark:bg-zinc-500 bg-zinc-200"
                                 : ""
                         }`}
                         onClick={() =>
@@ -86,7 +86,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                         type="button"
                         className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-e-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                             Classification.Sensitive === classificationLevel
-                                ? "dark:bg-zinc-500"
+                                ? "dark:bg-zinc-500 bg-zinc-200"
                                 : ""
                         }`}
                         onClick={() =>
