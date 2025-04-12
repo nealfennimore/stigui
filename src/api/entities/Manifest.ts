@@ -7,6 +7,7 @@ interface IManifest {
     title: string;
     description: string;
     version: string;
+    date: string;
 }
 
 export class ManifestStore {

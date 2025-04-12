@@ -79,6 +79,9 @@ export const Stigs = () => {
                                 <th scope="col" className="px-6 py-3">
                                     Version
                                 </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Date
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,6 +103,9 @@ export const Stigs = () => {
                                     </td>
                                     <td className="px-6 py-4 whitespace-pre-line">
                                         {element.version}
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-pre-line">
+                                        {element.date}
                                     </td>
                                 </tr>
                             ))}

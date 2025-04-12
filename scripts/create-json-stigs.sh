@@ -22,5 +22,6 @@ jq -s '[
         title: .title | sub(" Security Technical Implementation Guide"; ""),
         description: .description,
         version: .version,
+        date: .status.["+@date"],
     }
 ]' public/data/stigs/schema/*.json >public/data/stigs/manifest.json
