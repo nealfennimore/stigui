@@ -16,6 +16,24 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
+            - name: STIG URL
+              run: |
+                  . scripts/get_stig_url.sh
+                  echo "URL=$URL" >> "$GITHUB_ENV"
+
+            - name: Retrieve the cached "data" directory (if present)
+              uses: actions/cache@v2
+              id: data-cache
+              with:
+                  path: ./data
+                  key: ${{ env.URL }}
+
+            - name: Download STIG data
+              run: . scripts/fetch-stigs.sh
+
+            - name: Create JSON STIG data
+              run: . scripts/create-json-stigs.sh
+
             - name: Setup Node.js
               uses: actions/setup-node@v2
               with:

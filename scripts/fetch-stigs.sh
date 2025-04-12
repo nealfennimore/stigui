@@ -4,11 +4,6 @@ set -euo pipefail
 shopt -s globstar
 
 if [[ ! -f "data/stigs.zip" ]]; then
-    URL=$(
-        curl -s 'https://public.cyber.mil/stigs/compilations/' |
-            grep -o -E '"https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip.*" ' |
-            sed 's/"//g'
-    )
     echo "Downloading STIGs from $URL"
     curl -L "$URL" -o data/stigs.zip
 
