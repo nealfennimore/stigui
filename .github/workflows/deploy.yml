@@ -24,7 +24,7 @@ jobs:
                   echo "URL=$URL" >> "$GITHUB_ENV"
 
             - name: Retrieve the cached "data" directory (if present)
-              uses: actions/cache@v2
+              uses: actions/cache@v4
               id: data-cache
               with:
                   path: ./data
@@ -46,7 +46,7 @@ jobs:
                   echo NEXT_PUBLIC_API_URL=https://stig.neal.codes >> .env
 
             - name: Retrieve the cached "node_modules" directory (if present)
-              uses: actions/cache@v2
+              uses: actions/cache@v4
               id: node-cache
               with:
                   path: ./node_modules
