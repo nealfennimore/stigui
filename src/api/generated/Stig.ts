@@ -28,6 +28,7 @@ export interface Benchmark {
     description: string;
     notice: Notice;
     'front-matter': Matter | undefined;
+
     'rear-matter': Matter | undefined;
     reference: BenchmarkReference;
     'plain-text': PlainText[] | PlainText;

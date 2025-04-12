@@ -54,6 +54,9 @@ export class RuleWrapper {
     get check() {
         return this._rule.check['check-content'];
     }
+    get version() {
+        return this._rule.version;
+    }
 }
 export class GroupWrapper {
     private _group: IGroup;
@@ -195,6 +198,9 @@ export class StigWrapper {
 
     get version() {
         return this._stig.Benchmark.version;
+    }
+    get date() {
+        return this._stig.Benchmark.status['+@date'];
     }
 }
 
