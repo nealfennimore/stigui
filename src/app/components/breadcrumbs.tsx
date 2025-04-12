@@ -33,7 +33,7 @@ export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
 
     if (group) {
         links.push({
-            href: `/stigs/${stigId}/groups/${group.rule.id}`,
+            href: `/stigs/${stigId}/groups/${group.id}`,
             text: `${group.id}`,
         });
     }
