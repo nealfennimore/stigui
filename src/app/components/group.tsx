@@ -112,7 +112,7 @@ export const GroupView = ({
                         <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
-                                    Check
+                                    ℹ️ Check
                                 </th>
                             </tr>
                         </thead>
@@ -135,7 +135,7 @@ export const GroupView = ({
                         <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
-                                    Fix
+                                    ✔️ Fix
                                 </th>
                             </tr>
                         </thead>
