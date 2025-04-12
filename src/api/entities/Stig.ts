@@ -206,7 +206,7 @@ export default class Stig extends Convert {
             return this.cache.get(path);
         }
         const data = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/schema/${path}?${process.env.MANIFEST_VERSION}`
+            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/schema/${path}?${process.env.NEXT_PUBLIC_MANIFEST_VERSION}`
         );
         const stig: IStig = Stig.toStig(await data.text());
         this.cache.set(path, new StigWrapper(stig));

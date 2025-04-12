@@ -27,7 +27,7 @@ jobs:
 
             - name: Create .env file
               run: |
-                  echo MANIFEST_VERSION=$(sha1sum public/data/stigs/manifest.json | awk '{print $1}') >> .env
+                  echo NEXT_PUBLIC_MANIFEST_VERSION=$(sha1sum public/data/stigs/manifest.json | awk '{print $1}') >> .env
 
             - name: Retrieve the cached "node_modules" directory (if present)
               uses: actions/cache@v4
@@ -46,11 +46,17 @@ jobs:
               run: |
                   npm run dev &
                   PID=$!
-                  sleep 10
+                  sleep 5
+
+                  # Build against dev instance
                   npm run build
+
+                  # Fix static files
                   for file in $(grep -l -R 'http://localhost:3000'); do 
                     sed -i -e 's|http://localhost:3000|https://stig.neal.codes|g' $file
                   done
+
+                  # Stop dev server
                   kill $PID
 
             - name: Deploy to GitHub Pages

@@ -56,7 +56,7 @@ export class ManifestStore {
 }
 
 let manifestPromise = fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json?${process.env.MANIFEST_VERSION}`
+    `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json?${process.env.NEXT_PUBLIC_MANIFEST_VERSION}`
 ).then((r) => r.json());
 let cache: ManifestStore | null = null;
 export class Manifest {
