@@ -6,6 +6,8 @@ on:
             - main
         tags:
             - '*'
+    release:
+        types: [published]
 
 permissions:
     contents: write
@@ -18,24 +20,6 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
-            - name: STIG URL
-              run: |
-                  . scripts/get-stig-url.sh
-                  echo "URL=$URL" >> "$GITHUB_ENV"
-
-            - name: Retrieve the cached "data" directory (if present)
-              uses: actions/cache@v4
-              id: data-cache
-              with:
-                  path: ./data
-                  key: ${{ env.URL }}
-
-            - name: Download STIG data
-              run: . scripts/fetch-stigs.sh
-
-            - name: Create JSON STIG data
-              run: . scripts/create-json-stigs.sh
-
             - name: Setup Node.js
               uses: actions/setup-node@v2
               with:
@@ -43,7 +27,7 @@ jobs:
 
             - name: Create .env file
               run: |
-                  echo NEXT_PUBLIC_API_URL=https://stig.neal.codes >> .env
+                  echo MANIFEST_VERSION=$(sha1sum public/data/stigs/manifest.json | awk '{print $1}') >> .env
 
             - name: Retrieve the cached "node_modules" directory (if present)
               uses: actions/cache@v4
@@ -57,7 +41,14 @@ jobs:
               if: steps.node-cache.outputs.cache-hit != 'true'
 
             - name: Build App
-              run: npm run build
+              env:
+                  NEXT_PUBLIC_API_URL: 'http://localhost:3000'
+              run: |
+                  npm run dev &
+                  PID=$!
+                  sleep 10
+                  npm run build
+                  kill $PID
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
@@ -65,8 +56,3 @@ jobs:
                   cname: stig.neal.codes
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./out # This is the default output directory for `next export`
-
-            - name: Create Release
-              uses: softprops/action-gh-release@v1
-              with:
-                  generate_release_notes: true

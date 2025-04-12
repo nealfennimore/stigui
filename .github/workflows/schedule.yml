@@ -1,0 +1,50 @@
+name: Schedule
+on:
+    schedule:
+        - cron: '0 0 * * *'
+
+jobs:
+    schedule:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: STIG URL
+              run: |
+                  . scripts/get-stig-url.sh
+                  echo "URL=$URL" >> "$GITHUB_ENV"
+
+            - name: Retrieve the cached "data" directory (if present)
+              uses: actions/cache@v4
+              id: data-cache
+              with:
+                  path: ./data
+                  key: ${{ env.URL }}
+
+            - name: Download STIG data
+              run: . scripts/fetch-stigs.sh
+              if: steps.data-cache.outputs.cache-hit != 'true'
+
+            - name: Create JSON STIG data
+              run: . scripts/create-json-stigs.sh
+              if: steps.data-cache.outputs.cache-hit != 'true'
+
+            - name: Set version tag
+              id: versions
+              if: steps.data-cache.outputs.cache-hit != 'true'
+              run: |
+                  TAG="${URL##*/}"
+                  TAG="stig-release-${TAG%.zip}"
+                  echo "::set-output name=tag::$TAG"
+              shell: bash
+
+            - uses: stefanzweifel/git-auto-commit-action@v5
+              if: steps.data-cache.outputs.cache-hit != 'true'
+
+            - name: Create Release
+              if: steps.data-cache.outputs.cache-hit != 'true'
+              uses: softprops/action-gh-release@v1
+              with:
+                  tag_name: ${{ steps.versions.outputs.tag }}
