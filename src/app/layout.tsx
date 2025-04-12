@@ -29,7 +29,7 @@ export default function RootLayout({
                 <script src="/service-worker.js" />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-900 text-gray-100`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-zinc-900 dark:text-zinc-100`}
             >
                 {children}
             </body>

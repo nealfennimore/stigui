@@ -1,12 +1,12 @@
 export const Footer = () => (
     <footer className="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-            <span className="block text-sm text-gray-500 sm:text-center">
+            <span className="block text-sm text-zinc-500 sm:text-center">
                 <div className="flex flex-row items-center justify-center">
                     Not affiliated with DISA.
                     <a
-                        href="https://github.com/nealfennimore/nist-sp-800-171"
-                        className="block text-sm text-gray-500 sm:text-center"
+                        href="https://github.com/nealfennimore/stig"
+                        className="block text-sm text-zinc-500 sm:text-center"
                         tabIndex={100}
                     >
                         <svg
@@ -25,7 +25,7 @@ export const Footer = () => (
                     </a>
                 </div>
             </span>
-            <span className="block text-sm text-gray-500 sm:text-center">
+            <span className="block text-sm text-zinc-500 sm:text-center">
                 © 2025{" "}
                 <a
                     href="https://neal.codes"

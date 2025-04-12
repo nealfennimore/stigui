@@ -54,9 +54,9 @@ export const StigView = ({ stigId }: { stigId: string }) => {
             <div className="inline-flex rounded-md shadow-xs" role="group">
                 <button
                     type="button"
-                    className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-s-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                         Classification.Public === classificationLevel
-                            ? "dark:bg-gray-900"
+                            ? "dark:bg-zinc-700"
                             : ""
                     }`}
                     onClick={() => setClassficationLevel(Classification.Public)}
@@ -65,9 +65,9 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                 </button>
                 <button
                     type="button"
-                    className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-t border-b border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                         Classification.Classified === classificationLevel
-                            ? "dark:bg-gray-900"
+                            ? "dark:bg-zinc-700"
                             : ""
                     }`}
                     onClick={() =>
@@ -78,9 +78,9 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                 </button>
                 <button
                     type="button"
-                    className={`px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-e-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
                         Classification.Sensitive === classificationLevel
-                            ? "dark:bg-gray-900"
+                            ? "dark:bg-zinc-700"
                             : ""
                     }`}
                     onClick={() =>
@@ -93,8 +93,8 @@ export const StigView = ({ stigId }: { stigId: string }) => {
 
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
+                        <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
                                     Group ID
@@ -116,11 +116,11 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                                 .map((group) => (
                                     <tr
                                         key={`${group.id}`}
-                                        className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200"
+                                        className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200"
                                     >
                                         <td
                                             scope="row"
-                                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                            className="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white"
                                         >
                                             <Link
                                                 className="flex flex-col"

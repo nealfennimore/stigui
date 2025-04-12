@@ -34,12 +34,12 @@ export const ContentNavigation = ({ previous, next }: PageNavigationProps) => {
             {previous && (
                 <Link
                     href={`/r3/requirement/${previous.requirement}`}
-                    className={`flex flex-row items-center bg-gray-200 text-gray-700 border-gray-400 py-2 px-4 border-b-4 hover:bg-gray-300 ${prevClasses}`}
+                    className={`flex flex-row items-center bg-zinc-200 text-zinc-700 border-zinc-400 py-2 px-4 border-b-4 hover:bg-zinc-300 ${prevClasses}`}
                     tabIndex={10}
                     ref={previousRef}
                 >
                     <svg
-                        className="w-6 h-6 text-gray-500"
+                        className="w-6 h-6 text-zinc-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ export const ContentNavigation = ({ previous, next }: PageNavigationProps) => {
             {next && (
                 <Link
                     href={`/r3/requirement/${next.requirement}`}
-                    className={`flex flex-row items-center bg-gray-200 text-gray-700 border-gray-400 py-2 px-4 border-b-4 hover:bg-gray-300 ${nextClasses}`}
+                    className={`flex flex-row items-center bg-zinc-200 text-zinc-700 border-zinc-400 py-2 px-4 border-b-4 hover:bg-zinc-300 ${nextClasses}`}
                     tabIndex={11}
                     ref={nextRef}
                 >
@@ -68,7 +68,7 @@ export const ContentNavigation = ({ previous, next }: PageNavigationProps) => {
                         {next.requirement}: {next.title}
                     </span>
                     <svg
-                        className="w-6 h-6 text-gray-500"
+                        className="w-6 h-6 text-zinc-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

@@ -57,7 +57,7 @@ export const Navigation = () => {
                         <div>
                             <button
                                 type="button"
-                                className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-gray-500 shadow-sm"
+                                className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-zinc-500 shadow-sm"
                                 id="menu-button"
                                 aria-expanded="true"
                                 aria-haspopup="true"
@@ -80,7 +80,7 @@ export const Navigation = () => {
                         </div>
                         {isOpen && (
                             <div
-                                className="absolute top-10 right-0 z-100 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none divide-y divide-gray-100"
+                                className="absolute top-10 right-0 z-100 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none divide-y divide-zinc-100"
                                 role="menu"
                                 aria-orientation="vertical"
                                 aria-labelledby="menu-button"
@@ -103,7 +103,7 @@ export const Navigation = () => {
                                 <div className="py-1" role="none">
                                     <a
                                         href="https://github.com/nealfennimore/nist-sp-800-171"
-                                        className="block px-4 py-2 text-sm text-gray-700 flex flex-row"
+                                        className="block px-4 py-2 text-sm text-zinc-700 flex flex-row"
                                         tabIndex={100}
                                     >
                                         <svg
