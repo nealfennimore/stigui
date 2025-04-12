@@ -34,6 +34,9 @@ export const GroupView = ({
                                     Group ID
                                 </th>
                                 <th scope="col" className="px-6 py-3">
+                                    Group Title
+                                </th>
+                                <th scope="col" className="px-6 py-3">
                                     Version
                                 </th>
                                 <th scope="col" className="px-6 py-3">
@@ -59,6 +62,9 @@ export const GroupView = ({
                                 </td>
                                 <td scope="row" className="px-6 py-4">
                                     {group.id}
+                                </td>
+                                <td scope="row" className="px-6 py-4">
+                                    {group.title}
                                 </td>
                                 <td className="px-6 py-4 whitespace-pre-line">
                                     {group.rule.version}
