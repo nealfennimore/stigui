@@ -1,0 +1,988 @@
+{
+  "+p_xml": "version=\"1.0\" encoding=\"utf-8\"",
+  "+p_xml-stylesheet": "type='text/xsl' href='STIG_unclass.xsl'",
+  "Benchmark": {
+    "+@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+    "+@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "+@xmlns:cpe": "http://cpe.mitre.org/language/2.0",
+    "+@xmlns:xhtml": "http://www.w3.org/1999/xhtml",
+    "+@xmlns:dsig": "http://www.w3.org/2000/09/xmldsig#",
+    "+@xsi:schemaLocation": "http://checklists.nist.gov/xccdf/1.1 http://nvd.nist.gov/schema/xccdf-1.1.4.xsd http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd",
+    "+@id": "zOS_CLSuperSession_for_TSS_STIG",
+    "+@xml:lang": "en",
+    "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
+    "status": {
+      "+content": "accepted",
+      "+@date": "2024-12-16"
+    },
+    "title": "z/OS CL/SuperSession for TSS Security Technical Implementation Guide",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "notice": {
+      "+@id": "terms-of-use",
+      "+@xml:lang": "en"
+    },
+    "front-matter": {
+      "+@xml:lang": "en"
+    },
+    "rear-matter": {
+      "+@xml:lang": "en"
+    },
+    "reference": {
+      "+@href": "https://cyber.mil",
+      "publisher": "DISA",
+      "source": "STIG.DOD.MIL"
+    },
+    "plain-text": [
+      {
+        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+@id": "release-info"
+      },
+      {
+        "+content": "3.5",
+        "+@id": "generator"
+      },
+      {
+        "+content": "1.10.0",
+        "+@id": "conventionsVersion"
+      }
+    ],
+    "version": "7",
+    "Profile": [
+      {
+        "+@id": "MAC-1_Classified",
+        "title": "I - Mission Critical Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Public",
+        "title": "I - Mission Critical Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Sensitive",
+        "title": "I - Mission Critical Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Classified",
+        "title": "II - Mission Support Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Public",
+        "title": "II - Mission Support Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Sensitive",
+        "title": "II - Mission Support Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Classified",
+        "title": "III - Administrative Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Public",
+        "title": "III - Administrative Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Sensitive",
+        "title": "III - Administrative Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-224649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224650",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224651",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224652",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224653",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224654",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224655",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224656",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224657",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-224658",
+            "+@selected": "true"
+          }
+        ]
+      }
+    ],
+    "Group": [
+      {
+        "+@id": "V-224649",
+        "title": "SRG-OS-000018",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224649r1041401_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLS0040",
+          "title": "CL/SuperSession profile options are set improperly.",
+          "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "SV-27197",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "V-18014",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000057",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000381",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "The systems programmer and ISSO will review all session manager security parameters and control options for compliance with the requirements of the z/OS STIG Addendum Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables. Verify that the options are set properly.",
+            "+@fixref": "F-26320r1041400_fix"
+          },
+          "fix": {
+            "+@id": "F-26320r1041400_fix"
+          },
+          "check": {
+            "+@system": "C-26332r1041399_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a) The following steps are necessary for reviewing the CL/SuperSession options:\n\n1) Request on-line access from the site administrator to view CL/SuperSession parameter settings.\n2) Once access to the CL/SuperSession Main Menu has been obtained, select the option for the ADMINISTRATOR menu.\n3) From the ADMINISTRATOR menu, select the option for the PROFILE SELECTION menu.\n4) From the PROFILE SELECTION menu, select the View GLOBAL Profile option.\n5) After selection of the View GLOBAL Profile option, the Update GLOBAL Profile menu appears. From this menu select the profile to be reviewed:\n\n- To view the Common profile select: _Common\n- To view the SUPERSESSION profile select: _SupSess\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0040)\n\nb) Compare the security parameters as specified in the Required CL/SuperSession Common Profile Options and Required CL/Superssion Profile Options Tables in the z/OS STIG Addendum against the CL/SuperSession Profile options.\n\nc) If all options as specified in the Required CL/SuperSession Common Profile Options and Required CL/Superssion Profile Options Tables in the z/OS STIG Addendum are in effect, there is no finding.\n\nd) If any of the options as specified in the Required CL/SuperSession Common Profile Options and Required CL/Superssion Profile Options Tables in the z/OS STIG Addendum is not in effect, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-224650",
+        "title": "SRG-OS-000018",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224650r1041404_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLS0041",
+          "title": "CL/SuperSession must be properly configured to generate SMF records for audit trail and accounting reports.",
+          "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-22689",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27198",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000172",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000381",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-003938",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Ensure that the Session Manager generates SMF records for audit trail and accounting reports.\n\nTo provide an audit trail of user activity in CL/SuperSession, configure the Network Accounting Facility (NAF) to require SMF recording of accounting and audit data. Accounting to the journal data set is optional at the discretion of the site. To accomplish this for version 3 of CL/SuperSession, configure the following NAF startup parameters in the KLKINNAF member of the RLSPARM initialization parameter library as follows:\n\nDSNAME= dsname - Name of the NAF journal data set. Required only if the site is collecting accounting and audit data in the journal data set in addition to the SMF data.\n\nMOD - If the journal data set is used, this parameter should be set to ensure that logging data in the data set is not overwritten.\n\nSMF=nnn - SMF record number. This field is mandatory to ensure that CL/SuperSession data is always written to the SMF files.",
+            "+@fixref": "F-26321r1041403_fix"
+          },
+          "fix": {
+            "+@id": "F-26321r1041403_fix"
+          },
+          "check": {
+            "+@system": "C-26333r1041402_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a) Version 3 of CL/SuperSession\nReview the member KLKINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nRefer to the following report produced by the z/OS Data Collection:\n\n- EXAM.RPT(SMFOPTS)\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession)\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0041)\n\nb) If the SMF= field specifies an SMF record number, review the SMFOPTS report to verify SMF is writing that record type.\n\nc) If SMF is writing the record number specified by SMF=, there is no finding.\n\nd) If the SMF= field does not specify an SMF record number, or SMF is not writing the record number specified by SMF=, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-224651",
+        "title": "SRG-OS-000080",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224651r1041407_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST000",
+          "title": "CL/SuperSession Install data sets must be properly protected.",
+          "description": "<VulnDiscussion>CL/SuperSession Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-16932",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27092",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-001499",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002234",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Ensure that update and allocate access to CL/SuperSession install data sets are limited to systems programmers only, and all update and allocate access is logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nThe following are an example of data sets to be protected:\nsys2.omegamon. \nsys2.omegamon.*.tlsload\nsys2.omegamon.*.tlvload\nsys3.omegamon.\nsys3.omegamon.rlsload\n\nThe following commands are provided as an example for implementing dataset controls: \nTSS PERMIT(syspaudt) DSN(sys2.omegamon.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(sys2.omegamon.) ACCESS(all) ACTION(audit)\nTSS PERMIT(syspaudt) DSN(sys2.omegamon.*.tlsload) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(sys2.omegamon.*.tlsload) ACCESS(all) ACTION(audit)\nTSS PERMIT(syspaudt) DSN(sys2.omegamon.*.tlvload) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(sys2.omegamon.*.tlvload) ACCESS(all) ACTION(audit)\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.) ACCESS(all) ACTION(audit)\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.*.rlsload) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.*.rlsload) ACCESS(all) ACTION(audit)",
+            "+@fixref": "F-26322r1041406_fix"
+          },
+          "fix": {
+            "+@id": "F-26322r1041406_fix"
+          },
+          "check": {
+            "+@system": "C-26334r1041405_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a) Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSRPT) \n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0000)\n\nb) Verify that access to the CL/SuperSession Install data sets are properly restricted.\n\n___ The TSS data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___ The TSS data set rules for the data sets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc) If all of the above are untrue, there is no finding.\n\nd) If any of the above is true, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-224652",
+        "title": "SRG-OS-000259",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224652r958616_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST001",
+          "title": "CL/SuperSession STC data sets must be properly protected.",
+          "description": "<VulnDiscussion>CL/SuperSession STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-17067",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27098",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-001499",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Ensure that WRITE and/or greater access to CL/SuperSession STC data sets are limited to systems programmers and CL/SuperSession STC only. Read access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nNote: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific. \n\nThe following are an example of data sets to be protected:\nSYS3.OMEGAMON.RLSNAF\nSYS3.OMEGAMON.RLSNAM\nSYS3.OMEGAMON.RLSTDB\nSYS3.OMEGAMON.RLSVLOG\n\nThe following commands are provided as an example for implementing dataset controls: \n\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.rlsnaf) ACCESS(ALL)\nTSS PERMIT(kls) DSN(sys3.omegamon.rlsnaf) ACCESS(ALL)\nTSS PERMIT(audtaudt) DSN(sys3.omegamon.rlsnaf) ACCESS(READ)\nTSS PERMIT(all) DSN(sys3.omegamon.rlsnaf) ACCESS(READ)\n\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.rlsnam) ACCESS(ALL)\nTSS PERMIT(kls) DSN(sys3.omegamon.rlsnam) ACCESS(ALL)\nTSS PERMIT(audtaudt) DSN(sys3.omegamon.rlsnam) ACCESS(READ)\nTSS PERMIT(all) DSN(sys3.omegamon.rlsnam) ACCESS(READ)\n\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.rlstdb) ACCESS(ALL)\nTSS PERMIT(kls) DSN(sys3.omegamon.rlstdb) ACCESS(ALL)\nTSS PERMIT(audtaudt) DSN(sys3.omegamon.rlstdb) ACCESS(READ)\nTSS PERMIT(all) DSN(sys3.omegamon.rlstdb) ACCESS(READ)\n\nTSS PERMIT(syspaudt) DSN(sys3.omegamon.rlsvlog) ACCESS(ALL)\nTSS PERMIT(kls) DSN(sys3.omegamon.rlsvlog) ACCESS(ALL)\nTSS PERMIT(audtaudt) DSN(sys3.omegamon.rlsvlog) ACCESS(READ)\nTSS PERMIT(all) DSN(sys3.omegamon.rlsvlog) ACCESS(READ)",
+            "+@fixref": "F-26323r868641_fix"
+          },
+          "fix": {
+            "+@id": "F-26323r868641_fix"
+          },
+          "check": {
+            "+@system": "C-26335r868640_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0001)\n\nVerify that the accesses to the CL/SuperSession STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The TSS data set access authorizations restrict READ access to auditors and authorized users.\n\n___ The TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The TSS data set rules for the data sets does not restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
+          }
+        }
+      },
+      {
+        "+@id": "V-224653",
+        "title": "SRG-OS-000104",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224653r958482_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST030",
+          "title": "CL/SuperSession Started Task name is not properly identified / defined to the system ACP.",
+          "description": "<VulnDiscussion>CL/SuperSession requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-17452",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-28592",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000764",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "The Systems Programmer and IAO will ensure that the started task for CL/SuperSession is properly defined.\n\nReview all session manager security parameters and control options for compliance. Develop a plan of action and implement the changes as specified.\n\nDefine the started task userid KLS for CL/SuperSession.\n\nExample:\n\nTSS CRE(KLS) DEPT(Dept) NAME('CL/SuperSession STC') -\n  FAC(STC) MASTFAC(KLS) PASSWORD(password,0) -\n  SOURCE(INTRDR)",
+            "+@fixref": "F-26324r519777_fix"
+          },
+          "fix": {
+            "+@id": "F-26324r519777_fix"
+          },
+          "check": {
+            "+@system": "C-26336r519776_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a)\tRefer to the following reports produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nb)\tReview the CL/SuperSession STC/Batch ACID(s) for the following:\n\n___\tIs defined as KLS for the ACID.\n\n___\tIs defined with Facility of STC and/or BATCH.\n\n___\tIs defined with Master Facility of KLS.\n\n___\tIs sourced to the INTRDR.\n\nc)\tIf all of the above are true, there is NO FINDING.\n\nd)\tIf any of the above is untrue, this is a FINDING."
+          }
+        }
+      },
+      {
+        "+@id": "V-224654",
+        "title": "SRG-OS-000104",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224654r958482_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST032",
+          "title": "CL/SuperSession Started task(s) must be properly defined to the Started Task Table ACID for Top Secret.",
+          "description": "<VulnDiscussion>Access to product  resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-17454",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27238",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000764",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "The CL/SuperSession system programmer and the IAO will ensure that a product's started task(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the CL/SuperSession started task(s) thru a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(KLS) ACID(KLS)",
+            "+@fixref": "F-26325r519780_fix"
+          },
+          "fix": {
+            "+@id": "F-26325r519780_fix"
+          },
+          "check": {
+            "+@system": "C-26337r519779_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZCLS0032)\n\nVerify that the CL/SuperSession started task(s) is (are) defined in the TSS STC record."
+          }
+        }
+      },
+      {
+        "+@id": "V-224655",
+        "title": "SRG-OS-000104",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224655r958482_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST036",
+          "title": "CL/SuperSession is not properly defined to the Facility Matrix Table for Top Secret.",
+          "description": "<VulnDiscussion>Improperly defined security controls for the Product could result in the compromise of the network, operating system, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-17469",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27240",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000764",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Define the CT/Engine started task name KLS as a Facility to TOP SECRET in the Facility Matrix Table using the following example:\n\n*KLS\tCL/SUPERSESSION\nFACILITY(USERxx=NAME=KLS)\nFACILITY(KLS=MODE=FAIL,ACTIVE,SHRPRF)\nFACILITY(KLS=PGM=KLV,NOASUBM,NOABEND,NOXDEF)\nFACILITY(KLS=ID=xx,MULTIUSER,RES,LUMSG,STMSG,WARNPW,SIGN(M))\nFACILITY(KLS=NOINSTDATA,NORNDPW,AUTHINIT,NOPROMPT,NOAUDIT)\nFACILITY(KLS=NOTSOC,LOG(INIT,SMF,MSG,SEC9))",
+            "+@fixref": "F-26326r519783_fix"
+          },
+          "fix": {
+            "+@id": "F-26326r519783_fix"
+          },
+          "check": {
+            "+@system": "C-26338r519782_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a)\tRefer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values\n-\tTSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup\n\nb)\tIf KLS is properly defined in the Facility Matrix table, there is NO FINDING:\n\nc)\tIf KLS is improperly defined in the Facility Matrix table, this is a FINDING."
+          }
+        }
+      },
+      {
+        "+@id": "V-224656",
+        "title": "SRG-OS-000309",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224656r987853_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST038",
+          "title": "CL/SuperSession's Resouce Class is not defined or active in the ACP.",
+          "description": "<VulnDiscussion>Failure to use a robust ACP to control a product could potentially compromise the integrity and availability of the MVS operating system and user data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-18011",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27190",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000336",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002358",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Add the resource KLS to the TOP SECRET RDT using the following TSS command example:\n  \nTSS ADD(RDT) RESCLASS(KLS) RESCODE(xx)\n\n(where xx is an unused hex value)",
+            "+@fixref": "F-26327r519786_fix"
+          },
+          "fix": {
+            "+@id": "F-26327r519786_fix"
+          },
+          "check": {
+            "+@system": "C-26339r519785_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a)\tRefer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#RDT)\n\nb)\tIf the resource class of KLS is defined, there is NO FINDING.\n\nc)\tIf the resource class of KLS is not defined, this is a FINDING."
+          }
+        }
+      },
+      {
+        "+@id": "V-224657",
+        "title": "SRG-OS-000018",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224657r1041408_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST042",
+          "title": "CL/SuperSession KLVINNAM member must be configured in accordance with security requirements.",
+          "description": "<VulnDiscussion>CL/SuperSession configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-22690",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27258",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000381",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Ensure that the parameter options for member KLKINNAM for version 3 of CL/SuperSession or KLVINNAM for version 2 CL/SuperSession are coded to the specifications below.\n\n(Note: The data set identified below is an example of a possible installation. The actual data set is determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nReview the member KLKINNAM or KLVINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.) Ensure all session manager security parameters and control options are in compliance according to the following: \n\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\n      RACF -\n      CLASSES=APPCLASS -\n      NODB -\n      EXIT=KLSTSNEV\n\n(The following is for z/OS CAC logon processing)\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\n      SAF -\n      CLASSES=APPCLASS -\n      NODB -\n      EXIT=KLSNFPTX or KLSTSPTX",
+            "+@fixref": "F-26328r952263_fix"
+          },
+          "fix": {
+            "+@id": "F-26328r952263_fix"
+          },
+          "check": {
+            "+@system": "C-26340r1028303_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Version 3 of CL/SuperSession\nReview the member KLKINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession)\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0042)\n\nIf one of the following configuration settings is specified for each control point defined in the KLKINNAM member for version 3 of CL/SuperSession or KLVINNAM member for version 2 of CL/SuperSession, this is not a finding.\n\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nRACF -\nCLASSES=APPCLASS -\nNODB -\nEXIT=KLSTSNEV\n\n(The following is for z/OS CAC logon processing)\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nSAF -\nCLASSES=APPCLASS -\nNODB -\nEXIT=KLSNFPTX or KLSTSPTX"
+          }
+        }
+      },
+      {
+        "+@id": "V-224658",
+        "title": "SRG-OS-000018",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-224658r1041411_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "ZCLST043",
+          "title": "CL/SuperSession APPCLASS member is not configured in accordance with the proper security requirements.",
+          "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target zOS CLSuperSession for TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "zOS CLSuperSession for TSS",
+            "identifier": "4181"
+          },
+          "ident": [
+            {
+              "+content": "V-22691",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "SV-27261",
+              "+@system": "http://cyber.mil/legacy"
+            },
+            {
+              "+content": "CCI-000381",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "The systems programmer and ISSO will ensure that the parameter options for member APPCLASS are coded to the below specifications.\n\nReview the member APPCLASS in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.) Ensure all session manager security parameters and control options are in compliance according to the following: \n\nVGWAPLST EXTERNAL=KLS",
+            "+@fixref": "F-26329r1041410_fix"
+          },
+          "fix": {
+            "+@id": "F-26329r1041410_fix"
+          },
+          "check": {
+            "+@system": "C-26341r1041409_chk",
+            "check-content-ref": {
+              "+@href": "zOS_CLSuperSession_for_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "a) Review the member APPCLASS in the TLVPARM DD statement concatenation of the CL/Supersession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0043)\n\nb) If the parameters for the member APPCLASS are configured as follows, there is no finding:\n\n\tVGWAPLST EXTERNAL=KLS\n\nc) If the parameters for the member APPCLASS are not configured as specified in (b) above, this is a finding."
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/4473ecc91f70f139-s.p.woff" as="font" crossorigin="" type="font/woff"/><link rel="preload" href="/_next/static/media/463dafcda517f24f-s.p.woff" as="font" crossorigin="" type="font/woff"/><link rel="stylesheet" href="/_next/static/css/a72fe1046a509526.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-9f9d947a63484a6e.js"/><script src="/_next/static/chunks/4bd1b696-03b39f709a189bfa.js" async=""></script><script src="/_next/static/chunks/684-1553ed1d3d36475a.js" async=""></script><script src="/_next/static/chunks/main-app-1dbd084ae3996d5d.js" async=""></script><script src="/_next/static/chunks/167-124eec3043bda3f0.js" async=""></script><script src="/_next/static/chunks/679-b9c39a2233ee1383.js" async=""></script><script src="/_next/static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js" async=""></script><meta name="next-size-adjust" content=""/><title>SP NIST 800-171 Rev 3</title><meta name="description" content="NIST 800-171 Rev 3"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script src="/service-worker.js"></script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="__variable_1e4310 __variable_c3aa02 antialiased dark:bg-zinc-900 dark:text-zinc-100"><nav class="bg-white dark:bg-zinc-900 fixed w-full z-20 top-0 start-0 border-b border-zinc-200 dark:border-zinc-700"><div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"><a href="/" class="flex items-center space-x-3 rtl:space-x-reverse" tabindex="100"><span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">STIG</span></a><div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"><div class="relative inline-block text-left"><div><button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-zinc-500 shadow-sm" id="menu-button" aria-expanded="true" aria-haspopup="true"><svg width="20" height="20" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" data-slot="icon"><rect width="30" height="3"></rect><rect y="9" width="30" height="3"></rect><rect y="18" width="30" height="3"></rect></svg></button></div></div></div></div></nav><div class="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"><main class="flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-xl"><aside><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs">STIGs</a><span class="text-sm mx-2 text-zinc-300"> <!-- -->&gt;<!-- --> </span></span><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs/Oracle_Database_12c_STIG">Oracle Database 12c</a><span class="text-sm mx-2 text-zinc-300"> <!-- -->&gt;<!-- --> </span></span><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs/Oracle_Database_12c_STIG/groups/SV-220269r960885_rule">V-220269</a></span></aside><section class="w-full flex flex-col"><div class="mb-4"><h4 class="text-2xl">V-220269</h4><h4 class="text-lg">The DBMS must generate audit records for the DoD-selected list of auditable events, to the extent such information is available.</h4><p>medium</p><h4 class="text-lg mt-4">Description</h4><p class="text-base discussion">Audit records can be generated from various components within the information system, such as network interfaces, hard disks, modems, etc. From an application perspective, certain specific application functionalities may be audited, as well.
+
+The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records (i.e., auditable events, timestamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, file names involved, and access control or flow control rules invoked).
+
+Organizations may define the organizational personnel accountable for determining which application components shall provide auditable events.
+
+Auditing provides accountability for changes made to the DBMS configuration or its objects and data. It provides a means to discover suspicious activity and unauthorized changes. Without auditing, a compromise may go undetected and without a means to determine accountability.
+
+The Department of Defense has established the following as the minimum set of auditable events. Most can be audited via Oracle settings; some - marked here with an asterisk - cannot, and may require OS settings.
+- Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g. classification levels).
+- Successful and unsuccessful logon attempts, privileged activities or other system level access
+- Starting and ending time for user access to the system, concurrent logons from different workstations.
+- Successful and unsuccessful accesses to objects.
+- All program initiations.
+- *All direct access to the information system.
+- All account creations, modifications, disabling, and terminations.
+- *All kernel module loads, unloads, and restarts.</p><h4 class="text-lg mt-4">Check</h4><p class="text-base discussion">Check DBMS settings to determine if auditing is being performed on the events on the DoD-selected list of auditable events that lie within the scope of Oracle audit capabilities:
+- Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels).
+- Successful and unsuccessful logon attempts, privileged activities or other system-level access
+- Starting and ending time for user access to the system, concurrent logons from different workstations.
+- Successful and unsuccessful accesses to objects.
+- All program initiations.
+- All account creations, modifications, disabling, and terminations.
+
+If auditing is not being performed for any of these events, this is a finding.
+
+Notes on Oracle audit capabilities follow.
+
+Unified Audit supports named audit policies, which are defined using the CREATE AUDIT POLICY statement. A policy specifies the actions that should be audited and the objects to which it should apply. If no specific objects are included in the policy definition, it applies to all objects.
+
+A named policy is enabled using the AUDIT POLICY statement. It can be enabled for all users, for specific users only, or for all except a specified list of users. The policy can audit successful actions, unsuccessful actions, or both.
+
+Verifying existing audit policy:  existing Unified Audit policies are listed in the view AUDIT_UNIFIED_POLICIES. The AUDIT_OPTION column contains one of the actions specified in a CREATE AUDIT POLICY statement. The AUDIT_OPTION_TYPE column contains &#x27;STANDARD ACTION&#x27; for a policy that applies to all objects or &#x27;OBJECT ACTION&#x27; for a policy that audits actions on a specific object.
+
+select POLICY_NAME from SYS.AUDIT_UNIFIED_POLICIES where AUDIT_OPTION=&#x27;GRANT&#x27; and AUDIT_OPTION_TYPE=&#x27;STANDARD ACTION&#x27;;
+
+To find policies that audit privilege grants on specific objects:
+
+select POLICY_NAME,OBJECT_SCHEMA,OBJECT_NAME from SYS.AUDIT_UNIFIED_POLICIES where AUDIT_OPTION=&#x27;GRANT&#x27; and AUDIT_OPTION_TYPE=&#x27;OBJECT ACTION&#x27;;
+
+The view AUDIT_UNIFIED_ENABLED_POLICIES shows which Unified Audit policies are enabled. The ENABLED_OPT and USER_NAME columns show the users for whom the policy is enabled or &#x27;ALL USERS&#x27;. The SUCCESS and FAILURE columns indicate if the policy is enabled for successful or unsuccessful actions, respectively.
+
+select POLICY_NAME,ENABLED_OPT,USER_NAME,SUCCESS,FAILURE from SYS.AUDIT_UNIFIED_ENABLED_POLICIES where POLICY_NAME=&#x27;POLICY1&#x27;;</p><h4 class="text-lg mt-4">Fix</h4><p class="text-base discussion">Configure the DBMS&#x27;s auditing settings to include auditing of events on the DoD-selected list of auditable events.
+
+1) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels)
+
+To audit granting and revocation of any privilege:
+create audit policy policy1 actions grant;
+create audit policy policy2 actions revoke;
+
+To audit grants of object privileges on a specific object:
+create audit policy policy3 actions grant on &lt;schema&gt;.&lt;object&gt;;
+
+If Oracle Label Security is enabled, this will audit all OLS administrative actions:
+create audit policy policy4 actions component = OLS all;
+
+2) Successful and unsuccessful logon attempts, privileged activities or other system-level access
+ 
+To audit all user logon attempts:
+create audit policy policy5 actions logon;
+
+To audit only logon attempts using administrative privileges (e.g. AS SYSDBA):
+audit policy policy5 by SYS, SYSOPER, SYSBACKUP, SYSDG, SYSKM;
+
+3) Starting and ending time for user access to the system, concurrent logons from different workstations
+
+This policy will audit all logon and logoff events. An individual session is identified in the UNIFIED_AUDIT_TRAIL by the tuple (DBID, INSTANCE_ID, SESSIONID) and the start and end time will be indicated by the EVENT_TIMESTAMP of the logon and logoff events:
+create audit policy policy6 actions logon, logoff;
+
+4) Successful and unsuccessful accesses to objects
+
+To audit all accesses to a specific table:
+create audit policy policy7 actions select, insert, delete, alter on &lt;schema&gt;.&lt;object&gt;; 
+
+Different actions are defined for other object types. To audit all supported actions on a specific object:
+create audit policy policy8 actions all on &lt;schema&gt;.&lt;object&gt;;
+
+5) All program initiations
+
+To audit execution of any PL/SQL program unit:
+create audit policy policy9 actions EXECUTE;
+
+To audit execution of a specific function, procedure, or package:
+create audit policy policy10 actions EXECUTE on &lt;schema&gt;.&lt;object&gt;;
+
+6) All direct access to the information system
+
+[Not applicable to Database audit. Monitor using OS auditing.]
+
+7) All account creations, modifications, disabling, and terminations
+
+To audit all user administration actions:
+create audit policy policy11 actions create user, alter user, drop user, change password;
+
+8) All kernel module loads, unloads, and restarts
+
+[Not applicable to Database audit. Monitor using OS auditing.]
+
+9) All database parameter changes
+
+To audit any database parameter changes, dynamic or static:
+create audit policy policy12 actions alter database, alter system, create spfile;
+
+Applying the Policy
+
+The following command will enable the policy in all database sessions and audit both successful and unsuccessful actions:
+audit policy policy1;
+
+To audit only unsuccessful actions, add the WHENEVER NOT SUCCESSFUL modifier:
+audit policy policy1 whenever not successful;
+
+Either command above can be limited to only database sessions started by a specific user as follows:
+audit policy policy1 by &lt;user&gt;;
+audit policy policy1 by &lt;user&gt; whenever not successful;</p></div></section></main><footer class="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer></div><footer class="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700"><div class="w-full max-w-screen-xl mx-auto p-4 md:py-8"><span class="block text-sm text-zinc-500 sm:text-center"><div class="flex flex-row items-center justify-center">Not affiliated with DISA.<a href="https://github.com/nealfennimore/stig" class="block text-sm text-zinc-500 sm:text-center" tabindex="100"><svg class="w-5 h-5 mx-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path></svg></a></div></span><span class="block text-sm text-zinc-500 sm:text-center">© 2025<!-- --> <a href="https://neal.codes" class="hover:underline" tabindex="70">neal.codes</a>. All Rights Reserved.</span></div></footer><script src="/_next/static/chunks/webpack-9f9d947a63484a6e.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n5:I[9665,[],\"OutletBoundary\"]\n8:I[9665,[],\"ViewportBoundary\"]\na:I[9665,[],\"MetadataBoundary\"]\nc:I[6614,[],\"\"]\n:HL[\"/_next/static/media/4473ecc91f70f139-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n:HL[\"/_next/static/media/463dafcda517f24f-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n:HL[\"/_next/static/css/a72fe1046a509526.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"qVyth9RDBuOusvaxSAjH5\",\"p\":\"\",\"c\":[\"\",\"stigs\",\"Oracle_Database_12c_STIG\",\"groups\",\"V-220269\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"stigs\",{\"children\":[[\"stig_id\",\"Oracle_Database_12c_STIG\",\"d\"],{\"children\":[\"groups\",{\"children\":[[\"group_id\",\"V-220269\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/a72fe1046a509526.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"src\":\"/service-worker.js\"}]}],[\"$\",\"body\",null,{\"className\":\"__variable_1e4310 __variable_c3aa02 antialiased dark:bg-zinc-900 dark:text-zinc-100\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[\"stigs\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"stig_id\",\"Oracle_Database_12c_STIG\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"groups\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"group_id\",\"V-220269\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",\"$undefined\",null,[\"$\",\"$L5\",null,{\"children\":[\"$L6\",\"$L7\",null]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"KD0mqAXoGXxhm1sbMKtHR\",{\"children\":[[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],[\"$\",\"$La\",null,{\"children\":\"$Lb\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$c\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"d:I[1214,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"default\"]\ne:I[1102,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"Navigation\"]\nf:I[2272,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"default\"]\n10:I[8473,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"GroupView\"]\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"$Ld\",null,{\"children\":[[\"$\",\"$Le\",null,{}],[\"$\",\"div\",null,{\"className\":\"grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]\",\"children\":[[\"$\",\"main\",null,{\"className\":\"flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-xl\",\"children\":[\"$\",\"$Lf\",null,{\"stigId\":\"Oracle_Database_12c_STIG\",\"children\":[\"$\",\"$L10\",null,{\"stigId\":\"Oracle_Database_12c_STIG\",\"groupId\":\"V-220269\"}]}]}],[\"$\",\"footer\",null,{\"className\":\"row-start-3 flex gap-6 flex-wrap items-center justify-center\"}]]}],[\"$\",\"footer\",null,{\"className\":\"bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700\",\"children\":[\"$\",\"div\",null,{\"className\":\"w-full max-w-screen-xl mx-auto p-4 md:py-8\",\"children\":[[\"$\",\"span\",null,{\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"flex flex-row items-center justify-center\",\"children\":[\"Not affiliated with DISA.\",[\"$\",\"a\",null,{\"href\":\"https://github.com/nealfennimore/stig\",\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"tabIndex\":100,\"children\":[\"$\",\"svg\",null,{\"className\":\"w-5 h-5 mx-4\",\"aria-hidden\":\"true\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"fill\":\"currentColor\",\"viewBox\":\"0 0 20 20\",\"children\":[\"$\",\"path\",null,{\"fillRule\":\"evenodd\",\"d\":\"M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z\",\"clipRule\":\"evenodd\"}]}]}]]}]}],[\"$\",\"span\",null,{\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"children\":[\"© 2025\",\" \",[\"$\",\"a\",null,{\"href\":\"https://neal.codes\",\"className\":\"hover:underline\",\"tabIndex\":70,\"children\":\"neal.codes\"}],\". All Rights Reserved.\"]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"9:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n6:null\n"])</script><script>self.__next_f.push([1,"7:null\nb:[[\"$\",\"title\",\"0\",{\"children\":\"SP NIST 800-171 Rev 3\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"NIST 800-171 Rev 3\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n"])</script></body></html>

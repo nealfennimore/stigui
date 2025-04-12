@@ -1,0 +1,282 @@
+{
+  "+p_xml": "version=\"1.0\" encoding=\"utf-8\"",
+  "+p_xml-stylesheet": "type='text/xsl' href='STIG_unclass.xsl'",
+  "Benchmark": {
+    "+@xmlns:dsig": "http://www.w3.org/2000/09/xmldsig#",
+    "+@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "+@xmlns:cpe": "http://cpe.mitre.org/language/2.0",
+    "+@xmlns:xhtml": "http://www.w3.org/1999/xhtml",
+    "+@xmlns:dc": "http://purl.org/dc/elements/1.1/",
+    "+@id": "Citrix_XenDesktop_7-x_Windows_VDA_STIG",
+    "+@xml:lang": "en",
+    "+@xsi:schemaLocation": "http://checklists.nist.gov/xccdf/1.1 http://nvd.nist.gov/schema/xccdf-1.1.4.xsd http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd",
+    "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
+    "status": {
+      "+content": "accepted",
+      "+@date": "2019-03-20"
+    },
+    "title": "Citrix XenDesktop 7.x Windows Virtual Delivery Agent Security Technical Implementation Guide",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "notice": {
+      "+@id": "terms-of-use",
+      "+@xml:lang": "en"
+    },
+    "reference": {
+      "+@href": "http://iase.disa.mil",
+      "publisher": "DISA",
+      "source": "STIG.DOD.MIL"
+    },
+    "plain-text": {
+      "+content": "Release: 2 Benchmark Date: 26 Apr 2019",
+      "+@id": "release-info"
+    },
+    "version": "1",
+    "Profile": [
+      {
+        "+@id": "MAC-1_Classified",
+        "title": "I - Mission Critical Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Public",
+        "title": "I - Mission Critical Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-1_Sensitive",
+        "title": "I - Mission Critical Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Classified",
+        "title": "II - Mission Support Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Public",
+        "title": "II - Mission Support Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-2_Sensitive",
+        "title": "II - Mission Support Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Classified",
+        "title": "III - Administrative Classified",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Public",
+        "title": "III - Administrative Public",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      },
+      {
+        "+@id": "MAC-3_Sensitive",
+        "title": "III - Administrative Sensitive",
+        "description": "<ProfileDescription></ProfileDescription>",
+        "select": [
+          {
+            "+@idref": "V-81433",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-81435",
+            "+@selected": "true"
+          }
+        ]
+      }
+    ],
+    "Group": [
+      {
+        "+@id": "V-81433",
+        "title": "SRG-APP-000014",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-96147r2_rule",
+          "+@severity": "high",
+          "+@weight": "10.0",
+          "version": "CXEN-VD-000030",
+          "title": "Citrix Windows Virtual Delivery Agent must implement DoD-approved encryption.",
+          "description": "<VulnDiscussion>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session. \n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nEncryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection thereby providing a degree of confidentiality. The encryption strength of mechanism is selected based on the security categorization of the information.\n\nSatisfies: SRG-APP-000014, SRG-APP-000015, SRG-APP-000039, SRG-APP-000219, SRG-APP-000439, SRG-APP-000440, SRG-APP-000441, SRG-APP-000442</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target XenDesktop 7.x VDA-Windows",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "XenDesktop 7.x VDA-Windows",
+            "identifier": "3297"
+          },
+          "ident": [
+            {
+              "+content": "CCI-000068",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-001184",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-001414",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-001453",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-002418",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-002420",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-002421",
+              "+@system": "http://iase.disa.mil/cci"
+            },
+            {
+              "+content": "CCI-002422",
+              "+@system": "http://iase.disa.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Configure TLS on a VDA using the PowerShell script:\nInstall the TLS Certificate in the Local Computer >> Personal >> Certificates area of the certificate store. \nIf more than one certificate resides in that location, supply the thumbprint of the certificate to the PowerShell script.\n\nThe \"Enable-VdaSSL.ps1\" script enables or disables the TLS listener on a VDA. This script is available in the Support >> Tools >> SslSupport folder on the installation media.\n\nWhen you enable TLS, the script disables all existing Windows Firewall rules for the specified TCP port. It then adds a new rule that allows the ICA Service to accept incoming connections only on the TLS, TCP, and UDP ports. It also disables the Windows Firewall rules for:\n- Citrix ICA (default: 1494)\n- Citrix CGP (default: 2598)\n- Citrix WebSocket (default: 8008)\n\nThe effect is that users can only connect using TLS or DTLS. They cannot use ICA/HDX, ICA/HDX with Session Reliability, or HDX over WebSocket without TLS or DTLS.\n\nThe PowerShell script configures TLS on static VDAs; it does not configure TLS on pooled VDAs that are provisioned by Machine Creation Services or Provisioning Services, where the machine image resets on each restart.\n\nManually configure TLS on a VDA: \nWhen configuring TLS on a VDA manually, you grant generic read access to the TLS certificate's private key for the appropriate service on each VDA: NT SERVICE\\PorticaService for a VDA for Windows Desktop OS, or NT SERVICE\\TermService for a VDA for Windows Server OS. \n\nOn the machine where the VDA is installed:\n1. Launch the Microsoft Management Console (MMC): Start >> Run >> mmc.exe.\n2. Add the Certificates snap-in to the MMC:\na) Select File >> Add/Remove Snap-in.\nb) Select \"Certificates\" and then click \"Add\".\nc) When prompted with \"This snap-in will always manage certificates for:\" choose \"Computer account\" and then click \"Next\".\nd) When prompted with \"Select the computer you want this snap-in to manage\", choose \"Local computer\" and then click \"Finish\".\n3. Under Certificates (Local Computer) >> Personal >> Certificates, right-click the certificate and then select All Tasks >> Manage Private Keys.\n4. The Access Control List Editor displays \"Permissions for (FriendlyName) private keys\" where (FriendlyName) is the name of the TLS certificate. Add one of the following services and give it Read access:\n- For a VDA for Windows Desktop OS, \"PORTICASERVICE\"\n- For a VDA for Windows Server OS, \"TERMSERVICE\"\n5. Double-click the installed TLS certificate. In the certificate dialog, select the \"Details\" tab and then scroll to the bottom. Click \"Thumbprint\".\n6. Run \"regedit\" and go to \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\Wds\\icawd\".\na) Edit the SSL Thumbprint key and copy the value of the TLS certificate's thumbprint into this binary value. You can safely ignore unknown items in the Edit Binary Value dialog box (such as \"0000\" and special characters).\nb) Edit the SSLEnabled key and change the DWORD value to \"1\". (To disable SSL later, change the DWORD value to \"0\".)\nc) To change the default settings (optional), use the following in the same registry path:\nSSLPort DWORD – SSL port number. Default: 443.\nSSLMinVersion DWORD – 1 = SSL 3.0, 2 = TLS 1.0, 3 = TLS 1.1, 4 = TLS 1.2. Default: 2 (TLS 1.0).\nSSLCipherSuite DWORD – 1 = GOV, 2 = COM, 3 = ALL. Default: 3 (ALL).\n7. Ensure the TLS TCP port is open in the Windows Firewall if it is not the default \"443\". (When creating the inbound rule in Windows Firewall, make sure its properties have the \"Allow the connection\" and \"Enabled\" entries selected.)\n8. Ensure that no other applications or services (such as IIS) are using the TLS TCP port.\n9. For VDAs for Windows Server OS, restart the machine for the changes to take effect. (You do not need to restart machines containing VDAs for Windows Desktop OS.)\n\nConfigure TLS on Delivery Groups:\nComplete this procedure for each Delivery Group that contains VDAs that have been configured for TLS connections.\n1. From \"Studio\", open the PowerShell console.\n2. Run \"asnp Citrix.*\" to load the Citrix product cmdlets.\n3. Run the following command\nGet-BrokerAccessPolicyRule -DesktopGroupName '<delivery-group-name>' | Set-BrokerAccessPolicyRule -HdxSslEnabled $true.\n4. Run the following command\nSet-BrokerSite -DnsResolutionEnabled $true.",
+            "+@fixref": "F-88251r2_fix"
+          },
+          "fix": {
+            "+@id": "F-88251r2_fix"
+          },
+          "check": {
+            "+@system": "C-81173r2_chk",
+            "check-content-ref": {
+              "+@name": "M",
+              "+@href": "DPMS_XCCDF_Benchmark_Citrix_XenDesktop_7-x_Windows_VDA_STIG.xml"
+            },
+            "check-content": "NOTE: If an approved DoD VPN or proxy device is used for external connections, this requirement is Not Applicable.\n\nVerify TLS Certificate is installed in the Local Computer >> Personal >> Certificates area of the certificate store.\n\n1. Launch the Microsoft Management Console (MMC): Start >> Run >> mmc.exe.\n2. Add the Certificates snap-in to the MMC:\n- Select File >> Add/Remove Snap-in.\n- Select \"Certificates\" and then click \"Add\".\n3. When prompted with \"This snap-in will always manage certificates for:\" choose \"Computer account\" and then click \"Next\".\n4. When prompted with \"Select the computer you want this snap-in to manage\", choose \"Local computer\" and then click \"Finish\".\n5. Under Certificates (Local Computer) >> Personal >> Certificates, right-click the certificate and then select All Tasks >> Manage Private Keys.\n6. The Access Control List Editor displays \"Permissions for (FriendlyName) private keys\" where (FriendlyName) is the name of the SSL certificate. Verify one of the following services is listed with Read access:\n- For a VDA for Windows Desktop OS, \"PORTICASERVICE\"\n- For a VDA for Windows Server OS, \"TERMSERVICE\"\n\nIf one of the associated services is not listed with \"Read\" access, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-81435",
+        "title": "SRG-APP-000142",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-96149r1_rule",
+          "+@severity": "medium",
+          "+@weight": "10.0",
+          "version": "CXEN-VD-000275",
+          "title": "Citrix Windows Virtual Delivery Agent must be configured to prohibit or restrict the use of ports, as defined in the PPSM CAL and vulnerability assessments.",
+          "description": "<VulnDiscussion>In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services; however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the application must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target XenDesktop 7.x VDA-Windows",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "XenDesktop 7.x VDA-Windows",
+            "identifier": "3297"
+          },
+          "ident": {
+            "+content": "CCI-000382",
+            "+@system": "http://iase.disa.mil/cci"
+          },
+          "fixtext": {
+            "+content": "To change the VDA registration port from the default \"80\", create the Citrix Machine Policy and update the DDCs, as explained below:\n1. Create a new Citrix Machine policy or edit an existing one.\n2. Navigate to the Settings tab and select \"Control Registration Port\".\n3. Update the Value to reflect the new port.\n4. Select \"OK\".\n5. Restart all desktops and wait until all the desktops report as Unregistered.\n6. Update the DDCs' VDA registration Port.\n7. Restart all desktops and verify that all VDAs register successfully.",
+            "+@fixref": "F-88253r1_fix"
+          },
+          "fix": {
+            "+@id": "F-88253r1_fix"
+          },
+          "check": {
+            "+@system": "C-81175r1_chk",
+            "check-content-ref": {
+              "+@name": "M",
+              "+@href": "DPMS_XCCDF_Benchmark_Citrix_XenDesktop_7-x_Windows_VDA_STIG.xml"
+            },
+            "check-content": "On Delivery Controllers, verify that only approved ports are used. \n\n1. Open a command prompt.\n2. Navigate to the XenDesktop install directory Program Files\\Citrix\\Broker\\Service\n3. Enter BrokerService.exe /Show to display the currently used ports.\n\nIf an unapproved port is used, this is a finding."
+          }
+        }
+      }
+    ]
+  }
+}

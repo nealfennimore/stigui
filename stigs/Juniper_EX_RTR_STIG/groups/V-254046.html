@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/4473ecc91f70f139-s.p.woff" as="font" crossorigin="" type="font/woff"/><link rel="preload" href="/_next/static/media/463dafcda517f24f-s.p.woff" as="font" crossorigin="" type="font/woff"/><link rel="stylesheet" href="/_next/static/css/a72fe1046a509526.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/webpack-9f9d947a63484a6e.js"/><script src="/_next/static/chunks/4bd1b696-03b39f709a189bfa.js" async=""></script><script src="/_next/static/chunks/684-1553ed1d3d36475a.js" async=""></script><script src="/_next/static/chunks/main-app-1dbd084ae3996d5d.js" async=""></script><script src="/_next/static/chunks/167-124eec3043bda3f0.js" async=""></script><script src="/_next/static/chunks/679-b9c39a2233ee1383.js" async=""></script><script src="/_next/static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js" async=""></script><meta name="next-size-adjust" content=""/><title>SP NIST 800-171 Rev 3</title><meta name="description" content="NIST 800-171 Rev 3"/><link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16"/><script src="/service-worker.js"></script><script src="/_next/static/chunks/polyfills-42372ed130431b0a.js" noModule=""></script></head><body class="__variable_1e4310 __variable_c3aa02 antialiased dark:bg-zinc-900 dark:text-zinc-100"><nav class="bg-white dark:bg-zinc-900 fixed w-full z-20 top-0 start-0 border-b border-zinc-200 dark:border-zinc-700"><div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"><a href="/" class="flex items-center space-x-3 rtl:space-x-reverse" tabindex="100"><span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">STIG</span></a><div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"><div class="relative inline-block text-left"><div><button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-zinc-500 shadow-sm" id="menu-button" aria-expanded="true" aria-haspopup="true"><svg width="20" height="20" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" data-slot="icon"><rect width="30" height="3"></rect><rect y="9" width="30" height="3"></rect><rect y="18" width="30" height="3"></rect></svg></button></div></div></div></div></nav><div class="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"><main class="flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-xl"><aside><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs">STIGs</a><span class="text-sm mx-2 text-zinc-300"> <!-- -->&gt;<!-- --> </span></span><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs/Juniper_EX_RTR_STIG">Juniper EX Series Switches Router</a><span class="text-sm mx-2 text-zinc-300"> <!-- -->&gt;<!-- --> </span></span><span><a class="text-sm text-zinc-400" tabindex="60" href="/stigs/Juniper_EX_RTR_STIG/groups/SV-254046r844171_rule">V-254046</a></span></aside><section class="w-full flex flex-col"><div class="mb-4"><h4 class="text-2xl">V-254046</h4><h4 class="text-lg">The Juniper perimeter router must be configured to block inbound packets with source Bogon IP address prefixes.</h4><p>medium</p><h4 class="text-lg mt-4">Description</h4><p class="text-base discussion">Bogons include IP packets on the public internet that contain addresses that are not in any range allocated or delegated by the Internet Assigned Numbers Authority (IANA) or a delegated regional Internet registry (RIR) and allowed for public internet use. Bogons also include multicast, IETF reserved, and special purpose address space as defined in RFC 6890.
+
+Security of the internet&#x27;s routing system relies on the ability to authenticate an assertion of unique control of an address block. Measures to authenticate such assertions rely on the validation the address block forms as part of an existing allocated address block, and must be a trustable and unique reference in the IANA address registries. The intended use of a Bogon address would only be for the purpose of address spoofing in denial-of-service attacks. Hence, it is imperative that IP packets with a source Bogon address are blocked at the network’s perimeter.</p><h4 class="text-lg mt-4">Check</h4><p class="text-base discussion">This requirement is not applicable for the DODIN Backbone. 
+
+Verify that the ingress filter is blocking packets with Bogon source addresses. Bogon addresses are added to prefix lists to ease management, and prefix lists are associated with firewall filters. Verify appropriate prefix lists for IPv4 and IPv6 Bogon addresses. For example:
+[edit policy-options]
+prefix-list bogon-addresses-ipv4 {
+    /* This host on this network */
+    0.0.0.0/8;
+    /* CGN Addresses */
+    100.64.0.0/10;
+    /* Loopback */
+    127.0.0.0/8;
+    /* IPv4 link-local or APIPA */
+    169.254.0.0/16;
+    /* IETF Protocol Assignments */
+    192.0.0.0/24;
+    /* IPv4 documentation addresses: TEST-NET-1 */
+    192.0.2.0/24;
+    /* 6to4 Relay Anycast descr in RFC3068 */
+    192.88.99.0/24;
+    /* Benchmark testing descr in RFC2544 */
+    198.18.0.0/15;
+    /* IPv4 documentation addresses: TEST-NET-2 */
+    198.51.100.0/24;
+    /* IPv4 documentation addresses: TEST-NET-3 */
+    203.0.113.0/24;
+    /* Multicast */
+    224.0.0.0/24;
+    /* Reserved */
+    240.0.0.0/4;
+    /* RFC1918 Addresses */
+    10.0.0.0/8;
+    172.16.0.0/12;
+    192.168.0.0/16;
+    &lt;add additional routes as needed&gt;
+}
+route-filter-list bogon-ipv6 {
+    /* Unspecified */
+    ::/128;
+    /* Loopback */
+    ::1/128;
+    /* IPv4 Compatible */
+    0::/96;
+    /* IPv4-mapped */
+    ::ffff:0:0/96;
+    /* 6Bone */
+    3ffe::/16;
+    /* IPv4-IPv6 Translate */
+    64:ff9b::/96;
+    /* Discard-Only */
+    100::/64;
+    /* ORCHID */
+    2001:10::/28;
+    /* Documentation */
+    2001:db8::/32;
+    /* Benchmarking */
+    2001:2::/48;
+    /* TEREDO */
+    2001::/32;
+    /* IETF Protocol Assignments */
+    2001::/23;
+    /* 6to4 */
+    2002::/16;
+    /* Unique-Local */
+    fc00::/7;
+    /* Site local (deprecated) - now reserved */
+    fec0::/10;
+    /* Multicast */
+    ff00::/8;
+    &lt;add additional routes as needed&gt;
+}
+
+Note: The comments associated with addresses is configured with the &quot;annotate&quot; command. Annotations will appear in the standard hierarchical configuration display but do not appear when using &quot;display set&quot;. The annotations are not required but added to this check to show what each address represents.
+
+Verify IPv4 and IPv6 firewall filters incorporate Bogon address restrictions.
+[edit firewall]
+family inet {
+    filter inbound-ipv4 {
+        term 1 {
+            from {
+                source-prefix-list bogon-ipv4;
+            }
+            then {
+                log;
+                syslog;
+                discard;
+            }
+        }
+        &lt;permitted traffic terms&gt;
+    }
+}
+family inet6 {
+    filter inbound-ipv6 {
+        term 1 {
+            from {
+                source-prefix-list bogon-ipv6;
+            }
+            then {
+                log;
+                syslog;
+                discard;
+            }
+        }
+        &lt;permitted traffic terms&gt;
+    }
+}
+
+Review the router configuration to verify that it is configured to block IP packets with a Bogon source address. Verify the firewall filter enforcing Bogon restrictions is applied inbound on exterior-facing interfaces. For example:
+[edit interfaces]
+&lt;interface name&gt; {
+    unit &lt;number&gt; {
+        family inet {
+            filter {
+                input inbound-ipv4;
+            }
+            address &lt;IPv4 address&gt;/&lt;mask&gt;;
+        }
+        family inet6 {
+            filter {
+                input inbound-ipv6;
+            }
+            address &lt;IPv6 address&gt;/&lt;prefix&gt;;
+        }
+    }
+}
+Note: Some Juniper devices support both monolithic filters and filter lists. Filter lists separate each term, or set of terms, into a separate filter that is applied sequentially to an interface. If using filter lists, the keywords &quot;input&quot; or &quot;output&quot; change to &quot;input-list&quot; or &quot;output-list&quot;. Verify the final list item is a deny-all filter. The deny-all filter is created once per family and can be reused across multiple lists. For example:
+
+input-list [ permit_mgt permit_routing_protocols default-deny ];
+
+Reference minimum IPv4 Bogon Prefixes
+0.0.0.0/8
+10.0.0.0/8
+100.64.0.0/10
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.0.0.0/24
+192.0.2.0/24  
+192.88.99.0/24
+192.168.0.0/16
+198.18.0.0/15 
+198.51.100.0/24
+203.0.113.0/24 
+224.0.0.0/4 
+240.0.0.0/4
+
+Reference minimum IPv6 Bogon Prefixes
+::/128
+::1/128
+0::/96
+::ffff:0:0/96 
+3ffe::/16 
+64:ff9b::/96  
+100::/64   
+2001:10::/28   
+2001:db8::/32   
+2001:2::/48  
+2001::/32  
+2001::/23 
+2002::/16   
+fc00::/7 
+fe80::/10  
+fec0::/10  
+ff00::/8
+     
+If the router is not configured to block inbound IP packets containing a Bogon source address, this is a finding.
+
+Note: At a minimum, IP packets containing a source address from the special purpose address space as defined in RFC 6890 must be blocked. The 6Bone prefix (3ffe::/16) is also be considered a Bogon address. Perimeter routers connected to commercial ISPs for internet or other non-DoD network sources will need to be reviewed for a full Bogon list. 
+
+The IPv4 full Bogon list contains prefixes that have been allocated to RIRs but not assigned by those RIRs. Reference the following link: http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt
+
+The IPv6 full Bogon list contains prefixes that have not been allocated to RIRs, or those that have been allocated to RIRs but have not been assigned by those RIRs. Reference the following link: https://www.team-cymru.org/Services/Bogons/fullbogons-ipv6.txt</p><h4 class="text-lg mt-4">Fix</h4><p class="text-base discussion">This requirement is not applicable for the DODIN Backbone. 
+
+Configure the router to block inbound packets with Bogon source addresses.
+
+Example Bogon prefix lists:
+set policy-options prefix-list bogon-ipv4 0.0.0.0/8
+set policy-options prefix-list bogon-ipv4 10.0.0.0/8
+set policy-options prefix-list bogon-ipv4 100.64.0.0/10
+set policy-options prefix-list bogon-ipv4 127.0.0.0/8
+set policy-options prefix-list bogon-ipv4 169.254.0.0/16
+set policy-options prefix-list bogon-ipv4 172.16.0.0/12
+set policy-options prefix-list bogon-ipv4 192.0.0.0/24
+set policy-options prefix-list bogon-ipv4 192.0.2.0/24
+set policy-options prefix-list bogon-ipv4 192.88.99.0/24
+set policy-options prefix-list bogon-ipv4 192.168.0.0/16
+set policy-options prefix-list bogon-ipv4 198.18.0.0/15
+set policy-options prefix-list bogon-ipv4 198.51.100.0/24
+set policy-options prefix-list bogon-ipv4 203.0.113.0/24
+set policy-options prefix-list bogon-ipv4  224.0.0.0/24
+set policy-options prefix-list bogon-ipv4 240.0.0.0/4
+
+set policy-options prefix-list bogon-ipv6 ::/128
+set policy-options prefix-list bogon-ipv6 ::1/128
+set policy-options prefix-list bogon-ipv6 0::/96
+set policy-options prefix-list bogon-ipv6 ::ffff:0:0/96
+set policy-options prefix-list bogon-ipv6 3ffe::/16
+set policy-options prefix-list bogon-ipv6 64:ff9b::/96
+set policy-options prefix-list bogon-ipv6 100::/64
+set policy-options prefix-list bogon-ipv6 2001:10::/28
+set policy-options prefix-list bogon-ipv6 2001:db8::/32
+set policy-options prefix-list bogon-ipv6 2001:2::/48
+set policy-options prefix-list bogon-ipv6 2001::/32
+set policy-options prefix-list bogon-ipv6 2001::/23
+set policy-options prefix-list bogon-ipv6 2002::/16
+set policy-options prefix-list bogon-ipv6 fc00::/7
+set policy-options prefix-list bogon-ipv6 fec0::/10
+set policy-options prefix-list bogon-ipv6 ff00::/8
+
+Example firewall filters:
+set firewall family inet filter inbound-ipv4 term 1 from source-prefix-list bogon-ipv4
+set firewall family inet filter inbound-ipv4 term 1 then log
+set firewall family inet filter inbound-ipv4 term 1 then syslog
+set firewall family inet filter inbound-ipv4 term 1 then discard
+set firewall family inet filter inbound-ipv4 term &lt;permitted traffic terms&gt;
+
+set firewall family inet6 filter inbound-ipv6 term 1 from source-prefix-list bogon-ipv6
+set firewall family inet6 filter inbound-ipv6 term 1 then log
+set firewall family inet6 filter inbound-ipv6 term 1 then syslog
+set firewall family inet6 filter inbound-ipv6 term 1 then discard
+set firewall family inet6 filter inbound-ipv6 term &lt;permitted traffic terms&gt;
+
+Example application on external interfaces:
+set interfaces &lt;interface name&gt; unit &lt;number&gt; family inet filter input inbound-ipv4
+set interfaces &lt;interface name&gt; unit &lt;number&gt; family inet address &lt;IPv4 address / mask&gt;
+
+set interfaces &lt;interface name&gt; unit &lt;number&gt; family inet6 filter input inbound-ipv6
+set interfaces &lt;interface name&gt; unit &lt;number&gt; family inet6 address &lt;IPv6 address / prefix&gt;</p></div></section></main><footer class="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer></div><footer class="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700"><div class="w-full max-w-screen-xl mx-auto p-4 md:py-8"><span class="block text-sm text-zinc-500 sm:text-center"><div class="flex flex-row items-center justify-center">Not affiliated with DISA.<a href="https://github.com/nealfennimore/stig" class="block text-sm text-zinc-500 sm:text-center" tabindex="100"><svg class="w-5 h-5 mx-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path></svg></a></div></span><span class="block text-sm text-zinc-500 sm:text-center">© 2025<!-- --> <a href="https://neal.codes" class="hover:underline" tabindex="70">neal.codes</a>. All Rights Reserved.</span></div></footer><script src="/_next/static/chunks/webpack-9f9d947a63484a6e.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[7555,[],\"\"]\n3:I[1295,[],\"\"]\n5:I[9665,[],\"OutletBoundary\"]\n8:I[9665,[],\"ViewportBoundary\"]\na:I[9665,[],\"MetadataBoundary\"]\nc:I[6614,[],\"\"]\n:HL[\"/_next/static/media/4473ecc91f70f139-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n:HL[\"/_next/static/media/463dafcda517f24f-s.p.woff\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff\"}]\n:HL[\"/_next/static/css/a72fe1046a509526.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"qVyth9RDBuOusvaxSAjH5\",\"p\":\"\",\"c\":[\"\",\"stigs\",\"Juniper_EX_RTR_STIG\",\"groups\",\"V-254046\"],\"i\":false,\"f\":[[[\"\",{\"children\":[\"stigs\",{\"children\":[[\"stig_id\",\"Juniper_EX_RTR_STIG\",\"d\"],{\"children\":[\"groups\",{\"children\":[[\"group_id\",\"V-254046\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]}]},\"$undefined\",\"$undefined\",true],[\"\",[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/css/a72fe1046a509526.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"src\":\"/service-worker.js\"}]}],[\"$\",\"body\",null,{\"className\":\"__variable_1e4310 __variable_c3aa02 antialiased dark:bg-zinc-900 dark:text-zinc-100\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[\"stigs\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"stig_id\",\"Juniper_EX_RTR_STIG\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"groups\",[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"group_id\",\"V-254046\",\"d\"],[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[\"__PAGE__\",[\"$\",\"$1\",\"c\",{\"children\":[\"$L4\",\"$undefined\",null,[\"$\",\"$L5\",null,{\"children\":[\"$L6\",\"$L7\",null]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false]},null,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$1\",\"2tBlU5gIzlKHnTgalHXj5\",{\"children\":[[\"$\",\"$L8\",null,{\"children\":\"$L9\"}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],[\"$\",\"$La\",null,{\"children\":\"$Lb\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$c\",\"$undefined\"],\"s\":false,\"S\":true}\n"])</script><script>self.__next_f.push([1,"d:I[1214,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"default\"]\ne:I[1102,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"Navigation\"]\nf:I[2272,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"default\"]\n10:I[8473,[\"167\",\"static/chunks/167-124eec3043bda3f0.js\",\"679\",\"static/chunks/679-b9c39a2233ee1383.js\",\"402\",\"static/chunks/app/stigs/%5Bstig_id%5D/groups/%5Bgroup_id%5D/page-1cda043ddf271acd.js\"],\"GroupView\"]\n"])</script><script>self.__next_f.push([1,"4:[\"$\",\"$Ld\",null,{\"children\":[[\"$\",\"$Le\",null,{}],[\"$\",\"div\",null,{\"className\":\"grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]\",\"children\":[[\"$\",\"main\",null,{\"className\":\"flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-xl\",\"children\":[\"$\",\"$Lf\",null,{\"stigId\":\"Juniper_EX_RTR_STIG\",\"children\":[\"$\",\"$L10\",null,{\"stigId\":\"Juniper_EX_RTR_STIG\",\"groupId\":\"V-254046\"}]}]}],[\"$\",\"footer\",null,{\"className\":\"row-start-3 flex gap-6 flex-wrap items-center justify-center\"}]]}],[\"$\",\"footer\",null,{\"className\":\"bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700\",\"children\":[\"$\",\"div\",null,{\"className\":\"w-full max-w-screen-xl mx-auto p-4 md:py-8\",\"children\":[[\"$\",\"span\",null,{\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"children\":[\"$\",\"div\",null,{\"className\":\"flex flex-row items-center justify-center\",\"children\":[\"Not affiliated with DISA.\",[\"$\",\"a\",null,{\"href\":\"https://github.com/nealfennimore/stig\",\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"tabIndex\":100,\"children\":[\"$\",\"svg\",null,{\"className\":\"w-5 h-5 mx-4\",\"aria-hidden\":\"true\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"fill\":\"currentColor\",\"viewBox\":\"0 0 20 20\",\"children\":[\"$\",\"path\",null,{\"fillRule\":\"evenodd\",\"d\":\"M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z\",\"clipRule\":\"evenodd\"}]}]}]]}]}],[\"$\",\"span\",null,{\"className\":\"block text-sm text-zinc-500 sm:text-center\",\"children\":[\"© 2025\",\" \",[\"$\",\"a\",null,{\"href\":\"https://neal.codes\",\"className\":\"hover:underline\",\"tabIndex\":70,\"children\":\"neal.codes\"}],\". All Rights Reserved.\"]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"9:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n6:null\n"])</script><script>self.__next_f.push([1,"7:null\nb:[[\"$\",\"title\",\"0\",{\"children\":\"SP NIST 800-171 Rev 3\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"NIST 800-171 Rev 3\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico\",\"type\":\"image/x-icon\",\"sizes\":\"16x16\"}]]\n"])</script></body></html>
