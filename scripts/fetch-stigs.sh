@@ -10,7 +10,8 @@ if [[ ! -f "data/stigs.zip" ]]; then
     unzip -o data/stigs.zip -d data/stigs
 
     ARGS=()
-    for archive in data/stigs/*.zip; do
+    for archive in data/stigs/*/*.zip; do
+        echo $archive
         ARGS+=("$archive" "${archive%.zip}")
     done
 
