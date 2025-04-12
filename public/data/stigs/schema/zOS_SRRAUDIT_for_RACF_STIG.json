@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-07"
+      "+@date": "2025-02-24"
     },
     "title": "z/OS SRRAUDIT for RACF Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -190,12 +190,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224535r868551_rule",
+          "+@id": "SV-224535r1070158_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZSRRR000",
           "title": "SRRAUDIT installation data sets must be properly protected.",
-          "description": "<VulnDiscussion>SRRAUDIT installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>SRRAUDIT installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS SRRAUDIT for RACF",
             "publisher": "DISA",
@@ -213,7 +213,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -222,19 +222,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure WRITE and/or greater access to SRRAUDIT installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to Security personnel, Production Control and Scheduling personnel, and Auditors. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater accesses are logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.SRRAUDIT.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'SYS2.SRRAUDIT.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('SRRAUDIT Install DS')\npe 'SYS2.SRRAUDIT.**' id(syspaudt tstcaudt) acc(a)\npe 'SYS2.SRRAUDIT.**' id(audtaudt  pcspaudt) acc(r)\npe 'SYS2.SRRAUDIT.**' id(secaaudt) acc(r)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26206r868550_fix"
+            "+content": "The ISSO will ensure WRITE and/or greater access to SRRAUDIT installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to security personnel, production control and scheduling personnel, and auditors. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater accesses are logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.SRRAUDIT.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'SYS2.SRRAUDIT.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('SRRAUDIT Install DS')\npe 'SYS2.SRRAUDIT.**' id(syspaudt tstcaudt) acc(a)\npe 'SYS2.SRRAUDIT.**' id(audtaudt  pcspaudt) acc(r)\npe 'SYS2.SRRAUDIT.**' id(secaaudt) acc(r)\n\nsetr generic(dataset) refresh",
+            "+@fixref": "F-26206r1070157_fix"
           },
           "fix": {
-            "+@id": "F-26206r868550_fix"
+            "+@id": "F-26206r1070157_fix"
           },
           "check": {
-            "+@system": "C-26218r868549_chk",
+            "+@system": "C-26218r1070156_chk",
             "check-content-ref": {
               "+@href": "zOS_SRRAUDIT_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(SRRPROD)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZSRR0000)\n\nVerify that the accesses to the SRRAUDIT installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The RACF data set access authorizations restrict READ access to systems programming personnel, domain level production control and scheduling personnel, security personnel, and auditors.\n\n___ The RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The RACF data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater accesses are logged.\n\n___ The RACF data set access authorizations specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(SRRPROD)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZSRR0000)\n\nVerify that the accesses to the SRRAUDIT installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set access authorizations restrict READ access to systems programming personnel, domain level production control and scheduling personnel, security personnel, and auditors.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater accesses are logged.\n\nThe RACF data set access authorizations specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -243,7 +243,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224536r520888_rule",
+          "+@id": "SV-224536r958616_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZSRRR002",

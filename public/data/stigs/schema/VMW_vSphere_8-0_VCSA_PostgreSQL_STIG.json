@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-07-11"
+      "+@date": "2025-02-12"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance PostgreSQL Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -901,7 +901,7 @@
         "title": "SRG-APP-000091-DB-000066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259169r960885_rule",
+          "+@id": "SV-259169r1067578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000007",
@@ -919,19 +919,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
-            "+@fixref": "F-62818r935410_fix"
+            "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nNote: If this has already been run previously it does not need to be run again.\n\nNavigate to and edit the /storage/db/vpostgres/stig.conf file.\n\nAdd or update the following settings:\n\npgaudit.log = 'all, -misc, -read'\npgaudit.log_catalog = off\npgaudit.log_parameter = off\npgaudit.log_relation = off\npgaudit.log_statement = off\n\nRemove the following settings:\n\npgaudit.log_level = log\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
+            "+@fixref": "F-62818r1067577_fix"
           },
           "fix": {
-            "+@id": "F-62818r935410_fix"
+            "+@id": "F-62818r1067577_fix"
           },
           "check": {
-            "+@system": "C-62909r935409_chk",
+            "+@system": "C-62909r1067576_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following commands:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log_catalog;\"\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log;\"\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log_parameter;\"\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log_statement_once;\"\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log_level;\"\n\nIf \"pgaudit.log_catalog\" is not set to \"on\", this is a finding.\n\nIf \"pgaudit.log\" is not set to \"all, -misc\", this is a finding.\n\nIf \"pgaudit.log_parameter\" is not set to \"on\", this is a finding.\n\nIf \"pgaudit.log_statement_once\" is not set to \"off\", this is a finding.\n\nIf \"pgaudit.log_level\" is not set to \"log\", this is a finding."
+            "check-content": "At the command prompt, run the following commands:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW pgaudit.log;\"\n\nIf the \"pgaudit.log\" setting is not configured to \"all, -misc, -read\", this is a finding."
           }
         }
       },
@@ -1136,7 +1136,7 @@
         "title": "SRG-APP-000142-DB-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259174r960966_rule",
+          "+@id": "SV-259174r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000035",
@@ -1181,7 +1181,7 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259175r960969_rule",
+          "+@id": "SV-259175r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000036",
@@ -1226,7 +1226,7 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259176r1003664_rule",
+          "+@id": "SV-259176r1015952_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "VCPG-80-000038",
@@ -1239,10 +1239,16 @@
             "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
             "identifier": "5570"
           },
-          "ident": {
-            "+content": "CCI-004062",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004062",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000196",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
             "+@fixref": "F-62825r935431_fix"
@@ -1349,7 +1355,7 @@
         "title": "SRG-APP-000356-DB-000314",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259181r1003665_rule",
+          "+@id": "SV-259181r1015953_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000070",
@@ -1362,10 +1368,16 @@
             "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
             "identifier": "5570"
           },
-          "ident": {
-            "+content": "CCI-003938",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003938",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001814",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
             "+@fixref": "F-62830r935446_fix"

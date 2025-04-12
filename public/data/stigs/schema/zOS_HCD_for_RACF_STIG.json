@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-10"
+      "+@date": "2025-02-24"
     },
     "title": "z/OS HCD for RACF Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -226,12 +226,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224489r855155_rule",
+          "+@id": "SV-224489r1070185_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDR000",
           "title": "IBM Hardware Configuration Definition (HCD) install data sets are not properly protected.",
-          "description": "<VulnDiscussion>IBM Hardware Configuration Definition (HCD) product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IBM HCD product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for RACF",
             "publisher": "DISA",
@@ -249,7 +249,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -258,19 +258,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to IBM Hardware Configuration Definition (HCD) install data sets is limited to System Programmers only, and all update and alter access is logged. Auditors, automated operations, and operators should have READ access.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS1.SCBD*\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nad 'SYS1.SCBD*.**' uacc(none) owner(sys1) -\n\taudit(success(update) failures(read)) -\n\tdata('Vendor DS Profile: hcd')\npe 'SYS1.SCBD*.**' id(syspaudt tstcaudt) acc(a)\npe 'SYS1.SCBD*.**' id(audtaudt autoaudt operaudt) acc(r)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26160r520209_fix"
+            "+content": "The ISSO will ensure that update and allocate access to IBM HCD install data sets is limited to system programmers only, and all update and alter access is logged. Auditors, automated operations, and operators should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS1.SCBD*\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nad 'SYS1.SCBD*.**' uacc(none) owner(sys1) -\n\taudit(success(update) failures(read)) -\n\tdata('Vendor DS Profile: hcd')\npe 'SYS1.SCBD*.**' id(syspaudt tstcaudt) acc(a)\npe 'SYS1.SCBD*.**' id(audtaudt autoaudt operaudt) acc(r)\n\nsetr generic(dataset) refresh",
+            "+@fixref": "F-26160r1070184_fix"
           },
           "fix": {
-            "+@id": "F-26160r520209_fix"
+            "+@id": "F-26160r1070184_fix"
           },
           "check": {
-            "+@system": "C-26172r520208_chk",
+            "+@system": "C-26172r1070183_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0000)\n\nVerify that access to the IBM Hardware Configuration Definition (HCD) install data sets are properly restricted.\n \n___\tThe RACF data set rules for the data sets restricts READ access to auditors, automated operations, operators, and systems programming personnel.\n\n___\tThe RACF data set rules for the data sets restricts UPDATE and/or ALTER access to systems programming personnel.\n\n___\tThe RACF data set rules for the data sets specifies that all (i.e., failures and successes) UPDATE and/or ALTER access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0000)\n\nVerify that access to the IBM HCD install data sets are properly restricted.\n \n \tThe RACF data set rules for the data sets restricts READ access to auditors, automated operations, operators, and systems programming personnel.\n\n \tThe RACF data set rules for the data sets restricts UPDATE and/or ALTER access to systems programming personnel.\n\n \tThe RACF data set rules for the data sets specifies that all (i.e., failures and successes) UPDATE and/or ALTER access are logged."
           }
         }
       },
@@ -279,12 +279,12 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224490r868398_rule",
+          "+@id": "SV-224490r1070140_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDR002",
           "title": "IBM Hardware Configuration Definition (HCD) User data sets are not properly protected.",
-          "description": "<VulnDiscussion>IBM Hardware Configuration Definition (HCD) product has the capability to use privileged functions and/or to have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IBM HCD product has the capability to use privileged functions and/or to have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for RACF",
             "publisher": "DISA",
@@ -304,22 +304,26 @@
             {
               "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002234",
+              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update, and alter access to program product user data sets is limited to systems programmers and all update and allocate access is logged. Ensure that read access is limited to auditors, Operations personnel, and Automated Operations users.\n\nThe installing systems programmer will identify and document the product user data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be:\n\nThe production IODF data sets. (i.e., hhhhhhhh.IODFnn)\nThe working IODF data sets. (i.e., hhhhhhhh.IODFnn.)\nThe activity log for the IODF data sets. (i.e., hhhhhhhh.IODFnn.ACTLOG)\n\nNote: Currently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe following commands are provided as a sample for implementing dataset controls:\n\nad 'sys3.iodf*.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read)) -\ndata('Vendor DS Profile: IODF for HCD')\npe 'sys3.iodf*.**' id(syspaudt tstcaudt) acc(a)\npe 'sys3.iodf*.**' id(audtaudt autoaudt operaudt) acc(r)",
-            "+@fixref": "F-26161r868397_fix"
+            "+content": "The ISSO will ensure that update, and alter access to program product user data sets is limited to systems programmers and all update and allocate access is logged. Ensure that read access is limited to auditors, Operations personnel, and Automated Operations users.\n\nThe installing systems programmer will identify and document the product user data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be:\n\nThe production IODF data sets. (i.e., hhhhhhhh.IODFnn)\nThe working IODF data sets. (i.e., hhhhhhhh.IODFnn.)\nThe activity log for the IODF data sets. (i.e., hhhhhhhh.IODFnn.ACTLOG)\n\nNote: Currently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe following commands are provided as a sample for implementing dataset controls:\n\nad 'sys3.iodf*.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read)) -\ndata('Vendor DS Profile: IODF for HCD')\npe 'sys3.iodf*.**' id(syspaudt tstcaudt) acc(a)\npe 'sys3.iodf*.**' id(audtaudt autoaudt operaudt) acc(r)",
+            "+@fixref": "F-26161r1070139_fix"
           },
           "fix": {
-            "+@id": "F-26161r868397_fix"
+            "+@id": "F-26161r1070139_fix"
           },
           "check": {
-            "+@system": "C-26173r868396_chk",
+            "+@system": "C-26173r1070138_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCDUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCD0002)\n\nb) Verify that the access to the IBM Hardware Configuration Definition (HCD) install data sets is properly restricted. The data sets to be protected are the production and working IODF data sets as well as the activity log for the IODF data sets.\n\nNote: Currently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\n___ The RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___ The RACF data set rules for the data sets does not restrict READ access to automated operations users and operations personnel.\n\n___ The RACF data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc) If all of the above are untrue, there is no finding.\n\nd) If any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0002)\n\nVerify that the access to the IBM HCD install data sets is properly restricted. The data sets to be protected are the production and working IODF data sets as well as the activity log for the IODF data sets.\n\nNote: Currently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe RACF data set rules for the data sets does not restrict READ access to automated operations users and operations personnel.\n\nThe RACF data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, there is no finding.\n\nIf any of the above is true, this is a finding."
           }
         }
       },
@@ -328,12 +332,12 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224491r870227_rule",
+          "+@id": "SV-224491r1070137_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDR020",
           "title": "IBM Hardware Configuration Definition (HCD) resources are not properly defined and protected.",
-          "description": "<VulnDiscussion>Program products can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to program product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non-systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Program products can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to program product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for RACF",
             "publisher": "DISA",
@@ -351,7 +355,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
+              "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -360,19 +364,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The systems programmer will work with the ISSO to verify that the following are properly specified in the ACP.\n\n1) The RACF rules for the CBD resource specify a default access of NONE.\n2) There are no RACF rules that allow access to the CBD resource.\n\nExample:\n\nrdef facility cbd.** uacc(none) owner(admin) audit(failure(read)) -\ndata('added per PDI ZHCD0020') \n\n3) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n4) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n5) All RACF rules are defined with UACC(NONE).\n\nExample:\n\nrdef facility cbd.cpc.iocds.** uacc(none) owner(admin) -\n\taudit(success(update) failures(read)) -\n\tdata('added per PDI ZHCD0020') \nrdef facility cbd.cpc.iplparm.** uacc(none) owner(admin) -\n\taudit(success(update) failures(read)) -\n\tdata('added per PDI ZHCD0020') \n\npe cbd.cpc.iocds.** cl(facility) id(syspaudt) acc(u)\npe cbd.cpc.iocds.** cl(facility) id(operaudt) acc(r)\npe cbd.cpc.iocds.** cl(facility) id(autoaudt) acc(r)\npe cbd.cpc.iplparm.** cl(facility) id(syspaudt) acc(u)\npe cbd.cpc.iplparm.** cl(facility) id(operaudt) acc(r)\npe cbd.cpc.iplparm.** cl(facility) id(autoaudt) acc(r)\n\nsetr racl(facility) ref",
-            "+@fixref": "F-26162r868403_fix"
+            "+content": "The systems programmer will work with the ISSO to verify that the following are properly specified in the Access Control Program (ACP).\n\n1. The RACF rules for the CBD resource specify a default access of NONE.\n2. There are no RACF rules that allow access to the CBD resource.\n\nExample:\n\nrdef facility cbd.** uacc(none) owner(admin) audit(failure(read)) -\ndata('added per PDI ZHCD0020') \n\n3. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n4. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n5. All RACF rules are defined with UACC(NONE).\n\nExample:\n\nrdef facility cbd.cpc.iocds.** uacc(none) owner(admin) -\n\taudit(success(update) failures(read)) -\n\tdata('added per PDI ZHCD0020') \nrdef facility cbd.cpc.iplparm.** uacc(none) owner(admin) -\n\taudit(success(update) failures(read)) -\n\tdata('added per PDI ZHCD0020') \n\npe cbd.cpc.iocds.** cl(facility) id(syspaudt) acc(u)\npe cbd.cpc.iocds.** cl(facility) id(operaudt) acc(r)\npe cbd.cpc.iocds.** cl(facility) id(autoaudt) acc(r)\npe cbd.cpc.iplparm.** cl(facility) id(syspaudt) acc(u)\npe cbd.cpc.iplparm.** cl(facility) id(operaudt) acc(r)\npe cbd.cpc.iplparm.** cl(facility) id(autoaudt) acc(r)\n\nsetr racl(facility) ref",
+            "+@fixref": "F-26162r1070136_fix"
           },
           "fix": {
-            "+@id": "F-26162r868403_fix"
+            "+@id": "F-26162r1070136_fix"
           },
           "check": {
-            "+@system": "C-26174r870226_chk",
+            "+@system": "C-26174r1070135_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(FACILITY)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCD0020)\n\nb) Review the following items for the IBM Hardware Configuration Definition (HCD) resources in the FACILITY resource class:\n\n1) The RACF rules for the CBD resource specify a default access of NONE.\n2) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources restrict access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n3) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n4) All RACF rules are defined with UACC(NONE).\n\nc) If any item in (b) is untrue, this is a finding.\n\nd) If all items in (b) are true, this is not a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(FACILITY)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0020)\n\nReview the following items for the IBM HCD resources in the FACILITY resource class:\n\n1. The RACF rules for the CBD resource specify a default access of NONE.\n2. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources restrict access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n3. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n4. All RACF rules are defined with UACC(NONE).\n\nIf any item above is untrue, this is a finding.\n\nIf all items above are true, this is not a finding."
           }
         }
       }

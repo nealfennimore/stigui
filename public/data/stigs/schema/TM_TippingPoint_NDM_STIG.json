@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-16"
+      "+@date": "2025-03-10"
     },
     "title": "Trend Micro TippingPoint NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1399,12 +1399,12 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242236r1018623_rule",
+          "+@id": "SV-242236r1082950_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TIPP-NM-000200",
           "title": "The TippingPoint SMS must be configured to prohibit the use of all unnecessary and/or nonsecure functions, ports, protocols, and/or services.",
-          "description": "<VulnDiscussion>In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Trend Micro TippingPoint NDM",
             "publisher": "DISA",
@@ -1417,19 +1417,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. For SMS, click Admin and Management. \n2. Uncheck HTTPS, and TAXII. Ensure only SSH and Ping are checked.\n3. Click edit on FIPS Mode. \n4. Under an approved change window only, enable FIPS Crypto Core. This will cause a reboot; only do this when authorized.\n5. For TPS, click Devices >> All Devices, and the subject device hostname. \n6. Click Device Configuration and select Services. \n7. Uncheck SSH, TLS 1.0 and TLS 1.1. Only HTTPS should be selected. \nNote: FIPS mode is enabled in TIPP-NM-000200.",
-            "+@fixref": "F-45469r1018622_fix"
+            "+content": "1. For SMS, click \"Admin and Management\". \n2. Uncheck \"HTTPS\", and \"TAXII\". Ensure only SSH and Ping are checked.\n3. Click edit on FIPS Mode. \n4. Under an approved change window only, enable FIPS Crypto Core. This will cause a reboot; only do this when authorized.\n5. For TPS, click Devices >> All Devices, and the subject device hostname. \n6. Click \"Device Configuration\" and select \"Services\". \n7. Uncheck \"HTTPS\", and \"TAXII\". Ensure only SSH and Ping are checked.\nNote: FIPS mode is enabled in TIPP-NM-000200.",
+            "+@fixref": "F-45469r1082949_fix"
           },
           "fix": {
-            "+@id": "F-45469r1018622_fix"
+            "+@id": "F-45469r1082949_fix"
           },
           "check": {
-            "+@system": "C-45511r1018621_chk",
+            "+@system": "C-45511r1082948_chk",
             "check-content-ref": {
               "+@href": "Trend_Micro_TippingPoint_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. For SMS, click Admin and Management. \n2. Ensure only Ping is enabled and the SMS is in FIPS Mode.\n3. For TPS, click Devices >> All Devices, and the subject device hostname.\n4. Click Device Configuration and select Services. Ensure only TLS 1.2 is enabled. \n5. Verify only SSH and Ping are enabled and the SMS is in FIPS Mode. \n\nIf any other services are enabled, this is a finding."
+            "check-content": "1. For SMS, click \"Admin and Management\". \n2. Ensure only Ping is enabled and the SMS is in FIPS Mode.\n3. For TPS, click Devices >> All Devices, and the subject device hostname.\n4. Click \"Device Configuration\" and select \"Services\". Ensure only TLS 1.2 is enabled. \n5. Verify only SSH and Ping are enabled and the SMS is in FIPS Mode. \n\nIf any other services are enabled, this is a finding."
           }
         }
       },
@@ -1438,7 +1438,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242237r997728_rule",
+          "+@id": "SV-242237r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TIPP-NM-000210",

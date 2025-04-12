@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-04"
+      "+@date": "2025-02-12"
     },
     "title": "Apache Server 2.4 UNIX Site Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 6 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1812,7 +1812,7 @@
         "title": "SRG-APP-000246-WSR-000149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-214291r961152_rule",
+          "+@id": "SV-214291r1067787_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AS24-U2-000590",
@@ -1844,19 +1844,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Determine the location of the \"HTTPD_ROOT\" directory and the \"httpd.conf\" file: \n \n# apachectl -V | egrep -i 'httpd_root|server_config_file' \n-D HTTPD_ROOT=\"/etc/httpd\" \n-D SERVER_CONFIG_FILE=\"conf/httpd.conf\" \n \nAdd or modify the \"Timeout\" directive in the Apache configuration to have a value of \"10\" seconds or less. \n \n\"Timeout 10\"",
-            "+@fixref": "F-15502r881495_fix"
+            "+content": "Determine the location of the \"HTTPD_ROOT\" directory and the \"httpd.conf\" file: \n \n# apachectl -V | egrep -i 'httpd_root|server_config_file' \n-D HTTPD_ROOT=\"/etc/httpd\" \n-D SERVER_CONFIG_FILE=\"conf/httpd.conf\" \n \nAdd or modify the \"Timeout\" directive in the Apache configuration to have a value of \"60\" seconds or less. \n \n\"Timeout 60\"",
+            "+@fixref": "F-15502r1067786_fix"
           },
           "fix": {
-            "+@id": "F-15502r881495_fix"
+            "+@id": "F-15502r1067786_fix"
           },
           "check": {
-            "+@system": "C-15504r881494_chk",
+            "+@system": "C-15504r1067785_chk",
             "check-content-ref": {
               "+@href": "Apache_Server_2.4_UNIX_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine the location of the \"HTTPD_ROOT\" directory and the \"httpd.conf\" file:\n\n# apachectl -V | egrep -i 'httpd_root|server_config_file'\n-D HTTPD_ROOT=\"/etc/httpd\"\n-D SERVER_CONFIG_FILE=\"conf/httpd.conf\"\n\nNote: The apachectl front end is the preferred method for locating the Apache httpd file. For some Linux distributions \"apache2ctl -V\" or  \"httpd -V\" can also be used. \n\nVerify that the \"Timeout\" directive is specified to have a value of \"10\" seconds or less.\n\n# cat /<path_to_file>/httpd.conf | grep -i \"Timeout\"\n\nIf the \"Timeout\" directive is not configured or is set for more than \"10\" seconds, this is a finding."
+            "check-content": "Determine the location of the \"HTTPD_ROOT\" directory and the \"httpd.conf\" file:\n\n# apachectl -V | egrep -i 'httpd_root|server_config_file'\n-D HTTPD_ROOT=\"/etc/httpd\"\n-D SERVER_CONFIG_FILE=\"conf/httpd.conf\"\n\nNote: The apachectl front end is the preferred method for locating the Apache httpd file. For some Linux distributions, \"apache2ctl -V\" or  \"httpd -V\" can also be used. \n\nVerify the \"Timeout\" directive is specified to have a value of \"60\" seconds or less.\n\n# cat /<path_to_file>/httpd.conf | grep -i \"Timeout\"\n\nIf the \"Timeout\" directive is not configured or is set for more than \"60\" seconds, this is a finding."
           }
         }
       },

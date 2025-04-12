@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-04"
+      "+@date": "2025-02-20"
     },
     "title": "Apple macOS 15 (Sequoia) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -684,6 +684,10 @@
           {
             "+@idref": "V-269566",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
+            "+@selected": "true"
           }
         ]
       },
@@ -1322,6 +1326,10 @@
           },
           {
             "+@idref": "V-269566",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
             "+@selected": "true"
           }
         ]
@@ -1962,6 +1970,10 @@
           {
             "+@idref": "V-269566",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
+            "+@selected": "true"
           }
         ]
       },
@@ -2600,6 +2612,10 @@
           },
           {
             "+@idref": "V-269566",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
             "+@selected": "true"
           }
         ]
@@ -3240,6 +3256,10 @@
           {
             "+@idref": "V-269566",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
+            "+@selected": "true"
           }
         ]
       },
@@ -3878,6 +3898,10 @@
           },
           {
             "+@idref": "V-269566",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
             "+@selected": "true"
           }
         ]
@@ -4518,6 +4542,10 @@
           {
             "+@idref": "V-269566",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
+            "+@selected": "true"
           }
         ]
       },
@@ -5157,6 +5185,10 @@
           {
             "+@idref": "V-269566",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
+            "+@selected": "true"
           }
         ]
       },
@@ -5795,6 +5827,10 @@
           },
           {
             "+@idref": "V-269566",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272477",
             "+@selected": "true"
           }
         ]
@@ -12982,6 +13018,55 @@
               "+@name": "M"
             },
             "check-content": "Verify the macOS system is configured to disable sending search data from Spotlight with the following command:\n\n/usr/bin/osascript -l JavaScript << EOS  $.NSUserDefaults.alloc.initWithSuiteName('com.apple.assistant.support')\\\n.objectForKey('Search Queries Data Sharing Status').js\nEOS\n\nIf the result is not \"2\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-272477",
+        "title": "SRG-OS-000080-GPOS-00048",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-272477r1069484_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "APPL-15-002271",
+          "title": "The macOS system must disable iPhone Mirroring.",
+          "description": "<VulnDiscussion>iPhone Mirroring must be disabled to prevent file transfers to or from unauthorized devices. \n\nDisabling iPhone Mirroring also prevents potentially unauthorized applications from appearing as if they are installed on the Mac.\n\nSatisfies: SRG-OS-000080-GPOS-00048, SRG-OS-000095-GPOS-00049, SRG-OS-000300-GPOS-00118</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Apple macOS 15",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Apple macOS 15",
+            "identifier": "5661"
+          },
+          "ident": [
+            {
+              "+content": "CCI-000213",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000381",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001443",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Configure the macOS system to disable iPhone Mirroring by installing the \"com.apple.applicationaccess\" configuration profile.",
+            "+@fixref": "F-76434r1069483_fix"
+          },
+          "fix": {
+            "+@id": "F-76434r1069483_fix"
+          },
+          "check": {
+            "+@system": "C-76527r1069482_chk",
+            "check-content-ref": {
+              "+@href": "Apple_macOS_15__STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the macOS system is configured to disable iPhone Mirroring with the following command:\n\n/usr/bin/osascript -l JavaScript << EOS\n$.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\\\n.objectForKey('allowiPhoneMirroring').js\nEOS\n\nIf the result is not \"false\", this is a finding."
           }
         }
       }

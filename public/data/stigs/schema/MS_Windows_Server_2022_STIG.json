@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-01-14"
+      "+@date": "2025-02-25"
     },
     "title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 15 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -10057,7 +10057,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254239r1051086_rule",
+          "+@id": "SV-254239r1081067_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-00-000020",
@@ -10088,12 +10088,12 @@
             "+@id": "F-57675r951094_fix"
           },
           "check": {
-            "+@system": "C-57724r1016386_chk",
+            "+@system": "C-57724r1081066_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If there are no enabled local Administrator accounts, this is Not Applicable.\n\nReview the password last set date for the enabled local Administrator account.\n\nOn the stand alone or domain-joined workstation:\n\nOpen \"PowerShell\".\n\nEnter \"Get-LocalUser -Name * | Select-Object *\".\n\nIf the \"PasswordLastSet\" date is greater than \"60\" days old for the local Administrator account for administering the computer/domain, this is a finding.\n\nVerify LAPS is configured and operational. \n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Templates >> System >> LAPS >> Password Settings >> Set to enabled. Password Complexity, large letters + small letters + numbers + special, Password Length 14, Password Age 60. If not configured as shown, this is a finding. \n\nVerify LAPS Operational logs >> Event Viewer >> Applications and Services Logs >> Microsoft >> Windows >> LAPS >> Operational. Verify LAPS policy process is completing. If it is not, this is a finding."
+            "check-content": "If there are no enabled local Administrator accounts, this is not applicable.\n\nReview the password last set date for the enabled local Administrator account.\n\nOn the stand alone or domain-joined workstation:\n\nOpen \"PowerShell\".\n\nEnter \"Get-LocalUser -Name * | Select-Object *\".\n\nIf the \"PasswordLastSet\" date is greater than \"60\" days old for the local Administrator account for administering the computer/domain, this is a finding.\n\nVerify LAPS is configured and operational. \n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Templates >> System >> LAPS >> Password Settings >> Set to enabled. Password Complexity, large letters + small letters + numbers + special, Password Length 14, Password Age 60. If not configured as shown, this is a finding. \n\nVerify LAPS Operational logs >> Event Viewer >> Applications and Services Logs >> Microsoft >> Windows >> LAPS >> Operational. Verify LAPS policy process is completing. If it is not, this is a finding.\n\nIf the server is not a member of a domain this not applicable."
           }
         }
       },
@@ -10504,7 +10504,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254250r958472_rule",
+          "+@id": "SV-254250r1081070_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN22-00-000130",
@@ -10522,19 +10522,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Format volumes to use NTFS or ReFS.",
-            "+@fixref": "F-57686r848565_fix"
+            "+content": "Format volumes to use NTFS, ReFS, or CSVFS.",
+            "+@fixref": "F-57686r1081069_fix"
           },
           "fix": {
-            "+@id": "F-57686r848565_fix"
+            "+@id": "F-57686r1081069_fix"
           },
           "check": {
-            "+@system": "C-57735r848564_chk",
+            "+@system": "C-57735r1081068_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Open \"Computer Management\".\n\nSelect \"Disk Management\" under \"Storage\".\n\nFor each local volume, if the file system does not indicate \"NTFS\", this is a finding.\n\n\"ReFS\" (resilient file system) is also acceptable and would not be a finding.\n\nThis does not apply to system partitions such the Recovery and EFI System Partition."
+            "check-content": "Open \"Computer Management\".\n\nSelect \"Disk Management\" under \"Storage\".\n\nFor each local volume, if the file system does not indicate \"NTFS\", this is a finding.\n\n\"ReFS\" (resilient file system) is also acceptable and is not a finding.\nCSV ( Cluster Shared Volumes) is not a finding.\n\nThis does not apply to system partitions such the Recovery and EFI System Partition."
           }
         }
       },
@@ -16412,7 +16412,7 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254393r958726_rule",
+          "+@id": "SV-254393r1081073_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN22-DC-000090",
@@ -16430,19 +16430,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Maintain the permissions on Group Policy objects to not allow greater than \"Read\" and \"Apply group policy\" for standard user accounts or groups. The default permissions below meet this requirement:\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties.\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nDocument any other access permissions that allow the objects to be updated with the ISSO.\n\nThe Domain Admins and Enterprise Admins will not have the \"Delete all child objects\" permission on the two default Group Policy objects: Default Domain Policy and Default Domain Controllers Policy. They will have this permission on created Group Policy objects.",
-            "+@fixref": "F-57829r848994_fix"
+            "+content": "Maintain the permissions on Group Policy objects to not allow greater than \"Read\" and \"Apply group policy\" for standard user accounts or groups. The default permissions below meet this requirement:\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties.\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nDocument any other access permissions that allow the objects to be updated with the ISSO.",
+            "+@fixref": "F-57829r1081072_fix"
           },
           "fix": {
-            "+@id": "F-57829r848994_fix"
+            "+@id": "F-57829r1081072_fix"
           },
           "check": {
-            "+@system": "C-57878r848993_chk",
+            "+@system": "C-57878r1081071_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nReview the permissions on Group Policy objects.\n\nOpen \"Group Policy Management\" (available from various menus or run \"gpmc.msc\").\n\nNavigate to \"Group Policy Objects\" in the domain being reviewed (Forest >> Domains >> Domain).\n\nFor each Group Policy object:\n\nSelect the Group Policy object item in the left pane.\n\nSelect the \"Delegation\" tab in the right pane.\n\nSelect the \"Advanced\" button.\n\nSelect each Group or user name.\n\nView the permissions.\n\nIf any standard user accounts or groups have \"Allow\" permissions greater than \"Read\" and \"Apply group policy\", this is a finding.\n\nOther access permissions that allow the objects to be updated are considered findings unless specifically documented by the Information System Security Officer (ISSO).\n\nThe default permissions noted below satisfy this requirement. \n\nThe permissions shown are at the summary level. More detailed permissions can be viewed by selecting the next \"Advanced\" button, the desired Permission entry, and the \"Edit\" button.\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties. If detailed permissions include any Create, Delete, Modify, or Write Permissions or Properties, this is a finding.\n\nThe special permissions for the following default groups are not the focus of this requirement and may include a wide range of permissions and properties:\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nThe Domain Admins and Enterprise Admins will not have the \"Delete all child objects\" permission on the two default Group Policy objects: Default Domain Policy and Default Domain Controllers Policy. They will have this permission on organization created Group Policy objects."
+            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nReview the permissions on Group Policy objects.\n\nOpen \"Group Policy Management\" (available from various menus or run \"gpmc.msc\").\n\nNavigate to \"Group Policy Objects\" in the domain being reviewed (Forest >> Domains >> Domain).\n\nFor each Group Policy object:\n\nSelect the Group Policy object item in the left pane.\n\nSelect the \"Delegation\" tab in the right pane.\n\nSelect \"Advanced\".\n\nSelect each Group or user name.\n\nView the permissions.\n\nIf any standard user accounts or groups have \"Allow\" permissions greater than \"Read\" and \"Apply group policy\", this is a finding.\n\nOther access permissions that allow the objects to be updated are considered findings unless specifically documented by the Information System Security Officer (ISSO).\n\nThe default permissions noted below satisfy this requirement. \n\nThe permissions shown are at the summary level. More detailed permissions can be viewed by selecting the next \"Advanced\" button, the desired Permission entry, and the \"Edit\" button.\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties. If detailed permissions include any Create, Delete, Modify, or Write Permissions or Properties, this is a finding.\n\nThe special permissions for the following default groups are not the focus of this requirement and may include a wide range of permissions and properties:\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions"
           }
         }
       },
@@ -17313,7 +17313,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254415r1051106_rule",
+          "+@id": "SV-254415r1081074_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-DC-000310",
@@ -17327,10 +17327,6 @@
             "identifier": "5485"
           },
           "ident": [
-            {
-              "+content": "CCI-000756",
-              "+@system": "http://cyber.mil/cci"
-            },
             {
               "+content": "CCI-000776",
               "+@system": "http://cyber.mil/cci"
@@ -18480,12 +18476,12 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254444r958448_rule",
+          "+@id": "SV-254444r1081077_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-PK-000030",
-          "title": "Windows Server 2022 must have the US DoD CCEB Interoperability Root CA cross-certificates in the Untrusted Certificates Store on unclassified systems.",
-          "description": "<VulnDiscussion>To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000403-GPOS-00182</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Windows Server 2022 must have the US DOD CCEB Interoperability Root CA cross-certificates in the Untrusted Certificates Store on unclassified systems.",
+          "description": "<VulnDiscussion>To ensure users do not experience denial of service when performing certificate-based authentication to DOD websites due to the system chaining to a root other than DOD Root CAs, the US DOD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000403-GPOS-00182</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Microsoft Windows Server 2022",
             "publisher": "DISA",
@@ -18504,19 +18500,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Install the US DoD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\n\nDoD Root CA 3 - US DoD CCEB Interoperability Root CA 2 - 9B74964506C7ED9138070D08D5F8B969866560C8\n\nAdministrators must run the Federal Bridge Certification Authority (FBCA) Cross-Certificate Removal Tool once as an administrator and once as the current user.\n\nThe FBCA Cross-Certificate Remover Tool and User Guide are available on Cyber Exchange at https://cyber.mil/pki-pke/tools-configuration-files. PKI can be found at https://crl.gds.disa.mil/.",
-            "+@fixref": "F-57880r894342_fix"
+            "+content": "Install the US DOD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\n\nDOD Root CA 3 - US DOD CCEB Interoperability Root CA 2 - 9B74964506C7ED9138070D08D5F8B969866560C8 \nDOD Root CA 6 -US DOD CCEB Interoperability Root CA 2 - D471CA32F7A692CE6CBB6196BD3377FE4DBCD106\n\nAdministrators must run the Federal Bridge Certification Authority (FBCA) Cross-Certificate Removal Tool once as an administrator and once as the current user.\n\nThe FBCA Cross-Certificate Remover Tool and User Guide are available on Cyber Exchange at https://cyber.mil/pki-pke/tools-configuration-files. PKI can be found at https://crl.gds.disa.mil/.",
+            "+@fixref": "F-57880r1081076_fix"
           },
           "fix": {
-            "+@id": "F-57880r894342_fix"
+            "+@id": "F-57880r1081076_fix"
           },
           "check": {
-            "+@system": "C-57929r890554_chk",
+            "+@system": "C-57929r1081075_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This is applicable to unclassified systems. It is NA for others.\n\nOpen \"PowerShell\" as an administrator.\n\nExecute the following command:\n\nGet-ChildItem -Path Cert:Localmachine\\disallowed | Where Issuer -Like \"*CCEB Interoperability*\" | FL Subject, Issuer, Thumbprint, NotAfter\n\nIf the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\" information is not displayed, this is a finding. \n\nSubject: CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\nIssuer: CN=US DoD CCEB Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM\n\nAlternately, use the Certificates MMC snap-in:\n\nRun \"MMC\".\n\nSelect \"File\", \"Add/Remove Snap-in\".\n\nSelect \"Certificates\" and click \"Add\".\n\nSelect \"Computer account\" and click \"Next\".\n\nSelect \"Local computer: (the computer this console is running on)\" and click \"Finish\".\n\nClick \"OK\".\n\nExpand \"Certificates\" and navigate to Untrusted Certificates >> Certificates.\n\nFor each certificate with \"US DoD CCEB Interoperability Root CA ...\" under \"Issued By\":\n\nRight-click on the certificate and select \"Open\".\n\nSelect the \"Details\" tab.\n\nScroll to the bottom and select \"Thumbprint\".\n\nIf the certificate below is not listed or the value for the \"Thumbprint\" field is not as noted, this is a finding.\n\nIssued To: DoD Root CA 3\nIssued By: US DoD CCEB Interoperability Root CA 2\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025"
+            "check-content": "This is applicable to unclassified systems. It is NA for others.\n\nOpen \"PowerShell\" as an administrator.\n\nExecute the following command:\n\nGet-ChildItem -Path Cert:Localmachine\\disallowed | Where Issuer -Like \"*CCEB Interoperability*\" | FL Subject, Issuer, Thumbprint, NotAfter\n\nIf the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\" information is not displayed, this is a finding.\n\nSubject: CN=DOD Root CA 3, OU=PKI, OU=DOD, O=U.S. Government, C=US\nIssuer: CN=US DOD CCEB Interoperability Root CA 2, OU=PKI, OU=DOD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM\n\nAlternately, use the Certificates MMC snap-in:\n\nRun \"MMC\".\n\nSelect \"File\", \"Add/Remove Snap-in\".\n\nSelect \"Certificates\" and click \"Add\".\n\nSelect \"Computer account\" and click \"Next\".\n\nSelect \"Local computer: (the computer this console is running on)\" and click \"Finish\".\n\nClick \"OK\".\n\nExpand \"Certificates\" and navigate to Untrusted Certificates >> Certificates.\n\nFor each certificate with \"US DOD CCEB Interoperability Root CA ...\" under \"Issued By\":\n\nRight-click on the certificate and select \"Open\".\n\nSelect the \"Details\" tab.\n\nScroll to the bottom and select \"Thumbprint\".\n\nIf the certificate below is not listed or the value for the \"Thumbprint\" field is not as noted, this is a finding.\n\nIssued To: DOD Root CA 3\nIssued By: US DOD CCEB Interoperability Root CA 2\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025\nIssued to: DOD Root CA 6\nIssued By: US DOD CCEB Interoperability Root CA 2\nThumbprint: D471CA32F7A692CE6CBB6196BD3377FE4DBCD106\nNotAfter: 7/18/2026"
           }
         }
       },

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-10"
+      "+@date": "2025-02-27"
     },
     "title": "Cisco NX OS Switch NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -2173,7 +2173,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220486r960966_rule",
+          "+@id": "SV-220486r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-000470",
@@ -2222,7 +2222,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220487r960969_rule",
+          "+@id": "SV-220487r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-000490",
@@ -3479,7 +3479,7 @@
         "title": "SRG-APP-000516-NDM-000340",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220514r961863_rule",
+          "+@id": "SV-220514r1069522_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001410",
@@ -3511,19 +3511,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to send the configuration to an TFTP or FTP server when a configuration change occurs as shown in the example below:\n\nSW4(config)# event manager applet BACKUP_CONFIG\nSW4(config-applet)# event syslog pattern \"SYSLOG_CONFIG_I\"\nSW4(config-applet)# action 1 cli command \"copy startup-config tftp://10.1.48.10/nx-config vrf default”\nSW4(config-applet)# action 2 syslog priority informational msg \"Configuration backup was executed\"\nSW4(config-applet)# end",
-            "+@fixref": "F-22218r539264_fix"
+            "+content": "Configure the Cisco switch to send the configuration to an SCP server when a configuration change occurs as shown in the example below:\n\nSW4(config)# event manager applet BACKUP_CONFIG\nSW4(config-applet)# event syslog pattern \"SYSLOG_CONFIG_I\"\nSW4(config-applet)# action 1 cli command \"copy startup-config scp://user@10.1.48.10/nx-config.bak”\nSW4(config-applet)# action 2 syslog priority informational msg \"Configuration backup was executed\"\nSW4(config-applet)# end",
+            "+@fixref": "F-22218r1069521_fix"
           },
           "fix": {
-            "+@id": "F-22218r539264_fix"
+            "+@id": "F-22218r1069521_fix"
           },
           "check": {
-            "+@system": "C-22229r539263_chk",
+            "+@system": "C-22229r1069520_chk",
             "check-content-ref": {
               "+@href": "Cisco_NX-OS_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement. The example configuration below will send the configuration to a TFTP server when a configuration change occurs.\n\nevent manager applet BACKUP_CONFIG\n event syslog pattern \"SYSLOG_CONFIG_I\"\n action 1 cli command \"copy startup-config tftp://10.1.48.10/nx-config vrf default\" \n action 2 syslog priority informational msg \"Configuration backup was executed\"\n\nIf the Cisco switch is not configured to conduct backups of the configuration when changes occur, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement. The example configuration below will send the configuration to a SCP server when a configuration change occurs.\n\nevent manager applet BACKUP_CONFIG\n event syslog pattern \"SYSLOG_CONFIG_I\"\n action 1 cli command \"copy startup-config scp://user@10.1.48.10/nx-config.bak\" \n action 2 syslog priority informational msg \"Configuration backup was executed\"\n\nIf the Cisco switch is not configured to conduct backups of the configuration when changes occur, this is a finding."
           }
         }
       },
@@ -3687,7 +3687,7 @@
         "title": "SRG-APP-000435-NDM-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260464r1026078_rule",
+          "+@id": "SV-260464r1082186_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001220",
@@ -3716,10 +3716,10 @@
           ],
           "fixtext": {
             "+content": "Configure the Cisco switch to protect against known types of DoS attacks on the route processor. Implementing a CoPP policy as shown in the example below is a best practice method.\n\nStep 1: Configure ACLs' specific traffic types.\n\nSW1(config)# ip access-list CoPP_CRITICAL\nSW1(config-acl)# remark our control plane adjacencies are critical \nSW1(config-acl)# permit ospf host 10.1.12.1 any\nSW1(config-acl)# permit ospf host 10.1.22.1 any\nSW1(config-acl)# permit pim host 10.1.12.1 any\nSW1(config-acl)# permit pim host 10.1.22.1 any\nSW1(config-acl)# permit pim host 10.1.33.4 any\nSW1(config-acl)# permit igmp any 224.0.0.0 15.255.255.255\nSW1(config-acl)# permit tcp host 10.2.33.3 eq bgp host 10.2.33.4\nSW1(config-acl)# permit tcp host 10.2.33.3 host 10.2.33.4 eq bgp\nSW1(config-acl)# deny ip any any\nSW1(config-acl)# exit\n\nSW1(config)# ip access-list CoPP_IMPORTANT\nSW1(config-acl)# permit tcp host 10.1.33.5 eq tacacs any\nSW1(config-acl)# permit tcp 10.1.33.0 0.0.0.255 any eq 22\nSW1(config-acl)# permit udp host 10.1.33.7 any eq snmp\nSW1(config-acl)# permit udp host 10.1.33.9 eq ntp any\nSW1(config-acl)# deny ip any any\nSW1(config-acl)# exit\n\nSW1(config)# ip access-list CoPP_NORMAL\nSW1(config-acl)# remark we will want to rate limit ICMP traffic\nSW1(config-acl)# permit icmp any any echo \nSW1(config-acl)# permit icmp any any echo-reply \nSW1(config-acl)# permit icmp any any time-exceeded \nSW1(config-acl)# permit icmp any any unreachable \nSW1(config-acl)# deny ip any any \nSW1(config-acl)# exit\n\nSW1(config)# ip access-list CoPP_UNDESIRABLE \nSW1(config-acl)# remark other management plane traffic that should not be received \nSW1(config-acl)# permit udp any any eq ntp \nSW1(config-acl)# permit udp any any eq snmp\nSW1(config-acl)# permit tcp any any eq 22 \nSW1(config-acl)# permit tcp any any eq 23 \nSW1(config-acl)# remark other control plane traffic not configured on switch \nSW1(config-acl)# permit eigrp any any \nSW1(config-acl)# permit udp any any eq rip \nSW1(config-acl)# deny ip any any \nSW1(config-acl)# exit\n\nSW1(config)# ip access-list CoPP_DEFAULT \nSW1(config-acl)# permit ip any any\nSW1(config-acl)# exit\n\nStep 2: Configure class maps referencing each of the ACLs.\n\nSW1(config)# class-map type control-plane match-all CoPP_CRITICAL\nSW1(config-cmap)# match access-group name CoPP_CRITICAL\nSW1(config-cmap)# class-map type control-plane match-any CoPP_IMPORTANT\nSW1(config-cmap)# match access-group name CoPP_IMPORTANT\nSW1(config-cmap)# match protocol arp\nSW1(config-cmap)# class-map type control-plane match-all CoPP_NORMAL\nSW1(config-cmap)# match access-group name CoPP_NORMAL\nSW1(config-cmap)# class-map type control-plane match-any CoPP_UNDESIRABLE\nSW1(config-cmap)# match access-group name CoPP_UNDESIRABLE\nSW1(config-cmap)# class-map type control-plane match-all CoPP_DEFAULT\nSW1(config-cmap)# match access-group name CoPP_DEFAULT\nSW1(config-cmap)# exit\n\nStep 3: Configure a policy map referencing the configured class maps and apply appropriate bandwidth allowance and policing attributes.\n\nSW1(config)# policy-map type control-plane CONTROL_PLANE_POLICY\nSW1(config-pmap)# class CoPP_CRITICAL\nSW1(config-pmap-c)# police 512000 8000 conform-action transmit exceed-action transmit\nSW1(config-pmap-c-police)# class CoPP_IMPORTANT\nSW1(config-pmap-c)# police 256000 4000 conform-action transmit exceed-action drop\nSW1(config-pmap-c-police)# class CoPP_NORMAL\nSW1(config-pmap-c)# police 128000 2000 conform-action transmit exceed-action drop\nSW1(config-pmap-c-police)# class CoPP_UNDESIRABLE\nSW1(config-pmap-c)# police 8000 1000 conform-action drop exceed-action drop\nSW1(config-pmap-c-police)# class CoPP_DEFAULT\nSW1(config-pmap-c)# police 64000 1000 conform-action transmit exceed-action drop\nSW1(config-pmap-c-police)# exit\nSW1(config-pmap-c)# exit\nSW1(config-pmap)# exit\n\nStep 4: Apply the policy map to the control plane.\n\nSW1(config)# control-plane\nSW1(config-cp)# service-policy input CONTROL_PLANE_POLICY\nSW1(config-cp)# end",
-            "+@fixref": "F-22313r1026077_fix"
+            "+@fixref": "F-75064r1058132_fix"
           },
           "fix": {
-            "+@id": "F-22313r1026077_fix"
+            "+@id": "F-75064r1058132_fix"
           },
           "check": {
             "+@system": "C-22794r1026076_chk",

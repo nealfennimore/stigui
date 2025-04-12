@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-18"
+      "+@date": "2025-02-24"
     },
     "title": "zOS WebsphereMQ for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -893,7 +893,7 @@
         "title": "SRG-OS-000163",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224554r970703_rule",
+          "+@id": "SV-224554r1070102_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWMQ0020",
@@ -916,24 +916,28 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
+              "+content": "CCI-000057",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
               "+content": "CCI-001133",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "Review the WebSphere MQ System Setup Guide and the information on the ALTER SECURITY command in the  WebSphere MQ Script (MQSC) Command Reference.\n\nEnsure the values for the TIMEOUT and INTERVAL parameters are specified in accordance with security requirements.",
-            "+@fixref": "F-26225r521022_fix"
+            "+content": "Review the WebSphere MQ System Setup Guide and the information on the ALTER SECURITY command in the WebSphere MQ Script (MQSC) Command Reference.\n\nEnsure the values for the TIMEOUT and INTERVAL parameters are specified in accordance with security requirements.",
+            "+@fixref": "F-26225r1070101_fix"
           },
           "fix": {
-            "+@id": "F-26225r521022_fix"
+            "+@id": "F-26225r1070101_fix"
           },
           "check": {
-            "+@system": "C-26237r521021_chk",
+            "+@system": "C-26237r1070100_chk",
             "check-content-ref": {
               "+@href": "zOS_WebsphereMQ_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the z/OS Data Collection:\n\n-\tMQSRPT(ssid)\n\nNOTE:\tssid is the queue manager name (a.k.a., subsystem identifier).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZWMQ0020)\n\nb)\tReview the ssid report(s) and perform the following steps:\n\n1)\tFind the DISPLAY SECURITY command to locate the start of the security parameter settings.\n2)\tReview the CSQH015I and CSQH016I messages to determine the Timeout and Interval parameter settings respectively.\n3)\tRepeat these steps for each queue manager ssid.\n\nThe standard values are:\n\nTIMEOUT(15)\nINTERVAL(5)\n\nc)\tIf the Timeout and Interval values conform to the standard values, there is NO FINDING.\n\nd)\tIf the Timeout and/or Interval values do not conform to the standard values, this is a FINDING."
+            "check-content": "Refer to the following report produced by the z/OS Data Collection:\n\n-\tMQSRPT(ssid)\n\nNote:\tssid is the queue manager name (a.k.a., subsystem identifier).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZWMQ0020)\n\nReview the ssid report(s) and perform the following steps:\n\n1. Find the DISPLAY SECURITY command to locate the start of the security parameter settings.\n2. Review the CSQH015I and CSQH016I messages to determine the Timeout and Interval parameter settings respectively.\n3. Repeat these steps for each queue manager ssid.\n\nThe standard values are:\n\nTIMEOUT(15)\nINTERVAL(5)\n\nIf the Timeout and Interval values conform to the standard values, this is not a finding.\n\nIf the Timeout and/or Interval values do not conform to the standard values, this is a finding."
           }
         }
       },
@@ -991,7 +995,7 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224556r958472_rule",
+          "+@id": "SV-224556r1070081_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWMQ0040",
@@ -1020,26 +1024,22 @@
             {
               "+content": "CCI-002234",
               "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000213",
-              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The systems programmer will have the ISSO ensure that all update and alter access to MQSeries/WebSphere MQ product and system data sets are restricted to WebSphere MQ administrators, systems programmers, and MQSeries/WebSphere MQ started tasks.\n\nThe installation requires that the following data sets be APF authorized. \n\nhlqual.SCSQAUTH\nhlqual.SCSQLINK\nhlqual.SCSQANLx\nhlqual.SCSQSNL\nhlqual.SCSQMVR1\nhlqual.SCSQMVR2\n\n(2) Read access to data sets referenced by the CSQINP1, CSQINP2, and CSQXLIB DDs in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all access to these data sets.\n\n(3) Write and allocate access to data set profiles protecting all page sets, logs, bootstrap data sets (BSDS), and data sets referenced by the CSQOUTX and CSQSNAP DDs in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all write and allocate access to these data sets.\n\n(5) Allocate access to all archive data sets in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all allocate access to these data sets.",
-            "+@fixref": "F-26227r868589_fix"
+            "+content": "The systems programmer will have the ISSO ensure that all update and alter access to MQSeries/WebSphere MQ product and system data sets are restricted to WebSphere MQ administrators, systems programmers, and MQSeries/WebSphere MQ started tasks.\n\nThe installation requires that the following data sets be APF authorized. \n\nhlqual.SCSQAUTH\nhlqual.SCSQLINK\nhlqual.SCSQANLx\nhlqual.SCSQSNL\nhlqual.SCSQMVR1\nhlqual.SCSQMVR2\n\nRead access to data sets referenced by the CSQINP1, CSQINP2, and CSQXLIB DDs in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all access to these data sets.\n\nWrite and allocate access to data set profiles protecting all page sets, logs, bootstrap data sets (BSDS), and data sets referenced by the CSQOUTX and CSQSNAP DDs in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all write and allocate access to these data sets.\n\nAllocate access to all archive data sets in the queue manager's procedure will be restricted to the queue manager userid, WebSphere MQ administrator, and systems programming personnel. Log all allocate access to these data sets.",
+            "+@fixref": "F-26227r1070080_fix"
           },
           "fix": {
-            "+@id": "F-26227r868589_fix"
+            "+@id": "F-26227r1070080_fix"
           },
           "check": {
-            "+@system": "C-26239r868587_chk",
+            "+@system": "C-26239r1070079_chk",
             "check-content-ref": {
               "+@href": "zOS_WebsphereMQ_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following report produced by the ACP Data Collection:\n\n- SENSITVE.RPT(MQSRPT)\n\nb) Ensure ACP data sets rules for MQSeries/WebSphere MQ system data sets (e.g., SYS2.MQM.) restrict access as follows:\n\nNOTE: ssid is the queue manager name (a.k.a., subsystem identifier).\n\n___ READ access to data sets referenced by the following DDnames is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrators, and system programming personnel. All access to these data sets is logged.\n\nDDname       Procedure      Description\nCSQINP1       ssidMSTR       Input parameters\nCSQINP2       ssidMSTR       Input parameters\nCSQXLIB       ssidCHIN         User exit library\n\nNOTE: WRITE/UPDATE and/or ALLOCATE/ALTER access to these data sets is restricted to MQSeries/WebSphere MQ administrators and systems programming personnel.\n\n___ WRITE/UPDATE and/or ALLOCATE/ALTER access to data sets referenced by the following DDnames is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrators, and systems programming personnel. All WRITE and ALLOCATE access to these data sets is logged.\n\nDDname       Procedure       Description\nCSQPxxxx     ssidMSTR         Page data sets\nBSDSx           ssidMSTR         Bootstrap data sets\nCSQOUTx     ssidMSTR         SYSOUT data sets\nCSQSNAP     ssidMSTR         DUMP data set\n(See note)   ssidMSTR          Log data sets\n\nNOTE: To determine the log data set names, review the JESMSGLG file of the ssidMSTR active task(s). Find CSQJ001I messages to obtain DSNs.\n \n___ ALLOCATE/ALTER access to archive data sets is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrator, and system programming personnel. All ALLOCATE/ALTER access to these data sets is logged.\n\nNOTE: To determine the archive data sets names, review the JESMSGLG file of the ssidMSTR active task(s). Find the CSQY122I message to obtain the ARCPRFX1 and ARCPRFX2 DSN HLQs.\n\n___ Except for the specific data set requirements just mentioned, WRITE/UPDATE and/or ALLOCATE/ALTER access to all other MQSeries/WebSphere MQ system data sets is restricted to the MQSeries/WebSphere MQ administrator and system programming personnel.\n\nc) If all the items in (b) are true, there is no finding.\n\nd) If any item in (b) is untrue, this is a finding."
+            "check-content": "Refer to the following report produced by the ACP Data Collection:\n\n-\tSENSITVE.RPT(MQSRPT)\n\nEnsure ACP data sets rules for MQSeries/WebSphere MQ system data sets (e.g., SYS2.MQM.) restrict access as follows:\n\nNote: ssid is the queue manager name (a.k.a., subsystem identifier).\n\nREAD access to data sets referenced by the following DDnames is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrators, and system programming personnel. All access to these data sets is logged.\n\nDDname       Procedure      Description\nCSQINP1       ssidMSTR       Input parameters\nCSQINP2       ssidMSTR       Input parameters\nCSQXLIB       ssidCHIN         User exit library\n\nNote: WRITE/UPDATE and/or ALLOCATE/ALTER access to these data sets is restricted to MQSeries/WebSphere MQ administrators and systems programming personnel.\n\nWRITE/UPDATE and/or ALLOCATE/ALTER access to data sets referenced by the following DDnames is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrators, and systems programming personnel. All WRITE and ALLOCATE access to these data sets is logged.\n\nDDname       Procedure       Description\nCSQPxxxx     ssidMSTR         Page data sets\nBSDSx           ssidMSTR         Bootstrap data sets\nCSQOUTx     ssidMSTR         SYSOUT data sets\nCSQSNAP     ssidMSTR         DUMP data set\n(See note)   ssidMSTR          Log data sets\n\nNote: To determine the log data set names, review the JESMSGLG file of the ssidMSTR active task(s). Find CSQJ001I messages to obtain DSNs.\n \nALLOCATE/ALTER access to archive data sets is restricted to MQSeries/WebSphere MQ STCs, MQSeries/WebSphere MQ administrator, and system programming personnel. All ALLOCATE/ALTER access to these data sets is logged.\n\nNote: To determine the archive data sets names, review the JESMSGLG file of the ssidMSTR active task(s). Find the CSQY122I message to obtain the ARCPRFX1 and ARCPRFX2 DSN HLQs.\n\nExcept for the specific data set requirements just mentioned, WRITE/UPDATE and/or ALLOCATE/ALTER access to all other MQSeries/WebSphere MQ system data sets is restricted to the MQSeries/WebSphere MQ administrator and system programming personnel.\n\nIf all the items above are true, this is not a finding.\n\nIf any item above is untrue, this is a finding."
           }
         }
       },
@@ -1048,7 +1048,7 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224557r1055910_rule",
+          "+@id": "SV-224557r1056162_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWMQ0049",
@@ -1080,11 +1080,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that all WebSphere MQ resources are active and properly defined.\n\nEnsure the following WebSphere MQ resource classes are active:\n\nGMQADMIN\nGMQNLIST\nGMQPROC\nGMQQUEUE\nMQADMIN\nMQCMDS\nMQCONN\nMQNLIST\nMQPROC\nMQQUEUE\n\nWhen SCYCASE is set to mixed, CLASMAP Definitions must include the following entries:\n\nGMXADMIN\nGMXNLIST\nGMXPROC\nGMXQUEUE\nGMXTOPIC\nMXADMIN\nMXNLIST\nMXPROC\nMXQUEUE\nMXTOPIC\n\nNOTE: If MQADMIN or MXADMIN resource classes are not active, no security checking is performed.\n\nThe follow sample contains commands to activate the required classes:\n\nSETR CLASSACT(MQADMIN MQCMDS MQCONN)\nSETR CLASSACT(MQNLIST MQPROC MQQUEUE)\nSETR CLASSACT(MXADMIN MXNLIST MXPROC MXQUEUE)",
-            "+@fixref": "F-26228r1055910_fix"
+            "+content": "Ensure that all WebSphere MQ resources are active and properly defined.\n\nEnsure the following WebSphere MQ resource classes are active:\n\nGMQADMIN\nGMQNLIST\nGMQPROC\nGMQQUEUE\nMQADMIN\nMQCMDS\nMQCONN\nMQNLIST\nMQPROC\nMQQUEUE\n\nWhen SCYCASE is set to mixed, CLASMAP Definitions must include the following entries:\n\nGMXADMIN\nGMXNLIST\nGMXPROC\nGMXQUEUE\nGMXTOPIC\nMXADMIN\nMXNLIST\nMXPROC\nMXQUEUE\nMXTOPIC\n\nNOTE: If MQADMIN or MXADMIN resource classes are not active, no security checking is performed.\n\nThe following sample contains commands to activate the required classes:\n\nSETR CLASSACT(MQADMIN MQCMDS MQCONN)\nSETR CLASSACT(MQNLIST MQPROC MQQUEUE)\nSETR CLASSACT(MXADMIN MXNLIST MXPROC MXQUEUE)",
+            "+@fixref": "F-26228r1056162_fix"
           },
           "fix": {
-            "+@id": "F-26228r1055910_fix"
+            "+@id": "F-26228r1056162_fix"
           },
           "check": {
             "+@system": "C-26240r1050693_chk",
@@ -1150,11 +1150,11 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224559r1050701_rule",
+          "+@id": "SV-224559r1070084_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWMQ0052",
-          "title": "WebSphere MQ MQ Connection Class resource definitions must be protected in accordance with security.",
+          "title": "WebSphere MQ connection class resource definitions must be protected in accordance with security.",
           "description": "<VulnDiscussion>WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists. Some resources provide the ability to disable or bypass security checking. Failure to properly protect WebSphere MQ resources may result in unauthorized access. This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS WebsphereMQ for RACF",
@@ -1175,26 +1175,22 @@
             {
               "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002234",
-              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "Review the following connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED:\n\nResource       Authorized Users\nssid.BATCH       TSO and batch job userids\nssid.CICS       CICS region userids\nssid.IMS       IMS region userids\nssid.CHIN       Channel initiator userids\n\nNOTE: ssid is the queue manager name (a.k.a., subsystem identifier).\n\nc) For all connection resources defined to the MQCONN resource class, ensure the following items are in effect:\n\nNOTE: If a resource profile is not defined for a particular security check, and a user issues a request that would involve making that check, MQSeries/WebSphere MQ denies access.\n\n1) Resource profiles are defined with a UACC(NONE).\n2) Access authorization to these connections restricts access to the appropriate users as indicated in (b).\n3) All access FAILUREs are logged.\n\nA set of sample commands is provided below to implement the minimum profiles necessary for proper security. Note that the IMS and/or CICS profiles can be omitted if those products do not run on the target system.\n\n/* THE FOLLOWING PROFILE FORCES GRANULAR PROFILES DEFINITIONS */\nRDEF MQCONN ** UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('MQCONN DENY-BY-DEFAULT PROFILE')\n\nRDEF MQCONN <ssid>.BATCH UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READAUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.BATCH CL(MQCONN) ID(<applicableTSO&batchUsers>)\n\nRDEF MQCONN <ssid>.CICS UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.CICS CL(MQCONN) ID(<CICSRegionUserids>)\n\nRDEF MQCONN <ssid>.IMS UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.IMS CL(MQCONN) ID(<IMSRegionUserids>)\n\nRDEF MQCONN <ssid>.CHIN UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.CHIN CL(MQCONN) ID(<WebsphereMQCHINUsrids>)\n\nSETR RACL(MQCONN) REF\n\nNote that an additional WebSphere MQ Refresh may be required for active queue managers. This is done from the CONSOLE:\n\nThe example is for a queue manager Named QMD1:\n>QMD1 REFRESH SECURITY(*)",
-            "+@fixref": "F-26230r1050700_fix"
+            "+content": "Review the following connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED:\n\nResource       Authorized Users\nssid.BATCH       TSO and batch job userids\nssid.CICS       CICS region userids\nssid.IMS       IMS region userids\nssid.CHIN       Channel initiator userids\n\nNote: ssid is the queue manager name (a.k.a., subsystem identifier).\n\nFor all connection resources defined to the MQCONN resource class, ensure the following items are in effect:\n\nNote: If a resource profile is not defined for a particular security check, and a user issues a request that would involve making that check, MQSeries/WebSphere MQ denies access.\n\n1. Resource profiles are defined with a UACC(NONE).\n2. Access authorization to these connections restricts access to the appropriate users as indicated above.\n3. All access FAILUREs are logged.\n\nA set of sample commands is provided below to implement the minimum profiles necessary for proper security. Note that the IMS and/or CICS profiles can be omitted if those products do not run on the target system.\n\n/* THE FOLLOWING PROFILE FORCES GRANULAR PROFILES DEFINITIONS */\nRDEF MQCONN ** UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('MQCONN DENY-BY-DEFAULT PROFILE')\n\nRDEF MQCONN <ssid>.BATCH UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READAUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.BATCH CL(MQCONN) ID(<applicableTSO&batchUsers>)\n\nRDEF MQCONN <ssid>.CICS UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.CICS CL(MQCONN) ID(<CICSRegionUserids>)\n\nRDEF MQCONN <ssid>.IMS UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.IMS CL(MQCONN) ID(<IMSRegionUserids>)\n\nRDEF MQCONN <ssid>.CHIN UACC(NONE) OWNER(ADMIN) AUDIT(FAILURES(READ)) DATA('REQUIRED FOR ZWMQ0052')\nPE <ssid>.CHIN CL(MQCONN) ID(<WebsphereMQCHINUsrids>)\n\nSETR RACL(MQCONN) REF\n\nNote that an additional WebSphere MQ Refresh may be required for active queue managers. This is done from the CONSOLE:\n\nThe example is for a queue manager Named QMD1:\n>QMD1 REFRESH SECURITY(*)",
+            "+@fixref": "F-26230r1070083_fix"
           },
           "fix": {
-            "+@id": "F-26230r1050700_fix"
+            "+@id": "F-26230r1070083_fix"
           },
           "check": {
-            "+@system": "C-26242r1050699_chk",
+            "+@system": "C-26242r1070082_chk",
             "check-content-ref": {
               "+@href": "zOS_WebsphereMQ_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following reports produced by the RACF Data Collection:\n\n- SENSITVE.RPT(MQCONN)\n\nb) Review the following connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED:\n\nResource       Authorized Users\nssid.BATCH       TSO and batch job userids\nssid.CICS       CICS region userids\nssid.IMS       IMS region userids\nssid.CHIN       Channel initiator userids\n\nNOTE: ssid is the queue manager name (a.k.a., subsystem identifier).\n\nc) For all connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED, ensure the following items are in effect:\n\nNOTE: If a resource profile is not defined for a particular security check, and a user issues a request that would involve making that check, MQSeries/WebSphere MQ denies access.\n\n1) Resource profiles are defined with a UACC(NONE).\n2) Access authorization to these connections restricts access to the appropriate users as indicated in (b).\n3) All access FAILUREs are logged.  \n\nd) If all of the items in (c) are true, there is no finding.\n\ne) If any item in (c) is untrue, this is a finding."
+            "check-content": "Refer to the following reports produced by the RACF Data Collection:\n\n-\tSENSITVE.RPT(MQCONN)\n\nReview the following connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED:\n\nResource       Authorized Users\nssid.BATCH       TSO and batch job userids\nssid.CICS       CICS region userids\nssid.IMS       IMS region userids\nssid.CHIN       Channel initiator userids\n\nNote: ssid is the queue manager name (a.k.a., subsystem identifier).\n\nFor all connection resources defined to the MQCONN resource class or MXCONN resource class if SCYCASE is set to MIXED, ensure the following items are in effect:\n\nNote: If a resource profile is not defined for a particular security check, and a user issues a request that would involve making that check, MQSeries/WebSphere MQ denies access.\n\n1. Resource profiles are defined with a UACC(NONE).\n2. Access authorization to these connections restricts access to the appropriate users as indicated above.\n3. All access FAILUREs are logged.  \n\nIf all of the items above are true, this is not a finding.\n\nIf any item above is untrue, this is a finding."
           }
         }
       },

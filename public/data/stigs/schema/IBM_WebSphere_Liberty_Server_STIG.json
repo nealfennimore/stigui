@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2025-02-11"
     },
     "title": "IBM WebSphere Liberty Server Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1411,7 +1411,7 @@
         "title": "SRG-APP-000109-AS-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250327r960915_rule",
+          "+@id": "SV-250327r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000230",
@@ -1628,7 +1628,7 @@
         "title": "SRG-APP-000142-AS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250332r960966_rule",
+          "+@id": "SV-250332r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000370",
@@ -1667,7 +1667,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250333r960969_rule",
+          "+@id": "SV-250333r1051118_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000380",
@@ -1706,7 +1706,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250334r960969_rule",
+          "+@id": "SV-250334r1051118_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000381",
@@ -1939,12 +1939,12 @@
         "title": "SRG-APP-000179-AS-000129",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250339r961050_rule",
+          "+@id": "SV-250339r1067571_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000520",
           "title": "The WebSphere Liberty Server must use FIPS 140-2 approved encryption modules when authenticating users and processes.",
-          "description": "<VulnDiscussion>Application servers must use and meet requirements of the DoD Enterprise PKI infrastructure for application authentication. Encryption is only as good as the encryption modules used. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nSatisfies: SRG-APP-000179-AS-000129, SRG-APP-000224-AS-000152, SRG-APP-000416-AS-000140, SRG-APP-000439-AS-000155, SRG-APP-000442-AS-000259, SRG-APP-000514-AS-000136</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Application servers must use and meet requirements of the DOD Enterprise PKI infrastructure for application authentication. Encryption is only as good as the encryption modules used. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nSatisfies: SRG-APP-000179-AS-000129, SRG-APP-000224-AS-000152, SRG-APP-000416-AS-000140, SRG-APP-000439-AS-000155, SRG-APP-000442-AS-000259, SRG-APP-000514-AS-000136</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target IBM WebSphere Liberty Server",
             "publisher": "DISA",
@@ -1975,19 +1975,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Edit the ${server.config.dir}/jvm.options file. Add or modify the -Dcom.ibm.jsse2.usefipsprovider=true property to enable the JSSE2 provider to run in FIPS 140-2 mode. \n\nEdit ${JAVA_HOME}/jre/lib/security/java.security file to register additional cryptographic package provides. Update these two lines: \n\n#ssl.SocketFactory.provider=\n#ssl.ServerSocketFactory.provider=\nto\nssl.SocketFactory.provider=com.ibm.jsse2.SSLSocketFactoryImpl\nssl.ServerSocketFactory.provider=com.ibm.jsse2.SSLServerSocketFactoryImpl\n\nLocate the list of cryptographic providers that are located after the line\n# List\nof providers and their preference orders and replace it with the following list:\nsecurity.provider.1=com.ibm.crypto.fips.provider.IBMJCEFIPS\nsecurity.provider.2=com.ibm.jsse2.IBMJSSEProvider2\nsecurity.provider.3=com.ibm.crypto.provider.IBMJCE\nsecurity.provider.4=com.ibm.security.jgss.IBMJGSSProvider\nsecurity.provider.5=com.ibm.security.cert.IBMCertPath\nsecurity.provider.6=com.ibm.security.sasl.IBMSASL\nsecurity.provider.7=com.ibm.xml.crypto.IBMXMLCryptoProvider\nsecurity.provider.8=com.ibm.xml.enc.IBMXMLEncProvider\nsecurity.provider.9=org.apache.harmony.security.provider.PolicyProvider\nsecurity.provider.10=com.ibm.security.jgss.mech.spnego.IBMSPNEGO",
-            "+@fixref": "F-53728r795069_fix"
+            "+content": "There are two ways to meet this requirement. Only one method is required.\n\nIf IBM JDK 8 is installed and configured to run with WebSphere Liberty, proceed with method (I).\n\nIf IBM Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty, proceed with method (II). Currently IBM Semeru supports FIPS on RedHat Enterprise Linux.\n\nMethod (I) IBM JDK 8 is configured to run with WebSphere Liberty:\n\n1. Edit/Create the ${server.config.dir}/jvm.options file. \nEdit/Add the following two properties:\nDcom.ibm.jsse2.usefipsprovider=true \nDcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS \n\n2. Edit ${JAVA_HOME}/jre/lib/security/java.security file and locate the list of cryptographic providers. Edit/add the following four providers: \n\nsecurity.provider.1=com.ibm.jsse2.IBMJSSEProvider2\nsecurity.provider.2=com.ibm.crypto.plus.provider.IBMJCEPlusFIPS \nsecurity.provider.3=com.ibm.crypto.provider.IBMJCE\nsecurity.provider.4=com.ibm.crypto.plus.provider.IBMJCEPlus\n\nMethod (II) Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty. Requires RedHat Enterprise Linux as the Host Operating System.\n\n1. Log in as root or super user.\n\n2. Enable FIPS on the RedHat Enterprise Linux. \n$ fips-mode-setup --enable\n$ fips-mode-setup --check\n \n3. Update/create the ${server.config.dir}/jvm.options.\nEdit/Add the following property:\nDsemeru.fips=true \n\n4. Install NSS packages. Run \"$ dnf install nss\".\n\n5. Import keystores to NSS Database by using \"pk12util\" command. Replace \"changeit\" for -W option to the desired password. \n\n$ pk12util -i resources/security/key.p12 -W changeit -d /etc/pki/nssdb\npk12util: PKCS12 IMPORT SUCCESSFUL\n\n6. Mark the imported certificates as a trusted certificate authority (CA).\n\n$ certutil -M -n default -t \"CT,CT,CT\" -d /etc/pki/nssdb\n\n7. List the contents of the NSS Database to confirm the alias name and the Trust Attributes.\n\n$ certutil -L -d /etc/pki/nssdb\nCertificate Nickname                                         Trust Attributes\n                                                                       SSL,S/MIME,JAR/XPI\ndefault                                                        CTu,Cu,Cu\n\n8. Create a config file (pkcs11cfg.cfg) with the contents below. It will be used by ${server.config.dir}/server.xml. \n\nname = NSS-FIPS\nlibrary = /usr/lib64/libsoftokn3.so\nslot = 3\nshowInfo = true\n\n9. Update the ${server.config.dir}/server.xml file to use the configuration file in its SSL configuration. \n\n<ssl id=\"defaultSSLConfig\"\n         keyStoreRef=\"defaultKeyStore\"\n         sslProtocol=\"TLSv1.2\" />    \n<keyStore id=\"defaultKeyStore\" password=\"password used in -W parameter earlier here\"\n         location=\"${server.config.dir}/pkcs11cfg.cfg\" type=\"PKCS11\"\n         fileBased=\"false\" provider=\"SunPKCS11-NSS-FIPS\"/>\n\n9.1 Find the <keyStore/> configuration referenced in the ssl configuration as \"keyStoreRef\". \n9.2 Set \"provider\" attribute to either \"SunPKCS11-NSS-FIPS\" or \"PKCS11-NSS-FIPS\".\n9.3 Set the \"type\" attribute to \"PKCS11\"\n9.4 Set the \"fileBased\" attribute to \"false\"\n9.5 Set the \"location\" attribute to point to the NSS keystore configuration created in step 8 (pkcs11.cfg.cfg).\n9.6 Verify the file is in a location that is accessible to Liberty.",
+            "+@fixref": "F-53728r1067570_fix"
           },
           "fix": {
-            "+@id": "F-53728r795069_fix"
+            "+@id": "F-53728r1067570_fix"
           },
           "check": {
-            "+@system": "C-53774r795068_chk",
+            "+@system": "C-53774r1067569_chk",
             "check-content-ref": {
               "+@href": "IBM_WebSphere_Liberty_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the ${server.config.dir}/jvm.options file. Verify FIPS is in use. If the -Dcom.ibm.jsse2.usefipsprovider=true property is not set in the ${server.config.dir}/jvm.options file, this is a finding.\n\nReview the ${JAVA_HOME}/jre/lib/security/java.security file. If the ${JAVA_HOME}/jre/lib/security/java.security file does not contain the following settings, this is a finding. \n\nssl.SocketFactory.provider=com.ibm.jsse2.SSLSocketFactoryImpl\nssl.ServerSocketFactory.provider=com.ibm.jsse2.SSLServerSocketFactoryImpl\n\nLocate the list of cryptographic providers and replace it with the following list in the following order:\n\nsecurity.provider.1=com.ibm.crypto.fips.provider.IBMJCEFIPS\nsecurity.provider.2=com.ibm.jsse2.IBMJSSEProvider2\nsecurity.provider.3=com.ibm.crypto.provider.IBMJCE\nsecurity.provider.4=com.ibm.security.jgss.IBMJGSSProvider\nsecurity.provider.5=com.ibm.security.cert.IBMCertPath\nsecurity.provider.6=com.ibm.security.sasl.IBMSASL\nsecurity.provider.7=com.ibm.xml.crypto.IBMXMLCryptoProvider\nsecurity.provider.8=com.ibm.xml.enc.IBMXMLEncProvider\nsecurity.provider.9=org.apache.harmony.security.provider.PolicyProvider\nsecurity.provider.10=com.ibm.security.jgss.mech.spnego.IBMSPNEGO"
+            "check-content": "There are two ways to meet this requirement. Only one method is required.\n\nIf IBM JDK 8 is installed and configured to run with WebSphere Liberty, proceed with method (I).\n\nIf IBM Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty, proceed with method (II). Currently IBM Semeru supports FIPS on RedHat Enterprise Linux.\n\nMethod (I) IBM JDK 8 is configured to run with WebSphere Liberty:\n\n1. Review the ${server.config.dir}/jvm.options file. Verify FIPS is in use by checking the following lines:\n \nDcom.ibm.jsse2.usefipsprovider=true \nDcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS\n\nIf the properties are not set as shown in the ${server.config.dir}/jvm.options file, this is a finding.\n\n2. Open ${JAVA_HOME}/jre/lib/security/java.security file. Locate the list of cryptographic providers and confirm the following entries in the provider list:\n\ncom.ibm.crypto.plus.provider.IBMJSSEProvider2\ncom.ibm.crypto.plus.provider.IBMJCEPlusFIPS \ncom.ibm.crypto.plus.provider.IBMJCEPlus\ncom.ibm.crypto.plus.provider.IBMJCE\n\nIf the entries are not set as shown in the ${JAVA_HOME}/jre/lib/security/java.security file, this is a finding.\n\n\nMethod (II) Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty. Requires RedHat Enterprise Linux as the Host Operating System.\n\n1. Run the following command on the RedHat Enterprise Linux. Verify FIPS mode is enabled. \n# fips-mode-setup --check\nIf FIPS mode is not enabled, this is a finding.\n \n2. Review the ${server.config.dir}/jvm.options file. Verify \"semeru.fips\" property is set to true. \nDsemeru.fips=true\nIf the property is not set as shown in the ${server.config.dir}/jvm.options file, this is a finding.\n\n3. Confirm NSS packages are installed by running \"# dnf install nss\" in a terminal.\n\n# dnf install nss\nUpdating Subscription Management repositories.\nLast metadata expiration check: 0:56:30 ago on Wed 13 Sep 2023 07:29:35 AM PDT.\nPackage nss-3.79.0-11.el8_7.x86_64 is already installed.\nDependencies resolved.\nNothing to do.\nComplete!\n\nIf the command does not return output stating NSS is installed, this is a finding.\n\n4. Confirm NSS Database has the keystore imported by running \"# certutil -L -d /etc/pki/nssdb\" in a terminal. \n\n# certutil -L -d /etc/pki/nssdb\nCertificate Nickname                                         Trust Attributes\n                                                             SSL,S/MIME,JAR/XPI\ndefault                                                      CTu,Cu,Cu\n\nIf the command does not return the results as shown, this is a finding.\n\n5. Review the ${server.config.dir}/server.xml and confirm the following entries:\n\nname = NSS-FIPS\nlibrary = /usr/lib64/libsoftokn3.so\nslot = 3\nshowInfo = true\n\nIf the entries are not set as shown in the ${server.config.dir}/server.xml file, this is a finding.\n\n6. Review the ${server.config.dir}/server.xml file with the following steps:\n\n6.1 Locate <ssl> configuration that is specifying the default SSL configuration for Liberty.\n6.2 Locate the \"keyStoreRef\" attribute in the <ssl> configuration and find the referenced <keyStore> configuration. \n6.3 Verify the \"provider\" attribute is set to either \"SunPKCS11-NSS-FIPS\" or \"PKCS11-NSS-FIPS\" in the <keyStore> configuration. \n6.4 Verify the \"type\" attribute is set to \"PKCS11\".\n6.5 Verify the \"fileBased\" attribute is set to \"false\".\n6.6 Find the \"location\" attribute for the configuration file of NSS keystore database (In the example below, it is \"/tmp/pkcs11cfg.cfg\").\n6.7 Verify the file is in a location that is accessible to Liberty.\n\nSnippet of server.xml:\n<ssl id=\"defaultSSLConfig\" keyStoreRef=\"defaultKeyStore\" sslProtocol=\"TLSv1.2\" />\n<keyStore id=\"defaultKeyStore\" password=\"{xor}Lz4sLCgwLTsINis3\" location=\"/tmp/pkcs11cfg.cfg\" type=\"PKCS11\" fileBased=\"false\" provider=\"SunPKCS11-NSS-FIPS\" />\n\nIf the entries are not set as shown in the ${server.config.dir}/server.xml file, this is a finding."
           }
         }
       },
@@ -1996,7 +1996,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250340r1015471_rule",
+          "+@id": "SV-250340r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000720",
@@ -2246,7 +2246,7 @@
         "title": "SRG-APP-000428-AS-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250346r961599_rule",
+          "+@id": "SV-250346r1067567_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001050",

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-07"
+      "+@date": "2025-03-04"
     },
     "title": "z/OS Quest NC-Pass for RACF Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -298,12 +298,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224523r855191_rule",
+          "+@id": "SV-224523r1070194_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNCPR000",
           "title": "Quest NC-Pass installation data sets will be properly protected.",
-          "description": "<VulnDiscussion>Quest NC-Pass installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Quest NC-Pass installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS Quest NC-Pass for RACF",
             "publisher": "DISA",
@@ -321,7 +321,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -330,19 +330,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that WRITE and/or greater access to Quest NC-Pass installation data sets is limited to System Programmers only, and all WRITE and/or greater access is logged.  READ access can be given to all authorized users.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged.  He will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be:\nSYS2.NCPASS.\nSYS3.NCPASS. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nad 'SYS2.NCPASS.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('Quest NC-Pass Install DS')\npe 'SYS2.NCPASS.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS2.NCPASS.**' id(<audtaudt>) acc(r)\npe 'SYS2.NCPASS.**' id(*) acc(r)\n\nad 'SYS3.NCPASS.**' uacc(none) owner(sys3) -\n\taudit(success(update) failures(read)) -\n\tdata('Quest NC-Pass Install DS')\npe 'SYS3.NCPASS.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS3.NCPASS.**' id(<audtaudt>) acc(r)\npe 'SYS3.NCPASS.**' id(*) acc(r)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26194r520800_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to Quest NC-Pass installation data sets is limited to system programmers only, and all WRITE and/or greater access is logged. READ access can be given to all authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be:\nSYS2.NCPASS.\nSYS3.NCPASS. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nad 'SYS2.NCPASS.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('Quest NC-Pass Install DS')\npe 'SYS2.NCPASS.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS2.NCPASS.**' id(<audtaudt>) acc(r)\npe 'SYS2.NCPASS.**' id(*) acc(r)\n\nad 'SYS3.NCPASS.**' uacc(none) owner(sys3) -\n\taudit(success(update) failures(read)) -\n\tdata('Quest NC-Pass Install DS')\npe 'SYS3.NCPASS.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS3.NCPASS.**' id(<audtaudt>) acc(r)\npe 'SYS3.NCPASS.**' id(*) acc(r)\n\nsetr generic(dataset) refresh",
+            "+@fixref": "F-26194r1070193_fix"
           },
           "fix": {
-            "+@id": "F-26194r520800_fix"
+            "+@id": "F-26194r1070193_fix"
           },
           "check": {
-            "+@system": "C-26206r520799_chk",
+            "+@system": "C-26206r1070192_chk",
             "check-content-ref": {
               "+@href": "zOS_Quest_NC-Pass_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NCPASRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNCP0000)\n\nVerify that the accesses to the Quest NC-Pass installation data sets are properly restricted.  If the following guidance is true, this is not a finding.\n \n___\tThe RACF data set rules for the data sets restricts READ access to all authorized users.\n\n___\tThe RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___\tThe RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access is logged.\n\n___\tThe RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NCPASRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNCP0000)\n\nVerify that the accesses to the Quest NC-Pass installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set rules for the data sets restricts READ access to all authorized users.\n\nThe RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access is logged.\n\nThe RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -351,7 +351,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224524r868515_rule",
+          "+@id": "SV-224524r958616_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNCPR001",
@@ -400,12 +400,12 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224525r855192_rule",
+          "+@id": "SV-224525r1070200_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNCPR020",
           "title": "Quest NC-Pass will be used by Highly-Sensitive users.",
-          "description": "<VulnDiscussion>DISA has directed that Quest NC-Pass extended authentication be implemented on all domains. All users with update and alter access to sensitive system-level data sets and resources, or who possess special security privileges, are required to use NC-Pass for extended authentication.  Typical personnel required to use NC-Pass include, but are not limited to, systems programming, security, operations, network/communications, storage management, and production control.\n\nImproper enforcement of extended authentication through NC-Pass could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DISA has directed that Quest NC-Pass extended authentication be implemented on all domains. All users with update and alter access to sensitive system-level data sets and resources, or who possess special security privileges, are required to use NC-Pass for extended authentication. Typical personnel required to use NC-Pass include, but are not limited to, systems programming, security, operations, network/communications, storage management, and production control.\n\nImproper enforcement of extended authentication through NC-Pass could potentially compromise the operating system, Access Control Program (ACP), and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS Quest NC-Pass for RACF",
             "publisher": "DISA",
@@ -423,28 +423,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002234",
+              "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that sensitive users are properly validated to Quest NC-Pass.\n\nNOTE:\tSensitive users include systems programming personnel, security personnel, and other staff (e.g., DASD management, operations, auditors, technical support, etc.) with access to sensitive resources (e.g., operator commands, ACP privileges, etc.) that can modify the operating system and system software, and review/modify the security environment.\n\nEnsure SECURID is defined to RACF.  Use the following RACF AddGroup command:\n\nAG SECURID SUPGROUP(ADMIN) OWNER(ADMIN)\n\nEnsure sensitive users that require NC-Pass validation is connected to the SECURID group.  Use the following command:\n\nCO userid GROUP(SECURID) OWNER(SECURID)",
-            "+@fixref": "F-26196r520806_fix"
+            "+content": "The ISSO will ensure that sensitive users are properly validated to Quest NC-Pass.\n\nNote:\tSensitive users include systems programming personnel, security personnel, and other staff (e.g., DASD management, operations, auditors, technical support, etc.) with access to sensitive resources (e.g., operator commands, ACP privileges, etc.) that can modify the operating system and system software, and review/modify the security environment.\n\nEnsure SECURID is defined to RACF. Use the following RACF AddGroup command:\n\nAG SECURID SUPGROUP(ADMIN) OWNER(ADMIN)\n\nEnsure sensitive users that require NC-Pass validation is connected to the SECURID group. Use the following command:\n\nCO userid GROUP(SECURID) OWNER(SECURID)",
+            "+@fixref": "F-26196r1070199_fix"
           },
           "fix": {
-            "+@id": "F-26196r520806_fix"
+            "+@id": "F-26196r1070199_fix"
           },
           "check": {
-            "+@system": "C-26208r520805_chk",
+            "+@system": "C-26208r1070198_chk",
             "check-content-ref": {
               "+@href": "zOS_Quest_NC-Pass_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following reports produced by the RACF Data Collection:\n\n-\tRACFCMDS.RPT(LISTUSER)\n-\tRACFCMDS.RPT(LISTGRP)\n\nIf the SECURID group is defined and all sensitive users are connected to the SECURID group, this is not a finding.\n\nNOTE:\tSensitive users include systems programming personnel, security personnel, and other staff (e.g., DASD management, operations, auditors, technical support, etc.) with access to sensitive resources (e.g., operator commands, ACP privileges, etc.) that can modify the operating system and system software, and review/modify the security environment."
+            "check-content": "Refer to the following reports produced by the RACF Data Collection:\n\n-\tRACFCMDS.RPT(LISTUSER)\n-\tRACFCMDS.RPT(LISTGRP)\n\nIf the SECURID group is defined and all sensitive users are connected to the SECURID group, this is not a finding.\n\nNote:\tSensitive users include systems programming personnel, security personnel, and other staff (e.g., DASD management, operations, auditors, technical support, etc.) with access to sensitive resources (e.g., operator commands, ACP privileges, etc.) that can modify the operating system and system software, and review/modify the security environment."
           }
         }
       },
@@ -453,7 +449,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224526r868521_rule",
+          "+@id": "SV-224526r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNCPR030",
@@ -502,7 +498,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224527r868527_rule",
+          "+@id": "SV-224527r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNCPR032",

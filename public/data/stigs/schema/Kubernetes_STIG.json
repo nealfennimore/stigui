@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2025-02-20"
     },
     "title": "Kubernetes Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -3589,7 +3589,7 @@
         "title": "SRG-APP-000023-CTR-000055",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242381r960768_rule",
+          "+@id": "SV-242381r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-K8-000220",
@@ -4018,7 +4018,7 @@
         "title": "SRG-APP-000033-CTR-000095",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242392r960792_rule",
+          "+@id": "SV-242392r1069461_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-K8-000380",
@@ -4036,19 +4036,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "On each Control Plane and Worker Node, run the command:\nps -ef | grep kubelet\n\nRemove the \"--authorization-mode\" option if present.\n\nNote the path to the config file (identified by --config).\n\nEdit the config file: \nIn the \"authorization\" section, set \"mode\" to \"Webhook\".\n\nRestart the kubelet service using the following command:\nsystemctl daemon-reload && systemctl restart kubelet",
-            "+@fixref": "F-45625r918154_fix"
+            "+content": "Edit the Kubernetes Kubelet service file in the --config directory on the Kubernetes Worker Node:\n\nSet the value of \"--authorization-mode\" to \"Webhook\" in KUBELET_SYSTEM_PODS_ARGS variable.\n\nRestart the kubelet service using the following command:\n\nsystemctl daemon-reload && systemctl restart kubelet",
+            "+@fixref": "F-45625r1069460_fix"
           },
           "fix": {
-            "+@id": "F-45625r918154_fix"
+            "+@id": "F-45625r1069460_fix"
           },
           "check": {
-            "+@system": "C-45667r918153_chk",
+            "+@system": "C-45667r1069459_chk",
             "check-content-ref": {
               "+@href": "Kubernetes_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "On each Control Plane and Worker Node, run the command:\nps -ef | grep kubelet\n\nIf the \"--authorization-mode\" option exists, this is a finding. \n\nNote the path to the config file (identified by --config).\n\nInspect the content of the config file:\nLocate the \"authorization\" section. If the field \"mode\" does not exist or is not set to \"Webhook\", this is a finding."
+            "check-content": "Run the following command on each Worker Node:\nps -ef | grep kubelet\nVerify that the --authorization-mode exists and is set to \"Webhook\".\n\nIf the --authorization-mode argument is not set to \"Webhook\" or doesn't exist, this is a finding."
           }
         }
       },
@@ -4213,12 +4213,12 @@
         "title": "SRG-APP-000033-CTR-000090",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242397r960792_rule",
+          "+@id": "SV-242397r1069464_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-K8-000440",
           "title": "The Kubernetes kubelet staticPodPath must not enable static pods.",
-          "description": "<VulnDiscussion>Allowing kubelet to set a staticPodPath gives containers with root access permissions to traverse the hosting filesystem. The danger comes when the container can create a manifest file within the /etc/kubernetes/manifests directory. When a manifest is created within this directory, containers are entirely governed by the Kubelet not the API Server. The container is not susceptible to admission control at all. Any containers or pods that are instantiated in this manner are called \"static pods\" and are meant to be used for pods such as the API server, scheduler, controller, etc., not workload pods that need to be governed by the API Server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Allowing kubelet to set a staticPodPath gives containers with root access permissions to traverse the hosting filesystem. The danger comes when the container can create a manifest file within the /etc/kubernetes/manifests directory. When a manifest is created within this directory, containers are entirely governed by the Kubelet not the API Server. The container is not susceptible to admission control at all. Any containers or pods instantiated in this manner are called \"static pods\" and are meant to be used for pods such as the API server, scheduler, controller, etc., not workload pods that need to be governed by the API Server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Kubernetes",
             "publisher": "DISA",
@@ -4231,19 +4231,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "On each Control Plane and Worker node, run the command:\nps -ef | grep kubelet\n\nNote the path to the config file (identified by --config).\n\nEdit the Kubernetes kubelet file in the --config directory on the Kubernetes Control Plane and Worker nodes. Remove the setting \"staticPodPath\".\n\nRestart the kubelet service using the following command:\nsystemctl daemon-reload && systemctl restart kubelet",
-            "+@fixref": "F-45630r927092_fix"
+            "+content": "1. Remove staticPodPath setting on Kubernetes worker nodes:\n\na. On each Worker node, run the command:\n    ps -ef | grep kubelet\n\nb. Note the path to the config file (identified by --config).\n\nc. Edit the Kubernetes kubelet file in the --config directory on the Worker nodes. Remove the setting \"staticPodPath\".\n\nd. Restart the kubelet service using the following command:\n    systemctl daemon-reload && systemctl restart kubelet\n\n2. Remove Kubelet Systemd Service Arguments:\n\na. Modify the systemd Service File. Run the command:\n    sudo systemctl edit --full kubelet\n\n(Example Return:ExecStart=/usr/bin/kubelet --pod-manifest-path=/etc/kubernetes/manifests)\n\nb. Find and remove --pod-manifest-path.\n\nc. Save and exit the editor.\n\nd. Restart the kubelet service using the following command:\n    systemctl daemon-reload && systemctl restart kubelet",
+            "+@fixref": "F-45630r1069463_fix"
           },
           "fix": {
-            "+@id": "F-45630r927092_fix"
+            "+@id": "F-45630r1069463_fix"
           },
           "check": {
-            "+@system": "C-45672r927091_chk",
+            "+@system": "C-45672r1069462_chk",
             "check-content-ref": {
               "+@href": "Kubernetes_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ensure that Kubernetes static PodPath is not enabled on each Control Plane and Worker node.\n\nOn the Control Plane and Worker nodes, run the command:\nps -ef | grep kubelet\n\nNote the path to the config file (identified by --config).\n\nRun the command:\ngrep -i staticPodPath <path_to_config_file>\n\nIf any of the Control Plane and Worker nodes return a value for \"staticPodPath\", this is a finding."
+            "check-content": "If staticPodPath is missing in the Kubelet config and in the systemd arguments, the node does not support static pods.\n\n1. To find the staticPodPath setting on Kubernetes worker nodes, follow these steps:\n\n a. On the Worker nodes, run the command:\n     ps -ef | grep kubelet\n\nb. Note the path to the Kubelet configuration file (identified by --config).\n    (ls /var/lib/kubelet/config.yaml is the common location.)\n\nc. Run the command:\n    grep -i staticPodPath <path_to_config_file>\n\nIf any of the Worker nodes return a value for \"staticPodPath\", this is a finding.\n\nIf staticPodPath is not in the config file, check if it is set as a command-line argument.\n\n2. Check Kubelet Systemd Service Arguments.\n\na. Run the following command to check the Kubelet service:\n    sudo systemctl cat kubelet | grep pod-manifest-path\n\nIf there is no output, staticPodPath is not set in systemd arguments.\n\nIf there is any return, this is a finding.\n\n(Example Return:ExecStart=/usr/bin/kubelet --pod-manifest-path=/etc/kubernetes/manifests\nThis means static pods are defined in /etc/kubernetes/manifests.)"
           }
         }
       },
@@ -4733,7 +4733,7 @@
         "title": "SRG-APP-000142-CTR-000325",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242410r1007474_rule",
+          "+@id": "SV-242410r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-000920",
@@ -4772,7 +4772,7 @@
         "title": "SRG-APP-000142-CTR-000325",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242411r1007477_rule",
+          "+@id": "SV-242411r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-000930",
@@ -4811,7 +4811,7 @@
         "title": "SRG-APP-000142-CTR-000330",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242412r1007480_rule",
+          "+@id": "SV-242412r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-000940",
@@ -4850,7 +4850,7 @@
         "title": "SRG-APP-000142-CTR-000325",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242413r960966_rule",
+          "+@id": "SV-242413r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-000950",
@@ -4889,7 +4889,7 @@
         "title": "SRG-APP-000142-CTR-000330",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242414r960966_rule",
+          "+@id": "SV-242414r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-000960",
@@ -4928,12 +4928,12 @@
         "title": "SRG-APP-000171-CTR-000435",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242415r1015300_rule",
+          "+@id": "SV-242415r1069466_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-K8-001160",
           "title": "Secrets in Kubernetes must not be stored as environment variables.",
-          "description": "<VulnDiscussion>Secrets, such as passwords, keys, tokens, and certificates should not be stored as environment variables. These environment variables are accessible inside Kubernetes by the \"Get Pod\" API call, and by any system, such as CI/CD pipeline, which has access to the definition file of the container. Secrets must be mounted from files or stored within password vaults.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Secrets, such as passwords, keys, tokens, and certificates must not be stored as environment variables. These environment variables are accessible inside Kubernetes by the \"Get Pod\" API call, and by any system, such as CI/CD pipeline, which has access to the definition file of the container. Secrets must be mounted from files or stored within password vaults.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Kubernetes",
             "publisher": "DISA",
@@ -4959,12 +4959,12 @@
             "+@id": "F-45648r712600_fix"
           },
           "check": {
-            "+@system": "C-45690r863838_chk",
+            "+@system": "C-45690r1069465_chk",
             "check-content-ref": {
               "+@href": "Kubernetes_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "On the Kubernetes Control Plane, run the following command:\nkubectl get all -o jsonpath='{range .items[?(@..secretKeyRef)]} {.kind} {.metadata.name} {\"\\n\"}{end}' -A\n\nIf any of the values returned reference environment variables, this is a finding."
+            "check-content": "Follow these steps to check, from the Kubernetes control plane, if secrets are stored as environment variables.\n\n1. Find All Pods Using Secrets in Environment Variables.\n\nTo list all pods using secrets as environment variables, execute:\n\nkubectl get pods --all-namespaces -o yaml | grep -A5 \"secretKeyRef\"\n\nIf any of the values returned reference environment variables, this is a finding.\n\n2. Check Environment Variables in a Specific Pod.\n\nTo check if a specific pod is using secrets as environment variables, execute:\n\nkubectl get pods -n <namespace>\n(Replace <namespace> with the actual namespace, or omit -n <namespace> to check in the default namespace.)\nkubectl describe pod <pod-name> -n <namespace> | grep -A5 \"Environment:\"\n\nIf secrets are used, output like the following will be displayed:\n\nEnvironment:\n  SECRET_USERNAME:   <set from secret: my-secret key: username>\n  SECRET_PASSWORD:   <set from secret: my-secret key: password>\n\nIf the output is similar to this, the pod is using Kubernetes secrets as environment variables, and this is a finding.\n\n3. Check the Pod YAML for Secret Usage.\n\nTo check the full YAML definition for environment variables, execute:\n\nkubectl get pod <pod-name> -n <namespace> -o yaml | grep -A5 \"env:\"\n\nExample output:\nyaml\nCopyEdit\nenv:\n  - name: SECRET_USERNAME\n    valueFrom:\n      secretKeyRef:\n        name: my-secret\n        key: username\n\nThis means the pod is pulling the secret named my-secret and setting SECRET_USERNAME from its username key.\n\nIf the pod is pulling a secret and setting an environment variable in the \"env:\", this is a finding.\n\n4. Check Secrets in a Deployment, StatefulSet, or DaemonSet.\n\nIf the pod is managed by a Deployment, StatefulSet, or DaemonSet, check their configurations:\n\nkubectl get deployment <deployment-name> -n <namespace> -o yaml | grep -A5 \"env:\"\n\nor\n\nFor all Deployments in all namespaces:\n\nkubectl get deployments --all-namespaces -o yaml | grep -A5 \"env:\"\n\nIf the pod is pulling a secret and setting an environment variable in the \"env:\", this is a finding.\n\n5. Check Environment Variables Inside a Running Pod.\n\nIf needed, check the environment variables inside a running pod:\n\nkubectl exec -it <pod-name> -n <namespace> -- env | grep SECRET\n\nIf any of the values returned reference environment variables, this is a finding."
           }
         }
       },
@@ -5012,7 +5012,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242418r961110_rule",
+          "+@id": "SV-242418r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001400",
@@ -5051,7 +5051,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242419r961110_rule",
+          "+@id": "SV-242419r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001410",
@@ -5090,7 +5090,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242420r961110_rule",
+          "+@id": "SV-242420r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001420",
@@ -5129,7 +5129,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242421r961110_rule",
+          "+@id": "SV-242421r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001430",
@@ -5168,7 +5168,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242422r961110_rule",
+          "+@id": "SV-242422r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001440",
@@ -5207,7 +5207,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242423r961110_rule",
+          "+@id": "SV-242423r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001450",
@@ -5246,7 +5246,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242424r961110_rule",
+          "+@id": "SV-242424r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001460",
@@ -5285,7 +5285,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242425r961110_rule",
+          "+@id": "SV-242425r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001470",
@@ -5324,7 +5324,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242426r961110_rule",
+          "+@id": "SV-242426r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001480",
@@ -5363,7 +5363,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242427r961110_rule",
+          "+@id": "SV-242427r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001490",
@@ -5402,7 +5402,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242428r961110_rule",
+          "+@id": "SV-242428r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001500",
@@ -5441,7 +5441,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242429r961110_rule",
+          "+@id": "SV-242429r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001510",
@@ -5480,7 +5480,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242430r961110_rule",
+          "+@id": "SV-242430r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001520",
@@ -5519,7 +5519,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242431r961110_rule",
+          "+@id": "SV-242431r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001530",
@@ -5558,7 +5558,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242432r961110_rule",
+          "+@id": "SV-242432r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001540",
@@ -5597,7 +5597,7 @@
         "title": "SRG-APP-000219-CTR-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242433r961110_rule",
+          "+@id": "SV-242433r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001550",
@@ -6767,7 +6767,7 @@
         "title": "SRG-APP-000190-CTR-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-245541r961068_rule",
+          "+@id": "SV-245541r1069469_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-K8-001300",
@@ -6785,19 +6785,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "On the Control Plane, run the command:\nps -ef | grep kubelet\n\nRemove the \"--streaming-connection-idle-timeout\" option if present.\n\nNote the path to the config file (identified by --config).\n\nEdit the Kubernetes Kubelet file in the --config directory on the Kubernetes Control Plane:\n\nSet the argument \"streamingConnectionIdleTimeout\" to a value of \"5m\". \n\nReset the kubelet service using the following command:\nservice kubelet restart",
-            "+@fixref": "F-48771r918209_fix"
+            "+content": "Follow these steps to configure streaming-connection-idle-timeout:\n1. On the Control Plane, run the command:\nps -ef | grep kubelet\n\nRemove the \"--streaming-connection-idle-timeout\" option if present.\n\nNote the path to the config file (identified by --config).\n\n2. Edit the Kubernetes Kubelet file in the --config directory on the Kubernetes Control Plane:\n\nSet the argument \"streamingConnectionIdleTimeout\" to a value of \"5m\".",
+            "+@fixref": "F-48771r1069468_fix"
           },
           "fix": {
-            "+@id": "F-48771r918209_fix"
+            "+@id": "F-48771r1069468_fix"
           },
           "check": {
-            "+@system": "C-48816r918208_chk",
+            "+@system": "C-48816r1069467_chk",
             "check-content-ref": {
               "+@href": "Kubernetes_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "On the Control Plane, run the command:\nps -ef | grep kubelet\n\nIf the \"--streaming-connection-idle-timeout\" option exists, this is a finding.\n\nNote the path to the config file (identified by --config).\n\nRun the command:\ngrep -i streamingConnectionIdleTimeout <path_to_config_file>\n\nIf the setting \"streamingConnectionIdleTimeout\" is set to less than \"5m\" or is not configured, this is a finding."
+            "check-content": "Follow these steps to check streaming-connection-idle-timeout:\n\n1. On the Control Plane, run the command:\n\nps -ef | grep kubelet\n\nIf the \"--streaming-connection-idle-timeout\" option exists, this is a finding.\n\nNote the path to the config file (identified by --config).\n\n2. Run the command:\n\ngrep -i streamingConnectionIdleTimeout <path_to_config_file>\n\nIf the setting \"streamingConnectionIdleTimeout\" is set to less than \"5m\" or is not configured, this is a finding."
           }
         }
       },

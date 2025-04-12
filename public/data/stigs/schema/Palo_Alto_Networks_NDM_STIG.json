@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-04"
+      "+@date": "2025-03-12"
     },
     "title": "Palo Alto Networks NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -71,10 +71,6 @@
           },
           {
             "+@idref": "V-228645",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-228646",
             "+@selected": "true"
           },
           {
@@ -221,10 +217,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-228646",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-228647",
             "+@selected": "true"
           },
@@ -365,10 +357,6 @@
           },
           {
             "+@idref": "V-228645",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-228646",
             "+@selected": "true"
           },
           {
@@ -515,10 +503,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-228646",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-228647",
             "+@selected": "true"
           },
@@ -659,10 +643,6 @@
           },
           {
             "+@idref": "V-228645",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-228646",
             "+@selected": "true"
           },
           {
@@ -809,10 +789,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-228646",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-228647",
             "+@selected": "true"
           },
@@ -953,10 +929,6 @@
           },
           {
             "+@idref": "V-228645",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-228646",
             "+@selected": "true"
           },
           {
@@ -1103,10 +1075,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-228646",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-228647",
             "+@selected": "true"
           },
@@ -1250,10 +1218,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-228646",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-228647",
             "+@selected": "true"
           },
@@ -1378,7 +1342,7 @@
         "title": "SRG-APP-000065-NDM-000214",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-228639r960840_rule",
+          "+@id": "SV-228639r1082941_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PANW-NM-000015",
@@ -1406,19 +1370,19 @@
             }
           ],
           "fixtext": {
-            "+content": "This should not be configured in Device >> Setup >> Management >> Authentication Settings; instead, an authentication profile should be configured with lockout settings of three failed attempts and a lockout time of zero minutes.\nGo to Device >> Authentication Profile\nSelect the configured authentication profile or select \"Add\" (in the bottom-left corner of the pane) to create a new one.\nIn the \"Authentication Profile\" field, enter the name of the authentication profile that will be used to control each person's authentication process.\nThe \"Lockout Time (min)\" field is the lockout duration; this must be set to \"0\".  This will keep the lockout in effect until it is manually unlocked.\nIn the \"Failed Attempts\" field, enter \"3\".\nSelect \"OK\".\n\nApply the authentication profile to the Administrator accounts.\nGo to Device >> Administrators\nSelect each configured account or select \"Add\" (in the bottom-left corner of the pane) to create a new one.\nIn the \"Authentication Profile\" field, enter the configured authentication profile.\nSelect \"OK\".\n\nThis authentication profile should not be applied to the emergency administration account since it has special requirements.\nCommit changes by selecting \"Commit\" in the upper-right corner of the screen.\nSelect \"OK\" when the confirmation dialog appears.",
-            "+@fixref": "F-30851r513523_fix"
+            "+content": "Configure the authentication profile associated with the account of last resort with lockout settings of three failed attempts, which is the only local login account.\n\n1. Go to Device >> Authentication Profile.\n2. Select the configured authentication profile or select \"Add\" (in the bottom-left corner of the pane) to create a new one.\n3. In the \"Authentication Profile\" field, enter the name of the authentication profile that will be used to control each person's authentication process.\n4. The \"Lockout Time (min)\" field is the lockout duration; this must be set to \"15\". \n5. In the \"Failed Attempts\" field, enter \"3\".\n6. Select \"OK\".",
+            "+@fixref": "F-30851r1082940_fix"
           },
           "fix": {
-            "+@id": "F-30851r513523_fix"
+            "+@id": "F-30851r1082940_fix"
           },
           "check": {
-            "+@system": "C-30874r513522_chk",
+            "+@system": "C-30874r1082939_chk",
             "check-content-ref": {
               "+@href": "Palo_Alto_Networks_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Go to Device >> Administrators\nIf there is no authentication profile configured for each account (aside from the emergency administration account), this is a finding.\n\nNote which authentication profile is used for each account.\n\nGo to Device >> Authentication Profile\nCheck the authentication profile used for each account (noted in the previous step)\n\nIf the \"Failed Attempts (#)\" field is not set to \"3\", this is a finding."
+            "check-content": "Go to Device >> Authentication Profile.\nCheck the authentication profile used for the local account used for the account of last resort.\n\nIf the \"Failed Attempts (#)\" field is not set to \"3\", this is a finding."
           }
         }
       },
@@ -1574,7 +1538,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-228645r960966_rule",
+          "+@id": "SV-228645r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PANW-NM-000046",
@@ -1615,59 +1579,6 @@
               "+@name": "M"
             },
             "check-content": "Go to Device >> Setup >> Services\nIn the \"Services\" window, view which services are configured.\nNote: DNS can be either \"Server\" or \"Proxy\"; both are allowed unless local policy declares otherwise.\nNote: The Palo Alto Networks security platform cannot be a DNS server, only a client or proxy.\n\nNTP is a necessary service.\nNote: The Palo Alto Networks security platform cannot be an NTP server, only a client.\n\nGo to Device >> Setup >> Management\nIn the \"Management Interface Settings\" window, view the enabled services.\nNote: Which management services are enabled.  HTTPS, SSH, ping, and SNMP, are normally allowed.\n  \nIf User-ID, User-ID Syslog Listener-SSL, User-ID Syslog Listener-UDP, or HTTP OCSP is present, verify with the ISSO that this has been authorized.\nGo to Device >> Setup >> Operations tab>> Miscellaneous\nSelect SNMP Setup.\nIn the \"SNMP Setup\" window, check if SNMP V3 is selected.\nIf unauthorized services are configured, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-228646",
-        "title": "SRG-APP-000516-NDM-000317",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-228646r961863_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "PANW-NM-000047",
-          "title": "The Palo Alto Networks security platform must uniquely identify and authenticate organizational administrators (or processes acting on behalf of organizational administrators).",
-          "description": "<VulnDiscussion>To assure accountability and prevent unauthenticated access, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Palo Alto Networks NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Palo Alto Networks NDM",
-            "identifier": "4232"
-          },
-          "ident": [
-            {
-              "+content": "SV-77209",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "V-62719",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-000366",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000764",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
-          "fixtext": {
-            "+content": "Create a separate administrative account for each person who needs access to the administrative or reporting functions of the firewall.\nGo to Device >> Administrators\nSelect \"Add\" (in the lower-left corner of the pane).\nComplete the required information;\nIn the \"Name\" field, enter the name of the Administrator.\nNote: That accounts must identify a single person; the only exception allowed is the emergency administration account.\n\nIn the \"Authentication Profile\" field, enter the name of the authentication profile that will be used to control that person's authentication process.\nFor the Role, select either \"Dynamic\" or \"Role Based\".\nIf selecting \"Dynamic\", then select the role assigned for this person; Administrators can be assigned one of these built-in roles: Superuser, Superuser (read-only), Device administrator, Device administrator (read-only), Virtual system administrator, and Virtual system administrator (read-only).\nIf \"Role Based\" is selected, then select one of the three pre-configured profiles (auditadmin, cryptoadmin, or securityadmin) or a custom profile.\nSelect \"OK\".\nCommit changes by selecting \"Commit\" in the upper-right corner of the screen.  Select \"OK\" when the confirmation dialog appears.",
-            "+@fixref": "F-30858r513542_fix"
-          },
-          "fix": {
-            "+@id": "F-30858r513542_fix"
-          },
-          "check": {
-            "+@system": "C-30881r513541_chk",
-            "check-content-ref": {
-              "+@href": "Palo_Alto_Networks_NDM_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Go to Device >> Administrators\nView the list of configured Administrators.\nIf there are any accounts other than the emergency administration account than does not uniquely identify an individual, this is a finding.\n\nIf there is not an authentication profile for each account (with the exception of the emergency administration account), this is a finding."
           }
         }
       },
@@ -1990,7 +1901,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-228654r1018779_rule",
+          "+@id": "SV-228654r1043189_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PANW-NM-000059",
@@ -2842,7 +2753,7 @@
         "title": "SRG-APP-000516-NDM-000317",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-228673r997692_rule",
+          "+@id": "SV-228673r1082978_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PANW-NM-000136",
@@ -2874,19 +2785,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The device allows three different authentication protocols; RADIUS, LDAP, and Kerberos. In this explanation, LDAP is used. \nTo configure the Palo Alto Networks security platform to use an LDAP server, follow these steps:\nGo to Device >> Server-Profiles >> LDAP.\nSelect \"Add\" (lower left of window).\nPopulate the required fields.\nEnter the name of the profile in the \"Name\" field.\nIn the server box enter the name of the server in the \"Name\" field.\nEnter the IP Address of the server. \nEnter the Port number the firewall should use to connect to the LDAP server (default=389 for LDAP; 636 for LDAP over SSL). \nEnter the LDAP Domain name to prepend to all objects learned from the server. The value entered here depends on the specific deployment. If using Active Directory, enter the NetBIOS domain name; not a FQDN (for example, enter acme, not acme.com). Note that if collecting data from multiple domains, it is necessary to create separate server profiles. If using a global catalog server, leave this field blank.\nSelect the Type of LDAP server connecting to. The correct LDAP attributes in the group mapping settings will automatically be populated based on the selection.\nIn the Base field, select the DN that corresponds to the point in the LDAP tree where the firewall is to begin its search for user and group information.\nSelect (check) the SSL checkbox.\nSelect \"OK\".\n\nTo create an Authentication Profile using the newly created LDAP server, follow these steps:\nGo to Device >> Authentication Profile.\nSelect \"Add\" (lower left of window).\nPopulate the required fields as needed.\nIn the Authentication field, select \"LDAP\".\nIn the Server Profile field, select the configured LDAP server profile.\nIn the Login Attribute field, enter “sAMAccountName”. \nSelect \"OK\".\n\nApply the authentication profile to the Administrator accounts.\nGo to Device >> Administrators.\nSelect each configured account or select \"Add\" (in the bottom-left corner of the pane) to create a new one.\nIn the \"Authentication Profile\" field, enter the configured LDAP authentication profile.\nSelect \"OK\".\nNote: The name of the administrator must match the name of the user in the LDAP server.\nNote: The authentication profile should not be applied to the emergency administration account since it has special requirements.\nCommit changes by selecting \"Commit\" in the upper-right corner of the screen.\nSelect \"OK\" when the confirmation dialog appears.\n\nNote that the emergency administration account is the only account that is configured locally on the device itself.",
-            "+@fixref": "F-30885r997692_fix"
+            "+content": "The device allows three different authentication protocols: RADIUS, LDAP, and Kerberos. In this explanation, LDAP is used. \n\nTo configure the Palo Alto Networks security platform to use an LDAP server, follow these steps:\n1. Go to Device >> Server-Profiles >> LDAP.\n2. Select \"Add\" (lower left of window).\n3. Populate the required fields.\na. Enter the name of the profile in the \"Name\" field.\nb. In the server box enter the name of the server in the \"Name\" field.\nc. Enter the IP Address of the server. \nd. Enter the Port number the firewall should use to connect to the LDAP server (default=389 for LDAP; 636 for LDAP over SSL). \ne. Enter the LDAP Domain name to prepend to all objects learned from the server. The value entered here depends on the specific deployment. If using Active Directory, enter the NetBIOS domain name; not an FQDN (for example, enter acme, not acme.com). Note that if collecting data from multiple domains, it is necessary to create separate server profiles. If using a global catalog server, leave this field blank.\n4. Select the Type of LDAP server that will be connected. The correct LDAP attributes in the group mapping settings will automatically be populated based on the selection.\n5. In the Base field, select the DN that corresponds to the point in the LDAP tree where the firewall is to begin its search for user and group information.\n6. Select the SSL checkbox.\n7. Select \"OK\".\n\nTo create an Authentication Profile using the newly created LDAP server, follow these steps:\n1. Go to Device >> Authentication Profile.\n2. Select \"Add\" (lower left of window).\n3. Populate the required fields as needed.\na. In the Authentication field, select \"LDAP\".\nb. In the Server Profile field, select the configured LDAP server profile.\nc. In the Login Attribute field, enter “sAMAccountName”. \n4. Select \"OK\".\n\nApply the authentication profile to the Administrator accounts.\n1. Go to Device >> Administrators.\n2. Select each configured account or select \"Add\" (in the bottom-left corner of the pane) to create a new one.\n3. In the \"Authentication Profile\" field, enter the configured LDAP authentication profile.\n4. Select \"OK\".\n\nNote: The name of the administrator must match the name of the user in the LDAP server.\nNote: The authentication profile must not be applied to the emergency administration account since it has special requirements.\nCommit changes by selecting \"Commit\" in the upper-right corner of the screen.\nSelect \"OK\" when the confirmation dialog appears.\n\nNote that the emergency administration account is the only account that is configured locally on the device itself.",
+            "+@fixref": "F-30885r1082978_fix"
           },
           "fix": {
-            "+@id": "F-30885r997692_fix"
+            "+@id": "F-30885r1082978_fix"
           },
           "check": {
-            "+@system": "C-30908r997691_chk",
+            "+@system": "C-30908r1082945_chk",
             "check-content-ref": {
               "+@href": "Palo_Alto_Networks_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ask the Administrator which form of centralized authentication server is being used.\nNavigate to the appropriate window to view the configured server(s). \nFor RADIUS, go to Device >> Server Profiles >> RADIUS.\nFor LDAP, go to Device >> Server Profiles >> LDAP.\nFor Kerberos, go to Device >> Server Profiles >> Kerberos.\nIf there are no servers configured in the window that match the specified form of centralized authentication, this is a finding.\n\nGo to Device >> Authentication Profile.\nIf no authentication profile exists that match the specified form of centralized authentication, this is a finding.\n\nGo to Device >> Administrators.\nView each Administrator's account.\nIf no authentication profile exists that match the specified form of centralized authentication, this is a finding. The only exception is the emergency administration account."
+            "check-content": "Ask the administrator which form of centralized authentication server is being used. This requirement is not applicable to the local account of last resort.\n\nNavigate to the appropriate window to view the configured server(s). \nFor RADIUS, go to Device >> Server Profiles >> RADIUS.\nFor LDAP, go to Device >> Server Profiles >> LDAP.\nFor Kerberos, go to Device >> Server Profiles >> Kerberos.\n\nIf there are no servers configured in the window that match the specified form of centralized authentication, this is a finding."
           }
         }
       },
@@ -3148,12 +3059,12 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268323r1018733_rule",
+          "+@id": "SV-268323r1084266_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PANW-NM-000048",
           "title": "The Palo Alto device must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
-          "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit should be added to the envelope as a record. Administrators should secure the credentials and disable the root account (if possible) when not needed for system administration functions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit must be added to the envelope as a record. Administrators must secure the credentials and disable the root account (if possible) when not needed for system administration functions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Palo Alto Networks NDM",
             "publisher": "DISA",
@@ -3172,19 +3083,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Navigate to Device >> Authentication Profile.\nRemove any unauthorized or unnecessary authentication profiles for users other than the account of last resort.\nSelect \"OK\".",
-            "+@fixref": "F-72248r1018732_fix"
+            "+content": "Remove local users other than the designated account of last resort.\n\nUsing the Console UI:\nNavigate to Device >> Administrators.\nSelect and delete local users other than the account of last resort.\n\nNote: To protect against brute-force attacks, delete the default admin account by creating a new superuser administrator account, logging out, and logging back in using the new account.",
+            "+@fixref": "F-72248r1084265_fix"
           },
           "fix": {
-            "+@id": "F-72248r1018732_fix"
+            "+@id": "F-72248r1084265_fix"
           },
           "check": {
-            "+@system": "C-72345r1018731_chk",
+            "+@system": "C-72345r1082942_chk",
             "check-content-ref": {
               "+@href": "Palo_Alto_Networks_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Navigate to Device >> Administrators.\n\nIf there is an authentication profile/user account configured (and enabled) for any account other than the emergency administration account, this is a finding."
+            "check-content": "Navigate to Device >> Administrators.\nReview the user list.\n\nIf there is an authentication profile/user account configured (and enabled) for any account other than the emergency administration account, this is a finding."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2025-03-05"
     },
     "title": "Splunk Enterprise 8.x for Linux Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1414,7 +1414,7 @@
         "title": "SRG-APP-000295-AU-000190",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251657r1015829_rule",
+          "+@id": "SV-251657r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SPLK-CL-000010",
@@ -2334,7 +2334,7 @@
         "title": "SRG-APP-000148-AU-002270",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251679r960969_rule",
+          "+@id": "SV-251679r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SPLK-CL-000320",
@@ -2686,7 +2686,7 @@
         "title": "SRG-APP-000174-AU-002570",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251687r1015836_rule",
+          "+@id": "SV-251687r1043190_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SPLK-CL-000400",
@@ -2770,7 +2770,7 @@
         "title": "SRG-APP-000610-AU-000050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251689r961896_rule",
+          "+@id": "SV-251689r1082345_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SPLK-CL-000430",
@@ -2788,19 +2788,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Edit the following files in the $SPLUNK_HOME/etc/system/local folder:\n\ninputs.conf   : Fix is applicable to the indexer which may be a separate machine in a distributed environment.\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\noutputs.conf  : Check is applicable to the forwarder which is always a separate machine in the environment. \n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nserver.conf\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\nsslVersionsForClient = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256:AES256-GCM-SHA384:AES128-GCM-SHA256:AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nweb.conf : Check is applicable to search head or deployment server which may be a separate machine in a distributed environment.\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nCheck the following file in the /etc/openldap folder:\n\nldap.conf\n\nCheck for the following lines, set to match the settings below:\n\n#TLS_PROTOCOL_MIN: 3.1 for TLSv1.0, 3.2 for TLSv1.1, 3.3 for TLSv1.2.\nTLS_PROTOCOL_MIN 3.3\nTLS_CIPHER_SUITE ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\n\nNote: Splunk Enterprise must operate in FIPS mode to limit the algorithms allowed.",
-            "+@fixref": "F-55081r819129_fix"
+            "+content": "Edit the following files in the $SPLUNK_HOME/etc/system/local folder:\n\ninputs.conf: Fix is applicable to the indexer, which may be a separate machine in a distributed environment.\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\noutputs.conf: Check is applicable to the forwarder which is always a separate machine in the environment. \n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nserver.conf\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\nsslVersionsForClient = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES256-GCM-SHA384:AES128-GCM-SHA256:AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nweb.conf: Check is applicable to search head or deployment server, which may be a separate machine in a distributed environment.\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or be removed:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nCheck the following file in the /etc/openldap folder:\n\nldap.conf\n\nCheck for the following lines, set to match the settings below:\n\n#TLS_PROTOCOL_MIN: 3.1 for TLSv1.0, 3.2 for TLSv1.1, 3.3 for TLSv1.2.\nTLS_PROTOCOL_MIN 3.3\nTLS_CIPHER_SUITE ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\n\nNote: Splunk Enterprise must operate in FIPS mode to limit the algorithms allowed.",
+            "+@fixref": "F-55081r1082344_fix"
           },
           "fix": {
-            "+@id": "F-55081r819129_fix"
+            "+@id": "F-55081r1082344_fix"
           },
           "check": {
-            "+@system": "C-55127r819128_chk",
+            "+@system": "C-55127r1082343_chk",
             "check-content-ref": {
               "+@href": "Splunk_Enterprise_8.x_for_Linux_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Examine the configuration.\n\nCheck the following files in the $SPLUNK_HOME/etc/system/local folder:\n\ninputs.conf   : Check is applicable to the indexer which may be a separate machine in a distributed environment.\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\noutputs.conf  : Check is applicable to the forwarder which is always a separate machine in the environment. \n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nserver.conf\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\nsslVersionsForClient = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256:AES256-GCM-SHA384:AES128-GCM-SHA256:AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nweb.conf : Check is applicable to search head or deployment server which may be a separate machine in a distributed environment.\n\nCheck for the following lines, if they do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\nciphersuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nCheck the following file in the /etc/openldap folder:\n\nldap.conf\n\nCheck for the following lines, they must match the settings below or it is a finding:\n\n#TLS_PROTOCOL_MIN: 3.1 for TLSv1.0, 3.2 for TLSv1.1, 3.3 for TLSv1.2.\nTLS_PROTOCOL_MIN 3.3\nTLS_CIPHER_SUITE ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-\nSHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-\nAES128-SHA256:ECDHE-RSA-AES128-SHA256\n\nNote: Splunk Enterprise must operate in FIPS mode to limit the algorithms allowed."
+            "check-content": "Examine the configuration.\n\nCheck the following files in the $SPLUNK_HOME/etc/system/local folder:\n\ninputs.conf: Check is applicable to the indexer which may be a separate machine in a distributed environment.\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or this is a finding:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\noutputs.conf: Check is applicable to the forwarder, which is always a separate machine in the environment. \n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or this is a finding:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nserver.conf\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\nsslVersionsForClient = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:AES256-GCM-SHA384:AES128-GCM-SHA256:AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nweb.conf: Check is applicable to search head or deployment server, which may be a separate machine in a distributed environment.\n\nIf the following lines do not exist, then the settings are compliant. If they exist, they must match the settings below or it is a finding:\n\nsslVersions = tls1.2\ncipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\necdhCurves = prime256v1, secp384r1, secp521r1\n\nCheck the following file in the /etc/openldap folder:\n\nldap.conf\n\nCheck for the following lines, they must match the settings below or it is a finding:\n\n#TLS_PROTOCOL_MIN: 3.1 for TLSv1.0, 3.2 for TLSv1.1, 3.3 for TLSv1.2.\nTLS_PROTOCOL_MIN 3.3\nTLS_CIPHER_SUITE ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256\n\nNote: Splunk Enterprise must operate in FIPS mode to limit the algorithms allowed."
           }
         }
       },

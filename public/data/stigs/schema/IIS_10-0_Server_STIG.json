@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-10"
+      "+@date": "2025-02-11"
     },
     "title": "Microsoft IIS 10.0 Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1906,12 +1906,12 @@
         "title": "SRG-APP-000120-WSR-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218790r1022653_rule",
+          "+@id": "SV-218790r1067580_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000115",
           "title": "The log information from the IIS 10.0 web server must be protected from unauthorized modification or deletion.",
-          "description": "<VulnDiscussion>A major tool in exploring the website use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the System Administrator (SA) and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.\n\nSatisfies: SRG-APP-000120-WSR-000070, SRG-APP-000118-WSR-000068, SRG-APP-000118-WSR-000069</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A major tool in exploring the website use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the system administrator (SA) and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.\n\nSatisfies: SRG-APP-000120-WSR-000070, SRG-APP-000118-WSR-000068, SRG-APP-000118-WSR-000069</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Microsoft IIS 10.0 Server",
             "publisher": "DISA",
@@ -1941,12 +1941,12 @@
             "+@id": "F-20260r1022597_fix"
           },
           "check": {
-            "+@system": "C-20262r1022596_chk",
+            "+@system": "C-20262r1067579_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This check does not apply to service account IDs utilized by automated services necessary to process, manage, and store log files.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 web server name.\nClick the \"Logging\" icon.\nClick \"Browse\" and navigate to the directory where the log files are stored.\nRight-click the log file directory to review.\nClick \"Properties\".\nClick the \"Security\" tab.\nVerify log file access is restricted as follows. Otherwise, this is a finding.\nSYSTEM - Full Control\nAdministrators - Full Control\n\nNote:  A \"Web Administrators\", etc. type group that is an approved group of administrators is also allowed, and should be given \"Full Control\" permissions."
+            "check-content": "This check does not apply to service account IDs utilized by automated services necessary to process, manage, and store log files.\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nClick the \"Logging\" icon.\n\nClick \"Browse\" and navigate to the directory where the log files are stored.\n\nRight-click the log file directory to review.\n\nClick \"Properties\".\n\nClick the \"Security\" tab.\n\nVerify log file access is restricted as follows. Otherwise, this is a finding.\nSYSTEM - Full Control, This folder, subfolders and files\nAdministrators - Full Control, This folder, subfolders and files\n\nNote:  A \"Web Administrators\", etc., type group that is an approved group of administrators is also allowed, and must be given \"Full Control, This folder, subfolders and files\" permissions."
           }
         }
       },
@@ -2543,7 +2543,7 @@
         "title": "SRG-APP-000223-WSR-000011",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218804r1022654_rule",
+          "+@id": "SV-218804r1043180_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000134",
@@ -2592,7 +2592,7 @@
         "title": "SRG-APP-000223-WSR-000145",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218805r1022655_rule",
+          "+@id": "SV-218805r1067583_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000135",
@@ -2620,19 +2620,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nUnder the \"ASP.NET\" section, select \"Session State\".\n\nUnder \"Cookie Settings\", select the \"Use Cookies\" mode from the \"Mode:\" drop-down list.\n\nUnder \"Time-out (in minutes)\", enter a value of \"20 or less\".",
-            "+@fixref": "F-20275r928843_fix"
+            "+content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nUnder the \"ASP.NET\" section, select \"Session State\".\n\nUnder \"Cookie Settings\", select the \"Use Cookies\" mode from the \"Mode:\" drop-down list.\n\nUnder \"Time-out (in minutes)\", enter a value of \"15 or less\".",
+            "+@fixref": "F-20275r1067582_fix"
           },
           "fix": {
-            "+@id": "F-20275r928843_fix"
+            "+@id": "F-20275r1067582_fix"
           },
           "check": {
-            "+@system": "C-20277r1022601_chk",
+            "+@system": "C-20277r1067581_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 web server name.\nUnder the \"ASP.NET\" section, select \"Session State\".\nUnder \"Cookie Settings\", verify the \"Use Cookies\" mode is selected from the \"Mode:\" drop-down list.\nUnder \"Time-out (in minutes)\", verify a maximum of 20 minutes is entered.\nIf the \"Use Cookies\" mode is selected and Time-out (in minutes) is configured for \"20 minutes\" (or less), this is not a finding.\n\nAlternative method:\nClick the site name.\nSelect \"Configuration Editor\" under the \"Management\" section.\nFrom the \"Section:\" drop-down list at the top of the configuration editor, locate \"system.web/sessionState\".\nVerify the \"cookieless\" is set to \"UseCookies\".\nIf the \"cookieless\" is not set to \"UseCookies\", this is a finding.\n\nNote: If IIS 10.0 server/site is used only for system-to-system maintenance, does not allow users to connect to interface, and is restricted to specific system IPs, this is Not Applicable."
+            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nUnder the \"ASP.NET\" section, select \"Session State\".\n\nUnder \"Cookie Settings\", verify the \"Use Cookies\" mode is selected from the \"Mode:\" drop-down list.\n\nUnder \"Time-out (in minutes)\", verify a maximum of 15 minutes is entered.\n\nIf the \"Use Cookies\" mode is selected and Time-out (in minutes) is configured for \"15 minutes\" (or less), this is not a finding.\n\nAlternative method:\n\nClick the site name.\n\nSelect \"Configuration Editor\" under the \"Management\" section.\n\nFrom the \"Section:\" drop-down list at the top of the configuration editor, locate \"system.web/sessionState\".\n\nVerify the \"cookieless\" is set to \"UseCookies\".\n\nIf the \"cookieless\" is not set to \"UseCookies\", this is a finding.\n\nNote: If IIS 10.0 server/site is used only for system-to-system maintenance, does not allow users to connect to interface, and is restricted to specific system IPs, this is Not Applicable."
           }
         }
       },
@@ -2690,7 +2690,7 @@
         "title": "SRG-APP-000231-WSR-000144",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218807r1022707_rule",
+          "+@id": "SV-218807r1067586_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000137",
@@ -2718,19 +2718,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nDouble-click the \"Machine Key\" icon in the web server Home Pane.\n\nSet the Validation method to \"HMACSHA256\" or stronger.\nSet the Encryption method to \"Auto\".\n\nClick \"Apply\" in the \"Actions\" pane.",
-            "+@fixref": "F-20277r310897_fix"
+            "+content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nDouble-click the \"Machine Key\" icon in the web server Home Pane.\n\nSet the Validation method to \"HMACSHA256\" or stronger.\n\nSet the Encryption method to \"Auto\".\n\nClick \"Apply\" in the \"Actions\" pane.",
+            "+@fixref": "F-20277r1067585_fix"
           },
           "fix": {
-            "+@id": "F-20277r310897_fix"
+            "+@id": "F-20277r1067585_fix"
           },
           "check": {
-            "+@system": "C-20279r1022603_chk",
+            "+@system": "C-20279r1067584_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 web server name.\nDouble-click the \"Machine Key\" icon in the website Home Pane.\nVerify \"HMACSHA256\" or stronger encryption is selected for the Validation method and \"Auto\" is selected for the Encryption method.\nIf \"HMACSHA256\" or stronger encryption is not selected for the Validation method and/or \"Auto\" is not selected for the Encryption method, this is a finding.\n\nIf .NET is not installed, this is Not Applicable."
+            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\n\nNote: If the IIS 10.0 web server is hosting Exchange, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nDouble-click the \"Machine Key\" icon in the website Home Pane.\n\nVerify \"HMACSHA256\" or stronger encryption is selected for the Validation method and \"Auto\" is selected for the Encryption method.\n\nIf \"HMACSHA256\" or stronger encryption is not selected for the Validation method and/or \"Auto\" is not selected for the Encryption method, this is a finding.\n\nIf .NET is not installed, this is Not Applicable."
           }
         }
       },
@@ -2984,7 +2984,7 @@
         "title": "SRG-APP-000340-WSR-000029",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218814r1022658_rule",
+          "+@id": "SV-218814r1067589_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000144",
@@ -3012,19 +3012,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Open Explorer and navigate to the inetpub directory.\nRight-click \"inetpub\" and select \"Properties\".\nClick the \"Security\" tab.\n\nSet the following permissions: \nSystem: Full control\nAdministrators: Full control\nTrustedInstaller: Full control\nALL APPLICATION PACKAGES (built-in security group): Read and execute\nALL RESTRICTED APPLICATION PACKAGES (built-in security group): Read and execute\nUsers: Read and execute, list folder contents\nCREATOR OWNER: Full Control, Subfolders and files only",
-            "+@fixref": "F-20284r1022608_fix"
+            "+content": "Open Explorer and navigate to the inetpub directory.\n\nRight-click \"inetpub\" and select \"Properties\".\n\nClick the \"Security\" tab.\n\nSet the following permissions: \nSystem: Full control\nAdministrators: Full control\nTrustedInstaller: Full control\nALL APPLICATION PACKAGES (built-in security group): Read and execute, This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES (built-in security group): Read and execute, This folder, subfolders and files\nUsers: Read and execute, list folder contents\nCREATOR OWNER: Full Control, Subfolders and files only",
+            "+@fixref": "F-20284r1067588_fix"
           },
           "fix": {
-            "+@id": "F-20284r1022608_fix"
+            "+@id": "F-20284r1067588_fix"
           },
           "check": {
-            "+@system": "C-20286r310917_chk",
+            "+@system": "C-20286r1067587_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Open Explorer and navigate to the inetpub directory.\n\nRight-click \"inetpub\" and select \"Properties\".\n\nClick the \"Security\" tab.\n\nVerify the permissions for the following users; if the permissions are less restrictive, this is a finding.\n\nSystem: Full control\nAdministrators: Full control\nTrustedInstaller: Full control\nALL APPLICATION PACKAGES (built-in security group): Read and execute\nALL RESTRICTED APPLICATION PACKAGES (built-in security group): Read and execute\nUsers: Read and execute, list folder contents\nCREATOR OWNER: Full Control, Subfolders and files only"
+            "check-content": "Open Explorer and navigate to the inetpub directory.\n\nRight-click \"inetpub\" and select \"Properties\".\n\nClick the \"Security\" tab.\n\nVerify the permissions for the following users; if the permissions are less restrictive, this is a finding.\n\nSystem: Full control\nAdministrators: Full control\nTrustedInstaller: Full control\nALL APPLICATION PACKAGES (built-in security group): Read and execute, This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES (built-in security group): Read and execute, This folder, subfolders and files\nUsers: Read and execute, list folder contents\nCREATOR OWNER: Full Control, Subfolders and files only"
           }
         }
       },
@@ -3082,7 +3082,7 @@
         "title": "SRG-APP-000380-WSR-000072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218816r961461_rule",
+          "+@id": "SV-218816r1067591_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000147",
@@ -3125,12 +3125,12 @@
             "+@id": "F-20286r310924_fix"
           },
           "check": {
-            "+@system": "C-20288r310923_chk",
+            "+@system": "C-20288r1067590_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Right-click \"InetMgr.exe\", then click \"Properties\" from the \"Context\" menu.\n\nSelect the \"Security\" tab.\n\nReview the groups and user names.\n\nThe following accounts may have Full control privileges:\n\nTrustedInstaller\nWeb Managers\nWeb Manager designees\nCREATOR OWNER: Full Control, Subfolders and files only\n\nThe following accounts may have read and execute, or read permissions:\n\nNon Web Manager Administrators\nALL APPLICATION PACKAGES (built-in security group)\nALL RESTRICTED APPLICATION PACKAGES (built-in security group)\nSYSTEM\nUsers\n\nSpecific users may be granted read and execute and read permissions.\n\nCompare the local documentation authorizing specific users, against the users observed when reviewing the groups and users.\n\nIf any other access is observed, this is a finding."
+            "check-content": "Right-click \"InetMgr.exe\", then click \"Properties\" from the \"Context\" menu.\n\nSelect the \"Security\" tab.\n\nReview the groups and user names.\n\nThe following accounts may have Full control privileges:\n\nTrustedInstaller\nWeb Managers\nWeb Manager designees\nCREATOR OWNER\n\nThe following accounts may have read and execute, or read permissions:\n\nNon Web Manager Administrators\nALL APPLICATION PACKAGES (built-in security group)\nALL RESTRICTED APPLICATION PACKAGES (built-in security group)\nSYSTEM\nUsers\n\nSpecific users may be granted read and execute and read permissions.\n\nCompare the local documentation authorizing specific users, against the users observed when reviewing the groups and users.\n\nIf any other access is observed, this is a finding."
           }
         }
       },
@@ -3335,7 +3335,7 @@
         "title": "SRG-APP-000439-WSR-000156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218821r961632_rule",
+          "+@id": "SV-218821r1067596_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IIST-SV-000153",
@@ -3363,19 +3363,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Access the IIS 10.0 Web Server.\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server \n\nCreate a REG_DWORD named \"DisabledByDefault\" with a value of \"0\".\nCreate a REG_DWORD named \"Enabled\" with a  value of \"1\".\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 2.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 3.0\\Server\n\nFor each protocol:\nCreate a REG_DWORD named \"DisabledByDefault\" with a value of \"1\".\nCreate a REG_DWORD named \"Enabled\" with a  value of \"0\".",
-            "+@fixref": "F-20291r903105_fix"
+            "+content": "Access the IIS 10.0 Web Server.\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server \n\nCreate a REG_DWORD named \"DisabledByDefault\" with a value of \"0\".\nCreate a REG_DWORD named \"Enabled\" with a  value of \"1\".\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 3.0\\Server\n\nFor each protocol:\nCreate a REG_DWORD named \"DisabledByDefault\" with a value of \"1\".\nCreate a REG_DWORD named \"Enabled\" with a  value of \"0\".",
+            "+@fixref": "F-20291r1067595_fix"
           },
           "fix": {
-            "+@id": "F-20291r903105_fix"
+            "+@id": "F-20291r1067595_fix"
           },
           "check": {
-            "+@system": "C-20293r903104_chk",
+            "+@system": "C-20293r1067594_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Access the IIS 10.0 Web Server.\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server\n\nVerify a REG_DWORD value of \"0\" for \"DisabledByDefault\".\nVerify a REG_DWORD value of \"1\" for \"Enabled\".\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 2.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 3.0\\Server\n\nVerify a REG_DWORD value of \"1\" for \"DisabledByDefault\".\nVerify a REG_DWORD value of \"0\" for \"Enabled\".\n\nIf any of the respective registry paths do not exist or are configured with the wrong value, this is a finding."
+            "check-content": "Access the IIS 10.0 Web Server.\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Server\n\nVerify a REG_DWORD value of \"0\" for \"DisabledByDefault\".\nVerify a REG_DWORD value of \"1\" for \"Enabled\".\n\nNavigate to:\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.0\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.1\\Server\nHKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL 3.0\\Server\n\nVerify a REG_DWORD value of \"1\" for \"DisabledByDefault\".\nVerify a REG_DWORD value of \"0\" for \"Enabled\".\n\nIf any of the respective registry paths do not exist or are configured with the wrong value, this is a finding.\n\nSSL 3.0 is disabled by default in newer Operating Systems. If SSL 3.0 has a registry DWORD enabled with a value of 1, this is a finding. If this key is not present, this is not a finding."
           }
         }
       },
@@ -3531,7 +3531,7 @@
         "title": "SRG-APP-000516-WSR-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218825r1022660_rule",
+          "+@id": "SV-218825r1067593_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000159",
@@ -3566,12 +3566,12 @@
             "+@id": "F-20295r881081_fix"
           },
           "check": {
-            "+@system": "C-20297r1022613_chk",
+            "+@system": "C-20297r1067592_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\nNote: If the Server is hosting Microsoft SharePoint, this is Not Applicable.\nNote: If the server is hosting WSUS, this is Not Applicable.\nNote: If the server is hosting Exchange, this is Not Applicable.\nNote: If the server is public facing, this is Not Applicable.\nNote: If the website is not behind a load balancer or proxy server, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 web server name.\nDouble-click the \".NET Authorization Rules\" icon.\nEnsure \"All Users\" is set to \"Allow\", and \"Anonymous Users\" is set to \"Deny\", otherwise this is a finding.\nIf any other rules are present, this is a finding."
+            "check-content": "Note: If ASP.NET is not installed, this is Not Applicable.\nNote: If the Server is hosting Microsoft SharePoint, this is Not Applicable.\nNote: If the server is hosting WSUS, this is Not Applicable.\nNote: If the server is hosting Exchange, this is Not Applicable.\nNote: If the server is public facing, this is Not Applicable.\nNote: If the website is behind a load balancer or proxy server, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 web server name.\nDouble-click the \".NET Authorization Rules\" icon.\nEnsure \"All Users\" is set to \"Allow\", and \"Anonymous Users\" is set to \"Deny\", otherwise this is a finding.\nIf any other rules are present, this is a finding."
           }
         }
       },

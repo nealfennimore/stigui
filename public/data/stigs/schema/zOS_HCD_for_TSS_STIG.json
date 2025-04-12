@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-10"
+      "+@date": "2025-03-05"
     },
     "title": "z/OS HCD for TSS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -226,12 +226,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224726r855157_rule",
+          "+@id": "SV-224726r1082524_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDT000",
           "title": "IBM Hardware Configuration Definition (HCD) install data sets are not properly protected.",
-          "description": "<VulnDiscussion>IBM Hardware Configuration Definition (HCD) product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IBM HCD product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for TSS",
             "publisher": "DISA",
@@ -249,7 +249,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -258,19 +258,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and ALL access to IBM Hardware Configuration Definition (HCD) install data sets is limited to System Programmers only, and all update and ALL access is logged. Auditors, automated operations, and operators should have READ access.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and ALL access and if required that all update and ALL access is logged. He will identify if any additional groups have update and/or ALL access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS1.SCBD*\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nTSS PERMIT(audtaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(autoaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(operaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(tstcaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS1.SCBD) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(tstcpaudt) DSN(SYS1.SCBD) ACCESS(ALL) ACTION(AUDIT)",
-            "+@fixref": "F-26405r520218_fix"
+            "+content": "The ISSO will ensure that update and ALL access to IBM HCD install data sets is limited to system programmers only, and all update and ALL access is logged. Auditors, automated operations, and operators should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and ALL access and if required that all update and ALL access is logged. The installing systems programmer will identify if any additional groups have update and/or ALL access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS1.SCBD*\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nTSS PERMIT(audtaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(autoaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(operaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(tstcaudt) DSN(SYS1.SCBD) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS1.SCBD) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(tstcpaudt) DSN(SYS1.SCBD) ACCESS(ALL) ACTION(AUDIT)",
+            "+@fixref": "F-26405r1082524_fix"
           },
           "fix": {
-            "+@id": "F-26405r520218_fix"
+            "+@id": "F-26405r1082524_fix"
           },
           "check": {
-            "+@system": "C-26417r520217_chk",
+            "+@system": "C-26417r1070266_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0000)\n\nVerify that access to the IBM Hardware Configuration Definition (HCD) install data sets are properly restricted.\n \n___\tThe TSS data set rules for the data sets restricts READ access to auditors, automated operations, operators, and systems programming personnel.\n\n___\tThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\n___\tThe TSS data set rules for the data sets specifies that all (i.e., failures and successes) UPDATE and/or ALL access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0000)\n\nVerify that access to the IBM Hardware Configuration Definition (HCD) install data sets are properly restricted.\n \nThe TSS data set rules for the data sets restricts READ access to auditors, automated operations, operators, and systems programming personnel.\n\nThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\nThe TSS data set rules for the data sets specifies that all (i.e., failures and successes) UPDATE and/or ALL access are logged."
           }
         }
       },
@@ -279,12 +279,12 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224727r520222_rule",
+          "+@id": "SV-224727r1082523_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDT002",
           "title": "IBM Hardware Configuration Definition (HCD) User data sets are not properly protected.",
-          "description": "<VulnDiscussion>IBM Hardware Configuration Definition (HCD) product has the capability to use privileged functions and/or to have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IBM HCD product has the capability to use privileged functions and/or to have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for TSS",
             "publisher": "DISA",
@@ -304,22 +304,26 @@
             {
               "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002234",
+              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update, and allocate access to program product user data sets is limited to System Programmers and all update and allocate access is logged..  Ensure that read access is limited to auditors, Operations personnel, and Automated Operations users.\n\nThe installing System Programmer will identify and document the product user data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nData sets to be protected will be:\n\nThe production IODF data sets.  (i.e. hhhhhhhh.IODFnn)\nThe working IODF data sets.  (i.e. hhhhhhhh.IODFnn.)\nThe activity log for the IODF data sets.  (i.e. hhhhhhhh.IODFnn.ACTLOG)\n\nNote:\tCurrently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe following commands are provided as a sample for implementing dataset controls:\n\nTSS ADD(SYS3) DSN(SYS3)\nTSS PER(syspaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(tstcaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(audtaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(autoaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(operaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(syspaudt) DSN(SYS3.IODF) ACC(A) ACTION(AUDIT)\nTSS PER(tstcaudt) DSN(SYS3.IODF) ACC(A) ACTION(AUDIT)",
-            "+@fixref": "F-26406r520221_fix"
+            "+content": "The ISSO will ensure that update, and allocate access to program product user data sets is limited to system programmers and all update and allocate access is logged. Ensure that read access is limited to auditors, operations personnel, and automated operations users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be:\n\nThe production IODF data sets.  (i.e. hhhhhhhh.IODFnn)\nThe working IODF data sets.  (i.e. hhhhhhhh.IODFnn.)\nThe activity log for the IODF data sets.  (i.e. hhhhhhhh.IODFnn.ACTLOG)\n\nNote:\tCurrently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe following commands are provided as a sample for implementing dataset controls:\n\nTSS ADD(SYS3) DSN(SYS3)\nTSS PER(syspaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(tstcaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(audtaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(autoaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(operaudt) DSN(SYS3.IODF) ACC(R)\nTSS PER(syspaudt) DSN(SYS3.IODF) ACC(A) ACTION(AUDIT)\nTSS PER(tstcaudt) DSN(SYS3.IODF) ACC(A) ACTION(AUDIT)",
+            "+@fixref": "F-26406r1082523_fix"
           },
           "fix": {
-            "+@id": "F-26406r520221_fix"
+            "+@id": "F-26406r1082523_fix"
           },
           "check": {
-            "+@system": "C-26418r520220_chk",
+            "+@system": "C-26418r1070269_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0002)\n\nb)\tVerify that the access to the IBM Hardware Configuration Definition (HCD) install data sets is properly restricted.  The data sets to be protected are the production and working IODF data sets as well as the activity log for the IODF data sets.\n\nNote:\tCurrently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\n___\tThe TSS data set rules for the data sets does not restrict UPDATE and/or ALL access to systems programming personnel.\n\n___\tThe TSS data set rules for the data sets does not restrict READ access to automated operations users and operations personnel.\n\n___\tThe TSS data set rules for the data sets do not specify that all (i.e., failures and successes) UPDATE and/or ALL access will be logged.\n\nc)\tIf all of the above are untrue, there is NO FINDING.\n\nd)\tIf any of the above is true, this is a FINDING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(HCDUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0002)\n\nVerify that the access to the IBM Hardware Configuration Definition (HCD) install data sets is properly restricted. The data sets to be protected are the production and working IODF data sets as well as the activity log for the IODF data sets.\n\nNote:\tCurrently on most CSD systems the prefix for these data sets is SYS3.IODF*.**.\n\nThe TSS data set rules for the data sets does not restrict UPDATE and/or ALL access to systems programming personnel.\n\nThe TSS data set rules for the data sets does not restrict READ access to automated operations users and operations personnel.\n\nThe TSS data set rules for the data sets do not specify that all (i.e., failures and successes) UPDATE and/or ALL access will be logged.\n\nIf all of the above are untrue, this is not a finding..\n\nIf any of the above is true, this is a finding."
           }
         }
       },
@@ -328,12 +332,12 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224728r870235_rule",
+          "+@id": "SV-224728r1070274_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCDT020",
           "title": "IBM Hardware Configuration Definition (HCD) resources are not properly defined and protected.",
-          "description": "<VulnDiscussion>Program products can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to program product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non-systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Program products can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to program product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS HCD for TSS",
             "publisher": "DISA",
@@ -351,7 +355,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
+              "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -360,19 +364,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The systems programmer will work with the ISSO to verify that the following are properly specified in the ACP.\n\n1) The TSS owner is defined for the CBD resources and/or IBMFAC RDT entry has DEFPROT specified.\n\nFor example:\n\nTSS ADD(dept-acid)IBMFAC(CBD.)\n\nTSS REP(RDT)RESCLASS(IBMFAC)ATTR(DEFPROT)\n\n2) There are no TSS rules that allow access to the CBD resource.\n\n3) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n\n4) The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n\nExample:\n\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(operaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(autoaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IOCDS) -\n\tACCESS(UPDATE)ACTION(AUDIT)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(operaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(autoaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IPLPARM) -\n\tACCESS(UPDATE)ACTION(AUDIT)",
-            "+@fixref": "F-26407r870234_fix"
+            "+content": "The systems programmer will work with the ISSO to verify that the following are properly specified in the Access Control Program (ACP).\n\n1. The TSS owner is defined for the CBD resources and/or IBMFAC RDT entry has DEFPROT specified.\n\nFor example:\n\nTSS ADD(dept-acid)IBMFAC(CBD.)\n\nTSS REP(RDT)RESCLASS(IBMFAC)ATTR(DEFPROT)\n\n2. There are no TSS rules that allow access to the CBD resource.\n\n3. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n\n4. The RACF rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n\nExample:\n\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(operaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(autoaudt)IBMFAC(CBD.CPC.IOCDS)ACCESS(READ)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IOCDS) -\n\tACCESS(UPDATE)ACTION(AUDIT)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(operaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(autoaudt)IBMFAC(CBD.CPC.IPLPARM)ACCESS(READ)\nTSS PERMIT(syspaudt)IBMFAC(CBD.CPC.IPLPARM) -\n\tACCESS(UPDATE)ACTION(AUDIT)",
+            "+@fixref": "F-26407r1070273_fix"
           },
           "fix": {
-            "+@id": "F-26407r870234_fix"
+            "+@id": "F-26407r1070273_fix"
           },
           "check": {
-            "+@system": "C-26419r870233_chk",
+            "+@system": "C-26419r1070272_chk",
             "check-content-ref": {
               "+@href": "zOS_HCD_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following reports produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n- TSSCMDS.RPT(WHOOIBMF)\n- SENSITVE.RPT(WHOHIBMF)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCD0020)\n\nb) Review the following items for the IBM Hardware Configuration Definition (HCD) resources in the IBMFAC resource class:\n\n1) The TSS owner is defined for the CBD resource and/or IBMFAC RDT entry has DEFPROT specified.\n2) There are no TSS rules that allow access to the CBD resource.\n3) The TSS rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n4) The TSS rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n\nc) If any item in (b) is untrue, this is a finding.\n\nd) If all items in (b) are true, this is not a finding."
+            "check-content": "Refer to the following reports produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n-\tTSSCMDS.RPT(WHOOIBMF)\n-\tSENSITVE.RPT(WHOHIBMF)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZHCD0020)\n\nReview the following items for the IBM Hardware Configuration Definition (HCD) resources in the IBMFAC resource class:\n\n1. The TSS owner is defined for the CBD resource and/or IBMFAC RDT entry has DEFPROT specified.\n2. There are no TSS rules that allow access to the CBD resource.\n3. The TSS rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming and operations personnel as well as possibly any automated operations batch users with access of READ.\n4. The TSS rules for the CBD.CPC.IOCDS and CBD.CPC.IPLPARM resources are restricted access to systems programming with access of UPDATE and logged.\n\nIf any item above is untrue, this is a finding.\n\nIf all items above are true, this is not a finding."
           }
         }
       }

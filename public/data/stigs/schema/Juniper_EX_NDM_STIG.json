@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-23"
+      "+@date": "2025-03-07"
     },
     "title": "Juniper EX Series Switches Network Device Management Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -2764,7 +2764,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253900r960966_rule",
+          "+@id": "SV-253900r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000230",
@@ -2803,12 +2803,12 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253901r1028865_rule",
+          "+@id": "SV-253901r1082953_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000240",
           "title": "The Juniper EX switch must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
-          "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account is created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit should be added to the envelope as a record. Administrators should secure the credentials and disable access to the root account (if possible) when not needed for system administration functions.\n\nJunos does not have default passwords and the root account cannot be renamed or disabled. The root account password should be saved in the same manner as the account of last resort. Setting the console port \"insecure\" prevents direct root login but also prevents password recovery without knowledge of the root password. Verify only a single local account has an authentication stanza. Local accounts without an authentication stanza are \"template accounts\" and must be externally authenticated. Template accounts must match the logging-in username or a returned Vendor Specific Attribute (VSA) and are used to map permissions (assigned in the login class) to the user. The example given in the Check and Fix assumes a working external authentication server and appropriate authentication order.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account is created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit must be added to the envelope as a record. Administrators must secure the credentials and disable access to the root account (if possible) when not needed for system administration functions.\n\nJunos does not have default passwords, and the root account cannot be renamed or disabled. The root account password must be saved in the same manner as the account of last resort.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Switches NDM",
             "publisher": "DISA",
@@ -2827,19 +2827,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Disable direct root login:\nset system services ssh root-login deny\nset system ports console insecure\n\n2. Configure the account of last resort:\nset system login user <account of last resort name> class <class name>\nset system login user <account of last resort name> authentication plain-text-password\nNew password: <password - not echoed to the screen>\nRetype new password: <password verification - not echoed to the screen>\n\n3. Set all other template accounts:\nset system login user <template account 1> class <class 1>\nset system login user <template account 2> class <class 2>",
-            "+@fixref": "F-57304r1018694_fix"
+            "+content": "Configure the Juniper EX to only allow one local account for use as the account of last resort.\n1. Enter configuration mode.\n2. Configure the authorized account with an authentication stanza.\n3. Configure the authentication order to prefer external AAA.\n4. Configure SSH to deny root login.\n5. Commit the configuration.\nuser@host> configure\nuser@host# set system login user <account of last resort username> authentication plain-text-password\nNew password: <PW not echoed to screen>\nRetype new password: <PW confirmation not echoed to screen>\n\nuser@host# delete system login user <not account of last resort username> authentication\nuser@host# delete system services ssh root-login\n--or--\nuser@host# set system services ssh root-login deny\nuser@host# set system authentication-order [ <external AAA> password ]\n--or--\nuser@host# set system authentication-order <external AAA>\nuser@host# commit",
+            "+@fixref": "F-57304r1082952_fix"
           },
           "fix": {
-            "+@id": "F-57304r1018694_fix"
+            "+@id": "F-57304r1082952_fix"
           },
           "check": {
-            "+@system": "C-57353r1018693_chk",
+            "+@system": "C-57353r1082951_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Verify direct root login is disabled until needed.\n[edit system services ssh]\nroot-login deny;\n\n2. Verify the console port is set to \"insecure\":\n[edit system ports]\nconsole {\n    log-out-on-disconnect;\n    insecure;\n}\n\n3. Verify only the designated account of last resort has an authentication stanza. \n[edit system login]\n:\n:\nuser <account of last resort name> {\n    uid 2004;\n    class <class name>;\n    authentication {\n        encrypted-password \"$6$0/BgZc6n$BIY..<snip>..vLzjWpYq2D/\"; ## SECRET-DATA\n    }\n}\nuser auditor {\n    uid 2010;\n    class <class name>;\n}\n\nIf access is allowed using any local account other than the account of last resort, this is a finding."
+            "check-content": "1. Review the Juniper EX configuration to determine if an account of last resort is configured.\n2. Verify the username and password for the root account, and the account of last resort is contained within sealed envelopes and kept in a safe. \nJunos categorizes user accounts as \"local\" or \"template\", with the difference being the presence of an authentication stanza. Accounts with an authentication stanza are local because the administrator can log in without the need for an external AAA service. Accounts without an authentication stanza are templates that require external authentication. Verify only authorized account(s) have an authentication stanza.\nuser@host> show configuration system login\n...\nuser <name> {\n... <<< No authentication stanza for externally authenticated accounts\n}\nuser <account of last resort username> {\n...\n    authentication {\n        encrypted-password <password hash>;\n    }\n}\n\nThe authentication order must be configured to prefer external AAA, and \"password\" authentication can be omitted if required. If \"password\" is present, Junos will attempt password authentication upon external AAA authentication failure. This feature is useful if the account of last resort is required while external AAA remains reachable but is misconfigured and prevents successful logon. If \"password\" is not present, Junos will not fail over to local authentication unless there is a loss of connectivity with the external AAA service (e.g., timeout). \n\nVerify the authentication order prefers external AAA (first in the order).\nuser@host> show configuration system authentication-order\nauthentication-order [ <external AAA> password ]\n--or--\nauthentication-order <external AAA>;\n\nVerify that direct root logon is disabled.\nuser@host> show configuration system services ssh\n<<< missing root-login directive inherits the default 'deny'\nprotocol-version v2;\n...<snip>...\n--or--\nroot-login deny;\n...<snip>...\n\nIf one local account does not exist for use as the account of last resort, this is a finding."
           }
         }
       },
@@ -3100,7 +3100,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253909r1018767_rule",
+          "+@id": "SV-253909r1082956_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000320",
@@ -3124,19 +3124,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the network device and associated authentication server to require that when a password is changed, the characters are changed in at least eight of the positions within the password.\n\nset system login password minimum-changes 8\n\nNote: For older Juniper EX versions, only four characters may be changed instead of the DOD-required eight characters. If so, four characters should be selected. This remains a finding when set to four characters, but is mitigated to a CAT 3.",
-            "+@fixref": "F-57312r944344_fix"
+            "+content": "Configure the network device and associated authentication server to require that when a password is changed, the characters are changed in at least eight of the positions within the password.\n\nset system login password minimum-character-changes 8\n\nNote: For older Juniper EX versions, only four characters may be changed instead of the DOD-required eight characters. If so, four characters should be selected. This remains a finding when set to four characters, but is mitigated to a CAT 3.",
+            "+@fixref": "F-57312r1082955_fix"
           },
           "fix": {
-            "+@id": "F-57312r944344_fix"
+            "+@id": "F-57312r1082955_fix"
           },
           "check": {
-            "+@system": "C-57361r944343_chk",
+            "+@system": "C-57361r1082954_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "For older Juniper EX versions, only four characters may be changed instead of the DOD-required eight characters. If so, four characters should be selected. This remains a finding when set to four characters, but is mitigated to a CAT 3.\n\nWhere passwords are used, confirm the characters are changed in at least eight of the positions within the password. This requirement may be verified by demonstration, configuration review, or validated test results.\n\n[edit system login password]\n:\nminimum-changes 8;\n:\n\nIf the network device and associated authentication server does not require that when a password is changed, the characters are changed in at least eight of the positions within the password, this is a finding."
+            "check-content": "For older Juniper EX versions, only four characters may be changed instead of the DOD-required eight characters. If so, four characters should be selected. This remains a finding when set to four characters, but is mitigated to a CAT 3.\n\nWhere passwords are used, confirm the characters are changed in at least eight of the positions within the password. This requirement may be verified by demonstration, configuration review, or validated test results.\n\n[edit system login password]\n:\nminimum-character-changes 8;\n:\n\nIf the network device and associated authentication server does not require that when a password is changed, the characters are changed in at least eight of the positions within the password, this is a finding."
           }
         }
       },
@@ -3190,12 +3190,12 @@
         "title": "SRG-APP-000179-NDM-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253911r1028869_rule",
+          "+@id": "SV-253911r1082959_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000340",
           "title": "The Juniper EX switch must be configured to use FIPS 140-2/140-3 validated algorithms for authentication to a cryptographic module.",
-          "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore, cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-validated and NIST-recommended authentication algorithms.\n\nUse only AES Counter (CTR) cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore, cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-validated and NIST-recommended authentication algorithms.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Switches NDM",
             "publisher": "DISA",
@@ -3208,19 +3208,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Enter the CLI configuration mode and enter the following commands to set the password format, the SSH algorithms, and the RNG to meet site requirements.\n\nuser@host> configure\nuser@host# set system login password format <sha-256|sha-512>\nuser@host# set system services ssh ciphers aes256-ctr\nuser@host# set system services ssh ciphers aes192-ctr\nuser@host# set system services ssh macs hmac-sha2-512\nuser@host# set system services ssh macs hmac-sha2-256\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp521\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp384\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp256\nuser@host# set system rng hmac-drbg\nuser@host# commit",
-            "+@fixref": "F-57314r1028868_fix"
+            "+content": "Configure the password format, SSH algorithms, and the RNG to use only FIPS validated algorithms.\n1. Enter configuration mode.\n2. Configure the password format.\n3. Configure the SSH algorithms.\n4. Configure the RNG.\n5. Commit the configuration.\nuser@host> configure\nuser@host# set system login password format <sha-256|sha-512>\nuser@host# set system services ssh ciphers aes256-ctr\nuser@host# set system services ssh ciphers aes256-cbc\nuser@host# set system services ssh macs hmac-sha2-512\nuser@host# set system services ssh macs hmac-sha2-256\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp521\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp384\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp256\nuser@host# set system rng hmac-drbg\nuser@host# commit",
+            "+@fixref": "F-57314r1082958_fix"
           },
           "fix": {
-            "+@id": "F-57314r1028868_fix"
+            "+@id": "F-57314r1082958_fix"
           },
           "check": {
-            "+@system": "C-57363r1028867_chk",
+            "+@system": "C-57363r1082957_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the password format, and that SSH uses FIPS validated algorithms and random number generator (RNG) as shown in the following example configuration.\n\nuser@host> show configuration system\n\nlogin {\n    password {\n        :\n        format <sha-256|sha-512>;\n    }\n}\nservices {\n    ssh {\n        :\n        ciphers [ aes256-ctr aes192-ctr ];\n        macs [ hmac-sha2-512 hmac-sha2-256 ];\n        key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n        :\n    }\n}\nrng {\n    hmac-drbg;\n}\n\nIf the network device is not configured to use a FIPS 140-2/140-3 authentication algorithm, this is a finding."
+            "check-content": "Verify the password format, and that SSH uses FIPS validated algorithms and random number generator (RNG) as shown in the following example configuration.\nuser@host> show configuration system\nlogin {\n    password {\n        :\n        format <sha-256|sha-512>;\n    }\n}\nservices {\n    ssh {\n        :\n        ciphers [ aes256-ctr aes256-cbc];\n        macs [ hmac-sha2-512 hmac-sha2-256 ];\n        key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n        :\n    }\n}\nrng {\n    hmac-drbg;\n}\n\nIf the network device is not configured to use FIPS 140-2/140-3 validated authentication algorithms, this is a finding."
           }
         }
       },
@@ -3229,11 +3229,11 @@
         "title": "SRG-APP-000190-NDM-000267",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253913r961068_rule",
+          "+@id": "SV-253913r1082962_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000360",
-          "title": "The Juniper EX switch must be configured to end all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill mission requirements.",
+          "title": "The Juniper EX switch must be configured to end all network connections associated with a device management session at the end of the session, or the session must be terminated after five minutes of inactivity except to fulfill mission requirements.",
           "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Switches NDM",
@@ -3247,19 +3247,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the network device to terminate the connection associated with a device management session at the end of the session or after 10 minutes of inactivity.\n\nset system login idle-timeout 10",
-            "+@fixref": "F-57316r843771_fix"
+            "+content": "Configure the network device to terminate the connection associated with a device management session at the end of the session or after five minutes of inactivity.\n\nThere is no configuration required to support explicit logout (\"quit\"  at the end of the session).\n1. Enter configuration mode.\n2. Configure inactivity timeout for root.\n3. Configure inactivity timeout for all login classes.\n4. Commit the configuration.\n\nuser@host> configure\nuser@host# set system login idle-timeout 5\nuser@host# set system login class <class name> idle-timeout 5\nuser@host# commit",
+            "+@fixref": "F-57316r1082961_fix"
           },
           "fix": {
-            "+@id": "F-57316r843771_fix"
+            "+@id": "F-57316r1082961_fix"
           },
           "check": {
-            "+@system": "C-57365r843770_chk",
+            "+@system": "C-57365r1082960_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if the network device terminates the connection associated with a device management session at the end of the session or after 10 minutes of inactivity. This requirement may be verified by demonstration or configuration review. \n\nJunos permits the administrator to log out at the end of the session, which terminates the session and the network connection. Junos forcibly terminates the session and network connection upon exceeding the inactivity timeout threshold. Verify the global idle-timeout is 10 minutes. Alternately, verify that each login class is configured for an idle-timeout of 10.\n[edit system login]\nidle-timeout 10;\nclass <name> {\n    idle-timeout 10; <<< Optional. If not configured, each login class inherits the global setting.\n}\n\nIf the network device does not terminate the connection associated with a device management session at the end of the session or after 10 minutes of inactivity, this is a finding."
+            "check-content": "Determine if the network device terminates the connection associated with a device management session at the end of the session or after five minutes of inactivity. This requirement may be verified by demonstration or configuration review. \n\nJunos permits the administrator to log out at the end of the session, which terminates the session and the network connection. Junos forcibly terminates the session and network connection upon exceeding the inactivity timeout threshold. Inactivity timeouts are assigned to login classes and apply to every administrative access method; there is no provision to set inactivity timeout differently for local (console) and network (remote) device management sessions. Verify the idle-timeout for the root user, and each login class, has an appropriate idle-timeout value.\n\nuser@host> show configuration system login\n...\nidle-timeout 5;\nclass <name> {\n    idle-timeout 5;\n...\n}\n\nNote: Inactivity timeout (idle-timeout) must be assigned to every login class.\n\nIf the network device does not terminate the connection associated with a device management session at the end of the session or after five minutes of inactivity, this is a finding."
           }
         }
       },

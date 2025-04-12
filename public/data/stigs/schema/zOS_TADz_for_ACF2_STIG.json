@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-06"
+      "+@date": "2025-02-25"
     },
     "title": "z/OS TADz for ACF2 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -226,12 +226,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224344r855213_rule",
+          "+@id": "SV-224344r1081046_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZTADA000",
           "title": "Tivoli Asset Discovery for z/OS (TADz) Install data sets are not properly protected.",
-          "description": "<VulnDiscussion>Tivoli Asset Discovery for z/OS (TADz) Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Tivoli Asset Discovery for z/OS (TADz) Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS TADz for ACF2",
             "publisher": "DISA",
@@ -249,7 +249,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -258,19 +258,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to program product data sets is limited to System Programmers only,  and all update and allocate access is logged.  Auditors should have read access.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nData sets to be protected will be: \nSYS2.TADZ \nSYS2.TADZ .V-.SHSIMOD1\nSYS3.TADZ \n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nTADZ.- UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.V-.SHSIMOD1 UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS3)\nTADZ.- UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.- UID(audtaudt) R(A) E(A)",
-            "+@fixref": "F-26009r520890_fix"
+            "+content": "The ISSO will ensure that update and allocate access to program product data sets is limited to system programmers only, and all update and allocate access is logged. Auditors should have read access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.TADZ \nSYS2.TADZ .V-.SHSIMOD1\nSYS3.TADZ \n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nTADZ.- UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.V-.SHSIMOD1 UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS3)\nTADZ.- UID(syspaudt) R(A) W(L) A(L) E(A)\nTADZ.- UID(audtaudt) R(A) E(A)",
+            "+@fixref": "F-26009r1081046_fix"
           },
           "fix": {
-            "+@id": "F-26009r520890_fix"
+            "+@id": "F-26009r1081046_fix"
           },
           "check": {
-            "+@system": "C-26021r520889_chk",
+            "+@system": "C-26021r1070063_chk",
             "check-content-ref": {
               "+@href": "zOS_TADz_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(TADZRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZTAD0000)\n\nb)\tVerify that access to the TADz Install data sets are properly restricted.\n \n___\tThe ACF2 data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___\tThe ACF2 data set rules for the data sets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc)\tIf all of the above are untrue, there is NO FINDING.\n\nd)\tIf any of the above is true, this is a FINDING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(TADZRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZTAD0000)\n\nVerify that access to the TADz Install data sets are properly restricted.\n \nThe ACF2 data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe ACF2 data set rules for the data sets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, this is not a finding.\n\nIf any of the above is true, this is a finding."
           }
         }
       },
@@ -279,7 +279,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224345r868236_rule",
+          "+@id": "SV-224345r958616_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZTADA001",
@@ -328,7 +328,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224346r520897_rule",
+          "+@id": "SV-224346r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZTADA030",

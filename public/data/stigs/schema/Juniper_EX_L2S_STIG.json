@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-20"
+      "+@date": "2025-03-07"
     },
     "title": "Juniper EX Series Switches Layer 2 Switch Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -91,10 +91,6 @@
           },
           {
             "+@idref": "V-253957",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253958",
             "+@selected": "true"
           },
           {
@@ -201,10 +197,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253958",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253959",
             "+@selected": "true"
           },
@@ -305,10 +297,6 @@
           },
           {
             "+@idref": "V-253957",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253958",
             "+@selected": "true"
           },
           {
@@ -415,10 +403,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253958",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253959",
             "+@selected": "true"
           },
@@ -519,10 +503,6 @@
           },
           {
             "+@idref": "V-253957",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253958",
             "+@selected": "true"
           },
           {
@@ -629,10 +609,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253958",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253959",
             "+@selected": "true"
           },
@@ -733,10 +709,6 @@
           },
           {
             "+@idref": "V-253957",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253958",
             "+@selected": "true"
           },
           {
@@ -843,10 +815,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253958",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253959",
             "+@selected": "true"
           },
@@ -947,10 +915,6 @@
           },
           {
             "+@idref": "V-253957",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253958",
             "+@selected": "true"
           },
           {
@@ -1135,7 +1099,7 @@
         "title": "SRG-NET-000193-L2S-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253951r1028750_rule",
+          "+@id": "SV-253951r1082966_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000040",
@@ -1159,19 +1123,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Configure and enable a CoS policy using the commands in the example stanza below.\n2. Replace the variables in the example commands with meaningful, site-specific names, rates, and values that are appropriate for the target environment. Operational test the settings.\n3. Configure queues for each type of traffic based on the priorities established in the site's SSP.\n\nNote: The following example configured DSCP. However, other BA classifier types may also be configured to implement the site's QoS requirements. Refer to the vendor documentation. \n\nuser@host# set class-of-service classifiers dscp <classifier name> import default\nuser@host# set class-of-service classifiers dscp <classifier name> forwarding-class <req’d forwarding class name> loss-priority <low|high> code-points <DSCP code point>\nuser@host# set class-of-service classifiers dscp <classifier name> forwarding-class <req’d forwarding class name> loss-priority <low|high> code-points <DSCP code point> (optional - only if multiple DSCP values are used)\nuser@host# set class-of-service interfaces <interface name> scheduler-map <scheduler map name>\nuser@host# set class-of-service interfaces <interface name> unit <unit number> classifiers dscp <classifier name>\nuser@host# set class-of-service interfaces <uplink interface> scheduler-map <scheduler map name>\nuser@host# set class-of-service interfaces <uplink interface> unit <unit number> classifiers dscp <classifier name>\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class besteffort scheduler <scheduler name> (e.g., be-scheduler)\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class <req’d forwarding class> scheduler <scheduler name> (e.g., ef-scheduler)\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class networkcontrol scheduler <scheduler name> (e.g. nc-scheduler) \nuser@host# set class-of-service schedulers <be-scheduler name> transmit-rate (exact <value> | percent (0..100) | remainder)\nuser@host# set class-of-service schedulers <be-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\nuser@host# set class-of-service schedulers <ef-scheduler name> shaping-rate percent (0..100)\nuser@host# set class-of-service schedulers <ef-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\nuser@host# set class-of-service schedulers <nc-scheduler name> shaping-rate percent (0..100)\nuser@host# set class-of-service schedulers <nc-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\nuser@host# commit",
-            "+@fixref": "F-57354r1028749_fix"
+            "+content": "Configure class-of-service (CoS):\nuser@host> configure\nuser@host# set class-of-service classifiers dscp <classifier name> import default\nuser@host# set class-of-service classifiers dscp <classifier name> forwarding-class <req’d forwarding class name> loss-priority <low|high> code-points <DSCP code point>\nuser@host# set class-of-service classifiers dscp <classifier name> forwarding-class <req’d forwarding class name> loss-priority <low|high> code-points <DSCP code point> (optional - only if multiple DSCP values are used)\nuser@host# set class-of-service interfaces <interface name> scheduler-map <scheduler map name>\nuser@host# set class-of-service interfaces <interface name> unit <unit number> classifiers dscp <classifier name>\nuser@host# set class-of-service interfaces <uplink interface> scheduler-map <scheduler map name>\nuser@host# set class-of-service interfaces <uplink interface> unit <unit number> classifiers dscp <classifier name>\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class best-effort scheduler <scheduler name> (e.g., be-scheduler)\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class <req’d forwarding class> scheduler <scheduler name> (e.g., ef-scheduler)\nuser@host# set class-of-service scheduler-maps <scheduler map name> forwarding-class network-control scheduler <scheduler name> (e.g. nc-scheduler)\nuser@host# set class-of-service schedulers <be-scheduler name> transmit-rate (exact <value> | percent (0..100) | remainder)\nuser@host# set class-of-service schedulers <be-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\nset class-of-service schedulers <ef-scheduler name> shaping-rate percent (0..100)\nuser@host# set class-of-service schedulers <ef-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\nuser@host# set class-of-service schedulers <nc-scheduler name> shaping-rate percent (0..100)\nuser@host# set class-of-service schedulers <nc-scheduler name> priority (high | low | medium-high | medium-low | strict-high)\n\nNote: The classifier method (ToS bit, DSCP marking, etc.) and values, interfaces, priorities, and rates must be appropriate for the target environment.",
+            "+@fixref": "F-57354r1082965_fix"
           },
           "fix": {
-            "+@id": "F-57354r1028749_fix"
+            "+@id": "F-57354r1082965_fix"
           },
           "check": {
-            "+@system": "C-57403r1028746_chk",
+            "+@system": "C-57403r1082964_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the CLI configuration mode:\n1. Type \"show class-of-service\".\n2. Review the CoS configuration to verify it implements the QoS requirements of the System Security Plan (SSP).\n2. Type \"show class-of-service interface\" to verify the CoS policy is applied to the interfaces in accordance with the SSP.\n\nIf the switch is not configured to implement a CoS policy, this is a finding."
+            "check-content": "Review the switch configuration to verify that Class-of-Service (CoS) has been enabled. Ensure sufficient capacity is available for mission-critical traffic to enforce the traffic priorities specified by the Combatant Commanders/Services/Agencies.\n\nBy default, Junos implements a standard CoS (QoS) strategy. Although some devices implement different queues or queue numbers, generally there is at least a four-queue model with two active queues: 95 percent Best Effort (BE) and 5 percent Network Control (NC). Verify additional queues are configured to support the traffic priorities of the Combatant Commanders/Services/Agencies.\n\nThe example CoS below adds a queue for one type of prioritized traffic. The example shows the interdependency of the classifiers, the schedulers, and the interfaces but the names, classifier code points, and scheduler rates are only examples. The names, code points, and rates must be appropriate for the target environment. Additional configuration is required for each type of prioritized traffic.\n\nNote: The example CoS names, scheduler rates, and DSCP values must not be considered requirements. The names, rates, and values must be appropriately configured for the target environment.\n\nuser@host> show configuration class-of-service\nclassifiers {\n    dscp prioritized-traffic-classifier {\n        import default;\n        forwarding-class expedited-forwarding {\n            loss-priority low code-points [ 101110 100100 ];\n        }\n    }\n}\ninterfaces {\n    <interface> {\n        scheduler-map prioritized-traffic-map;\n        unit <logical unit> {\n            classifiers {\n                dscp prioritized-traffic-classifier;\n            }\n        }\n    }\n    <uplink interface> {\n        scheduler-map prioritized-traffic-map;\n        unit <logical unit> {\n            classifiers {\n                dscp prioritized-traffic-classifier;\n            }\n    }\n}\nscheduler-maps {\n    prioritized-traffic-map {\n        forwarding-class best-effort scheduler be-scheduler;\n        forwarding-class expedited-forwarding scheduler ef-scheduler;\n        forwarding-class network-control scheduler nc-scheduler;\n    }\n}\nschedulers {\n    be-scheduler {\n        transmit-rate {\n            remainder;\n        }\n        priority low;\n    }\n    ef-scheduler {\n        shaping-rate percent 20;\n        priority strict-high;\n    }\n    nc-scheduler {\n        shaping-rate percent 5;\n        priority strict-high;\n    }\n}\n\nIf the switch is not configured to implement a QoS policy, this is a finding."
           }
         }
       },
@@ -1180,7 +1144,7 @@
         "title": "SRG-NET-000331-L2S-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253952r1015266_rule",
+          "+@id": "SV-253952r1082341_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000050",
@@ -1219,7 +1183,7 @@
         "title": "SRG-NET-000332-L2S-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253953r843892_rule",
+          "+@id": "SV-253953r1082342_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000060",
@@ -1258,7 +1222,7 @@
         "title": "SRG-NET-000343-L2S-000016",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253954r1028752_rule",
+          "+@id": "SV-253954r1082969_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000070",
@@ -1276,19 +1240,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure RADIUS if available on all host-facing access interfaces:\nset access radius-server <RADIUS IPv4 or IPv6 address (global)> secret \"<PSK>\"\nset access profile dot1x_radius authentication-order radius\nset access profile dot1x_radius radius authentication-server <RADIUS IPv4 or IPv6 \naddress (global)>\n-or set access profile dot1x_radius radius-server <RADIUS IPv4 or IPv6 address> secret \"<PSK>\"\n\nTo configure 802.1x on an access interface using the default authentication order:\nset protocols dot1x authenticator authentication-profile-name dot1x_radius\nset protocols dot1x authenticator interface <int-01> supplicant single-secure\n\nTo configure 802.1x and MAC RADIUS on an access interface and prefer MAC RADIUS in the authentication order:\nset protocols dot1x authenticator interface <int-02> authentication-order mac-radius\nset protocols dot1x authenticator interface <int-02> authentication-order dot1x\nset protocols dot1x authenticator interface <int-02> authentication-order captive-portal\nset protocols dot1x authenticator interface <int-02> supplicant multiple\nset protocols dot1x authenticator interface <int-02> mac-radius\n\nTo configure only MAC RADIUS on an access interface (authentication order cannot be set):\nset protocols dot1x authenticator interface <int-03> mac-radius restrict\n\nTo configure Static MAC Bypass:\nset protocols dot1x authenticator static <MAC address>/48 vlan-assignment <vlan name>\nset protocols dot1x authenticator static <MAC address>/48 interface <interface name>.<logical unit>",
-            "+@fixref": "F-57357r1028751_fix"
+            "+content": "Configure 802.1 x authentication on all host-facing access interfaces. To authenticate those devices that do not support an 802.1x supplicant, Static MAC Bypass or MAC RADIUS must be configured. The authentication order must be appropriate for the target environment.\n\nConfigure RADIUS if available:\nuser@host> configure\nuser@host# set access radius-server <RADIUS IPv4 or IPv6 address (global)> secret \"<PSK>\"\nuser@host# set access profile dot1x_radius authentication-order radius\nuser@host# set access profile dot1x_radius radius authentication-server <RADIUS IPv4 or IPv6 address (global)>\n\n-or-\n\nuser@host# set access profile dot1x_radius radius-server <RADIUS IPv4 or IPv6 address> secret \"<PSK>\"\n\nTo configure 802.1x on an access interface using the default authentication order:\nuser@host# set protocols dot1x authenticator authentication-profile-name dot1x_radius\nuser@host# set protocols dot1x authenticator interface <int-01> supplicant single-secure\n\nTo configure 802.1x and MAC RADIUS on an access interface and prefer MAC RADIUS in the authentication order:\nuser@host# set protocols dot1x authenticator interface <int-02> authentication-order mac-radius\nuser@host# set protocols dot1x authenticator interface <int-02> authentication-order dot1x\nuser@host# set protocols dot1x authenticator interface <int-02> authentication-order captive-portal\nuser@host# set protocols dot1x authenticator interface <int-02> supplicant multiple\nuser@host# set protocols dot1x authenticator interface <int-02> mac-radius\n\nTo configure only MAC RADIUS on an access interface for devices that do not support 802.1x (authentication order cannot be set):\nuser@host# set protocols dot1x authenticator interface <int-03> mac-radius restrict\n\nTo configure Static MAC Bypass:\nuser@host# set protocols dot1x authenticator static <MAC address>/48 vlan-assignment <vlan name>\nuser@host# set protocols dot1x authenticator static <MAC address>/48 interface <interface name>.<logical unit>",
+            "+@fixref": "F-57357r1082968_fix"
           },
           "fix": {
-            "+@id": "F-57357r1028751_fix"
+            "+@id": "F-57357r1082968_fix"
           },
           "check": {
-            "+@system": "C-57406r1018711_chk",
+            "+@system": "C-57406r1082967_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the RADIUS server(s) are configured. RADIUS servers can be configured globally at [edit access radius-server] or defined for each group.\n[edit access]\nradius-server {\n <RADIUS IPv4 or IPv6 address> secret \"PSK\"; ## SECRET-DATA\n}\nprofile dot1x_radius {\n authentication-order radius;\n radius {\n authentication-server <RADIUS IPv4 or IPv6 address>; <<< Must be defined if using global RADIUS server. Optional if RADIUS is defined specifically for the profile.\n }\n radius-server {\n <RADIUS IPv4 or IPv6 address> secret \"PSK\"; ## SECRET-DATA <<< Must be defined if not using global RADIUS server. Takes precedence if both profile and global RADIUS is configured.\n }\n}\n\nVerify 802.1x or MAC RADIUS is configured on all host-facing access interfaces when RADIUS is available as shown in the following example. The default authentication order is dot1x, mac-radius, and captive-portal. This order is applied to all interfaces without the authentication-order directive configured (int-01 shown below). For interfaces with connected devices that do not support 802.1x (int-02 below), it may be necessary to change the authentication order because the device authentication attempt may timeout before the switch fails over from dot1x to mac-radius. When restricting to mac-radius authentication only (int-03 below), the authentication order cannot be set.\n\n[edit protocols dot1x]\nauthenticator {\n authentication-profile-name dot1x_radius;\n interface {\n <int-01 name> { <<< Connected device with 802.1x supplicant supplicant single-secure;\n }\n <int-02 name> { <<< Connected device with 802.1x supplicant and interface support for MAC RADIUS, MAC RADIUS authentication preferred authentication-order [ mac-radius dot1x captive-portal ];\n supplicant multiple;\n mac-radius;\n }\n <int-03 name> { <<< Connected device without 802.1x supplicant mac-radius { restrict;\n }\n }\n }\n}\n\nIf RADIUS is unavailable or not configured:\n[edit protocols]\ndot1x {\n authenticator {\n static {\n <MAC address>/48 {\n vlan-assignment <vlan name>;\n interface <interface name>.<logical unit>;\n }\n }\n }\n}\n\nIf 802.1x authentication, Static MAC Bypass, or MAC RADIUS is not configured on all access interfaces connecting to LAN outlets, this is a finding."
+            "check-content": "Verify the switch configuration has 802.1x authentication implemented for all access interfaces connecting to LAN outlets (i.e., RJ-45 wall plates) or devices not located in the telecom room, wiring closets, or equipment rooms. Static MAC Bypass or MAC RADIUS must be configured on access interfaces connected to devices that do not support an 802.1x supplicant. Junos supports three supplicant types: single-secure (authenticate and permit only a single device), multiple (separately authenticate and permit multiple devices), and single (authenticate the first supplicant and permit all others).\n\nVerify the available RADIUS server(s) are configured. RADIUS servers can be configured globally at [edit access radius-server] or defined for each group.\n\nuser@host> show configuration access\nradius-server {\n    <RADIUS IPv4 or IPv6 address> secret \"PSK\"; ## SECRET-DATA\n}\nprofile dot1x_radius {\n    authentication-order radius;\n    radius {\n        authentication-server <RADIUS IPv4 or IPv6 address>; <<< Must be defined if using global RADIUS server. Optional if RADIUS is defined specifically for the profile.\n    }\n    radius-server {\n        <RADIUS IPv4 or IPv6 address> secret \"PSK\"; ## SECRET-DATA <<< Must be defined if not using global RADIUS server. Takes precedence if both profile and global RADIUS is configured.\n    }\n}\n\nVerify 802.1x or MAC RADIUS is configured on all host-facing access interfaces when RADIUS is available as shown in the following example. The default authentication order is dot1x, mac-radius, and captive-portal. This order is applied to all interfaces without the authentication order directive configured (int-01 shown below). For interfaces with connected devices that do not support 802.1x (int-02 below), it may be necessary to change the authentication order because the device authentication attempt may timeout before the switch fails over from dot1x to mac-radius. When restricting to mac-radius authentication only (int-03 below), the authentication order cannot be set.\nuser@host> show configuration protocols dot1x\nauthenticator {\n    authentication-profile-name dot1x_radius;\n    interface {\n        <int-01 name> {  <<< Connected device with 802.1x supplicant\n            supplicant single-secure;\n        }\n        <int-02 name> {  <<< Connected device with 802.1x supplicant and interface support for MAC RADIUS, MAC RADIUS authentication preferred\n            authentication-order [ mac-radius dot1x captive-portal ];\n            supplicant multiple;\n            mac-radius;\n        }\n        <int-03 name> {  <<< Connected device without 802.1x supplicant\n            mac-radius {\n                restrict;\n            }\n        }\n    }\n}\n\nNote: The interface names, supplicant type, MAC RADIUS support, and authentication order must be appropriate for the target environment.\n\nIf RADIUS is unavailable or not configured:\nuser@host> show configuration protocols dot1x\nauthenticator {\n    static {\n       <MAC address>/48 {\n            vlan-assignment <vlan name>;\n            interface <interface name>.<logical unit>;\n        }\n    }\n}\n\nIf 802.1x authentication, Static MAC Bypass, or MAC RADIUS is not configured on all access interfaces connecting to LAN outlets or devices not located in the telecom room, wiring closets, or equipment rooms, this is a finding."
           }
         }
       },
@@ -1297,12 +1261,12 @@
         "title": "SRG-NET-000362-L2S-000021",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253955r1018719_rule",
+          "+@id": "SV-253955r1082970_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "JUEX-L2-000080",
           "title": "The Juniper EX switch must be configured to enable Root Protection on STP switch ports connecting to access layer switches.",
-          "description": "<VulnDiscussion>Spanning Tree Protocol (STP) does not provide any means for the network administrator to securely enforce the topology of the switched network. Any switch can be the root bridge in a network. However, a more optimal forwarding topology places the root bridge at a specific predetermined location. With the standard STP, any bridge in the network with a lower bridge ID takes the role of the root bridge. The administrator cannot enforce the position of the root bridge but can set the root bridge priority to zero in an effort to secure the root bridge position.\n\nThe Root Protection feature provides a way to enforce the root bridge placement in the network. If the bridge receives superior STP Bridge Protocol Data Units (BPDUs) on a Root Protection-enabled interface, Root Protection ignores the superior BPDU and places the interface into block and a root-inconsistent state. To enforce the position of the root bridge it is imperative that Root Protection is enabled on all interfaces where the root bridge should never appear.\n\nNote: Although Loop Protection can be applied to all non-designated ports,  JUEX-L2-000100 requires that Root Protection be applied to all user-facing access switch ports. Thus, Loop Protection must only be applied to all nondesignated ports that are not also user-facing access switch ports. Loop Protection and Root Protection cannot be applied to the same port. Additionally, note that configuring BPDU Protection and Root Protection on the same interface is supported because BPDU protection includes Root Protection.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Spanning Tree Protocol (STP) does not provide any means for the network administrator to securely enforce the topology of the switched network. Any switch can be the root bridge in a network. However, a more optimal forwarding topology places the root bridge at a specific predetermined location. With the standard STP, any bridge in the network with a lower bridge ID takes the role of the root bridge. The administrator cannot enforce the position of the root bridge but can set the root bridge priority to zero in an effort to secure the root bridge position.\n\nThe Root Protection feature provides a way to enforce the root bridge placement in the network. If the bridge receives superior STP Bridge Protocol Data Units (BPDUs) on a Root Protection-enabled interface, Root Protection ignores the superior BPDU and places the interface into block and a root-inconsistent state. To enforce the position of the root bridge it is imperative that Root Protection is enabled on all interfaces where the root bridge should never appear.\n\nNote: Although Loop Protection can be applied to all nondesignated ports, JUEX-L2-000100 requires that Loop Protection be applied to all user-facing access switch ports. Thus, Loop Protection must only be applied to all nondesignated ports that are not also user-facing access switch ports. Loop Protection and Root Protection cannot be applied to the same port. Additionally, note that configuring BPDU Protection and Root Protection on the same interface is supported because BPDU protection includes Root Protection.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "publisher": "DISA",
@@ -1406,45 +1370,6 @@
               "+@name": "M"
             },
             "check-content": "Review the switch configuration to verify that STP Loop Protection is enabled on all non-designated STP switch ports.\n\nVerify STP Loop Protection for RSTP and VSTP.\n[edit protocols]\nrstp {\n    interface <interface name> {\n        bpdu-timeout-action {\n            block;\n        }\n    }\n}\nvstp {\n    interface <interface name> {\n        bpdu-timeout-action {\n            block;\n        }\n    }\n}\n\nVerify Loop Protection for all instances on an MSTP interface:\n[protocols]\nmstp {\n    interface <interface name> {\n        bpdu-timeout-action {\n            block;\n        }\n    }\n}\n\nNote: Loop Protection and Root Protection are mutually exclusive and cannot be simultaneously configured on the same interface.\n\nIf STP Loop Protection is not configured on non-designated STP ports, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-253958",
-        "title": "SRG-NET-000362-L2S-000024",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-253958r843907_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "JUEX-L2-000110",
-          "title": "The Juniper EX switch must be configured not to forward unknown unicast traffic to access interfaces.",
-          "description": "<VulnDiscussion>Access layer switches use the Content Addressable Memory (CAM) table to direct traffic to specific interfaces based on the VLAN number and the destination MAC address of the frame. When a router has an Address Resolution Protocol (ARP) entry for a destination host and forwards it to the access layer switch and there is no entry corresponding to the frame's destination MAC address in the incoming VLAN, the frame will be sent to all forwarding interfaces within the respective VLAN, which causes flooding. Large amounts of flooded traffic can saturate low-bandwidth links, causing network performance issues or complete connectivity outage to the connected devices. Unknown unicast flooding has been a nagging problem in networks that have asymmetric routing and default timers. To mitigate the risk of a connectivity outage, the unknown unicast traffic must not be flooded to all access interfaces.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Juniper EX Series Layer 2 Switch",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Layer 2 Switch",
-            "identifier": "5478"
-          },
-          "ident": {
-            "+content": "CCI-002385",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure the switch to have VLANs forward unknown unicast frames to a single interface.\n\nset switch-options unknown-unicast-forwarding vlan <VLAN name> interface <interface name>.<logical unit>",
-            "+@fixref": "F-57361r843906_fix"
-          },
-          "fix": {
-            "+@id": "F-57361r843906_fix"
-          },
-          "check": {
-            "+@system": "C-57410r843905_chk",
-            "check-content-ref": {
-              "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Review the switch configuration to verify that unknown unicast frames are forwarded to a single interface.\n\n[edit switch-options]\nunknown-unicast-forwarding {\n    vlan <VLAN name> {\n        interface <interface name>.<logical unit>;\n    }\n}\nNote: Validate the MAC and/or ARP timers are consistent across the network. Blindly forwarding unknown unicast traffic can cause the DoS condition this check intends to prevent. Validate the network architecture and that the receiving interface is appropriate.\n\nIf any access VLANs are not configured to forward unknown unicast to a single interface, this is a finding."
           }
         }
       },
@@ -1726,12 +1651,12 @@
         "title": "SRG-NET-000512-L2S-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253966r997517_rule",
+          "+@id": "SV-253966r1082973_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000190",
-          "title": "The Juniper EX switch must be configured to assign all disabled access interfaces to an unused VLAN.",
-          "description": "<VulnDiscussion>It is possible that a disabled access interface that is assigned to a user or management VLAN becomes enabled by accident or by an attacker and as a result gains access to that VLAN as a member.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to assign all explicitly disabled access interfaces to an unused VLAN.",
+          "description": "<VulnDiscussion>It is possible that a configured, but disabled access interface assigned to a user or management VLAN becomes enabled by accident or by an attacker and as a result, gains access to that VLAN as a member. Unconfigured Junos interfaces are not capable of passing network traffic and do not participate in any user configured VLANs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "publisher": "DISA",
@@ -1744,19 +1669,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Disable all access interfaces not in use and assign to an inactive VLAN.\n\nIn this example, \"vlan_disabled\" is the name given to the VLAN for unused interfaces. This VLAN name can be any legal name.\n\nset vlans vlan_disabled vlan-id <VLAN ID>\n\nset interfaces interface-range <name> member <interface name>\nset interfaces interface-range <name> member-range <starting interface name> to <ending interface name>\nset interfaces interface-range <name> disable\nset interfaces interface-range <name> unit 0 family ethernet-switching vlan members vlan_disabled\n\nset interfaces <interface name> disable\nset interfaces <interface name> unit 0 family ethernet-switching vlan members vlan_disabled\n\nDelete the unused VLAN from all trunked interfaces.\n\ndelete interfaces <trunked interface> unit 0 family ethernet-switching vlan members vlan_disabled\n\nNote: Switch ports configured for 802.1x are exempt from this requirement.",
-            "+@fixref": "F-57369r843930_fix"
+            "+content": "Disable all configured access interfaces not in use and assign to an inactive VLAN, or remove the interface configuration from the device. Switch ports configured for 802.1x are exempt from this requirement.\n\n1. In this example, \"vlan_disabled\" is the name given to the VLAN for unused interfaces. This VLAN name can be any legal name.\nConfigure a range of interfaces.\nuser@host> configure\nuser@host# set vlans vlan_disabled vlan-id <VLAN ID>\n\nuser@host# set interfaces interface-range <name> member <interface name>\nuser@host# set interfaces interface-range <name> member-range <starting interface name> to <ending interface name>\nuser@host# set interfaces interface-range <name> disable\nuser@host# set interfaces interface-range <name> unit 0 family ethernet-switching vlan members vlan_disabled\n\n2. Configure individual interfaces.\nset interfaces <interface name> disable\nset interfaces <interface name> unit 0 family ethernet-switching vlan members vlan_disabled\n\n3. Delete the unused VLAN from all trunked interfaces.\nuser@host# delete interfaces <trunked interface> unit 0 family ethernet-switching vlan members vlan_disabled\n\n4. Remove the access interface configuration from unused interfaces.\nuser@host# delete interfaces <interface name>",
+            "+@fixref": "F-57369r1082972_fix"
           },
           "fix": {
-            "+@id": "F-57369r843930_fix"
+            "+@id": "F-57369r1082972_fix"
           },
           "check": {
-            "+@system": "C-57418r843929_chk",
+            "+@system": "C-57418r1082971_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configurations and examine all access interfaces. Each access interface not in use should have membership in an inactive VLAN that is not used for any purpose and is not allowed on any trunk links.\n\nVerify a VLAN is configured for unused interfaces.\n[edit vlans]\nvlan_disabled {\n    vlan-id <VLAN ID>;\n}\n\nVerify disabled interfaces are assigned to an unused VLAN either individually or via the \"interface-range\" command. Verify interfaces configured via \"interface-range\" are not also configured individually.\nMultiple interfaces simultaneously configured via interface-range.\n[edit interfaces]\ninterface-range <name> {\n    member <interface name>;\n    member-range <starting interface name> to <ending interface name>; <<< Member ranges are contiguous from <start interface> to <end interface> inclusive\n    disable;\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members vlan_disabled;\n            }\n        }\n    }\n}\n\nIndividually configured:\n[edit interfaces]\n<interface name> {\n    disable;\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members vlan_disabled;\n            }\n        }\n    }\n}\n\nIn this example, \"vlan_disabled\" is designated for all unused interfaces and must not be configured on any trunked interface. Verify the unused VLAN is NOT a member of any trunked interface as in the example below.\n[edit interfaces]\n<interface name> {\n    unit <logical unit> {\n        family {\n            ethernet-switching {\n                interface-mode trunk;\n                vlan {\n                    members [ vlan_name vlan_disabled ];\n                }\n            }\n        }\n    }\n}\nIf there are any access interfaces not in use and not in an inactive VLAN, this is a finding.\n\nNote: Access interfaces configured for 802.1x are exempt from this requirement."
+            "check-content": "If this is an access interface configured for 802.1x, this is not applicable.\n\n1. Review the switch configurations and examine all configured access interfaces. \n2. Verify each configured access interface not in use has membership in an inactive VLAN that is not used for any purpose and is not allowed on any trunk links. Unconfigured interfaces should not be configured \"disabled\" merely to meet this requirement because unconfigured interfaces are incapable of passing network traffic. Verify a VLAN is configured for unused interfaces. \n\nIn the following example, VLAN name is \"vlan-disabled\", but that name should match local naming conventions.\nuser@host> show configuration vlans\nvlan_disabled {\n    vlan-id <VLAN ID>;\n}\n\n3. Verify configured, but unused, interfaces are assigned to an unused VLAN either individually or via the \"interface-range\" command. Verify interfaces configured via \"interface-range\" are not also configured individually. Multiple interfaces simultaneously configured via interface-range.\nuser@host> show configuration interfaces\ninterface-range <name> {\n    member <interface name>;\n    member-range <starting interface name> to <ending interface name>; <<< Member ranges are contiguous from <start interface> to <end interface> inclusive\n    disable;\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members vlan_disabled;\n            }\n        }\n    }\n}\n\n4. Individually configured:\nuser@host> show configuration interfaces\n<interface name> {\n    disable;\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members vlan_disabled;\n            }\n        }\n    }\n}\n\n5. In the following example, \"vlan_disabled\" is designated for all configured, but disabled interfaces, and must not be configured on any trunked interface. Verify the unused VLAN is NOT a member of any trunked interface as in the example below.\nuser@host> show configuration interfaces\n<interface name> {\n    unit <logical unit> {\n        family {\n            ethernet-switching {\n                interface-mode trunk;\n                vlan {\n                    members [ vlan_name vlan_disabled ];\n                }\n            }\n        }\n    }\n}\n\n6. Verify if there are unconfigured physical interfaces. These interfaces should not be configured merely to set them disabled because they are already incapable of passing network traffic, participating in protocols, and are not members of any user configured VLANS.\nuser@host> show interfaces terse\nge-0/0/0                up    up\nge-0/0/0.0              up    up   eth-switch\nge-0/0/1                up    up\nge-0/0/1.0              up    up   eth-switch\n…<snip>…\nge-0/0/5                up    down\nge-0/0/5.16386          up    down\nge-0/0/6                up    down\nge-0/0/6.16386          up    down\nge-0/0/7                up    down\nge-0/0/7.16386          up    down\n\n7. As shown in the example above, ge-0/0/5 through ge-0/0/7 are unconfigured interfaces. Verify there is no configuration stanza for these interfaces.\nuser@host> show configuration interfaces\nge-0/0/0 {\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members <VLAN name>;\n            }\n        }\n    }\n}\nge-0/0/1 {\n    unit 0 {\n        family ethernet-switching {\n            vlan {\n                members <VLAN name>;\n            }\n        }\n    }\n}\n…<snip>…\nxe-0/1/0 {\n    ether-options {\n        802.3ad ae0;\n    }\n}\n\n8. The example above shows that ge-0/0/1 is the last configured access interface and the next configured interface is a 10GbE Link Aggregation Group (LAG) member. Because Junos lists interface names in ascending order, the example unconfigured interfaces (ge-0/0/5 through ge-0/0/7) would appear between the configured interfaces ge-0/0/1 and xe-0/1/0. Therefore, the subject interfaces, while present on the device, are not configured and are incapable of passing network traffic.\n\nIf there are any configured, but disabled access interfaces not in an inactive VLAN, this is a finding."
           }
         }
       },
@@ -1882,12 +1807,12 @@
         "title": "SRG-NET-000512-L2S-000011",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253970r843943_rule",
+          "+@id": "SV-253970r1082976_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000230",
-          "title": "The Juniper EX switch must be configured to set all user-facing or untrusted ports as access interfaces.",
-          "description": "<VulnDiscussion>Configuring user-facing or untrusted interfaces as trunked may expose network traffic to an unauthorized, or unintended, connected endpoint. Access interfaces can belong to a single VLAN rather than the multiple VLANs supported by trunks, which limits potential exposure to a smaller subset of the total network traffic.\n\nAccess interfaces also behave differently than trunked interfaces, especially with respect to control plane traffic. For example, access interfaces can be marked as \"edge\" for protocols like Rapid Spanning Tree (RSTP) or Multiple Spanning Tree (MSTP) where specific protections can be applied to prevent the switch from accepting Bridge Protocol Data Units (BPDU) from unauthorized sources and causing a network topology change or disruption. Additionally, network level protection mechanisms, like 802.1x or sticky-mac, are applied to access interfaces and these protection mechanisms help prevent unauthorized network access.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to set all enabled user-facing or untrusted ports as access interfaces.",
+          "description": "<VulnDiscussion>By default, unconfigured (or expressly disabled) Junos interfaces are unusable. Any enabled interface configured with the family ethernet-switching uses interface-mode access by default, which meets this requirement. Trunked interfaces must be explicitly configured for operational requirements (e.g., interswitch links), which makes them trusted and not user-facing.\n\nConfiguring enabled user-facing or untrusted interfaces as trunked may expose network traffic to an unauthorized, or unintended, connected endpoint. Access interfaces can belong to a single VLAN rather than the multiple VLANs supported by trunks, which limits potential exposure to a smaller subset of the total network traffic.\n\nAccess interfaces also behave differently than trunked interfaces, especially with respect to control plane traffic. For example, access interfaces can be marked as \"edge\" for protocols like Rapid Spanning Tree (RSTP) or Multiple Spanning Tree (MSTP) where specific protections can be applied to prevent the switch from accepting Bridge Protocol Data Units (BPDU) from unauthorized sources and causing a network topology change or disruption. Additionally, network level protection mechanisms, like 802.1x or sticky-mac, are applied to access interfaces and these protection mechanisms help prevent unauthorized network access.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "publisher": "DISA",
@@ -1900,19 +1825,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Disable trunking on all user-facing or untrusted access interfaces.\n\nDeleting interface-mode from the configuration automatically assigns mode access:\ndelete interfaces <interface name> unit 0 family ethernet-switching interface-mode\n\nExplicitly configure mode access for a user-facing or untrusted interface:\nset interfaces <interface name> unit 0 family ethernet-switching interface-mode access",
-            "+@fixref": "F-57373r843942_fix"
+            "+content": "Disable trunking on all enabled user-facing or untrusted access interfaces.\n\nDelete \"interface-mode\" from an enabled user-facing or untrusted interface to inherit the default access mode.\nuser@host> configure\nuser@host# delete interfaces <interface name> unit 0 family ethernet-switching interface-mode\n\nAlternatively, explicitly set the enabled user-facing or untrusted interface mode to access.\nuser@host> configure\nuser@host# set interfaces <interface name> unit 0 family ethernet-switching interface-mode access",
+            "+@fixref": "F-57373r1082975_fix"
           },
           "fix": {
-            "+@id": "F-57373r843942_fix"
+            "+@id": "F-57373r1082975_fix"
           },
           "check": {
-            "+@system": "C-57422r843941_chk",
+            "+@system": "C-57422r1082974_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration and examine all user-facing or untrusted interfaces and verify the interface mode command is not present or, if present, is not configured with the keyword \"trunk\".\n\nDefault interface-mode access for interface configured with family ethernet-switching.\n[edit interfaces]\n<interface name> {\n    unit 0 {\n        family ethernet-switching {\n        }\n    }\n}\nNote: Because the default interface-mode is \"access\", an interface configured for family ethernet-switching and without an \"interface-mode\" declaration is automatically an access interface.\n\nInterfaces explicitly configured mode access.\n[edit interfaces]\n<interface name> {\n    unit 0 {\n        family ethernet-switching {\n            interface-mode access;\n        }\n    }\n}\n\nIf any of the user-facing access interfaces are configured as a trunk, this is a finding."
+            "check-content": "Review the switch configuration and examine all enabled user-facing or untrusted interfaces configured with family ethernet-switching. \n\n1. Interfaces implicitly configured with \"interface-mode\" access and family ethernet-switching. Note: The default interface-mode is \"access\".\nuser@host> show configuration interfaces\n<interface name> {\n    unit 0 {\n        family ethernet-switching {\n        }\n    }\n}\n\n\n2. Interfaces explicitly configured with \"interface-mode\" access and family ethernet-switching.\nuser@host> show configuration interfaces\n<interface name> {\n    unit 0 {\n        family ethernet-switching {\n            interface-mode access;\n        }\n    }\n}\n\nIf any of the enabled user-facing access interfaces are configured as a trunk, this is a finding."
           }
         }
       },

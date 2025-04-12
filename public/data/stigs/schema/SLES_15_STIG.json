@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-11-25"
+      "+@date": "2025-02-27"
     },
     "title": "SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -9098,12 +9098,12 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234830r986465_rule",
+          "+@id": "SV-234830r1069400_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010320",
           "title": "The SUSE operating system for all network connections associated with SSH traffic must immediately terminate at the end of the session or after 10 minutes of inactivity.",
-          "description": "<VulnDiscussion>Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific SUSE operating system functionality where the system owner, data owner, or organization requires additional assurance.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific SUSE operating system functionality where the system owner, data owner, or organization requires additional assurance.\n\nIn Linux, ClientAliveCountMax directive is used in the SSH daemon configuration file to define the number of client alive messages the SSH server will send without receiving any response from the client before terminating the session. The ClientAliveInterval (SLES-15-010280/ V-234827) sets a timeout interval in seconds after which if no data has been received from the client, the ssh daemon will send a message through the encrypted channel to request a response from the client. Together, these two settings provide a way to configure a timeout for inactive sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Server 15",
             "publisher": "DISA",
@@ -9122,19 +9122,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the SUSE operating system to automatically terminate all network connections associated with SSH traffic at the end of a session or after a 10-minute period of inactivity.\n\nModify or append the following lines in the \"/etc/ssh/sshd_config\" file:\n\nClientAliveCountMax 0\n\nIn order for the changes to take effect, the SSH daemon must be restarted.\n\n> sudo systemctl restart sshd.service",
-            "+@fixref": "F-37981r618760_fix"
+            "+content": "Configure the SUSE operating system to automatically terminate all network connections associated with SSH traffic at the end of a session or after a 10-minute period of inactivity.\n\nModify or append the following lines in the \"/etc/ssh/sshd_config\" file:\n\nClientAliveCountMax 1\n\nFor the changes to take effect, the SSH daemon must be restarted.\n\n> sudo systemctl restart sshd.service",
+            "+@fixref": "F-37981r1069399_fix"
           },
           "fix": {
-            "+@id": "F-37981r618760_fix"
+            "+@id": "F-37981r1069399_fix"
           },
           "check": {
-            "+@system": "C-38018r951635_chk",
+            "+@system": "C-38018r1069398_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck that the \"ClientAliveCountMax\" variable is set to a value of \"0\" or less by performing the following command:\n\n> sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*clientalivecountmax'\n\nClientAliveCountMax 0\n\nIf \"ClientAliveCountMax\" does not exist or \"ClientAliveCountMax\" is not set to a value of \"0\" or less in \"/etc/ssh/sshd_config\", or the line is commented out, this is a finding."
+            "check-content": "Verify that all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck that the \"ClientAliveCountMax\" variable is set to a value of \"1\" or less by performing the following command:\n\n> sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*clientalivecountmax'\n\nClientAliveCountMax 1\n\nIf \"ClientAliveCountMax\" does not exist or \"ClientAliveCountMax\" is not set to a value of \"1\" in \"/etc/ssh/sshd_config\", or the line is commented out, this is a finding."
           }
         }
       },
@@ -10581,7 +10581,7 @@
         "title": "SRG-OS-000479-GPOS-00224",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234865r959008_rule",
+          "+@id": "SV-234865r1082187_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010580",
@@ -10599,19 +10599,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SUSE operating system to off-load rsyslog messages for networked systems in real time.\n\nFor stand-alone systems establish a procedure to off-load log messages at least once a week.\n\nFor networked systems add a \"@[Log_Server_IP_Address]\" option to every active message label in \"/etc/rsyslog.conf\" that does not have one. Some examples are listed below:\n\n*.*;mail.none;news.none -/var/log/messages\n*.*;mail.none;news.none @192.168.1.101:514\n\nAn additional option is to capture all of the log messages and send them to a remote log host:\n\n*.* @@loghost:514",
-            "+@fixref": "F-38016r618865_fix"
+            "+content": "Configure the SUSE operating system to off-load rsyslog messages for networked systems in real time.\n\nFor stand-alone systems establish a procedure to off-load log messages at least once a week.\n\nFor networked systems add a \"@[Log_Server_IP_Address]\" option to every active message label in \"/etc/rsyslog.conf\" or in a file in \"/etc/rsyslog.d/ that does not have one. Some examples are listed below:\n\n*.*;mail.none;news.none -/var/log/messages\n*.*;mail.none;news.none @192.168.1.101:514\n\nAn additional option is to capture all of the log messages and send them to a remote log host:\n\n*.* @@loghost:514",
+            "+@fixref": "F-38016r1069396_fix"
           },
           "fix": {
-            "+@id": "F-38016r618865_fix"
+            "+@id": "F-38016r1069396_fix"
           },
           "check": {
-            "+@system": "C-38053r618864_chk",
+            "+@system": "C-38053r1082187_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the SUSE operating system must off-load rsyslog messages for networked systems in real time and off-load standalone systems at least weekly.\n\nFor stand-alone hosts, verify with the System Administrator that the log files are off-loaded at least weekly.\n\nFor networked systems, check that rsyslog is sending log messages to a remote server with the following command:\n\n> sudo grep \"\\*.\\*\" /etc/rsyslog.conf | grep \"@\" | grep -v \"^#\"\n\n*.*;mail.none;news.none @192.168.1.101:514\n\nIf any active message labels in the file do not have a line to send log messages to a remote server, this is a finding."
+            "check-content": "Verify that the SUSE operating system must off-load rsyslog messages for networked systems in real time and off-load standalone systems at least weekly.\n\nFor stand-alone hosts, verify with the system administrator that the log files are off-loaded at least weekly.\n\nFor networked systems, check that rsyslog is sending log messages to a remote server with the following command:\n\n> sudo grep \"\\*.\\*\" /etc/rsyslog.conf | grep \"@\" | grep -v \"^#\"\n\n*.*;mail.none;news.none @192.168.1.101:514\n\nIf any active message labels in the file do not have a line to send log messages to a remote server, this is a finding."
           }
         }
       },

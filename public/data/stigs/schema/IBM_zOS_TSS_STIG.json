@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-05"
+      "+@date": "2025-03-11"
     },
     "title": "IBM z/OS TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -956,6 +956,10 @@
           {
             "+@idref": "V-255944",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
+            "+@selected": "true"
           }
         ]
       },
@@ -1866,6 +1870,10 @@
           },
           {
             "+@idref": "V-255944",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
             "+@selected": "true"
           }
         ]
@@ -2778,6 +2786,10 @@
           {
             "+@idref": "V-255944",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
+            "+@selected": "true"
           }
         ]
       },
@@ -3688,6 +3700,10 @@
           },
           {
             "+@idref": "V-255944",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
             "+@selected": "true"
           }
         ]
@@ -4600,6 +4616,10 @@
           {
             "+@idref": "V-255944",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
+            "+@selected": "true"
           }
         ]
       },
@@ -5510,6 +5530,10 @@
           },
           {
             "+@idref": "V-255944",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
             "+@selected": "true"
           }
         ]
@@ -6422,6 +6446,10 @@
           {
             "+@idref": "V-255944",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
+            "+@selected": "true"
           }
         ]
       },
@@ -7333,6 +7361,10 @@
           {
             "+@idref": "V-255944",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
+            "+@selected": "true"
           }
         ]
       },
@@ -8243,6 +8275,10 @@
           },
           {
             "+@idref": "V-255944",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-272878",
             "+@selected": "true"
           }
         ]
@@ -16538,7 +16574,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224044r958408_rule",
+          "+@id": "SV-224044r1083018_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TSS0-SH-000020",
@@ -16574,19 +16610,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Edit the SSH daemon configuration and remove any ciphers not starting with \"3des\" or \"aes\". If necessary, add a \"Ciphers\" line using FIPS 140-2 compliant algorithms.",
-            "+@fixref": "F-25705r516759_fix"
+            "+content": "Edit the SSH daemon configuration and remove any ciphers not starting with \"aes\". If necessary, add a \"Ciphers\" line using FIPS 140-2 compliant algorithms.\n\nConfigure for message authentication to MACs \"hmac-sha1\" or greater.\n\nEdit the z/OS-specific sshd server systemwide configuration file configuration as follows:\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF",
+            "+@fixref": "F-25705r1082856_fix"
           },
           "fix": {
-            "+@id": "F-25705r516759_fix"
+            "+@id": "F-25705r1082856_fix"
           },
           "check": {
-            "+@system": "C-25717r516758_chk",
+            "+@system": "C-25717r1083017_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Locate the SSH daemon configuration file which may be found in /etc/ssh/ directory.\n\nAlternately:\nFrom UNIX System Services ISPF Shell navigate to ribbon select tools.\nSelect option 1 - Work with Processes.\n\nIf SSH Daemon is not active, this is not a finding.\n\nExamine SSH daemon configuration file. \nsshd_config\n\nIf there are no Ciphers lines or the ciphers list contains any cipher not starting with \"3des\" or \"aes\", this is a finding.\n\nIf the MACs line is not configured to \"hmac-sha1\" or greater, this is a finding.\n\nExamine the z/OS-specific sshd server system-wide configuration: \nzos_sshd_config\n\nIf any of the following is untrue, this is a finding.\n\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF"
+            "check-content": "Locate the SSH daemon configuration file found in /etc/ssh/ directory.\n\nAlternately:\nFrom the Unix System Services ISPF Shell, navigate to ribbon select tools.\nSelect option 1 - Work with Processes.\n\nIf SSH Daemon is not active, this is not a finding.\n\nExamine SSH daemon configuration file. \nsshd_config\n\nIf there are no Ciphers lines, or the ciphers list contains any cipher not starting with \"aes\", this is a finding.\n\nIf the MACs line is not configured to \"hmac-sha1\" or greater, this is a finding.\n\nExamine the z/OS-specific sshd server systemwide configuration: \nzos_sshd_config\n\nIf any of the following is untrue, this is a finding.\n\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF"
           }
         }
       },
@@ -19918,6 +19954,51 @@
               "+@name": "M"
             },
             "check-content": "Verify that access to the IBM Integrated Crypto Service Facility (ICSF) STC data sets are properly restricted. The data sets to be protected are identified in the data set referenced in the CSFPARM DD statement of the ICSF started task(s) and/or batch job(s); the entries for CKDSN and PKDSN specify the data sets. If the following guidance is true, this is not a finding.\n\nIf the TSS data set access authorizations do not restrict READ access to auditors, this is a finding.\n\nIf the TSS data set access authorizations do not restrict WRITE and/or greater access to systems programming personnel, this is a finding.\n\nIf the TSS data set access authorizations do not  restrict WRITE and/or greater access to the product STC(s) and/or batch job(s), this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-272878",
+        "title": "SRG-OS-000080-GPOS-00048",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-272878r1082860_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "TSS0-SM-000050",
+          "title": "IBM z/OS DFSMS control data sets must reside on separate storage volumes.",
+          "description": "<VulnDiscussion>Configuration settings are the set of parameters that can be changed in hardware, software, or firmware components of the system that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the system, including the parameters required to satisfy other security control requirements. Security-related parameters include, for example registry settings; account, file, directory permission settings; and settings for functions, ports, protocols, services, and remote connections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target IBM zOS TSS",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "IBM zOS TSS",
+            "identifier": "4102"
+          },
+          "ident": [
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000549",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Allocate the primary and backup SMS Control data sets on separate volumes.\n\nSource Control Data Set (SCDS) contains an SMS configuration, which defines a storage management policy.\n\nActive Control Data Set (ACDS) contains a copy of the most recently activated configuration. All systems in an SMS complex use this configuration to manage storage.\n\nCommunications Data Set (COMMDS) contains the name of the ACDS containing the currently active storage management policy, the current utilization statistics for each system managed volume, and other system information.\n\nThe ACDS data set will reside on a different volume than the COMMDS data set.\n\nAllocate backup copies of the ADCS and COMMDS data sets on a different shared volume from the primary ACDS and COMMDS data sets.",
+            "+@fixref": "F-76874r1082859_fix"
+          },
+          "fix": {
+            "+@id": "F-76874r1082859_fix"
+          },
+          "check": {
+            "+@system": "C-76969r1082858_chk",
+            "check-content-ref": {
+              "+@href": "IBM_zOS_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Review the logical parmlib data sets, for example SYS1.PARMLIB(IGDSMSxx), to identify the fully qualified file names for the following SMS data sets:\nActive Control Data Set (ACDS)\nCommunications Data Set (COMMDS)\n\nIf the COMMDS and ACDS SMS data sets identified above reside on different volumes, this is not a finding.\n\nIf the COMMDS and ACDS SMS data sets identified above are collocated on the same volume, this is a finding."
           }
         }
       }

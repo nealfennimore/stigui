@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-10"
+      "+@date": "2025-02-24"
     },
     "title": "z/OS BMC MAINVIEW for z/OS for TSS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 8 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -406,12 +406,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224607r855099_rule",
+          "+@id": "SV-224607r1070242_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT000",
           "title": "BMC MAINVIEW for z/OS installation data sets are not properly protected.",
-          "description": "<VulnDiscussion>BMC MAINVIEW for z/OS installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>BMC MAINVIEW for z/OS installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS BMC MAINVIEW for zOS for TSS",
             "publisher": "DISA",
@@ -429,7 +429,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -438,19 +438,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to BMC MAINVIEW for z/OS installation data sets is limited to System Programmers only, and all update and allocate access is logged.  Read access can be given to all authorized users.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS2.BMCVIEW.\nSYS3.BMCVIEW. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(MAINVIEW STCs) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(MAINVIEW STCs) DSN(SYS3.BMCVIEW.) ACCESS(R)",
-            "+@fixref": "F-26278r518999_fix"
+            "+content": "The ISSO will ensure that update and allocate access to BMC MAINVIEW for z/OS installation data sets is limited to system programmers only, and all update and allocate access is logged.  Read access can be given to all authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.BMCVIEW.\nSYS3.BMCVIEW. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(MAINVIEW STCs) DSN(SYS2.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.BMCVIEW.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS3.BMCVIEW.) ACCESS(R)\nTSS PERMIT(MAINVIEW STCs) DSN(SYS3.BMCVIEW.) ACCESS(R)",
+            "+@fixref": "F-26278r1070241_fix"
           },
           "fix": {
-            "+@id": "F-26278r518999_fix"
+            "+@id": "F-26278r1070241_fix"
           },
           "check": {
-            "+@system": "C-26290r518998_chk",
+            "+@system": "C-26290r1070240_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_MAINVIEW_for_zOS_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MVZRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMVZ0000)\n\nVerify that the accesses to the BMC MAINVIEW for z/OS installation data sets are properly restricted.\n \n___\tThe TSS data set rules for the data sets restricts READ access to all authorized users.\n\n___\tThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\n___\tThe TSS data set rules for the data sets specify that all (i.e., failures and successes) UPDATE and/or ALL access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MVZRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMVZ0000)\n\nVerify that the accesses to the BMC MAINVIEW for z/OS installation data sets are properly restricted.\n \nThe TSS data set rules for the data sets restricts READ access to all authorized users.\n\nThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\nThe TSS data set rules for the data sets specify that all (i.e., failures and successes) UPDATE and/or ALL access are logged."
           }
         }
       },
@@ -459,7 +459,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224608r868735_rule",
+          "+@id": "SV-224608r958616_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT001",
@@ -508,7 +508,7 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224609r868738_rule",
+          "+@id": "SV-224609r1070245_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT020",
@@ -531,28 +531,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002234",
+              "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the ACP.\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The resource class, actual resources, and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC MAINVIEW Resources table in the zOS STIG Addendum. This table lists the resources, access requirements, and logging requirement for BMC MAINVIEW. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nThe TSS resources as designated in the above table are owned and/or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nTSS ADD(dept-acid) #BMCVIEW(BBM)\nTSS PERMIT(autoaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(dasdaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mqsaaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(Mainview STCs) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mvzread) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mvzupdt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(pcspaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(syspaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)",
-            "+@fixref": "F-26280r868737_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The resource class, actual resources, and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC MAINVIEW Resources table in the zOS STIG Addendum. This table lists the resources, access requirements, and logging requirement for BMC MAINVIEW. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nThe TSS resources as designated in the above table are owned and/or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nTSS ADD(dept-acid) #BMCVIEW(BBM)\nTSS PERMIT(autoaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(dasdaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mqsaaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(Mainview STCs) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mvzread) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(mvzupdt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(pcspaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)\nTSS PERMIT(syspaudt) #BMCVIEW(BBM.ssid.CN) ACCESS(ALL)",
+            "+@fixref": "F-26280r1070244_fix"
           },
           "fix": {
-            "+@id": "F-26280r868737_fix"
+            "+@id": "F-26280r1070244_fix"
           },
           "check": {
-            "+@system": "C-26292r868736_chk",
+            "+@system": "C-26292r1070243_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_MAINVIEW_for_zOS_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZMVZ0020)\n- TSSCMDS.RPT(#RDT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMVZ0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC MAINVIEW Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\n___ The TSS resources are owned or DEFPROT is specified for the resource class.\n \n___ The TSS resource access authorizations restrict access to the appropriate personnel."
+            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZMVZ0020)\n-\tTSSCMDS.RPT(#RDT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMVZ0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC MAINVIEW Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe TSS resources are owned or DEFPROT is specified for the resource class.\n \nThe TSS resource access authorizations restrict access to the appropriate personnel."
           }
         }
       },
@@ -561,7 +557,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224610r519009_rule",
+          "+@id": "SV-224610r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT030",
@@ -610,7 +606,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224611r519012_rule",
+          "+@id": "SV-224611r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT032",
@@ -659,7 +655,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224612r519015_rule",
+          "+@id": "SV-224612r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT036",
@@ -708,7 +704,7 @@
         "title": "SRG-OS-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224613r868741_rule",
+          "+@id": "SV-224613r987853_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT038",
@@ -761,12 +757,12 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224614r519021_rule",
+          "+@id": "SV-224614r1070247_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMVZT040",
           "title": "BMC MAINVIEW for z/OS configuration/parameter values are not specified properly.",
-          "description": "<VulnDiscussion>BMC MAINVIEW for z/OS configuration/parameters controls the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>BMC MAINVIEW for z/OS configuration/parameters controls the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS BMC MAINVIEW for zOS for TSS",
             "publisher": "DISA",
@@ -784,16 +780,20 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
+              "+content": "CCI-000015",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000381",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The BMC MAINVIEW for z/OS Systems programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct.  Set the standard values for the BMC MAINVIEW for z/OS security parameters for the specific ACP environment along with additional IOA security parameters with standard values as documented below.\n\nStatement(values)\nESMTYPE(AUTO|TSS)",
-            "+@fixref": "F-26285r519020_fix"
+            "+content": "The BMC MAINVIEW for z/OS Systems programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct. Set the standard values for the BMC MAINVIEW for z/OS security parameters for the specific Access Control Program (ACP) environment along with additional IOA security parameters with standard values as documented below.\n\nStatement(values)\nESMTYPE(AUTO|TSS)",
+            "+@fixref": "F-26285r1070246_fix"
           },
           "fix": {
-            "+@id": "F-26285r519020_fix"
+            "+@id": "F-26285r1070246_fix"
           },
           "check": {
             "+@system": "C-26297r519019_chk",

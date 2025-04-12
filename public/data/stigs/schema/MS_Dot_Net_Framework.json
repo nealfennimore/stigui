@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-11-25"
+      "+@date": "2025-02-20"
     },
     "title": "Microsoft DotNet Framework 4.0 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 6 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -1331,7 +1331,7 @@
         "title": "SRG-APP-000431",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225236r961608_rule",
+          "+@id": "SV-225236r1069477_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPNET0070",
@@ -1366,12 +1366,12 @@
             "+@id": "F-26923r468024_fix"
           },
           "check": {
-            "+@system": "C-26935r468023_chk",
+            "+@system": "C-26935r1069476_chk",
             "check-content-ref": {
               "+@href": "Microsoft_DotNet_Framework_4-0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement does not apply to the \"caspol.exe\" assembly or other assemblies provided with the Windows OS or the Windows Secure Host Baseline (SHB).\n\nAsk the system administrator to provide documentation that identifies:\n\n- Each .Net 4.0 application they run on the system.\n- The .Net runtime host that invokes the application. \n- The security measures employed to control application access to system resources or user access to application.\n\nIf all .Net applications, runtime hosts and security protections have been documented or if there are no .Net 4.0 applications existing on the system, this is not a finding.\n\nIf there is no documentation that identifies the existence of .NET 4.0 applications or the lack thereof, this is a finding.\n\nIf the runtime hosts have not been identified, this is a finding.\n\nIf the security protections have not been identified, this is a finding."
+            "check-content": "This requirement does not apply to the \"caspol.exe\" assembly or other assemblies provided with the Windows OS or the Windows Secure Host Baseline (SHB).\n\nAsk the system administrator to provide documentation that identifies:\n\n- Each .Net 4.0 application run on the system.\n- The .Net runtime host that invokes the application. \n- The security measures employed to control application access to system resources or user access to application.\n\nFor additional insight run: tasklist /fi \"modules eq mscoree.dll\"\n\nIf all .Net applications, runtime hosts and security protections have been documented or if there are no .Net 4.0 applications existing on the system, this is not a finding.\n\nIf there is no documentation that identifies the existence of .NET 4.0 applications or the lack thereof, this is a finding.\n\nIf the runtime hosts have not been identified, this is a finding.\n\nIf the security protections have not been identified, this is a finding."
           }
         }
       },
@@ -1429,11 +1429,11 @@
         "title": "SRG-APP-000383",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225238r961470_rule",
+          "+@id": "SV-225238r1069480_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPNET0075",
-          "title": "Disable TLS RC4 cipher in .Net",
+          "title": "Update and configure the .NET Framework to support TLS.",
           "description": "<VulnDiscussion>Use of the RC4 cipher in TLS could allow an attacker to perform man-in-the-middle attacks and recover plaintext from encrypted sessions. Applications that target .Net version 4.x running on multiple Windows versions could be vulnerable to these types of attacks. The registry settings in this requirement will prevent .Net applications that target the 4.x framework from selecting and utilizing the Schannel.dll RC4 cipher for TLS connections. Applications that use TLS when connecting to remote systems will perform a handshake and negotiate the TLS version and cipher that is to be used between the client and the server. This is standard protocol for all TLS connections. If the server and client are not configured to use the same TLS version and cipher, the TLS connection may fail. Applications should be tested with these registry settings prior to production implementation of the fix in order to avoid application outages.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Microsoft DotNet Framework 4-0",
@@ -1457,19 +1457,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Use regedit to access the following registry key.\n\nFor 32-bit systems:\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nFor 64-bit systems: \nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nModify or create the following Windows registry value: SchUseStrongCrypto\n\nSet SchUseStrongCrypto to a REG_DWORD value of “1”.",
-            "+@fixref": "F-26925r622494_fix"
+            "+content": "1. SchUseStrongCrypto enabled:\n\nUse regedit to access the following registry key.\n\nFor 32-bit systems:\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nFor 64-bit systems: \nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nModify or create the following Windows registry value: SchUseStrongCrypto.\n\nSet SchUseStrongCrypto to a REG_DWORD value of \"1\".\n\n2. SystemDefaultTlsVersions enabled (.NET Framework >4.6):\nFor 64-bit Windows, create a .reg file with the following content and apply it:\nWindows Registry Editor Version 5.00\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319]\n\"SystemDefaultTlsVersions\"=dword:00000001\n\n[HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319]\n\"SystemDefaultTlsVersions\"=dword:00000001\n\n3. Restart the system for changes to take effect.",
+            "+@fixref": "F-26925r1069479_fix"
           },
           "fix": {
-            "+@id": "F-26925r622494_fix"
+            "+@id": "F-26925r1069479_fix"
           },
           "check": {
-            "+@system": "C-26937r622493_chk",
+            "+@system": "C-26937r1069478_chk",
             "check-content-ref": {
               "+@href": "Microsoft_DotNet_Framework_4-0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use regedit to review the following Windows registry keys:\n\nFor 32-bit systems: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nFor 64 bit systems:\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nIf the “SchUseStrongCrypto” value name does not exist, or is not a REG_DWORD type set to “1”, this is a finding."
+            "check-content": "In older Windows systems (Windows Server 2012 or earlier), TLS 1.2 must be enabled systemwide by setting \"SchUseStrongCrypto\".\n\nSystemDefaultTlsVersions is a configuration switch in .NET Framework (starting from 4.6) that allows the application to use the default TLS version supported by the underlying Windows operating system instead of hardcoding a specific TLS version (like TLS 1.2).\n\nCheck Registry:\nUse regedit to review the following Windows registry keys:\nFor 32-bit systems: HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\n\nFor 64 bit systems:\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\\nHKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\\n\n1. If the \"SchUseStrongCrypto\" value name does not exist, or is not a REG_DWORD type set to \"1\", this is a finding.\n\n2. For .NET Framework >4.6, use the default TLS version supported by the underlying Windows operating system.\nIf the \"SystemDefaultTlsVersions\" value name does not exist, or is not a REG_DWORD type set to \"1\", this is a finding.\n\nNote: The SchUseStrongCrypto setting allows .NET to use TLS 1.1 and TLS 1.2. The SystemDefaultTlsVersions setting allows .NET to use the OS configuration."
           }
         }
       }

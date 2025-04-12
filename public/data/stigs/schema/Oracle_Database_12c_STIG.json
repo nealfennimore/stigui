@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-06"
+      "+@date": "2025-02-12"
     },
     "title": "Oracle Database 12c Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -6043,7 +6043,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-219847r961863_rule",
+          "+@id": "SV-219847r1067809_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O121-BP-023600",
@@ -6078,12 +6078,12 @@
             "+@id": "F-21557r533079_fix"
           },
           "check": {
-            "+@system": "C-21558r533078_chk",
+            "+@system": "C-21558r1067808_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_12c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Run the query: \n\nselect property_name, property_value\nfrom database_properties\nwhere property_name in \n('DEFAULT_PERMANENT_TABLESPACE','DEFAULT_TEMP_TABLESPACE');\n\nIf either value is set to SYSTEM, this is a finding.\n\nRun the query:\n\nselect username from dba_users \nwhere (default_tablespace = 'SYSTEM' or temporary_tablespace = 'SYSTEM')\nand username not in\n('LBACSYS','OUTLN','SYS','SYSTEM', 'SYSKM', 'SYSDG', 'SYSBACKUP');\n\nIf any non-default account records are returned, this is a finding."
+            "check-content": "Run the query: \n\nselect property_name, property_value\nfrom database_properties\nwhere property_name in \n('DEFAULT_PERMANENT_TABLESPACE','DEFAULT_TEMP_TABLESPACE');\n\nIf either value is set to SYSTEM, this is a finding.\n\nRun the query:\n\nselect username from dba_users \nwhere (default_tablespace = 'SYSTEM' or temporary_tablespace = 'SYSTEM')\nand username not in\n('LBACSYS','OUTLN','SYS','SYSTEM', 'SYSKM', 'SYSDG', 'SYSBACKUP', 'SYSRAC');\n\nIf any nondefault account records are returned, this is a finding."
           }
         }
       },

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-11-25"
+      "+@date": "2025-03-03"
     },
     "title": "Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -6640,7 +6640,7 @@
         "title": "SRG-OS-000254-GPOS-00095",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260471r991555_rule",
+          "+@id": "SV-260471r1069117_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-212015",
@@ -6658,19 +6658,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to produce audit records at system startup.   \n  \nEdit the \"/etc/default/grub\" file and add \"audit=1\" to the \"GRUB_CMDLINE_LINUX\" option.  \n  \nTo update the grub config file, run:  \n  \n     $ sudo update-grub",
-            "+@fixref": "F-64108r953225_fix"
+            "+content": "Configure the Ubuntu operating system to produce audit records at system startup.  \n \nEdit the \"/etc/default/grub\" file and add \"audit=1\" to the \"GRUB_CMDLINE_LINUX\" option and to the \"GRUB_CMDLINE_LINUX_DEFAULT\" option. \n\nGRUB_CMDLINE_LINUX_DEFAULT=\"audit=1\"\nGRUB_CMDLINE_LINUX=\"audit=1\"\n \nTo update the grub config file, run: \n \n$ sudo update-grub",
+            "+@fixref": "F-64108r1069116_fix"
           },
           "fix": {
-            "+@id": "F-64108r953225_fix"
+            "+@id": "F-64108r1069116_fix"
           },
           "check": {
-            "+@system": "C-64200r953224_chk",
+            "+@system": "C-64200r1069115_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that Ubuntu 22.04 LTS enables auditing at system startup in grub by using the following command:\n  \n     $ grep \"^\\s*linux\" /boot/grub/grub.cfg \n \n     linux   /vmlinuz-5.15.0-89-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro audit=1 \n          linux   /vmlinuz-5.15.0-89-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro audit=1 \n          linux   /vmlinuz-5.15.0-89-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro single nomodeset dis_ucode_ldr audit=1 \n          linux   /vmlinuz-5.15.0-83-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro audit=1 \n          linux   /vmlinuz-5.15.0-83-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro single nomodeset dis_ucode_ldr audit=1 \n \nIf any linux lines do not contain \"audit=1\", this is a finding."
+            "check-content": "Verify that Ubuntu 22.04 LTS enables auditing at system startup in grub by using the following command:\n \n$ sudo grep \"^\\s*linux\" /boot/grub/grub.cfg \n\nlinux        /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro  audit=1 \nlinux      /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro recovery nomodeset audit=1 \n \nIf any linux lines do not contain \"audit=1\", this is a finding.\n\nNote: Output may vary by system."
           }
         }
       },
@@ -7397,7 +7397,7 @@
         "title": "SRG-OS-000205-GPOS-00083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260490r1014781_rule",
+          "+@id": "SV-260490r1069105_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232027",
@@ -7415,11 +7415,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate permissions to the files and directories used by the systemd journal: \n \nAdd or modify the following lines in the \"/etc/tmpfiles.d/systemd.conf\" file: \nz /run/log/journal 2750 root systemd-journal - - \nZ /run/log/journal/%m ~2750 root systemd-journal - - \nz /var/log/journal 2750 root systemd-journal - - \nz /var/log/journal/%m 2750 root systemd-journal - - \nz /var/log/journal/%m/system.journal 0750 root systemd-journal - - \n \nRestart the system for the changes to take effect.",
-            "+@fixref": "F-64127r1014780_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate permissions to the files and directories used by the systemd journal: \n \nAdd or modify the following lines in the \"`/usr/lib/tmpfiles.d/systemd.conf\" file: \nz /run/log/journal 2750 root systemd-journal - - \nZ /run/log/journal/%m ~2750 root systemd-journal - - \nz /var/log/journal 2750 root systemd-journal - - \nz /var/log/journal/%m 2750 root systemd-journal - - \nz /var/log/journal/%m/system.journal 0640 root systemd-journal - - \n\nRestart the system for the changes to take effect.",
+            "+@fixref": "F-64127r1069104_fix"
           },
           "fix": {
-            "+@id": "F-64127r1014780_fix"
+            "+@id": "F-64127r1069104_fix"
           },
           "check": {
             "+@system": "C-64219r1014779_chk",
@@ -7793,7 +7793,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260500r991560_rule",
+          "+@id": "SV-260500r1069099_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232075",
@@ -7818,12 +7818,12 @@
             "+@id": "F-64137r953312_fix"
           },
           "check": {
-            "+@system": "C-64229r953311_chk",
+            "+@system": "C-64229r1069098_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the systemwide library files contained in the directories \"/lib\", \"/lib64\", and \"/usr/lib\" are group-owned by \"root\", or a required system account, by using the following command:  \n  \n     $ sudo find /lib /usr/lib /lib64 ! -group root -type f -exec stat -c \"%n %G\" '{}' \\;  \n  \nIf any systemwide shared library file is returned and is not group-owned by a required system account, this is a finding."
+            "check-content": "Verify the systemwide library files contained in the directories \"/lib\", \"/lib64\", and \"/usr/lib\" are group-owned by \"root\", or a required system account, by using the following command:  \n  \n     $ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec stat -c \"%n %G\" '{}' \\;  \n  \nIf any systemwide shared library file is returned and is not group-owned by a required system account, this is a finding."
           }
         }
       },
@@ -8669,7 +8669,7 @@
         "title": "SRG-OS-000142-GPOS-00071",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260522r958528_rule",
+          "+@id": "SV-260522r1069097_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-253010",
@@ -8687,11 +8687,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to use TCP syncookies by using the following command:  \n  \n     $ sudo sysctl -w net.ipv4.tcp_syncookies = 1  \n  \nIf \"1\" is not the system's default value, add or update the following line in \"/etc/sysctl.conf\":  \n  \n     net.ipv4.tcp_syncookies = 1",
-            "+@fixref": "F-64159r953378_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to use TCP syncookies by using the following command:  \n  \n     $ sudo sysctl -w net.ipv4.tcp_syncookies=1  \n  \nIf \"1\" is not the system's default value, add or update the following line in \"/etc/sysctl.conf\":  \n  \n     net.ipv4.tcp_syncookies = 1",
+            "+@fixref": "F-64159r1069096_fix"
           },
           "fix": {
-            "+@id": "F-64159r953378_fix"
+            "+@id": "F-64159r1069096_fix"
           },
           "check": {
             "+@system": "C-64251r953377_chk",
@@ -9316,7 +9316,7 @@
         "title": "SRG-OS-000028-GPOS-00009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260537r958400_rule",
+          "+@id": "SV-260537r1069101_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-271020",
@@ -9334,11 +9334,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to allow a user to lock the current graphical user interface session.   \n  \nSet the \"lock-enabled\" setting to allow graphical user interface session locks by using the following command:   \n  \n     $ gsettings set org.gnome.desktop.screensaver lock-enabled true",
-            "+@fixref": "F-64174r953423_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to allow a user to lock the current graphical user interface session.   \n  \nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/desktop/screensaver]\nlock-enabled=true",
+            "+@fixref": "F-64174r1069100_fix"
           },
           "fix": {
-            "+@id": "F-64174r953423_fix"
+            "+@id": "F-64174r1069100_fix"
           },
           "check": {
             "+@system": "C-64266r953422_chk",
@@ -9355,7 +9355,7 @@
         "title": "SRG-OS-000029-GPOS-00010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260538r958402_rule",
+          "+@id": "SV-260538r1069119_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-271025",
@@ -9373,11 +9373,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to lock the current graphical user interface session after 15 minutes of inactivity.   \n  \nSet the following settings to allow graphical user interface session lock to initiate after 15 minutes of inactivity:   \n  \n     $ gsettings set org.gnome.desktop.screensaver lock-enabled true \n \n     $ gsettings set org.gnome.desktop.screensaver lock-delay 0 \n \n     $ gsettings set org.gnome.desktop.session idle-delay 900",
-            "+@fixref": "F-64175r953426_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to lock the current graphical user interface session after 15 minutes of inactivity.  \n\nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/desktop/screensaver]\nlock-enabled=true\nlock-delay=0\n\n[org/gnome/desktop/session]\nidle-delay=600",
+            "+@fixref": "F-64175r1069118_fix"
           },
           "fix": {
-            "+@id": "F-64175r953426_fix"
+            "+@id": "F-64175r1069118_fix"
           },
           "check": {
             "+@system": "C-64267r953425_chk",
@@ -9394,7 +9394,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260539r991589_rule",
+          "+@id": "SV-260539r1069103_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-22-271030",
@@ -9412,11 +9412,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to disable the Ctrl-Alt-Delete sequence when using a graphical user interface. \n \n     $ gsettings set org.gnome.settings-daemon.plugins.media-keys logout [] \n \nUpdate the dconf settings: \n \n     # dconf update",
-            "+@fixref": "F-64176r953429_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to disable the Ctrl-Alt-Delete sequence when using a graphical user interface.\n\nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/settings-daemon/plugins/media-keys]\nlogout=\"\"\n\nUpdate the dconf settings:\n\n$ sudo dconf update",
+            "+@fixref": "F-64176r1069102_fix"
           },
           "fix": {
-            "+@id": "F-64176r953429_fix"
+            "+@id": "F-64176r1069102_fix"
           },
           "check": {
             "+@system": "C-64268r953428_chk",
@@ -10616,7 +10616,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260570r991589_rule",
+          "+@id": "SV-260570r1082233_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-22-611060",
@@ -10634,19 +10634,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Remove any instances of the \"nullok\" option in \"/etc/pam.d/common-password\" to prevent logons with empty passwords.",
-            "+@fixref": "F-64207r953522_fix"
+            "+content": "Remove any instances of the \"nullok\" option in \"/etc/pam.d/common-password\" to prevent logons with empty passwords.\n\nRemove any instances of the \"nullok\" option in \"/etc/pam.d/common-auth\" and \"/etc/pam.d/common-password\".",
+            "+@fixref": "F-64207r1082232_fix"
           },
           "fix": {
-            "+@id": "F-64207r953522_fix"
+            "+@id": "F-64207r1082232_fix"
           },
           "check": {
-            "+@system": "C-64299r953521_chk",
+            "+@system": "C-64299r1082231_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify that null passwords cannot be used, run the following command:  \n \n     $ grep nullok /etc/pam.d/common-password \n \nIf this produces any output, this is a finding."
+            "check-content": "Verify that null passwords cannot be used. Run the following command:  \n \n     $ grep nullok /etc/pam.d/common-auth /etc/pam.d/common-password\n \nIf this produces any output, this is a finding."
           }
         }
       },
@@ -10894,7 +10894,7 @@
         "title": "SRG-OS-000377-GPOS-00162",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260576r958818_rule",
+          "+@id": "SV-260576r1069114_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-612025",
@@ -10919,12 +10919,12 @@
             "+@id": "F-64213r953540_fix"
           },
           "check": {
-            "+@system": "C-64305r953539_chk",
+            "+@system": "C-64305r1069113_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Ubuntu 22.04 LTS electronically verifies PIV credentials via certificate status checking by using the following command:  \n  \n     $ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ocsp_on \n     cert_policy = ca,signature,ocsp_on;  \n  \nIf every returned \"cert_policy\" line is not set to \"ocsp_on\", the line is commented out, or is missing, this is a finding."
+            "check-content": "Verify Ubuntu 22.04 LTS electronically verifies PIV credentials via certificate status checking by using the following command:  \n  \n     $ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | sudo awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ocsp_on \n     cert_policy = ca,signature,ocsp_on;  \n  \nIf every returned \"cert_policy\" line is not set to \"ocsp_on\", the line is commented out, or is missing, this is a finding."
           }
         }
       },
@@ -10933,7 +10933,7 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260577r986294_rule",
+          "+@id": "SV-260577r1069112_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-612030",
@@ -10964,12 +10964,12 @@
             "+@id": "F-64214r953543_fix"
           },
           "check": {
-            "+@system": "C-64306r953542_chk",
+            "+@system": "C-64306r1069111_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Ubuntu 22.04 LTS, for PKI-based authentication, has valid certificates by constructing a certification path to an accepted trust anchor.  \n  \nDetermine which pkcs11 module is being used via the \"use_pkcs11_module\" in \"/etc/pam_pkcs11/pam_pkcs11.conf\" and then ensure \"ca\" is enabled in \"cert_policy\" by using the following command:  \n   \n     $ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ca   \n     cert_policy = ca,signature,ocsp_on;  \n  \nIf \"cert_policy\" is not set to \"ca\", the line is commented out, or is missing, this is a finding."
+            "check-content": "Verify Ubuntu 22.04 LTS, for PKI-based authentication, has valid certificates by constructing a certification path to an accepted trust anchor.  \n  \nDetermine which pkcs11 module is being used via the \"use_pkcs11_module\" in \"/etc/pam_pkcs11/pam_pkcs11.conf\" and then ensure \"ca\" is enabled in \"cert_policy\" by using the following command:  \n   \n     $ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | sudo awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ca   \n     cert_policy = ca,signature,ocsp_on;  \n  \nIf \"cert_policy\" is not set to \"ca\", the line is commented out, or is missing, this is a finding."
           }
         }
       },
@@ -11302,7 +11302,7 @@
         "title": "SRG-OS-000278-GPOS-00108",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260586r1044779_rule",
+          "+@id": "SV-260586r1069107_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-651030",
@@ -11327,12 +11327,12 @@
             "+@id": "F-64223r1044778_fix"
           },
           "check": {
-            "+@system": "C-64315r1044777_chk",
+            "+@system": "C-64315r1069106_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that Advanced Intrusion Detection Environment (AIDE) is properly configured to use cryptographic mechanisms to protect the integrity of audit tools by using the following command:  \n  \n     $ grep -E '(\\/sbin\\/(audit|au))' /etc/aide/aide.conf \n     /sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512  \n  \nIf any of the seven lines do not appear as shown, are commented out, or are missing, this is a finding."
+            "check-content": "Verify that Advanced Intrusion Detection Environment (AIDE) is properly configured to use cryptographic mechanisms to protect the integrity of audit tools by using the following command:  \n  \n     $ grep -E '(\\/sbin\\/(audit|au))' /etc/aide/aide.conf \n     /sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512  \n     /sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512  \n  \nIf any of the lines do not appear as shown, are commented out, or are missing, this is a finding."
           }
         }
       },

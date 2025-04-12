@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-01-15"
+      "+@date": "2025-02-25"
     },
     "title": "Microsoft Windows Server 2019 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 15 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -15998,7 +15998,7 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205741r958726_rule",
+          "+@id": "SV-205741r1081998_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN19-DC-000090",
@@ -16026,19 +16026,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Maintain the permissions on Group Policy objects to not allow greater than \"Read\" and \"Apply group policy\" for standard user accounts or groups. The default permissions below meet this requirement:\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties.\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nDocument any other access permissions that allow the objects to be updated with the ISSO.\n\nThe Domain Admins and Enterprise Admins will not have the \"Delete all child objects\" permission on the two default Group Policy objects: Default Domain Policy and Default Domain Controllers Policy. They will have this permission on created Group Policy objects.",
-            "+@fixref": "F-6006r355142_fix"
+            "+content": "Maintain the permissions on Group Policy objects to not allow greater than \"Read\" and \"Apply group policy\" for standard user accounts or groups. The default permissions below meet this requirement:\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties.\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nDocument any other access permissions that allow the objects to be updated with the ISSO.",
+            "+@fixref": "F-6006r1081064_fix"
           },
           "fix": {
-            "+@id": "F-6006r355142_fix"
+            "+@id": "F-6006r1081064_fix"
           },
           "check": {
-            "+@system": "C-6006r355141_chk",
+            "+@system": "C-6006r1081998_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2019_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nReview the permissions on Group Policy objects.\n\nOpen \"Group Policy Management\" (available from various menus or run \"gpmc.msc\").\n\nNavigate to \"Group Policy Objects\" in the domain being reviewed (Forest >> Domains >> Domain).\n\nFor each Group Policy object:\n\nSelect the Group Policy object item in the left pane.\n\nSelect the \"Delegation\" tab in the right pane.\n\nSelect the \"Advanced\" button.\n\nSelect each Group or user name.\n\nView the permissions.\n\nIf any standard user accounts or groups have \"Allow\" permissions greater than \"Read\" and \"Apply group policy\", this is a finding.\n\nOther access permissions that allow the objects to be updated are considered findings unless specifically documented by the ISSO.\n\nThe default permissions noted below satisfy this requirement. \n\nThe permissions shown are at the summary level. More detailed permissions can be viewed by selecting the next \"Advanced\" button, the desired Permission entry, and the \"Edit\" button.\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties. If detailed permissions include any Create, Delete, Modify, or Write Permissions or Properties, this is a finding.\n\nThe special permissions for the following default groups are not the focus of this requirement and may include a wide range of permissions and properties:\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions\n\nThe Domain Admins and Enterprise Admins will not have the \"Delete all child objects\" permission on the two default Group Policy objects: Default Domain Policy and Default Domain Controllers Policy. They will have this permission on organization created Group Policy objects."
+            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nReview the permissions on Group Policy objects.\n\nOpen \"Group Policy Management\" (available from various menus or run \"gpmc.msc\").\n\nNavigate to \"Group Policy Objects\" in the domain being reviewed (Forest >> Domains >> Domain).\n\nFor each Group Policy object:\n\nSelect the Group Policy object item in the left pane.\n\nSelect the \"Delegation\" tab in the right pane.\n\nSelect \"Advanced\".\n\nSelect each Group or user name.\n\nView the permissions.\n\nIf any standard user accounts or groups have \"Allow\" permissions greater than \"Read\" and \"Apply group policy\", this is a finding.\n\nOther access permissions that allow the objects to be updated are considered findings unless specifically documented by the ISSO.\n\nThe default permissions noted below satisfy this requirement. \n\nThe permissions shown are at the summary level. To view more detailed permissions, select the next \"Advanced\" button, the desired Permission entry, and then click \"Edit\".\n\nAuthenticated Users - Read, Apply group policy, Special permissions\n\nThe special permissions for Authenticated Users are for Read-type Properties. If detailed permissions include any Create, Delete, Modify, or Write Permissions or Properties, this is a finding.\n\nThe special permissions for the following default groups are not the focus of this requirement and may include a wide range of permissions and properties:\n\nCREATOR OWNER - Special permissions\nSYSTEM - Read, Write, Create all child objects, Delete all child objects, Special permissions\nDomain Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nEnterprise Admins - Read, Write, Create all child objects, Delete all child objects, Special permissions\nENTERPRISE DOMAIN CONTROLLERS - Read, Special permissions"
           }
         }
       },

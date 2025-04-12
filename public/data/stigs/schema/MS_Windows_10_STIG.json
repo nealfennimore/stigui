@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-11-25"
+      "+@date": "2025-02-25"
     },
     "title": "Microsoft Windows 10 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -10224,7 +10224,7 @@
         "title": "SRG-OS-000118-GPOS-00060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220711r1016403_rule",
+          "+@id": "SV-220711r1051018_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "WN10-00-000065",
@@ -10248,10 +10248,6 @@
             },
             {
               "+content": "CCI-003627",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000795",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -10477,7 +10473,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220716r1038967_rule",
+          "+@id": "SV-220716r1051019_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-00-000090",
@@ -10501,10 +10497,6 @@
             },
             {
               "+content": "CCI-004066",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000199",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -10534,7 +10526,7 @@
         "title": "SRG-OS-000312-GPOS-00122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220717r958702_rule",
+          "+@id": "SV-220717r1081048_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-00-000095",
@@ -10569,12 +10561,12 @@
             "+@id": "F-22421r554637_fix"
           },
           "check": {
-            "+@system": "C-22432r951138_chk",
+            "+@system": "C-22432r1081047_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The default file system permissions are adequate when the Security Option \"Network access: Let Everyone permissions apply to anonymous users\" is set to \"Disabled\" (WN10-SO-000160).\n\nIf the default file system permissions are maintained and the referenced option is set to \"Disabled\", this is not a finding.\n\nVerify the default permissions for the sample directories below. Nonprivileged groups such as Users or Authenticated Users must not have greater than Read & execute permissions except where noted as defaults. (Individual accounts must not be used to assign permissions.)\n\nViewing in File Explorer:\nSelect the \"Security\" tab and the \"Advanced\" button.\n\nC:\\\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nAdministrators - Full control - This folder, subfolders and files\nSYSTEM - Full control - This folder, subfolders and files\nUsers - Read & execute - This folder, subfolders and files\nAuthenticated Users - Modify - Subfolders and files only\nAuthenticated Users - Create folders / append data - This folder only\n\n\\Program Files\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nTrustedInstaller - Full control - This folder and subfolders\nSYSTEM - Modify - This folder only\nSYSTEM - Full control - Subfolders and files only\nAdministrators - Modify - This folder only\nAdministrators - Full control - Subfolders and files only\nUsers - Read & execute - This folder, subfolders and files\nCREATOR OWNER - Full control - Subfolders and files only\nALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\n\n\\Windows\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nTrustedInstaller - Full control - This folder and subfolders\nSYSTEM - Modify - This folder only\nSYSTEM - Full control - Subfolders and files only\nAdministrators - Modify - This folder only\nAdministrators - Full control - Subfolders and files only\nUsers - Read & execute - This folder, subfolders and files\nCREATOR OWNER - Full control - Subfolders and files only\nALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\n\nAlternately use icacls.\n\nRun \"CMD\" as administrator.\nEnter \"icacls\" followed by the directory.\n\nicacls c:\\\nicacls \"c:\\program files\"\nicacls c:\\windows\n\nThe following results will be displayed as each is entered:\n\nc:\\\nBUILTIN\\Administrators:(OI)(CI)(F)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(F)\nBUILTIN\\Users:(OI)(CI)(RX)\nNT AUTHORITY\\Authenticated Users:(OI)(CI)(IO)(M)\nNT AUTHORITY\\Authenticated Users:(AD)\nMandatory Label\\High Mandatory Level:(OI)(NP)(IO)(NW)\nSuccessfully processed 1 files; Failed processing 0 files\n\nc:\\program files \nNT SERVICE\\TrustedInstaller:(F)\nNT SERVICE\\TrustedInstaller:(CI)(IO)(F)\nNT AUTHORITY\\SYSTEM:(M)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)\nBUILTIN\\Administrators:(M)\nBUILTIN\\Administrators:(OI)(CI)(IO)(F)\nBUILTIN\\Users:(RX)\nBUILTIN\\Users:(OI)(CI)(IO)(GR,GE)\nCREATOR OWNER:(OI)(CI)(IO)(F)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nSuccessfully processed 1 files; Failed processing 0 files\n\nc:\\windows\nNT SERVICE\\TrustedInstaller:(F)\nNT SERVICE\\TrustedInstaller:(CI)(IO)(F)\nNT AUTHORITY\\SYSTEM:(M)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)\nBUILTIN\\Administrators:(M)\nBUILTIN\\Administrators:(OI)(CI)(IO)(F)\nBUILTIN\\Users:(RX)\nBUILTIN\\Users:(OI)(CI)(IO)(GR,GE)\nCREATOR OWNER:(OI)(CI)(IO)(F)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nSuccessfully processed 1 files; Failed processing 0 files"
+            "check-content": "The default file system permissions are adequate when the Security Option \"Network access: Let Everyone permissions apply to anonymous users\" is set to \"Disabled\" (WN10-SO-000160).\n\nIf the default file system permissions are maintained and the referenced option is set to \"Disabled\", this is not a finding.\n\nVerify the default permissions for the sample directories below. Nonprivileged groups such as Users or Authenticated Users must not have greater than Read & execute permissions except where noted as defaults. (Individual accounts must not be used to assign permissions.)\n\nViewing in File Explorer:\nSelect the \"Security\" tab and then select \"Advanced\".\n\nC:\\ \nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nAdministrators - Full control - This folder, subfolders and files\nSYSTEM - Full control - This folder, subfolders and files\nUsers - Read & execute - This folder, subfolders and files\nAuthenticated Users - Modify - Subfolders and files only\nAuthenticated Users - Create folders / append data - This folder only\n\n\\Program Files\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nTrustedInstaller - Full control - This folder and subfolders\nSYSTEM - Modify - This folder only\nSYSTEM - Full control - Subfolders and files only\nAdministrators - Modify - This folder only\nAdministrators - Full control - Subfolders and files only\nUsers - Read & execute - This folder, subfolders and files\nCREATOR OWNER - Full control - Subfolders and files only\nALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\n\n\\Windows\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nTrustedInstaller - Full control - This folder and subfolders\nSYSTEM - Modify - This folder only\nSYSTEM - Full control - Subfolders and files only\nAdministrators - Modify - This folder only\nAdministrators - Full control - Subfolders and files only\nUsers - Read & execute - This folder, subfolders and files\nCREATOR OWNER - Full control - Subfolders and files only\nALL APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\nALL RESTRICTED APPLICATION PACKAGES - Read & execute - This folder, subfolders and files\n\nAlternately use icacls.\n\nRun \"CMD\" as administrator.\nEnter \"icacls\" followed by the directory.\n\nicacls c:\\\nicacls \"c:\\program files\"\nicacls c:\\windows\n\nThe following results will be displayed as each is entered:\n\nc:\\ S-1-15-3-65536-1888954469-739942743-1668119174-2468466756-4239452838-1296943325-355587736-700089176 (S,RD,X,RA)\nBUILTIN\\Administrators:(OI)(CI)(F)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(F)\nBUILTIN\\Users:(OI)(CI)(RX)\nNT AUTHORITY\\Authenticated Users:(OI)(CI)(IO)(M)\nNT AUTHORITY\\Authenticated Users:(AD)\nMandatory Label\\High Mandatory Level:(OI)(NP)(IO)(NW)\nSuccessfully processed 1 files; Failed processing 0 files\n\nc:\\program files \nNT SERVICE\\TrustedInstaller:(F)\nNT SERVICE\\TrustedInstaller:(CI)(IO)(F)\nNT AUTHORITY\\SYSTEM:(M)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)\nBUILTIN\\Administrators:(M)\nBUILTIN\\Administrators:(OI)(CI)(IO)(F)\nBUILTIN\\Users:(RX)\nBUILTIN\\Users:(OI)(CI)(IO)(GR,GE)\nCREATOR OWNER:(OI)(CI)(IO)(F)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nSuccessfully processed 1 files; Failed processing 0 files\n\nc:\\windows\nNT SERVICE\\TrustedInstaller:(F)\nNT SERVICE\\TrustedInstaller:(CI)(IO)(F)\nNT AUTHORITY\\SYSTEM:(M)\nNT AUTHORITY\\SYSTEM:(OI)(CI)(IO)(F)\nBUILTIN\\Administrators:(M)\nBUILTIN\\Administrators:(OI)(CI)(IO)(F)\nBUILTIN\\Users:(RX)\nBUILTIN\\Users:(OI)(CI)(IO)(GR,GE)\nCREATOR OWNER:(OI)(CI)(IO)(F)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(RX)\nAPPLICATION PACKAGE AUTHORITY\\ALL RESTRICTED APPLICATION PACKAGES:(OI)(CI)(IO)(GR,GE)\nSuccessfully processed 1 files; Failed processing 0 files"
           }
         }
       },
@@ -11812,7 +11804,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220743r1038967_rule",
+          "+@id": "SV-220743r1051020_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AC-000025",
@@ -11836,10 +11828,6 @@
             },
             {
               "+content": "CCI-004066",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000199",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -11869,7 +11857,7 @@
         "title": "SRG-OS-000075-GPOS-00043",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220744r1016406_rule",
+          "+@id": "SV-220744r1051021_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AC-000030",
@@ -11893,10 +11881,6 @@
             },
             {
               "+content": "CCI-004066",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000198",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -11926,7 +11910,7 @@
         "title": "SRG-OS-000078-GPOS-00046",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220745r1016407_rule",
+          "+@id": "SV-220745r1051022_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AC-000035",
@@ -11950,10 +11934,6 @@
             },
             {
               "+content": "CCI-004066",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000205",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -11983,7 +11963,7 @@
         "title": "SRG-OS-000069-GPOS-00037",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220746r1016408_rule",
+          "+@id": "SV-220746r1051023_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AC-000040",
@@ -12004,26 +11984,6 @@
             {
               "+content": "V-63427",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-000366",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000192",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000193",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000194",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001619",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-000192",
@@ -12064,7 +12024,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220747r1016409_rule",
+          "+@id": "SV-220747r1051024_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN10-AC-000045",
@@ -12088,10 +12048,6 @@
             },
             {
               "+content": "CCI-004062",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000196",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -12438,7 +12394,7 @@
         "title": "SRG-OS-000365-GPOS-00152",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220753r1016410_rule",
+          "+@id": "SV-220753r1051025_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AU-000045",
@@ -12471,10 +12427,6 @@
             {
               "+content": "CCI-001814",
               "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001814",
-              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
@@ -12499,7 +12451,7 @@
         "title": "SRG-OS-000365-GPOS-00152",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220754r1016411_rule",
+          "+@id": "SV-220754r1051026_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-AU-000050",
@@ -12527,10 +12479,6 @@
             },
             {
               "+content": "CCI-003938",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001814",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -15750,7 +15698,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220821r1050789_rule",
+          "+@id": "SV-220821r1051027_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000145",
@@ -15771,14 +15719,6 @@
             {
               "+content": "V-63645",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -15807,7 +15747,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220822r1050789_rule",
+          "+@id": "SV-220822r1051028_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000150",
@@ -15828,14 +15768,6 @@
             {
               "+content": "V-63649",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -17089,7 +17021,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220848r1050789_rule",
+          "+@id": "SV-220848r1051029_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000270",
@@ -17110,14 +17042,6 @@
             {
               "+content": "SV-78219",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -17195,7 +17119,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220850r1050789_rule",
+          "+@id": "SV-220850r1051030_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000280",
@@ -17216,14 +17140,6 @@
             {
               "+content": "V-63733",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -17501,7 +17417,7 @@
         "title": "SRG-OS-000362-GPOS-00149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220856r1016416_rule",
+          "+@id": "SV-220856r1051031_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000310",
@@ -17525,10 +17441,6 @@
             },
             {
               "+content": "CCI-003980",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001812",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -17558,7 +17470,7 @@
         "title": "SRG-OS-000362-GPOS-00149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220857r1016417_rule",
+          "+@id": "SV-220857r1051032_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN10-CC-000315",
@@ -17582,10 +17494,6 @@
             },
             {
               "+content": "CCI-003980",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001812",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -17966,7 +17874,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220867r1050789_rule",
+          "+@id": "SV-220867r1051033_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000355",
@@ -17987,14 +17895,6 @@
             {
               "+content": "SV-77865",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -18472,12 +18372,12 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220906r958448_rule",
+          "+@id": "SV-220906r1081051_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-PK-000020",
-          "title": "The US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
-          "description": "<VulnDiscussion>To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The US DOD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+          "description": "<VulnDiscussion>To ensure users do not experience denial of service when performing certificate-based authentication to DOD websites due to the system chaining to a root other than DOD Root CAs, the US DOD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Microsoft Windows 10",
             "publisher": "DISA",
@@ -18504,19 +18404,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Install the US DoD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\nDoD Root CA 3 - US DoD CCEB Interoperability Root CA 2  9B74964506C7ED9138070D08D5F8B969866560C8\n\nThe certificates can be installed using the InstallRoot tool. The tool and user guide are available on Cyber Exchange at https://cyber.mil/pki-pke/tools-configuration-files. PKI can be found at https://crl.gds.disa.mil/.",
-            "+@fixref": "F-22610r890438_fix"
+            "+content": "Install the US DOD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\nDOD Root CA 3 - US DOD CCEB Interoperability Root CA 2  9B74964506C7ED9138070D08D5F8B969866560C8\nIssued To: DOD Root CA 6\nIssued By: US DOD CCEB Interoperability Root CA 2\nThumbprint: D471CA32F7A692CE6CBB6196BD3377FE4DBCD106\nNotAfter: 7/18/2026\n\nThe certificates can be installed using the InstallRoot tool. The tool and user guide are available on Cyber Exchange at https://cyber.mil/pki-pke/tools-configuration-files. PKI can be found at https://crl.gds.disa.mil/.",
+            "+@fixref": "F-22610r1081050_fix"
           },
           "fix": {
-            "+@id": "F-22610r890438_fix"
+            "+@id": "F-22610r1081050_fix"
           },
           "check": {
-            "+@system": "C-22621r890437_chk",
+            "+@system": "C-22621r1081049_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the US DoD CCEB Interoperability Root CA cross-certificate is installed on unclassified systems as an Untrusted Certificate.\n\nRun \"PowerShell\" as an administrator.\n\nExecute the following command:\n\nGet-ChildItem -Path Cert:Localmachine\\disallowed | Where Issuer -Like \"*CCEB Interoperability*\" | FL Subject, Issuer, Thumbprint, NotAfter\n\nIf the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\" information is not displayed, this is a finding. \n\nSubject: CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\nIssuer: CN=US DoD CCEB Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM\n\nAlternately, use the Certificates MMC snap-in:\n\nRun \"MMC\".\n\nSelect \"File\", \"Add/Remove Snap-in\".\n\nSelect \"Certificates\", click \"Add\".\n\nSelect \"Computer account\", click \"Next\".\n\nSelect \"Local computer: (the computer this console is running on)\", click \"Finish\".\n\nClick \"OK\".\n\nExpand \"Certificates\" and navigate to Untrusted Certificates >> Certificates.\n\nFor each certificate with \"US DoD CCEB Interoperability Root CA …\" under \"Issued By\":\n\nRight-click on the certificate and select \"Open\".\n\nSelect the \"Details\" tab.\n\nScroll to the bottom and select \"Thumbprint\".\n\nIf the certificate below is not listed or the value for the \"Thumbprint\" field is not as noted, this is a finding.\n\nSubject: CN=DoD Root CA 3, OU=PKI, OU=DoD, O=U.S. Government, C=US\nIssuer: CN=US DoD CCEB Interoperability Root CA 2, OU=PKI, OU=DoD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM"
+            "check-content": "Verify the US DOD CCEB Interoperability Root CA cross-certificate is installed on unclassified systems as an Untrusted Certificate.\n\nRun \"PowerShell\" as an administrator.\n\nExecute the following command:\n\nGet-ChildItem -Path Cert:Localmachine\\disallowed | Where Issuer -Like \"*CCEB Interoperability*\" | FL Subject, Issuer, Thumbprint, NotAfter\n\nIf the following certificate \"Subject\", \"Issuer\", and \"Thumbprint\" information is not displayed, this is a finding. \n\nSubject: CN=DOD Root CA 3, OU=PKI, OU=DOD, O=U.S. Government, C=US\nIssuer: CN=US DOD CCEB Interoperability Root CA 2, OU=PKI, OU=DOD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM\n\nAlternately, use the Certificates MMC snap-in:\n\nRun \"MMC\".\n\nSelect \"File\", then click \"Add/Remove Snap-in\".\n\nSelect \"Certificates\", then click \"Add\".\n\nSelect \"Computer account\", then click \"Next\".\n\nSelect \"Local computer: (the computer this console is running on)\", then click \"Finish\".\n\nClick \"OK\".\n\nExpand \"Certificates\" and navigate to Untrusted Certificates >> Certificates.\n\nFor each certificate with \"US DOD CCEB Interoperability Root CA …\" under \"Issued By\":\n\nRight-click on the certificate and select \"Open\".\n\nSelect the \"Details\" tab.\n\nScroll to the bottom and select \"Thumbprint\".\n\nIf the certificate below is not listed or the value for the \"Thumbprint\" field is not as noted, this is a finding.\n\nSubject: CN=DOD Root CA 3, OU=PKI, OU=DOD, O=U.S. Government, C=US\nIssuer: CN=US DOD CCEB Interoperability Root CA 2, OU=PKI, OU=DOD, O=U.S. Government, C=US\nThumbprint: 9B74964506C7ED9138070D08D5F8B969866560C8\nNotAfter: 7/18/2025 9:56:22 AM                                                          \nSubject: CN=DOD Root CA 6, OU=PKI, OU=DOD, O=U.S. Government, C=US\nIssuer: CN=US DOD CCEB Interoperability Root CA 2, OU=PKI, OU=DOD, O=U.S. Government, C=US\nThumbprint: D471CA32F7A692CE6CBB6196BD3377FE4DBCD106\nNotAfter: 7/18/2026 9:56:22 AM"
           }
         }
       },
@@ -19867,12 +19767,12 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220933r958726_rule",
+          "+@id": "SV-220933r1081053_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-SO-000167",
           "title": "Remote calls to the Security Account Manager (SAM) must be restricted to Administrators.",
-          "description": "<VulnDiscussion>The Windows Security Account Manager (SAM) stores users' passwords.  Restricting remote rpc connections to the SAM to Administrators helps protect those credentials.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The Windows SAM stores users' passwords. Restricting remote rpc connections to the SAM to Administrators helps protect those credentials.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Microsoft Windows 10",
             "publisher": "DISA",
@@ -19902,12 +19802,12 @@
             "+@id": "F-22637r555285_fix"
           },
           "check": {
-            "+@system": "C-22648r555284_chk",
+            "+@system": "C-22648r1081052_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Windows 10 v1507 LTSB version does not include this setting, it is NA for those systems.\n\nIf the following registry value does not exist or is not configured as specified, this is a finding:\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistry Path: \\SYSTEM\\CurrentControlSet\\Control\\Lsa\\\n\nValue Name: RestrictRemoteSAM\n\nValue Type: REG_SZ\nValue: O:BAG:BAD:(A;;RC;;;BA)"
+            "check-content": "Windows 10 v1507 LTSB version does not include this setting, it is NA for those systems.\n\nIf the following registry value does not exist or is not configured as specified, this is a finding:\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistry Path: \\SYSTEM\\CurrentControlSet\\Control\\Lsa\\\n\nValue Name: RestrictRemoteSAM\n\nValue Type: REG_SZ\nValue: O:BAG:BAD:(A;;RC;;;BA)                                                   \n\nIf a domain application account such as for a management tool requires this user right, this is not a finding.\nVendor documentation must support the requirement for having the user right.\nThe requirement must be documented with the ISSO."
           }
         }
       },
@@ -20063,7 +19963,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220937r1016419_rule",
+          "+@id": "SV-220937r1051034_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN10-SO-000195",
@@ -20087,10 +19987,6 @@
             },
             {
               "+content": "CCI-004062",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000196",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -20414,7 +20310,7 @@
         "title": "SRG-OS-000373-GPOS-00157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220944r1050790_rule",
+          "+@id": "SV-220944r1051035_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-SO-000245",
@@ -20435,14 +20331,6 @@
             {
               "+content": "SV-78307",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -20569,7 +20457,7 @@
         "title": "SRG-OS-000373-GPOS-00157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220947r1050790_rule",
+          "+@id": "SV-220947r1051036_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-SO-000255",
@@ -20590,14 +20478,6 @@
             {
               "+content": "V-63821",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -20724,7 +20604,7 @@
         "title": "SRG-OS-000373-GPOS-00157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220950r1050790_rule",
+          "+@id": "SV-220950r1051037_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-SO-000270",
@@ -20745,14 +20625,6 @@
             {
               "+content": "V-63829",
               "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-004895",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002038",
-              "+@system": "http://cyber.mil/cci"
             },
             {
               "+content": "CCI-002038",
@@ -20830,7 +20702,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220952r1038967_rule",
+          "+@id": "SV-220952r1051038_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-SO-000280",
@@ -20846,10 +20718,6 @@
           "ident": [
             {
               "+content": "CCI-004066",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000199",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -22658,7 +22526,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268319r1028350_rule",
+          "+@id": "SV-268319r1081055_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN10-CC-000063",
@@ -22683,12 +22551,12 @@
             "+@id": "F-72243r1028256_fix"
           },
           "check": {
-            "+@system": "C-72340r1028350_chk",
+            "+@system": "C-72340r1081054_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Windows 10 system is receiving policy from either Group Policy or an MDM with the following steps:\n\nFrom a command line or PowerShell:\n\ngpresult /R\nOS Configuration: Member Workstation\n\nIf the system is not being managed by GPO, ask the administrator to indicate which MDM is managing the device.\n\nIf the Window 10 system is not receiving policy from either Group Policy or an MDM, this is a finding."
+            "check-content": "Verify the Windows 10 system is receiving policy from either Group Policy or an MDM with the following steps:\n\nFrom a command line or PowerShell:\n\ngpresult /R\nOS Configuration: Member Workstation\n\nIf the system is not being managed by GPO, ask the administrator to indicate which MDM is managing the device.\n\nIf the Window 10 system is not receiving policy from either Group Policy or an MDM, this is a finding.\n          \nThis is NA for standalone, nondomain joined systems."
           }
         }
       }

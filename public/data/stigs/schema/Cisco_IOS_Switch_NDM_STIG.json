@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-20"
+      "+@date": "2025-02-20"
     },
     "title": "Cisco IOS Switch NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -3653,7 +3653,7 @@
         "title": "SRG-APP-000516-NDM-000340",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220618r961863_rule",
+          "+@id": "SV-220618r1069531_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001410",
@@ -3685,19 +3685,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to send the configuration to a TFTP or an FTP server when a configuration change occurs as shown in the example below:\n\nSW4(config)#event manager applet BACKUP_CONFIG\nSW4(config-applet)#event syslog pattern \"%SYS-5-CONFIG_I\"\nSW4(config-applet)#action 1 cli command \"enable\"\nSW4(config-applet)#action 2 info type switchname\nSW4(config-applet)#action 3 cli command \"copy run tftp\" pattern \"remote host\"\nSW4(config-applet)#action 4 cli command \"x.x.x.x\" pattern \"filename\"\nSW4(config-applet)#action 5 cli command \"$_info_switchname-config\"\nSW4(config-applet)#action 6 syslog priority informational msg \"Configuration backup was executed\"\nSW4(config-applet)#end",
-            "+@fixref": "F-22322r507901_fix"
+            "+content": "Configure the Cisco switch to send the configuration to a SCP server when a configuration change occurs as shown in the example below:\n\nSW4(config)#event manager applet BACKUP_CONFIG\nSW4(config-applet)#event syslog pattern \"%SYS-5-CONFIG_I\"\nSW4(config-applet)#action 1 cli command \"enable\"\nSW4(config-applet)#action 2 info type switchname\nSW4(config-applet)#action 3 cli command \"copy run scp\" pattern \"remote host\"\nSW4(config-applet)#action 4 cli command \"x.x.x.x\" pattern \"filename\"\nSW4(config-applet)#action 5 cli command \"$_info_switchname-config\"\nSW4(config-applet)#action 6 syslog priority informational msg \"Configuration backup was executed\"\nSW4(config-applet)#end",
+            "+@fixref": "F-22322r1069530_fix"
           },
           "fix": {
-            "+@id": "F-22322r507901_fix"
+            "+@id": "F-22322r1069530_fix"
           },
           "check": {
-            "+@system": "C-22333r507900_chk",
+            "+@system": "C-22333r1069529_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it backs up the configuration when changes occur. The example configuration below will send the configuration to a TFTP server when a configuration change occurs:\n\nevent manager applet BACKUP_CONFIG\n event syslog pattern \"%SYS-5-CONFIG_I\"\n action 1 info type switchname\n action 2 cli command \"enable\"\n action 3 cli command \"copy run tftp\" pattern \"remote host\"\n action 4 cli command \"x.x.x.x\" pattern \"filename\"\n action 5 cli command \"$_info_switchname-config\"\n action 6 syslog priority informational msg \"Configuration backup was executed\"\n\nIf the Cisco switch is not configured to conduct backups of the configuration when changes occur, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify that it backs up the configuration when changes occur. The example configuration below will send the configuration to a SCP server when a configuration change occurs:\n\nevent manager applet BACKUP_CONFIG\n event syslog pattern \"%SYS-5-CONFIG_I\"\n action 1 info type switchname\n action 2 cli command \"enable\"\n action 3 cli command \"copy run scp\" pattern \"remote host\"\n action 4 cli command \"x.x.x.x\" pattern \"filename\"\n action 5 cli command \"$_info_switchname-config\"\n action 6 syslog priority informational msg \"Configuration backup was executed\"\n\nIf the Cisco switch is not configured to conduct backups of the configuration when changes occur, this is a finding."
           }
         }
       },

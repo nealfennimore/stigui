@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2025-03-03"
     },
     "title": "Canonical Ubuntu 20.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -6317,7 +6317,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238203r1015141_rule",
+          "+@id": "SV-238203r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "UBTU-20-010008",
@@ -6485,7 +6485,7 @@
         "title": "SRG-OS-000279-GPOS-00109",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238207r1014778_rule",
+          "+@id": "SV-238207r1069086_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010013",
@@ -6510,12 +6510,12 @@
             "+@id": "F-41376r653795_fix"
           },
           "check": {
-            "+@system": "C-41417r1014777_chk",
+            "+@system": "C-41417r1069085_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system automatically terminates a user session after inactivity timeouts have expired. \n \nCheck that the \"TMOUT\" environment variable is set in the \"/etc/bash.bashrc\" file or in any file inside the \"/etc/profile.d/\" directory by performing the following command: \n \n$ grep -E \"\\bTMOUT=[0-9]+\" /etc/bash.bashrc /etc/profile.d/* \n \nTMOUT=600 \n \nIf \"TMOUT\" is not set, or if the value is \"0\" or is commented out, this is a finding."
+            "check-content": "Verify the operating system automatically terminates a user session after inactivity timeouts have expired. \n \nCheck that the \"TMOUT\" environment variable is set in the \"/etc/bash.bashrc\" file or in any file inside the \"/etc/profile.d/\" directory by performing the following command: \n \n$ sudo grep -E \"\\bTMOUT=[0-9]+\" /etc/bash.bashrc /etc/profile.d/* \n \nTMOUT=600 \n \nIf \"TMOUT\" is not set, or if the value is \"0\" or is commented out, this is a finding."
           }
         }
       },
@@ -6524,7 +6524,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238208r1015142_rule",
+          "+@id": "SV-238208r1050789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010014",
@@ -7451,7 +7451,7 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238229r958448_rule",
+          "+@id": "SV-238229r1069088_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010060",
@@ -7476,12 +7476,12 @@
             "+@id": "F-41398r653861_fix"
           },
           "check": {
-            "+@system": "C-41439r653860_chk",
+            "+@system": "C-41439r1069087_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Ubuntu operating system, for PKI-based authentication, has valid certificates by constructing a certification path to an accepted trust anchor. \n \nDetermine which pkcs11 module is being used via the \"use_pkcs11_module\" in \"/etc/pam_pkcs11/pam_pkcs11.conf\" and then ensure \"ca\" is enabled in \"cert_policy\" with the following command: \n  \n$ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ca  \n \ncert_policy = ca,signature,ocsp_on; \n \nIf \"cert_policy\" is not set to \"ca\" or the line is commented out, this is a finding."
+            "check-content": "Verify the Ubuntu operating system, for PKI-based authentication, has valid certificates by constructing a certification path to an accepted trust anchor. \n \nDetermine which pkcs11 module is being used via the \"use_pkcs11_module\" in \"/etc/pam_pkcs11/pam_pkcs11.conf\", and then ensure \"ca\" is enabled in \"cert_policy\" with the following command: \n  \n$ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | sudo awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ca  \n \ncert_policy = ca,signature,ocsp_on; \n \nIf \"cert_policy\" is not set to \"ca\" or the line is commented out, this is a finding."
           }
         }
       },
@@ -7574,12 +7574,12 @@
         "title": "SRG-OS-000377-GPOS-00162",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238232r958818_rule",
+          "+@id": "SV-238232r1069954_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010065",
           "title": "The Ubuntu operating system must electronically verify Personal Identity Verification (PIV) credentials.",
-          "description": "<VulnDiscussion>The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access. \n \nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under Homeland Security Presidential Directive (HSPD) 12, as well as making the CAC a primary component of layered protection for national security systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access. \n \nDOD has mandated the use of the CAC to support identity management and personal authentication for systems covered under Homeland Security Presidential Directive (HSPD) 12, as well as making the CAC a primary component of layered protection for national security systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Canonical Ubuntu 20.04 LTS",
             "publisher": "DISA",
@@ -7599,12 +7599,12 @@
             "+@id": "F-41401r653870_fix"
           },
           "check": {
-            "+@system": "C-41442r653869_chk",
+            "+@system": "C-41442r1069089_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Ubuntu operating system electronically verifies PIV credentials. \n \nVerify that certificate status checking for multifactor authentication is implemented with the following command: \n \n$ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ocsp_on \n \ncert_policy = ca,signature,ocsp_on; \n \nIf \"cert_policy\" is not set to \"ocsp_on\", or the line is commented out, this is a finding."
+            "check-content": "Verify the Ubuntu operating system electronically verifies PIV credentials. \n \nVerify that certificate status checking for multifactor authentication is implemented with the following command: \n \n$ sudo grep use_pkcs11_module /etc/pam_pkcs11/pam_pkcs11.conf | sudo awk '/pkcs11_module opensc {/,/}/' /etc/pam_pkcs11/pam_pkcs11.conf | grep cert_policy | grep ocsp_on\n \ncert_policy = ca,signature,ocsp_on; \n \nIf \"cert_policy\" is not set to \"ocsp_on\", or the line is commented out, this is a finding."
           }
         }
       },
@@ -7703,7 +7703,7 @@
         "title": "SRG-OS-000329-GPOS-00128",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238235r958736_rule",
+          "+@id": "SV-238235r1069092_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "UBTU-20-010072",
@@ -7734,12 +7734,12 @@
             "+@id": "F-41404r802382_fix"
           },
           "check": {
-            "+@system": "C-41445r802381_chk",
+            "+@system": "C-41445r1069091_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the Ubuntu operating system utilizes the \"pam_faillock\" module with the following command:\n$ grep faillock /etc/pam.d/common-auth \n\nauth     [default=die]  pam_faillock.so authfail\nauth     sufficient     pam_faillock.so authsucc\n\nIf the pam_faillock.so module is not present in the \"/etc/pam.d/common-auth\" file, this is a finding.\n\nVerify the pam_faillock module is configured to use the following options:\n$ sudo egrep 'silent|audit|deny|fail_interval| unlock_time' /etc/security/faillock.conf\n\naudit\nsilent\ndeny = 3\nfail_interval = 900\nunlock_time = 0\n\nIf the \"silent\" keyword is missing or commented out, this is a finding.\nIf the \"audit\" keyword is missing or commented out, this is a finding.\nIf the \"deny\" keyword is missing, commented out, or set to a value greater than 3, this is a finding.\nIf the \"fail_interval\" keyword is missing, commented out, or set to a value greater than 900, this is a finding.\nIf the \"unlock_time\" keyword is missing, commented out, or not set to 0, this is a finding."
+            "check-content": "Verify the Ubuntu operating system utilizes the \"pam_faillock\" module with the following command:\n$ grep faillock /etc/pam.d/common-auth \n\nauth     [default=die]  pam_faillock.so authfail\nauth     sufficient     pam_faillock.so authsucc\n\nIf the pam_faillock.so module is not present in the \"/etc/pam.d/common-auth\" file, this is a finding.\n\nVerify the pam_faillock module is configured to use the following options:\n$ sudo egrep 'silent|audit|deny|fail_interval|unlock_time' /etc/security/faillock.conf\n\naudit\nsilent\ndeny = 3\nfail_interval = 900\nunlock_time = 0\n\nIf the \"silent\" keyword is missing or commented out, this is a finding.\nIf the \"audit\" keyword is missing or commented out, this is a finding.\nIf the \"deny\" keyword is missing, commented out, or set to a value greater than \"3\", this is a finding.\nIf the \"fail_interval\" keyword is missing, commented out, or set to a value greater than \"900\", this is a finding.\nIf the \"unlock_time\" keyword is missing, commented out, or not set to \"0\", this is a finding."
           }
         }
       },
@@ -8166,7 +8166,7 @@
         "title": "SRG-OS-000047-GPOS-00023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238244r958426_rule",
+          "+@id": "SV-238244r1038966_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010118",
@@ -9767,7 +9767,7 @@
         "title": "SRG-OS-000254-GPOS-00095",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238299r991555_rule",
+          "+@id": "SV-238299r1069095_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010198",
@@ -9785,19 +9785,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Ubuntu operating system to produce audit records at system startup.  \n \nEdit the \"/etc/default/grub\" file and add \"audit=1\" to the \"GRUB_CMDLINE_LINUX\" option. \n \nTo update the grub config file, run: \n \n$ sudo update-grub",
-            "+@fixref": "F-41468r654071_fix"
+            "+content": "Configure the Ubuntu operating system to produce audit records at system startup.  \n \nEdit the \"/etc/default/grub\" file and add \"audit=1\" to the \"GRUB_CMDLINE_LINUX\" option and to the \"GRUB_CMDLINE_LINUX_DEFAULT\" option. \n\nGRUB_CMDLINE_LINUX_DEFAULT=\"audit=1\"\nGRUB_CMDLINE_LINUX=\"audit=1\"\n \nTo update the grub config file, run: \n \n$ sudo update-grub",
+            "+@fixref": "F-41468r1069094_fix"
           },
           "fix": {
-            "+@id": "F-41468r654071_fix"
+            "+@id": "F-41468r1069094_fix"
           },
           "check": {
-            "+@system": "C-41509r654070_chk",
+            "+@system": "C-41509r1069093_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the Ubuntu operating system enables auditing at system startup.  \n \nVerify that the auditing is enabled in grub with the following command: \n \n$ sudo grep \"^\\s*linux\" /boot/grub/grub.cfg \n \nlinux        /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro  audit=1 \nlinux      /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro recovery nomodeset audit=1 \n \nIf any linux lines do not contain \"audit=1\", this is a finding."
+            "check-content": "Verify the Ubuntu operating system enables auditing at system startup.  \n \nVerify the auditing is enabled in grub with the following command: \n \n$ sudo grep \"^\\s*linux\" /boot/grub/grub.cfg \n \nlinux        /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro  audit=1 \nlinux      /boot/vmlinuz-5.4.0-31-generic root=UUID=74d13bcd-6ebd-4493-b5d2-3ebc37d01702 ro recovery nomodeset audit=1 \n \nIf any linux lines do not contain \"audit=1\", this is a finding.\n\nNote: Output may vary by system."
           }
         }
       },
@@ -10538,7 +10538,7 @@
         "title": "SRG-OS-000027-GPOS-00008",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238323r958398_rule",
+          "+@id": "SV-238323r1069402_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "UBTU-20-010400",
@@ -10563,12 +10563,12 @@
             "+@id": "F-41492r654143_fix"
           },
           "check": {
-            "+@system": "C-41533r654142_chk",
+            "+@system": "C-41533r1069401_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Ubuntu operating system limits the number of concurrent sessions to 10 for all accounts and/or account types by running the following command: \n \n$ grep maxlogins /etc/security/limits.conf | grep -v '^* hard maxlogins' \n \nThe result must contain the following line: \n \n* hard maxlogins 10 \n \nIf the \"maxlogins\" item is missing or the value is not set to 10 or less or is commented out, this is a finding."
+            "check-content": "Verify the Ubuntu operating system limits the number of concurrent sessions to 10 for all accounts and/or account types by running the following command: \n \n$ grep maxlogins /etc/security/limits.conf | grep -v '^#'\n\n* hard maxlogins 10 \n\nIf the \"maxlogins\" item is missing, or the value is not set to 10 or less, or is commented out, this is a finding."
           }
         }
       },
@@ -10577,12 +10577,12 @@
         "title": "SRG-OS-000032-GPOS-00013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238324r958406_rule",
+          "+@id": "SV-238324r1069955_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010403",
           "title": "The Ubuntu operating system must monitor remote access methods.",
-          "description": "<VulnDiscussion>Remote access services, such as those providing remote access to network devices and information systems, which lack automated monitoring capabilities, increase risk and make remote user access management difficult at best. \n \nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n \nAutomated monitoring of remote access sessions allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities, such as Remote Desktop Protocol (RDP), on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Remote access services, such as those providing remote access to network devices and information systems, which lack automated monitoring capabilities, increase risk and make remote user access management difficult at best. \n \nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n \nAutomated monitoring of remote access sessions allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities, such as Remote Desktop Protocol (RDP), on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Canonical Ubuntu 20.04 LTS",
             "publisher": "DISA",
@@ -10595,19 +10595,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Ubuntu operating system to monitor all remote access methods by adding the following lines to the \"/etc/rsyslog.d/50-default.conf\" file: \n \nauth.*,authpriv.* /var/log/secure \ndaemon.* /var/log/messages \n \nFor the changes to take effect, restart the \"rsyslog\" service with the following command: \n \n$ sudo systemctl restart rsyslog.service",
-            "+@fixref": "F-41493r832958_fix"
+            "+content": "Configure the Ubuntu operating system to monitor all remote access methods by adding the following lines to the \"/etc/rsyslog.d/50-default.conf\" file:\n\nauth.*,authpriv.* /var/log/auth.log\ndaemon.* /var/log/messages\n\nFor the changes to take effect, restart the \"rsyslog\" service with the following command:\n\n$ sudo systemctl restart rsyslog.service",
+            "+@fixref": "F-41493r1069080_fix"
           },
           "fix": {
-            "+@id": "F-41493r832958_fix"
+            "+@id": "F-41493r1069080_fix"
           },
           "check": {
-            "+@system": "C-41534r832957_chk",
+            "+@system": "C-41534r1069079_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the Ubuntu operating system monitors all remote access methods. \n \nCheck that remote access methods are being logged by running the following command: \n \n$  grep -E -r '^(auth,authpriv\\.\\*|daemon\\.\\*)' /etc/rsyslog.* \n/etc/rsyslog.d/50-default.conf:auth,authpriv.*                        /var/log/auth.log \n/etc/rsyslog.d/50-default.conf:daemon.*                        /var/log/messages \n \nIf \"auth.*\", \"authpriv.*\", or \"daemon.*\" are not configured to be logged in at least one of the config files, this is a finding."
+            "check-content": "Verify the Ubuntu operating system monitors all remote access methods. \n \nCheck that remote access methods are being logged by running the following command: \n \n$  grep -E -r '^(auth,authpriv\\.\\*|daemon\\.\\*)' /etc/rsyslog.* \n/etc/rsyslog.d/50-default.conf:auth,authpriv.*                        /var/log/auth.log \n/etc/rsyslog.d/50-default.conf:daemon.*                        /var/log/messages \n \nIf \"auth.*\", \"authpriv.*\", or \"daemon.*\" are not configured to be logged in at least one of the config files, this is a finding."
           }
         }
       },
@@ -11808,7 +11808,7 @@
         "title": "SRG-OS-000355-GPOS-00143",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-238356r1015155_rule",
+          "+@id": "SV-238356r1038944_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-20-010435",
@@ -12659,7 +12659,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251504r1014776_rule",
+          "+@id": "SV-251504r1082230_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-20-010463",
@@ -12677,19 +12677,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If an account is configured for password authentication but does not have an assigned password, it may be possible to log on to the account without authenticating.\n\nRemove any instances of the \"nullok\" option in \"/etc/pam.d/common-password\" to prevent logons with empty passwords.",
-            "+@fixref": "F-54893r832976_fix"
+            "+content": "If an account is configured for password authentication but does not have an assigned password, it may be possible to log on to the account without authenticating.\n\nRemove any instances of the \"nullok\" option in \"/etc/pam.d/common-auth\" and \"/etc/pam.d/common-password\".",
+            "+@fixref": "F-54893r1082229_fix"
           },
           "fix": {
-            "+@id": "F-54893r832976_fix"
+            "+@id": "F-54893r1082229_fix"
           },
           "check": {
-            "+@system": "C-54939r1014775_chk",
+            "+@system": "C-54939r1082228_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_20.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify that null passwords cannot be used, run the following command: \n\n$ sudo grep nullok /etc/pam.d/*\n\nIf this produces any output, it may be possible to log on with accounts with empty passwords.\n\nIf null passwords can be used, this is a finding."
+            "check-content": "Verify null passwords cannot be used. Run the following command: \n\n$ grep nullok /etc/pam.d/common-auth /etc/pam.d/common-password\n\nIf this produces any output, it may be possible to log on with accounts with empty passwords.\n\nIf null passwords can be used, this is a finding."
           }
         }
       },

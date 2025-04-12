@@ -13,9 +13,9 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2025-02-20"
     },
-    "title": "Arista MLS EOS 4.2x NDM Security Technical Implementation Guide",
+    "title": "Arista MLS EOS 4.X NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -881,10 +881,10 @@
           "title": "The Arista network device must limit the number of concurrent sessions to an organization-defined number for each administrator account and/or administrator account type.",
           "description": "<VulnDiscussion>Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator based on account type, role, or access type is helpful in limiting risks related to denial-of-service (DoS) attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions must be defined based upon mission needs and the operational environment for each system. At a minimum, limits must be set for SSH, HTTPS, account of last resort, and root account sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -901,7 +901,7 @@
           "check": {
             "+@system": "C-59623r882181_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the device is configured to limit the number of concurrent management sessions with the following commands:\n\nswitch#sh run | section management ssh\nmanagement ssh\n   connection limit 5\n!\n\nIf the Arista network device is not configured to limit the number of SSH concurrent sessions, this is a finding."
@@ -920,10 +920,10 @@
           "title": "The Arista network device must enforce approved authorizations for controlling the flow of management information within the network device based on information flow control policies.",
           "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data.\n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -946,7 +946,7 @@
           "check": {
             "+@system": "C-59624r882184_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured with access control lists to control the flow of management information.\n\nStep 1: Verify SSH has an inbound ACL applied as shown in the example below.\n\nsh run | sec management ssh\n ip access-group MGMT_NETWORK in\n\nStep 2: Verify the ACL permits only hosts from the management network to access the device.\n\nsh run | sec access-list MGMT_NETWORK\n ip access-list MGMT_NETWORK\n   10 permit ip 10.1.12.0/24 any\n   20 deny ip any any log\n\nIf the Arista network device is not configured to enforce approved authorizations for controlling the flow of management information within the device based on control policies, this is a finding."
@@ -965,10 +965,10 @@
           "title": "The Arista network device must be configured to enforce the limit of three consecutive invalid logon attempts, after which time it must block any login attempt for 15 minutes.",
           "description": "<VulnDiscussion>By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -985,7 +985,7 @@
           "check": {
             "+@system": "C-59625r882187_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista device is configured to enforce the limit of three consecutive invalid logon attempts with the following command:\n\nswitch#show running-config | section aaa\n\naaa authentication policy lockout failure 3\nduration 900\n\nIf the Arista device is not configured to enforce the limit of three consecutive invalid logon attempts, this is a finding."
@@ -1004,10 +1004,10 @@
           "title": "The Arista network device must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the device.",
           "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.\n\nSatisfies: SRG-APP-000068-NDM-000215, SRG-APP-000069-NDM-000216</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1030,7 +1030,7 @@
           "check": {
             "+@system": "C-59626r882190_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured to present a DOD-approved banner that is formatted in accordance with DTM-08-060.\n\nVerify the Arista device uses the following verbiage for applications that can accommodate banners of 1300 characters by using the following command:\n\nswitch#show configuration | section banner\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nIf the Arista device does not display such a banner, this is a finding."
@@ -1049,10 +1049,10 @@
           "title": "The Arista network device must be configured to audit all administrator activity.",
           "description": "<VulnDiscussion>This requirement supports non-repudiation of actions taken by an administrator and is required in order to maintain the integrity of the configuration management process. All configuration changes to the network device are logged, and administrators authenticate with two-factor authentication before gaining administrative access. Together, these processes will ensure the administrators can be held accountable for the configuration changes they implement.\n\nSatisfies: SRG-APP-000026-NDM-000208, SRG-APP-000027-NDM-000209, SRG-APP-000028-NDM-000210, SRG-APP-000029-NDM-000211, SRG-APP-000080-NDM-000220, SRG-APP-000091-NDM-000223, SRG-APP-000101-NDM-000231, SRG-APP-000319-NDM-000283, SRG-APP-000343-NDM-000289, SRG-APP-000495-NDM-000318, SRG-APP-000499-NDM-000319, SRG-APP-000503-NDM-000320, SRG-APP-000504-NDM-000321, SRG-APP-000506-NDM-000323</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1103,7 +1103,7 @@
           "check": {
             "+@system": "C-59627r882193_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured to audit all administrator activity.\n\nVerify the AAA logging settings in the configuration file with the following example:\n\nswitch#show running-config | section aaa\n\naaa authentication policy on-success log\naaa authentication policy on-failure log\naaa accounting exec default start-stop group radius logging\naaa accounting system default start-stop group radius logging\naaa accounting commands all default start-stop logging group radius\n\nIf the Arista network device is not configured to audit all administrator activity, this is a finding."
@@ -1115,17 +1115,17 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-255952r960966_rule",
+          "+@id": "SV-255952r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARST-ND-000340",
           "title": "The Arista network device must be configured to prohibit the use of all unnecessary and/or nonsecure functions, ports, protocols, and/or services.",
           "description": "<VulnDiscussion>To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component.\n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1142,7 +1142,7 @@
           "check": {
             "+@system": "C-59628r882196_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device has telnet and https disabled.\n\nStep 1: Determine if telnet is disabled with the following command:\n\nswitch#show management telnet\n\nTelnet status for Default VRF is disabled \nTelnet session limit is 20\nTelnet session limit per host is 20\n\nIf telnet is enabled, this is a finding.\n\nStep 2: Determine if https is disabled with the following command:\n\nswitch#show management http-server\n\nSSL Profile:        none\nFIPS Mode:          No\nQoS DSCP:           0\nLogLevel:           none\nCSP Frame Ancestor: None\nTLS Protocols:      1.0 1.1 1.2\n   VRF           Server Status         Enabled Services\n-------------------------------------------------------\n   default       HTTPS: port 443       http-commands\n\nIf Enabled Services in the output shows http-commands, this is a finding."
@@ -1154,17 +1154,17 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-255953r991782_rule",
+          "+@id": "SV-255953r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARST-ND-000350",
           "title": "The Arista network device must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
           "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit should be added to the envelope as a record. Administrators should secure the credentials and disable the root account (if possible) when not needed for system administration functions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1187,7 +1187,7 @@
           "check": {
             "+@system": "C-59629r882199_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Step 1: Verify on the Arista network device that an account of last resort is configured using the following command:\n\nswitch#sh running-config | section username\nusername Emergency-Admin privilege 15 role network-admin secret sha512 $6$ObuWg.Eu7DwGD8k/$EgT0uI.hLrStrmxUvJijecxDXr.Zy.imi1UrDzDP38q8Erqgkfe0IhHzIhYmR3ekW74XdAFf7I6SgzAoUFd0\n\nStep 2: Verify the Arista network device default account has been overwritten with the local account of last resort.\n\nswitch#sh running-config | section username\nusername Emergency-Admin privilege 15 role network-admin secret sha512 $6$ObuWg.Eu7DwGD8k/$EgT0uI.hLrStrmxUvJijecxDXr.Zy.imi1UrDzDP38q8Erqgkfe0IhHzIhYmR3ekW74XdAFf7I6SgzAoUFd0\n\nIf one local account on the Arista network device does not exist for use as the account of last resort in the event the authentication server is unavailable, this is a finding.\n\nIf the default admin account exists on the device, this is a finding."
@@ -1206,10 +1206,10 @@
           "title": "The Arista network device must enforce a minimum 15-character password length.",
           "description": "<VulnDiscussion>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password.\n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1232,7 +1232,7 @@
           "check": {
             "+@system": "C-59630r882202_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Review the Arista device configuration \"show management security\" to determine the minimum 15-character password length.\n\n switch#show run | section management security\nmanagement security\n   password minimum length 15\n!\n\nIf the Arista network device does not enforce a minimum 15-character password length, this is a finding."
@@ -1251,10 +1251,10 @@
           "title": "The Arista network device must use FIPS 140-2 approved algorithms for authentication to a cryptographic module.",
           "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-approved and NIST-recommended authentication algorithms.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1271,7 +1271,7 @@
           "check": {
             "+@system": "C-59631r882205_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if the Arista network device uses FIPS 140-2 approved algorithms for authentication to a cryptographic module.\n\nStep 1: Review the Arista network device configuration to verify hardware or software entropy is enabled and FIPS restrictions are used in accordance with NIST-specified validated cryptographic requirements.\n\nswitch# show management security\nCPU Model: AMD GX-424CC SOC with Radeon(TM) R5E Graphics\nSecurity Chip: N313X\nCrypto Module: Arista EOS Crypto Module v2.0\nForwarding ASIC: Jericho0 Model: Jericho\nBlocked client protocols: None\nHardware entropy generation is enabled\nHaveged entropy generation is disabled\nJitter entropy generation is disabled\n!\n\nIf both hardware entropy and haveged entropy are disabled, this is a finding.\n\nStep 2: Review the Arista network device configuration to verify that FIPS restrictions are enabled for management security to use EOS Crypto Module for the RSA key pair used for SSH and the device can only use FIPS-approved algorithms.\n\nswitch(config)show run | section management ssh\nmanagement ssh\n   fips restrictions\n!\n\nIf the FIPS restrictions line is not present, this is a finding."
@@ -1290,10 +1290,10 @@
           "title": "The Arista network device must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
           "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.\n\nSatisfies: SRG-APP-000190-NDM-000267, SRG-APP-000186-NDM-000266</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1310,7 +1310,7 @@
           "check": {
             "+@system": "C-59632r882208_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista device is configured for 10-minute inactivity timeout for management sessions.\n\nswitch#sh run | section management\n!\ninterface Management1\n   ip address 172.28.134.55/20\n!\nmanagement console\nidle-timeout 10\n!\nmanagement ssh\n   idle-timeout 10\n!\n\nIf the Arista network device is not configured to terminate the connection associated with a device management session at the end of the session or after 10 minutes of inactivity, this is a finding."
@@ -1329,10 +1329,10 @@
           "title": "If the Arista network device uses role-based access control, the network device must enforce organization-defined role-based access control policies over defined subjects and objects.",
           "description": "<VulnDiscussion>Organizations can create specific roles based on job functions and the authorizations (i.e., privileges) to perform needed operations on organizational information systems associated with the organization-defined roles. When administrators are assigned to the organizational roles, they inherit the authorizations or privileges defined for those roles. Role-based access control (RBAC) simplifies privilege administration for organizations because privileges are not assigned directly to every administrator (which can be a significant number of individuals for mid- to large-size organizations) but are instead acquired through role assignments. RBAC can be implemented either as a mandatory or discretionary form of access control.\n\nThe RBAC policies and the subjects and objects are defined uniquely for each network device, so they cannot be specified in the requirement.\n\nSatisfies: SRG-APP-000329-NDM-000287, SRG-APP-000380-NDM-000304</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1355,7 +1355,7 @@
           "check": {
             "+@system": "C-59633r882211_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if the network device enforces role-based access control policy over defined subjects and objects. This requirement may be met through use of a properly configured authentication server.\n\nNote: If not using role-based access for the network device, this check is Not Applicable.\n\nStep 2: Verify the Arista network device configured AAA servers are synchronized for all role-based authentication access control structure defined by role types and user-defined control policies over defined subjects and objects.\n\nswitch(config)#show running-config | section role\n\nrole network-admin\n   10 permit command .*\n!\nrole operator\n   10 permit command show running-config [all|detail] sanitized\n   20 deny command >|>>|extension|\\||session|do|delete|copy|rmdir|mkdir|python-shell|bash|platform|scp|append|redirect|tee|more|less|who|show run.*\n   30 deny mode config command (no |default )?(username|role|aaa|tcpdump|schedule|event.*)  \n   40 permit command .*\n!\nrole tester\n   10 permit command show running-config [all|detail] sanitized\n   20 deny command >|>>|extension|\\||session|do|delete|copy|rmdir|mkdir|python-shell|bash|platform|scp|append|redirect|tee|more|less|who|show run.*\n   30 deny mode config command (no |default )(username|role|aaa|tcpdump|schedule|event.*)\n   40 permit command .*\n\nIf role-based access control policy is not enforced over defined subjects and objects, this is a finding."
@@ -1374,10 +1374,10 @@
           "title": "The Arista network device must be configured to synchronize internal system clocks using redundant authenticated time sources.",
           "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions.\n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.\n\nSatisfies: SRG-APP-000373-NDM-000298, SRG-APP-000374-NDM-000299, SRG-APP-000375-NDM-000300, SRG-APP-000395-NDM-000347</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1420,7 +1420,7 @@
           "check": {
             "+@system": "C-59634r882214_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if the network device is configured to synchronize internal information system clocks with authenticated primary and secondary time sources.\n\nVerify the Arista network device configuration with the following example:\n\nswitch# show running-config | section ntp\n\nntp authentication-key 12 sha1 7 06131C2058470A58\nntp trusted-key 12\nntp authenticate servers\nntp local-interface Management1\nntp server 192.168.16.36 prefer key 12\nntp server 192.168.16.37 key 12\n\nIf the Arista network device is not configured to synchronize internal system clocks with the primary and secondary time sources, this is a finding.\n\nIf the Arista network device does not authenticate Network Time Protocol sources using authentication that is cryptographically based, this is a finding."
@@ -1439,10 +1439,10 @@
           "title": "The Arista network device must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
           "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, internet). A remote connection is any connection with a device communicating through an external network (e.g., the internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1459,7 +1459,7 @@
           "check": {
             "+@system": "C-59635r882217_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Review the network device configuration to verify SNMP messages are authenticated using a FIPS-validated HMAC.\n\nVerify the Arista network device is configured for the following SNMP example parameters:\n\nswitch(config)#show run | section snmp\nsnmp-server engineID local f5717f444ca880dbb200\nsnmp-server chassis-id ID CC-7050X3\nsnmp-server contact FedSE\nsnmp-server location JITC\nsnmp-server view snmpview system included\nsnmp-server group testers v3 priv read snmpview\nsnmp-server user jitc-sw testers v3 localized f8527f444ca990dcc200 auth sha 7b65225a6abf5111cd951e6cb7e105aef5bcd734 priv aes a1aedb1986642e766d4c8032d58e73b72bc3528b\nsnmp-server host 192.168.10.31 version 3 priv jitc-sw\nsnmp-server enable traps snmp authentication\nsnmp-server enable traps snmp link-down\nsnmp-server enable traps snmp link-up\n!\n\nIf the Arista network device is not configured to authenticate SNMP messages using a FIPS-validated HMAC, this is a finding."
@@ -1478,10 +1478,10 @@
           "title": "The Arista network devices must use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of remote maintenance sessions.",
           "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code used for authentication to cryptographic modules.\n\nSeparate requirements for configuring applications and protocols used by each application (e.g., SNMPv3, SSHv2, NTP, HTTPS, and other protocols and applications that require server/client authentication) are required to implement this requirement. Where SSH is used, the SSHv2 protocol suite is required because it includes Layer 7 protocols such as SCP and SFTP, which can be used for secure file transfers.\n\nSatisfies: SRG-APP-000411-NDM-000330, SRG-APP-000156-NDM-000250</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1504,7 +1504,7 @@
           "check": {
             "+@system": "C-59636r882220_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if the Arista network device is configured to use FIPS-validated HMAC to protect the integrity of remote maintenance sessions.\n\nNOTE: Although allowed by SP800-131Ar2 for some applications, SHA-1 is considered a compromised hashing standard and is being phased out of use by industry and government standards. Unless required for legacy use, DOD systems should not be configured to use SHA-1 for integrity of remote access sessions.\n\nVerify the HMAC settings for SSH using the following command:\n\nswitch#sh run | section management ssh\n\nmac hmac-sha2-256 hmac-sha2-512\n\nIf the Arista network device does not implement replay-resistant authentication mechanisms for network access to privileged accounts, this is a finding."
@@ -1523,10 +1523,10 @@
           "title": "The Arista network device must be configured to implement cryptographic mechanisms using a FIPS 140-2 approved algorithm to protect the confidentiality of remote maintenance sessions.",
           "description": "<VulnDiscussion>This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1543,7 +1543,7 @@
           "check": {
             "+@system": "C-59637r882223_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Validate that a FIPS validated SSH encryption algorithm is selected.\n\nNOTE: AES-CBC algorithms have been considered compromised and are no longer recommended for cryptographic algorithms. AES-CTR and AES-GCM are both superior algorithms and are recommended.\n\nsh run | section management ssh\ncipher aes256-ctr aes512-ctr aes128-ctr\n\nIf the Arista network device is not configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions using a FIPS 140-2 approved algorithm, this is a finding."
@@ -1562,10 +1562,10 @@
           "title": "The Arista network device must be configured to capture all DOD auditable events.",
           "description": "<VulnDiscussion>Auditing and logging are key components of any security architecture. Logging the actions of specific events provides a means to investigate an attack; to recognize resource utilization or capacity thresholds; or to identify an improperly configured network device. If auditing is not comprehensive, it will not be useful for intrusion monitoring, security investigations, and forensic analysis.\n\nSatisfies: SRG-APP-000095-NDM-000225, SRG-APP-000096-NDM-000226, SRG-APP-000097-NDM-000227, SRG-APP-000098-NDM-000228, SRG-APP-000099-NDM-000229, SRG-APP-000100-NDM-000230, SRG-APP-000516-NDM-000334, SRG-APP-000357-NDM-000293, SRG-APP-000360-NDM-000295, SRG-APP-000505-NDM-000322</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1620,7 +1620,7 @@
           "check": {
             "+@system": "C-59638r882226_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured to audit all DOD auditable events.\n\nVerify the logging settings in the configuration file with the following example:\n\nswitch#sh running-config | section logging\n\nlogging buffered informational\nlogging trap informational\n\nNOTE: Acceptable settings include debugging, informational, and notifications to adjust syslog server traffic impact. Setting to higher severity levels can cause necessary lower-level events to be missed.\n\nIf the Arista network device is not configured to audit all DOD auditable events, this is a finding."
@@ -1639,10 +1639,10 @@
           "title": "The network device must be configured to use an authentication server to authenticate users prior to granting administrative access.",
           "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1659,7 +1659,7 @@
           "check": {
             "+@system": "C-59639r882229_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured to use an authentication server as primary source for authentication.\n\nVerify the Arista network device configuration for RADIUS server IP, aaa group server, and defined encryption key using the following example command:\n\nswitch#show running-config |section radius\nradius-server host 192.168.10.101 key 7 106D1A182224E12AZ\n!\naaa group server radius RADIUS_1\n   server 192.168.10.101\n!\nswitch#show running-config | section aaa\naaa authentication login default group radius local\naaa authentication login console group radius local\naaa authentication dot1x default group radius\naaa authentication policy on-success log\naaa authentication policy on-failure log\naaa authorization console\naaa authorization commands all default local\naaa accounting exec default start-stop group radius logging\naaa accounting system default start-stop group radius logging\naaa accounting commands all default start-stop logging group radius\n\nIf the Arista network device is not configured to use an authentication server to authenticate users prior to granting administrative access, this is a finding."
@@ -1678,10 +1678,10 @@
           "title": "The network device must be configured to conduct backups of system level information contained in the information system when changes occur.",
           "description": "<VulnDiscussion>System-level information includes default and customized settings and security attributes, including ACLs that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1698,7 +1698,7 @@
           "check": {
             "+@system": "C-59640r882232_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device is configured with an “event-handler” to complete an incremental backup of the running configuration, which can be maintained in the switch flash memory stored in /mnt/flash/startup-config_directory (filetime):\n\nswitch#show run | section event-handler\nevent-handler CFG_BACKUP\n   trigger on-startup-config\n   action bash buf () { filetime=$(date +%Y%m%d); cp /mnt/flash/startup-config /mnt/flash/startup-config_${filetime}; }; buf\n!\n\nIf the Arista network device is not configured to conduct backups of system-level data when changes occur, this is a finding."
@@ -1717,10 +1717,10 @@
           "title": "The Arista network device must obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
           "description": "<VulnDiscussion>For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1737,7 +1737,7 @@
           "check": {
             "+@system": "C-59641r882235_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if the Arista network device obtains public key certificates from an appropriate certificate policy through an approved service provider.\n\nNote: This check is Not Applicable if not using any PKI certificates.\n\nVerify the DOD PKI certificates are copied to /certificate directory on the switch as outlined in the Arista Military Deployment Guide and configured as in the section \"Configuring RSA SecureID with OTP Management\".\n\n  switch# #dir certificate:\nDirectory of certificate:/\n       -rw-        2025           Apr 30 17:34  ARISTA_ROOT_CA.crt\n       -rw-        2110           Apr 30 17:34  ARISTA_SIGNING_CA.crt\n       -rw-        2015           Apr 30 17:35  Arista-CCS-720XP-48Y6.pem\n       -rw-        2020           Apr 30 17:35  DOD_JITC_Root_CA_3__0x01__DOD_JITC_Root_CA_3.cer\n       -rw-        2125           Apr 30 17:35  CA-60.cer\n!\n\nVerify the provider of the certificate is a DOD-approved certificate authority.\n\nIf the Arista network device does not obtain its public key certificates from an appropriate certificate policy through an approved service provider, this is a finding."
@@ -1756,10 +1756,10 @@
           "title": "The Arista network Arista device must be configured to send log data to a central log server for the purpose of forwarding alerts to the administrators and the ISSO.",
           "description": "<VulnDiscussion>The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. The stored log data can used to detect weaknesses in security that enable the network IA team to find and address these weaknesses before breaches can occur. Reviewing these logs, whether before or after a security breach, are important in showing whether someone is an internal employee or an outside threat.\n\nSatisfies: SRG-APP-000516-NDM-000350, SRG-APP-000119-NDM-000236, SRG-APP-000120-NDM-000237, SRG-APP-000515-NDM-000325</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": [
@@ -1786,7 +1786,7 @@
           "check": {
             "+@system": "C-59642r882238_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista network device has been configured Syslog server for auditing data by using the following command:\n\nswitch#show running-config | section logging\n\nlogging host 192.168.16.30 514\n!\n\nIf logging host is not configured to send log data to a central log server, this is a finding."
@@ -1805,10 +1805,10 @@
           "title": "The Arista network device must be running an operating system release that is currently supported by the vendor.",
           "description": "<VulnDiscussion>Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.2x NDM",
+            "title": "DPMS Target Arista MLS EOS 4.X NDM",
             "publisher": "DISA",
             "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.2x NDM",
+            "subject": "Arista MLS EOS 4.X NDM",
             "identifier": "5511"
           },
           "ident": {
@@ -1825,7 +1825,7 @@
           "check": {
             "+@system": "C-59643r882241_chk",
             "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.2x_NDM_STIG.xml",
+              "+@href": "Arista_MLS_EOS_4.X_NDM_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Arista device is running a certified version of EOS from the Arista.com website on the Support/Software Download section.\n\nswitch#show version\nArista DCS-7280SRA-48C6-F\nHardware version: 21.00\nSerial number: SSJ18250372\nHardware MAC address: 7483.ef6d.86f7\nSystem MAC address: 7483.ef6d.86f7\n\nSoftware image version: 4.26.4M\nArchitecture: i686\nInternal build version: 4.26.4M-25280047.4264M\nInternal build ID: 79589245-f1f3-49b7-8bee-cbfacac004e6\nImage format version: 1.0\n\nUptime: 2 weeks, 0 days, 9 hours and 53 minutes\nTotal memory: 8098984 kB\nFree memory: 6155528 kB\n\nIf the Arista network device is not running an operating system release that is currently supported by Arista Networks, this is a finding."

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-07"
+      "+@date": "2025-03-04"
     },
     "title": "z/OS NetView for RACF Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 9 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -334,7 +334,7 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224517r868532_rule",
+          "+@id": "SV-224517r1070206_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNET0040",
@@ -357,24 +357,28 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
+              "+content": "CCI-000015",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000381",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The Systems Programmer and ISSO will review NetView configuration parameters and control options for compliance.\n\nTo ensure authentication of users to NetView, ensure that CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure has the following initialization parameter(s) specified:\n\n(Note: The data set identified above is an example of a possible installation. The data set is determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nSECOPTS.OPERSEC=SAFCHECK|SAFDEF\n\nWhen SECOPTS.OPERSEC=SAFCHECK is used, it specifies that operator identification and password or password phrase checking is performed using an SAF security product. The operator identifier must also be defined in DSIOPF, and other attributes given to the operator at logon are taken from the specified profile for the operator in DSIPRF.\n\nSecurity access checks are checked against the authority of the operator that occur when an operator tries to access a data set that is protected in the DATASET class of an SAF product or an MVS system command that is protected in the OPERCMDS class of an SAF product.\n\nWhen SECOPTS.OPERSEC=SAFDEF is used, it specifies that operator identification and password or password phrase checking is done using an SAF security product. Authority to log on as a NetView operator is controlled through the APPL class. The operator identifier must be authorized to the resource name in the APPL class which represents the NetView program.\n\nThe attributes given to the operator at logon are defined in the NETVIEW segment of the user profile for the operator in the SAF product. For more information, refer to IBM Tivoli NetView for z/OS Security Reference.\n\nWhen SECOPTS.OPERSEC=SAFDEF is specified, any value for SECOPTS.CMDAUTH can be used.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nSECOPTS.CMDAUTH=SAF.FAIL|SAF.table\n\nWhen SECOPTS.CMDAUTH=SAF.table is used, table specifies the backup table to be used for immediate commands and when the SAF product cannot make a security decision. This can occur when:\n\n___ No resource name is defined in the NETCMDS class which protects or authorizes this command.\n___ The NETCMDS class is not active.\n___ The security product is not active.\n\nWhen SECOPTS.CMDAUTH=SAF.FAIL is used, command authority checking will fail if the SAF product can reach no decision.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Administration Reference.",
-            "+@fixref": "F-26188r868529_fix"
+            "+content": "The systems programmer and ISSO will review NetView configuration parameters and control options for compliance.\n\nTo ensure authentication of users to NetView, ensure that CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure has the following initialization parameter(s) specified:\n\n(Note: The data set identified above is an example of a possible installation. The data set is determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nSECOPTS.OPERSEC=SAFCHECK|SAFDEF\n\nWhen SECOPTS.OPERSEC=SAFCHECK is used, it specifies that operator identification and password or password phrase checking is performed using an SAF security product. The operator identifier must also be defined in DSIOPF, and other attributes given to the operator at logon are taken from the specified profile for the operator in DSIPRF.\n\nSecurity access checks are checked against the authority of the operator that occur when an operator tries to access a data set that is protected in the DATASET class of an SAF product or an MVS system command that is protected in the OPERCMDS class of an SAF product.\n\nWhen SECOPTS.OPERSEC=SAFDEF is used, it specifies that operator identification and password or password phrase checking is done using an SAF security product. Authority to log on as a NetView operator is controlled through the APPL class. The operator identifier must be authorized to the resource name in the APPL class which represents the NetView program.\n\nThe attributes given to the operator at logon are defined in the NETVIEW segment of the user profile for the operator in the SAF product. For more information, refer to IBM Tivoli NetView for z/OS Security Reference.\n\nWhen SECOPTS.OPERSEC=SAFDEF is specified, any value for SECOPTS.CMDAUTH can be used.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nSECOPTS.CMDAUTH=SAF.FAIL|SAF.table\n\nWhen SECOPTS.CMDAUTH=SAF.table is used, table specifies the backup table to be used for immediate commands and when the SAF product cannot make a security decision. This can occur when:\n\n  No resource name is defined in the NETCMDS class which protects or authorizes this command.\n  The NETCMDS class is not active.\n  The security product is not active.\n\nWhen SECOPTS.CMDAUTH=SAF.FAIL is used, command authority checking will fail if the SAF product can reach no decision.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Administration Reference.",
+            "+@fixref": "F-26188r1070205_fix"
           },
           "fix": {
-            "+@id": "F-26188r868529_fix"
+            "+@id": "F-26188r1070205_fix"
           },
           "check": {
-            "+@system": "C-26200r868528_chk",
+            "+@system": "C-26200r1070204_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0040)\n\nEnsure that all NetView configuration requirements are specified. If the following guidance is true, this is not a finding.\n\nKeyword                            Value\nSECOPTS.OPERSEC          SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH       SAF.FAIL|SAF.table"
+            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0040)\n\nEnsure that all NetView configuration requirements are specified. If the following guidance is true, this is not a finding.\n\nKeyword                            Value\nSECOPTS.OPERSEC          SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH       SAF.FAIL|SAF.table"
           }
         }
       },
@@ -383,12 +387,12 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224518r855185_rule",
+          "+@id": "SV-224518r1082304_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETR000",
           "title": "NetView install data sets are not properly protected.",
-          "description": "<VulnDiscussion>NetView Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>NetView Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS NetView for RACF",
             "publisher": "DISA",
@@ -406,7 +410,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000213",
+              "+content": "CCI-001499",
               "+@system": "http://cyber.mil/cci"
             },
             {
@@ -415,19 +419,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to NetView install data sets is limited to System Programmers only and all update and allocate access is logged. Auditors should be granted READ access.  \n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nData sets to be protected will be: \nSYS2.NETVIEW \nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nad 'sys2.netview.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read))\npe 'sys2.netview.**' id(syspaudt) acc(a)\npe 'sys2.netview.**' id(audtaudt)\nad 'sys2a.netview.**' uacc(none) owner(sys2a) -\naudit(success(update) failures(read))\npe 'sys2a.netview.**' id(syspaudt) acc(a)\npe 'sys2a.netview.**' id(audtaudt)\nad 'sys3.netview.**' uacc(none) owner(sys3) - \naudit(success(update) failures(read))\npe 'sys3.netview.**' id(syspaudt) acc(a)\npe 'sys3.netvidew.**' id(audtaudt)",
-            "+@fixref": "F-26189r520773_fix"
+            "+content": "The ISSO will ensure that update and allocate access to NetView install data sets is limited to system programmers only and all update and allocate access is logged. Auditors should be granted READ access.  \n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.NETVIEW \nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nad 'sys2.netview.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read))\npe 'sys2.netview.**' id(syspaudt) acc(a)\npe 'sys2.netview.**' id(audtaudt)\nad 'sys2a.netview.**' uacc(none) owner(sys2a) -\naudit(success(update) failures(read))\npe 'sys2a.netview.**' id(syspaudt) acc(a)\npe 'sys2a.netview.**' id(audtaudt)\nad 'sys3.netview.**' uacc(none) owner(sys3) - \naudit(success(update) failures(read))\npe 'sys3.netview.**' id(syspaudt) acc(a)\npe 'sys3.netvidew.**' id(audtaudt)",
+            "+@fixref": "F-26189r1082304_fix"
           },
           "fix": {
-            "+@id": "F-26189r520773_fix"
+            "+@id": "F-26189r1082304_fix"
           },
           "check": {
-            "+@system": "C-26201r520772_chk",
+            "+@system": "C-26201r1070088_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0000)\n\nb)\tVerify that access to the NetView install data sets are properly restricted.\n \n___\tThe RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___\tThe RACF data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc)\tIf all of the above are untrue, there is NO FINDING.\n\nd)\tIf any of the above is true, this is a FINDING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0000)\n\nVerify that access to the NetView install data sets are properly restricted.\n \nThe RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe RACF data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, this is not a finding.\n\nIf any of the above is true, this is a finding."
           }
         }
       },
@@ -436,7 +440,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224519r520777_rule",
+          "+@id": "SV-224519r958616_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETR001",
@@ -485,12 +489,12 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224520r868536_rule",
+          "+@id": "SV-224520r1070179_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETR020",
           "title": "NetView resources must be properly defined and protected.",
-          "description": "<VulnDiscussion>NetView can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>NetView can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS NetView for RACF",
             "publisher": "DISA",
@@ -508,28 +512,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000035",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002234",
+              "+content": "CCI-000213",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the ACP.\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. This can be bypassed. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. Additional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nUse the NetView Resources table in the z/OS STIG Addendum. This table lists the resources and access requirements for NetView, ensure the following guidelines are followed:\n\nThe RACF resource access authorizations restrict access to the appropriate personnel.\n\nThe RACF resource access authorizations specify UACC(NONE) and NOWARNING.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nRDEFINE NETCMDS netid.** UACC(NONE) OWNER(ADMIN) -\n\tAUDIT(FAILURE(READ)) DATA('Protected per ZNETR020')\nRDEFINE NETCMDS netid.luname.ADDCMD.** UACC(NONE) OWNER(ADMIN) -\n\tAUDIT(FAILURE(READ)) DATA('Protected per ZNETR020')\nPERMIT netid.luname.ADDCMD.** CLASS(NETCMDS) ID(syspaudt) ACCESS(READ)",
-            "+@fixref": "F-26191r868535_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. This can be bypassed. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. Additional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nUse the NetView Resources table in the z/OS STIG Addendum. This table lists the resources and access requirements for NetView, ensure the following guidelines are followed:\n\nThe RACF resource access authorizations restrict access to the appropriate personnel.\n\nThe RACF resource access authorizations specify UACC(NONE) and NOWARNING.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nRDEFINE NETCMDS netid.** UACC(NONE) OWNER(ADMIN) -\n\tAUDIT(FAILURE(READ)) DATA('Protected per ZNETR020')\nRDEFINE NETCMDS netid.luname.ADDCMD.** UACC(NONE) OWNER(ADMIN) -\n\tAUDIT(FAILURE(READ)) DATA('Protected per ZNETR020')\nPERMIT netid.luname.ADDCMD.** CLASS(NETCMDS) ID(syspaudt) ACCESS(READ)",
+            "+@fixref": "F-26191r1070178_fix"
           },
           "fix": {
-            "+@id": "F-26191r868535_fix"
+            "+@id": "F-26191r1070178_fix"
           },
           "check": {
-            "+@system": "C-26203r868534_chk",
+            "+@system": "C-26203r1070177_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZNET0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0020)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\n___ The RACF resource access authorizations restrict access to the appropriate personnel.\n\n___ The RACF resource access authorizations are defined with UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZNET0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0020)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe RACF resource access authorizations restrict access to the appropriate personnel.\n\nThe RACF resource access authorizations are defined with UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -538,7 +538,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224521r520783_rule",
+          "+@id": "SV-224521r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETR030",
@@ -587,7 +587,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224522r520786_rule",
+          "+@id": "SV-224522r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETR032",

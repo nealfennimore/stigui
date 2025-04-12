@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-16"
+      "+@date": "2025-02-25"
     },
     "title": "Microsoft Windows Server Domain Name System (DNS) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 15 Nov 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -3391,7 +3391,7 @@
         "title": "SRG-APP-000383-DNS-000047",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259341r961470_rule",
+          "+@id": "SV-259341r1081088_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000009",
@@ -3416,12 +3416,12 @@
             "+@id": "F-62988r939727_fix"
           },
           "check": {
-            "+@system": "C-63080r939726_chk",
+            "+@system": "C-63080r1081087_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: In Windows DNS Server, if forwarders are configured, the recursion setting must also be enabled because disabling recursion will disable forwarders.\n\nIf forwarders are not used, recursion must be disabled.\n\nIn both cases, the use of root hints must be disabled. The root hints configuration requirement is addressed in WDNS-22-000012.\n\nLog on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nIf forwarders are enabled and configured, this check is not applicable.\n\nIf forwarders are not enabled, click the \"Advanced\" tab and verify the \"Disable recursion (also disables forwarders)\" check box is selected.\n\nIf forwarders are not enabled and configure, and the \"Disable recursion (also disables forwarders)\" check box in the \"Advanced\" tab is not selected, this is a finding."
+            "check-content": "Note: In Windows DNS Server, if forwarders are configured, the recursion setting must also be enabled because disabling recursion will disable forwarders.\n\nIf forwarders are not used, recursion must be disabled.\n\nIn both cases, the use of root hints must be disabled. The root hints configuration requirement is addressed in WDNS-22-000012.\n\nLog on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nIf forwarders are enabled and configured, this check is not applicable.\n\nIf forwarders are not enabled, click the \"Advanced\" tab and verify the \"Disable recursion (also disables forwarders)\" check box is selected.\n\nIf forwarders are not enabled and configured, and the \"Disable recursion (also disables forwarders)\" check box in the \"Advanced\" tab is not selected, this is a finding. This is not applicable for classified networks."
           }
         }
       },
@@ -4372,7 +4372,7 @@
         "title": "SRG-APP-000176-DNS-000017",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259367r961041_rule",
+          "+@id": "SV-259367r1081079_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000039",
@@ -4390,11 +4390,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Access Windows Explorer.\n\nNavigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nModify permissions on the keys folder, subfolders, and files to be limited to SYSTEM and Administrators FULL CONTROL to limit all other users/groups to READ.",
-            "+@fixref": "F-63014r939805_fix"
+            "+content": "Access Windows Explorer.\n\nNavigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nModify permissions on the keys folder, subfolders, and files to be limited to SYSTEM and Administrators FULL CONTROL to limit all other users/groups to READ. If additional permissions are needed it must be documented and approved by the ISSO or ISSM.",
+            "+@fixref": "F-63014r1081078_fix"
           },
           "fix": {
-            "+@id": "F-63014r939805_fix"
+            "+@id": "F-63014r1081078_fix"
           },
           "check": {
             "+@system": "C-63106r939804_chk",
@@ -4450,7 +4450,7 @@
         "title": "SRG-APP-000176-DNS-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259369r961041_rule",
+          "+@id": "SV-259369r1081081_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000041",
@@ -4468,11 +4468,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Access Windows Explorer.\n\nNavigate to the following location:\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nModify permissions on the folder, subfolders, and files to \"FULL CONTROL\" for \"SYSTEM\" and Administrators and to \"READ\" for all other users/groups.",
-            "+@fixref": "F-63016r939811_fix"
+            "+content": "Access Windows Explorer.\n\nNavigate to the following location:\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nModify permissions on the folder, subfolders, and files to \"FULL CONTROL\" for \"SYSTEM\" and Administrators and to \"READ\" for all other users/groups. If additional permissions are needed, it must be documented and approved by the ISSO or ISSM.",
+            "+@fixref": "F-63016r1081080_fix"
           },
           "fix": {
-            "+@id": "F-63016r939811_fix"
+            "+@id": "F-63016r1081080_fix"
           },
           "check": {
             "+@system": "C-63108r939810_chk",
@@ -4651,7 +4651,7 @@
         "title": "SRG-APP-000420-DNS-000053",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259374r987695_rule",
+          "+@id": "SV-259374r1081084_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000046",
@@ -4675,19 +4675,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nSelect \"Use the following IP address\" and populate with an IP address, subnet mask, and default gateway.",
-            "+@fixref": "F-63021r939826_fix"
+            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account. \n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nSelect \"Use the following IP address\" and populate with an IP address, subnet mask, and default gateway.",
+            "+@fixref": "F-63021r1081083_fix"
           },
           "fix": {
-            "+@id": "F-63021r939826_fix"
+            "+@id": "F-63021r1081083_fix"
           },
           "check": {
-            "+@system": "C-63113r939825_chk",
+            "+@system": "C-63113r1081082_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nVerify the \"Use the following IP address\" is selected, with an IP address, subnet mask, and default gateway assigned.\n\nIf the \"Use the following IP address\" is not selected with a configured IP address, subnet mask, and default gateway, this is a finding."
+            "check-content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nVerify the \"Use the following IP address\" is selected, with an IP address, subnet mask, and default gateway assigned.\n\nIf the \"Use the following IP address\" is not selected with a configured IP address, subnet mask, and default gateway, this is a finding."
           }
         }
       },
@@ -5254,7 +5254,7 @@
         "title": "SRG-APP-000219-DNS-000028",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259389r961110_rule",
+          "+@id": "SV-259389r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000061",
@@ -5293,7 +5293,7 @@
         "title": "SRG-APP-000219-DNS-000029",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259390r961110_rule",
+          "+@id": "SV-259390r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WDNS-22-000062",
@@ -5332,7 +5332,7 @@
         "title": "SRG-APP-000219-DNS-000030",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259391r961110_rule",
+          "+@id": "SV-259391r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000063",
@@ -6085,7 +6085,7 @@
         "title": "SRG-APP-000176-DNS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259410r1018798_rule",
+          "+@id": "SV-259410r1081086_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000090",
@@ -6110,12 +6110,12 @@
             "+@id": "F-63057r939934_fix"
           },
           "check": {
-            "+@system": "C-63149r1018798_chk",
+            "+@system": "C-63149r1081085_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This check is not applicable for Windows DNS Servers that only host Active Directory-integrated zones or for Windows DNS servers on a classified network.\n\nReview the DNS implementation. Verify that each pair of communicating hosts has a unique TSIG key (i.e., a separate key for each secondary name server to authenticate transactions with the primary name server, etc.).\n\nIf a unique TSIG key has not been generated for each pair of communicating hosts, this is a finding."
+            "check-content": "This check is not applicable for Windows DNS Servers that only host Active Directory-integrated zones or for Windows DNS servers on a classified network.\n\nReview the DNS implementation. Verify that each pair of communicating hosts has a unique TSIG key (i.e., a separate key for each secondary name server to authenticate transactions with the primary name server, etc.).\n\nIf a unique TSIG key has not been generated for each pair of communicating hosts, this is a finding.\n\nIf using DNSSEC, this requirement is not applicable."
           }
         }
       },

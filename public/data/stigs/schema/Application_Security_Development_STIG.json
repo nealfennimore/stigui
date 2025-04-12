@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-06"
+      "+@date": "2025-02-12"
     },
     "title": "Application Security and Development Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -18962,12 +18962,12 @@
         "title": "SRG-APP-000405",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222560r1015709_rule",
+          "+@id": "SV-222560r1067800_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APSC-DV-001910",
           "title": "The application must conform to Federal Identity, Credential, and Access Management (FICAM)-issued profiles.",
-          "description": "<VulnDiscussion>FICAM establishes a federated identity framework for the federal government. FICAM provides government-wide services for common Identity, Credential, and Access Management (ICAM) requirements. The FICAM Trust Framework Solutions (TFS) is the federated identity framework for the U.S. federal government.\n The TFS is a process by which Industry Trust Frameworks (The codification of requirements for credentials and their issuance, privacy and security requirements, as well as auditing qualifications and processes) are evaluated and assessed for potential use by the government. \n\nThis requirement only applies to applications that are intended to be accessible to nonfederal government agencies and other partners or nonorganizational (non-DOD) users.\n\nWithout conforming to FICAM-issued profiles, the information system may not be interoperable with FICAM-authentication protocols, such as SAML 2.0, OpenID 2.0 or other protocols such as the FICAM backend Attribute Exchange.\n\nThis requirement addresses open identity management standards. More information regarding these standards is available here: info.idmanagement.gov/2012/10/what-are-ficam-technical-profiles-and.html</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>FICAM establishes a federated identity framework for the federal government. FICAM provides governmentwide services for common Identity, Credential, and Access Management (ICAM) requirements. The FICAM Trust Framework Solutions (TFS) is the federated identity framework for the U.S. federal government.\nThe TFS is a process by which Industry Trust Frameworks (the codification of requirements for credentials and their issuance, privacy and security requirements, as well as auditing qualifications and processes) are evaluated and assessed for potential use by the government. \n\nThis requirement only applies to applications intended to be accessible to nonfederal government agencies and other partners or nonorganizational (non-DOD) users.\n\nWithout conforming to FICAM-issued profiles, the information system may not be interoperable with FICAM-authentication protocols, such as SAML 2.0, OpenID 2.0 or other protocols such as the FICAM backend Attribute Exchange.\n\nThis requirement addresses open identity management standards. More information regarding these standards is available here: https://www.idmanagement.gov/fpki/#federal-pki-policies-and-profiles</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Application Security and Development",
             "publisher": "DISA",
@@ -19001,12 +19001,12 @@
             "+@id": "F-24219r985969_fix"
           },
           "check": {
-            "+@system": "C-24230r985968_chk",
+            "+@system": "C-24230r1067799_chk",
             "check-content-ref": {
               "+@href": "Application_Security_and_Development_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the application documentation and interview the application administrator to identify application access methods.\n\nIf the application is not PKI-enabled due to the hosted data being publicly releasable, this check is Not Applicable.\n\nIf the application is only deployed to SIPRnet, this requirement is Not Applicable.\n\nIf the application is not intended to be available to federal government partners this requirement is Not Applicable.\n\nThis requirement applies to DOD service providers who are relying parties of external (federal government) identity providers.\n \nAsk the application administrator to demonstrate how the application conforms to FICAM issued profiles such as SAML or OPENID. \n\nIf the application is designed to be a service provider utilizing an external identify provider and doesn't conform to FICAM-issued profiles, this is a finding."
+            "check-content": "Review the application documentation and interview the application administrator to identify application access methods.\n\nIf the application is not PKI-enabled due to the hosted data being publicly releasable, this check is Not Applicable.\n\nIf the application is only deployed to SIPRnet, this requirement is Not Applicable.\n\nIf the application is not intended to be available to federal government partners this requirement is Not Applicable.\n\nThis requirement applies to DOD service providers who are relying parties of external (federal government) identity providers.\n \nAsk the application administrator to demonstrate how the application conforms to FICAM issued profiles such as SAML or OPENID. \n\nIf the application is designed to be a service provider utilizing an external identify provider and does not conform to FICAM-issued profiles, this is a finding."
           }
         }
       },
@@ -20293,9 +20293,9 @@
         "title": "SRG-APP-000428",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222588r961599_rule",
+          "+@id": "SV-222588r1067803_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "APSC-DV-002340",
           "title": "The application must implement approved cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components.",
           "description": "<VulnDiscussion>Applications handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -20321,19 +20321,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Identify data elements that require protection.\n\nDocument the data types and specify encryption requirements.\n\nEncrypt data according to DoD policy or data owner requirements.",
-            "+@fixref": "F-24247r493673_fix"
+            "+content": "Identify data elements that require protection.\n\nDocument the data types and specify encryption requirements.\n\nEncrypt data according to DOD policy or data owner requirements.",
+            "+@fixref": "F-24247r1067802_fix"
           },
           "fix": {
-            "+@id": "F-24247r493673_fix"
+            "+@id": "F-24247r1067802_fix"
           },
           "check": {
-            "+@system": "C-24258r493672_chk",
+            "+@system": "C-24258r1067801_chk",
             "check-content-ref": {
               "+@href": "Application_Security_and_Development_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the data owner has specified data protection encryption requirements regarding modification of data.\n\nDetermine if the application is processing publicly releasable, FOUO or classified data.\n\nDetermine if the application configuration information contains sensitive information.\n\nIf the data is strictly publicly releasable information and system documentation specifies no data encryption is required for any hosted application data, this is not applicable.\n\nAccess the data repository and have the application administrator identify the encryption protections that are utilized.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate how the data is encrypted, this is a finding."
+            "check-content": "Review the documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the data owner has specified data protection encryption requirements regarding modification of data.\n\nDetermine if the application is processing publicly releasable, CUI, or classified data.\n\nDetermine if the application configuration information contains sensitive information.\n\nIf the data is strictly publicly releasable information and system documentation specifies no data encryption is required for any hosted application data, this is not applicable.\n\nAccess the data repository and have the application administrator identify the encryption protections that are utilized.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate how the data is encrypted, this is a finding."
           }
         }
       },
@@ -20342,11 +20342,11 @@
         "title": "SRG-APP-000429",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222589r961602_rule",
+          "+@id": "SV-222589r1067813_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "APSC-DV-002350",
-          "title": "The application must use appropriate cryptography in order to protect stored DoD information when required by the information owner or DoD policy.",
+          "title": "The application must use appropriate cryptography in order to protect stored DOD information when required by the information owner or DOD policy.",
           "description": "<VulnDiscussion>Applications handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the confidentiality of organizational information. The strength of mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nSpecial care must be taken to cryptographically protect classified data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Application Security and Development",
@@ -20377,12 +20377,12 @@
             "+@id": "F-24248r493676_fix"
           },
           "check": {
-            "+@system": "C-24259r493675_chk",
+            "+@system": "C-24259r1067813_chk",
             "check-content-ref": {
               "+@href": "Application_Security_and_Development_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the application documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the application is processing publicly releasable, SBU, FOUO, or classified data.\n\nIf the data is strictly publicly releasable information with no SBU, FOUO, or classified and system documentation specifies no data encryption is required for any hosted application data, this requirement is not applicable.\n\nHave the application administrator identify the encryption protections that are utilized.\n\nValidate the application is using encryption protections that are commensurate with the data being protected.\n\nIf the application is processing classified data, type 1, suite B cryptography, or hardware-based encryption solutions; meeting NSA encryption requirements for classified data processing and storage is required.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate the type of encryption used or if the application processes classified and does not use type 1, suite B, or NSA-approved hardware-based encryption, this is a finding."
+            "check-content": "Review the application documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the application is processing publicly releasable, SBU, CUI, or classified data.\n\nIf the data is strictly publicly releasable information with no SBU, CUI, or classified and system documentation specifies no data encryption is required for any hosted application data, this requirement is not applicable.\n\nHave the application administrator identify the encryption protections that are utilized.\n\nValidate the application is using encryption protections that are commensurate with the data being protected.\n\nIf the application is processing classified data, type 1, suite B cryptography, or hardware-based encryption solutions; meeting NSA encryption requirements for classified data processing and storage is required.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate the type of encryption used or if the application processes classified and does not use type 1, suite B, or NSA-approved hardware-based encryption, this is a finding."
           }
         }
       },

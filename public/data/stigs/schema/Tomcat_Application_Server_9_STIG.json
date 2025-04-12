@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2025-02-11"
     },
     "title": "Apache Tomcat Application Server 9 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
         "+@id": "release-info"
       },
       {
@@ -3596,7 +3596,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222936r960792_rule",
+          "+@id": "SV-222936r1067546_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000110",
@@ -3631,12 +3631,12 @@
             "+@id": "F-24597r426253_fix"
           },
           "check": {
-            "+@system": "C-24608r426252_chk",
+            "+@system": "C-24608r1067545_chk",
             "check-content-ref": {
               "+@href": "Apache_Tomcat_Application_Server_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review system documentation. Identify the tomcat systemd startup file which for STIG purposes is called \"tomcat.service\" and can be viewed as a link in the /etc/systemd/system/ folder.\n\nRun the following command:\nsudo cat /etc/systemd/system/tomcat.service |grep -i security\n\nIf there is a documented and approved risk acceptance for not operating the Security Manager, the finding can be reduced to a CAT III.\n \nIf the ExecStart parameter does not include the -security flag, this is a finding."
+            "check-content": "Review system documentation. Identify the tomcat systemd startup file, which for STIG purposes is called \"tomcat.service\" and can be viewed as a link in the /etc/systemd/system/ folder.\n\nRun the following command:\nsudo cat /etc/systemd/system/tomcat.service |grep -i security\n\nIf there is a documented and approved risk acceptance for not operating the Security Manager, this requirement is Not Applicable.\n \nIf the ExecStart parameter does not include the -security flag, this is a finding."
           }
         }
       },
@@ -4857,7 +4857,7 @@
         "title": "SRG-APP-000142-AS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222961r960966_rule",
+          "+@id": "SV-222961r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000590",
@@ -4906,7 +4906,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222962r960969_rule",
+          "+@id": "SV-222962r1051118_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000600",
@@ -5379,7 +5379,7 @@
         "title": "SRG-APP-000219-AS-000147",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222971r961110_rule",
+          "+@id": "SV-222971r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000800",
@@ -5428,7 +5428,7 @@
         "title": "SRG-APP-000223-AS-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222973r961116_rule",
+          "+@id": "SV-222973r1043180_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "TCAT-AS-000820",
@@ -5673,7 +5673,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222979r1016512_rule",
+          "+@id": "SV-222979r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000970",
@@ -6485,7 +6485,7 @@
         "title": "SRG-APP-000435-AS-000163",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222996r961620_rule",
+          "+@id": "SV-222996r1067548_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-001470",
@@ -6524,12 +6524,12 @@
             "+@id": "F-24657r426433_fix"
           },
           "check": {
-            "+@system": "C-24668r850826_chk",
+            "+@system": "C-24668r1067547_chk",
             "check-content-ref": {
               "+@href": "Apache_Tomcat_Application_Server_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to https://tomcat.apache.org/security-9.html and identify the latest secure version of Tomcat with no known vulnerabilities.\n\nAs a privileged user from the Tomcat server, run the following command:\n\nsudo $CATALINA_HOME/bin/version.sh |grep -i server\n\nCompare the version running on the system to the latest secure version of Tomcat.\n\nNote: If TCAT-AS-000950 is compliant, users may need to leverage a different management interface. There is commonly a version.bat script in CATALINA_HOME/bin that will also output the current version of Tomcat.\n\nIf the latest secure version of Tomcat is not installed, this is a finding."
+            "check-content": "Refer to https://tomcat.apache.org/security-9.html and identify the latest secure version of Tomcat with no known vulnerabilities.\n\nAs a privileged user from the Tomcat server, run the following command:\n\nsudo $CATALINA_HOME/bin/version.sh |grep -i server\n\nCompare the version running on the system to the latest secure version of Tomcat.\n\nNote: If TCAT-AS-000950 is compliant, users may need to leverage a different management interface. There is commonly a version.bat script in CATALINA_HOME/bin that will also output the current version of Tomcat.\n\nIf the version is more than one version behind the most recent patch level, this is a finding."
           }
         }
       },
