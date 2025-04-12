@@ -10,6 +10,18 @@ import {
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 
+export enum Classification {
+    Public = 'Public',
+    Classified = 'Classified',
+    Sensitive = 'Sensitive',
+}
+
+export enum Priority {
+    Critical = 'MAC-1',
+    MissionSupport = 'MAC-2',
+    Administrative = 'MAC-3',
+}
+
 export class RuleWrapper {
     private _rule: IRule;
     constructor(rule: IRule) {
@@ -26,7 +38,7 @@ export class RuleWrapper {
     }
     get description() {
         const [_, description] = this._rule.description.match(
-            /<VulnDiscussion>(.*)<\/VulnDiscussion>/
+            /<VulnDiscussion>(.*)<\/VulnDiscussion>/s
         ) ?? [null, null];
         return description ? description : this._rule.description;
     }
@@ -92,6 +104,15 @@ export class ProfileWrapper {
     get id() {
         return this._profile['+@id'];
     }
+
+    get priority() {
+        return this.id.split('_')[0] as Priority;
+    }
+
+    get classification() {
+        return this.id.split('_')[1] as Classification;
+    }
+
     get title() {
         return this._profile.title;
     }
@@ -132,10 +153,44 @@ export class StigWrapper {
         return groups.map((group) => new GroupWrapper(group));
     }
 
+    get classificationLevels() {
+        return Object.values(Classification);
+    }
+
     get profiles() {
         return this._stig.Benchmark.Profile.map(
             (profile) => new ProfileWrapper(profile)
         );
+    }
+
+    get profilesByClassification() {
+        return this.profiles.reduce((acc, profile) => {
+            const classification = profile.classification;
+            const priority = profile.priority;
+            if (!acc[classification]) {
+                acc[classification] = {} as Record<Priority, ProfileWrapper[]>;
+            }
+            if (!acc[classification][priority]) {
+                acc[classification][priority] = [];
+            }
+            acc[classification][priority].push(profile);
+            return acc;
+        }, {} as Record<Classification, Record<Priority, ProfileWrapper[]>>);
+    }
+
+    groupsByProfiles(profiles: ProfileWrapper[]) {
+        const profileIds = profiles.reduce((acc, profile) => {
+            profile.select.forEach((select) => {
+                acc[select.id] = true;
+            });
+            return acc;
+        }, {} as Record<string, boolean>);
+        return this.groups.reduce((acc, group) => {
+            if (!!profileIds[group.id]) {
+                acc[group.id] = group;
+            }
+            return acc;
+        }, {} as Record<string, GroupWrapper>);
     }
 
     get version() {
