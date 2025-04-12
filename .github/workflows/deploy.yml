@@ -48,6 +48,9 @@ jobs:
                   PID=$!
                   sleep 10
                   npm run build
+                  for file in $(grep -l -R 'http://localhost:3000'); do 
+                    sed -i -e 's|http://localhost:3000|https://stig.neal.codes|g' $file
+                  done
                   kill $PID
 
             - name: Deploy to GitHub Pages
