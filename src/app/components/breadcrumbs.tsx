@@ -63,7 +63,7 @@ export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
             {links.map((link, index) => (
                 <span key={index}>
                     <Link
-                        className="text-sm text-gray-600"
+                        className="text-sm text-gray-400"
                         href={link.href}
                         aria-disabled={link.disabled}
                         tabIndex={60}
@@ -71,7 +71,10 @@ export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
                         {link.text}
                     </Link>
                     {index < links.length - 1 && (
-                        <span className="text-sm mx-2"> &gt; </span>
+                        <span className="text-sm mx-2 text-gray-300">
+                            {" "}
+                            &gt;{" "}
+                        </span>
                     )}
                 </span>
             ))}

@@ -1,5 +1,5 @@
 export const Footer = () => (
-    <footer className="bg-white rounded-lg m-4">
+    <footer className="bg-white dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-700">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <span className="block text-sm text-gray-500 sm:text-center">
                 <div className="flex flex-row items-center justify-center">

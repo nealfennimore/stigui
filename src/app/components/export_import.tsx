@@ -1,5 +1,5 @@
 "use client";
-import { Status } from "@/app/components/status";
+import { Status } from "@/app/components/severity";
 import { IDB, IDBRequirement, IDBSecurityRequirement } from "@/app/db";
 import { useActionState, useRef } from "react";
 

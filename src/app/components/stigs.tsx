@@ -3,7 +3,6 @@ import { useManifestContext } from "@/app/context/manifest";
 import { IDB } from "@/app/db";
 import Link from "next/link";
 import { useEffect } from "react";
-import { Breadcrumbs } from "./breadcrumbs";
 
 export const Stigs = () => {
     const manifest = useManifestContext();
@@ -69,32 +68,45 @@ export const Stigs = () => {
 
     return (
         <>
-            <Breadcrumbs />
-            <h2 className="text-4xl">STIGs</h2>
-            <ul>
-                {manifest.elements.map((element) => (
-                    <li className="flex mb-2" key={element.id}>
-                        <Link
-                            className="flex flex-col"
-                            href={`/stigs/${element.id}`}
-                        >
-                            <h3 className="text-2xl flex flex-row">
-                                {/* <StatusState
-                                    statuses={
-                                        status?.[family.element_identifier]
-                                    }
-                                /> */}
-                                {/* <span className="flex flex-col mr-2">
-                                    {element.id}:
-                                </span> */}
-                                <span className="flex flex-col">
-                                    {element.title}
-                                </span>
-                            </h3>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <section className="w-full flex flex-col">
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    STIG
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    Version
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {manifest.elements.map((element) => (
+                                <tr
+                                    key={`${element.id}`}
+                                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200"
+                                >
+                                    <td
+                                        scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                    >
+                                        <Link
+                                            className="flex flex-col"
+                                            href={`/stigs/${element.id}`}
+                                        >
+                                            {element.title}
+                                        </Link>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-pre-line">
+                                        {element.version}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </>
     );
 };

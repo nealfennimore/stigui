@@ -3,7 +3,7 @@ import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
-import { StatusState } from "./status";
+import { StatusState } from "./severity";
 
 export const Requirements = ({ familyId }: { familyId: string }) => {
     const manifest = useManifestContext();
@@ -20,7 +20,6 @@ export const Requirements = ({ familyId }: { familyId: string }) => {
         //     const idbRequirements = await IDB.requirements.getAll(
         //         IDBKeyRange.bound(ids[0], ids[ids.length - 1])
         //     );
-
         //     let unfinishedWork =
         //         idbRequirements.length && ids.length !== idbRequirements.length;
         //     const status = idbRequirements?.reduce((acc, cur) => {
@@ -36,13 +35,11 @@ export const Requirements = ({ familyId }: { familyId: string }) => {
         //         acc[cur.id] = values;
         //         return acc;
         //     }, {});
-
         //     if (unfinishedWork) {
         //         status["all"] = ["needs-work"];
         //     } else {
         //         status["all"] = Object.values(status).flat();
         //     }
-
         //     setStatus(status);
         // }
         // fetchInitialState();

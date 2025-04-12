@@ -1,5 +1,5 @@
 "use client";
-import { Status } from "@/app/components/status";
+import { Status } from "@/app/components/severity";
 export const version = 1;
 let loader: Promise<IDBDatabase> | undefined;
 
