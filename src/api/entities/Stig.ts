@@ -205,17 +205,22 @@ export class StigWrapper {
 }
 
 export default class Stig extends Convert {
-    private static cache = new Map<string, StigWrapper>();
+    private static cache = new Map<string, Promise<string>>();
 
-    static read = async (path: string) => {
+    static fetch = async (path: string) => {
         if (this.cache.has(path)) {
             return this.cache.get(path);
         }
-        const data = await fetch(
+        const data = fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/schema/${path}?${process.env.NEXT_PUBLIC_MANIFEST_VERSION}`
-        );
-        const stig: IStig = Stig.toStig(await data.text());
-        this.cache.set(path, new StigWrapper(stig));
-        return this.cache.get(path);
+        ).then((r) => r.text());
+        this.cache.set(path, data);
+        return data;
+    };
+
+    static read = async (path: string) => {
+        const data = (await this.fetch(path)) as string;
+        const stig: IStig = Stig.toStig(data);
+        return new StigWrapper(stig);
     };
 }
