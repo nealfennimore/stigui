@@ -23,5 +23,12 @@ self.addEventListener('fetch', (event) => {
         if (url.pathname.startsWith('/data')) {
             event.respondWith(cacheFirst(event.request, event));
         }
+        if (
+            url.pathname.startsWith('/stigs') &&
+            url.pathname.endsWith('.txt') &&
+            url.searchParams.has('_rsc')
+        ) {
+            event.respondWith(cacheFirst(event.request, event));
+        }
     }
 });
