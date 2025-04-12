@@ -22,16 +22,16 @@ export const GroupView = ({
             <Breadcrumbs stigId={stigId} group={group} />
 
             <section className="w-full flex flex-col">
-                <h1 className="text-xl mb-6">{group.rule.title}</h1>
+                <h1 className="text-3xl my-6">{group.rule.title}</h1>
                 <div className="relative overflow-x-auto shadow-sm sm:rounded-lg">
                     <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
                         <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
-                                    Group ID
+                                    Severity
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Severity
+                                    Group ID
                                 </th>
                                 <th scope="col" className="px-6 py-3">
                                     Version
@@ -43,7 +43,7 @@ export const GroupView = ({
                                     Date
                                 </th>
                                 <th scope="col" className="px-6 py-3">
-                                    Version
+                                    STIG Version
                                 </th>
                             </tr>
                         </thead>
@@ -52,13 +52,13 @@ export const GroupView = ({
                                 key={`${group.id}`}
                                 className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200"
                             >
-                                <td scope="row" className="px-6 py-4">
-                                    {group.id}
-                                </td>
                                 <td className="px-6 py-4">
                                     <SeverityBadge
                                         severity={group.rule.severity}
                                     />
+                                </td>
+                                <td scope="row" className="px-6 py-4">
+                                    {group.id}
                                 </td>
                                 <td className="px-6 py-4 whitespace-pre-line">
                                     {group.rule.version}

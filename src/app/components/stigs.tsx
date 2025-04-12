@@ -76,10 +76,16 @@ export const Stigs = () => {
                                 <th scope="col" className="px-6 py-3">
                                     STIG
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-center"
+                                >
                                     Version
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-center"
+                                >
                                     Date
                                 </th>
                             </tr>
@@ -101,10 +107,10 @@ export const Stigs = () => {
                                             {element.title}
                                         </Link>
                                     </td>
-                                    <td className="px-6 py-4 whitespace-pre-line">
+                                    <td className="px-6 py-4 whitespace-pre-line text-center">
                                         {element.version}
                                     </td>
-                                    <td className="px-6 py-4 whitespace-pre-line">
+                                    <td className="px-6 py-4 whitespace-pre-line text-center">
                                         {element.date}
                                     </td>
                                 </tr>

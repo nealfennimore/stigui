@@ -45,51 +45,62 @@ export const StigView = ({ stigId }: { stigId: string }) => {
     return (
         <>
             <Breadcrumbs stigId={stigId} />
-            <h3 className="text-3xl mt-6">
+            <h1 className="text-3xl mt-6">
                 {title}
                 {/* <StatusState statuses={statuses} /> */}
-            </h3>
+            </h1>
             <p className="text-base discussion">{stig.description}</p>
 
-            <div className="inline-flex rounded-md shadow-xs" role="group">
-                <button
-                    type="button"
-                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-s-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                        Classification.Public === classificationLevel
-                            ? "dark:bg-zinc-600"
-                            : ""
-                    }`}
-                    onClick={() => setClassficationLevel(Classification.Public)}
+            <section className="w-full flex justify-between items-center">
+                <aside
+                    className="inline-flex rounded-md shadow-xs"
+                    role="group"
                 >
-                    {Classification.Public}
-                </button>
-                <button
-                    type="button"
-                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-t border-b border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                        Classification.Classified === classificationLevel
-                            ? "dark:bg-zinc-600"
-                            : ""
-                    }`}
-                    onClick={() =>
-                        setClassficationLevel(Classification.Classified)
-                    }
-                >
-                    {Classification.Classified}
-                </button>
-                <button
-                    type="button"
-                    className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-e-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                        Classification.Sensitive === classificationLevel
-                            ? "dark:bg-zinc-600"
-                            : ""
-                    }`}
-                    onClick={() =>
-                        setClassficationLevel(Classification.Sensitive)
-                    }
-                >
-                    {Classification.Sensitive}
-                </button>
-            </div>
+                    <button
+                        type="button"
+                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-s-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                            Classification.Public === classificationLevel
+                                ? "dark:bg-zinc-500"
+                                : ""
+                        }`}
+                        onClick={() =>
+                            setClassficationLevel(Classification.Public)
+                        }
+                    >
+                        {Classification.Public}
+                    </button>
+                    <button
+                        type="button"
+                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-t border-b border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                            Classification.Classified === classificationLevel
+                                ? "dark:bg-zinc-500"
+                                : ""
+                        }`}
+                        onClick={() =>
+                            setClassficationLevel(Classification.Classified)
+                        }
+                    >
+                        {Classification.Classified}
+                    </button>
+                    <button
+                        type="button"
+                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-e-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
+                            Classification.Sensitive === classificationLevel
+                                ? "dark:bg-zinc-500"
+                                : ""
+                        }`}
+                        onClick={() =>
+                            setClassficationLevel(Classification.Sensitive)
+                        }
+                    >
+                        {Classification.Sensitive}
+                    </button>
+                </aside>
+                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col">
+                    <span>Version: {stig.version}</span>
+                    <span>Date: {stig.date.toLocaleDateString("sv-SE")}</span>
+                </div>
+            </section>
 
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -99,7 +110,10 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                                 <th scope="col" className="px-6 py-3">
                                     Group ID
                                 </th>
-                                <th scope="col" className="px-6 py-3">
+                                <th
+                                    scope="col"
+                                    className="px-6 py-3 text-center"
+                                >
                                     Severity
                                 </th>
                                 <th scope="col" className="px-6 py-3">
@@ -129,7 +143,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                                                 {group.id}
                                             </Link>
                                         </td>
-                                        <td className="px-6 py-4">
+                                        <td className="px-6 py-4 text-center">
                                             <SeverityBadge
                                                 severity={group.rule.severity}
                                             />
