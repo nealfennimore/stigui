@@ -1,9 +1,5 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ClearDB } from "./clear_db";
-import { Export, Import } from "./export_import";
-import { Markdown } from "./markdown";
-import { POAM } from "./poam";
 
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +76,7 @@ export const Navigation = () => {
                         </div>
                         {isOpen && (
                             <div
-                                className="absolute top-10 right-0 z-100 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none divide-y divide-zinc-100"
+                                className="absolute top-10 right-0 z-100 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none divide-y divide-zinc-100 dark:bg-zinc-800 dark:divide-zinc-700"
                                 role="menu"
                                 aria-orientation="vertical"
                                 aria-labelledby="menu-button"
@@ -90,19 +86,8 @@ export const Navigation = () => {
                                 ref={menuRef}
                             >
                                 <div className="py-1" role="none">
-                                    <Markdown />
-                                    <POAM />
-                                </div>
-                                <div className="py-1" role="none">
-                                    <Export />
-                                    <Import />
-                                </div>
-                                <div className="py-1" role="none">
-                                    <ClearDB />
-                                </div>
-                                <div className="py-1" role="none">
                                     <a
-                                        href="https://github.com/nealfennimore/nist-sp-800-171"
+                                        href="https://github.com/nealfennimore/stig"
                                         className="block px-4 py-2 text-sm text-zinc-700 flex flex-row"
                                         tabIndex={100}
                                     >

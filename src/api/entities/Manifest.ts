@@ -26,7 +26,11 @@ export class ManifestStore {
     }
 
     byId(stigId: string) {
-        return this._byId[stigId];
+        const record = this._byId[stigId];
+        if (!record) {
+            throw new Error(`Stig ${stigId} not found`);
+        }
+        return record;
     }
 
     async getStig(stigId: string) {
@@ -52,7 +56,7 @@ export class ManifestStore {
 }
 
 let manifestPromise = fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json`
+    `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/manifest.json?${process.env.MANIFEST_VERSION}`
 ).then((r) => r.json());
 let cache: ManifestStore | null = null;
 export class Manifest {

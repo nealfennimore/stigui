@@ -32,7 +32,7 @@ export default class Checklist extends Convert {
 
     static read = async (path: string) => {
         const data = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}`
+            `${process.env.NEXT_PUBLIC_API_URL}/data/stigs/checklist/${path}?${process.env.MANIFEST_VERSION}`
         );
         const checklist: IChecklist = Checklist.toChecklist(await data.text());
         return checklist;
