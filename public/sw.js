@@ -18,17 +18,9 @@ const cacheFirst = async (request, event) => {
 const allowList = ['', 'json', 'plain'];
 
 self.addEventListener('fetch', (event) => {
-    console.log(event.request.destination);
     if (allowList.includes(event.request.destination)) {
         const url = new URL(event.request.url);
         if (url.pathname.startsWith('/data')) {
-            event.respondWith(cacheFirst(event.request, event));
-        }
-        if (
-            url.pathname.startsWith('/stigs') &&
-            url.pathname.endsWith('.txt') &&
-            url.searchParams.has('_rsc')
-        ) {
             event.respondWith(cacheFirst(event.request, event));
         }
     }
