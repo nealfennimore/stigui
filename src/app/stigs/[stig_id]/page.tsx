@@ -6,8 +6,6 @@ import { StigView } from "@/app/components/stig";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
 
-export const revalidate = 0;
-
 export async function generateStaticParams() {
     const manifest = await Framework.Manifest.init();
 
