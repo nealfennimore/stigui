@@ -14,7 +14,11 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function Page({ params }) {
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ stig_id: string }>;
+}) {
     const { stig_id } = await params;
 
     return (

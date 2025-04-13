@@ -9,31 +9,37 @@ import StigComponent from "@/app/context/stig";
 export async function generateStaticParams() {
     const manifest = await Framework.Manifest.init();
 
-    const a = await Promise.all([...manifest.elements.flatMap(async (element) => {
-        const stig = await manifest.getStig(element.id);
-        return stig?.groups.flatMap((group) => {
-            // console.log(element.id, group.id);
-            return {
-                stig_id: element.id,
-                group_id: group.id,
-            }
-        });
-    })]);
-    return a.flat();
+    return (
+        await Promise.all([
+            ...manifest.elements.flatMap(async (element) => {
+                const stig = await manifest.getStig(element.id);
+                return stig?.groups.flatMap((group) => {
+                    return {
+                        stig_id: element.id,
+                        group_id: group.id,
+                    };
+                });
+            }),
+        ])
+    ).flat();
 }
 
-export default async function Page({ params }) {
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ stig_id: string; group_id: string }>;
+}) {
     const { stig_id, group_id } = await params;
 
     return (
         <ManifestComponent>
-            <Navigation />
-            <Main>
-                <StigComponent stigId={stig_id}>
+            <StigComponent stigId={stig_id}>
+                <Navigation />
+                <Main>
                     <GroupView stigId={stig_id} groupId={group_id} />
-                </StigComponent>
-            </Main>
-            <Footer />
+                </Main>
+                <Footer />
+            </StigComponent>
         </ManifestComponent>
     );
 }
