@@ -4,7 +4,7 @@ import { Severity } from "@/api/generated/Checklist";
 import { useManifestContext } from "@/app/context/manifest";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
 import { Table, defaultFilter, defaultSort } from "./table";
@@ -43,10 +43,40 @@ export const StigView = ({ stigId }: { stigId: string }) => {
     }
 
     const { title } = manifest.byId(stigId);
-    const classficationProfiles = stig.profilesByClassification;
+    const classficationProfiles = useMemo(
+        () => stig.profilesByClassification,
+        [classificationLevel, stig]
+    );
     const classificationProfile = classficationProfiles[classificationLevel];
-    const groups = stig.groupsByProfiles(
-        Object.values(classificationProfile).flat()
+    const groups = useMemo(
+        () =>
+            stig.groupsByProfiles(Object.values(classificationProfile).flat()),
+        [stig, classificationProfile]
+    );
+    const tableBody = useMemo(
+        () =>
+            Object.values(groups)
+                ?.sort(byGroupSeverity)
+                .map((group) => ({
+                    values: [
+                        group.id,
+                        group.rule.severity,
+                        group.rule.title,
+                        group.rule.description,
+                    ],
+                    columns: [
+                        <Link
+                            className="flex flex-col whitespace-nowrap"
+                            href={`/stigs/${stigId}/groups/${group.id}`}
+                        >
+                            {group.id}
+                        </Link>,
+                        <SeverityBadge severity={group.rule.severity} />,
+                        group.rule.title,
+                        group.rule.description,
+                    ],
+                })),
+        [groups, stigId]
     );
 
     return (
@@ -126,29 +156,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                                 text: "Description",
                             },
                         ]}
-                        tableBody={Object.values(groups)
-                            ?.sort(byGroupSeverity)
-                            .map((group) => ({
-                                values: [
-                                    group.id,
-                                    group.rule.severity,
-                                    group.rule.title,
-                                    group.rule.description,
-                                ],
-                                columns: [
-                                    <Link
-                                        className="flex flex-col whitespace-nowrap"
-                                        href={`/stigs/${stigId}/groups/${group.id}`}
-                                    >
-                                        {group.id}
-                                    </Link>,
-                                    <SeverityBadge
-                                        severity={group.rule.severity}
-                                    />,
-                                    group.rule.title,
-                                    group.rule.description,
-                                ],
-                            }))}
+                        tableBody={tableBody}
                     />
                 </div>
             </section>
