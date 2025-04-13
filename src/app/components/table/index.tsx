@@ -140,6 +140,7 @@ function TableHeader({
     className,
     sorter,
     filter,
+    filters,
     ...restProps
 }: TableHeaderProps) {
     return (
@@ -167,6 +168,7 @@ function TableHeader({
                     <Filterable
                         text={text ?? ""}
                         filter={filter}
+                        filters={filters as PotentialFilter[]}
                         {...restProps}
                     />
                 )}
