@@ -15,9 +15,10 @@ const cacheFirst = async (request, event) => {
     return responseFromNetwork;
 };
 
-const allowList = ['', 'json'];
+const allowList = ['', 'json', 'plain'];
 
 self.addEventListener('fetch', (event) => {
+    console.log(event.request.destination);
     if (allowList.includes(event.request.destination)) {
         const url = new URL(event.request.url);
         if (url.pathname.startsWith('/data')) {
