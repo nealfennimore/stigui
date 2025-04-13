@@ -1,7 +1,9 @@
 "use client";
-import { Table } from "@/app/components/table";
+import { Table, defaultSort } from "@/app/components/table";
 import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
+
+const sorters = [defaultSort, defaultSort, defaultSort];
 
 export const Stigs = () => {
     const manifest = useManifestContext();
@@ -14,9 +16,10 @@ export const Stigs = () => {
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <Table
+                        sorters={sorters}
                         tableHeaders={[
                             {
-                                text: "STIG ID",
+                                text: "STIG",
                             },
                             {
                                 text: "Version",

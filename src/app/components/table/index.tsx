@@ -7,6 +7,7 @@ interface TableRowProps {
 }
 
 type Sorter = (a: any, b: any) => number;
+type PotentialSorter = null | Sorter;
 
 interface SortableProps {
     text: string;
@@ -37,7 +38,10 @@ const Sortable = ({
     };
 
     return (
-        <button className="flex items-center" onClick={handleSort}>
+        <button
+            className="flex items-center text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300"
+            onClick={handleSort}
+        >
             {text}
             <svg
                 className="w-4 h-4 ms-1"
@@ -66,17 +70,30 @@ interface TableHeaderProps {
     setRows: React.Dispatch<React.SetStateAction<TableRowProps[]>>;
     rows: TableRowProps[];
     colIndex: number;
-    sorter: Sorter;
+    sorter?: PotentialSorter;
 }
 
-function TableHeader({ text, className, ...restProps }: TableHeaderProps) {
+function TableHeader({
+    text,
+    className,
+    sorter,
+    ...restProps
+}: TableHeaderProps) {
     return (
         <th
             scope="col"
-            className={`px-6 py-3 ${className ?? ""}`}
+            className={`px-6 py-3 uppercase whitespace-nowrap ${
+                className ?? ""
+            }`}
             data-searchable="true"
         >
-            <Sortable text={text ?? ""} {...restProps} />
+            {sorter ? (
+                <Sortable text={text ?? ""} sorter={sorter} {...restProps} />
+            ) : (
+                <span className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300">
+                    {text}
+                </span>
+            )}
         </th>
     );
 }
@@ -88,7 +105,7 @@ function TableRow({ columns }: TableRowProps) {
                 <td
                     key={idx}
                     scope="row"
-                    className="px-6 py-4 font-medium text-zinc-900 whitespace-nowrap dark:text-white whitespace-pre-line"
+                    className="px-6 py-4 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line"
                 >
                     {Element}
                 </td>
@@ -107,7 +124,7 @@ interface Props {
 
     tableBody: TableRowProps[];
 
-    sorters?: Sorter[];
+    sorters?: PotentialSorter[];
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -133,7 +150,7 @@ export function Table({ tableHeaders, tableBody, sorters }: Props) {
                             colIndex={index}
                             rows={rows}
                             setRows={setRows}
-                            sorter={sorters?.[index] ?? defaultSort}
+                            sorter={sorters?.[index]}
                         />
                     ))}
                 </tr>

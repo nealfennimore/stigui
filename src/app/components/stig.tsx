@@ -28,6 +28,8 @@ const byGroupSeverity = (a: GroupWrapper, b: GroupWrapper) => {
     return a.id.localeCompare(b.id);
 };
 
+const sorters = [defaultSort, bySeverity, defaultSort, null];
+
 export const StigView = ({ stigId }: { stigId: string }) => {
     const [classificationLevel, setClassficationLevel] = useState(
         Classification.Public
@@ -49,10 +51,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
     return (
         <>
             <Breadcrumbs stigId={stigId} />
-            <h1 className="text-3xl mt-6">
-                {title}
-                {/* <StatusState statuses={statuses} /> */}
-            </h1>
+            <h1 className="text-3xl mt-6">{title}</h1>
             <p className="text-base discussion">{stig.description}</p>
 
             <section className="w-full flex justify-between items-center">
@@ -109,12 +108,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <Table
-                        sorters={[
-                            defaultSort,
-                            bySeverity,
-                            defaultSort,
-                            defaultSort,
-                        ]}
+                        sorters={sorters}
                         tableHeaders={[
                             {
                                 text: "Group ID",
@@ -141,7 +135,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                                 ],
                                 columns: [
                                     <Link
-                                        className="flex flex-col"
+                                        className="flex flex-col whitespace-nowrap"
                                         href={`/stigs/${stigId}/groups/${group.id}`}
                                     >
                                         {group.id}
