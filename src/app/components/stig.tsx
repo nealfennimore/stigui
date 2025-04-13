@@ -4,7 +4,7 @@ import { Severity } from "@/api/generated/Checklist";
 import { useManifestContext } from "@/app/context/manifest";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
 import { Table, defaultFilter, defaultSort } from "./table";
@@ -87,6 +87,10 @@ export const StigView = ({ stigId }: { stigId: string }) => {
     if (!stig) {
         return null;
     }
+
+    useEffect(() => {
+        console.log("classificationLevel", classificationLevel);
+    }, [classificationLevel]);
 
     const { title } = manifest.byId(stigId);
     const classficationProfiles = useMemo(

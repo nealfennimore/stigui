@@ -19,13 +19,13 @@ export default async function Page({ params }) {
 
     return (
         <ManifestComponent>
-            <Navigation />
-            <Main>
-                <StigComponent stigId={stig_id}>
+            <StigComponent stigId={stig_id}>
+                <Navigation />
+                <Main>
                     <StigView stigId={stig_id} />
-                </StigComponent>
-            </Main>
-            <Footer />
+                </Main>
+                <Footer />
+            </StigComponent>
         </ManifestComponent>
     );
 }
