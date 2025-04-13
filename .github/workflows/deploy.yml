@@ -27,7 +27,6 @@ jobs:
 
             - name: Create .env file
               run: |
-                  echo NEXT_PUBLIC_API_URL=https://stig.neal.codes >> .env
                   echo NEXT_PUBLIC_MANIFEST_VERSION=$(sha1sum public/data/stigs/manifest.json | awk '{print $1}') >> .env
 
             - name: Retrieve the cached "node_modules" directory (if present)
@@ -42,8 +41,23 @@ jobs:
               if: steps.node-cache.outputs.cache-hit != 'true'
 
             - name: Build App
+              env:
+                  NEXT_PUBLIC_API_URL: 'http://localhost:3000'
               run: |
+                  npm run dev &
+                  PID=$!
+                  sleep 5
+
+                  # Build against dev instance
                   npm run build
+
+                  # Fix static files
+                  for file in $(grep -l -R 'http://localhost:3000'); do 
+                    sed -i -e 's|http://localhost:3000|https://stig.neal.codes|g' $file
+                  done
+
+                  # Stop dev server
+                  kill $PID
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
