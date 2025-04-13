@@ -131,7 +131,7 @@ function TableHeader({
             }`}
             data-searchable="true"
         >
-            <div className="flex">
+            <div className="flex items-center">
                 {sorter && (
                     <Sortable
                         text={text ?? ""}

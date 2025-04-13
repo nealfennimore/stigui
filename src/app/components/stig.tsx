@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
-import { Table, defaultSort } from "./table";
+import { Table, defaultFilter, defaultSort } from "./table";
 
 const SeverityPriority = {
     [Severity.High]: 4,
@@ -29,6 +29,7 @@ const byGroupSeverity = (a: GroupWrapper, b: GroupWrapper) => {
 };
 
 const sorters = [defaultSort, bySeverity, defaultSort, null];
+const filters = [null, null, defaultFilter, defaultFilter];
 
 export const StigView = ({ stigId }: { stigId: string }) => {
     const [classificationLevel, setClassficationLevel] = useState(
@@ -109,6 +110,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <Table
                         sorters={sorters}
+                        filters={filters}
                         tableHeaders={[
                             {
                                 text: "Group ID",
