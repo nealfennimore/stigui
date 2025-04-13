@@ -4,6 +4,7 @@ import React, { useState } from "react";
 interface TableRowProps {
     values: string[];
     columns: React.ReactNode[];
+    classNames?: (null | string)[];
 }
 
 type Sorter = (a: any, b: any) => number;
@@ -177,14 +178,16 @@ function TableHeader({
     );
 }
 
-function TableRow({ columns }: TableRowProps) {
+function TableRow({ columns, classNames }: TableRowProps) {
     return (
         <tr className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200">
             {columns.map((Element, idx) => (
                 <td
                     key={idx}
                     scope="row"
-                    className="px-6 py-4 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line"
+                    className={`px-6 py-4 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line ${
+                        classNames?.[idx] ?? ""
+                    }`}
                 >
                     {Element}
                 </td>

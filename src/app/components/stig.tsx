@@ -42,6 +42,7 @@ const tableHeaders = [
     },
     {
         text: "Description",
+        className: "max-lg:hidden",
     },
 ];
 
@@ -115,6 +116,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                         group.rule.title,
                         group.rule.description,
                     ],
+                    classNames: [null, null, null, "max-lg:hidden"],
                 })),
         [groups, stigId]
     );

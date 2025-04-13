@@ -22,10 +22,12 @@ export const Stigs = () => {
             {
                 text: "Version",
                 filterable: false,
+                className: "text-center",
             },
             {
                 text: "Date",
                 filterable: false,
+                className: "max-md:hidden",
             },
         ],
         []
@@ -45,6 +47,7 @@ export const Stigs = () => {
                     element.version,
                     element.date,
                 ],
+                classNames: [null, "text-center", "max-md:hidden"],
             })),
         [manifest.elements]
     );
