@@ -7,7 +7,9 @@ interface TableRowProps {
 }
 
 type Sorter = (a: any, b: any) => number;
+type Filter = (search: string) => (value: string) => boolean;
 type PotentialSorter = null | Sorter;
+type PotentialFilter = null | Filter;
 
 interface SortableProps {
     text: string;
@@ -64,19 +66,61 @@ const Sortable = ({
     );
 };
 
+interface FilterableProps {
+    text: string;
+    setRows: React.Dispatch<React.SetStateAction<TableRowProps[]>>;
+    initialRows: TableRowProps[];
+    rows: TableRowProps[];
+    colIndex: number;
+    filter: Filter;
+}
+
+const Filterable = ({
+    text,
+    filter,
+    initialRows,
+    setRows,
+    colIndex,
+}: FilterableProps) => {
+    const handleFilter = (e: any) => {
+        const search = e?.target?.value ?? "";
+        let next: TableRowProps[] = initialRows;
+        if (search) {
+            next = initialRows.filter((row) =>
+                filter(search)(row.values[colIndex])
+            );
+        }
+        setRows(next);
+    };
+
+    return (
+        <span className="ml-4">
+            <input
+                type="text"
+                className="w-full px-2 py-1 text-xs text-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder={`Filter ${text}`}
+                onChange={handleFilter}
+            />
+        </span>
+    );
+};
+
 interface TableHeaderProps {
     text: string;
     className?: string;
     setRows: React.Dispatch<React.SetStateAction<TableRowProps[]>>;
+    initialRows: TableRowProps[];
     rows: TableRowProps[];
     colIndex: number;
     sorter?: PotentialSorter;
+    filter?: PotentialFilter;
 }
 
 function TableHeader({
     text,
     className,
     sorter,
+    filter,
     ...restProps
 }: TableHeaderProps) {
     return (
@@ -87,13 +131,27 @@ function TableHeader({
             }`}
             data-searchable="true"
         >
-            {sorter ? (
-                <Sortable text={text ?? ""} sorter={sorter} {...restProps} />
-            ) : (
-                <span className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300">
-                    {text}
-                </span>
-            )}
+            <div className="flex">
+                {sorter && (
+                    <Sortable
+                        text={text ?? ""}
+                        sorter={sorter}
+                        {...restProps}
+                    />
+                )}
+                {!sorter && (
+                    <span className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300">
+                        {text}
+                    </span>
+                )}
+                {filter && (
+                    <Filterable
+                        text={text ?? ""}
+                        filter={filter}
+                        {...restProps}
+                    />
+                )}
+            </div>
         </th>
     );
 }
@@ -125,6 +183,7 @@ interface Props {
     tableBody: TableRowProps[];
 
     sorters?: PotentialSorter[];
+    filters?: PotentialFilter[];
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -136,7 +195,10 @@ export const defaultSort = (a: any, b: any) => {
     return a.localeCompare(b);
 };
 
-export function Table({ tableHeaders, tableBody, sorters }: Props) {
+export const defaultFilter = (search: string) => (value: string) =>
+    value.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+
+export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
     const [rows, setRows] = useState(tableBody);
 
     return (
@@ -148,9 +210,11 @@ export function Table({ tableHeaders, tableBody, sorters }: Props) {
                             key={index}
                             {...headerProps}
                             colIndex={index}
+                            initialRows={tableBody}
                             rows={rows}
                             setRows={setRows}
                             sorter={sorters?.[index]}
+                            filter={filters?.[index]}
                         />
                     ))}
                 </tr>
