@@ -11,6 +11,8 @@ type Filter = (search: string) => (value: string) => boolean;
 type PotentialSorter = null | Sorter;
 type PotentialFilter = null | Filter;
 
+type PotentialSearches = (null | string)[];
+
 interface SortableProps {
     text: string;
     setRows: React.Dispatch<React.SetStateAction<TableRowProps[]>>;
@@ -73,22 +75,35 @@ interface FilterableProps {
     rows: TableRowProps[];
     colIndex: number;
     filter: Filter;
+    filters: PotentialFilter[];
+    searches: PotentialSearches;
+    setSearches: React.Dispatch<React.SetStateAction<PotentialSearches>>;
 }
 
 const Filterable = ({
     text,
-    filter,
+    filters,
     initialRows,
     setRows,
     colIndex,
+    searches,
+    setSearches,
 }: FilterableProps) => {
     const handleFilter = (e: any) => {
-        const search = e?.target?.value ?? "";
+        const nextSearch = e?.target?.value ?? "";
         let next: TableRowProps[] = initialRows;
-        if (search) {
-            next = initialRows.filter((row) =>
-                filter(search)(row.values[colIndex])
-            );
+        if (nextSearch) {
+            const nextSearches = [...searches];
+            nextSearches[colIndex] = nextSearch;
+
+            next = initialRows.filter((row) => {
+                return filters.every((filter, index) => {
+                    return filter && nextSearches[index]
+                        ? filter(nextSearches[index])(row.values[index])
+                        : true;
+                });
+            });
+            setSearches(nextSearches);
         }
         setRows(next);
     };
@@ -114,6 +129,9 @@ interface TableHeaderProps {
     colIndex: number;
     sorter?: PotentialSorter;
     filter?: PotentialFilter;
+    filters?: PotentialFilter[];
+    searches: PotentialSearches;
+    setSearches: React.Dispatch<React.SetStateAction<PotentialSearches>>;
 }
 
 function TableHeader({
@@ -200,6 +218,9 @@ export const defaultFilter = (search: string) => (value: string) =>
 
 export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
     const [rows, setRows] = useState(tableBody);
+    const [searches, setSearches] = useState(
+        new Array(filters?.length).fill(null) as PotentialSearches
+    );
 
     return (
         <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
@@ -215,6 +236,9 @@ export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
                             setRows={setRows}
                             sorter={sorters?.[index]}
                             filter={filters?.[index]}
+                            filters={filters}
+                            searches={searches}
+                            setSearches={setSearches}
                         />
                     ))}
                 </tr>
