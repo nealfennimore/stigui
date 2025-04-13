@@ -9,8 +9,8 @@ import {
 import { Group, IdentElement, Profile, Stig } from '@/api/generated/Stig';
 import { v4 as uuidv4 } from 'uuid';
 
-// export const dynamic = 'force-dynamic';
-// export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 function getClassification(profile: Profile): Classification {
     const id = profile['+@id'];
