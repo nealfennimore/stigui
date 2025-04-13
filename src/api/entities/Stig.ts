@@ -7,8 +7,8 @@ import {
     Stig as IStig,
 } from '@/api/generated/Stig';
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
+// export const dynamic = 'force-dynamic';
+// export const fetchCache = 'force-no-store';
 
 export enum Classification {
     Public = 'Public',
