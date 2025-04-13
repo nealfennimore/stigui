@@ -1,10 +1,9 @@
 "use client";
 import { Classification, GroupWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
-import { useManifestContext } from "@/app/context/manifest";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
 import { Table, defaultFilter, defaultSort } from "./table";
@@ -60,7 +59,7 @@ const Button = ({
     const selectedClassName =
         classfication === selectedClassfication
             ? "dark:bg-zinc-500 bg-zinc-200"
-            : "";
+            : "dark:bg-zinc-800 bg-white";
 
     const idxClassName =
         index === 0 ? "rounded-s-lg border" : "border-t border-b";
@@ -70,7 +69,7 @@ const Button = ({
     return (
         <button
             type="button"
-            className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${selectedClassName} ${idxClassName} ${idxClassName2}`}
+            className={`px-4 py-2 text-sm font-medium text-zinc-900 border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${selectedClassName} ${idxClassName} ${idxClassName2}`}
             onClick={() => setClassficationLevel(classfication)}
         >
             {classfication}
@@ -78,21 +77,11 @@ const Button = ({
     );
 };
 export const StigView = ({ stigId }: { stigId: string }) => {
+    const stig = useStigContext();
     const [classificationLevel, setClassficationLevel] = useState(
         Classification.Public
     );
-    const manifest = useManifestContext();
-    const stig = useStigContext();
 
-    if (!stig) {
-        return null;
-    }
-
-    useEffect(() => {
-        console.log("classificationLevel", classificationLevel);
-    }, [classificationLevel]);
-
-    const { title } = manifest.byId(stigId);
     const classficationProfiles = useMemo(
         () => stig.profilesByClassification,
         [stig]
@@ -130,10 +119,12 @@ export const StigView = ({ stigId }: { stigId: string }) => {
         [groups, stigId]
     );
 
+    const classifications = useMemo(() => Object.values(Classification), []);
+
     return (
-        <>
+        <Suspense fallback={<div>Loading...</div>}>
             <Breadcrumbs stigId={stigId} />
-            <h1 className="text-3xl mt-6">{title}</h1>
+            <h1 className="text-3xl mt-6">{stig.title}</h1>
             <p className="text-base discussion">{stig.description}</p>
 
             <section className="w-full flex justify-between items-center">
@@ -141,17 +132,15 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                     className="inline-flex rounded-md shadow-xs"
                     role="group"
                 >
-                    {Object.values(Classification).map(
-                        (classification, index) => (
-                            <Button
-                                key={classification}
-                                classfication={classification}
-                                selectedClassfication={classificationLevel}
-                                setClassficationLevel={setClassficationLevel}
-                                index={index}
-                            />
-                        )
-                    )}
+                    {classifications.map((classification, index) => (
+                        <Button
+                            key={classification}
+                            classfication={classification}
+                            selectedClassfication={classificationLevel}
+                            setClassficationLevel={setClassficationLevel}
+                            index={index}
+                        />
+                    ))}
                 </aside>
                 <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col">
                     <span>Version: {stig.version}</span>
@@ -169,6 +158,6 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                     />
                 </div>
             </section>
-        </>
+        </Suspense>
     );
 };

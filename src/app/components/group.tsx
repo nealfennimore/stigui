@@ -1,6 +1,7 @@
 "use client";
 import { SeverityBadge } from "@/app/components/severity";
 import { useStigContext } from "@/app/context/stig";
+import { Suspense } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { Table } from "./table";
 
@@ -14,19 +15,14 @@ export const GroupView = ({
     const stig = useStigContext();
     const group = stig.groups.find((group) => group.id === groupId);
 
-    if (!stig || !group) {
-        return null;
-    }
-
     return (
-        <>
+        <Suspense>
             <Breadcrumbs stigId={stigId} group={group} />
 
             <section className="w-full flex flex-col">
                 <h1 className="text-3xl my-6">{group.rule.title}</h1>
                 <div className="relative overflow-x-auto shadow-sm sm:rounded-lg">
                     <Table
-                        sorters={[]}
                         tableHeaders={[
                             {
                                 text: "Severity",
@@ -146,6 +142,6 @@ export const GroupView = ({
                     </table>
                 </div>
             </section>
-        </>
+        </Suspense>
     );
 };
