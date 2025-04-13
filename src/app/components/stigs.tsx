@@ -2,6 +2,7 @@
 import { Table, defaultFilter, defaultSort } from "@/app/components/table";
 import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
+import { useMemo } from "react";
 
 const sorters = [defaultSort, defaultSort, defaultSort];
 const filters = [defaultFilter, null, null];
@@ -12,6 +13,42 @@ export const Stigs = () => {
         return null;
     }
 
+    const tableHeaders = useMemo(
+        () => [
+            {
+                text: "STIG",
+                filterable: true,
+            },
+            {
+                text: "Version",
+                filterable: false,
+            },
+            {
+                text: "Date",
+                filterable: false,
+            },
+        ],
+        []
+    );
+
+    const tableBody = useMemo(
+        () =>
+            manifest.elements.map((element) => ({
+                values: [element.title, element.version, element.date],
+                columns: [
+                    <Link
+                        className="flex flex-col"
+                        href={`/stigs/${element.id}`}
+                    >
+                        {element.title}
+                    </Link>,
+                    element.version,
+                    element.date,
+                ],
+            })),
+        [manifest.elements]
+    );
+
     return (
         <>
             <section className="w-full flex flex-col">
@@ -19,34 +56,8 @@ export const Stigs = () => {
                     <Table
                         sorters={sorters}
                         filters={filters}
-                        tableHeaders={[
-                            {
-                                text: "STIG",
-                            },
-                            {
-                                text: "Version",
-                            },
-                            {
-                                text: "Date",
-                            },
-                        ]}
-                        tableBody={manifest.elements.map((element) => ({
-                            values: [
-                                element.title,
-                                element.version,
-                                element.date,
-                            ],
-                            columns: [
-                                <Link
-                                    className="flex flex-col"
-                                    href={`/stigs/${element.id}`}
-                                >
-                                    {element.title}
-                                </Link>,
-                                element.version,
-                                element.date,
-                            ],
-                        }))}
+                        tableHeaders={tableHeaders}
+                        tableBody={tableBody}
                     />
                 </div>
             </section>

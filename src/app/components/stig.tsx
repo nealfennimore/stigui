@@ -30,7 +30,53 @@ const byGroupSeverity = (a: GroupWrapper, b: GroupWrapper) => {
 
 const sorters = [defaultSort, bySeverity, defaultSort, null];
 const filters = [null, null, defaultFilter, defaultFilter];
+const tableHeaders = [
+    {
+        text: "Group ID",
+    },
+    {
+        text: "Severity",
+        className: "text-center",
+    },
+    {
+        text: "Title",
+    },
+    {
+        text: "Description",
+    },
+];
 
+const Button = ({
+    classfication,
+    selectedClassfication,
+    setClassficationLevel,
+    index,
+}: {
+    classfication: Classification;
+    selectedClassfication: Classification;
+    setClassficationLevel: (selectedClassfication: Classification) => void;
+    index: number;
+}) => {
+    const selectedClassName =
+        classfication === selectedClassfication
+            ? "dark:bg-zinc-500 bg-zinc-200"
+            : "";
+
+    const idxClassName =
+        index === 0 ? "rounded-s-lg border" : "border-t border-b";
+    const idxClassName2 =
+        index === 2 ? "rounded-e-lg border" : "border-t border-b";
+
+    return (
+        <button
+            type="button"
+            className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${selectedClassName} ${idxClassName} ${idxClassName2}`}
+            onClick={() => setClassficationLevel(classfication)}
+        >
+            {classfication}
+        </button>
+    );
+};
 export const StigView = ({ stigId }: { stigId: string }) => {
     const [classificationLevel, setClassficationLevel] = useState(
         Classification.Public
@@ -45,13 +91,14 @@ export const StigView = ({ stigId }: { stigId: string }) => {
     const { title } = manifest.byId(stigId);
     const classficationProfiles = useMemo(
         () => stig.profilesByClassification,
-        [classificationLevel, stig]
+        [stig]
     );
-    const classificationProfile = classficationProfiles[classificationLevel];
     const groups = useMemo(
         () =>
-            stig.groupsByProfiles(Object.values(classificationProfile).flat()),
-        [stig, classificationProfile]
+            stig.groupsByProfiles(
+                Object.values(classficationProfiles[classificationLevel]).flat()
+            ),
+        [stig, classficationProfiles]
     );
     const tableBody = useMemo(
         () =>
@@ -90,45 +137,17 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                     className="inline-flex rounded-md shadow-xs"
                     role="group"
                 >
-                    <button
-                        type="button"
-                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-s-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                            Classification.Public === classificationLevel
-                                ? "dark:bg-zinc-500 bg-zinc-200"
-                                : ""
-                        }`}
-                        onClick={() =>
-                            setClassficationLevel(Classification.Public)
-                        }
-                    >
-                        {Classification.Public}
-                    </button>
-                    <button
-                        type="button"
-                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border-t border-b border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                            Classification.Classified === classificationLevel
-                                ? "dark:bg-zinc-500 bg-zinc-200"
-                                : ""
-                        }`}
-                        onClick={() =>
-                            setClassficationLevel(Classification.Classified)
-                        }
-                    >
-                        {Classification.Classified}
-                    </button>
-                    <button
-                        type="button"
-                        className={`px-4 py-2 text-sm font-medium text-zinc-900 bg-white border border-zinc-200 rounded-e-lg hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-800 dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${
-                            Classification.Sensitive === classificationLevel
-                                ? "dark:bg-zinc-500 bg-zinc-200"
-                                : ""
-                        }`}
-                        onClick={() =>
-                            setClassficationLevel(Classification.Sensitive)
-                        }
-                    >
-                        {Classification.Sensitive}
-                    </button>
+                    {Object.values(Classification).map(
+                        (classification, index) => (
+                            <Button
+                                key={classification}
+                                classfication={classification}
+                                selectedClassfication={classificationLevel}
+                                setClassficationLevel={setClassficationLevel}
+                                index={index}
+                            />
+                        )
+                    )}
                 </aside>
                 <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col">
                     <span>Version: {stig.version}</span>
@@ -141,21 +160,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                     <Table
                         sorters={sorters}
                         filters={filters}
-                        tableHeaders={[
-                            {
-                                text: "Group ID",
-                            },
-                            {
-                                text: "Severity",
-                                className: "text-center",
-                            },
-                            {
-                                text: "Title",
-                            },
-                            {
-                                text: "Description",
-                            },
-                        ]}
+                        tableHeaders={tableHeaders}
                         tableBody={tableBody}
                     />
                 </div>
