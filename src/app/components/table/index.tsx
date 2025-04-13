@@ -91,8 +91,9 @@ const Filterable = ({
 }: FilterableProps) => {
     const handleFilter = (e: any) => {
         const nextSearch = e?.target?.value ?? "";
+        const currentSearch = searches[colIndex];
         let next: TableRowProps[] = initialRows;
-        if (nextSearch) {
+        if (nextSearch !== currentSearch) {
             const nextSearches = [...searches];
             nextSearches[colIndex] = nextSearch;
 
