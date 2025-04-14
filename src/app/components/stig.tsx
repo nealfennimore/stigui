@@ -1,5 +1,5 @@
 "use client";
-import { Classification, GroupWrapper } from "@/api/entities/Stig";
+import { Classification, GroupWrapper, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
@@ -45,6 +45,50 @@ const tableHeaders = [
         className: "max-lg:hidden",
     },
 ];
+
+const download = (url: string, filename: string) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+};
+
+const toCSV = (stig: StigWrapper) => {
+    const csv = [
+        [
+            "Group ID",
+            "Severity",
+            "Title",
+            "Description",
+            "Rule ID",
+            "Fix ID",
+            "Fix Text",
+            "Check ID",
+            "Check Text",
+        ].join(","),
+        ...stig.groups.map((group) => {
+            return [
+                group.id,
+                group.rule.severity,
+                `"${group.rule.title}"`,
+                `"${group.rule.description}"`,
+                group.rule.id,
+                group.rule.fix,
+                `"${group.rule.fixText}"`,
+                group.rule.checkId,
+                `"${group.rule.check}"`,
+            ].join(",");
+        }),
+    ];
+
+    const blob = new Blob([csv.join("\n")], {
+        type: "text/csv",
+    });
+    const url = URL.createObjectURL(blob);
+    download(url, `${stig.id}.csv`);
+    URL.revokeObjectURL(url);
+};
 
 const Button = ({
     classfication,
@@ -137,6 +181,43 @@ export const StigView = ({
             <h1 className="text-3xl mt-6">{stig.title}</h1>
             <p className="text-base discussion">{stig.description}</p>
 
+            <section className="text-zinc-600 dark:text-zinc-500 text-xs w-full flex justify-between items-center">
+                <div className="flex flex-col">
+                    <span>Version: {stig.version}</span>
+                    <span>Date: {stig.date.toLocaleDateString("sv-SE")}</span>
+                </div>
+                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex">
+                    <button
+                        onClick={() =>
+                            download(
+                                `/data/stigs/schema/${stig.id}.xml`,
+                                `${stig.id}.xml`
+                            )
+                        }
+                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
+                    >
+                        XML
+                    </button>
+                    <button
+                        onClick={() =>
+                            download(
+                                `/data/stigs/schema/${stig.id}.json`,
+                                `${stig.id}.json`
+                            )
+                        }
+                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
+                    >
+                        JSON
+                    </button>
+                    <button
+                        onClick={() => toCSV(stig)}
+                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                    >
+                        CSV
+                    </button>
+                </div>
+            </section>
+
             <section className="w-full flex justify-between items-center">
                 <aside
                     className="inline-flex rounded-md shadow-xs"
@@ -153,10 +234,6 @@ export const StigView = ({
                         />
                     ))}
                 </aside>
-                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col">
-                    <span>Version: {stig.version}</span>
-                    <span>Date: {stig.date.toLocaleDateString("sv-SE")}</span>
-                </div>
             </section>
 
             <section className="w-full flex flex-col">

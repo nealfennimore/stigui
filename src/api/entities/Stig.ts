@@ -63,6 +63,9 @@ export class RuleWrapper {
     get fix() {
         return this._rule.fix['+@id'];
     }
+    get checkId() {
+        return this._rule.check['+@system'];
+    }
     get check() {
         return this._rule.check['check-content'];
     }
