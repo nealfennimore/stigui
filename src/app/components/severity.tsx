@@ -40,7 +40,7 @@ export const SeverityBadge = ({
 
     return (
         <Element
-            className={`text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm ${color}`}
+            className={`text-sm max-sm:text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm ${color}`}
             onClick={onClick}
         >
             <span>{severity}</span>
