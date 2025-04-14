@@ -38,22 +38,35 @@ export const GroupView = ({
                             },
                             {
                                 text: "Group Title",
+                                className: "max-md:hidden",
                             },
                             {
                                 text: "Version",
                             },
                             {
                                 text: "Rule ID",
+                                className: "max-md:hidden",
                             },
                             {
                                 text: "Date",
+                                className: "max-lg:hidden",
                             },
                             {
                                 text: "STIG Version",
+                                className: "max-lg:hidden",
                             },
                         ]}
                         tableBody={[
                             {
+                                classNames: [
+                                    null,
+                                    null,
+                                    "max-md:hidden",
+                                    null,
+                                    "max-md:hidden",
+                                    "max-lg:hidden",
+                                    "max-lg:hidden",
+                                ],
                                 values: [
                                     group.rule.severity,
                                     group.id,
