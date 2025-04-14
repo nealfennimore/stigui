@@ -71,13 +71,13 @@ const toCSV = (stig: StigWrapper) => {
             return [
                 group.id,
                 group.rule.severity,
-                `"${group.rule.title}"`,
-                `"${group.rule.description}"`,
+                `"${group.rule.title.replaceAll('"', "'")}"`,
+                `"${group.rule.description.replaceAll('"', "'")}"`,
                 group.rule.id,
                 group.rule.fix,
-                `"${group.rule.fixText}"`,
+                `"${group.rule.fixText.replaceAll('"', "'")}"`,
                 group.rule.checkId,
-                `"${group.rule.check}"`,
+                `"${group.rule.check.replaceAll('"', "'")}"`,
             ].join(",");
         }),
     ];
