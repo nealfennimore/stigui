@@ -51,11 +51,13 @@ const Button = ({
     selectedClassfication,
     setClassficationLevel,
     index,
+    stigId,
 }: {
     classfication: Classification;
     selectedClassfication: Classification;
     setClassficationLevel: (selectedClassfication: Classification) => void;
     index: number;
+    stigId: string;
 }) => {
     const selectedClassName =
         classfication === selectedClassfication
@@ -68,19 +70,25 @@ const Button = ({
         index === 2 ? "rounded-e-lg border" : "border-t border-b";
 
     return (
-        <button
-            type="button"
+        <Link
+            href={`/stigs/${stigId}/${classfication}`}
             className={`px-4 py-2 text-sm font-medium text-zinc-900 border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${selectedClassName} ${idxClassName} ${idxClassName2}`}
             onClick={() => setClassficationLevel(classfication)}
         >
             {classfication}
-        </button>
+        </Link>
     );
 };
-export const StigView = ({ stigId }: { stigId: string }) => {
+export const StigView = ({
+    stigId,
+    classification,
+}: {
+    stigId: string;
+    classification?: Classification;
+}) => {
     const stig = useStigContext();
     const [classificationLevel, setClassficationLevel] = useState(
-        Classification.Public
+        classification || Classification.Public
     );
 
     const classficationProfiles = useMemo(
@@ -137,6 +145,7 @@ export const StigView = ({ stigId }: { stigId: string }) => {
                     {classifications.map((classification, index) => (
                         <Button
                             key={classification}
+                            stigId={stigId}
                             classfication={classification}
                             selectedClassfication={classificationLevel}
                             setClassficationLevel={setClassficationLevel}

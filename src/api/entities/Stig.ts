@@ -22,6 +22,18 @@ export enum Priority {
     Administrative = 'MAC-3',
 }
 
+export enum ClassificationWithPriority {
+    Critical_Public = 'MAC-1_Public',
+    Critical_Classified = 'MAC-1_Classified',
+    Critical_Sensitive = 'MAC-1_Sensitive',
+    MissionSupport_Public = 'MAC-2_Public',
+    MissionSupport_Classified = 'MAC-2_Classified',
+    MissionSupport_Sensitive = 'MAC-2_Sensitive',
+    Administrative_Public = 'MAC-3_Public',
+    Administrative_Classified = 'MAC-3_Classified',
+    Administrative_Sensitive = 'MAC-3_Sensitive',
+}
+
 export class RuleWrapper {
     private _rule: IRule;
     constructor(rule: IRule) {
@@ -105,7 +117,7 @@ export class ProfileWrapper {
         return this._profile;
     }
     get id() {
-        return this._profile['+@id'];
+        return this._profile['+@id'] as ClassificationWithPriority;
     }
 
     get priority() {

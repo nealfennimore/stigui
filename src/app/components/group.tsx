@@ -8,12 +8,18 @@ import { Table } from "./table";
 export const GroupView = ({
     stigId,
     groupId,
+    classification,
 }: {
     stigId: string;
     groupId: string;
+    classification?: string;
 }) => {
     const stig = useStigContext();
     const group = stig.groups.find((group) => group.id === groupId);
+
+    if (!group) {
+        return null;
+    }
 
     return (
         <Suspense>
