@@ -147,9 +147,7 @@ function TableHeader({
     return (
         <th
             scope="col"
-            className={`px-6 py-3 uppercase whitespace-nowrap ${
-                className ?? ""
-            }`}
+            className={`px-6 py-3 uppercase ${className ?? ""}`}
             data-searchable="true"
         >
             <div className="flex items-center">
@@ -185,7 +183,7 @@ function TableRow({ columns, classNames }: TableRowProps) {
                 <td
                     key={idx}
                     scope="row"
-                    className={`px-6 py-4 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line ${
+                    className={`px-6 py-4 text-zinc-900 dark:text-zinc-300 whitespace-pre-line ${
                         classNames?.[idx] ?? ""
                     }`}
                 >
