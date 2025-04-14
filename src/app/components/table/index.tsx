@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface TableRowProps {
     values: string[];
@@ -226,32 +226,42 @@ export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
         new Array(filters?.length).fill(null) as PotentialSearches
     );
 
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useEffect(() => {
+        setRows(tableBody);
+        setSearches(new Array(filters?.length).fill(null) as PotentialSearches);
+        formRef.current?.reset();
+    }, [tableBody]);
+
     return (
-        <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-            <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                <tr>
-                    {tableHeaders.map((headerProps, index) => (
-                        <TableHeader
-                            key={index}
-                            {...headerProps}
-                            colIndex={index}
-                            initialRows={tableBody}
-                            rows={rows}
-                            setRows={setRows}
-                            sorter={sorters?.[index]}
-                            filter={filters?.[index]}
-                            filters={filters}
-                            searches={searches}
-                            setSearches={setSearches}
-                        />
+        <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+            <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
+                <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+                    <tr>
+                        {tableHeaders.map((headerProps, index) => (
+                            <TableHeader
+                                key={index}
+                                {...headerProps}
+                                colIndex={index}
+                                initialRows={tableBody}
+                                rows={rows}
+                                setRows={setRows}
+                                sorter={sorters?.[index]}
+                                filter={filters?.[index]}
+                                filters={filters}
+                                searches={searches}
+                                setSearches={setSearches}
+                            />
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows.map((rowProps, index) => (
+                        <TableRow key={index} {...rowProps} />
                     ))}
-                </tr>
-            </thead>
-            <tbody>
-                {rows.map((rowProps, index) => (
-                    <TableRow key={index} {...rowProps} />
-                ))}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </form>
     );
 }

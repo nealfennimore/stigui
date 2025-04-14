@@ -131,6 +131,7 @@ export const StigView = ({
     classification?: Classification;
 }) => {
     const stig = useStigContext();
+    const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [classificationLevel, setClassficationLevel] = useState(
         classification || Classification.Public
     );
@@ -146,10 +147,28 @@ export const StigView = ({
             ),
         [stig, classficationProfiles]
     );
+
+    const counts = useMemo(() => {
+        const counts = {} as Record<Severity, number>;
+        Object.values(groups).forEach((group) => {
+            if (!counts[group.rule.severity]) {
+                counts[group.rule.severity] = 0;
+            }
+            counts[group.rule.severity]++;
+        });
+        return counts;
+    }, [groups]);
+
     const tableBody = useMemo(
         () =>
             Object.values(groups)
-                ?.sort(byGroupSeverity)
+                .filter((group) => {
+                    if (severities.size === 0) {
+                        return true;
+                    }
+                    return severities.has(group.rule.severity);
+                })
+                .sort(byGroupSeverity)
                 .map((group) => ({
                     values: [
                         group.id,
@@ -170,7 +189,7 @@ export const StigView = ({
                     ],
                     classNames: [null, null, null, "max-lg:hidden"],
                 })),
-        [groups, stigId]
+        [groups, stigId, severities]
     );
 
     const classifications = useMemo(() => Object.values(Classification), []);
@@ -182,9 +201,47 @@ export const StigView = ({
             <p className="text-base discussion">{stig.description}</p>
 
             <section className="text-zinc-600 dark:text-zinc-500 text-xs w-full flex justify-between items-center">
-                <div className="flex flex-col">
-                    <span>Version: {stig.version}</span>
+                <aside
+                    className="inline-flex rounded-md shadow-xs"
+                    role="group"
+                >
+                    {classifications.map((classification, index) => (
+                        <Button
+                            key={classification}
+                            stigId={stigId}
+                            classfication={classification}
+                            selectedClassfication={classificationLevel}
+                            setClassficationLevel={setClassficationLevel}
+                            index={index}
+                        />
+                    ))}
+                </aside>
+                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col align-end text-end">
                     <span>Date: {stig.date.toLocaleDateString("sv-SE")}</span>
+                    <span>Version: {stig.version}</span>
+                </div>
+            </section>
+
+            <section className="w-full flex justify-between items-center">
+                <div>
+                    {Object.entries(counts).map(([severity, count]) => (
+                        <SeverityBadge
+                            key={severity}
+                            severity={severity as Severity}
+                            count={count}
+                            Element="button"
+                            selected={severities.has(severity as Severity)}
+                            onClick={() => {
+                                const newSeverities = new Set(severities);
+                                if (newSeverities.has(severity as Severity)) {
+                                    newSeverities.delete(severity as Severity);
+                                } else {
+                                    newSeverities.add(severity as Severity);
+                                }
+                                setSeverities(newSeverities);
+                            }}
+                        />
+                    ))}
                 </div>
                 <div className="text-zinc-600 dark:text-zinc-500 text-xs flex">
                     <button
@@ -216,24 +273,6 @@ export const StigView = ({
                         CSV
                     </button>
                 </div>
-            </section>
-
-            <section className="w-full flex justify-between items-center">
-                <aside
-                    className="inline-flex rounded-md shadow-xs"
-                    role="group"
-                >
-                    {classifications.map((classification, index) => (
-                        <Button
-                            key={classification}
-                            stigId={stigId}
-                            classfication={classification}
-                            selectedClassfication={classificationLevel}
-                            setClassficationLevel={setClassficationLevel}
-                            index={index}
-                        />
-                    ))}
-                </aside>
             </section>
 
             <section className="w-full flex flex-col">
