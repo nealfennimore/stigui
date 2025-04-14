@@ -73,7 +73,7 @@ export const GroupView = ({
                                     group.title,
                                     group.rule.version,
                                     group.rule.id,
-                                    stig.date.toLocaleDateString("sv-SE"),
+                                    stig.date,
                                     stig.version,
                                 ],
                                 columns: [
@@ -84,7 +84,7 @@ export const GroupView = ({
                                     group.title,
                                     group.rule.version,
                                     group.rule.id,
-                                    stig.date.toLocaleDateString("sv-SE"),
+                                    stig.date,
                                     stig.version,
                                 ],
                             },

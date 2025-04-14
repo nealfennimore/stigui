@@ -146,7 +146,7 @@ export interface BenchmarkReference {
 
 export interface Status {
     '+content': string;
-    '+@date': Date;
+    '+@date': string;
 }
 
 // Converts JSON strings to/from your types
@@ -539,7 +539,7 @@ const typeMap: any = {
     Status: o(
         [
             { json: '+content', js: '+content', typ: '' },
-            { json: '+@date', js: '+@date', typ: Date },
+            { json: '+@date', js: '+@date', typ: '' },
         ],
         false
     ),

@@ -219,7 +219,7 @@ export const StigView = ({
                     ))}
                 </aside>
                 <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col align-end text-end">
-                    <span>Date: {stig.date.toLocaleDateString("sv-SE")}</span>
+                    <span>Date: {stig.date}</span>
                     <span>Version: {stig.version}</span>
                 </div>
             </section>
