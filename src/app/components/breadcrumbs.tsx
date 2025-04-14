@@ -39,7 +39,7 @@ export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
     }
 
     return (
-        <aside>
+        <aside className="flex flex-row items-center justify-start w-full">
             {links.map((link, index) => (
                 <span key={index}>
                     <Link
