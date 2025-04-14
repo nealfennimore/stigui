@@ -12,6 +12,7 @@ for file in data/stigs/**/*.xml; do
         echo "No ID found in $file"
         continue
     fi
+    cp "$file" "public/data/stigs/schema/$ID.xml"
     jq . <<<"$JSON" >"public/data/stigs/schema/$ID.json"
 done
 
