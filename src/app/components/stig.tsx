@@ -156,7 +156,9 @@ export const StigView = ({
             }
             counts[group.rule.severity]++;
         });
-        return counts;
+        return Object.entries(counts).sort(([a], [b]) =>
+            bySeverity(a as Severity, b as Severity)
+        );
     }, [groups]);
 
     const tableBody = useMemo(
@@ -224,7 +226,7 @@ export const StigView = ({
 
             <section className="w-full flex justify-between items-center">
                 <div>
-                    {Object.entries(counts).map(([severity, count]) => (
+                    {counts.map(([severity, count]) => (
                         <SeverityBadge
                             key={severity}
                             severity={severity as Severity}
