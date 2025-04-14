@@ -4,7 +4,7 @@ export function Main({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 max-md:p-6 pb-20 gap-16 sm:px-20 font-[family-name:var(--font-geist-sans)]">
+        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 md:p-6 max-sm:p-2 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start max-w-screen-xl">
                 {children}
             </main>
