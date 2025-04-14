@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fstigs\u002F[stig_id]","\u002Fstigs\u002F[stig_id]\u002F[classification]","\u002Fstigs\u002F[stig_id]\u002Fgroups\u002F[group_id]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
