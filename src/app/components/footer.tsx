@@ -25,16 +25,16 @@ export const Footer = () => (
                     </a>
                 </div>
             </span>
-            <span className="block text-sm text-zinc-500 sm:text-center">
+            <span className="block text-sm text-zinc-500 sm:text-center flex flex-row items-center justify-center">
                 © 2025{" "}
                 <a
                     href="https://neal.codes"
-                    className="hover:underline"
+                    className="hover:underline mx-1"
                     tabIndex={70}
                 >
                     neal.codes
                 </a>
-                . All Rights Reserved.
+                All Rights Reserved.
             </span>
         </div>
     </footer>
