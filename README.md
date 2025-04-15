@@ -4,7 +4,7 @@ A fast, simple, and open-source web application for exploring DISA Security Tech
 
 ## Overview
 
-STIG Viewer provides an intuitive and responsive interface for accessing and navigating DISA STIGs directly from your browser. Whether you're a cybersecurity professional, compliance analyst, or systems administrator, STIG Viewer simplifies your workflow by giving quick access to the latest STIGs without having to install software.
+STIG Viewer provides an intuitive and responsive interface for accessing and navigating [DISA STIGs](https://public.cyber.mil/stigs/compilations/) directly from your browser. Whether you're a cybersecurity professional, compliance analyst, or systems administrator, STIG Viewer simplifies your workflow by giving quick access to the latest STIGs without having to install software.
 
 ## Features
 
