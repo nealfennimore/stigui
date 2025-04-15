@@ -149,7 +149,7 @@ export const StigView = ({
             counts[group.rule.severity]++;
         });
         return Object.entries(counts).sort(([a], [b]) =>
-            bySeverity(a as Severity, b as Severity)
+            bySeverity(b as Severity, a as Severity)
         );
     }, [groups]);
 
