@@ -1,5 +1,10 @@
 "use client";
-import { Table, defaultFilter, defaultSort } from "@/app/components/table";
+import {
+    defaultFilter,
+    defaultSort,
+    Order,
+    Table,
+} from "@/app/components/table";
 import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -61,6 +66,7 @@ export const Stigs = () => {
                         filters={filters}
                         tableHeaders={tableHeaders}
                         tableBody={tableBody}
+                        initialOrders={[Order.ASC, Order.NONE, Order.NONE]}
                     />
                 </div>
             </section>

@@ -1,12 +1,12 @@
 "use client";
-import { Classification, GroupWrapper, StigWrapper } from "@/api/entities/Stig";
+import { Classification, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
 import { Suspense, useMemo, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge } from "./severity";
-import { Table, defaultFilter, defaultSort } from "./table";
+import { defaultFilter, defaultSort, Order, Table } from "./table";
 
 const SeverityPriority = {
     [Severity.High]: 4,
@@ -16,15 +16,7 @@ const SeverityPriority = {
 };
 
 const bySeverity = (a: Severity, b: Severity) => {
-    return SeverityPriority[b] - SeverityPriority[a];
-};
-
-const byGroupSeverity = (a: GroupWrapper, b: GroupWrapper) => {
-    const value = bySeverity(a.rule.severity, b.rule.severity);
-    if (value !== 0) {
-        return value;
-    }
-    return a.id.localeCompare(b.id);
+    return SeverityPriority[a] - SeverityPriority[b];
 };
 
 const sorters = [defaultSort, bySeverity, defaultSort, null];
@@ -170,7 +162,6 @@ export const StigView = ({
                     }
                     return severities.has(group.rule.severity);
                 })
-                .sort(byGroupSeverity)
                 .map((group) => ({
                     values: [
                         group.id,
@@ -284,6 +275,7 @@ export const StigView = ({
                         filters={filters}
                         tableHeaders={tableHeaders}
                         tableBody={tableBody}
+                        initialOrders={[Order.ASC, Order.DESC, Order.NONE]}
                     />
                 </div>
             </section>

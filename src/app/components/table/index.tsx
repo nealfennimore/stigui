@@ -7,12 +7,30 @@ interface TableRowProps {
     classNames?: (null | string)[];
 }
 
+export enum Order {
+    ASC = "asc",
+    DESC = "desc",
+    NONE = "none",
+}
+
+export interface ColumnOrder {
+    order: Order;
+    priority?: number;
+}
+
+const OrderPath = {
+    ["asc"]: Order.DESC,
+    ["desc"]: Order.NONE,
+    ["none"]: Order.ASC,
+};
+
 type Sorter = (a: any, b: any) => number;
 type Filter = (search: string) => (value: string) => boolean;
 type PotentialSorter = null | Sorter;
 type PotentialFilter = null | Filter;
-
-type PotentialSearches = (null | string)[];
+type PotentialOrder = null | Order;
+type OrderPriorty = number | null;
+type PotentialSearch = null | string;
 
 interface SortableProps {
     text: string;
@@ -20,34 +38,32 @@ interface SortableProps {
     rows: TableRowProps[];
     colIndex: number;
     sorter: Sorter;
+    orders: PotentialOrder[];
+    setOrders: React.Dispatch<React.SetStateAction<PotentialOrder[]>>;
     ascending?: number;
 }
 
-const Sortable = ({
-    text,
-    sorter,
-    rows,
-    setRows,
-    colIndex,
-    ascending,
-}: SortableProps) => {
-    const [currentOrder, setCurrentOrder] = useState(ascending ?? true);
-    const handleSort = () => {
-        const sortedRows = [...rows].sort((a, b) => {
-            return currentOrder
-                ? sorter(b.values[colIndex], a.values[colIndex])
-                : sorter(a.values[colIndex], b.values[colIndex]);
-        });
-        setRows(sortedRows);
-        setCurrentOrder(!currentOrder);
+const Sortable = ({ text, colIndex, orders, setOrders }: SortableProps) => {
+    const toggleOrder = () => {
+        const nextOrder = OrderPath[orders[colIndex] ?? Order.NONE];
+        const nextOrders = [...orders];
+        nextOrders[colIndex] = nextOrder;
+        setOrders(nextOrders);
     };
+
+    let order = orders?.[colIndex] ?? Order.NONE;
+    let top = order === Order.ASC ? "" : "dark:stroke-zinc-500 stroke-zinc-100";
+    let bottom =
+        order === Order.DESC ? "" : "dark:stroke-zinc-500 stroke-zinc-100";
 
     return (
         <button
+            type="button"
             className="flex items-center text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300"
-            onClick={handleSort}
+            onClick={toggleOrder}
         >
             {text}
+            <input type="hidden" name={`orders_${colIndex}`} value={order} />
             <svg
                 className="w-4 h-4 ms-1"
                 aria-hidden="true"
@@ -58,18 +74,27 @@ const Sortable = ({
                 viewBox="0 0 24 24"
             >
                 <path
+                    className={top}
                     stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="m8 15 4 4 4-4m0-6-4-4-4 4"
+                    d="m12 5 4 4-4-4-4 4"
+                />
+                <path
+                    className={bottom}
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m12 19 4-4-4 4-4-4"
                 />
             </svg>
         </button>
     );
 };
 
-interface FilterableProps {
+interface SearchableProps {
     text: string;
     setRows: React.Dispatch<React.SetStateAction<TableRowProps[]>>;
     initialRows: TableRowProps[];
@@ -77,11 +102,11 @@ interface FilterableProps {
     colIndex: number;
     filter: Filter;
     filters: PotentialFilter[];
-    searches: PotentialSearches;
-    setSearches: React.Dispatch<React.SetStateAction<PotentialSearches>>;
+    searches: PotentialSearch[];
+    setSearches: React.Dispatch<React.SetStateAction<PotentialSearch[]>>;
 }
 
-const Filterable = ({
+const Searchable = ({
     text,
     filters,
     initialRows,
@@ -89,7 +114,7 @@ const Filterable = ({
     colIndex,
     searches,
     setSearches,
-}: FilterableProps) => {
+}: SearchableProps) => {
     const handleFilter = (e: any) => {
         const nextSearch = e?.target?.value ?? "";
         const currentSearch = searches[colIndex];
@@ -113,10 +138,11 @@ const Filterable = ({
     return (
         <span className="ml-4">
             <input
+                name={`searches_${colIndex}`}
                 type="text"
                 className="w-full px-2 py-1 text-xs text-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder={`Filter ${text}`}
-                onChange={handleFilter}
+                // onChange={handleFilter}
             />
         </span>
     );
@@ -132,8 +158,10 @@ interface TableHeaderProps {
     sorter?: PotentialSorter;
     filter?: PotentialFilter;
     filters?: PotentialFilter[];
-    searches: PotentialSearches;
-    setSearches: React.Dispatch<React.SetStateAction<PotentialSearches>>;
+    searches: PotentialSearch[];
+    setSearches: React.Dispatch<React.SetStateAction<PotentialSearch[]>>;
+    orders: PotentialOrder[];
+    setOrders: React.Dispatch<React.SetStateAction<PotentialOrder[]>>;
 }
 
 function TableHeader({
@@ -142,6 +170,7 @@ function TableHeader({
     sorter,
     filter,
     filters,
+    orders,
     ...restProps
 }: TableHeaderProps) {
     return (
@@ -155,6 +184,7 @@ function TableHeader({
                     <Sortable
                         text={text ?? ""}
                         sorter={sorter}
+                        orders={orders}
                         {...restProps}
                     />
                 )}
@@ -164,7 +194,7 @@ function TableHeader({
                     </span>
                 )}
                 {filter && (
-                    <Filterable
+                    <Searchable
                         text={text ?? ""}
                         filter={filter}
                         filters={filters as PotentialFilter[]}
@@ -206,6 +236,7 @@ interface Props {
 
     sorters?: PotentialSorter[];
     filters?: PotentialFilter[];
+    initialOrders?: PotentialOrder[];
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -220,19 +251,116 @@ export const defaultSort = (a: any, b: any) => {
 export const defaultFilter = (search: string) => (value: string) =>
     value.toLocaleLowerCase().includes(search.toLocaleLowerCase());
 
-export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
-    const [rows, setRows] = useState(tableBody);
+type Priority = number;
+
+const processRows = ({
+    formRef,
+    initialRows,
+    orders,
+    searches,
+    sorters,
+    filters,
+    priorities,
+}: {
+    formRef: React.RefObject<HTMLFormElement>;
+    initialRows: TableRowProps[];
+    orders: PotentialOrder[];
+    searches: PotentialSearch[];
+    sorters?: PotentialSorter[];
+    filters?: PotentialFilter[];
+    priorities?: OrderPriorty[];
+}) => {
+    const maxLength = initialRows[0].columns.length;
+
+    const next = {
+        orders: [...orders],
+        searches: [...searches],
+    };
+
+    if (formRef.current) {
+        const formData = new FormData(formRef.current);
+        console.log("formData", formData);
+        for (const [key, value] of formData.entries()) {
+            const [name, index] = key.split("_");
+            const idx = parseInt(index);
+            next[name as "orders" | "searches"][idx] = value as string;
+        }
+    }
+
+    let nextRows = [...initialRows];
+    for (const search of next.searches) {
+        if (search && filters?.length) {
+            nextRows = nextRows.filter((row) => {
+                return filters.every((filter, index) => {
+                    return filter && next.searches[index]
+                        ? filter(next.searches[index])(row.values[index])
+                        : true;
+                });
+            });
+        }
+    }
+
+    for (const [idx, order] of next.orders.entries()) {
+        const sorter = sorters?.[idx];
+        if (order && order !== Order.NONE && sorter) {
+            console.log("order", idx, order);
+            nextRows.sort((a, b) => {
+                return order === Order.DESC
+                    ? sorter(b.values[idx], a.values[idx])
+                    : sorter(a.values[idx], b.values[idx]);
+            });
+        }
+    }
+
+    return nextRows;
+};
+
+export function Table({
+    tableHeaders,
+    tableBody: initialRows,
+    sorters,
+    filters,
+    initialOrders,
+}: Props) {
+    const formRef = useRef<HTMLFormElement>(null);
+    const [rows, setRows] = useState(
+        processRows({
+            formRef,
+            initialRows,
+            orders: initialOrders || [],
+            searches: [],
+            sorters,
+            filters,
+        })
+    );
     const [searches, setSearches] = useState(
-        new Array(filters?.length).fill(null) as PotentialSearches
+        new Array(filters?.length).fill(null) as PotentialSearch[]
+    );
+    const [orders, setOrders] = useState(
+        initialOrders ||
+            (new Array(filters?.length).fill(Order.NONE) as PotentialOrder[])
     );
 
-    const formRef = useRef<HTMLFormElement>(null);
+    const handleChange = () => {
+        const nextRows = processRows({
+            formRef,
+            initialRows,
+            orders,
+            searches,
+            sorters,
+            filters,
+        });
+        setRows(nextRows);
+    };
 
     useEffect(() => {
-        setRows(tableBody);
-        setSearches(new Array(filters?.length).fill(null) as PotentialSearches);
-        formRef.current?.reset();
-    }, [tableBody]);
+        formRef?.current?.addEventListener("change", handleChange);
+        return () => {
+            formRef?.current?.removeEventListener("change", handleChange);
+        };
+    }, [formRef]);
+
+    useEffect(handleChange, [orders, initialRows]);
 
     return (
         <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
@@ -244,7 +372,7 @@ export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
                                 key={index}
                                 {...headerProps}
                                 colIndex={index}
-                                initialRows={tableBody}
+                                initialRows={initialRows}
                                 rows={rows}
                                 setRows={setRows}
                                 sorter={sorters?.[index]}
@@ -252,6 +380,8 @@ export function Table({ tableHeaders, tableBody, sorters, filters }: Props) {
                                 filters={filters}
                                 searches={searches}
                                 setSearches={setSearches}
+                                orders={orders}
+                                setOrders={setOrders}
                             />
                         ))}
                     </tr>
