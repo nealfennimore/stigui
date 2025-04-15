@@ -279,7 +279,6 @@ const processRows = ({
 
     if (formRef.current) {
         const formData = new FormData(formRef.current);
-        console.log("formData", formData);
         for (const [key, value] of formData.entries()) {
             const [name, index] = key.split("_");
             const idx = parseInt(index);
@@ -303,7 +302,6 @@ const processRows = ({
     for (const [idx, order] of next.orders.entries()) {
         const sorter = sorters?.[idx];
         if (order && order !== Order.NONE && sorter) {
-            console.log("order", idx, order);
             nextRows.sort((a, b) => {
                 return order === Order.DESC
                     ? sorter(b.values[idx], a.values[idx])
