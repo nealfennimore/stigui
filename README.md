@@ -17,7 +17,7 @@ STIG Viewer provides an intuitive and responsive interface for accessing and nav
 
 ### Online
 
-Access the live web application at [stig.neal.codes](https://stig.neal.codes).
+Access the live web application at [stigui.neal.codes](https://stigui.neal.codes).
 
 ## Local Development
 
