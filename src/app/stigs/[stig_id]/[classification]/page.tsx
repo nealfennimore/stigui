@@ -7,7 +7,7 @@ import { StigView } from "@/app/components/stig";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
 import type { Metadata, ResolvingMetadata } from "next";
-type Props = {
+export type Props = {
     params: Promise<{ stig_id: string; classification: Classification }>;
 };
 
@@ -27,7 +27,7 @@ export async function generateMetadata(
         applicationName: "STIGUI",
         openGraph: {
             type: "article",
-            title: `STIGs | ${stig.metaTitle}`,
+            title: `STIGs | ${stig.metaTitle} | ${classification}`,
             description: stig.description,
             tags: [...stig.tags, classification],
             url: `https://stig.neal.codes/stigs/${stig_id}`,
