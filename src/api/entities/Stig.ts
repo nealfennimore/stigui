@@ -72,6 +72,10 @@ export class RuleWrapper {
     get version() {
         return this._rule.version;
     }
+
+    get reference() {
+        return this._rule.reference;
+    }
 }
 export class GroupWrapper {
     private _group: IGroup;
@@ -90,6 +94,7 @@ export class GroupWrapper {
     get description() {
         return this._group.description;
     }
+
     get rule() {
         return new RuleWrapper(this._group.Rule);
     }
@@ -159,8 +164,28 @@ export class StigWrapper {
     get title() {
         return this._stig.Benchmark.title;
     }
+
+    get metaTitle() {
+        return this._stig.Benchmark.title.replace(
+            'Security Requirements Guide',
+            ''
+        );
+    }
+
     get description() {
         return this._stig.Benchmark.description;
+    }
+
+    get publisher() {
+        return this._stig.Benchmark.reference.publisher;
+    }
+
+    get tags() {
+        let plainText = this._stig.Benchmark['plain-text'];
+        if (!Array.isArray(plainText)) {
+            plainText = [plainText];
+        }
+        return plainText.map((item) => item['+content']);
     }
 
     get groups() {
