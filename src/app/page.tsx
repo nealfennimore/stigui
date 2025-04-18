@@ -4,6 +4,7 @@ import { Navigation } from "@/app/components/navigation";
 import { Stigs } from "@/app/components/stigs";
 import ManifestComponent from "@/app/context/manifest";
 import type { Metadata } from "next";
+import "./db";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
