@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: "STIGs",
+        title: "Security Technical Implementation Guides (STIGs)",
     };
 }
 

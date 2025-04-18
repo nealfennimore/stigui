@@ -1,4 +1,5 @@
 "use client";
+import { APPNAME } from "@/app/constants";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export const Navigation = () => {
@@ -45,7 +46,7 @@ export const Navigation = () => {
                     tabIndex={100}
                 >
                     <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        STIG
+                        {APPNAME}
                     </span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

@@ -4,9 +4,11 @@ import { Footer } from "@/app/components/footer";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import { StigView } from "@/app/components/stig";
+import { APPNAME, URL } from "@/app/constants";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
 import type { Metadata, ResolvingMetadata } from "next";
+
 export type Props = {
     params: Promise<{ stig_id: string; classification: Classification }>;
 };
@@ -24,14 +26,15 @@ export async function generateMetadata(
         creator: stig.publisher,
         publisher: stig.publisher,
         keywords: [...stig.tags, classification],
-        applicationName: "STIGUI",
+        applicationName: APPNAME,
         openGraph: {
             type: "article",
             title: `STIGs | ${stig.metaTitle} | ${classification}`,
             description: stig.description,
             tags: [...stig.tags, classification],
-            url: `https://stig.neal.codes/stigs/${stig_id}`,
-            siteName: "STIGUI",
+            url: `${URL}/stigs/${stig_id}`,
+            siteName: APPNAME,
+            authors: [stig.publisher ?? "DISA"],
             publishedTime: new Date(stig.date).toISOString(),
         },
     };

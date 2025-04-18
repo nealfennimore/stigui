@@ -4,6 +4,7 @@ import { Footer } from "@/app/components/footer";
 import { GroupView } from "@/app/components/group";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
+import { APPNAME, URL } from "@/app/constants";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -34,13 +35,14 @@ export async function generateMetadata(
             group.rule.severity,
             group.rule.version,
         ],
-        applicationName: "STIGUI",
+        applicationName: APPNAME,
         openGraph: {
             type: "article",
             title: `STIGs | ${stig.metaTitle} | ${group.rule.title}`,
             description: group.rule.description,
-            url: `https://stig.neal.codes/stigs/${stig_id}/groups/${group_id}`,
-            siteName: "STIGUI",
+            url: `${URL}/stigs/${stig_id}/groups/${group_id}`,
+            siteName: APPNAME,
+            authors: [stig.publisher ?? "DISA"],
             tags: [
                 group.id,
                 group.rule.checkId,
