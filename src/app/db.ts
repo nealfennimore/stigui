@@ -1,11 +1,13 @@
 "use client";
-import { Status } from "@/app/components/severity";
+import { Checklist, Rule, Stig } from "@/api/generated/Checklist";
 export const version = 1;
 let loader: Promise<IDBDatabase> | undefined;
 
 enum Table {
-    SECURITY_REQUIREMENTS = "security_requirements",
-    REQUIREMENTS = "requirements",
+    CHECKLISTS = "checklists",
+    STIGS = "stigs",
+    RULES = "rules",
+    CHECKLIST_STIGS = "checklist_stigs",
 }
 
 if (typeof window !== "undefined") {
@@ -18,41 +20,56 @@ if (typeof window !== "undefined") {
         };
         request.onsuccess = (event) => {
             const db = event.target?.result as IDBDatabase;
-
             resolve(db);
         };
 
         request.onupgradeneeded = function (event) {
             const db = event.target?.result as IDBDatabase;
 
-            const securityRequirementsStore = db.createObjectStore(
-                Table.SECURITY_REQUIREMENTS,
-                {
-                    keyPath: "id",
-                }
-            );
-
-            securityRequirementsStore.createIndex("status", "status", {
-                unique: false,
-            });
-            securityRequirementsStore.createIndex(
-                "description",
-                "description",
-                {
-                    unique: false,
-                }
-            );
-
-            const requirementsStore = db.createObjectStore(Table.REQUIREMENTS, {
+            // Checklist store
+            const checklistStore = db.createObjectStore(Table.CHECKLISTS, {
                 keyPath: "id",
             });
+            checklistStore.createIndex("title", "title", { unique: false });
+            checklistStore.createIndex("active", "active", { unique: false });
+            checklistStore.createIndex("mode", "mode", { unique: false });
 
-            requirementsStore.createIndex(
-                "security_requirements",
-                "security_requirements",
+            // STIG store
+            const stigStore = db.createObjectStore(Table.STIGS, {
+                keyPath: "uuid",
+            });
+            stigStore.createIndex("stig_id", "stig_id", { unique: false });
+            stigStore.createIndex("stig_name", "stig_name", { unique: false });
+
+            // Rule store
+            const ruleStore = db.createObjectStore(Table.RULES, {
+                keyPath: "uuid",
+            });
+            ruleStore.createIndex("group_id", "group_id", { unique: false });
+            ruleStore.createIndex("rule_id", "rule_id", { unique: false });
+            ruleStore.createIndex("stig_uuid", "stig_uuid", { unique: false });
+            ruleStore.createIndex("status", "status", { unique: false });
+            ruleStore.createIndex("severity", "severity", { unique: false });
+
+            const checklistStigsStore = db.createObjectStore(
+                Table.CHECKLIST_STIGS,
                 {
-                    unique: false,
+                    keyPath: "id",
+                    autoIncrement: true,
                 }
+            );
+            checklistStigsStore.createIndex("checklist_id", "checklist_id", {
+                unique: false,
+            });
+            checklistStigsStore.createIndex("stig_uuid", "stig_uuid", {
+                unique: false,
+            });
+
+            // Composite index for quick lookups
+            checklistStigsStore.createIndex(
+                "checklist_stig",
+                ["checklist_id", "stig_uuid"],
+                { unique: true }
             );
         };
     });
@@ -61,17 +78,6 @@ if (typeof window !== "undefined") {
 export const getDB = function () {
     return loader || Promise.reject("Can't use IndexDB");
 };
-
-export interface IDBSecurityRequirement {
-    id: string;
-    status: string;
-    description: string;
-}
-
-export interface IDBRequirement {
-    id: string;
-    bySecurityRequirementId: Record<string, Status>;
-}
 
 enum Permission {
     READONLY = "readonly",
@@ -82,15 +88,30 @@ export const getStore = async (table: string, permission: Permission) => {
     const db = await getDB();
     return db.transaction(table, permission).objectStore(table);
 };
+export const getIndex = async (
+    table: string,
+    permission: Permission,
+    index: string
+) => {
+    const store = await getStore(table, permission);
+    return store.index(index);
+};
+
+type StoreGenerator = Promise<IDBObjectStore | IDBIndex>;
 
 export const getAll =
-    <T>(table: string) =>
+    <T>(table: string, index?: string) =>
     async (
         query: IDBKeyRange | IDBValidKey | null = null,
         count?: number
     ): Promise<T[]> => {
-        const store = await getStore(table, Permission.READONLY);
-
+        let store: IDBObjectStore | IDBIndex = await getStore(
+            table,
+            Permission.READONLY
+        );
+        if (index) {
+            store = store.index(index) as IDBIndex;
+        }
         const request = store.getAll(query, count);
 
         return new Promise<T[]>((resolve, reject) => {
@@ -102,6 +123,28 @@ export const getAll =
             };
         });
     };
+export const get =
+    <T>(table: string, index?: string) =>
+    async (query: IDBKeyRange | IDBValidKey): Promise<T> => {
+        let store: IDBObjectStore | IDBIndex = await getStore(
+            table,
+            Permission.READONLY
+        );
+        if (index) {
+            store = store.index(index) as IDBIndex;
+        }
+        const request = store.get(query);
+
+        return new Promise<T>((resolve, reject) => {
+            request.onsuccess = () => {
+                resolve(request.result as T);
+            };
+            request.onerror = () => {
+                reject();
+            };
+        });
+    };
+
 export const put =
     <T>(table: string) =>
     async (data: T): Promise<T[]> => {
@@ -130,12 +173,26 @@ export const clear = (table: string) => async (): Promise<boolean> => {
     });
 };
 
+class IndexWrapper<T> {
+    getAll: (
+        query?: IDBKeyRange | IDBValidKey | null,
+        count?: number
+    ) => Promise<T[]>;
+    get: (query: IDBKeyRange | IDBValidKey) => Promise<T>;
+
+    constructor(table: string, index: string) {
+        this.getAll = getAll<T>(table, index);
+        this.get = get<T>(table, index);
+    }
+}
+
 class StoreWrapper<T> {
     public table: Table;
     getAll: (
         query?: IDBKeyRange | IDBValidKey | null,
         count?: number
     ) => Promise<T[]>;
+    get: (query: IDBKeyRange | IDBValidKey) => Promise<T>;
     put: (data: T) => Promise<T[]>;
     clear: () => Promise<boolean>;
     store: (permission: Permission) => Promise<IDBObjectStore>;
@@ -143,6 +200,7 @@ class StoreWrapper<T> {
     constructor(table: Table) {
         this.table = table;
         this.getAll = getAll<T>(table);
+        this.get = get<T>(table);
         this.put = put<T>(table);
         this.clear = clear(table);
         this.store = (permission: Permission = Permission.READONLY) =>
@@ -150,11 +208,91 @@ class StoreWrapper<T> {
     }
 }
 
+// Interface for the intermediate table
+export interface IDBChecklistStig {
+    id?: number; // Optional as it's auto-incremented
+    checklist_id: string;
+    stig_uuid: string;
+}
+
+export type IDBChecklist = Omit<Checklist, "stigs">;
+export type IDBStig = Omit<Stig, "rules">;
+export type IDBRule = Rule;
+
 export class IDB {
-    static requirements = new StoreWrapper<IDBRequirement>(Table.REQUIREMENTS);
-    static securityRequirements = new StoreWrapper<IDBSecurityRequirement>(
-        Table.SECURITY_REQUIREMENTS
+    static checklists = new StoreWrapper<IDBChecklist>(Table.CHECKLISTS);
+    static stigs = new StoreWrapper<IDBStig>(Table.STIGS);
+    static rules = new StoreWrapper<IDBRule>(Table.RULES);
+    static checklistStigs = new StoreWrapper<IDBChecklistStig>(
+        Table.CHECKLIST_STIGS
     );
 
     static version = version;
+
+    static async exportChecklist(checklistId: string): Promise<IDBChecklist> {
+        try {
+            // Get checklist metadata
+            const checklist = await IDB.checklists.get(checklistId);
+            if (!checklist) {
+                throw new Error("Checklist not found");
+            }
+
+            const stigChecklistsIdx = await new IndexWrapper<IDBChecklistStig>(
+                IDB.checklistStigs.table,
+                "checklist_id"
+            ).getAll(checklistId);
+
+            const stidUuids = stigChecklistsIdx.map((link) => link.stig_uuid);
+
+            const stigs = await new IndexWrapper<IDBStig>(
+                IDB.stigs.table,
+                "stig_uuid"
+            ).getAll(stidUuids);
+
+            const rules = await new IndexWrapper<IDBRule>(
+                IDB.rules.table,
+                "stig_uuid"
+            ).getAll(stidUuids);
+
+            const result: Checklist = {
+                ...checklist,
+                stigs: stigs.map((stig) => ({
+                    ...stig,
+                    rules: rules.filter((rule) => rule.stig_uuid === stig.uuid),
+                })),
+            };
+
+            return result;
+        } catch (error) {
+            console.error("Error exporting checklist:", error);
+            throw error;
+        }
+    }
+
+    static async importChecklist(checklistData: Checklist): Promise<boolean> {
+        try {
+            const { stigs: stigsData, ...checklist } = checklistData;
+            await IDB.checklists.put(checklist);
+
+            // Store STIGs and create relations
+            for (const stigData of stigsData) {
+                const { rules: rulesData, ...stig } = stigData;
+                await IDB.stigs.put(stig);
+                await IDB.checklistStigs.put({
+                    checklist_id: checklist.id,
+                    stig_uuid: stig.uuid,
+                });
+                for (const rule of rulesData) {
+                    if (rule.uuid) {
+                        await IDB.rules.put(rule);
+                    }
+                }
+            }
+
+            return true;
+        } catch (error) {
+            console.error("Error importing checklist:", error);
+            return false;
+        }
+    }
 }
