@@ -1,10 +1,12 @@
 "use client";
 import { Classification, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
+import { Sidebar } from "@/app/components/sidebar";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
+import { GroupInfo } from "./group";
 import { SeverityBadge } from "./severity";
 import { defaultFilter, defaultSort, Order, Table } from "./table";
 
@@ -127,6 +129,20 @@ export const StigView = ({
     const [classificationLevel, setClassficationLevel] = useState(
         classification || Classification.Public
     );
+    const [selectedIdx, setRowIdx] = useState<number | null>(null);
+
+    useEffect(() => {
+        const handleClick = () => {
+            setRowIdx(null);
+        };
+        document.querySelector("body")?.addEventListener("click", handleClick);
+
+        return () => {
+            document
+                .querySelector("body")
+                ?.removeEventListener("click", handleClick);
+        };
+    }, [selectedIdx]);
 
     const classficationProfiles = useMemo(
         () => stig.profilesByClassification,
@@ -153,6 +169,11 @@ export const StigView = ({
         );
     }, [groups]);
 
+    const group = useMemo(
+        () => selectedIdx !== null && Object.values(groups)?.[selectedIdx],
+        [groups, selectedIdx]
+    );
+
     const tableBody = useMemo(
         () =>
             Object.values(groups)
@@ -162,7 +183,8 @@ export const StigView = ({
                     }
                     return severities.has(group.rule.severity);
                 })
-                .map((group) => ({
+                .map((group, idx) => ({
+                    onClick: () => setRowIdx(idx),
                     values: [
                         group.id,
                         group.rule.severity,
@@ -182,14 +204,40 @@ export const StigView = ({
                     ],
                     classNames: [null, null, null, "max-lg:hidden"],
                 })),
-        [groups, stigId, severities]
+        [groups, stigId, severities, setRowIdx]
     );
 
     const classifications = useMemo(() => Object.values(Classification), []);
+    const hasGroup = selectedIdx !== null && selectedIdx > -1 && !!group;
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <Breadcrumbs stigId={stigId} />
+            <Sidebar
+                isOpen={hasGroup}
+                onClick={() => setRowIdx(null)}
+                headerText={
+                    hasGroup && (
+                        <Link href={`/stigs/${stigId}/groups/${group.id}`}>
+                            {group.id}
+                        </Link>
+                    )
+                }
+            >
+                {hasGroup && (
+                    <>
+                        <GroupInfo group={group} />
+                        <div className="text-zinc-600 dark:text-zinc-500 flex flex-row justify-start items-center">
+                            <Link
+                                className="text-sm ml-4"
+                                href={`/stigs/${stigId}/groups/${group.id}`}
+                            >
+                                Go to {group.id}
+                            </Link>
+                        </div>
+                    </>
+                )}
+            </Sidebar>
             <h1 className="text-3xl mt-6">{stig.title}</h1>
             <p className="text-base discussion">{stig.description}</p>
 
