@@ -231,7 +231,12 @@ export class IDB {
 
     static version = version;
 
-    static async exportChecklist(checklistId: string): Promise<IDBChecklist> {
+    static async exportChecklist(
+        checklistId: string
+    ): Promise<Checklist | null> {
+        if (typeof window === "undefined") {
+            return Promise.resolve(null);
+        }
         try {
             // Get checklist metadata
             const checklist = await IDB.checklists.get(checklistId);
