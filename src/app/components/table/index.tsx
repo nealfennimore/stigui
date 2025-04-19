@@ -5,6 +5,7 @@ interface TableRowProps {
     values: string[];
     columns: React.ReactNode[];
     classNames?: (null | string)[];
+    onClick?: (null | ((index: number) => void)) | (() => void);
 }
 
 export enum Order {
@@ -142,7 +143,6 @@ const Searchable = ({
                 type="text"
                 className="w-full px-2 py-1 text-xs text-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder={`Filter ${text}`}
-                // onChange={handleFilter}
             />
         </span>
     );
@@ -206,7 +206,7 @@ function TableHeader({
     );
 }
 
-function TableRow({ columns, classNames }: TableRowProps) {
+function TableRow({ columns, classNames, onClick }: TableRowProps) {
     return (
         <tr className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200">
             {columns.map((Element, idx) => (
@@ -216,6 +216,7 @@ function TableRow({ columns, classNames }: TableRowProps) {
                     className={`px-6 py-4 text-zinc-900 dark:text-zinc-300 whitespace-pre-line ${
                         classNames?.[idx] ?? ""
                     }`}
+                    onClick={onClick}
                 >
                     {Element}
                 </td>
@@ -270,8 +271,6 @@ const processRows = ({
     filters?: PotentialFilter[];
     priorities?: OrderPriorty[];
 }) => {
-    const maxLength = initialRows[0].columns.length;
-
     const next = {
         orders: [...orders],
         searches: [...searches],
