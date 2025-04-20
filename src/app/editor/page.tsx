@@ -10,18 +10,18 @@ import { useSearchParams } from "next/navigation";
 export default function Page() {
     const params = useSearchParams();
     const checklistId = params.get("id");
-    if (!checklistId || typeof window === "undefined") {
+    if (!checklistId) {
         return null;
     }
 
     return (
         <ManifestComponent>
             <Navigation />
-            <ChecklistComponent checklistId={checklistId}>
-                <Main>
+            <Main>
+                <ChecklistComponent checklistId={checklistId}>
                     <ChecklistView checklistId={checklistId} />
-                </Main>
-            </ChecklistComponent>
+                </ChecklistComponent>
+            </Main>
             <Footer />
         </ManifestComponent>
     );
