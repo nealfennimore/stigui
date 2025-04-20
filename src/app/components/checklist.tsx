@@ -39,19 +39,47 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                         <h3 className="text-2xl mt-6">Rules</h3>
                         {stig.rules.map((rule) => (
                             <div key={rule.group_id} className="my-4">
-                                <h4 className="text-xl">{rule.group_title}</h4>
+                                <h4 className="text-xl">{rule.rule_title}</h4>
                                 <p>{rule.rule_version}</p>
-                                <p>Severity: {rule.severity}</p>
-                                <p>Classification: {rule.classification}</p>
-                                <p>Status: {rule.status}</p>
-                                <p>{rule.third_party_tools}</p>
-                                <p>{rule.security_override_guidance}</p>
-                                <p>Discussion: {rule.discussion}</p>
-                                <p>Check: {rule.check_content}</p>
-                                <p>Fix: {rule.fix_text}</p>
-                                <p>Comments: {rule.comments}</p>
-                                <p>documentable: {rule.documentable}</p>
-                                <p>{rule.finding_details}</p>
+                                <h6 className="mt-4">Severity</h6>
+                                <p>{rule.severity}</p>
+                                <h6 className="mt-4">Classification</h6>
+                                <p>{rule.classification}</p>
+                                <h6 className="mt-4">Status</h6>
+                                <select
+                                    value={rule.status}
+                                    name={`rule.${rule.uuid}.status`}
+                                    className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                >
+                                    <option value="not_a_finding">
+                                        Not a Finding
+                                    </option>
+                                    <option value="not_applicable">
+                                        Not Applicable
+                                    </option>
+                                    <option value="not_reviewed">
+                                        Not Reviewed
+                                    </option>
+                                    <option value="open">Open</option>
+                                </select>
+                                <h6 className="mt-4">Discussion</h6>
+                                <p>{rule.discussion}</p>
+                                <h6 className="mt-4">Check</h6>
+                                <p>{rule.check_content}</p>
+                                <h6 className="mt-4">Fix</h6>
+                                <p>{rule.fix_text}</p>
+                                <h6 className="mt-4">Comments</h6>
+                                <textarea
+                                    name={`rule.${rule.uuid}.comments`}
+                                    className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                    defaultValue={rule.comments}
+                                ></textarea>
+                                <h6 className="mt-4">Finding Details</h6>
+                                <textarea
+                                    name={`rule.${rule.uuid}.finding_details`}
+                                    className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                    defaultValue={rule.finding_details}
+                                ></textarea>
                             </div>
                         ))}
                     </div>
