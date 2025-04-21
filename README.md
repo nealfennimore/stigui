@@ -1,10 +1,10 @@
-# STIG
+# STIGUI
 
 A fast, simple, and open-source web application for exploring DISA Security Technical Implementation Guides (STIGs).
 
 ## Overview
 
-STIG Viewer provides an intuitive and responsive interface for accessing and navigating [DISA STIGs](https://public.cyber.mil/stigs/compilations/) directly from your browser. Whether you're a cybersecurity professional, compliance analyst, or systems administrator, STIG Viewer simplifies your workflow by giving quick access to the latest STIGs without having to install software.
+STIGUI provides an intuitive and responsive interface for accessing and navigating [DISA STIGs](https://public.cyber.mil/stigs/compilations/) directly from your browser. Whether you're a cybersecurity professional, compliance analyst, or systems administrator, STIGUI simplifies your workflow by giving quick access to the latest STIGs without having to install software.
 
 ## Features
 
@@ -21,7 +21,7 @@ Access the live web application at [stigui.neal.codes](https://stigui.neal.codes
 
 ## Local Development
 
-To run STIG Viewer locally:
+To run STIGUI locally:
 
 ```bash
 git clone <https://github.com/nealfennimore/stig.git>
@@ -34,7 +34,7 @@ Your local instance should now be running at [http://localhost:3000](http://loca
 
 ## Contributing
 
-STIG Viewer is open-source, and contributions are warmly welcomed!
+STIGUI is open-source, and contributions are warmly welcomed!
 
 ## License
 
