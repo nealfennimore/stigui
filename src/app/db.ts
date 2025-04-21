@@ -149,10 +149,10 @@ export const get =
 
 export const put =
     <T>(table: string) =>
-    async (data: T): Promise<T[]> => {
+    async (data: T, key?: string): Promise<T[]> => {
         const store = await getStore(table, Permission.READWRITE);
         return new Promise<T[]>((resolve, reject) => {
-            const request = store.put(data);
+            const request = store.put(data, key);
             request.onsuccess = () => {
                 resolve(request.result as T[]);
             };
