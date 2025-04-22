@@ -4,6 +4,38 @@ import { IDB } from "@/app/db";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 
+const debounce = (func: Function, delay: number) => {
+    let timeout: NodeJS.Timeout;
+    return function (...args: any[]) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
+};
+
+const compare = (a: { [key: string]: any }, b: { [key: string]: any }) => {
+    const aKeys = Object.keys(a);
+    const bKeys = Object.keys(b);
+    if (aKeys.length !== bKeys.length) {
+        return false;
+    }
+    for (const key of aKeys) {
+        const aValue = a?.[key] as object | string | number | boolean;
+        const bValue = b?.[key] as object | string | number | boolean;
+
+        if (typeof aValue === "object" && typeof bValue === "object") {
+            if (!compare(aValue, bValue)) {
+                return false;
+            }
+        } else {
+            if (aValue !== bValue) {
+                return false;
+            }
+        }
+    }
+    return true;
+};
+
 type FormRuleProperties = Pick<
     Rule,
     "overrides" | "status" | "comments" | "finding_details"
@@ -35,17 +67,13 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         })();
     }, [checklistId]);
 
-    useEffect(() => {
-        // if (formRef.current) {
-        //     const formData = new FormData(formRef.current);
-        //     const data = Object.fromEntries(formData.entries());
-        //     console.log(data);
-        // }
-        const handleChange = (e: Event) => {
-            const formData = new FormData(formRef.current!);
+    const handleChange = useMemo(
+        () => (e: Event) => {
+            if (!formRef.current) {
+                return;
+            }
+            const formData = new FormData(formRef.current);
             let data = { rule: {} } as FormChecklistChanges;
-
-            console.log(data);
 
             for (const [key, value] of formData.entries()) {
                 const [type, uuid, ...paths] = key.split(".");
@@ -71,51 +99,52 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 // @ts-ignore
                 if (length === 1 && currentRule?.[paths[0]] === value) {
                     continue;
-                } else if (paths[0] === "overrides") {
-                    let currentRuleValue =
-                        // @ts-ignore
-                        currentRule?.[paths[0]]?.[paths[1]]?.[paths[2]] ??
-                        // @ts-ignore
-                        currentRule?.[paths[1]];
-                    if (currentRuleValue === value) {
-                        continue;
-                    }
                 }
                 if (!data.rule[uuid]) {
                     data.rule[uuid] = {} as FormRuleProperties;
                 }
-                let nextData = data.rule[uuid];
+                let nextRuleData = data.rule[uuid];
                 for (const [idx, path] of paths.entries()) {
                     // @ts-ignore
-                    if (nextData[path] === undefined) {
+                    if (nextRuleData[path] === undefined && length > 1) {
                         // @ts-ignore
-                        nextData[path] = {};
+                        nextRuleData[path] = {};
                     }
                     if (idx === length - 1) {
                         // @ts-ignore
-                        nextData[path] = value;
+                        nextRuleData[path] = value;
                     } else {
                         // @ts-ignore
-                        nextData = nextData[path];
+                        nextRuleData = nextRuleData[path];
                     }
                 }
             }
             let updates = [];
-            for (const [key, value] of Object.entries(data.rule)) {
-                let payload = { ...currentRules[key], ...value };
-                updates.push(IDB.rules.put(payload));
+            for (const [uuid, value] of Object.entries(data.rule)) {
+                // Skip if only overrides are changed
+                // and the overrides are the same as the current overrides
+                if (
+                    Object.keys(value).length === 1 &&
+                    value.overrides &&
+                    compare(value.overrides, currentRules[uuid].overrides)
+                ) {
+                    continue;
+                }
+                let rule = { ...currentRules[uuid], ...value, uuid } as Rule;
+                updates.push(IDB.rules.put(rule));
             }
             Promise.all(updates).then(console.log);
-        };
+        },
+        [currentRules]
+    );
 
-        formRef.current?.addEventListener("change", handleChange);
-        return () => {
-            formRef.current?.removeEventListener("change", handleChange);
-        };
-    }, [checklist, formRef.current, currentRules]);
+    const debouncedHandleChange = useMemo(
+        () => debounce(handleChange, 500),
+        [handleChange]
+    );
 
     return (
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
             <Breadcrumbs />
 
             <section className="w-full flex flex-col">
@@ -124,7 +153,11 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             </section>
 
             <section>
-                <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+                <form
+                    ref={formRef}
+                    onSubmit={(e) => e.preventDefault()}
+                    onChange={debouncedHandleChange}
+                >
                     {checklist?.stigs.map((stig) => (
                         <div key={stig.uuid} className="my-4">
                             <h2 className="text-3xl">STIG</h2>
