@@ -4,7 +4,7 @@ import { Severity } from "@/api/generated/Checklist";
 import { Sidebar } from "@/app/components/sidebar";
 import { useStigContext } from "@/app/context/stig";
 import Link from "next/link";
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { GroupInfo } from "./group";
 import { SeverityBadge } from "./severity";
@@ -130,6 +130,8 @@ export const StigView = ({
         classification || Classification.Public
     );
     const [selectedIdx, setRowIdx] = useState<number | null>(null);
+
+    const formRef = useRef<HTMLFormElement>(null);
 
     useEffect(() => {
         const handleClick = () => {
@@ -318,13 +320,16 @@ export const StigView = ({
 
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <Table
-                        sorters={sorters}
-                        filters={filters}
-                        tableHeaders={tableHeaders}
-                        tableBody={tableBody}
-                        initialOrders={[Order.ASC, Order.DESC, Order.NONE]}
-                    />
+                    <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+                        <Table
+                            sorters={sorters}
+                            filters={filters}
+                            tableHeaders={tableHeaders}
+                            tableBody={tableBody}
+                            initialOrders={[Order.ASC, Order.DESC, Order.NONE]}
+                            formRef={formRef}
+                        />
+                    </form>
                 </div>
             </section>
         </Suspense>

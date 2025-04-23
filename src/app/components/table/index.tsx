@@ -1,6 +1,6 @@
 "use client";
 import { debounce } from "@/app/utils";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface TableRowProps {
     values: string[];
@@ -211,6 +211,8 @@ interface Props {
     sorters?: PotentialSorter[];
     filters?: PotentialFilter[];
     initialOrders?: PotentialOrder[];
+
+    formRef: React.RefObject<HTMLFormElement>;
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -253,6 +255,9 @@ const processRows = ({
         const formData = new FormData(formRef.current);
         for (const [key, value] of formData.entries()) {
             const [name, index] = key.split("_");
+            if (name !== "orders" && name !== "searches") {
+                continue;
+            }
             const idx = parseInt(index);
             next[name as "orders" | "searches"][idx] = value as string;
         }
@@ -291,8 +296,8 @@ export function Table({
     sorters,
     filters,
     initialOrders,
+    formRef,
 }: Props) {
-    const formRef = useRef<HTMLFormElement>(null);
     const [rows, setRows] = useState(
         processRows({
             formRef,
@@ -328,39 +333,36 @@ export function Table({
     useEffect(handleChange, [orders, initialRows]);
 
     return (
-        <form
-            ref={formRef}
-            onSubmit={(e) => e.preventDefault()}
+        <table
+            className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400"
             onChange={debouncedHandleChange}
         >
-            <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                    <tr>
-                        {tableHeaders.map((headerProps, index) => (
-                            <TableHeader
-                                key={index}
-                                {...headerProps}
-                                colIndex={index}
-                                initialRows={initialRows}
-                                rows={rows}
-                                setRows={setRows}
-                                sorter={sorters?.[index]}
-                                filter={filters?.[index]}
-                                filters={filters}
-                                searches={searches}
-                                setSearches={setSearches}
-                                orders={orders}
-                                setOrders={setOrders}
-                            />
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows.map((rowProps, index) => (
-                        <TableRow key={index} {...rowProps} />
+            <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+                <tr>
+                    {tableHeaders.map((headerProps, index) => (
+                        <TableHeader
+                            key={index}
+                            {...headerProps}
+                            colIndex={index}
+                            initialRows={initialRows}
+                            rows={rows}
+                            setRows={setRows}
+                            sorter={sorters?.[index]}
+                            filter={filters?.[index]}
+                            filters={filters}
+                            searches={searches}
+                            setSearches={setSearches}
+                            orders={orders}
+                            setOrders={setOrders}
+                        />
                     ))}
-                </tbody>
-            </table>
-        </form>
+                </tr>
+            </thead>
+            <tbody>
+                {rows.map((rowProps, index) => (
+                    <TableRow key={index} {...rowProps} />
+                ))}
+            </tbody>
+        </table>
     );
 }
