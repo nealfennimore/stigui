@@ -64,7 +64,12 @@ const Sortable = ({ text, colIndex, orders, setOrders }: SortableProps) => {
             onClick={toggleOrder}
         >
             {text}
-            <input type="hidden" name={`orders_${colIndex}`} value={order} />
+            <input
+                type="hidden"
+                name={`orders_${colIndex}`}
+                value={order}
+                form="table"
+            />
             <svg
                 className="w-4 h-4 ms-1"
                 aria-hidden="true"
@@ -107,38 +112,11 @@ interface SearchableProps {
     setSearches: React.Dispatch<React.SetStateAction<PotentialSearch[]>>;
 }
 
-const Searchable = ({
-    text,
-    filters,
-    initialRows,
-    setRows,
-    colIndex,
-    searches,
-    setSearches,
-}: SearchableProps) => {
-    const handleFilter = (e: any) => {
-        const nextSearch = e?.target?.value ?? "";
-        const currentSearch = searches[colIndex];
-        let next: TableRowProps[] = initialRows;
-        if (nextSearch !== currentSearch) {
-            const nextSearches = [...searches];
-            nextSearches[colIndex] = nextSearch;
-
-            next = initialRows.filter((row) => {
-                return filters.every((filter, index) => {
-                    return filter && nextSearches[index]
-                        ? filter(nextSearches[index])(row.values[index])
-                        : true;
-                });
-            });
-            setSearches(nextSearches);
-        }
-        setRows(next);
-    };
-
+const Searchable = ({ text, colIndex }: SearchableProps) => {
     return (
         <span className="ml-4">
             <input
+                form="table"
                 name={`searches_${colIndex}`}
                 type="text"
                 className="w-full px-2 py-1 text-xs text-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -360,7 +338,7 @@ export function Table({
     useEffect(handleChange, [orders, initialRows]);
 
     return (
-        <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+        <form ref={formRef} name="table" onSubmit={(e) => e.preventDefault()}>
             <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
                 <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
                     <tr>

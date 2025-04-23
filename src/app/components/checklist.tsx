@@ -3,6 +3,7 @@ import { Checklist, Rule, Severity } from "@/api/generated/Checklist";
 import { IDB } from "@/app/db";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
+import { Table } from "./table";
 
 const debounce = (func: Function, delay: number) => {
     let timeout: NodeJS.Timeout;
@@ -155,6 +156,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             <section>
                 <form
                     ref={formRef}
+                    name="checklist"
                     onSubmit={(e) => e.preventDefault()}
                     onChange={debouncedHandleChange}
                 >
@@ -168,6 +170,115 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                             <p>Version {stig.version}</p>
                             <p>{stig.size} rules</p>
                             <h3 className="text-2xl mt-6">Rules</h3>
+                            <Table
+                                // sorters={sorters}
+                                // filters={filters}
+                                tableHeaders={[
+                                    { text: "Title" },
+                                    { text: "Version" },
+                                    { text: "Classification" },
+                                    { text: "Discussion" },
+                                    { text: "Check" },
+                                    { text: "Fix" },
+                                    { text: "Severity" },
+                                    { text: "Status" },
+                                    { text: "Comments" },
+                                    { text: "Finding Details" },
+                                ]}
+                                tableBody={stig.rules.map((rule) => ({
+                                    values: [
+                                        rule.rule_title,
+                                        rule.rule_version,
+                                        rule.classification,
+                                        rule.discussion,
+                                        rule.check_content,
+                                        rule.fix_text,
+                                        rule.severity,
+                                        rule.status,
+                                        rule.comments,
+                                        rule.finding_details,
+                                    ],
+                                    columns: [
+                                        rule.rule_title,
+                                        rule.rule_version,
+                                        rule.classification,
+                                        rule.discussion,
+                                        rule.check_content,
+                                        rule.fix_text,
+                                        <>
+                                            <select
+                                                defaultValue={
+                                                    rule.overrides?.severity
+                                                        ?.severity ??
+                                                    rule.severity
+                                                }
+                                                form="checklist"
+                                                name={`rule.${rule.uuid}.overrides.severity.severity`}
+                                                className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            >
+                                                <option value={Severity.High}>
+                                                    High/CAT I
+                                                </option>
+                                                <option value={Severity.Medium}>
+                                                    Medium/CAT II
+                                                </option>
+                                                <option value={Severity.Low}>
+                                                    Low/CAT III
+                                                </option>
+                                                <option value={Severity.Info}>
+                                                    Info/CAT IV
+                                                </option>
+                                            </select>
+                                            {rule.overrides?.severity
+                                                ?.severity &&
+                                                rule.severity !==
+                                                    rule.overrides?.severity
+                                                        ?.severity && (
+                                                    <textarea
+                                                        form="checklist"
+                                                        name={`rule.${rule.uuid}.overrides.severity.reason`}
+                                                        className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                                        defaultValue={
+                                                            rule.overrides
+                                                                ?.severity
+                                                                ?.reason
+                                                        }
+                                                    ></textarea>
+                                                )}
+                                        </>,
+                                        <select
+                                            form="checklist"
+                                            defaultValue={rule.status}
+                                            name={`rule.${rule.uuid}.status`}
+                                            className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                        >
+                                            <option value="not_a_finding">
+                                                Not a Finding
+                                            </option>
+                                            <option value="not_applicable">
+                                                Not Applicable
+                                            </option>
+                                            <option value="not_reviewed">
+                                                Not Reviewed
+                                            </option>
+                                            <option value="open">Open</option>
+                                        </select>,
+                                        <textarea
+                                            form="checklist"
+                                            name={`rule.${rule.uuid}.comments`}
+                                            className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            defaultValue={rule.comments}
+                                        ></textarea>,
+                                        <textarea
+                                            form="checklist"
+                                            name={`rule.${rule.uuid}.finding_details`}
+                                            className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            defaultValue={rule.finding_details}
+                                        ></textarea>,
+                                    ],
+                                }))}
+                                initialOrders={[]}
+                            />
                             {stig.rules.map((rule) => (
                                 <div key={rule.group_id} className="my-4">
                                     <h4 className="text-xl">
