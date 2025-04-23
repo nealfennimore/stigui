@@ -1,18 +1,10 @@
 "use client";
 import { Checklist, Rule, Severity } from "@/api/generated/Checklist";
 import { IDB } from "@/app/db";
+import { debounce } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { Table } from "./table";
-
-const debounce = (func: Function, delay: number) => {
-    let timeout: NodeJS.Timeout;
-    return function (...args: any[]) {
-        const context = this;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(context, args), delay);
-    };
-};
 
 const compare = (a: { [key: string]: any }, b: { [key: string]: any }) => {
     const aKeys = Object.keys(a);
