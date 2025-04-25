@@ -88,8 +88,17 @@ export const Navigation = () => {
                             >
                                 <div className="py-1" role="none">
                                     <a
+                                        href="/editor"
+                                        className="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-400 flex flex-row"
+                                        tabIndex={100}
+                                    >
+                                        Editor
+                                    </a>
+                                </div>
+                                <div className="py-1" role="none">
+                                    <a
                                         href="https://github.com/nealfennimore/stig"
-                                        className="block px-4 py-2 text-sm text-zinc-700 flex flex-row"
+                                        className="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-400 flex flex-row"
                                         tabIndex={100}
                                     >
                                         <svg
