@@ -16,8 +16,6 @@ export const RuleEdit = ({ rule }: Props) => {
         rule.overrides?.severity?.severity ?? rule.severity
     );
 
-    console.log(initialSeverity, rule.severity);
-
     return (
         <section className="my-4" key={rule.uuid}>
             <h3 className="py-3">ℹ️ Check</h3>

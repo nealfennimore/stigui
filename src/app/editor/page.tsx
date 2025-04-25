@@ -1,5 +1,6 @@
 "use client";
 import { ChecklistView } from "@/app/components/checklist";
+import { ChecklistsView } from "@/app/components/checklists";
 import { Footer } from "@/app/components/client/footer";
 import { Main } from "@/app/components/client/main";
 import { Navigation } from "@/app/components/navigation";
@@ -11,7 +12,15 @@ export default function Page() {
     const params = useSearchParams();
     const checklistId = params.get("id");
     if (!checklistId) {
-        return null;
+        return (
+            <ManifestComponent>
+                <Navigation />
+                <Main>
+                    <ChecklistsView />
+                </Main>
+                <Footer />
+            </ManifestComponent>
+        );
     }
 
     return (

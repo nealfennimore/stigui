@@ -212,7 +212,7 @@ interface Props {
     filters?: PotentialFilter[];
     initialOrders?: PotentialOrder[];
 
-    formRef: React.RefObject<HTMLFormElement>;
+    formRef: React.RefObject<HTMLFormElement> | null;
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -238,7 +238,7 @@ const processRows = ({
     filters,
     priorities,
 }: {
-    formRef: React.RefObject<HTMLFormElement>;
+    formRef: React.RefObject<HTMLFormElement> | null;
     initialRows: TableRowProps[];
     orders: PotentialOrder[];
     searches: PotentialSearch[];

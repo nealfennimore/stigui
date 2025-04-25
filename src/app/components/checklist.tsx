@@ -249,7 +249,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 <Sidebar
                     isOpen={rule !== null}
                     onClick={() => setRowIdx(null)}
-                    headerText={"Rule Details"}
+                    headerText={rule?.rule_title ?? "Rule Details"}
                 >
                     <RuleEdit rule={rule} />
                 </Sidebar>
