@@ -86,7 +86,6 @@ const toEditor = async (
         stig.stig,
         Object.values(stig.rawProfilesByClassification[classification]).flat()
     );
-    debugger;
     await IDB.importChecklist(checklist);
     router.push(`/editor?id=${checklist.id}`);
 };
