@@ -129,6 +129,14 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         };
     }, [currentRules]);
 
+    const rule = useMemo(
+        () =>
+            selectedIdx !== null && selectedIdx > -1
+                ? viewableRules?.[selectedIdx]
+                : null,
+        [selectedIdx]
+    );
+
     const handleChange = useMemo(
         () => (e: Event) => {
             if (!formRef.current) {
@@ -200,7 +208,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 setChecklist(checklist);
             });
         },
-        [viewableRules, currentRules]
+        [viewableRules, currentRules, rule]
     );
 
     const debouncedHandleChange = useMemo(
@@ -230,14 +238,6 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             classNames: [null, null, null, "max-lg:hidden"],
         }));
     }, [viewableRules]);
-
-    const rule = useMemo(
-        () =>
-            selectedIdx !== null && selectedIdx > -1
-                ? viewableRules?.[selectedIdx]
-                : null,
-        [selectedIdx]
-    );
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
