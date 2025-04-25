@@ -138,9 +138,7 @@ export const StigView = ({
         classification || Classification.Public
     );
     const [selectedIdx, setRowIdx] = useState<number | null>(null);
-
     const formRef = useRef<HTMLFormElement>(null);
-
     useEffect(() => {
         const handleClick = () => {
             setRowIdx(null);
