@@ -200,7 +200,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 setChecklist(checklist);
             });
         },
-        [viewableRules]
+        [viewableRules, currentRules]
     );
 
     const debouncedHandleChange = useMemo(
@@ -236,7 +236,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             selectedIdx !== null && selectedIdx > -1
                 ? viewableRules?.[selectedIdx]
                 : null,
-        [selectedIdx, viewableRules]
+        [selectedIdx]
     );
 
     return (
