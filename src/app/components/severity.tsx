@@ -3,6 +3,17 @@
 import { Severity } from "@/api/generated/Checklist";
 import { ElementType } from "react";
 
+export const SeverityPriority = {
+    [Severity.High]: 4,
+    [Severity.Medium]: 3,
+    [Severity.Low]: 2,
+    [Severity.Info]: 1,
+};
+
+export const bySeverity = (a: Severity, b: Severity) => {
+    return SeverityPriority[a] - SeverityPriority[b];
+};
+
 const SeverityColor = {
     [Severity.High]:
         "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",

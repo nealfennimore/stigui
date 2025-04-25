@@ -221,6 +221,23 @@ export class StigWrapper {
         }, {} as Record<Classification, Record<Priority, ProfileWrapper[]>>);
     }
 
+    get rawProfilesByClassification() {
+        return this._stig.Benchmark.Profile.reduce((acc, profile) => {
+            const [priority, classification] = profile['+@id'].split('_') as [
+                Priority,
+                Classification
+            ];
+            if (!acc[classification]) {
+                acc[classification] = {} as Record<Priority, IProfile[]>;
+            }
+            if (!acc[classification][priority]) {
+                acc[classification][priority] = [];
+            }
+            acc[classification][priority].push(profile);
+            return acc;
+        }, {} as Record<Classification, Record<Priority, IProfile[]>>);
+    }
+
     groupsByProfiles(profiles: ProfileWrapper[]) {
         const profileIds = profiles.reduce((acc, profile) => {
             profile.select.forEach((select) => {

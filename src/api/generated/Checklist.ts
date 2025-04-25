@@ -96,7 +96,12 @@ export interface GroupTree {
 
 export type Description = String;
 
-export interface Overrides {}
+export interface Overrides {
+    severity?: {
+        severity: Severity;
+        reason: string;
+    };
+}
 
 export enum Severity {
     High = 'high',

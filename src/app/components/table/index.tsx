@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { debounce } from "@/app/utils";
+import React, { useEffect, useState } from "react";
 
 interface TableRowProps {
     values: string[];
@@ -107,35 +108,7 @@ interface SearchableProps {
     setSearches: React.Dispatch<React.SetStateAction<PotentialSearch[]>>;
 }
 
-const Searchable = ({
-    text,
-    filters,
-    initialRows,
-    setRows,
-    colIndex,
-    searches,
-    setSearches,
-}: SearchableProps) => {
-    const handleFilter = (e: any) => {
-        const nextSearch = e?.target?.value ?? "";
-        const currentSearch = searches[colIndex];
-        let next: TableRowProps[] = initialRows;
-        if (nextSearch !== currentSearch) {
-            const nextSearches = [...searches];
-            nextSearches[colIndex] = nextSearch;
-
-            next = initialRows.filter((row) => {
-                return filters.every((filter, index) => {
-                    return filter && nextSearches[index]
-                        ? filter(nextSearches[index])(row.values[index])
-                        : true;
-                });
-            });
-            setSearches(nextSearches);
-        }
-        setRows(next);
-    };
-
+const Searchable = ({ text, colIndex }: SearchableProps) => {
     return (
         <span className="ml-4">
             <input
@@ -238,6 +211,8 @@ interface Props {
     sorters?: PotentialSorter[];
     filters?: PotentialFilter[];
     initialOrders?: PotentialOrder[];
+
+    formRef: React.RefObject<HTMLFormElement> | null;
 }
 
 export const defaultSort = (a: any, b: any) => {
@@ -263,7 +238,7 @@ const processRows = ({
     filters,
     priorities,
 }: {
-    formRef: React.RefObject<HTMLFormElement>;
+    formRef: React.RefObject<HTMLFormElement> | null;
     initialRows: TableRowProps[];
     orders: PotentialOrder[];
     searches: PotentialSearch[];
@@ -276,10 +251,13 @@ const processRows = ({
         searches: [...searches],
     };
 
-    if (formRef.current) {
+    if (formRef?.current) {
         const formData = new FormData(formRef.current);
         for (const [key, value] of formData.entries()) {
             const [name, index] = key.split("_");
+            if (name !== "orders" && name !== "searches") {
+                continue;
+            }
             const idx = parseInt(index);
             next[name as "orders" | "searches"][idx] = value as string;
         }
@@ -318,8 +296,8 @@ export function Table({
     sorters,
     filters,
     initialOrders,
+    formRef,
 }: Props) {
-    const formRef = useRef<HTMLFormElement>(null);
     const [rows, setRows] = useState(
         processRows({
             formRef,
@@ -350,45 +328,41 @@ export function Table({
         setRows(nextRows);
     };
 
-    useEffect(() => {
-        formRef?.current?.addEventListener("change", handleChange);
-        return () => {
-            formRef?.current?.removeEventListener("change", handleChange);
-        };
-    }, [formRef]);
+    const debouncedHandleChange = debounce(handleChange, 500);
 
     useEffect(handleChange, [orders, initialRows]);
 
     return (
-        <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-            <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                    <tr>
-                        {tableHeaders.map((headerProps, index) => (
-                            <TableHeader
-                                key={index}
-                                {...headerProps}
-                                colIndex={index}
-                                initialRows={initialRows}
-                                rows={rows}
-                                setRows={setRows}
-                                sorter={sorters?.[index]}
-                                filter={filters?.[index]}
-                                filters={filters}
-                                searches={searches}
-                                setSearches={setSearches}
-                                orders={orders}
-                                setOrders={setOrders}
-                            />
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows.map((rowProps, index) => (
-                        <TableRow key={index} {...rowProps} />
+        <table
+            className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400"
+            onChange={debouncedHandleChange}
+        >
+            <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+                <tr>
+                    {tableHeaders.map((headerProps, index) => (
+                        <TableHeader
+                            key={index}
+                            {...headerProps}
+                            colIndex={index}
+                            initialRows={initialRows}
+                            rows={rows}
+                            setRows={setRows}
+                            sorter={sorters?.[index]}
+                            filter={filters?.[index]}
+                            filters={filters}
+                            searches={searches}
+                            setSearches={setSearches}
+                            orders={orders}
+                            setOrders={setOrders}
+                        />
                     ))}
-                </tbody>
-            </table>
-        </form>
+                </tr>
+            </thead>
+            <tbody>
+                {rows.map((rowProps, index) => (
+                    <TableRow key={index} {...rowProps} />
+                ))}
+            </tbody>
+        </table>
     );
 }

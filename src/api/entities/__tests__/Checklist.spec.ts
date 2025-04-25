@@ -22,6 +22,9 @@ describe('CKLBConverter', () => {
     const validator = new Validator();
 
     for (const schema of fs.readdirSync(schemaDir)) {
+        if (!schema.endsWith('.json')) {
+            continue;
+        }
         it(`should match snapshot for ${schema}`, () => {
             const data = fs.readFileSync(path.join(schemaDir, schema), 'utf8');
             const stig = Convert.toStig(data);

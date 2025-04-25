@@ -7,13 +7,14 @@ import {
 } from "@/app/components/table";
 import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 
 const sorters = [defaultSort, defaultSort, defaultSort];
 const filters = [defaultFilter, null, null];
 
 export const Stigs = () => {
     const manifest = useManifestContext();
+    const formRef = useRef<HTMLFormElement>(null);
     if (!manifest.elements?.length) {
         return null;
     }
@@ -61,13 +62,16 @@ export const Stigs = () => {
         <>
             <section className="w-full flex flex-col">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <Table
-                        sorters={sorters}
-                        filters={filters}
-                        tableHeaders={tableHeaders}
-                        tableBody={tableBody}
-                        initialOrders={[Order.ASC, Order.NONE, Order.NONE]}
-                    />
+                    <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+                        <Table
+                            sorters={sorters}
+                            filters={filters}
+                            tableHeaders={tableHeaders}
+                            tableBody={tableBody}
+                            initialOrders={[Order.ASC, Order.NONE, Order.NONE]}
+                            formRef={formRef}
+                        />
+                    </form>
                 </div>
             </section>
         </>

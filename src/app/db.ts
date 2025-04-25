@@ -110,6 +110,7 @@ export const getAll =
             Permission.READONLY
         );
         if (index) {
+            // debugger;
             store = store.index(index) as IDBIndex;
         }
         const request = store.getAll(query, count);
@@ -131,6 +132,7 @@ export const get =
             Permission.READONLY
         );
         if (index) {
+            // debugger;
             store = store.index(index) as IDBIndex;
         }
         const request = store.get(query);
@@ -229,7 +231,12 @@ export class IDB {
 
     static version = version;
 
-    static async exportChecklist(checklistId: string): Promise<IDBChecklist> {
+    static async exportChecklist(
+        checklistId: string
+    ): Promise<Checklist | null> {
+        if (typeof window === "undefined") {
+            return Promise.resolve(null);
+        }
         try {
             // Get checklist metadata
             const checklist = await IDB.checklists.get(checklistId);
@@ -244,21 +251,31 @@ export class IDB {
 
             const stidUuids = stigChecklistsIdx.map((link) => link.stig_uuid);
 
-            const stigs = await new IndexWrapper<IDBStig>(
-                IDB.stigs.table,
-                "stig_uuid"
-            ).getAll(stidUuids);
+            const stigs = await Promise.all(
+                stidUuids.map((uuid) => IDB.stigs.get(uuid))
+            );
 
-            const rules = await new IndexWrapper<IDBRule>(
+            const rulesIdx = new IndexWrapper<IDBRule>(
                 IDB.rules.table,
                 "stig_uuid"
-            ).getAll(stidUuids);
+            );
+
+            const rulesByStigUuid = await stidUuids.reduce(
+                async (accPromise, uuid) => {
+                    const acc = await accPromise;
+                    const rules = await rulesIdx.getAll(uuid);
+                    acc[uuid] = rules;
+                    return acc;
+                },
+                Promise.resolve({} as Record<string, Rule[]>)
+            );
 
             const result: Checklist = {
                 ...checklist,
                 stigs: stigs.map((stig) => ({
                     ...stig,
-                    rules: rules.filter((rule) => rule.stig_uuid === stig.uuid),
+                    rules: rulesByStigUuid[stig.uuid],
+                    size: rulesByStigUuid[stig.uuid].length,
                 })),
             };
 
@@ -296,3 +313,6 @@ export class IDB {
         }
     }
 }
+
+// @ts-ignore
+typeof window !== "undefined" && (window.db = IDB);
