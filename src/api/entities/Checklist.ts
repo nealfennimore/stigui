@@ -27,7 +27,7 @@ function getClassification(profile: Profile): Classification {
 
 export default class Checklist extends Convert {
     static vulnDiscussionRe = new RegExp(
-        '/<VulnDiscussion>(.*)</VulnDiscussion>/'
+        /<VulnDiscussion>(.*)<\/VulnDiscussion>/s
     );
 
     static read = async (path: string) => {
@@ -161,15 +161,15 @@ export default class Checklist extends Convert {
                     '+content'
                 ] || '',
             version: stig.Benchmark.version,
-            uuid: uuidv4(),
+            uuid: stigId,
             reference_identifier: groups[0].Rule.reference.identifier,
             size: rules.length,
             rules,
         };
 
         const checklist: IChecklist = {
-            title: Benchmark.title,
-            id: stigId,
+            title: `Checklist ${Benchmark.title}`,
+            id: uuidv4(),
             stigs: [stigs],
             active: false,
             mode: 2,

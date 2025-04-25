@@ -48,7 +48,7 @@ const tableHeaders = [
     { text: "Status" },
     { text: "Severity" },
     { text: "Title" },
-    { text: "Discussion", className: "max-lg:hidden" },
+    { text: "Description", className: "max-lg:hidden" },
 ];
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const [checklist, setChecklist] = useState<Checklist | null>(null);

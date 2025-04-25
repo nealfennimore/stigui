@@ -1,9 +1,13 @@
 "use client";
+import Checklist from "@/api/entities/Checklist";
 import { Classification, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
 import { Sidebar } from "@/app/components/sidebar";
 import { useStigContext } from "@/app/context/stig";
+import { IDB } from "@/app/db";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { GroupInfo } from "./group";
@@ -73,6 +77,20 @@ const toCSV = (stig: StigWrapper) => {
     URL.revokeObjectURL(url);
 };
 
+const toEditor = async (
+    stig: StigWrapper,
+    classification: Classification,
+    router: AppRouterInstance
+) => {
+    const checklist = Checklist.fromStig(
+        stig.stig,
+        Object.values(stig.rawProfilesByClassification[classification]).flat()
+    );
+    debugger;
+    await IDB.importChecklist(checklist);
+    router.push(`/editor?id=${checklist.id}`);
+};
+
 const Button = ({
     classfication,
     selectedClassfication,
@@ -114,6 +132,7 @@ export const StigView = ({
     classification?: Classification;
 }) => {
     const stig = useStigContext();
+    const router = useRouter();
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [classificationLevel, setClassficationLevel] = useState(
         classification || Classification.Public
@@ -300,9 +319,17 @@ export const StigView = ({
                     </button>
                     <button
                         onClick={() => toCSV(stig)}
-                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
                     >
                         CSV
+                    </button>
+                    <button
+                        onClick={() =>
+                            toEditor(stig, classificationLevel, router)
+                        }
+                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                    >
+                        Edit
                     </button>
                 </div>
             </section>
