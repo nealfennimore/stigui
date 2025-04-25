@@ -1,9 +1,10 @@
 "use client";
 import { Checklist, Rule, Severity, Status } from "@/api/generated/Checklist";
+import { RuleEdit } from "@/app/components/client/editor/rule";
+import { Sidebar } from "@/app/components/sidebar";
 import { IDB } from "@/app/db";
 import { debounce } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { Breadcrumbs } from "./breadcrumbs";
 import { SeverityBadge, bySeverity } from "./severity";
 import { StatusBadge, byStatus } from "./status";
 import { Order, Table, defaultFilter, defaultSort } from "./table";
@@ -42,11 +43,26 @@ type FormRuleProperties = Pick<
 interface FormChecklistChanges {
     rule: Record<string, FormRuleProperties>;
 }
+
+const tableHeaders = [
+    { text: "Status" },
+    { text: "Severity" },
+    { text: "Title" },
+    { text: "Discussion", className: "max-lg:hidden" },
+];
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const [checklist, setChecklist] = useState<Checklist | null>(null);
     const formRef = useRef<HTMLFormElement>(null);
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [statuses, setStatuses] = useState<Set<Status>>(new Set());
+    const [selectedIdx, setRowIdx] = useState<number | null>(null);
+
+    useEffect(() => {
+        (async () => {
+            const checklist = await IDB.exportChecklist(checklistId);
+            setChecklist(checklist);
+        })();
+    }, [checklistId]);
 
     const currentRules = useMemo(() => {
         if (!checklist) {
@@ -62,23 +78,21 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
 
     const viewableRules = useMemo(() => {
         if (!currentRules) {
-            return {};
+            return [];
         }
-        return Object.fromEntries(
-            Object.entries(currentRules).filter(([uuid, rule]) => {
-                const severity =
-                    rule.overrides?.severity?.severity ?? rule.severity;
-                const status = rule.status;
+        return Object.values(currentRules).filter((rule) => {
+            const severity =
+                rule.overrides?.severity?.severity ?? rule.severity;
+            const status = rule.status;
 
-                if (severities.size > 0 && !severities.has(severity)) {
-                    return false;
-                }
-                if (statuses.size > 0 && !statuses.has(status)) {
-                    return false;
-                }
-                return true;
-            })
-        );
+            if (severities.size > 0 && !severities.has(severity)) {
+                return false;
+            }
+            if (statuses.size > 0 && !statuses.has(status)) {
+                return false;
+            }
+            return true;
+        });
     }, [currentRules, severities, statuses]);
 
     const counts = useMemo(() => {
@@ -114,13 +128,6 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             ),
         };
     }, [currentRules]);
-
-    useEffect(() => {
-        (async () => {
-            const checklist = await IDB.exportChecklist(checklistId);
-            setChecklist(checklist);
-        })();
-    }, [checklistId]);
 
     const handleChange = useMemo(
         () => (e: Event) => {
@@ -188,10 +195,12 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 let rule = { ...currentRules[uuid], ...value, uuid } as Rule;
                 updates.push(IDB.rules.put(rule));
             }
-            Promise.all(updates).then(console.log);
+            Promise.all(updates).then(async () => {
+                const checklist = await IDB.exportChecklist(checklistId);
+                setChecklist(checklist);
+            });
         },
-
-        [currentRules]
+        [viewableRules]
     );
 
     const debouncedHandleChange = useMemo(
@@ -199,21 +208,55 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [handleChange]
     );
 
+    const tableBody = useMemo(() => {
+        return viewableRules.map((rule, idx) => ({
+            onClick: () => setRowIdx(idx),
+            values: [
+                rule.status,
+                rule.overrides?.severity?.severity ?? rule.severity,
+                rule.rule_title,
+                rule.discussion,
+            ],
+            columns: [
+                <StatusBadge status={rule.status} />,
+                <SeverityBadge
+                    severity={
+                        rule.overrides?.severity?.severity ?? rule.severity
+                    }
+                />,
+                rule.rule_title,
+                rule.discussion,
+            ],
+            classNames: [null, null, null, "max-lg:hidden"],
+        }));
+    }, [viewableRules]);
+
+    const rule = useMemo(
+        () =>
+            selectedIdx !== null && selectedIdx > -1
+                ? viewableRules?.[selectedIdx]
+                : null,
+        [selectedIdx, viewableRules]
+    );
+
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <Breadcrumbs />
-
             <form
                 ref={formRef}
                 onSubmit={(e) => e.preventDefault()}
                 onChange={debouncedHandleChange}
             >
+                <Sidebar
+                    isOpen={rule !== null}
+                    onClick={() => setRowIdx(null)}
+                    headerText={"Rule Details"}
+                >
+                    <RuleEdit rule={rule} />
+                </Sidebar>
+
                 {checklist?.stigs.map((stig) => (
-                    <>
-                        <section
-                            key={stig.uuid}
-                            className="my-4 w-full flex flex-col"
-                        >
+                    <div key={stig.uuid}>
+                        <section className="my-4 w-full flex flex-col">
                             <h1 className="text-3xl my-6">
                                 {checklist?.title}
                             </h1>
@@ -300,119 +343,8 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 formRef={formRef}
                                 filters={filters}
                                 sorters={sorters}
-                                tableHeaders={[
-                                    { text: "Status" },
-                                    { text: "Severity" },
-                                    { text: "Title" },
-                                    // { text: "Version" },
-                                    // { text: "Classification" },
-                                    { text: "Discussion" },
-                                    // { text: "Check" },
-                                    // { text: "Fix" },
-                                    // { text: "Comments" },
-                                    // { text: "Finding Details" },
-                                ]}
-                                tableBody={Object.values(viewableRules).map(
-                                    (rule) => ({
-                                        values: [
-                                            rule.status,
-                                            rule.overrides?.severity
-                                                ?.severity ?? rule.severity,
-                                            rule.rule_title,
-                                            // rule.rule_version,
-                                            // rule.classification,
-                                            rule.discussion,
-                                            // rule.check_content,
-                                            // rule.fix_text,
-                                            // rule.comments,
-                                            // rule.finding_details,
-                                        ],
-                                        columns: [
-                                            <StatusBadge
-                                                status={rule.status}
-                                            />,
-                                            <SeverityBadge
-                                                severity={
-                                                    rule.overrides?.severity
-                                                        ?.severity ??
-                                                    rule.severity
-                                                }
-                                            />,
-                                            rule.rule_title,
-                                            // <select
-                                            //     defaultValue={rule.status}
-                                            //     name={`rule.${rule.uuid}.status`}
-                                            //     className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            // >
-                                            //     <option value="not_a_finding">
-                                            //         Not a Finding
-                                            //     </option>
-                                            //     <option value="not_applicable">
-                                            //         Not Applicable
-                                            //     </option>
-                                            //     <option value="not_reviewed">
-                                            //         Not Reviewed
-                                            //     </option>
-                                            //     <option value="open">Open</option>
-                                            // </select>,
-                                            // rule.rule_version,
-                                            // rule.classification,
-                                            rule.discussion,
-                                            // rule.fix_text,
-                                            // rule.check_content,
-                                            // <>
-                                            //     <select
-                                            //         defaultValue={
-                                            //             rule.overrides?.severity
-                                            //                 ?.severity ??
-                                            //             rule.severity
-                                            //         }
-                                            //         name={`rule.${rule.uuid}.overrides.severity.severity`}
-                                            //         className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            //     >
-                                            //         <option value={Severity.High}>
-                                            //             High/CAT I
-                                            //         </option>
-                                            //         <option value={Severity.Medium}>
-                                            //             Medium/CAT II
-                                            //         </option>
-                                            //         <option value={Severity.Low}>
-                                            //             Low/CAT III
-                                            //         </option>
-                                            //         <option value={Severity.Info}>
-                                            //             Info/CAT IV
-                                            //         </option>
-                                            //     </select>
-                                            //     {rule.overrides?.severity
-                                            //         ?.severity &&
-                                            //         rule.severity !==
-                                            //             rule.overrides?.severity
-                                            //                 ?.severity && (
-                                            //             <textarea
-                                            //                 name={`rule.${rule.uuid}.overrides.severity.reason`}
-                                            //                 className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            //                 defaultValue={
-                                            //                     rule.overrides
-                                            //                         ?.severity
-                                            //                         ?.reason
-                                            //                 }
-                                            //             ></textarea>
-                                            //         )}
-                                            // </>,
-
-                                            // <textarea
-                                            //     name={`rule.${rule.uuid}.comments`}
-                                            //     className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            //     defaultValue={rule.comments}
-                                            // ></textarea>,
-                                            // <textarea
-                                            //     name={`rule.${rule.uuid}.finding_details`}
-                                            //     className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            //     defaultValue={rule.finding_details}
-                                            // ></textarea>,
-                                        ],
-                                    })
-                                )}
+                                tableHeaders={tableHeaders}
+                                tableBody={tableBody}
                                 initialOrders={[
                                     Order.NONE,
                                     Order.DESC,
@@ -421,7 +353,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 ]}
                             />
                         </section>
-                    </>
+                    </div>
                 ))}
             </form>
         </Suspense>

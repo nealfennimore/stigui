@@ -251,7 +251,7 @@ const processRows = ({
         searches: [...searches],
     };
 
-    if (formRef.current) {
+    if (formRef?.current) {
         const formData = new FormData(formRef.current);
         for (const [key, value] of formData.entries()) {
             const [name, index] = key.split("_");
