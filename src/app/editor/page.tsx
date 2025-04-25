@@ -7,8 +7,9 @@ import { Navigation } from "@/app/components/navigation";
 import ChecklistComponent from "@/app/context/checklist";
 import ManifestComponent from "@/app/context/manifest";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function Page() {
+function Boundary() {
     const params = useSearchParams();
     const checklistId = params.get("id");
     if (!checklistId) {
@@ -33,5 +34,13 @@ export default function Page() {
             </Main>
             <Footer />
         </ManifestComponent>
+    );
+}
+
+export default function Page() {
+    return (
+        <Suspense>
+            <Boundary />
+        </Suspense>
     );
 }
