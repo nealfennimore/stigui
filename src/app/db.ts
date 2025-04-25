@@ -249,8 +249,6 @@ export class IDB {
                 "checklist_id"
             ).getAll(checklistId);
 
-            debugger;
-
             const stidUuids = stigChecklistsIdx.map((link) => link.stig_uuid);
 
             const stigs = await Promise.all(
@@ -294,7 +292,6 @@ export class IDB {
             await IDB.checklists.put(checklist);
 
             // Store STIGs and create relations
-            debugger;
             for (const stigData of stigsData) {
                 const { rules: rulesData, ...stig } = stigData;
                 await IDB.stigs.put(stig);
