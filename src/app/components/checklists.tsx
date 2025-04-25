@@ -28,7 +28,7 @@ export const ChecklistsView = () => {
 
             setChecklists(checklists);
         })();
-    }, [checklists]);
+    }, []);
 
     const tableHeaders = useMemo(
         () => [
