@@ -1,10 +1,15 @@
 "use client";
-import { Checklist, Rule, Severity } from "@/api/generated/Checklist";
+import { Checklist, Rule, Severity, Status } from "@/api/generated/Checklist";
 import { IDB } from "@/app/db";
 import { debounce } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
-import { Table } from "./table";
+import { SeverityBadge, bySeverity } from "./severity";
+import { StatusBadge, byStatus } from "./status";
+import { Order, Table, defaultFilter, defaultSort } from "./table";
+
+const sorters = [defaultSort, bySeverity, byStatus, null];
+const filters = [null, null, defaultFilter, null];
 
 const compare = (a: { [key: string]: any }, b: { [key: string]: any }) => {
     const aKeys = Object.keys(a);
@@ -40,6 +45,8 @@ interface FormChecklistChanges {
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const [checklist, setChecklist] = useState<Checklist | null>(null);
     const formRef = useRef<HTMLFormElement>(null);
+    const [severities, setSeverities] = useState<Set<Severity>>(new Set());
+    const [statuses, setStatuses] = useState<Set<Status>>(new Set());
 
     const currentRules = useMemo(() => {
         if (!checklist) {
@@ -52,6 +59,61 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 return acc;
             }, {} as Record<string, Rule>);
     }, [checklist]);
+
+    const viewableRules = useMemo(() => {
+        if (!currentRules) {
+            return {};
+        }
+        return Object.fromEntries(
+            Object.entries(currentRules).filter(([uuid, rule]) => {
+                const severity =
+                    rule.overrides?.severity?.severity ?? rule.severity;
+                const status = rule.status;
+
+                if (severities.size > 0 && !severities.has(severity)) {
+                    return false;
+                }
+                if (statuses.size > 0 && !statuses.has(status)) {
+                    return false;
+                }
+                return true;
+            })
+        );
+    }, [currentRules, severities, statuses]);
+
+    const counts = useMemo(() => {
+        const counts: {
+            severity: Record<Severity, number>;
+            status: Record<Status, number>;
+        } = {
+            severity: {} as Record<Severity, number>,
+            status: {} as Record<Status, number>,
+        };
+        Object.values(currentRules).forEach((rule) => {
+            const severity =
+                rule.overrides?.severity?.severity ?? rule.severity;
+            const status = rule.status;
+
+            if (!counts.severity[severity]) {
+                counts.severity[severity] = 0;
+            }
+            counts.severity[severity]++;
+
+            if (!counts.status[status]) {
+                counts.status[status] = 0;
+            }
+            counts.status[status]++;
+        });
+
+        return {
+            severity: Object.entries(counts.severity).sort(([a], [b]) =>
+                bySeverity(b as Severity, a as Severity)
+            ),
+            status: Object.entries(counts.status).sort(([a], [b]) =>
+                byStatus(b as Status, a as Status)
+            ),
+        };
+    }, [currentRules]);
 
     useEffect(() => {
         (async () => {
@@ -128,6 +190,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             }
             Promise.all(updates).then(console.log);
         },
+
         [currentRules]
     );
 
@@ -140,136 +203,227 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         <Suspense fallback={<div>Loading...</div>}>
             <Breadcrumbs />
 
-            <section className="w-full flex flex-col">
-                <h1 className="text-3xl my-6">{checklist?.title}</h1>
-                <p>{checklist?.id}</p>
-            </section>
-
-            <section>
-                <form
-                    ref={formRef}
-                    onSubmit={(e) => e.preventDefault()}
-                    onChange={debouncedHandleChange}
-                >
-                    {checklist?.stigs.map((stig) => (
-                        <div key={stig.uuid} className="my-4">
-                            <h2 className="text-3xl">STIG</h2>
-                            <h3 className="text-2xl">{stig.stig_name}</h3>
-                            <p>{stig.display_name}</p>
-                            <p>{stig.release_info}</p>
-                            <p>{stig.reference_identifier}</p>D
-                            <p>Version {stig.version}</p>
-                            <p>{stig.size} rules</p>
-                            <h3 className="text-2xl mt-6">Rules</h3>
+            <form
+                ref={formRef}
+                onSubmit={(e) => e.preventDefault()}
+                onChange={debouncedHandleChange}
+            >
+                {checklist?.stigs.map((stig) => (
+                    <>
+                        <section
+                            key={stig.uuid}
+                            className="my-4 w-full flex flex-col"
+                        >
+                            <h1 className="text-3xl my-6">
+                                {checklist?.title}
+                            </h1>
+                            <h2 className="text-2xl my-6">{stig.stig_name}</h2>
+                            <div className="w-full flex flex-col justify-between">
+                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
+                                    <span>{stig.display_name}</span>
+                                    <span>Version {stig.version}</span>
+                                </div>
+                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
+                                    <span>{stig.size} rules</span>
+                                    <span>{stig.release_info}</span>
+                                </div>
+                            </div>
+                        </section>
+                        <aside className="w-full flex justify-between items-center my-6">
+                            <div>
+                                {counts.severity.map(([severity, count]) => (
+                                    <SeverityBadge
+                                        key={severity}
+                                        severity={severity as Severity}
+                                        count={count}
+                                        Element="button"
+                                        selected={severities.has(
+                                            severity as Severity
+                                        )}
+                                        onClick={() => {
+                                            const newSeverities = new Set(
+                                                severities
+                                            );
+                                            if (
+                                                newSeverities.has(
+                                                    severity as Severity
+                                                )
+                                            ) {
+                                                newSeverities.delete(
+                                                    severity as Severity
+                                                );
+                                            } else {
+                                                newSeverities.add(
+                                                    severity as Severity
+                                                );
+                                            }
+                                            setSeverities(newSeverities);
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                            <div>
+                                {counts.status.map(([status, count]) => (
+                                    <StatusBadge
+                                        key={status}
+                                        status={status as Status}
+                                        count={count}
+                                        Element="button"
+                                        selected={statuses.has(
+                                            status as Status
+                                        )}
+                                        onClick={() => {
+                                            const newStatuses = new Set(
+                                                statuses
+                                            );
+                                            if (
+                                                newStatuses.has(
+                                                    status as Status
+                                                )
+                                            ) {
+                                                newStatuses.delete(
+                                                    status as Status
+                                                );
+                                            } else {
+                                                newStatuses.add(
+                                                    status as Status
+                                                );
+                                            }
+                                            setStatuses(newStatuses);
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        </aside>
+                        <section className="w-full flex flex-col">
                             <Table
                                 formRef={formRef}
-                                // sorters={sorters}
-                                // filters={filters}
+                                filters={filters}
+                                sorters={sorters}
                                 tableHeaders={[
-                                    { text: "Title" },
-                                    { text: "Version" },
-                                    { text: "Classification" },
-                                    { text: "Discussion" },
-                                    { text: "Check" },
-                                    { text: "Fix" },
-                                    { text: "Severity" },
                                     { text: "Status" },
-                                    { text: "Comments" },
-                                    { text: "Finding Details" },
+                                    { text: "Severity" },
+                                    { text: "Title" },
+                                    // { text: "Version" },
+                                    // { text: "Classification" },
+                                    { text: "Discussion" },
+                                    // { text: "Check" },
+                                    // { text: "Fix" },
+                                    // { text: "Comments" },
+                                    // { text: "Finding Details" },
                                 ]}
-                                tableBody={stig.rules.map((rule) => ({
-                                    values: [
-                                        rule.rule_title,
-                                        rule.rule_version,
-                                        rule.classification,
-                                        rule.discussion,
-                                        rule.check_content,
-                                        rule.fix_text,
-                                        rule.severity,
-                                        rule.status,
-                                        rule.comments,
-                                        rule.finding_details,
-                                    ],
-                                    columns: [
-                                        rule.rule_title,
-                                        rule.rule_version,
-                                        rule.classification,
-                                        rule.discussion,
-                                        rule.check_content,
-                                        rule.fix_text,
-                                        <>
-                                            <select
-                                                defaultValue={
+                                tableBody={Object.values(viewableRules).map(
+                                    (rule) => ({
+                                        values: [
+                                            rule.status,
+                                            rule.overrides?.severity
+                                                ?.severity ?? rule.severity,
+                                            rule.rule_title,
+                                            // rule.rule_version,
+                                            // rule.classification,
+                                            rule.discussion,
+                                            // rule.check_content,
+                                            // rule.fix_text,
+                                            // rule.comments,
+                                            // rule.finding_details,
+                                        ],
+                                        columns: [
+                                            <StatusBadge
+                                                status={rule.status}
+                                            />,
+                                            <SeverityBadge
+                                                severity={
                                                     rule.overrides?.severity
                                                         ?.severity ??
                                                     rule.severity
                                                 }
-                                                name={`rule.${rule.uuid}.overrides.severity.severity`}
-                                                className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            >
-                                                <option value={Severity.High}>
-                                                    High/CAT I
-                                                </option>
-                                                <option value={Severity.Medium}>
-                                                    Medium/CAT II
-                                                </option>
-                                                <option value={Severity.Low}>
-                                                    Low/CAT III
-                                                </option>
-                                                <option value={Severity.Info}>
-                                                    Info/CAT IV
-                                                </option>
-                                            </select>
-                                            {rule.overrides?.severity
-                                                ?.severity &&
-                                                rule.severity !==
-                                                    rule.overrides?.severity
-                                                        ?.severity && (
-                                                    <textarea
-                                                        name={`rule.${rule.uuid}.overrides.severity.reason`}
-                                                        className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                                        defaultValue={
-                                                            rule.overrides
-                                                                ?.severity
-                                                                ?.reason
-                                                        }
-                                                    ></textarea>
-                                                )}
-                                        </>,
-                                        <select
-                                            defaultValue={rule.status}
-                                            name={`rule.${rule.uuid}.status`}
-                                            className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                        >
-                                            <option value="not_a_finding">
-                                                Not a Finding
-                                            </option>
-                                            <option value="not_applicable">
-                                                Not Applicable
-                                            </option>
-                                            <option value="not_reviewed">
-                                                Not Reviewed
-                                            </option>
-                                            <option value="open">Open</option>
-                                        </select>,
-                                        <textarea
-                                            name={`rule.${rule.uuid}.comments`}
-                                            className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            defaultValue={rule.comments}
-                                        ></textarea>,
-                                        <textarea
-                                            name={`rule.${rule.uuid}.finding_details`}
-                                            className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
-                                            defaultValue={rule.finding_details}
-                                        ></textarea>,
-                                    ],
-                                }))}
-                                initialOrders={[]}
+                                            />,
+                                            rule.rule_title,
+                                            // <select
+                                            //     defaultValue={rule.status}
+                                            //     name={`rule.${rule.uuid}.status`}
+                                            //     className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            // >
+                                            //     <option value="not_a_finding">
+                                            //         Not a Finding
+                                            //     </option>
+                                            //     <option value="not_applicable">
+                                            //         Not Applicable
+                                            //     </option>
+                                            //     <option value="not_reviewed">
+                                            //         Not Reviewed
+                                            //     </option>
+                                            //     <option value="open">Open</option>
+                                            // </select>,
+                                            // rule.rule_version,
+                                            // rule.classification,
+                                            rule.discussion,
+                                            // rule.fix_text,
+                                            // rule.check_content,
+                                            // <>
+                                            //     <select
+                                            //         defaultValue={
+                                            //             rule.overrides?.severity
+                                            //                 ?.severity ??
+                                            //             rule.severity
+                                            //         }
+                                            //         name={`rule.${rule.uuid}.overrides.severity.severity`}
+                                            //         className="border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            //     >
+                                            //         <option value={Severity.High}>
+                                            //             High/CAT I
+                                            //         </option>
+                                            //         <option value={Severity.Medium}>
+                                            //             Medium/CAT II
+                                            //         </option>
+                                            //         <option value={Severity.Low}>
+                                            //             Low/CAT III
+                                            //         </option>
+                                            //         <option value={Severity.Info}>
+                                            //             Info/CAT IV
+                                            //         </option>
+                                            //     </select>
+                                            //     {rule.overrides?.severity
+                                            //         ?.severity &&
+                                            //         rule.severity !==
+                                            //             rule.overrides?.severity
+                                            //                 ?.severity && (
+                                            //             <textarea
+                                            //                 name={`rule.${rule.uuid}.overrides.severity.reason`}
+                                            //                 className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            //                 defaultValue={
+                                            //                     rule.overrides
+                                            //                         ?.severity
+                                            //                         ?.reason
+                                            //                 }
+                                            //             ></textarea>
+                                            //         )}
+                                            // </>,
+
+                                            // <textarea
+                                            //     name={`rule.${rule.uuid}.comments`}
+                                            //     className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            //     defaultValue={rule.comments}
+                                            // ></textarea>,
+                                            // <textarea
+                                            //     name={`rule.${rule.uuid}.finding_details`}
+                                            //     className="w-full h-32 border-2 border-zinc-300 dark:border-zinc-700 rounded-md p-2 text-zinc-900 dark:text-zinc-300 bg-white dark:bg-zinc-800"
+                                            //     defaultValue={rule.finding_details}
+                                            // ></textarea>,
+                                        ],
+                                    })
+                                )}
+                                initialOrders={[
+                                    Order.NONE,
+                                    Order.DESC,
+                                    Order.NONE,
+                                    Order.NONE,
+                                ]}
                             />
-                        </div>
-                    ))}
-                </form>
-            </section>
+                        </section>
+                    </>
+                ))}
+            </form>
         </Suspense>
     );
 };

@@ -7,19 +7,8 @@ import Link from "next/link";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { GroupInfo } from "./group";
-import { SeverityBadge } from "./severity";
+import { bySeverity, SeverityBadge } from "./severity";
 import { defaultFilter, defaultSort, Order, Table } from "./table";
-
-const SeverityPriority = {
-    [Severity.High]: 4,
-    [Severity.Medium]: 3,
-    [Severity.Low]: 2,
-    [Severity.Info]: 1,
-};
-
-const bySeverity = (a: Severity, b: Severity) => {
-    return SeverityPriority[a] - SeverityPriority[b];
-};
 
 const sorters = [defaultSort, bySeverity, defaultSort, null];
 const filters = [null, null, defaultFilter, defaultFilter];
