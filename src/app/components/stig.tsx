@@ -329,7 +329,7 @@ export const StigView = ({
                         }
                         className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
                     >
-                        Edit
+                        Edit 📝
                     </button>
                 </div>
             </section>
