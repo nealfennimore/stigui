@@ -480,7 +480,29 @@ const typeMap: any = {
         ],
         false
     ),
-    Overrides: o([], false),
+    Overrides: o(
+        [
+            {
+                json: 'severity',
+                js: 'severity',
+                typ: u(
+                    undefined,
+                    o(
+                        [
+                            {
+                                json: 'severity',
+                                js: 'severity',
+                                typ: r('Severity'),
+                            },
+                            { json: 'reason', js: 'reason', typ: '' },
+                        ],
+                        false
+                    )
+                ),
+            },
+        ],
+        false
+    ),
     TargetData: o(
         [
             { json: 'target_type', js: 'target_type', typ: '' },
