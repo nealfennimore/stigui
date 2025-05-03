@@ -1,10 +1,18 @@
 "use client";
-import { Checklist, Rule, Severity, Status } from "@/api/generated/Checklist";
+import {
+    Checklist,
+    Convert,
+    Rule,
+    Severity,
+    Status,
+} from "@/api/generated/Checklist";
 import { RuleEdit } from "@/app/components/client/editor/rule";
 import { Sidebar } from "@/app/components/sidebar";
-import { IDB } from "@/app/db";
-import { debounce } from "@/app/utils";
+import { IDB, IDBChecklist } from "@/app/db";
+import { debounce, download } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import type { TargetData } from "./checklist_target_data";
+import { ChecklistTargetData } from "./checklist_target_data";
 import { SeverityBadge, bySeverity } from "./severity";
 import { StatusBadge, byStatus } from "./status";
 import { Order, Table, defaultFilter, defaultSort } from "./table";
@@ -42,7 +50,17 @@ type FormRuleProperties = Pick<
 
 interface FormChecklistChanges {
     rule: Record<string, FormRuleProperties>;
+    target_data: Record<string, TargetData>;
 }
+
+const toCKLB = (checklist: Checklist) => {
+    const blob = new Blob([Convert.checklistToJson(checklist)], {
+        type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    download(url, `checklist-${checklist.id}.cklb`);
+    URL.revokeObjectURL(url);
+};
 
 const tableHeaders = [
     { text: "Status" },
@@ -269,6 +287,14 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
                                     <span>{stig.size} rules</span>
                                     <span>{stig.release_info}</span>
+                                </div>
+                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-end">
+                                    <button
+                                        onClick={() => toCKLB(checklist)}
+                                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                                    >
+                                        CKLB ⬇️
+                                    </button>
                                 </div>
                             </div>
                         </section>

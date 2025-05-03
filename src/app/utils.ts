@@ -6,3 +6,11 @@ export const debounce = (func: Function, delay: number) => {
         timeout = setTimeout(() => func.apply(context, args), delay);
     };
 };
+
+export const download = (url: string, filename: string) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+};

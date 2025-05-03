@@ -5,6 +5,7 @@ import { Severity } from "@/api/generated/Checklist";
 import { Sidebar } from "@/app/components/sidebar";
 import { useStigContext } from "@/app/context/stig";
 import { IDB } from "@/app/db";
+import { download } from "@/app/utils";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -32,14 +33,6 @@ const tableHeaders = [
         className: "max-lg:hidden",
     },
 ];
-
-const download = (url: string, filename: string) => {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-};
 
 const toCSV = (stig: StigWrapper) => {
     const csv = [
@@ -301,7 +294,7 @@ export const StigView = ({
                         }
                         className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
                     >
-                        XML
+                        XML ⬇️
                     </button>
                     <button
                         onClick={() =>
@@ -312,13 +305,13 @@ export const StigView = ({
                         }
                         className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
                     >
-                        JSON
+                        JSON ⬇️
                     </button>
                     <button
                         onClick={() => toCSV(stig)}
                         className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
                     >
-                        CSV
+                        CSV ⬇️
                     </button>
                     <button
                         onClick={() =>

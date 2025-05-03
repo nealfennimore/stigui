@@ -117,19 +117,56 @@ export enum Status {
     Open = 'open',
 }
 
+export enum TargetType {
+    NonComputing = 'Non-Computing',
+    Computing = 'Computing',
+}
+
+export enum Role {
+    None = 'None',
+    WebServer = 'Workstation',
+    MemberServer = 'Member Server',
+    DomainController = 'Domain Controller',
+}
+
+export enum TechnologyArea {
+    None = 'None',
+    ApplicationReview = 'Application Review',
+    BoundarySecurity = 'Boundary Security',
+    CDSAdminReview = 'CDS Admin Review',
+    CDSTechnicalReview = 'CDS Technical Review',
+    DatabaseReview = 'Database Review',
+    DomainNameSystem = 'Domain Name System (DNS)',
+
+    ExchangeServer = 'Exchange Server',
+    HostBasedSystemSecurity = 'Host Based System Security (HBSS)',
+    InternalNetwork = 'Internal Network',
+    Mobility = 'Mobility',
+    ReleasableNetworks = 'Releasable Networks (REL)',
+    TraditionalSecurity = 'Traditional Security',
+    UNIXOS = 'UNIX OS',
+    VVOIPReview = 'VVOIP Review',
+    WebReview = 'Web Review',
+    WindowsOS = 'Windows OS',
+    OtherReview = 'Other Review',
+    Workstation = 'Workstation',
+    MemberServer = 'Member Server',
+    DomainController = 'Domain Controller',
+}
+
 export interface TargetData {
-    target_type: string;
+    target_type: TargetType;
     host_name: string;
     ip_address: string;
     mac_address: string;
     fqdn: string;
     comments: string;
-    role: string;
+    role: Role;
     is_web_database: boolean;
-    technology_area: string;
+    technology_area: TechnologyArea;
     web_db_site: string;
     web_db_instance: string;
-    classification: null;
+    classification: string | null;
 }
 
 // Converts JSON strings to/from your types
