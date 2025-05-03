@@ -168,7 +168,7 @@ export default class Checklist extends Convert {
         };
 
         const checklist: IChecklist = {
-            title: `Checklist ${Benchmark.title}`,
+            title: Benchmark.title,
             id: uuidv4(),
             stigs: [stigs],
             active: false,
