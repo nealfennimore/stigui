@@ -96,11 +96,13 @@ export interface GroupTree {
 
 export type Description = String;
 
+export interface OverrideSeverity {
+    severity: Severity;
+    reason?: string;
+}
+
 export interface Overrides {
-    severity?: {
-        severity: Severity;
-        reason: string;
-    };
+    severity?: OverrideSeverity;
 }
 
 export enum Severity {
@@ -485,21 +487,15 @@ const typeMap: any = {
             {
                 json: 'severity',
                 js: 'severity',
-                typ: u(
-                    undefined,
-                    o(
-                        [
-                            {
-                                json: 'severity',
-                                js: 'severity',
-                                typ: r('Severity'),
-                            },
-                            { json: 'reason', js: 'reason', typ: '' },
-                        ],
-                        false
-                    )
-                ),
+                typ: u(undefined, r('OverrideSeverity')),
             },
+        ],
+        false
+    ),
+    OverrideSeverity: o(
+        [
+            { json: 'severity', js: 'severity', typ: r('Severity') },
+            { json: 'reason', js: 'reason', typ: u(undefined, '') },
         ],
         false
     ),
