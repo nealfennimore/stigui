@@ -301,6 +301,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                             <h1 className="text-3xl my-6">
                                 {checklist?.title}
                             </h1>
+                            <ChecklistTargetData checklist={checklist} />
                             <h2 className="text-2xl my-6">{stig.stig_name}</h2>
                             <div className="w-full flex flex-col justify-between">
                                 <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
@@ -321,9 +322,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 </div>
                             </div>
                         </section>
-                        <section>
-                            <ChecklistTargetData checklist={checklist} />
-                        </section>
+
                         <aside className="w-full flex justify-between items-center my-6">
                             <div>
                                 {counts.severity.map(([severity, count]) => (
