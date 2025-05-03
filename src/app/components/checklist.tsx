@@ -204,9 +204,17 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     }
                 } else if (type === "target_data") {
                     if (!data.target_data[uuid]) {
-                        data.target_data[uuid] = {} as TargetData;
+                        data.target_data[uuid] = {
+                            is_web_database: false,
+                        } as TargetData;
                     }
-                    data.target_data[uuid][paths[0]] = value;
+                    const path = paths[0];
+                    if (path === "is_web_database") {
+                        data.target_data[uuid][path] =
+                            value === "true" || value === "on";
+                    } else {
+                        data.target_data[uuid][path] = value;
+                    }
                 }
             }
             for (const [uuid, value] of Object.entries(data.rule)) {
