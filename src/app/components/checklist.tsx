@@ -161,53 +161,54 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 return;
             }
             const formData = new FormData(formRef.current);
-            let data = { rule: {} } as FormChecklistChanges;
+            console.log(formData);
+            let data = { rule: {}, target_data: {} } as FormChecklistChanges;
+            let updates = [];
 
             for (const [key, value] of formData.entries()) {
                 const [type, uuid, ...paths] = key.split(".");
-                if (
-                    type !== "rule" ||
-                    !paths.every((path) =>
-                        [
-                            "overrides",
-                            "status",
-                            "comments",
-                            "finding_details",
-                            "severity",
-                            "reason",
-                        ].includes(path)
-                    )
-                ) {
+                if (type !== "target_data" && type !== "rule") {
                     continue;
                 }
 
                 let length = paths.length;
                 let currentRule = currentRules[uuid];
 
-                // @ts-ignore
-                if (length === 1 && currentRule?.[paths[0]] === value) {
-                    continue;
-                }
-                if (!data.rule[uuid]) {
-                    data.rule[uuid] = {} as FormRuleProperties;
-                }
-                let nextRuleData = data.rule[uuid];
-                for (const [idx, path] of paths.entries()) {
+                if (type === "rule") {
                     // @ts-ignore
-                    if (nextRuleData[path] === undefined && length > 1) {
+                    if (
+                        length === 1 &&
                         // @ts-ignore
-                        nextRuleData[path] = {};
+                        currentRule?.[paths[0]] === value
+                    ) {
+                        continue;
                     }
-                    if (idx === length - 1) {
-                        // @ts-ignore
-                        nextRuleData[path] = value;
-                    } else {
-                        // @ts-ignore
-                        nextRuleData = nextRuleData[path];
+
+                    if (!data.rule[uuid]) {
+                        data.rule[uuid] = {} as FormRuleProperties;
                     }
+                    let nextRuleData = data.rule[uuid];
+                    for (const [idx, path] of paths.entries()) {
+                        // @ts-ignore
+                        if (nextRuleData[path] === undefined && length > 1) {
+                            // @ts-ignore
+                            nextRuleData[path] = {};
+                        }
+                        if (idx === length - 1) {
+                            // @ts-ignore
+                            nextRuleData[path] = value;
+                        } else {
+                            // @ts-ignore
+                            nextRuleData = nextRuleData[path];
+                        }
+                    }
+                } else if (type === "target_data") {
+                    if (!data.target_data[uuid]) {
+                        data.target_data[uuid] = {} as TargetData;
+                    }
+                    data.target_data[uuid][paths[0]] = value;
                 }
             }
-            let updates = [];
             for (const [uuid, value] of Object.entries(data.rule)) {
                 // Skip if only overrides are changed
                 // and the overrides are the same as the current overrides
@@ -218,9 +219,31 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 ) {
                     continue;
                 }
-                let rule = { ...currentRules[uuid], ...value, uuid } as Rule;
+                let rule = {
+                    ...currentRules[uuid],
+                    ...value,
+                    uuid,
+                } as Rule;
                 updates.push(IDB.rules.put(rule));
             }
+
+            for (const [uuid, value] of Object.entries(data.target_data)) {
+                // Skip if only target_data is changed
+                // and the target_data is the same as the current target_data
+                if (compare(value, checklist?.target_data as TargetData)) {
+                    continue;
+                }
+                const nextChecklist = {
+                    ...checklist,
+                    target_data: {
+                        ...checklist?.target_data,
+                        ...value,
+                    },
+                } as IDBChecklist;
+                console.log(nextChecklist, value);
+                updates.push(IDB.checklists.put(nextChecklist));
+            }
+
             Promise.all(updates).then(async () => {
                 const checklist = await IDB.exportChecklist(checklistId);
                 setChecklist(checklist);
@@ -297,6 +320,9 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                     </button>
                                 </div>
                             </div>
+                        </section>
+                        <section>
+                            <ChecklistTargetData checklist={checklist} />
                         </section>
                         <aside className="w-full flex justify-between items-center my-6">
                             <div>
