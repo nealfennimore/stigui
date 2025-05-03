@@ -12,16 +12,24 @@ interface BreadcrumbLink {
 interface BreadcrumbsProps {
     group?: GroupWrapper;
     stigId?: string;
+    editor?: boolean;
 }
 
-export const Breadcrumbs = ({ stigId, group }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({ stigId, group, editor }: BreadcrumbsProps) => {
     const manifest = useManifestContext();
-    const links: BreadcrumbLink[] = [
-        {
-            href: "/stigs",
-            text: "STIGs",
-        },
-    ];
+    const links: BreadcrumbLink[] = editor
+        ? [
+              {
+                  href: "/editor",
+                  text: "Checklists",
+              },
+          ]
+        : [
+              {
+                  href: "/stigs",
+                  text: "STIGs",
+              },
+          ];
 
     if (stigId) {
         const stig = manifest.byId(stigId);

@@ -18,7 +18,11 @@ export const ChecklistTargetData = ({
 
     return (
         <>
-            <div id="accordion-arrow-icon" data-accordion="open">
+            <div
+                id="accordion-arrow-icon"
+                data-accordion="open"
+                className="mb-6"
+            >
                 <h2 id="accordion-arrow-icon-heading-2">
                     <button
                         type="button"

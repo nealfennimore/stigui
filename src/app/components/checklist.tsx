@@ -5,13 +5,14 @@ import {
     Rule,
     Severity,
     Status,
+    TargetData,
 } from "@/api/generated/Checklist";
 import { RuleEdit } from "@/app/components/client/editor/rule";
 import { Sidebar } from "@/app/components/sidebar";
 import { IDB, IDBChecklist } from "@/app/db";
 import { debounce, download } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import type { TargetData } from "./checklist_target_data";
+import { Breadcrumbs } from "./breadcrumbs";
 import { ChecklistTargetData } from "./checklist_target_data";
 import { SeverityBadge, bySeverity } from "./severity";
 import { StatusBadge, byStatus } from "./status";
@@ -161,7 +162,6 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 return;
             }
             const formData = new FormData(formRef.current);
-            console.log(formData);
             let data = { rule: {}, target_data: {} } as FormChecklistChanges;
             let updates = [];
 
@@ -240,7 +240,6 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                         ...value,
                     },
                 } as IDBChecklist;
-                console.log(nextChecklist, value);
                 updates.push(IDB.checklists.put(nextChecklist));
             }
 
@@ -287,6 +286,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 onSubmit={(e) => e.preventDefault()}
                 onChange={debouncedHandleChange}
             >
+                <Breadcrumbs editor />
                 <Sidebar
                     isOpen={rule !== null}
                     onClick={() => setRowIdx(null)}
@@ -302,7 +302,6 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 {checklist?.title}
                             </h1>
                             <ChecklistTargetData checklist={checklist} />
-                            <h2 className="text-2xl my-6">{stig.stig_name}</h2>
                             <div className="w-full flex flex-col justify-between">
                                 <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
                                     <span>{stig.display_name}</span>
