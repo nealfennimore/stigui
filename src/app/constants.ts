@@ -1,2 +1,2 @@
-export const URL = "https://stigui.neal.codes";
+export const URL = "https://stigui.com";
 export const APPNAME = "STIGUI";

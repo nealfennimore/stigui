@@ -49,7 +49,7 @@ jobs:
 
                   # Fix static files
                   for file in $(grep -l -R 'http://localhost:3000'); do 
-                    sed -i -e 's|http://localhost:3000|https://stigui.neal.codes|g' $file
+                    sed -i -e 's|http://localhost:3000|https://stigui.com|g' $file
                   done
 
                   # Stop dev server
@@ -58,6 +58,6 @@ jobs:
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  cname: stigui.neal.codes
+                  cname: stigui.com
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: ./out # This is the default output directory for `next export`

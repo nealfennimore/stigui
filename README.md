@@ -17,7 +17,7 @@ STIGUI provides an intuitive and responsive interface for accessing and navigati
 
 ### Online
 
-Access the live web application at [stigui.neal.codes](https://stigui.neal.codes).
+Access the live web application at [stigui.com](https://stigui.com).
 
 ## Local Development
 
