@@ -1,5 +1,6 @@
 "use client";
 import { GroupWrapper } from "@/api/entities/Stig";
+import { ContentNavigation } from "@/app/components/content_navigation";
 import { SeverityBadge } from "@/app/components/severity";
 import { useStigContext } from "@/app/context/stig";
 import { Suspense } from "react";
@@ -90,7 +91,8 @@ export const GroupView = ({
     classification?: string;
 }) => {
     const stig = useStigContext();
-    const group = stig.groups.find((group) => group.id === groupId);
+    const idx = stig.groups.findIndex((group) => group.id === groupId);
+    const group = stig.groups[idx];
 
     if (!group) {
         return null;
@@ -167,6 +169,11 @@ export const GroupView = ({
                     />
                 </div>
             </section>
+            <ContentNavigation
+                stigId={stigId}
+                previous={stig.groups[idx - 1]}
+                next={stig.groups[idx + 1]}
+            />
             <GroupInfo group={group} />
         </Suspense>
     );
