@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 set -euo pipefail
-shopt -s globstar
+shopt -s globstar nullglob
 
 if [[ ! -f "data/stigs.zip" ]]; then
     echo "Downloading STIGs from $URL"
