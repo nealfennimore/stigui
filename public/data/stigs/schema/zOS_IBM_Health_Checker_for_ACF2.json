@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-06"
+      "+@date": "2025-06-24"
     },
     "title": "z/OS IBM Health Checker for ACF2 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -190,7 +190,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224314r868165_rule",
+          "+@id": "SV-224314r1116144_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKA001",
@@ -218,19 +218,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to IBM Health Checker STC data sets is limited to systems programmers and/or IBM Health Checker's STC(s) and/or batch user(s) only. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system. The dataset to be protected can be found in the HZSPROC STC member in HZSPDATA DD statement.\n\nData sets to be protected will be:\nSYS3.*.HZSPDATA\n\nThe following commands are provided as a sample for implementing data set controls:\n\n$KEY(S3A)\n$PREFIX(SYS3)\nMVA.HZSPDATA UID(syspaudt) R(A) W(A) A(A) E(A)\nMVA.HZSPDATA UID(Health Checker STCs) R(A) W(A) A(A) E(A)\nMVA.HZSPDATA UID(audtaudt) R(A) E(A)",
-            "+@fixref": "F-25979r868164_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to IBM Health Checker STC data sets is limited to systems programmers and/or IBM Health Checker's STC(s) and/or batch user(s) only. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system. The dataset to be protected can be found in the HZSPROC STC member in HZSPDATA DD statement.\n\nData sets to be protected will be:\nSYS3.*.HZSPDATA\n\nThe following commands are provided as a sample for implementing data set controls:\n\n$KEY(S3A)\n$PREFIX(SYS3)\nMVA.HZSPDATA UID(syspaudt) R(A) W(A) A(A) E(A)\nMVA.HZSPDATA UID(Health Checker STCs) R(A) W(A) A(A) E(A)\nMVA.HZSPDATA UID(audtaudt) R(A) E(A)",
+            "+@fixref": "F-25979r1116143_fix"
           },
           "fix": {
-            "+@id": "F-25979r868164_fix"
+            "+@id": "F-25979r1116143_fix"
           },
           "check": {
-            "+@system": "C-25991r868163_chk",
+            "+@system": "C-25991r1116142_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The ACF2 data set rules for the data sets restricts READ access to auditors.\n\n___ The ACF2 data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s)."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding:\n\nThe ACF2 data set rules for the data sets restricts READ access to auditors.\n\nThe ACF2 data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s)."
           }
         }
       },
@@ -239,11 +239,11 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224315r520321_rule",
+          "+@id": "SV-224315r1116147_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKA030",
-          "title": "IBM Health Checker Started Task name will be properly identified and/or defined to the system ACP.",
+          "title": "IBM Health Checker Started Task name will be properly identified and/or defined to the system Access Control Program (ACP).",
           "description": "<VulnDiscussion>IBM Health Checker requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS IBM Health Checker for ACF2",
@@ -267,19 +267,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nSET LID\ninsert HZSPROC stc name('STC, IBM Health Checker')",
-            "+@fixref": "F-25980r520320_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nSET LID\ninsert HZSPROC stc name('STC, IBM Health Checker')",
+            "+@fixref": "F-25980r1116146_fix"
           },
           "fix": {
-            "+@id": "F-25980r520320_fix"
+            "+@id": "F-25980r1116146_fix"
           },
           "check": {
-            "+@system": "C-25992r520319_chk",
+            "+@system": "C-25992r1116145_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ATTSTC)\n\nVerify that the logonid(s) for the IBM Health Checker started task(s) is (are) properly defined.  If the following attributes are defined, this is not a finding.\n\nSTC"
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC)\n\nVerify the logonid(s) for the IBM Health Checker started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding:\n\nSTC"
           }
         }
       }

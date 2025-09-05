@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-12"
+      "+@date": "2025-06-11"
     },
     "title": "MS SQL Server 2016 Instance Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -5232,7 +5232,7 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213964r1018609_rule",
+          "+@id": "SV-213964r1112499_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQL6-D0-007900",
@@ -5271,12 +5271,12 @@
             "+@id": "F-15179r1018586_fix"
           },
           "check": {
-            "+@system": "C-15181r951660_chk",
+            "+@system": "C-15181r1112498_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2016_Instance_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check for use of SQL Server Authentication:\n\nSELECT CASE SERVERPROPERTY('IsIntegratedSecurityOnly') WHEN 1 THEN 'Windows Authentication' WHEN 0 THEN 'SQL Server Authentication' END as [Authentication Mode]\n\nIf the returned value in the \"Authentication Mode\" column is \"Windows Authentication\", this is not a finding.\n\nIf the returned value in the \"Authentication Mode\" column is \"SQL Server Authentication\", SQL Server should be configured to inherit password complexity and password lifetime rules from the operating system.\n\nReview SQL Server to ensure logons are created with respect to the complexity settings and password lifetime rules by running the statement:\n\nSELECT [name], is_expiration_checked, is_policy_checked\nFROM sys.sql_logins\n\nReview any accounts returned by the query other than the disabled SA account, ##MS_PolicyTsqlExecutionLogin##, and ##MS_PolicyEventProcessingLogin##.\n\nIf any account does not have both \"is_expiration_checked\" and \"is_policy_checked\" equal to “1”, this is a finding.\n\nReview the operating system settings relating to password complexity.\n\nTo check the server operating system for password complexity:\n\nNavigate to Start >> All Programs >> Administrative Tools >> Local Security Policy, and to review the local policies on the machine, go to Account Policy >> Password Policy.\n\nEnsure the DISA Windows Password Policy is set on the SQL Server member server. If any are not, this is a finding."
+            "check-content": "Check for use of SQL Server Authentication:\n\nSELECT CASE SERVERPROPERTY('IsIntegratedSecurityOnly') WHEN 1 THEN 'Windows Authentication' WHEN 0 THEN 'SQL Server Authentication' END as [Authentication Mode]\n\nIf the returned value in the \"Authentication Mode\" column is \"Windows Authentication\", this is not a finding.\n\nIf the returned value in the \"Authentication Mode\" column is \"SQL Server Authentication\", SQL Server should be configured to inherit password complexity and password lifetime rules from the operating system.\n\nReview SQL Server to ensure logons are created with respect to the complexity settings and password lifetime rules by running the statement:\n\nSELECT [name], is_expiration_checked, is_policy_checked\nFROM sys.sql_logins\n\nReview any accounts returned by the query other than the disabled SA account, ##MS_PolicyTsqlExecutionLogin##, ##MS_PolicyEventProcessingLogin##, ##MS_SSISServerCleanupJobLogin##, and other internal accounts that start with ##MS.\n\nIf any account does not have both \"is_expiration_checked\" and \"is_policy_checked\" equal to “1”, this is a finding.\n\nReview the operating system settings relating to password complexity.\n\nTo check the server operating system for password complexity:\n\nNavigate to Start >> All Programs >> Administrative Tools >> Local Security Policy, and to review the local policies on the machine, go to Account Policy >> Password Policy.\n\nEnsure the DISA Windows Password Policy is set on the SQL Server member server. If any are not, this is a finding."
           }
         }
       },

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2025-05-19"
     },
     "title": "Cisco ASA NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -2401,7 +2401,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-239911r960966_rule",
+          "+@id": "SV-239911r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CASA-ND-000430",
@@ -2440,7 +2440,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-239912r960969_rule",
+          "+@id": "SV-239912r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CASA-ND-000450",
@@ -2749,7 +2749,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-239919r1015261_rule",
+          "+@id": "SV-239919r1043189_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CASA-ND-000580",
@@ -3130,7 +3130,7 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-239929r961506_rule",
+          "+@id": "SV-239929r1107149_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CASA-ND-001080",
@@ -3148,19 +3148,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Cisco ASA to authenticate NTP sources using authentication that is cryptographically based as shown in the example below.\n\nASA(config)# ntp authenticate \nASA(config)# ntp authentication-key 1 md5 xxxxxxxxxx\nASA(config)# ntp trusted-key 1\nASA(config)# ntp server 10.1.12.2 key 1 prefer\nASA(config)# ntp server 10.1.48.10 key 1\nASA(config)# end",
-            "+@fixref": "F-43121r666149_fix"
+            "+content": "Configure the Cisco ASA to authenticate NTP sources using authentication that is cryptographically based as shown in the example below.\n\nASA(config)# ntp authenticate \nASA(config)# ntp authentication-key 1 hmac-sha2-256 xxxxxx\nASA(config)# ntp trusted-key 1\nASA(config)# ntp server 10.1.12.2 key 1 prefer\nASA(config)# ntp server 10.1.48.10 key 1\nASA(config)# end",
+            "+@fixref": "F-43121r1107148_fix"
           },
           "fix": {
-            "+@id": "F-43121r666149_fix"
+            "+@id": "F-43121r1107148_fix"
           },
           "check": {
-            "+@system": "C-43162r666148_chk",
+            "+@system": "C-43162r1107147_chk",
             "check-content-ref": {
               "+@href": "Cisco_ASA_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco ASA configuration to verify that it is compliant with this requirement as shown in the configuration example below.\n\nntp authentication-key 1 md5 *****\nntp authenticate\nntp trusted-key 1\nntp server 10.1.12.2 key 1 prefer\nntp server 10.1.48.10 key 1\n\nNote: For ASAs running on Firepower Chassis hardware, the NTP settings are visible in the FXOS web UI only (not in the ASA CLI or ASDM web UI).\n\nIf the Cisco ASA is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
+            "check-content": "Review the Cisco ASA configuration to verify that it is compliant with this requirement as shown in the configuration example below.\n\nntp authentication-key 1 hmac-sha2-256 xxxxxx\nntp authenticate\nntp trusted-key 1\nntp server 10.1.12.2 key 1 prefer\nntp server 10.1.48.10 key 1\n\nNote: For ASAs running on Firepower Chassis hardware, the NTP settings are visible in the FXOS web UI only (not in the ASA CLI or ASDM web UI).\n\nIf the Cisco ASA is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
           }
         }
       },

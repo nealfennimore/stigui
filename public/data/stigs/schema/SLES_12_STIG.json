@@ -13,9 +13,9 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-11-25"
+      "+@date": "2025-05-14"
     },
-    "title": "SLES 12 Security Technical Implementation Guide",
+    "title": "SUSE Linux Enterprise Server 12 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -17695,7 +17695,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237607r991560_rule",
+          "+@id": "SV-237607r1106480_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-12-010871",
@@ -17713,19 +17713,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec chmod 755 '{}' \\;",
-            "+@fixref": "F-40789r646783_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +",
+            "+@fixref": "F-40789r1106479_fix"
           },
           "fix": {
-            "+@id": "F-40789r646783_fix"
+            "+@id": "F-40789r1106479_fix"
           },
           "check": {
-            "+@system": "C-40826r646782_chk",
+            "+@system": "C-40826r1102103_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_12_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the system-wide shared library files have mode 0755 or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec stat -c \"%n %a\" '{}' \\;\n\nIf any files are found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -17773,7 +17773,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237609r991560_rule",
+          "+@id": "SV-237609r1102108_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-12-010873",
@@ -17791,19 +17791,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec chown root '{}' \\;",
-            "+@fixref": "F-40791r646789_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +",
+            "+@fixref": "F-40791r1102107_fix"
           },
           "fix": {
-            "+@id": "F-40791r646789_fix"
+            "+@id": "F-40791r1102107_fix"
           },
           "check": {
-            "+@system": "C-40828r646788_chk",
+            "+@system": "C-40828r1102106_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_12_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are owned by root.\n\nCheck that the system-wide shared library files are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec stat -c \"%n %U\" '{}' \\;\n\nIf any system wide library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -17851,7 +17851,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237611r991560_rule",
+          "+@id": "SV-237611r1102111_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-12-010875",
@@ -17869,19 +17869,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec chgrp root '{}' \\;",
-            "+@fixref": "F-40793r646795_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +",
+            "+@fixref": "F-40793r1102110_fix"
           },
           "fix": {
-            "+@id": "F-40793r646795_fix"
+            "+@id": "F-40793r1102110_fix"
           },
           "check": {
-            "+@system": "C-40830r646794_chk",
+            "+@system": "C-40830r1102109_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_12_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are group-owned by root.\n\nCheck that the system-wide library files are group-owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec stat -c \"%n %G\" '{}' \\;\n\nIf any system wide shared library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },

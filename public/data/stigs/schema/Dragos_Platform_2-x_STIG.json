@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-23"
+      "+@date": "2025-05-15"
     },
     "title": "Dragos Platform 2.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1058,7 +1058,7 @@
         "title": "SRG-APP-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270919r1058028_rule",
+          "+@id": "SV-270919r1107124_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000240",
@@ -1082,19 +1082,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Remove nonessential users.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nClick the kebab menu next to the user and select \"Delete User\".\n\nClick \"DELETE\" in the verification window.",
-            "+@fixref": "F-74863r1057399_fix"
+            "+content": "Remove users except the UI Administrator and DragOS CLI Service Account.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nClick the kebab menu next to the user and select \"Delete User\".\n\nClick \"DELETE\" in the verification window.",
+            "+@fixref": "F-74863r1107123_fix"
           },
           "fix": {
-            "+@id": "F-74863r1057399_fix"
+            "+@id": "F-74863r1107123_fix"
           },
           "check": {
-            "+@system": "C-74962r1057999_chk",
+            "+@system": "C-74962r1107122_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any user except the Administrator and Service account is found, this is a finding."
+            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any local user except the UI Administrator and DragOS CLI Service Account exists, this is a finding."
           }
         }
       },
@@ -1142,7 +1142,7 @@
         "title": "SRG-APP-000125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270944r1058004_rule",
+          "+@id": "SV-270944r1107127_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000490",
@@ -1170,19 +1170,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Create Syslog server and Rule.\n\n1. Create a Syslog server on a third-party device. The steps may vary depending on the chosen Syslog server software.\n\n2. Create a syslog server output in the Dragos UI.\n\nNavigate to Admin >> Integrations.\n\nClick \"LAUNCH\" in the Syslog section.\n\nClick \"ADD NEW SERVER\".\n\nEnter third-party server information and click \"NEXT\".\n\nInput Message Template.\n\nClick \"SAVE\".\n\n3. Create a rule.\nNavigate to Notification >> RULES Tab.\n\nClick \"NEW RULE\".\n\nFill in Name and Processing Order.\n\nSelect For Rule Criteria:\nIf ANY of the following - \"Notification Type\" \"Equals\" \"System\"\nAction = Send Syslog (third-party server)\n\nClick \"SAVE\".",
-            "+@fixref": "F-74888r1058003_fix"
+            "+content": "Create Syslog server and Rule.\n\n1. Create a Syslog server on a third-party device. The steps may vary depending on the chosen Syslog server software.\n\n2. Create a syslog server output in the Dragos UI.\nNavigate to Admin >> Integrations.\nClick \"LAUNCH\" in the Syslog section.\nClick \"ADD NEW SERVER\".\nEnter third-party server information, select TLS or mTLS in the protocol dropdown, and click \"NEXT\".  Note: This step may require TLS certificate generation.\nInput Message Template.\nClick \"SAVE\".\n\n3. Create a rule.\nNavigate to Notification >> RULES Tab.\nClick \"NEW RULE\".\nFill in Name and Processing Order.\nSelect For Rule Criteria:\nIf ANY of the following - \"Notification Type\" \"Equals\" \"System\"\nAction = Send Syslog (third-party server)\nClick \"SAVE\".",
+            "+@fixref": "F-74888r1107126_fix"
           },
           "fix": {
-            "+@id": "F-74888r1058003_fix"
+            "+@id": "F-74888r1107126_fix"
           },
           "check": {
-            "+@system": "C-74987r1057473_chk",
+            "+@system": "C-74987r1107125_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify third-party server is used to offload audit records.\n\n1. Check for a configured Syslog Server. In the UI, navigate to Admin >> Integrations.\n\nClick \"LAUNCH\" in the Syslog section.\n\nIf a Syslog Server is not listed or Status is not connected, this is a finding. \n\n2. Check for an export rule. In the UI, navigate to Notification >> RULES Tab.\n\nVerify a rule exists and has the following:\nAction = \"Send Syslog (<your syslog server>)\"\nCriteria = \"IF Notification Type equals System\" \n\nIf this rule does not exist with the correct Action and Criteria, this is a finding."
+            "check-content": "Verify third-party server is used to offload audit records.\n\n1. Check for a configured Syslog Server. In the UI, navigate to Admin >> Integrations.\n\nClick \"LAUNCH\" in the Syslog section.\n\nIf a Syslog Server is not listed or Status is not connected, this is a finding. \n\nIf the protocol of the Syslog Server is not TLS or mTLS, this is a finding. \n\n2. Check for an export rule. In the UI, navigate to Notification >> RULES Tab.\n\nVerify a rule exists and has the following:\nAction = \"Send Syslog (<your syslog server>)\"\nCriteria = \"IF Notification Type equals System\" \n\nIf this rule does not exist with the correct Action and Criteria, this is a finding."
           }
         }
       },
@@ -1191,7 +1191,7 @@
         "title": "SRG-APP-000126",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270945r1058006_rule",
+          "+@id": "SV-270945r1107130_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000500",
@@ -1209,19 +1209,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If Dragos is running on an appliance, this check is Not Applicable. \n\nLUKS (Linux Unified Key Setup):\nDuring the installation process, most Linux distributions provide an option to encrypt the disk. Select this option to set up encryption.\n\nTo encrypt an existing installation, use tools such as cryptsetup to set up encryption manually. Here is a general guide:\n\nExecute the following (Replace /dev/sdX with the appropriate device name):\n\nsudo cryptsetup luksFormat /dev/sdX\nsudo cryptsetup open /dev/sdX encrypted_disk\nsudo mkfs.ext4 /dev/mapper/encrypted_disk\nsudo mount /dev/mapper/encrypted_disk /mnt",
-            "+@fixref": "F-74889r1058005_fix"
+            "+content": "If Dragos is running on an appliance, this check is Not Applicable. \n\nIf the hypervisor is using full disk encryption, this check is Not Applicable.\n\nLUKS (Linux Unified Key Setup):\nDuring the installation process, most Linux distributions provide an option to encrypt the disk. Select this option to set up encryption.\n\nTo encrypt an existing installation, use tools such as cryptsetup to set up encryption manually. Here is a general guide:\n\nExecute the following (Replace /dev/sdX with the appropriate device name):\n\nsudo cryptsetup luksFormat /dev/sdX\nsudo cryptsetup open /dev/sdX encrypted_disk\nsudo mkfs.ext4 /dev/mapper/encrypted_disk\nsudo mount /dev/mapper/encrypted_disk /mnt",
+            "+@fixref": "F-74889r1107129_fix"
           },
           "fix": {
-            "+@id": "F-74889r1058005_fix"
+            "+@id": "F-74889r1107129_fix"
           },
           "check": {
-            "+@system": "C-74988r1057476_chk",
+            "+@system": "C-74988r1107128_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If Dragos is running on an appliance, this check is Not Applicable. \n\nCheck for disk encryption in a VM.\n\nLog into the VM and access the VM using remote access method, such as SSH.\n\nUse Built-in Tools or Commands:\nLinux:\n1. Open a terminal window.\n\n2. Use the following command to check if any encrypted partitions exist:\nlsblk -o NAME,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT,TYPE\n\n3. Check for partitions with the filesystem type \"crypto_LUKS\" or similar.\n\n4. Use the following command to list encrypted volumes:\ncryptsetup luksDump /dev/sdX\n(Replace /dev/sdX with the appropriate device name)\n\nIf volumes are not encrypted, this is a finding."
+            "check-content": "If Dragos is running on an appliance, this check is Not Applicable. \n\nIf the hypervisor is using full disk encryption, this check is Not Applicable.\n\nCheck for disk encryption in a VM.\n\nLog into the VM and access the VM using remote access method, such as SSH.\n\nUse Built-in Tools or Commands:\nLinux:\n1. Open a terminal window.\n\n2. Use the following command to check if any encrypted partitions exist:\nlsblk -o NAME,FSTYPE,LABEL,UUID,SIZE,MOUNTPOINT,TYPE\n\n3. Check for partitions with the filesystem type \"crypto_LUKS\" or similar.\n\n4. Use the following command to list encrypted volumes:\ncryptsetup luksDump /dev/sdX\n(Replace /dev/sdX with the appropriate device name)\n\nIf volumes are not encrypted, this is a finding."
           }
         }
       },
@@ -1675,7 +1675,7 @@
         "title": "SRG-APP-000471",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271070r1058032_rule",
+          "+@id": "SV-271070r1107133_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-002120",
@@ -1693,19 +1693,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Configure Servers.\nIf using Syslog Server:\nCreate a Syslog server on a third-party device.\nThe steps may vary depending on the chosen Syslog server software. Refer to 2.3.x Dragos Platform Syslog Integration Guide in the Customer Portal for additional help.\n\nCreate a syslog server output in the Dragos UI.\nNavigate to Admin >> Integrations.\nClick \"LAUNCH\" in the Syslog section.\nClick \"ADD NEW SERVER\".\nEnter third-party server information and click \"NEXT\".\nInput Message Template.\nClick \"SAVE\".\n\nIf using Email Server:\nIn the UI, navigate to Admin >> Integrations.\nClick \"LAUNCH\" on the email block.\n\nConfigure the Email Server and Recipients:\nRefer to 2.3.x Dragos Platform Email Integration Guide in the Customer Portal for additional help.\n\n2. Creating System Rules:\nNavigate to Notification >> RULES Tab.\nClick \"NEW RULE\".\nFill in Name and Processing Order.\n\nCreate two Attributes.\nClick \"ADD ATTRIBUTE\" in the \"If ANY of the following\" block:\nType = \"Notification Type\"\nSelect Operation = \"Equals\"\nSelect Value = \"System\"\n\nClick \"ADD ATTRIBUTE\" in the \"If ANY of the following\" block:\nType = \"Notification Type\"\nSelect Operation = \"Equals\"\nSelect Value = \"System failure\"\n\nIn the \"THEN perform the following actions block:\nClick \"ADD ACTION\".\nAction = \"Send (<your syslog server or email server>)\"\n\nClick \"SAVE\".",
-            "+@fixref": "F-75014r1058015_fix"
+            "+content": "1. Configure Servers.\nIf using Syslog Server:\nCreate a Syslog server on a third-party device.\nThe steps may vary depending on the chosen Syslog server software. Refer to 2.3.x Dragos Platform Syslog Integration Guide in the Customer Portal for additional help.\n\nCreate a syslog server output in the Dragos UI.\nNavigate to Admin >> Integrations.\nClick \"LAUNCH\" in the Syslog section.\nClick \"ADD NEW SERVER\".\nEnter third-party server information and click \"NEXT\".\nInput Message Template.\nClick \"SAVE\".\n\n\n2. Creating System Rules:\nNavigate to Notification >> RULES Tab.\nClick \"NEW RULE\".\nFill in Name and Processing Order.\n\nCreate two Attributes.\nClick \"ADD ATTRIBUTE\" in the \"If ANY of the following\" block:\nType = \"Notification Type\"\nSelect Operation = \"Equals\"\nSelect Value = \"System\"\n\nClick \"ADD ATTRIBUTE\" in the \"If ANY of the following\" block:\nType = \"Notification Type\"\nSelect Operation = \"Equals\"\nSelect Value = \"System failure\"\n\nIn the \"THEN perform the following actions block:\nClick \"ADD ACTION\".\nAction = \"Send (<your syslog server>)\"\n\nClick \"SAVE\".",
+            "+@fixref": "F-75014r1107132_fix"
           },
           "fix": {
-            "+@id": "F-75014r1058015_fix"
+            "+@id": "F-75014r1107132_fix"
           },
           "check": {
-            "+@system": "C-75113r1058014_chk",
+            "+@system": "C-75113r1107131_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Check Server Configuration.\n\nIf using Syslog Server:\nVerify third-party server is used to receive communication-related notifications.\nCheck for a configured Syslog Server.\nIn the UI, navigate to Admin >> Integrations.\nClick \"LAUNCH\" in the Syslog section.\n\nIf using Email Server:\nCheck that the Email Server is configured.\nIn the UI, navigate to Admin >> Integrations.\nClick \"LAUNCH\" on the email block.\n\nIf no server is configured or the status is not \"Connected\", this is a finding. \n\nIf no recipient is configured, this is a finding.\n\n2. Check Rules:\nNavigate to Notification >> RULES Tab.\nVerify a rule exists and has the following:\nAction = \"Send (<your syslog server or email server>)\"\nCriteria = \"Notification Type Equals System\"\n          \"Notification Type Equals System Failure\" \n\nIf a rule does not exist with the correct Action and Criteria, this is a finding."
+            "check-content": "1. Check Server Configuration.\n\nIf using Syslog Server:\nVerify third-party server is used to receive communication-related notifications.\nCheck for a configured Syslog Server.\nIn the UI, navigate to Admin >> Integrations.\nClick \"LAUNCH\" in the Syslog section.\n\nIf no server is configured or the status is not \"Connected\", this is a finding. \n\nIf no recipient is configured, this is a finding.\n\n2. Check Rules:\nNavigate to Notification >> RULES Tab.\nVerify a rule exists and has the following:\nAction = \"Send (<your syslog server>)\"\nCriteria = \"Notification Type Equals System\"\n          \"Notification Type Equals System Failure\" \n\nIf a rule does not exist with the correct Action and Criteria, this is a finding."
           }
         }
       },

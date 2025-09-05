@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-13"
     },
     "title": "Oracle Linux 8 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1544,6 +1544,10 @@
           {
             "+@idref": "V-257259",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
+            "+@selected": "true"
           }
         ]
       },
@@ -3042,6 +3046,10 @@
           },
           {
             "+@idref": "V-257259",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
             "+@selected": "true"
           }
         ]
@@ -4542,6 +4550,10 @@
           {
             "+@idref": "V-257259",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
+            "+@selected": "true"
           }
         ]
       },
@@ -6040,6 +6052,10 @@
           },
           {
             "+@idref": "V-257259",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
             "+@selected": "true"
           }
         ]
@@ -7540,6 +7556,10 @@
           {
             "+@idref": "V-257259",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
+            "+@selected": "true"
           }
         ]
       },
@@ -9038,6 +9058,10 @@
           },
           {
             "+@idref": "V-257259",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
             "+@selected": "true"
           }
         ]
@@ -10538,6 +10562,10 @@
           {
             "+@idref": "V-257259",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
+            "+@selected": "true"
           }
         ]
       },
@@ -12037,6 +12065,10 @@
           {
             "+@idref": "V-257259",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
+            "+@selected": "true"
           }
         ]
       },
@@ -13535,6 +13567,10 @@
           },
           {
             "+@idref": "V-257259",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274876",
             "+@selected": "true"
           }
         ]
@@ -15778,7 +15814,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248570r991560_rule",
+          "+@id": "SV-248570r1101862_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010330",
@@ -15796,19 +15832,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command, replacing \"[FILE]\" with any library file with a mode more permissive than 755. \n \n$ sudo chmod 755 [FILE]",
-            "+@fixref": "F-51958r818627_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive with the following command.\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +",
+            "+@fixref": "F-51958r1101861_fix"
           },
           "fix": {
-            "+@id": "F-51958r818627_fix"
+            "+@id": "F-51958r1101861_fix"
           },
           "check": {
-            "+@system": "C-52004r818626_chk",
+            "+@system": "C-52004r1101860_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the following directories have mode \"755\" or less permissive with the following command: \n \n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \\;\n\nIf any system-wide shared library file is found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -15817,7 +15853,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248571r991560_rule",
+          "+@id": "SV-248571r1101865_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010340",
@@ -15835,19 +15871,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system-wide shared library files (/lib, /lib64, /usr/lib, and /usr/lib64) to be protected from unauthorized access. \n \nRun the following command, replacing \"[FILE]\" with any library file not owned by \"root\". \n \n$ sudo chown root [FILE]",
-            "+@fixref": "F-51959r779278_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to be owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +",
+            "+@fixref": "F-51959r1101864_fix"
           },
           "fix": {
-            "+@id": "F-51959r779278_fix"
+            "+@id": "F-51959r1101864_fix"
           },
           "check": {
-            "+@system": "C-52005r779277_chk",
+            "+@system": "C-52005r1101863_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files are owned by \"root\" with the following command: \n \n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \\;\n\nIf any system-wide shared library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -15856,7 +15892,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248572r991560_rule",
+          "+@id": "SV-248572r1101868_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010350",
@@ -15874,19 +15910,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system-wide shared library files (/lib, /lib64, /usr/lib, and /usr/lib64) to be protected from unauthorized access.\n\nRun the following command, replacing \"[FILE]\" with any library file not group-owned by \"root\".\n\n$ sudo chgrp root [FILE]",
-            "+@fixref": "F-51960r779281_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +",
+            "+@fixref": "F-51960r1101867_fix"
           },
           "fix": {
-            "+@id": "F-51960r779281_fix"
+            "+@id": "F-51960r1101867_fix"
           },
           "check": {
-            "+@system": "C-52006r779280_chk",
+            "+@system": "C-52006r1101866_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files are group-owned by \"root\" with the following command:\n\n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -group root -exec ls -l {} \\;\n\nIf any system-wide shared library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -16235,7 +16271,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248581r1050789_rule",
+          "+@id": "SV-248581r1101870_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010380",
@@ -16266,12 +16302,12 @@
             "+@id": "F-51969r860914_fix"
           },
           "check": {
-            "+@system": "C-52015r986336_chk",
+            "+@system": "C-52015r1101869_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"NOPASSWD\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"NOPASSWD\" by running the following command:\n\n$ sudo grep -ir nopasswd /etc/sudoers /etc/sudoers.d\n\n%admin ALL=(ALL) NOPASSWD: ALL\n\nIf any occurrences of \"NOPASSWD\" are returned from the command and have not been documented with the information system security officer (ISSO) as an organizationally defined administrative group using multifactor authentication (MFA), this is a finding."
+            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"NOPASSWD\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"NOPASSWD\" by running the following command:\n\n$ sudo grep -iR 'NOPASSWD' /etc/sudoers /etc/sudoers.d/\n\n%admin ALL=(ALL) NOPASSWD: ALL\n\nIf any occurrences of \"NOPASSWD\" are returned from the command and have not been documented with the information system security officer (ISSO) as an organizationally defined administrative group using multifactor authentication (MFA), this is a finding."
           }
         }
       },
@@ -16280,7 +16316,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248582r1050789_rule",
+          "+@id": "SV-248582r1101872_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010381",
@@ -16311,12 +16347,12 @@
             "+@id": "F-51970r779311_fix"
           },
           "check": {
-            "+@system": "C-52016r880550_chk",
+            "+@system": "C-52016r1101871_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the \"/etc/sudoers\" file has no occurrences of \"!authenticate\" by running the following command:\n\n     $ sudo grep -Ei !authenticate /etc/sudoers /etc/sudoers.d/*\n\nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
+            "check-content": "Verify that the \"/etc/sudoers\" file has no occurrences of \"!authenticate\" by running the following command:\n\n     $ sudo egrep -iR '!authenticate' /etc/sudoers /etc/sudoers.d/\n\nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
           }
         }
       },
@@ -16325,7 +16361,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248583r991589_rule",
+          "+@id": "SV-248583r1101874_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010382",
@@ -16350,12 +16386,12 @@
             "+@id": "F-51971r779314_fix"
           },
           "check": {
-            "+@system": "C-52017r779313_chk",
+            "+@system": "C-52017r1101873_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"sudoers\" file restricts sudo access to authorized personnel.\n$ sudo grep -iw 'ALL' /etc/sudoers /etc/sudoers.d/*\n\nIf the either of the following entries are returned, this is a finding:\nALL     ALL=(ALL) ALL\nALL     ALL=(ALL:ALL) ALL"
+            "check-content": "Verify the \"sudoers\" file restricts sudo access to authorized personnel.\n$ sudo grep -iwR 'ALL' /etc/sudoers /etc/sudoers.d/ | grep -v '#'\n\nIf the either of the following entries are returned, this is a finding:\nALL     ALL=(ALL) ALL\nALL     ALL=(ALL:ALL) ALL"
           }
         }
       },
@@ -25733,12 +25769,12 @@
         "title": "SRG-OS-000343-GPOS-00134",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248818r971542_rule",
+          "+@id": "SV-248818r1106143_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-030730",
           "title": "OL 8 must take action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.",
-          "description": "<VulnDiscussion>If security personnel are not notified immediately when storage volume reaches 75 percent utilization, they are unable to plan for audit record storage capacity expansion.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If security personnel are not notified immediately when storage volume reaches a maximum of 75 percent utilization, they are unable to plan for audit record storage capacity expansion. The notification can be set to trigger at lower utilization thresholds at the information system security officer's (ISSO's) discretion.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Oracle Linux 8",
             "publisher": "DISA",
@@ -25751,19 +25787,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure OL 8 to initiate an action to notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity by adding/modifying the following line in the \"/etc/audit/auditd.conf\" file. \n \nspace_left = 25%",
-            "+@fixref": "F-52206r780019_fix"
+            "+content": "Configure OL 8 to initiate an action to notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches (at most) 75 percent of the repository maximum audit record storage capacity by adding/modifying the following line in the /etc/audit/auditd.conf file.\n \nspace_left = 25%",
+            "+@fixref": "F-52206r1101876_fix"
           },
           "fix": {
-            "+@id": "F-52206r780019_fix"
+            "+@id": "F-52206r1101876_fix"
           },
           "check": {
-            "+@system": "C-52252r780018_chk",
+            "+@system": "C-52252r1106142_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify OL 8 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following commands: \n \n$ sudo grep -w space_left /etc/audit/auditd.conf \n \nspace_left = 25% \n \nIf the value of the \"space_left\" keyword is not set to \"25%\" or if the line is commented out, ask the SA to demonstrate how the system is providing real-time alerts to the SA and ISSO. \n \nIf there is no evidence that real-time alerts are configured on the system, this is a finding."
+            "check-content": "Verify OL 8 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following commands: \n \n$ sudo grep -w space_left /etc/audit/auditd.conf \n \nspace_left = 25% \n \nIf the value of the \"space_left\" keyword is not set to 25 percent or greater of the storage volume allocated to audit logs, or if the line is commented out, ask the system administrator (SA) to indicate how the system is providing real-time alerts to the SA and ISSO. If the \"space_left\" value is not configured to the value 25 percent or more, this is a finding. \n \nIf there is no evidence that real-time alerts are configured on the system, this is a finding."
           }
         }
       },
@@ -29082,7 +29118,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248902r991589_rule",
+          "+@id": "SV-248902r1106146_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-040350",
@@ -29100,19 +29136,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the TFTP daemon to operate in secure mode by adding the following line to \"/etc/xinetd.d/tftp\" (or modify the line to have the required value): \n \nserver_args = -s /var/lib/tftpboot",
-            "+@fixref": "F-52290r780271_fix"
+            "+content": "Configure the TFTP daemon to operate in secure mode with the following command:\n$ sudo systemctl edit tftp.service\n\nIn the editor, enter:\n[Service]\nExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot\n\nAfter making changes, reload the systemd daemon and restart the TFTP service as follows:\n$ sudo systemctl daemon-reload\n$ sudo systemctl restart tftp.service",
+            "+@fixref": "F-52290r1106145_fix"
           },
           "fix": {
-            "+@id": "F-52290r780271_fix"
+            "+@id": "F-52290r1106145_fix"
           },
           "check": {
-            "+@system": "C-52336r780270_chk",
+            "+@system": "C-52336r1106144_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the TFTP daemon is configured to operate in secure mode with the following commands: \n \n$ sudo yum list installed tftp-server \n \ntftp-server.x86_64 x.x-x.el8 \n \nIf a TFTP server is not installed, this is not applicable. \n \nIf a TFTP server is installed, check for the server arguments with the following command: \n \n$ sudo grep server_args /etc/xinetd.d/tftp \n \nserver_args = -s /var/lib/tftpboot \n \nIf the \"server_args\" line does not have a \"-s\" option and a subdirectory is not assigned, this is a finding."
+            "check-content": "Note: If TFTP is not required, it must not be installed. If TFTP is not installed, this rule is not applicable.\n\nCheck to see if TFTP server is installed with the following command:\n\n$ sudo dnf list installed | grep tftp-server \ntftp-server.x86_64 x.x-x.el8\n\nVerify the TFTP daemon, if tftp.server is installed, is configured to operate in secure mode with the following command:\n\n$ grep -i execstart /usr/lib/systemd/system/tftp.service\nExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot\n\nNote: The \"-s\" option ensures the TFTP server only serves files from the specified directory, which is a security measure to prevent unauthorized access to other parts of the file system."
           }
         }
       },
@@ -29983,6 +30019,45 @@
               "+@name": "M"
             },
             "check-content": "Verify that OL 8 logs out sessions that are idle for 15 minutes with the following command:\n\n     $ sudo grep -i ^StopIdleSessionSec /etc/systemd/logind.conf\n\n     StopIdleSessionSec=900\n\nIf \"StopIdleSessionSec\" is not configured to 900 seconds, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274876",
+        "title": "SRG-OS-000471-GPOS-00215",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274876r1106141_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "OL08-00-030645",
+          "title": "OL 8  must audit any script or executable called by cron as root or by any privileged user.",
+          "description": "<VulnDiscussion>Any script or executable called by cron as root or by any privileged user must be owned by that user and must have the permissions 755 or more restrictive and should have no extended rights that allow any nonprivileged user to modify the script or executable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Oracle Linux 8",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Oracle Linux 8",
+            "identifier": "5416"
+          },
+          "ident": {
+            "+content": "CCI-000172",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure OL 8 to audit the execution of any system call made by cron as root or as any privileged user.\n\nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\":\nauditctl -w /etc/cron.d/ -p wa -k cronjobs\nauditctl -w /var/spool/cron/ -p wa -k cronjobs\n\nTo load the rules to the kernel immediately, use the following command:\n\n$ sudo augenrules --load",
+            "+@fixref": "F-78882r1101882_fix"
+          },
+          "fix": {
+            "+@id": "F-78882r1101882_fix"
+          },
+          "check": {
+            "+@system": "C-78977r1101881_chk",
+            "check-content-ref": {
+              "+@href": "Oracle_Linux_8_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify that OL 8 is configured to audit the execution of any system call made by cron as root or as any privileged user.\n\n$ sudo auditctl -l | grep /etc/cron.d\n-w /etc/cron.d -p wa -k cronjobs\n\n$ sudo auditctl -l | grep /var/spool/cron\n-w /var/spool/cron -p wa -k cronjobs\n\nIf either of these commands do not return the expected output, or the lines are commented out, this is a finding."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-04"
+      "+@date": "2025-06-11"
     },
     "title": "MS SQL Server 2016 Database Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1126,7 +1126,7 @@
         "title": "SRG-APP-000023-DB-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213900r1018573_rule",
+          "+@id": "SV-213900r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQL6-D0-000100",
@@ -1175,11 +1175,11 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213901r1018575_rule",
+          "+@id": "SV-213901r1112497_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQL6-D0-000300",
-          "title": "SQL Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
+          "title": "SQL Server must enforce approved authorizations for logical access to database information and system resources in accordance with applicable access control policies.",
           "description": "<VulnDiscussion>Authentication with a DoD-approved PKI certificate does not necessarily imply authorization to access SQL Server. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems.  If SQL Server does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target MS SQL Server 2016 Database",
@@ -1210,12 +1210,12 @@
             "+@id": "F-15117r313136_fix"
           },
           "check": {
-            "+@system": "C-15119r1018574_chk",
+            "+@system": "C-15119r1112496_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2016_Database_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the system documentation to determine the required levels of protection for securables in the database by type of user. \n\nIf the database is tempdb, this is Not Applicable.\n\nReview the permissions actually in place in the database. \n\nIf the actual permissions do not match the documented requirements, this is a finding.\n\nUse the supplemental file \"Database permission assignments to users and roles.sql\"."
+            "check-content": "Review the system documentation to determine the required levels of protection for securables in the database by type of login. \n\nIf the database is tempdb, this is not applicable.\n\nReview the permissions actually in place in the database. \n\nIf the actual permissions do not match the documented requirements, this is a finding.\n\nUse the supplemental file \"Database permission assignments to users and roles.sql\"."
           }
         }
       },

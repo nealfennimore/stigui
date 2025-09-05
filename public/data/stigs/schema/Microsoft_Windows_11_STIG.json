@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-25"
+      "+@date": "2025-05-15"
     },
     "title": "Microsoft Windows 11 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -13261,7 +13261,7 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253351r958478_rule",
+          "+@id": "SV-253351r1106508_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN11-CC-000007",
@@ -13279,19 +13279,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If the camera is not disconnected or covered, the following registry entry is required.\n \nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistryPath\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam\n\nValue Name: Deny",
-            "+@fixref": "F-56754r829136_fix"
+            "+content": "If the camera is not disconnected or covered, the following registry entry is required.\n \nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistryPath\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam\n\nValue Name: Value                                                                            Value Data: Deny",
+            "+@fixref": "F-56754r1106507_fix"
           },
           "fix": {
-            "+@id": "F-56754r829136_fix"
+            "+@id": "F-56754r1106507_fix"
           },
           "check": {
-            "+@system": "C-56804r829135_chk",
+            "+@system": "C-56804r1106506_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_11__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If the device or operating system does not have a camera installed, this requirement is not applicable.\n\nThis requirement is not applicable to mobile devices (smartphones and tablets), where the use of the camera is a local AO decision.\n\nThis requirement is not applicable to dedicated VTC suites located in approved VTC locations that are centrally managed.\n\nFor an external camera, if there is not a method for the operator to manually disconnect camera at the end of collaborative computing sessions, this is a finding.\n\nFor a built-in camera, the camera must be protected by a camera cover (e.g. laptop camera cover slide) when not in use. If the built-in camera is not protected with a camera cover, or if the built-in\ncamera is not disabled in the bios, this is a finding.\n\nIf the camera is not disconnected or covered, the following registry entry is required:\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistryPath\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam\n\nValue Name: Deny\n\nIf \"Value Name\" is set to a value other than \"Deny\" and the collaborative computing device has not been authorized for use, this is a finding."
+            "check-content": "If the device or operating system does not have a camera installed, this requirement is not applicable.\n\nThis requirement is not applicable to mobile devices (smartphones and tablets), where the use of the camera is a local authorizing official (AO) decision.\n\nThis requirement is not applicable to dedicated VTC suites located in approved VTC locations that are centrally managed.\n\nFor an external camera, if there is not a method for the operator to manually disconnect camera at the end of collaborative computing sessions, this is a finding.\n\nFor a built-in camera, the camera must be protected by a camera cover (e.g. laptop camera cover slide) when not in use. If the built-in camera is not protected with a camera cover, or if the built-in\ncamera is not disabled in the bios, this is a finding.\n\nIf the camera is not disconnected or covered, the following registry entry is required:\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistryPath\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam\n\nValue Name: Value                                                                             Value Data: Deny\n\nIf \"Value Name\" is set to a value other than \"Deny\" and the collaborative computing device has not been authorized for use, this is a finding."
           }
         }
       },
@@ -17976,7 +17976,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253470r958484_rule",
+          "+@id": "SV-253470r1106510_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN11-SO-000251",
@@ -18001,12 +18001,12 @@
             "+@id": "F-56873r890469_fix"
           },
           "check": {
-            "+@system": "C-56923r890468_chk",
+            "+@system": "C-56923r1106509_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_11__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If the system is not a member of a domain, this is Not Applicable.\n\nIf one of the following settings does not exist and is not populated, this is a finding: \n\n\\HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Calais\\Readers\n\\HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Calais\\SmartCards"
+            "check-content": "If the system is not a member of a domain, this is Not Applicable.\n\nIf all of the following settings exist and are populated, this is not a finding.\n\n\\HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Calais\\Readers\n\\HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Calais\\SmartCards"
           }
         }
       },

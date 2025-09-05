@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-10"
+      "+@date": "2025-06-12"
     },
     "title": "Forescout Network Device Management Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -179,10 +179,6 @@
           },
           {
             "+@idref": "V-230961",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-230962",
             "+@selected": "true"
           },
           {
@@ -361,10 +357,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-230962",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-230963",
             "+@selected": "true"
           },
@@ -537,10 +529,6 @@
           },
           {
             "+@idref": "V-230961",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-230962",
             "+@selected": "true"
           },
           {
@@ -719,10 +707,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-230962",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-230963",
             "+@selected": "true"
           },
@@ -895,10 +879,6 @@
           },
           {
             "+@idref": "V-230961",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-230962",
             "+@selected": "true"
           },
           {
@@ -1077,10 +1057,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-230962",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-230963",
             "+@selected": "true"
           },
@@ -1253,10 +1229,6 @@
           },
           {
             "+@idref": "V-230961",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-230962",
             "+@selected": "true"
           },
           {
@@ -1435,10 +1407,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-230962",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-230963",
             "+@selected": "true"
           },
@@ -1614,10 +1582,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-230962",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-230963",
             "+@selected": "true"
           },
@@ -1750,7 +1714,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230932r960969_rule",
+          "+@id": "SV-230932r1111863_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000030",
@@ -1774,11 +1738,11 @@
             }
           ],
           "fixtext": {
-            "+content": "There are two default accounts. The CLIAdmin root account can only be used with the CLI. To access the CLI, an account must be created that only has access to the CLI. Accounts created in CounterACT user profile in the web management tools do not have access to login to the CLI. The default console account \"Admin\" allows access to the web management tool. These accounts can be used as the accounts of last resort or two other accounts may be created for this purpose as long as a strong password that meets DoD requirements is used for both.\n\n1. Log on to the Forescout Administrator UI.\n2. From the menu, select Tools >> Options >> CounterACT user profiles.\n\nRemove unauthorized local accounts not identified as the account of last resort.",
-            "+@fixref": "F-33835r603636_fix"
+            "+content": "There are two default accounts of last resort. The CLIAdmin root account can only be used to access Forescout with the CLI. Accounts created in CounterACT user profile in the management console do not have access to login to the CLI. The default console account \"Admin\" allows access only to the management console. These accounts can be used as the accounts of last resort or two other accounts may be created for this purpose as long as a strong password that meets DoD requirements is used for both.\n\n1. Log on to the Forescout Administrator UI.\n2. From the menu, select Tools >> Options >> CounterACT user profiles.\n\nRemove unauthorized local accounts not identified as the account of last resort.",
+            "+@fixref": "F-33835r1111862_fix"
           },
           "fix": {
-            "+@id": "F-33835r603636_fix"
+            "+@id": "F-33835r1111862_fix"
           },
           "check": {
             "+@system": "C-33862r603635_chk",
@@ -1873,12 +1837,12 @@
         "title": "SRG-APP-000069-NDM-000216",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230935r960846_rule",
+          "+@id": "SV-230935r1113787_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "FORE-NM-000060",
-          "title": "Forescout must retain the Standard Mandatory DoD Notice and Consent Banner on the screen until the administrator acknowledges the usage conditions and takes explicit actions to log on for further access.",
-          "description": "<VulnDiscussion>The banner must be acknowledged by the administrator prior to the device allowing the administrator access to the network device. This provides assurance that the administrator has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the administrator, DoD will not be in compliance with system use notifications required by law. \n\nTo establish acceptance of the network administration policy, a click-through banner at management session logon is required. The device must prevent further activity until the administrator executes a positive action to manifest agreement.\n\nIn the case of CLI access using a terminal client, entering the username and password when the banner is presented is considered an explicit action of acknowledgement. Entering the username, viewing the banner, then entering the password is also acceptable. The web management tool configuration setting works for both the CLI and the web management tool.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Forescout must retain the Standard Mandatory DOD Notice and Consent Banner on the screen until the administrator acknowledges the usage conditions and takes explicit actions to log on for further access.",
+          "description": "<VulnDiscussion>The banner must be acknowledged by the administrator prior to the device allowing the administrator access to the network device. This provides assurance that the administrator has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the administrator, DOD will not be in compliance with system use notifications required by law. \n\nTo establish acceptance of the network administration policy, a click-through banner at management session logon is required. The device must prevent further activity until the administrator executes a positive action to manifest agreement.\n\nIn the case of CLI access using a terminal client, entering the username and password when the banner is presented is considered an explicit action of acknowledgement. Entering the username, viewing the banner, then entering the password is also acceptable. The web management tool configuration setting works for both the CLI and the web management tool.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Forescout Network Device Management",
             "publisher": "DISA",
@@ -1891,19 +1855,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Log on to the Forescout Administrator UI.\n\n1. Select Tools >> Options >> CounterACT User Profiles >> Password and Sessions.\n2.  Select the \"Login\" tab and check the \"Display this Notice and Consent Message after login\" option.\n3. Select the \"Before login, prompt user to accept these Terms and Conditions\".\n4. Select \"Apply\" to save the settings.",
-            "+@fixref": "F-33838r603645_fix"
+            "+content": "Configure banner retention.\n\n1. From the UI, select Tools >> Options >> CounterACT User Profiles >> Password and Sessions.\n2. Select the \"Login\" tab and check the \"Before login, prompt user to accept these Terms and Conditions\".\n3. Select \"Apply\" to save the settings.",
+            "+@fixref": "F-33838r1113786_fix"
           },
           "fix": {
-            "+@id": "F-33838r603645_fix"
+            "+@id": "F-33838r1113786_fix"
           },
           "check": {
-            "+@system": "C-33865r615880_chk",
+            "+@system": "C-33865r1113747_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Forescout retains the Standard Mandatory DoD-approved Notice and Consent Banner on the screen until users acknowledge the usage conditions and takes explicit actions to log on for further access.\n\nAttempt to log on to the Forescout device as a system administrator using the web management tool.\n\nIf Forescout does not retain the Standard Mandatory DoD-approved Notice and Consent Banner on the screen until users acknowledge the usage conditions and take explicit actions to log on for further access, this is a finding."
+            "check-content": "Verify Forescout retains the Standard Mandatory DOD-approved Notice and Consent Banner on the screen until users acknowledge the usage conditions and takes explicit actions to log on for further access.\n\nAttempt to log on to the Forescout device as a system administrator using the web management tool.\n\nIf Forescout does not retain the Standard Mandatory DOD-approved Notice and Consent Banner on the screen until users acknowledge the usage conditions and take explicit actions to log on for further access, this is a finding."
           }
         }
       },
@@ -2185,7 +2149,7 @@
         "title": "SRG-APP-000515-NDM-000325",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230943r961860_rule",
+          "+@id": "SV-230943r1111869_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "FORE-NM-000150",
@@ -2203,19 +2167,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the syslog.\n\n1. Log on to Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> Modules >> Syslog >> Send Events To.\n3. Click \"Add\".\n4. Enter the IP address of the site's centralized syslog.\n5. Check \"Use TLS\".\n6. Configure OCSP, Identity, Facility, and Severity as required by the SSP.",
-            "+@fixref": "F-33846r603669_fix"
+            "+content": "Configure the syslog.\n\n1. Log on to Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> Modules >> Syslog >> Send Events To.\n3. Click \"Add\".\n4. Enter the IP address of the site's centralized syslog.\n5. Configure Identity, Facility, and Severity as required by the SSP.",
+            "+@fixref": "F-33846r1111868_fix"
           },
           "fix": {
-            "+@id": "F-33846r603669_fix"
+            "+@id": "F-33846r1111868_fix"
           },
           "check": {
-            "+@system": "C-33873r851139_chk",
+            "+@system": "C-33873r1111867_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the syslog.\n\n1. Log on to Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> Modules >> Syslog >> Send Events To.\n3. Click the IP address of the site's centralized syslog  server.\n4. Verify \"Use TLS\" is checked.\n5. Verify OCSP, Identity, Facility, and Severity, as required by the SSP, are configured.\n\nIf the site's syslog server is not configured or if it is not configure to use TLS and OCSP, this is a finding."
+            "check-content": "Verify the syslog.\n\n1. Log on to Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> Modules >> Syslog >> Send Events To.\n3. Click the IP address of the site's centralized syslog server.\n4. Verify Identity, Facility, and Severity, as required by the SSP, are configured.\n\nIf the site's syslog server is not configured, this is a finding."
           }
         }
       },
@@ -2224,7 +2188,7 @@
         "title": "SRG-APP-000373-NDM-000298",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230944r1018752_rule",
+          "+@id": "SV-230944r1112438_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000160",
@@ -2252,19 +2216,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure Forescout to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.\n\n1. Open an SSH session and authenticate to the Forescout command line.\n2. Configure the primary and secondary NTP servers with the command \"fstool ntp setup <ip address>\".",
-            "+@fixref": "F-33847r603672_fix"
+            "+content": "Configure Forescout to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.\n\n1. Open an SSH session and authenticate to the Forescout command line.\n2. Configure the primary and secondary NTP servers with the command \"fstool ntp setup <ip address>\".\n\nor\n\n1. Open the Forescout console.\n2. Navigate to General >> Time.\n3. Check the box for \"Enable sync with NTP server\".",
+            "+@fixref": "F-33847r1112437_fix"
           },
           "fix": {
-            "+@id": "F-33847r603672_fix"
+            "+@id": "F-33847r1112437_fix"
           },
           "check": {
-            "+@system": "C-33874r603671_chk",
+            "+@system": "C-33874r1112436_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if Forescout is configured to synchronize internal clocks with the organization's primary and secondary NTP servers.\n\n1. Open an SSH session and authenticate to the Forescout command line.\n2. Verify a primary and secondary NTP server has been configured with the command \"fstool ntp test\".\n\nIf Forescout is not configured to synchronize internal information system clocks with the organization's primary and secondary NTP servers, this is a finding."
+            "check-content": "Determine if Forescout is configured to synchronize internal clocks with the organization's primary and secondary NTP servers.\n\nDetermine if Forescout is configured to synchronize internal clocks with the organization's primary and secondary NTP servers.\n\n1. Open an SSH session and authenticate to the Forescout command line.\n2. Verify a primary and secondary NTP server has been configured with the command \"fstool ntp test\".\n\nOr \n\n1. Open the Forescout console.\n2. Navigate to General >> Time and verify \"Enable sync with NTP server\" is checked.\n\nIf Forescout is not configured to synchronize internal information system clocks with the organization's primary and secondary NTP servers, this is a finding."
           }
         }
       },
@@ -2273,7 +2237,7 @@
         "title": "SRG-APP-000374-NDM-000299",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230945r961443_rule",
+          "+@id": "SV-230945r1111875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000170",
@@ -2291,19 +2255,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Forescout to record time stamps for log records that can be mapped to UTC.\n\nNote: Updating time preferences will force Forescout into maintenance mode and the service must be restarted. Use a scheduled outage for planned maintenance and stop Forescout service prior to adjusting time settings.\n\n1. Type the following command at the prompt using the IP address of the required NTP server:\n     fstool ntp <ip address>\n2. Ensure the date references accurate time and the time zone points to UTC next to the year.",
-            "+@fixref": "F-33848r603675_fix"
+            "+content": "Remove accounts that are not authorized. Do not remove the account of last resort.\n\n1. Log on to the Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> CounterAct User Profiles.\n3. Select (highlight) the user profile to be reviewed (group or user) and then select \"Remove\".\n4. Remove any applicable external group membership or individual users on the external directory service.",
+            "+@fixref": "F-33848r1111874_fix"
           },
           "fix": {
-            "+@id": "F-33848r603675_fix"
+            "+@id": "F-33848r1111874_fix"
           },
           "check": {
-            "+@system": "C-33875r603674_chk",
+            "+@system": "C-33875r1111873_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if Forescout records time stamps for log records that can be mapped to UTC. This requirement may be verified by demonstration or configuration review.\n\nVerify by connecting to the appliance via SSH using standard user/operator privilege.\n\n1. Type \"date\" at the command prompt.\n2. Verify the date references accurate time and \"UTC\" shows just before the year.\n\nIf Forescout does not record time stamps for log records that can be mapped to UTC, this is a finding."
+            "check-content": "Determine if Forescout records time stamps for log records that can be mapped to UTC. This requirement may be verified by demonstration or configuration review.\n\nNote: Updating time preferences will force Forescout into maintenance mode and the service must be restarted. Use a scheduled outage for planned maintenance and stop Forescout service prior to adjusting time settings.\n\n1. From the CLI run \"fstool tz\".\n2. Type \"yes\" to change the timezone.\n3. Type \"2\" for GMT offset.\n4. Type \"0\" to enter the offiset (GMT 0 is equal to UTC time).\n5. Ensure the Local time and Universal time match and type \"yes\" to continue.\n6. Type \"yes\" to reboot.\n\nIf Forescout does not record time stamps for log records that can be mapped to UTC, this is a finding."
           }
         }
       },
@@ -2570,7 +2534,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230952r997758_rule",
+          "+@id": "SV-230952r1111877_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000250",
@@ -2650,11 +2614,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Remove accounts that are not authorized. Do not remove the account of last resort.\n\n1. Log on to the Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> Console Preferences.\n3. Select (highlight) the user profile to be reviewed (group or user) and then select \"Remove\".\n4. Remove external group membership, individual users on the Directory service.",
-            "+@fixref": "F-33855r603696_fix"
+            "+content": "Remove accounts that are not authorized. Do not remove the account of last resort.\n\n1. Log on to the Forescout Administrator UI with admin or operator credentials.\n2. From the menu, select Tools >> Options >> CounterAct User Profiles.\n3. Select (highlight) the user profile to be reviewed (group or user) and then select \"Remove\".\n4. Remove any applicable external group membership or individual users on the external directory service.",
+            "+@fixref": "F-33855r1111876_fix"
           },
           "fix": {
-            "+@id": "F-33855r603696_fix"
+            "+@id": "F-33855r1111876_fix"
           },
           "check": {
             "+@system": "C-33882r603695_chk",
@@ -2671,12 +2635,12 @@
         "title": "SRG-APP-000516-NDM-000351",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230953r961863_rule",
+          "+@id": "SV-230953r1113791_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000260",
           "title": "Forescout must be running an operating system release that is currently supported by the vendor.",
-          "description": "<VulnDiscussion>Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities.\n\nIn Oct 2021, there is plan to make Version 7 end-of-life. This will be stated on the product lifecycle page of the Forescout website.  All versions of V8 and above are authorized for use in DoD.\n\nVersion 8 or later is mandatory after October 2021.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities.\n\nIn October 2021, there is plan to make Version 7 end-of-life. This will be stated on the product lifecycle page of the Forescout website.  All versions of V8 and above are authorized for use in DOD.\n\nVersion 8 or later is mandatory after October 2021.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Forescout Network Device Management",
             "publisher": "DISA",
@@ -2696,12 +2660,12 @@
             "+@id": "F-33856r603699_fix"
           },
           "check": {
-            "+@system": "C-33883r603698_chk",
+            "+@system": "C-33883r1113790_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that Forescout is still running supported operating system versions and that all vulnerability patches and updates have been applied.\n\nVerify the installed version is supported by Forescout by checking the Forescout support website lifecycle page. Currently, Version 8 or later is mandatory after October 2021.\n\nIf Forescout is running an operating system release that is not supported by the vendor, this is a finding."
+            "check-content": "Check that Forescout is still running supported operating system versions and that all vulnerability patches and updates have been applied.\n\nVerify the installed version is supported by Forescout by checking the Forescout support website lifecycle page. Currently, Version 8 or later is mandatory after October 2021.\n\nIf Forescout is running an operating system release that is not supported by the vendor, this is a finding.\n\nCheck from the Console:\n1. Log into the Forescout management console.\n2. Select Help > About Forescout to show the current version. \n\nCheck from the CLI:\n1. Log into the Forescout CLI.\n2. Type \"fstool version\" to show the current running version."
           }
         }
       },
@@ -2890,7 +2854,7 @@
         "title": "SRG-APP-000516-NDM-000344",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230958r961863_rule",
+          "+@id": "SV-230958r1113789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FORE-NM-000320",
@@ -2914,19 +2878,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Generate a certificate signing request by completing the following procedures: \n\n1. Navigate to Tools >> Options >> Certificates >> System Certificates. \n2. On the right of the screen click “Generate CSR”.\n3. Complete the following fields (bolded fields are necessary for the Common Criteria evaluation and underlined fields have the required selection made): \n- Common Name – <system hostname> \n- Organization – <organizational name> \n- Organizational Unit – <unit name> \n- Locality – <locality name> \n- State – <state name>\n- Country Code – <country code> \n- Email Address - <email address>\n- Key Length – <select an approved key length from the drop down list>\n- Signature Algorithm – <select an approved algorithm from the drop down list>\n- Key Usages – < Checking all items that apply Client Authentication, Server Authentication and Email Signing>\n- Validity – <years> \n4. Click “Next”.\n5. When the CSR is generated, scroll down to ensure the public key and common name are present.\n6. Click \"Scope option – ALL\" and then click \"Next\".\n7. Enter a name for system certificate.\n8. Check “Enable presenting this certificate”.\n9. Click \"Finish\".\n10. Click \"Apply\", and then click \"Yes\" to save the changes.",
-            "+@fixref": "F-33861r616551_fix"
+            "+content": "Generate a certificate signing request by completing the following procedures: \n\n1. Navigate to Tools >> Options >> Certificates >> System Certificates. \n2. On the right of the screen click \"Generate CSR\".\n3. Complete the following fields (bolded fields are necessary for the Common Criteria evaluation and underlined fields have the required selection made): \n- Common Name – <system hostname> \n- Organization – <organizational name> \n- Organizational Unit – <unit name> \n- Locality – <locality name> \n- State – <state name>\n- Country Code – <country code> \n- Email Address - <email address>\n- Key Length – <select an approved key length from the drop down list>\n- Signature Algorithm – <select an approved algorithm from the drop down list>\n- Key Usages – < Checking all items that apply Client Authentication, Server Authentication and Email Signing>\n- Validity – <years> \n4. Click \"Next\".\n5. When the CSR is generated, scroll down to ensure the public key and common name are present.\n6. Click \"Scope option – ALL\", and then click \"Next\".\n7. Enter a name for system certificate.\n8. Check \"Enable presenting this certificate\".\n9. Click \"Finish\".\n10. Click \"Apply\", and then click \"Yes\" to save the changes.",
+            "+@fixref": "F-33861r1113752_fix"
           },
           "fix": {
-            "+@id": "F-33861r616551_fix"
+            "+@id": "F-33861r1113752_fix"
           },
           "check": {
-            "+@system": "C-33888r603713_chk",
+            "+@system": "C-33888r1113751_chk",
             "check-content-ref": {
               "+@href": "Forescout_Network_Device_Management_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if Forescout obtains public key certificates from an appropriate certificate policy through an approved service provider.\n\nTo review the Web server certificate presented for captive portal/authentication:\n\n1. Open a command line SSH to Forescout appliance or Enterprise Manager.\n2. Run the following command:\n>fstool cert test\n3. Verify all Web server certificate(s) are printed and reviewable.\n4. Verify the signing authority is from an approved certificate authority.\n\nIf the network device does not obtain its public key certificates from an appropriate certificate policy through an approved service provider, this is a finding."
+            "check-content": "Determine if Forescout obtains public key certificates from an appropriate certificate policy through an approved service provider.\n\nTo review the Web server certificate presented for captive portal/authentication:\n\n1. Log into the Forescout management console.\n2. Go to Options >> Certificates >> System Certificates.\n3. Locate the certificates where the \"Used For\" column shows \"Web Portal\".\n4. Ensure all enabled certificates are issued by a trusted CA and are not self-signed.\n\nIf the ForeScout does not obtain its public key certificates from an appropriate certificate policy through an approved service provider, this is a finding."
           }
         }
       },
@@ -2935,7 +2899,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230959r1026165_rule",
+          "+@id": "SV-230959r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "FORE-NM-000330",
@@ -2974,7 +2938,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230960r960966_rule",
+          "+@id": "SV-230960r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "FORE-NM-000340",
@@ -3044,45 +3008,6 @@
               "+@name": "M"
             },
             "check-content": "Review the Forescout configuration to determine if the network device authenticates SNMP endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.\n\n1. Select Tools >> Options >> Switch.\n2. Select a network device and review the \"SNMP\" tab.\n3. Verify that the \"SNMPv3\" option is selected and the \"HMAC-SHA\" authentication protocol is selected.\n4. Verify that the \"use privacy\" radio button is selected and \"AES-128\" is also selected from the drop-down box.\n\nIf Forescout does not authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC), this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-230962",
-        "title": "SRG-APP-000395-NDM-000347",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-230962r961506_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "FORE-NM-000361",
-          "title": "Before establishing a connection with a Network Time Protocol (NTP) server, Forescout must authenticate using a bidirectional, cryptographically based authentication method that uses a FIPS-validated Advanced Encryption Standard (AES) cipher block algorithm to authenticate with the NTP server.",
-          "description": "<VulnDiscussion>If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.\n\nCurrently, AES block cipher algorithm is approved for use in DoD for both applying cryptographic protection (e.g., encryption) and removing or verifying the protection that was previously applied (e.g., decryption). NTP devices use MD5 authentication keys. The MD5 algorithm is not specified in either the FIPS or NIST recommendation. However, MD5 is preferred to no authentication at all.\n\nThe trusted-key statement permits authenticating NTP servers. The product must be configured to support separate keys for each NTP server. Severs must have a PKI device certificate involved for use in the device authentication process.\n\nConfigurable to use SHA-1 when SNMPv3 is configured which is recommended by the vendor and required by DoD. Vendor cautions that this may impact performance with other devices. \n\nDowngrade to not a finding if correctly configured.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Forescout Network Device Management",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Forescout Network Device Management",
-            "identifier": "5245"
-          },
-          "ident": {
-            "+content": "CCI-001967",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure Forescout to authenticate SNMP endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.\n\n1. Select Tools >> Options >> Switch.\n2. Select a network device and review the \"SNMP\" tab.\n3. Ensure the \"SNMPv3\" option is selected and the \"HMAC-SHA\" authentication protocol is selected.\n4. Ensure the \"use privacy\" radio button is selected and \"AES-128\" is also selected from the drop-down box.\n\nNote: According to the vendor, this configuration uses SHA-1 for NTP configuration only when in FIPS mode. Use of SHA-2 for integrity processes usually incurs a finding, however this configuration sets AES-128. Thus, this vendor-recommended configuration is considered to mitigate the risk for NTP on Forescout only. This is specifically and only applicable to this requirement.",
-            "+@fixref": "F-33865r603726_fix"
-          },
-          "fix": {
-            "+@id": "F-33865r603726_fix"
-          },
-          "check": {
-            "+@system": "C-33892r603725_chk",
-            "check-content-ref": {
-              "+@href": "Forescout_Network_Device_Management_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Review the Forescout configuration to determine if Forescout authenticates SNMP endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.\n\n1. Select Tools >> Options >> Switch.\n2. Select a network device and review the \"SNMP\" tab.\n3. Verify the \"SNMPv3\" option is selected and the \"HMAC-SHA\" authentication protocol is selected.\n4. Verify the \"use privacy\" radio button is selected and \"AES-128\" is also selected from the drop-down box.\n\nIf SNMPv3 with HMAC-SHA is configured, this is not a finding."
           }
         }
       },
@@ -3316,7 +3241,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230968r1018761_rule",
+          "+@id": "SV-230968r1043189_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "FORE-NM-000420",

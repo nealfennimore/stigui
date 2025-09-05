@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-06-04"
+      "+@date": "2025-05-08"
     },
     "title": "SUSE Linux Enterprise Micro (SLEM) 5 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 13 Jun 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -463,10 +463,6 @@
           },
           {
             "+@idref": "V-261365",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-261366",
             "+@selected": "true"
           },
           {
@@ -1317,10 +1313,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-261366",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-261367",
             "+@selected": "true"
           },
@@ -2165,10 +2157,6 @@
           },
           {
             "+@idref": "V-261365",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-261366",
             "+@selected": "true"
           },
           {
@@ -3019,10 +3007,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-261366",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-261367",
             "+@selected": "true"
           },
@@ -3867,10 +3851,6 @@
           },
           {
             "+@idref": "V-261365",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-261366",
             "+@selected": "true"
           },
           {
@@ -4721,10 +4701,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-261366",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-261367",
             "+@selected": "true"
           },
@@ -5569,10 +5545,6 @@
           },
           {
             "+@idref": "V-261365",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-261366",
             "+@selected": "true"
           },
           {
@@ -6423,10 +6395,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-261366",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-261367",
             "+@selected": "true"
           },
@@ -7271,10 +7239,6 @@
           },
           {
             "+@idref": "V-261365",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-261366",
             "+@selected": "true"
           },
           {
@@ -8571,7 +8535,7 @@
         "title": "SRG-OS-000185-GPOS-00079",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261284r996333_rule",
+          "+@id": "SV-261284r996864_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SLEM-05-231040",
@@ -8606,12 +8570,12 @@
             "+@id": "F-64921r996332_fix"
           },
           "check": {
-            "+@system": "C-65013r996331_chk",
+            "+@system": "C-65013r996864_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify SLEM 5 prevents unauthorized disclosure or modification of all information requiring at-rest protection by using disk encryption. \n\nVerify the system partitions are all encrypted with the following commands: \n\n     > sudo blkid\n     /dev/sda1:  \"UUID=26d4a101-7f48-4394-b730-56dc00e65f64\" TYPE=\"crypto_LUKS\"\n     /dev/sda2:  \"UUID=f5b8a790-14cb-4b82-882d-707d52f27765\" TYPE=\"crypto_LUKS\"\n     /dev/sda3:  \"UUID=f2d86128-f975-478d-a5b0-25806c900eac\" TYPE=\"crypto_LUKS\"\n\nEvery persistent disk partition present must be of type \"crypto_LUKS\". If any partitions other than the boot partition or pseudo file systems (such as /proc or /sys) or temporary file systems (that are tmpfs) are not type \"crypto_LUKS\", ask the administrator to indicate how the partitions are encrypted. If there is no evidence that these partitions are encrypted, this is a finding.\n\n     > sudo more /etc/crypttab\n     cr_root UUID=26d4a101-7f48-4394-b730-56dc00e65f64\n     cr_home UUID=f5b8a790-14cb-4b82-882d-707d52f27765\n     cr_swap UUID=f2d86128-f975-478d-a5b0-25806c900eac\n\nEvery persistent disk partition present on the system must have an entry in the /etc/crypttab file. \nIf any partitions other than pseudo file systems (such as /proc or /sys) are not listed or \"/etc/crypttab\" does not exist, this is a finding.\n\nVerify the system works in FIPS mode with the following command:\n\n     > sudo sysctl - a | grep fips\n     crypto.fips_enabled = 1"
+            "check-content": "Verify SLEM 5 prevents unauthorized disclosure or modification of all information requiring at-rest protection by using disk encryption. \n\nVerify the system partitions are all encrypted with the following commands: \n\n     > sudo blkid\n     /dev/sda1:  \"UUID=26d4a101-7f48-4394-b730-56dc00e65f64\" TYPE=\"crypto_LUKS\"\n     /dev/sda2:  \"UUID=f5b8a790-14cb-4b82-882d-707d52f27765\" TYPE=\"crypto_LUKS\"\n     /dev/sda3:  \"UUID=f2d86128-f975-478d-a5b0-25806c900eac\" TYPE=\"crypto_LUKS\"\n\nEvery persistent disk partition present must be of type \"crypto_LUKS\". If any partitions other than the boot partition or pseudo file systems (such as /proc or /sys) or temporary file systems (that are tmpfs) are not type \"crypto_LUKS\", ask the administrator to indicate how the partitions are encrypted. If there is no evidence that these partitions are encrypted, this is a finding.\n\n     > sudo more /etc/crypttab\n     cr_root UUID=26d4a101-7f48-4394-b730-56dc00e65f64\n     cr_home UUID=f5b8a790-14cb-4b82-882d-707d52f27765\n     cr_swap UUID=f2d86128-f975-478d-a5b0-25806c900eac\n\nEvery persistent disk partition present on the system must have an entry in the /etc/crypttab file. \n\nIf any partitions other than pseudo file systems (such as /proc or /sys) are not listed or \"/etc/crypttab\" does not exist, this is a finding.\n\nVerify the system works in FIPS mode with the following command:\n\n     > sudo sysctl - a | grep fips\n     crypto.fips_enabled = 1"
           }
         }
       },
@@ -8815,7 +8779,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261290r996350_rule",
+          "+@id": "SV-261290r1102096_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-232025",
@@ -8833,19 +8797,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command:\n\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec chmod 755 '{}' \\;\n     > exit\n     > sudo reboot",
-            "+@fixref": "F-64927r996349_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive with the following command.\n\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +\n     > exit\n     > sudo reboot",
+            "+@fixref": "F-64927r1102095_fix"
           },
           "fix": {
-            "+@id": "F-64927r996349_fix"
+            "+@id": "F-64927r1102095_fix"
           },
           "check": {
-            "+@system": "C-65019r996348_chk",
+            "+@system": "C-65019r1102094_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode \"755\" or less permissive with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec stat -c \"%n %a\" '{}' \\;\n\nIf any files are found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -9010,7 +8974,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261295r996362_rule",
+          "+@id": "SV-261295r1102099_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-232050",
@@ -9028,19 +8992,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command:\n\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec chown root '{}' \\;\n     > exit\n     > sudo reboot",
-            "+@fixref": "F-64932r996361_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +\n     > exit\n     > sudo reboot",
+            "+@fixref": "F-64932r1102098_fix"
           },
           "fix": {
-            "+@id": "F-64932r996361_fix"
+            "+@id": "F-64932r1102098_fix"
           },
           "check": {
-            "+@system": "C-65024r996360_chk",
+            "+@system": "C-65024r1102097_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are owned by root with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec stat -c \"%n %U\" '{}' \\;\n\nIf any system wide library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -9049,7 +9013,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261296r996365_rule",
+          "+@id": "SV-261296r1102102_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-232055",
@@ -9067,19 +9031,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command:\n\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec chgrp root '{}' \\;\n     > exit\n     > sudo reboot",
-            "+@fixref": "F-64933r996364_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n     > sudo transactional-update shell\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +\n     > exit\n     > sudo reboot",
+            "+@fixref": "F-64933r1102101_fix"
           },
           "fix": {
-            "+@id": "F-64933r996364_fix"
+            "+@id": "F-64933r1102101_fix"
           },
           "check": {
-            "+@system": "C-65025r996363_chk",
+            "+@system": "C-65025r1102100_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are group-owned by root with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec stat -c \"%n %G\" '{}' \\;\n\nIf any system wide library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n     > sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -9648,7 +9612,7 @@
         "title": "SRG-OS-000355-GPOS-00143",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261311r996404_rule",
+          "+@id": "SV-261311r1038944_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-252010",
@@ -11877,45 +11841,6 @@
         }
       },
       {
-        "+@id": "V-261366",
-        "title": "SRG-OS-000021-GPOS-00005",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-261366r996837_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "SLEM-05-412030",
-          "title": "SLEM 5 must use the default pam_tally2 tally directory.",
-          "description": "<VulnDiscussion>By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-force attacks, is reduced. Limits are imposed by locking the account.\n\nSELinux, enforcing a targeted policy, will be required to match the default directory's security context type.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target SUSE Linux Enterprise Micro (SLEM) 5",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "SUSE Linux Enterprise Micro (SLEM) 5",
-            "identifier": "5596"
-          },
-          "ident": {
-            "+content": "CCI-000044",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure SLEM 5 to use the default pam_tally2 tally directory while SELinux enforces a targeted policy.\n\nRemove the pam_tallly nondefault tally directory if any, by removing \"file=[directory-name]\" configuration part from /etc/pam.d/login:\n\n     > sudo sed -ri 's/\\s+file=\\S+\\s+/ /g' /etc/pam.d/login \n\nUpdate the /etc/selinux/targeted/contexts/files/file_contexts.local with \"tallylog_t\" context type for the default pam_tally2 tally directory with the following command:\n\n     > sudo semanage fcontext -a -t tallylog_t \"/var/log/tallylog\" \n\nNext, update the context type of the default tallylog directory/subdirectories and files with the following command: \n\n     > sudo restorecon -R -v /var/log/tallylog",
-            "+@fixref": "F-65003r996837_fix"
-          },
-          "fix": {
-            "+@id": "F-65003r996837_fix"
-          },
-          "check": {
-            "+@system": "C-65095r996542_chk",
-            "check-content-ref": {
-              "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Verify the location of the default tallylog file for the pam_tally2 module with the following command:\n\nNote: If the system does not have SELinux enabled and enforcing a targeted policy, or if the pam_tally2 module is not configured for use, this requirement is not applicable.\n\n     > sudo  grep -R pam_tally2 /etc/pam.d/login | grep \"file=\" | grep -v \"^#\"\n\nIf the command returns any information, this is a finding.\n\nCheck the security context type of the default tally2 directory with the following command:\n\n     > sudo ls -Z /var/log/tallylog\n \nsystem_u:object_r:tallylog_t:s0 /var/log/tallylog\n\nIf the security context type of the tally directory is not \"tallylog_t\", this is a finding."
-          }
-        }
-      },
-      {
         "+@id": "V-261367",
         "title": "SRG-OS-000027-GPOS-00008",
         "description": "<GroupDescription></GroupDescription>",
@@ -12168,7 +12093,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261373r996558_rule",
+          "+@id": "SV-261373r1050789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-432015",
@@ -12207,7 +12132,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261374r996560_rule",
+          "+@id": "SV-261374r1050789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-432020",
@@ -12792,7 +12717,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261389r996593_rule",
+          "+@id": "SV-261389r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-611070",
@@ -13038,7 +12963,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261395r996607_rule",
+          "+@id": "SV-261395r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-611100",
@@ -13976,7 +13901,7 @@
         "title": "SRG-OS-000047-GPOS-00023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261415r996657_rule",
+          "+@id": "SV-261415r1038966_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-653035",
@@ -16731,12 +16656,12 @@
         "title": "SRG-OS-000062-GPOS-00031",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261468r996811_rule",
+          "+@id": "SV-261468r997405_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-654225",
           "title": "Successful/unsuccessful uses of \"setsebool\" in SLEM 5 must generate an audit record.",
-          "description": "<VulnDiscussion>Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.\n\nAt a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. The \"setsebool\" command sets the current state of a particular SELinux boolean or a list of booleans to a given value.\n\nWhen a user logs on, the AUID is set to the UID of the account that is being authenticated. Daemons are not user sessions and have the loginuid set to \"-1\". The AUID representation is an unsigned 32-bit integer, which equals \"4294967295\". The audit system interprets \"-1\", \"4294967295\", and \"unset\" in the same way.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.\n\nAt a minimum, the organization must audit the full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. The \"setsebool\" command sets the current state of a particular SELinux Boolean or a list of Booleans to a given value.\n\nWhen a user logs on, the AUID is set to the UID of the account that is being authenticated. Daemons are not user sessions and have the loginuid set to \"-1\". The AUID representation is an unsigned 32-bit integer, which equals \"4294967295\". The audit system interprets \"-1\", \"4294967295\", and \"unset\" in the same way.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Micro (SLEM) 5",
             "publisher": "DISA",
@@ -16887,7 +16812,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-261472r996822_rule",
+          "+@id": "SV-261472r996865_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLEM-05-654245",
@@ -16912,12 +16837,12 @@
             "+@id": "F-65109r996282_fix"
           },
           "check": {
-            "+@system": "C-65201r996821_chk",
+            "+@system": "C-65201r996865_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Micro_(SLEM)_5_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify syscall auditing has not been disabled with the following command:\n\n     > sudo auditctl -l | grep -i \"a task,never\"\n\nIf any results are returned, this is a finding.\n\nVerify the default rule \"-a task,never\" is not statically defined :\n\n     > grep -rv \"^#\" /etc/audit/rules.d/ | grep -i \"a task,never\"\n\nIf any results are returned, this is a finding."
+            "check-content": "Verify syscall auditing has not been disabled with the following command:\n\n     > sudo auditctl -l | grep -i \"a task,never\"\n\nIf any results are returned, this is a finding.\n\nVerify the default rule \"-a task,never\" is not statically defined:\n\n     > grep -rv \"^#\" /etc/audit/rules.d/ | grep -i \"a task,never\"\n\nIf any results are returned, this is a finding."
           }
         }
       },

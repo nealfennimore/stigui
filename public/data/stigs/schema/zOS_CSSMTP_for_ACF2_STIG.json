@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-06"
+      "+@date": "2025-06-24"
     },
-    "title": "z/OS  CSSMTP for ACF2 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "title": "z/OS CSSMTP for ACF2 Security Technical Implementation Guide",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -190,12 +190,12 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224295r868230_rule",
+          "+@id": "SV-224295r1116138_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZSMTA001",
           "title": "IBM Communications Server Simple Mail Transfer Protocol (CSSMTP) STC data sets must be properly protected.",
-          "description": "<VulnDiscussion>IBM Communications Server Simple Mail Transfer Protocol (CSSMTP) STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IBM CSSMTP STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS CSSMTP for ACF2",
             "publisher": "DISA",
@@ -218,19 +218,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that WRITE and/or greater access to the IBM Communications Server Simple Mail Transfer Protocol (CSSMTP) STC data sets are limited to system programmers and CSSMTP STC and/or batch jobs only. READ access can be given to auditors at the ISSOs discretion.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have what type of access and if required which type of access is logged. The installing systems programmer will identify any additional groups requiring access to specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nNote: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific. \n\nThe following commands are provided as an example for implementing data set controls:\n\n$KEY(SYS3)\nTCPIP.CSSMTP.-       UID(syspaudt) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(tstcaudt) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(icststc) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(audtaudt) R(A) E(A)",
-            "+@fixref": "F-25960r868229_fix"
+            "+content": "Ensure that WRITE and/or greater access to the IBM CSSMTP STC data sets are limited to system programmers and CSSMTP STC and/or batch jobs only. READ access can be given to auditors at the ISSOs discretion.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have what type of access and if required which type of access is logged. The installing systems programmer will identify any additional groups requiring access to specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nNote: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific. \n\nThe following commands are provided as an example for implementing data set controls:\n\n$KEY(SYS3)\nTCPIP.CSSMTP.-       UID(syspaudt) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(tstcaudt) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(icststc) R(A) W(A) A(A) E(A)\nTCPIP.CSSMTP.-       UID(audtaudt) R(A) E(A)",
+            "+@fixref": "F-25960r1116137_fix"
           },
           "fix": {
-            "+@id": "F-25960r868229_fix"
+            "+@id": "F-25960r1116137_fix"
           },
           "check": {
-            "+@system": "C-25972r868228_chk",
+            "+@system": "C-25972r1116136_chk",
             "check-content-ref": {
               "+@href": "zOS_CSSMTP_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Examine the running started task for CSSMTP. \n\nVerify that access to the IBM Communications Server Simple Mail Transfer Protocol (CSSMTP) STC data sets are properly restricted. The data sets to be protected are identified in the data set referenced in the DD statements of the CSSMTP started task(s) and/or batch job(s). \n\nAlternately:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(SMTPSTC)\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZSMT0001)\n\nIf the following guidance is true, this is not a finding.\n\n___ The ACF2 data set access authorizations restrict READ access to auditors.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
+            "check-content": "Examine the running started task for CSSMTP. \n\nVerify access to the IBM CSSMTP STC data sets are properly restricted. The data sets to be protected are identified in the data set referenced in the DD statements of the CSSMTP started task(s) and/or batch job(s). \n\nAlternately:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(SMTPSTC)\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZSMT0001)\n\nIf the following guidance is true, this is not a finding:\n\nThe ACF2 data set access authorizations restrict READ access to auditors.\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
           }
         }
       },
@@ -239,12 +239,12 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224296r519859_rule",
+          "+@id": "SV-224296r1116148_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZSMTA030",
-          "title": "IBM CSSMTP Started Task name is not properly identified and/or defined to the system ACP.",
-          "description": "<VulnDiscussion>IBM CSSMTP requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "IBM Communications Server Simple Mail Transfer Protocol (CSSMTP) Started Task name is not properly identified and/or defined to the system Access Control Program (ACP).",
+          "description": "<VulnDiscussion>IBM CSSMTP requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, it allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS CSSMTP for ACF2",
             "publisher": "DISA",
@@ -267,19 +267,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IBM CSSMTP system programmer and the IAO will ensure that a product's Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nINSERT CSSMTP STC NO-SMC",
-            "+@fixref": "F-25961r519858_fix"
+            "+content": "The IBM CSSMTP system programmer and the ISSO will ensure that a product's Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nINSERT CSSMTP STC NO-SMC",
+            "+@fixref": "F-25961r1116140_fix"
           },
           "fix": {
-            "+@id": "F-25961r519858_fix"
+            "+@id": "F-25961r1116140_fix"
           },
           "check": {
-            "+@system": "C-25973r519857_chk",
+            "+@system": "C-25973r1116139_chk",
             "check-content-ref": {
               "+@href": "zOS_CSSMTP_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ATTSTC)\n\nInsure that the logonids(s) for the IBM CSSMTP started task(s) includes the following:\n\nSTC\nNO-SMC"
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC)\n\nVerify the logonids(s) for the IBM CSSMTP started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding:\n\nSTC\nNO-SMC"
           }
         }
       }

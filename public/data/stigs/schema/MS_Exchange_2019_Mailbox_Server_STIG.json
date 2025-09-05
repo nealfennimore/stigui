@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2025-05-14"
     },
     "title": "Microsoft Exchange 2019 Mailbox Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -191,10 +191,6 @@
           },
           {
             "+@idref": "V-259679",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259680",
             "+@selected": "true"
           },
           {
@@ -469,10 +465,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259680",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259681",
             "+@selected": "true"
           },
@@ -741,10 +733,6 @@
           },
           {
             "+@idref": "V-259679",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259680",
             "+@selected": "true"
           },
           {
@@ -1019,10 +1007,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259680",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259681",
             "+@selected": "true"
           },
@@ -1291,10 +1275,6 @@
           },
           {
             "+@idref": "V-259679",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259680",
             "+@selected": "true"
           },
           {
@@ -1569,10 +1549,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259680",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259681",
             "+@selected": "true"
           },
@@ -1841,10 +1817,6 @@
           },
           {
             "+@idref": "V-259679",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259680",
             "+@selected": "true"
           },
           {
@@ -2119,10 +2091,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259680",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259681",
             "+@selected": "true"
           },
@@ -2391,10 +2359,6 @@
           },
           {
             "+@idref": "V-259679",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259680",
             "+@selected": "true"
           },
           {
@@ -3897,45 +3861,6 @@
         }
       },
       {
-        "+@id": "V-259680",
-        "title": "SRG-APP-000247",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-259680r961155_rule",
-          "+@weight": "10.0",
-          "+@severity": "low",
-          "version": "EX19-MB-000127",
-          "title": "Exchange receive connectors must control the number of recipients per message.",
-          "description": "<VulnDiscussion>Email system availability depends in part on best practice strategies for setting tuning configurations. \n\nThis configuration controls the maximum number of recipients who will receive a copy of a message at one time. This tunable value is related to throughput capacity and can enable the ability to optimize message delivery.\n\nNote: There are two types of default Receive connectors:\n\nClient Servername: Accepts SMTP connections from all non-MAPI clients, such as POP and IMAP. As POP and IMAP are not authorized for use in DOD, these should not be present. Their default value for \"MaxRecipientsPerMessage\" is \"200\".\n\nDefault Servername: Accepts connections from other Hub Transport servers and any Edge Transport servers. Their default value for \"MaxRecipientsPerMessage\" is \"5000\".</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Microsoft Exchange 2019 Mailbox Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Exchange 2019 Mailbox Server",
-            "identifier": "5580"
-          },
-          "ident": {
-            "+content": "CCI-001095",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Update the EDSP to specify the \"MaxRecipientsPerMessage\" value or verify that this information is documented by the organization.\n\nOpen the Exchange Management Shell and enter the following command:\n\nSet-ReceiveConnector -Identity <'IdentityName'> -MaxRecipientsPerMessage 5000 \n\nNote: The <IdentityName> value must be in quotes.\n\nor \n\nEnter the value as identified by the EDSP that has obtained a signoff with risk acceptance.\n\nRepeat the procedure for each Receive connector.",
-            "+@fixref": "F-63327r942353_fix"
-          },
-          "fix": {
-            "+@id": "F-63327r942353_fix"
-          },
-          "check": {
-            "+@system": "C-63419r942352_chk",
-            "check-content-ref": {
-              "+@href": "Microsoft_Exchange_2019_Mailbox_Server_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Note: This requirement applies to IMAP4. IMAP Secure is not restricted and does not apply to this requirement.\n\nReview the Email Domain Security Plan (EDSP) or document that contains this information. \n\nDetermine the Maximum Recipients per Message value.\n\nOpen the Exchange Management Shell and enter the following command:\n\nGet-ReceiveConnector | Select-Object -Property Name, Identity, MaxRecipientsPerMessage\n\nFor each Receive connector, evaluate the \"MaxRecipientsPerMessage\" value.\n\nFor each Receive connector, if the value of \"MaxRecipientsPerMessage\" is not set to \"5000\", this is a finding.\n\nor\n\nIf the value of \"MaxRecipientsPerMessage\" is set to a value other than \"5000\" and has signoff and risk acceptance in the EDSP, this is not a finding."
-          }
-        }
-      },
-      {
         "+@id": "V-259681",
         "title": "SRG-APP-000247",
         "description": "<GroupDescription></GroupDescription>",
@@ -4541,7 +4466,7 @@
         "title": "SRG-APP-000295",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259697r961221_rule",
+          "+@id": "SV-259697r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "EX19-MB-000158",

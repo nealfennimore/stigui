@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-06-06"
+      "+@date": "2025-05-19"
     },
     "title": "Cisco IOS XE Switch L2S Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1012,7 +1012,7 @@
         "title": "SRG-NET-000193-L2S-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220651r991903_rule",
+          "+@id": "SV-220651r1107171_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000040",
@@ -1051,12 +1051,12 @@
             "+@id": "F-22355r507502_fix"
           },
           "check": {
-            "+@system": "C-22366r991902_chk",
+            "+@system": "C-22366r1107170_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XE_Switch_L2S_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Step 1: Verify that the class-maps are configured to match on DSCP values as shown in the configuration example below:\n\nclass-map match-all C2_VOICE\n match ip dscp af47\nclass-map match-all VOICE\n match ip dscp ef\nclass-map match-all VIDEO\n match ip dscp af41\nclass-map match-all PREFERRED_DATA\n match ip dscp af33\n\nStep 2: Verify that the policy map reserves the bandwidth for each traffic type as shown in the following example:\n\npolicy-map QOS_POLICY_SWITCHPORT\nclass C2_VOICE\n priority level 1 10\n class VOICE\n priority level 2 15\n class VIDEO\n bandwidth percent 25\nclass PREFERRED_DATA\n bandwidth percent 25\n class class-default\n bandwidth percent 25\nverone\n\ninterface GigabitEthernet1/1\n switchport trunk allowed vlan 100,110,200\nswitchport mode trunk\n service-policy output QOS_POLICY_SWITCHPORT\n!\ninterface GigabitEthernet1/2\n switchport access vlan 100\n switchport mode access\n switchport voice vlan 200\n trust device cisco-phone\n service-policy output QOS_POLICY_SWITCHPORT\n!\ninterface GigabitEthernet1/2\n switchport access vlan 110\n switchport mode access\n switchport voice vlan 200\n trust device cisco-phone\n service-policy output QOS_POLICY_SWITCHPORT\n\nIf quality of service (QoS) has not been enabled, this is a finding."
+            "check-content": "Step 1: Verify that the class-maps are configured to match on DSCP values as shown in the configuration example below:\n\nclass-map match-all C2_VOICE\n match ip dscp 47\nclass-map match-all VOICE\n match ip dscp ef\nclass-map match-all VIDEO\n match ip dscp af41\nclass-map match-all PREFERRED_DATA\n match ip dscp af33\n\nStep 2: Verify that the policy map reserves the bandwidth for each traffic type as shown in the following example:\n\npolicy-map QOS_POLICY_SWITCHPORT\nclass C2_VOICE\n priority level 1 10\n class VOICE\n priority level 2 15\n class VIDEO\n bandwidth percent 25\nclass PREFERRED_DATA\n bandwidth percent 25\n class class-default\n bandwidth percent 25\nverone\n\ninterface GigabitEthernet1/1\n switchport trunk allowed vlan 100,110,200\nswitchport mode trunk\n service-policy output QOS_POLICY_SWITCHPORT\n!\ninterface GigabitEthernet1/2\n switchport access vlan 100\n switchport mode access\n switchport voice vlan 200\n trust device cisco-phone\n service-policy output QOS_POLICY_SWITCHPORT\n!\ninterface GigabitEthernet1/2\n switchport access vlan 110\n switchport mode access\n switchport voice vlan 200\n trust device cisco-phone\n service-policy output QOS_POLICY_SWITCHPORT\n\nIf quality of service (QoS) has not been enabled, this is a finding."
           }
         }
       },

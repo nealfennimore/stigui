@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-19"
     },
     "title": "Cisco IOS XE Switch NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -3091,7 +3091,7 @@
         "title": "SRG-APP-000395-NDM-000310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220552r961506_rule",
+          "+@id": "SV-220552r1107175_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001130",
@@ -3119,19 +3119,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to authenticate SNMP messages as shown in the example below:\n\nSW4(config)#snmp-server group V3GROUP v3 auth read V3READ write V3WRITE\nSW4(config)#snmp-server user V3USER V3GROUP v3 auth sha xxxxxxx\nSW4(config)#snmp-server view V3READ iso included\nSW4(config)#snmp-server view V3WRITE iso included\nSW4(config)#snmp-server host x.x.x.x version 3 auth V3USER",
-            "+@fixref": "F-22256r508601_fix"
+            "+content": "Configure the Cisco switch to authenticate SNMP messages as shown in the example below:\n\nSW4(config)#snmp-server group V3GROUP v3 auth read V3READ write V3WRITE\nSW4(config)#snmp-server user V3USER V3GROUP v3 auth sha xxxxxxx\nSW4(config)#snmp-server host x.x.x.x version 3 auth V3USER",
+            "+@fixref": "F-22256r1107174_fix"
           },
           "fix": {
-            "+@id": "F-22256r508601_fix"
+            "+@id": "F-22256r1107174_fix"
           },
           "check": {
-            "+@system": "C-22267r508600_chk",
+            "+@system": "C-22267r1107173_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XE_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement as shown in the example below:\n\nsnmp-server group V3GROUP v3 auth read V3READ write V3WRITE \nsnmp-server view V3READ iso included\nsnmp-server view V3WRITE iso included\nsnmp-server host x.x.x.x version 3 auth V3USER\n\nAuthentication used by the SNMP users can be viewed via the show snmp user command as shown in the example below:\n\nR4#show snmp user\n\nUser name: V3USER\nEngine ID: 800000090300C2042B540000\nstorage-type: nonvolatile active\nAuthentication Protocol: SHA\nPrivacy Protocol: None\nGroup-name: V3GROUP\n\nIf the Cisco switch is not configured to authenticate SNMP messages using a FIPS-validated HMAC, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement as shown in the example below:\n\nsnmp-server group V3GROUP v3 auth read V3READ write V3WRITE \nsnmp-server host x.x.x.x version 3 auth V3USER\n\nAuthentication used by the SNMP users can be viewed via the show snmp user command as shown in the example below:\n\nR4#show snmp user\n\nUser name: V3USER\nEngine ID: 800000090300C2042B540000\nstorage-type: nonvolatile active\nAuthentication Protocol: SHA\nPrivacy Protocol: None\nGroup-name: V3GROUP\n\nIf the Cisco switch is not configured to authenticate SNMP messages using a FIPS-validated HMAC, this is a finding."
           }
         }
       },
@@ -3189,7 +3189,7 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220554r961506_rule",
+          "+@id": "SV-220554r1107160_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001150",
@@ -3217,19 +3217,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication that is cryptographically based as shown in the example below:\n\nSW2(config)#ntp authenticate\nSW2(config)#ntp authentication-key 1 md5 xxxxxx\nSW2(config)#ntp trusted-key 1\nSW2(config)#ntp server x.x.x.x key 1\nSW2(config)#ntp server y.y.y.y key 1",
-            "+@fixref": "F-22258r508607_fix"
+            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication that is cryptographically based as shown in the example below:\n\nSW2(config)#ntp authenticate\nSW2(config)#ntp authentication-key 1 hmac-sha2-256 xxxxxx\nSW2(config)#ntp trusted-key 1\nSW2(config)#ntp server x.x.x.x key 1\nSW2(config)#ntp server y.y.y.y key 1",
+            "+@fixref": "F-22258r1107159_fix"
           },
           "fix": {
-            "+@id": "F-22258r508607_fix"
+            "+@id": "F-22258r1107159_fix"
           },
           "check": {
-            "+@system": "C-22269r508606_chk",
+            "+@system": "C-22269r1107158_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XE_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement as shown in the configuration example below:\n\nntp authentication-key 1 md5 121B0A151012 7\nntp authenticate\nntp trusted-key 1\nntp server x.x.x.x key 1\nntp server y.y.y.y key 1\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement as shown in the configuration example below:\n\nntp authentication-key 1 hmac-sha2-256 xxxxxx\nntp authenticate\nntp trusted-key 1\nntp server x.x.x.x key 1\nntp server y.y.y.y key 1\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
           }
         }
       },

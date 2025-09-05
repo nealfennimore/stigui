@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-25"
+      "+@date": "2025-05-15"
     },
     "title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -18035,7 +18035,7 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254433r958726_rule",
+          "+@id": "SV-254433r1106522_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-MS-000060",
@@ -18053,11 +18053,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to the policy Computer Configuration >> Windows Settings >> Security Settings >> Local Policies >> Security Options >> Network access: Restrict clients allowed to make remote calls to SAM. \n\nSelect \"Edit Security\" to configure the \"Security descriptor:\".\n\nAdd \"Administrators\" in \"Group or user names:\" if it is not already listed (this is the default).\n\nSelect \"Administrators\" in \"Group or user names:\".\n\nSelect \"Allow\" for \"Remote Access\" in \"Permissions for \"Administrators\".\n\nClick \"OK\".\n\nThe \"Security descriptor:\" must be populated with \"O:BAG:BAD:(A;;RC;;;BA) for the policy to be enforced.",
-            "+@fixref": "F-57869r849114_fix"
+            "+content": "Navigate to the policy Computer Configuration >> Windows Settings >> Security Settings >> Local Policies >> Security Options >> Network access: Restrict clients allowed to make remote calls to SAM. \n\nSelect \"Edit Security\" to configure the \"Security descriptor:\".\n\nAdd \"Administrators\" in \"Group or user names:\" if it is not already listed (this is the default).\n\nSelect \"Administrators\" in \"Group or user names:\".\n\nSelect \"Allow\" for \"Remote Access\" in \"Permissions for \"Administrators\".\n\nClick \"OK\".\n\nThe \"Security descriptor:\" must be populated with \"O:BAG:BAD:(A;;RC;;;BA) for the policy to be enforced.\n\nIf an application requires this user right, this would not be a finding. Vendor documentation must support the requirement for having the user right. The requirement must be documented and approved by the information system security officer (ISSO).",
+            "+@fixref": "F-57869r1106521_fix"
           },
           "fix": {
-            "+@id": "F-57869r849114_fix"
+            "+@id": "F-57869r1106521_fix"
           },
           "check": {
             "+@system": "C-57918r849113_chk",

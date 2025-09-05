@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-27"
+      "+@date": "2025-05-14"
     },
     "title": "SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -912,6 +912,10 @@
           {
             "+@idref": "V-256983",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
+            "+@selected": "true"
           }
         ]
       },
@@ -1778,6 +1782,10 @@
           },
           {
             "+@idref": "V-256983",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
             "+@selected": "true"
           }
         ]
@@ -2646,6 +2654,10 @@
           {
             "+@idref": "V-256983",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
+            "+@selected": "true"
           }
         ]
       },
@@ -3512,6 +3524,10 @@
           },
           {
             "+@idref": "V-256983",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
             "+@selected": "true"
           }
         ]
@@ -4380,6 +4396,10 @@
           {
             "+@idref": "V-256983",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
+            "+@selected": "true"
           }
         ]
       },
@@ -5246,6 +5266,10 @@
           },
           {
             "+@idref": "V-256983",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
             "+@selected": "true"
           }
         ]
@@ -6114,6 +6138,10 @@
           {
             "+@idref": "V-256983",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
+            "+@selected": "true"
           }
         ]
       },
@@ -6981,6 +7009,10 @@
           {
             "+@idref": "V-256983",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
+            "+@selected": "true"
           }
         ]
       },
@@ -7847,6 +7879,10 @@
           },
           {
             "+@idref": "V-256983",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274879",
             "+@selected": "true"
           }
         ]
@@ -9098,11 +9134,11 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234830r1069400_rule",
+          "+@id": "SV-234830r1106556_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010320",
-          "title": "The SUSE operating system for all network connections associated with SSH traffic must immediately terminate at the end of the session or after 10 minutes of inactivity.",
+          "title": "The SUSE operating system, for all network connections associated with SSH traffic, must immediately terminate at the end of the session or after 10 minutes of inactivity.",
           "description": "<VulnDiscussion>Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific SUSE operating system functionality where the system owner, data owner, or organization requires additional assurance.\n\nIn Linux, ClientAliveCountMax directive is used in the SSH daemon configuration file to define the number of client alive messages the SSH server will send without receiving any response from the client before terminating the session. The ClientAliveInterval (SLES-15-010280/ V-234827) sets a timeout interval in seconds after which if no data has been received from the client, the ssh daemon will send a message through the encrypted channel to request a response from the client. Together, these two settings provide a way to configure a timeout for inactive sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Server 15",
@@ -9129,12 +9165,12 @@
             "+@id": "F-37981r1069399_fix"
           },
           "check": {
-            "+@system": "C-38018r1069398_chk",
+            "+@system": "C-38018r1106555_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck that the \"ClientAliveCountMax\" variable is set to a value of \"1\" or less by performing the following command:\n\n> sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*clientalivecountmax'\n\nClientAliveCountMax 1\n\nIf \"ClientAliveCountMax\" does not exist or \"ClientAliveCountMax\" is not set to a value of \"1\" in \"/etc/ssh/sshd_config\", or the line is commented out, this is a finding."
+            "check-content": "Verify all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck that the \"ClientAliveCountMax\" variable is set to a value of \"1\" by performing the following command:\n\n> sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*clientalivecountmax'\n\nClientAliveCountMax 1\n\nIf \"ClientAliveCountMax\" does not exist or \"ClientAliveCountMax\" is not set to a value of \"1\" in \"/etc/ssh/sshd_config\", or the line is commented out, this is a finding."
           }
         }
       },
@@ -9266,12 +9302,12 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234834r991560_rule",
+          "+@id": "SV-234834r1106567_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010351",
           "title": "The SUSE operating system library files must have mode 0755 or less permissive.",
-          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Server 15",
             "publisher": "DISA",
@@ -9284,19 +9320,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec chmod 755 '{}' \\;",
-            "+@fixref": "F-37985r618772_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to have mode 0755 or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +",
+            "+@fixref": "F-37985r1106566_fix"
           },
           "fix": {
-            "+@id": "F-37985r618772_fix"
+            "+@id": "F-37985r1106566_fix"
           },
           "check": {
-            "+@system": "C-38022r618771_chk",
+            "+@system": "C-38022r1106557_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode \"0755\" or less permissive.\n\nCheck that the system-wide shared library files have mode \"0755\" or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec stat -c \"%n %a\" '{}' \\;\n\nIf any files are found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -9344,12 +9380,12 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234836r991560_rule",
+          "+@id": "SV-234836r1106561_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010353",
           "title": "The SUSE operating system library files must be owned by root.",
-          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Server 15",
             "publisher": "DISA",
@@ -9362,19 +9398,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec chown root '{}' \\;",
-            "+@fixref": "F-37987r618778_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +",
+            "+@fixref": "F-37987r1106560_fix"
           },
           "fix": {
-            "+@id": "F-37987r618778_fix"
+            "+@id": "F-37987r1106560_fix"
           },
           "check": {
-            "+@system": "C-38024r618777_chk",
+            "+@system": "C-38024r1102117_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are owned by root.\n\nCheck that the system-wide shared library files are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type f -exec stat -c \"%n %U\" '{}' \\;\n\nIf any system wide library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -9422,12 +9458,12 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234838r991560_rule",
+          "+@id": "SV-234838r1106563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SLES-15-010355",
           "title": "The SUSE operating system library files must be group-owned by root.",
-          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If the SUSE operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to SUSE operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target SUSE Linux Enterprise Server 15",
             "publisher": "DISA",
@@ -9440,19 +9476,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system library files to be protected from unauthorized access. Run the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec chgrp root '{}' \\;",
-            "+@fixref": "F-37989r618784_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to be group owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +",
+            "+@fixref": "F-37989r1106562_fix"
           },
           "fix": {
-            "+@id": "F-37989r618784_fix"
+            "+@id": "F-37989r1106562_fix"
           },
           "check": {
-            "+@system": "C-38026r618783_chk",
+            "+@system": "C-38026r1102120_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\" and \"/usr/lib64\" are group-owned by root.\n\nCheck that the system-wide library files are group-owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type f -exec stat -c \"%n %G\" '{}' \\;\n\nIf any system wide shared library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n> sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -15530,7 +15566,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234990r991589_rule",
+          "+@id": "SV-234990r1106565_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SLES-15-040062",
@@ -15548,19 +15584,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to disable the CtrlAltDelBurstAction by added or modifying the following line in the \"/etc/systemd/system.conf\" configuration file:\n\nCtrlAltDelBurstAction=none\n\nReload the daemon for this change to take effect\n\n> sudo systemctl daemon-reload",
-            "+@fixref": "F-38141r619240_fix"
+            "+content": "Configure the system to disable the CtrlAltDelBurstAction by adding it to a drop file in a \"/etc/systemd/system.conf.d/\" configuration file:\n\nIf no drop file exists, create one with the following command:\n\n> sudo touch /etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction\n\nEdit the file to contain the setting by adding the following text:\n\nCtrlAltDelBurstAction=none\n\nReload the daemon for this change to take effect:\n\n> sudo systemctl daemon-reexec",
+            "+@fixref": "F-38141r1102124_fix"
           },
           "fix": {
-            "+@id": "F-38141r619240_fix"
+            "+@id": "F-38141r1102124_fix"
           },
           "check": {
-            "+@system": "C-38178r619239_chk",
+            "+@system": "C-38178r1102123_chk",
             "check-content-ref": {
               "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SUSE operating system is not configured to reboot the system when Ctrl-Alt-Delete is pressed seven times within two seconds with the following command:\n\n> sudo grep -i ctrl /etc/systemd/system.conf\n\nCtrlAltDelBurstAction=none\n\nIf the \"CtrlAltDelBurstAction\" is not set to \"none\", commented out, or is missing, this is a finding."
+            "check-content": "Verify the SUSE operating system is not configured to reboot the system when Ctrl-Alt-Delete is pressed seven times within two seconds with the following command:\n\n> systemd-analyze cat-config systemd/system.conf\n\n# /etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction.conf\nCtrlAltDelBurstAction=none\n\nIf the \"CtrlAltDelBurstAction\" is not set to \"none\", commented out, or is missing, this is a finding.\nIf the setting is not configured in a drop in file, this is a finding."
           }
         }
       },
@@ -17439,6 +17475,45 @@
               "+@name": "M"
             },
             "check-content": "Verify that the operating system is configured to allow sending email notifications.\n\nNote: The \"mailx\" package provides the \"mail\" command that is used to send email messages.\n\nVerify that the \"mailx\" package is installed on the system:\n\n     > sudo zypper se mailx\n\n     i | mailx | A MIME-Capable Implementation of the mailx Command | package\n\t \nIf \"mailx\" package is not installed, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274879",
+        "title": "SRG-OS-000471-GPOS-00215",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274879r1106564_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "SLES-15-030015",
+          "title": "The SUSE operating system must audit any script or executable called by cron as root or by any privileged user.",
+          "description": "<VulnDiscussion>Any script or executable called by cron as root or by any privileged user must be owned by that user, must have the permissions 755 or more restrictive, and have no extended rights that allow any nonprivileged user to modify the script or executable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target SUSE Linux Enterprise Server 15",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "SUSE Linux Enterprise Server 15",
+            "identifier": "5274"
+          },
+          "ident": {
+            "+content": "CCI-000172",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure the SUSE operating system to audit the execution of any system call made by cron as root or as any privileged user.\n\nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\":\n\nauditctl -w /etc/cron.d/ -p wa -k cronjobs\nauditctl -w /var/spool/cron/ -p wa -k cronjobs\n\nTo load the rules to the kernel immediately, use the following command:\n\n> sudo augenrules --load",
+            "+@fixref": "F-78885r1102127_fix"
+          },
+          "fix": {
+            "+@id": "F-78885r1102127_fix"
+          },
+          "check": {
+            "+@system": "C-78980r1102126_chk",
+            "check-content-ref": {
+              "+@href": "SUSE_Linux_Enterprise_Server_15_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the SUSE operating system is configured to audit the execution of any system call made by cron as root or as any privileged user.\n\n> sudo auditctl -l | grep /etc/cron.d\n-w /etc/cron.d -p wa -k cronjobs\n\n$ sudo auditctl -l | grep /var/spool/cron\n-w /var/spool/cron -p wa -k cronjobs\n\nIf either of these commands do not return the expected output, or the lines are commented out, this is a finding."
           }
         }
       }

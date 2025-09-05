@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-19"
     },
     "title": "Cisco IOS Switch NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1911,7 +1911,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220575r1050864_rule",
+          "+@id": "SV-220575r1107154_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-000140",
@@ -1943,11 +1943,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to restrict management access to specific IP addresses via SSH as shown in the example below:\n\nSW2(config)#ip access-list extended MANAGEMENT_NET \nSW2(config-std-nacl)#permit x.x.x.0 0.0.0.255 \nSW2(config-std-nacl)#exit \nSW2(config)#line vty 0 1 \nSW2(config-line)#transport input ssh \nSW2(config-line)#access-class MANAGEMENT_NET in \nSW2(config-line)#end",
-            "+@fixref": "F-22279r835070_fix"
+            "+content": "Configure the Cisco switch to restrict management access to specific IP addresses via SSH as shown in the example below:\n\nSW2(config)#ip access-list extended MANAGEMENT_NET \nSW2(config-ext-nacl)#permit x.x.x.0 0.0.0.255 \nSW2(config-ext-nacl)#exit \nSW2(config)#line vty 0 1 \nSW2(config-line)#transport input ssh \nSW2(config-line)#access-class MANAGEMENT_NET in \nSW2(config-line)#end",
+            "+@fixref": "F-22279r1107153_fix"
           },
           "fix": {
-            "+@id": "F-22279r835070_fix"
+            "+@id": "F-22279r1107153_fix"
           },
           "check": {
             "+@system": "C-22290r1050863_chk",
@@ -3257,7 +3257,7 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220606r961506_rule",
+          "+@id": "SV-220606r1107157_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001150",
@@ -3285,19 +3285,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication that is cryptographically based as shown in the example below:\n\nSW2(config)#ntp authenticate\nSW2(config)#ntp authentication-key 1 md5 xxxxxx\nSW2(config)#ntp trusted-key 1\nSW2(config)#ntp server x.x.x.x key 1\nSW2(config)#ntp server y.y.y.y key 1",
-            "+@fixref": "F-22310r507865_fix"
+            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication that is cryptographically based as shown in the example below:\n\nSW2(config)#ntp authenticate\nSW2(config)#ntp authentication-key 1 hmac-sha2-256 xxxxxx\nSW2(config)#ntp trusted-key 1\nSW2(config)#ntp server x.x.x.x key 1\nSW2(config)#ntp server y.y.y.y key 1",
+            "+@fixref": "F-22310r1107156_fix"
           },
           "fix": {
-            "+@id": "F-22310r507865_fix"
+            "+@id": "F-22310r1107156_fix"
           },
           "check": {
-            "+@system": "C-22321r507864_chk",
+            "+@system": "C-22321r1107155_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it authenticates NTP sources using cryptographically based authentication as shown in the configuration example below:\n\nntp authentication-key 1 md5 121B0A151012 7\nntp authenticate\nntp trusted-key 1\nntp server x.x.x.x key 1\nntp server y.y.y.y key 1\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify that it authenticates NTP sources using cryptographically based authentication as shown in the configuration example below:\n\nntp authentication-key 1 hmac-sha2-256 xxxxxx\nntp authenticate\nntp trusted-key 1\nntp server x.x.x.x key 1\nntp server y.y.y.y key 1\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
           }
         }
       },

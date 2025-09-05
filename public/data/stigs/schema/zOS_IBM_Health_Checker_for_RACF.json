@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-10"
+      "+@date": "2025-06-24"
     },
-    "title": "z/OS IBM Health Checker for RACF  Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "title": "z/OS IBM Health Checker for RACF Security Technical Implementation Guide",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -226,7 +226,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224501r868410_rule",
+          "+@id": "SV-224501r1116160_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKR001",
@@ -254,19 +254,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to IBM Health Checker STC data sets is limited to systems programmers and/or Quest NC-Pass's STC(s) and/or batch user(s) only. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system. The dataset to be protected can be found in the HZSPROC STC member in HZSPDATA DD statement.\n\nData sets to be protected will be:\nSYS3.*.HZSPDATA\n\nThe following commands are provided as a sample for implementing data set controls:\n\nAD 'sys3.mmd.hzspdata.**' UACC(NONE) OWNER(SYS3) AUDIT(FAILURES(READ))\n\nPE ' sys3.mmd.hzspdata.**' ID(syspaudt) ACC(A)\nPE ' sys3.mmd.hzspdata.**' ID(Health Checker STCs) ACC(A)\nPE ' sys3.mmd.hzspdata.**' ID(audtaudt) ACC(R)",
-            "+@fixref": "F-26172r868409_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to IBM Health Checker STC data sets is limited to systems programmers and/or Quest NC-Pass's STC(s) and/or batch user(s) only. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system. The dataset to be protected can be found in the HZSPROC STC member in HZSPDATA DD statement.\n\nData sets to be protected will be:\nSYS3.*.HZSPDATA\n\nThe following commands are provided as a sample for implementing data set controls:\n\nAD 'sys3.mmd.hzspdata.**' UACC(NONE) OWNER(SYS3) AUDIT(FAILURES(READ))\n\nPE ' sys3.mmd.hzspdata.**' ID(syspaudt) ACC(A)\nPE ' sys3.mmd.hzspdata.**' ID(Health Checker STCs) ACC(A)\nPE ' sys3.mmd.hzspdata.**' ID(audtaudt) ACC(R)",
+            "+@fixref": "F-26172r1116159_fix"
           },
           "fix": {
-            "+@id": "F-26172r868409_fix"
+            "+@id": "F-26172r1116159_fix"
           },
           "check": {
-            "+@system": "C-26184r868406_chk",
+            "+@system": "C-26184r1116158_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The RACF data set rules for the data sets restricts READ access to auditors.\n\n___ The RACF data set rules for the data sets restricts UPDATE access to domain level security administrators.\n\n___ The RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___ The RACF data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s).\n\n___ The RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding:\n\nThe RACF data set rules for the data sets restricts READ access to auditors.\n\nThe RACF data set rules for the data sets restricts UPDATE access to domain level security administrators.\n\nThe RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s).\n\nThe RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -275,7 +275,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224502r868415_rule",
+          "+@id": "SV-224502r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKR030",
@@ -324,7 +324,7 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224503r868419_rule",
+          "+@id": "SV-224503r958482_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKR032",

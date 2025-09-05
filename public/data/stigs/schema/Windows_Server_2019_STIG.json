@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-25"
+      "+@date": "2025-05-23"
     },
     "title": "Microsoft Windows Server 2019 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -11492,7 +11492,7 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205650r1028366_rule",
+          "+@id": "SV-205650r1107646_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN19-PK-000030",
@@ -11524,11 +11524,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Install the US DoD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\n\nDoD Root CA 3 - US DoD CCEB Interoperability Root CA 2 - 9B74964506C7ED9138070D08D5F8B969866560C8                 \nDoD Root CA 6 - US DOD CCEB Interoperability Root CA 2 -D471CA32F7A692CE6CBB6196BD3377FE4DBCD106              \n\nAdministrators should run the Federal Bridge Certification Authority (FBCA) Cross-Certificate Removal Tool once as an administrator and once as the current user.\n\nThe FBCA Cross-Certificate Remover Tool and User Guide are available on Cyber Exchange at https://cyber.mil/pki-pke/tools-configuration-files. Certificate bundles published by the PKI can be found at https://crl.gds.disa.mil/.",
-            "+@fixref": "F-5915r1028366_fix"
+            "+content": "Install the US DoD CCEB Interoperability Root CA cross-certificate on unclassified systems.\n\nIssued To - Issued By - Thumbprint\n\nDoD Root CA 3 - US DoD CCEB Interoperability Root CA 2 - 9B74964506C7ED9138070D08D5F8B969866560C8                 \nDoD Root CA 6 - US DOD CCEB Interoperability Root CA 2 -D471CA32F7A692CE6CBB6196BD3377FE4DBCD106              \n\nAdministrators should run the Federal Bridge Certification Authority (FBCA) Cross-Certificate Removal Tool once as an administrator and once as the current user.\n\nThe FBCA Cross-Certificate Remover Tool and User Guide are available on Cyber Exchange at https://dl.cyber.mil/pki-pke/msi/InstallRoot_5.6x32.msi. Certificate bundles published by the PKI can be found at https://crl.gds.disa.mil/.",
+            "+@fixref": "F-5915r1107645_fix"
           },
           "fix": {
-            "+@id": "F-5915r1028366_fix"
+            "+@id": "F-5915r1107645_fix"
           },
           "check": {
             "+@system": "C-5915r1016377_chk",
@@ -12181,7 +12181,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205663r958472_rule",
+          "+@id": "SV-205663r1106629_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN19-00-000130",
@@ -12209,19 +12209,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Format volumes to use NTFS or ReFS.",
-            "+@fixref": "F-5928r354908_fix"
+            "+content": "Format volumes to use NTFS, ReFS, or CSV.",
+            "+@fixref": "F-5928r1106515_fix"
           },
           "fix": {
-            "+@id": "F-5928r354908_fix"
+            "+@id": "F-5928r1106515_fix"
           },
           "check": {
-            "+@system": "C-5928r354907_chk",
+            "+@system": "C-5928r1106629_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2019_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Open \"Computer Management\".\n\nSelect \"Disk Management\" under \"Storage\".\n\nFor each local volume, if the file system does not indicate \"NTFS\", this is a finding.\n\n\"ReFS\" (resilient file system) is also acceptable and would not be a finding.\n\nThis does not apply to system partitions such the Recovery and EFI System Partition."
+            "check-content": "Open \"Computer Management\".\n\nSelect \"Disk Management\" under \"Storage\".\n\nFor each local volume, if the file system does not indicate \"NTFS\", this is a finding.\n\nResilient file system (ReFS) and Cluster Shared Volumes (CSV) are also acceptable and are not findings. \n\nThis does not apply to system partitions such the Recovery and EFI System Partition."
           }
         }
       },
@@ -16292,7 +16292,7 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205747r958726_rule",
+          "+@id": "SV-205747r1106518_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN19-MS-000060",
@@ -16320,11 +16320,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Navigate to the policy Computer Configuration >> Windows Settings >> Security Settings >> Local Policies >> Security Options >> \"Network access: Restrict clients allowed to make remote calls to SAM\". \n\nSelect \"Edit Security\" to configure the \"Security descriptor:\".\n\nAdd \"Administrators\" in \"Group or user names:\" if it is not already listed (this is the default).\n\nSelect \"Administrators\" in \"Group or user names:\".\n\nSelect \"Allow\" for \"Remote Access\" in \"Permissions for \"Administrators\".\n\nClick \"OK\".\n\nThe \"Security descriptor:\" must be populated with \"O:BAG:BAD:(A;;RC;;;BA) for the policy to be enforced.",
-            "+@fixref": "F-6012r857328_fix"
+            "+content": "Navigate to the policy Computer Configuration >> Windows Settings >> Security Settings >> Local Policies >> Security Options >> \"Network access: Restrict clients allowed to make remote calls to SAM\". \n\nSelect \"Edit Security\" to configure the \"Security descriptor:\".\n\nAdd \"Administrators\" in \"Group or user names:\" if it is not already listed (this is the default).\n\nSelect \"Administrators\" in \"Group or user names:\".\n\nSelect \"Allow\" for \"Remote Access\" in \"Permissions for \"Administrators\".\n\nClick \"OK\".\n\nThe \"Security descriptor:\" must be populated with \"O:BAG:BAD:(A;;RC;;;BA) for the policy to be enforced. If an application requires this user right, this is not a finding. Vendor documentation must support the requirement for having the user right. The requirement must be documented and approved by the information system security officer (ISSO).",
+            "+@fixref": "F-6012r1106517_fix"
           },
           "fix": {
-            "+@id": "F-6012r857328_fix"
+            "+@id": "F-6012r1106517_fix"
           },
           "check": {
             "+@system": "C-6012r857327_chk",
@@ -23888,7 +23888,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271429r1059566_rule",
+          "+@id": "SV-271429r1106520_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN19-DC-000401",
@@ -23913,12 +23913,12 @@
             "+@id": "F-75385r1059565_fix"
           },
           "check": {
-            "+@system": "C-75478r1059564_chk",
+            "+@system": "C-75478r1106519_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2019_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This applies to domain controllers. This is not applicable for member servers.\n\nVerify the effective setting in Local Group Policy Editor.\n\nRun \"gpedit.msc\".\n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Template >> System >> KDC >> Allow name-based strong mappings for certificates.\n\nIf \"Allow name-based strong mappings for certificates\" is not \"Enabled\", this is a finding."
+            "check-content": "This applies to domain controllers. This is not applicable for member servers.\n\nVerify the effective setting in Local Group Policy Editor.\n\nRun \"gpedit.msc\".\nOr\nUsing the registry, check HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\KDC\\Parameters, Key: UseStrongNameMatches.                      \nOr\nUsing GPRESULT, check the applicable GPO for \"Allow name-based strong mappings for certificates\".\n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Template >> System >> KDC >> Allow name-based strong mappings for certificates.\n\nIf \"Allow name-based strong mappings for certificates\" is not \"Enabled\", this is a finding."
           }
         }
       }

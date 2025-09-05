@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-06-24"
     },
     "title": "zOS WebsphereMQ for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -1350,7 +1350,7 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224563r1050710_rule",
+          "+@id": "SV-224563r1111727_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWMQ0056",
@@ -1385,12 +1385,12 @@
             "+@id": "F-26234r1050709_fix"
           },
           "check": {
-            "+@system": "C-26246r1050708_chk",
+            "+@system": "C-26246r1111726_chk",
             "check-content-ref": {
               "+@href": "zOS_WebsphereMQ_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following reports produced by the RACF Data Collection:\n\n- SENSITVE.RPT(MQNLIST)\n\nb) For all namelist resources (i.e., ssid.namelist) defined to the MQNLIST, GMQNLIST, MXNLIST, or FMXNLIST resource classes, ensure the following items are in effect:\n\nNOTE: ssid is the queue manager name (a.k.a., subsystem identifier).\n\n1) Resource profiles are defined with a UACC(NONE).\n2) Access authorization restricts access to users requiring the ability to make namelist inquires. This is difficult to determine. However, an item for concern may be a profile with * READ specified in the access list.\n\nc) If both of the items in (b) are true, there is no finding.\n\nd) If either item in (b) is untrue, this is a finding."
+            "check-content": "a) Refer to the following reports produced by the RACF Data Collection:\n\n- SENSITVE.RPT(MQNLIST)\n\nb) For all namelist resources (i.e., ssid.namelist) defined to the MQNLIST, GMQNLIST, MXNLIST, or GMXNLIST resource classes, ensure the following items are in effect:\n\nNOTE: ssid is the queue manager name (i.e., subsystem identifier).\n\n1) Resource profiles are defined with a UACC(NONE).\n2) Access authorization restricts access to users requiring the ability to make namelist inquires. This is difficult to determine. However, an item for concern may be a profile with * READ specified in the access list.\n\nc) If both of the items in (b) are true, this is not a finding.\n\nd) If either item in (b) is untrue, this is a finding."
           }
         }
       },

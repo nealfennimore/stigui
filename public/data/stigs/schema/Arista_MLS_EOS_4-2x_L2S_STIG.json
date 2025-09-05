@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-19"
     },
     "title": "Arista MLS EOS 4.X L2S Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -91,10 +91,6 @@
           },
           {
             "+@idref": "V-255977",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-255978",
             "+@selected": "true"
           },
           {
@@ -177,10 +173,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-255978",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-255979",
             "+@selected": "true"
           },
@@ -257,10 +249,6 @@
           },
           {
             "+@idref": "V-255977",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-255978",
             "+@selected": "true"
           },
           {
@@ -343,10 +331,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-255978",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-255979",
             "+@selected": "true"
           },
@@ -423,10 +407,6 @@
           },
           {
             "+@idref": "V-255977",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-255978",
             "+@selected": "true"
           },
           {
@@ -509,10 +489,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-255978",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-255979",
             "+@selected": "true"
           },
@@ -589,10 +565,6 @@
           },
           {
             "+@idref": "V-255977",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-255978",
             "+@selected": "true"
           },
           {
@@ -675,10 +647,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-255978",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-255979",
             "+@selected": "true"
           },
@@ -755,10 +723,6 @@
           },
           {
             "+@idref": "V-255977",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-255978",
             "+@selected": "true"
           },
           {
@@ -974,12 +938,12 @@
         "title": "SRG-NET-000362-L2S-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-255972r882258_rule",
+          "+@id": "SV-255972r1107168_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARST-L2-000070",
           "title": "The Arista MLS switch must have STP Loop Guard enabled on all nondesignated STP switch ports.",
-          "description": "<VulnDiscussion>The Spanning Tree Protocol (STP) loop guard feature provides additional protection against STP loops. An STP loop is created when an STP blocking port in a redundant topology erroneously transitions to the forwarding state. In its operation, STP relies on continuous reception and transmission of BPDUs based on the port role. The designated port transmits BPDUs, and the nondesignated port receives BPDUs. When one of the ports in a physically redundant topology no longer receives BPDUs, the STP conceives that the topology is loop free. Eventually, the blocking port from the alternate or backup port becomes a designated port and moves to a forwarding state. This situation creates a loop. The loop guard feature makes additional checks. If BPDUs are not received on a nondesignated port and loop guard is enabled, that port is moved into the STP loop-inconsistent blocking state.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The Spanning Tree Protocol (STP) loop guard feature provides additional protection against STP loops. An STP loop is created when an STP blocking port in a redundant topology erroneously transitions to the forwarding state. In its operation, STP relies on continuous reception and transmission of BPDUs based on the port role. The designated port transmits BPDUs, and the nondesignated port receives BPDUs. When one of the ports in a physically redundant topology no longer receives BPDUs, the STP conceives that the topology is loop free. Eventually, the blocking port from the alternate or backup port becomes a designated port and moves to a forwarding state. This situation creates a loop. The loop guard feature makes additional checks. If BPDUs are not received on a nondesignated port and loop guard is enabled, that port is moved into the STP loop-inconsistent blocking state. In topologies where fiber optic interconnections are used, physical misconnections can occur that allow a link to appear to be up when there is a mismatched set of transmit/receive pairs. When such a physical misconfiguration occurs, protocols such as STP can cause network instability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Arista MLS EOS 4.X L2S",
             "publisher": "DISA",
@@ -999,12 +963,12 @@
             "+@id": "F-59591r882257_fix"
           },
           "check": {
-            "+@system": "C-59648r882256_chk",
+            "+@system": "C-59648r1107167_chk",
             "check-content-ref": {
               "+@href": "Arista_MLS_EOS_4.X_L2S_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Arista MLS switch configuration to verify that STP Loop Guard is enabled. It can be enabled globally or applied to an interface.\n\nswitch# sh run | sec spanning-tree\nspanning-tree guard loop default\n\nOr,\n\ninterface Ethernet6\n    spanning-tree guard loop\n\nIf STP Loop Guard is not configured globally or on nondesignated STP ports, this is a finding."
+            "check-content": "Review the Arista MLS switch configuration to verify that STP Loop Guard is enabled. It can be enabled globally or applied to an interface.\n\nNote: Arista uses STP Loop guard to protect against one-way connections.\n\nswitch# sh run | sec spanning-tree\nspanning-tree guard loop default\n\nOr,\n\ninterface Ethernet6\n    spanning-tree guard loop\n\nIf STP Loop Guard is not configured globally or on nondesignated STP ports, this is a finding."
           }
         }
       },
@@ -1200,45 +1164,6 @@
               "+@name": "M"
             },
             "check-content": "In cases where VLANs do not span multiple switches, it is a best practice to not implement STP. Avoiding the use of STP will provide the most deterministic and highly available network topology. If STP is required, review the Arista MLS switch configuration to verify that Rapid STP has been implemented.\n\nswitch(config)#sh run | sec spanning-tree\nspanning-tree mode rstp\n!\n\nNote: MSTP can be configured as an alternate mode. MSTP uses RSTP for rapid convergence and enables multiple VLANs to be grouped into and mapped to the same spanning-tree instance, thereby reducing the number of spanning-tree instances needed to support a large number of VLANs.\n\nIf MSTP or Rapid STP has not been implemented where STP is required, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-255978",
-        "title": "SRG-NET-000512-L2S-000004",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-255978r882276_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "ARST-L2-000150",
-          "title": "The Arista MLS layer 2 switch must enable Unidirectional Link Detection (UDLD) to protect against one-way connections.",
-          "description": "<VulnDiscussion>In topologies where fiber optic interconnections are used, physical misconnections can occur that allow a link to appear to be up when there is a mismatched set of transmit/receive pairs. When such a physical misconfiguration occurs, protocols such as STP can cause network instability. UDLD is a layer 2 protocol that can detect these physical misconfigurations by verifying that traffic is flowing bidirectionally between neighbors. Ports with UDLD enabled periodically transmit packets to neighbor devices. If the packets are not echoed back within a specific time frame, the link is flagged as unidirectional and the interface is shut down.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Arista MLS EOS 4.X L2S",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Arista MLS EOS 4.X L2S",
-            "identifier": "5512"
-          },
-          "ident": {
-            "+content": "CCI-000366",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure the Arista MLS switch to enable Loop Guard to prevent Unidirectional Link Detection (UDLD) and to protect against one-way connections.\n\nswitch(config)#spanning-tree guard loop default\nswitch(config)#\n\nAlternatively, configure Loop Guard on each interface:\n\nswitch(config-if-Eth6)# spanning-tree guard loop\n\nNote: UDLD is a Cisco-proprietary protocol. However, other switch vendors, such as 3Com, Extreme, and D-Link, have similar functionality in their products, respectively: Device Link Detection Protocol (DLDP), Extreme Link Status Monitoring (ELSM), and D-Link Unidirectional Link Detection (DULD).",
-            "+@fixref": "F-59597r882275_fix"
-          },
-          "fix": {
-            "+@id": "F-59597r882275_fix"
-          },
-          "check": {
-            "+@system": "C-59654r882274_chk",
-            "check-content-ref": {
-              "+@href": "Arista_MLS_EOS_4.X_L2S_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "If any of the switch ports have fiber optic interconnections with neighbors, review the Arista MLS switch configuration to verify that Loop Guard is enabled globally or on a per interface basis.\n\nswitch# sh run | sec spanning-tree\nspanning-tree guard loop default\n\nOr,\n\ninterface Ethernet6\n    spanning-tree guard loop\n\nIf the switch has fiber optic interconnections with neighbors and Loop Guard is not enabled, this is a finding."
           }
         }
       },
