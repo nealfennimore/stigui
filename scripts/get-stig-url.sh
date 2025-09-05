@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-export URL=$(
-    curl -s 'https://public.cyber.mil/stigs/compilations/' |
-        grep -o -E '"https://public.cyber.mil/wp-content/uploads/stigs/zip.*" ' |
-        sed -e 's/"//g' -e 's/ $//'
+MONTH_YEAR=$(
+    date --date="$(date +%Y-%-m-01) -$(((($(date +%-m) - 1) % 3))) month" "+%B_%Y"
 )
+
+export URL="https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_SRG-STIG_Library_$MONTH_YEAR.zip"
