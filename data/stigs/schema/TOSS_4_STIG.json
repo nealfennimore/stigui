@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-05-30"
+      "+@date": "2025-05-08"
     },
     "title": "Tri-Lab Operating System Stack (TOSS) 4 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -8293,7 +8293,7 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252912r986571_rule",
+          "+@id": "SV-252912r1016298_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010010",
@@ -8313,6 +8313,10 @@
             },
             {
               "+content": "CCI-004068",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001991",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -8416,7 +8420,7 @@
         "title": "SRG-OS-000109-GPOS-00056",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252915r986573_rule",
+          "+@id": "SV-252915r1016299_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010040",
@@ -8429,10 +8433,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004045",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004045",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000770",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to stop users from logging on remotely from outside of the cluster as the \"root\" user via SSH.\n\nEdit the appropriate \"/etc/ssh/sshd_config\" file to uncomment or add the line for the \"PermitRootLogin\" keyword and set its value to \"no\":\n\nPermitRootLogin no\n\nThe SSH daemon must be restarted for the changes to take effect. To restart the SSH daemon, run the following command:\n\n$ sudo systemctl restart sshd.service",
             "+@fixref": "F-56318r824068_fix"
@@ -8953,7 +8963,7 @@
         "title": "SRG-OS-000355-GPOS-00143",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252928r986576_rule",
+          "+@id": "SV-252928r1038944_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010180",
@@ -8977,6 +8987,14 @@
             },
             {
               "+content": "CCI-004926",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001891",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002046",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -9051,7 +9069,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252930r986577_rule",
+          "+@id": "SV-252930r1016301_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TOSS-04-010220",
@@ -9064,10 +9082,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-003992",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003992",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001749",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to prevent the installation of patches, service packs, device drivers, or operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization by setting the following option in the \"/etc/yum.repos.d/[your_repo_name].repo\" file(s):\n\ngpgcheck=1",
             "+@fixref": "F-56333r824113_fix"
@@ -9090,7 +9114,7 @@
         "title": "SRG-OS-000373-GPOS-00158",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252931r987879_rule",
+          "+@id": "SV-252931r1050791_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010230",
@@ -9103,10 +9127,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004895",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the \"sudo\" command to require reauthentication.\n\nEdit the /etc/sudoers file:\n$ sudo visudo\n\nAdd or modify the following line:\nDefaults timestamp_timeout=0",
             "+@fixref": "F-56334r986579_fix"
@@ -9129,7 +9159,7 @@
         "title": "SRG-OS-000375-GPOS-00160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252932r986581_rule",
+          "+@id": "SV-252932r1016303_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010240",
@@ -9142,10 +9172,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004046",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004046",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001948",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to implement multifactor authentication by installing the required package with the following command:\n\n$ sudo yum install openssl-pkcs11",
             "+@fixref": "F-56335r824119_fix"
@@ -9767,7 +9803,7 @@
         "title": "SRG-OS-000028-GPOS-00009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252948r986582_rule",
+          "+@id": "SV-252948r1016304_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020020",
@@ -9791,6 +9827,10 @@
             },
             {
               "+content": "CCI-000060",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000058",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -9939,7 +9979,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252952r986568_rule",
+          "+@id": "SV-252952r1016305_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020070",
@@ -9963,6 +10003,14 @@
             },
             {
               "+content": "CCI-004047",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000767",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000768",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -9988,7 +10036,7 @@
         "title": "SRG-OS-000118-GPOS-00060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252953r986584_rule",
+          "+@id": "SV-252953r1016306_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020120",
@@ -10008,6 +10056,10 @@
             },
             {
               "+content": "CCI-003628",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000795",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -10199,7 +10251,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252958r987879_rule",
+          "+@id": "SV-252958r1050789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020180",
@@ -10212,10 +10264,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004895",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Remove any occurrence of \"!authenticate\" found in \"/etc/sudoers\" file or files in the \"/etc/sudoers.d\" directory.",
             "+@fixref": "F-56361r824197_fix"
@@ -10238,7 +10296,7 @@
         "title": "SRG-OS-000373-GPOS-00157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252959r987879_rule",
+          "+@id": "SV-252959r1050790_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020190",
@@ -10251,10 +10309,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004895",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Remove any occurrence of \"NOPASSWD\" found in \"/etc/sudoers\" file or files in the \"/etc/sudoers.d\" directory.",
             "+@fixref": "F-56362r824200_fix"
@@ -10806,7 +10870,7 @@
         "title": "SRG-OS-000037-GPOS-00015",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252973r986588_rule",
+          "+@id": "SV-252973r1016309_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-030010",
@@ -10898,6 +10962,10 @@
             },
             {
               "+content": "CCI-002234",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001814",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -11001,7 +11069,7 @@
         "title": "SRG-OS-000047-GPOS-00023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252976r958426_rule",
+          "+@id": "SV-252976r1038966_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-030090",
@@ -14793,7 +14861,7 @@
         "title": "SRG-OS-000069-GPOS-00037",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253060r986589_rule",
+          "+@id": "SV-253060r1016310_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040050",
@@ -14806,10 +14874,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000192",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to enforce password complexity by requiring that at least one uppercase character be used by setting the \"ucredit\" option.\n\nAdd the following line to /etc/security/pwquality.conf (or modify the line to have the required value):\n\nucredit = -1",
             "+@fixref": "F-56463r824851_fix"
@@ -14832,7 +14906,7 @@
         "title": "SRG-OS-000070-GPOS-00038",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253061r986591_rule",
+          "+@id": "SV-253061r1016311_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040060",
@@ -14845,10 +14919,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000193",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to enforce password complexity by requiring that at least one lowercase character be used by setting the \"lcredit\" option.\n\nAdd the following line to /etc/security/pwquality.conf (or modify the line to have the required value):\n\nlcredit = -1",
             "+@fixref": "F-56464r986590_fix"
@@ -14871,7 +14951,7 @@
         "title": "SRG-OS-000071-GPOS-00039",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253062r986592_rule",
+          "+@id": "SV-253062r1016312_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040070",
@@ -14884,10 +14964,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000194",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to enforce password complexity by requiring that at least one numeric character be used by setting the \"dcredit\" option.\n\nAdd the following line to /etc/security/pwquality.conf (or modify the line to have the required value):\n\ndcredit = -1",
             "+@fixref": "F-56465r824857_fix"
@@ -14910,7 +14996,7 @@
         "title": "SRG-OS-000072-GPOS-00040",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253063r986593_rule",
+          "+@id": "SV-253063r1016313_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040080",
@@ -14923,10 +15009,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000195",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to require the change of at least eight of the total number of characters when passwords are changed by setting the \"difok\" option.\n\nAdd the following line to \"/etc/security/pwquality.conf\" (or modify the line to have the required value):\n\ndifok = 8",
             "+@fixref": "F-56466r824860_fix"
@@ -14949,7 +15041,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253064r986594_rule",
+          "+@id": "SV-253064r1016314_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040090",
@@ -14962,10 +15054,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004062",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004062",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000196",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to encrypt all stored passwords. \n\nEdit/Modify the following line in the \"/etc/login.defs\" file and set \"ENCRYPT_METHOD\" to SHA512.\n\nENCRYPT_METHOD SHA512",
             "+@fixref": "F-56467r824863_fix"
@@ -15033,7 +15131,7 @@
         "title": "SRG-OS-000075-GPOS-00043",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253066r986597_rule",
+          "+@id": "SV-253066r1016315_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040110",
@@ -15046,10 +15144,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000198",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to enforce 24 hours/one day as the minimum password lifetime.\n\nAdd the following line in \"/etc/login.defs\" (or modify the line to have the required value):\n\nPASS_MIN_DAYS 1",
             "+@fixref": "F-56469r986596_fix"
@@ -15072,7 +15176,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253067r986598_rule",
+          "+@id": "SV-253067r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040120",
@@ -15085,10 +15189,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000199",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to enforce a 60-day maximum password lifetime.\n\nAdd, or modify the following line in the \"/etc/login.defs\" file:\n\nPASS_MAX_DAYS 60",
             "+@fixref": "F-56470r824872_fix"
@@ -15111,7 +15221,7 @@
         "title": "SRG-OS-000078-GPOS-00046",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253069r986599_rule",
+          "+@id": "SV-253069r1016317_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040140",
@@ -15124,10 +15234,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000205",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure TOSS to enforce a minimum 15-character password length.\n\nAdd the following line to \"/etc/security/pwquality.conf\" (or modify the line to have the required value):\n\nminlen = 15",
             "+@fixref": "F-56472r824878_fix"
@@ -15839,7 +15955,7 @@
         "title": "SRG-OS-000266-GPOS-00101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253087r991561_rule",
+          "+@id": "SV-253087r1016318_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040350",
@@ -15852,10 +15968,16 @@
             "subject": "TOSS 4",
             "identifier": "5469"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001619",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the operating system to enforce password complexity by requiring that at least one special character be used by setting the \"ocredit\" option.\n\nAdd the following line to /etc/security/pwquality.conf (or modify the line to have the required value):\n\nocredit = -1",
             "+@fixref": "F-56490r824932_fix"
@@ -16424,7 +16546,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253102r991589_rule",
+          "+@id": "SV-253102r1102131_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-040600",
@@ -16442,19 +16564,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the TFTP daemon to operate in secure mode by adding the following line to \"/etc/xinetd.d/tftp\" (or modify the line to have the required value):\n\nserver_args = -s /var/lib/tftpboot",
-            "+@fixref": "F-56505r824977_fix"
+            "+content": "Configure the TFTP daemon to operate in secure mode with the following command:\n\n$ sudo systemctl edit tftp.service\n\nIn the editor, enter:\n\n[Service]\nExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot\n\nAfter making changes, reload the systemd daemon and restart the TFTP service as follows:\n\n$ sudo systemctl daemon-reload\n$ sudo systemctl restart tftp.service",
+            "+@fixref": "F-56505r1102130_fix"
           },
           "fix": {
-            "+@id": "F-56505r824977_fix"
+            "+@id": "F-56505r1102130_fix"
           },
           "check": {
-            "+@system": "C-56555r824976_chk",
+            "+@system": "C-56555r1102129_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the TFTP daemon is configured to operate in secure mode with the following commands:\n\n$ sudo yum list installed tftp-server\n\ntftp-server.x86_64 x.x-x.el8 \n\nIf a TFTP server is not installed, this is Not Applicable.\n\nIf a TFTP server is installed, check for the server arguments with the following command: \n\n$ sudo grep server_args /etc/xinetd.d/tftp\n\nserver_args = -s /var/lib/tftpboot\n\nIf the \"server_args\" line does not have a \"-s\" option, and a subdirectory is not assigned, this is a finding."
+            "check-content": "Note: If TFTP is not required, it should not be installed. If TFTP is not installed, this is not applicable.\n\nCheck if TFTP server is installed with the following command:\n\n$ sudo dnf list installed | grep tftp-server \ntftp-server.x86_64 x.x-x.el8\n\nIf tftp.server is installed, verify the TFTP daemon is configured to operate in secure mode with the following command:\n\n$ grep -i execstart /usr/lib/systemd/system/tftp.service\nExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot\n\nNote: The \"-s\" option ensures that the TFTP server only serves files from the specified directory, which is a security measure to prevent unauthorized access to other parts of the file system."
           }
         }
       },

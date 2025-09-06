@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-03-26"
+      "+@date": "2025-05-14"
     },
     "title": "Red Hat Enterprise Linux 8 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1524,6 +1524,10 @@
           {
             "+@idref": "V-272484",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
+            "+@selected": "true"
           }
         ]
       },
@@ -3002,6 +3006,10 @@
           },
           {
             "+@idref": "V-272484",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
             "+@selected": "true"
           }
         ]
@@ -4482,6 +4490,10 @@
           {
             "+@idref": "V-272484",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
+            "+@selected": "true"
           }
         ]
       },
@@ -5960,6 +5972,10 @@
           },
           {
             "+@idref": "V-272484",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
             "+@selected": "true"
           }
         ]
@@ -7440,6 +7456,10 @@
           {
             "+@idref": "V-272484",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
+            "+@selected": "true"
           }
         ]
       },
@@ -8918,6 +8938,10 @@
           },
           {
             "+@idref": "V-272484",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
             "+@selected": "true"
           }
         ]
@@ -10398,6 +10422,10 @@
           {
             "+@idref": "V-272484",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
+            "+@selected": "true"
           }
         ]
       },
@@ -11877,6 +11905,10 @@
           {
             "+@idref": "V-272484",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
+            "+@selected": "true"
           }
         ]
       },
@@ -13355,6 +13387,10 @@
           },
           {
             "+@idref": "V-272484",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274877",
             "+@selected": "true"
           }
         ]
@@ -14866,7 +14902,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230260r1017080_rule",
+          "+@id": "SV-230260r1101888_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010330",
@@ -14884,19 +14920,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the library files to be protected from unauthorized access. Run the following command, replacing \"[FILE]\" with any library file with a mode more permissive than 755.\n\n$ sudo chmod 755 [FILE]",
-            "+@fixref": "F-32904r792866_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive with the following command.\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +",
+            "+@fixref": "F-32904r1101887_fix"
           },
           "fix": {
-            "+@id": "F-32904r792866_fix"
+            "+@id": "F-32904r1101887_fix"
           },
           "check": {
-            "+@system": "C-32929r792865_chk",
+            "+@system": "C-32929r1101886_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files contained in the following directories have mode \"755\" or less permissive with the following command:\n\n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \\;\n\nIf any system-wide shared library file is found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -14905,7 +14941,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230261r1069326_rule",
+          "+@id": "SV-230261r1101891_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010340",
@@ -14923,19 +14959,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system-wide shared library files (/lib, /lib64, /usr/lib and /usr/lib64) to be protected from unauthorized access.\n\nRun the following command, replacing \"[FILE]\" with any library file not owned by \"root\".\n\n$ sudo chown root [FILE]",
-            "+@fixref": "F-32905r567530_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to be owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +",
+            "+@fixref": "F-32905r1101890_fix"
           },
           "fix": {
-            "+@id": "F-32905r567530_fix"
+            "+@id": "F-32905r1101890_fix"
           },
           "check": {
-            "+@system": "C-32930r1069261_chk",
+            "+@system": "C-32930r1101889_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files are owned by \"root\" with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \\;\n\nIf any system wide shared library file is returned, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -14944,7 +14980,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230262r1017082_rule",
+          "+@id": "SV-230262r1101894_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010350",
@@ -14962,19 +14998,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system-wide shared library files (/lib, /lib64, /usr/lib and /usr/lib64) to be protected from unauthorized access.\n\nRun the following command, replacing \"[FILE]\" with any library file not group-owned by \"root\".\n\n$ sudo chgrp root [FILE]",
-            "+@fixref": "F-32906r567533_fix"
+            "+content": "Configure the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +",
+            "+@fixref": "F-32906r1101893_fix"
           },
           "fix": {
-            "+@id": "F-32906r567533_fix"
+            "+@id": "F-32906r1101893_fix"
           },
           "check": {
-            "+@system": "C-32931r1014787_chk",
+            "+@system": "C-32931r1101892_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system-wide shared library files are group-owned by \"root\" with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -exec ls -l {} \\;\n\nIf any system wide shared library file is returned and is not group-owned by a required system account, this is a finding."
+            "check-content": "Verify the systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -15313,7 +15349,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230271r1069290_rule",
+          "+@id": "SV-230271r1101896_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010380",
@@ -15344,12 +15380,12 @@
             "+@id": "F-32915r854025_fix"
           },
           "check": {
-            "+@system": "C-32940r1069189_chk",
+            "+@system": "C-32940r1101895_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"NOPASSWD\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"NOPASSWD\" by running the following command:\n\n$ sudo grep -ir nopasswd /etc/sudoers /etc/sudoers.d/\n\n%admin ALL=(ALL) NOPASSWD: ALL\n\nIf any occurrences of \"NOPASSWD\" are returned from the command and have not been documented with the ISSO as an organizationally defined administrative group utilizing MFA, this is a finding."
+            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"NOPASSWD\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"NOPASSWD\" by running the following command:\n\n$ sudo grep -iR 'NOPASSWD' /etc/sudoers /etc/sudoers.d/\n\n%admin ALL=(ALL) NOPASSWD: ALL\n\nIf any occurrences of \"NOPASSWD\" are returned from the command and have not been documented with the information system security officer (ISSO) as an organizationally defined administrative group utilizing multifactor authentication (MFA), this is a finding."
           }
         }
       },
@@ -15358,7 +15394,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230272r1069289_rule",
+          "+@id": "SV-230272r1101898_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010381",
@@ -15389,12 +15425,12 @@
             "+@id": "F-32916r567563_fix"
           },
           "check": {
-            "+@system": "C-32941r1069187_chk",
+            "+@system": "C-32941r1101897_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"!authenticate\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"!authenticate\" by running the following command:\n\n$ sudo grep -ir '!authenticate' /etc/sudoers /etc/sudoers.d/\n\nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
+            "check-content": "Verify that \"/etc/sudoers\" has no occurrences of \"!authenticate\".\n\nCheck that the \"/etc/sudoers\" file has no occurrences of \"!authenticate\" by running the following command:\n\n$ sudo egrep -iR '!authenticate' /etc/sudoers /etc/sudoers.d/\n\nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
           }
         }
       },
@@ -23239,7 +23275,7 @@
         "title": "SRG-OS-000096-GPOS-00050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230500r1017283_rule",
+          "+@id": "SV-230500r1101900_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-040030",
@@ -23264,12 +23300,12 @@
             "+@id": "F-33144r568247_fix"
           },
           "check": {
-            "+@system": "C-33169r568246_chk",
+            "+@system": "C-33169r1101899_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Inspect the firewall configuration and running services to verify it is configured to prohibit or restrict the use of functions, ports, protocols, and/or services that are unnecessary or prohibited.\n\nCheck which services are currently active with the following command:\n\n$ sudo firewall-cmd --list-all-zones\n\ncustom (active)\ntarget: DROP\nicmp-block-inversion: no\ninterfaces: ens33\nsources: \nservices: dhcpv6-client dns http https ldaps rpc-bind ssh\nports: \nmasquerade: no\nforward-ports: \nicmp-blocks: \nrich rules: \n\nAsk the System Administrator for the site or program Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA). Verify the services allowed by the firewall match the PPSM CLSA. \n\nIf there are additional ports, protocols, or services that are not in the PPSM CLSA, or there are ports, protocols, or services that are prohibited by the PPSM Category Assurance List (CAL), this is a finding."
+            "check-content": "Inspect the firewall configuration and running services to verify it is configured to prohibit or restrict the use of functions, ports, protocols, and/or services that are unnecessary or prohibited.\n\nCheck which services are currently active with the following command:\n\n$ firewall-cmd --list-all-zones | grep -e \"active\" -e \"services\"\n\ncustom (active)\ntarget: DROP\nicmp-block-inversion: no\ninterfaces: ens33\nsources: \nservices: dhcpv6-client dns http https ldaps rpc-bind ssh\nports: \nmasquerade: no\nforward-ports: \nicmp-blocks: \nrich rules: \n\nAsk the system administrator (SA) for the site or program Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA). Verify the services allowed by the firewall match the PPSM CLSA. \n\nIf there are additional ports, protocols, or services that are not in the PPSM CLSA, or there are ports, protocols, or services that are prohibited by the PPSM Category Assurance List (CAL), this is a finding."
           }
         }
       },
@@ -25189,12 +25225,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230552r1017314_rule",
+          "+@id": "SV-230552r1101902_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "RHEL-08-040310",
           "title": "The RHEL 8 file integrity tool must be configured to verify Access Control Lists (ACLs).",
-          "description": "<VulnDiscussion>ACLs can provide permissions beyond those permitted through the file mode and must be verified by file integrity tools.\n\nRHEL 8 installation media come with a file integrity tool, Advanced Intrusion Detection Environment (AIDE).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>ACLs can provide permissions beyond those permitted through the file mode and must be verified by file integrity tools.\n\nSelection lines in the aide.conf file determine which files and directories AIDE will monitor for changes. They follow this format:\n\n<path> <rules>\n\nThe <path> specifies a file, directory or wildcard pattern to monitor.\nThe <rules>define which attributes (hashes, permissions, timestamps, etc.) to check.\n\nRHEL 8 installation media come with a file integrity tool, Advanced Intrusion Detection Environment (AIDE).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Red Hat Enterprise Linux 8",
             "publisher": "DISA",
@@ -25214,12 +25250,12 @@
             "+@id": "F-33196r568403_fix"
           },
           "check": {
-            "+@system": "C-33221r880723_chk",
+            "+@system": "C-33221r1101901_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the file integrity tool is configured to verify ACLs.\n\nNote: AIDE is highly configurable at install time. This requirement assumes the \"aide.conf\" file is under the \"/etc\" directory.\n\nIf AIDE is not installed, ask the System Administrator how file integrity checks are performed on the system.\n\nUse the following command to determine if the file is in a location other than \"/etc/aide/aide.conf\":\n\n     $ sudo find / -name aide.conf\n\nCheck the \"aide.conf\" file to determine if the \"acl\" rule has been added to the rule list being applied to the files and directories selection lists with the following command:\n\n     $ sudo grep -E \"[+]?acl\" /etc/aide.conf\n\n     VarFile = OwnerMode+n+l+X+acl\n\nIf the \"acl\" rule is not being used on all selection lines in the \"/etc/aide.conf\" file, is commented out, or ACLs are not being checked by another file integrity tool, this is a finding."
+            "check-content": "Verify the file integrity tool is configured to verify ACLs.\n\nNote: AIDE is highly configurable at install time. This requirement assumes the \"aide.conf\" file is under the \"/etc\" directory.\n\nIf AIDE is not installed, ask the system administrator (SA) how file integrity checks are performed on the system.\n\nUse the following command to determine if the file is in a location other than \"/etc/aide/aide.conf\":\n\n$ sudo find / -name aide.conf\n\nUse the following command to review the \"aide.conf\" file to determine if the \"acl\" rule has been added to the rule list being applied to the files and directories selection lists:\n\n$ sudo cat /etc/aide.conf | more\n\nIf the \"acl\" rule is not being used on all selection lines in the \"/etc/aide.conf\" file, is commented out, or ACLs are not being checked by another file integrity tool, this is a finding."
           }
         }
       },
@@ -25618,7 +25654,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237641r1069288_rule",
+          "+@id": "SV-237641r1101904_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010382",
@@ -25643,12 +25679,12 @@
             "+@id": "F-40823r646892_fix"
           },
           "check": {
-            "+@system": "C-40860r1069185_chk",
+            "+@system": "C-40860r1101903_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"sudoers\" file restricts sudo access to authorized personnel.\n\n$ sudo grep -iwr 'ALL' /etc/sudoers /etc/sudoers.d/\n\nIf the either of the following entries are returned, this is a finding:\nALL     ALL=(ALL) ALL\nALL     ALL=(ALL:ALL) ALL"
+            "check-content": "Verify the \"sudoers\" file restricts sudo access to authorized personnel.\n\n$ sudo grep -iwR 'ALL' /etc/sudoers /etc/sudoers.d/ | grep -v '#'\n\nIf the either of the following entries are returned, this is a finding:\nALL     ALL=(ALL) ALL\nALL     ALL=(ALL:ALL) ALL"
           }
         }
       },
@@ -26209,7 +26245,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-244532r1017339_rule",
+          "+@id": "SV-244532r1101906_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010741",
@@ -26234,12 +26270,12 @@
             "+@id": "F-47764r743844_fix"
           },
           "check": {
-            "+@system": "C-47807r743843_chk",
+            "+@system": "C-47807r1101905_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify all files and directories in a local interactive user home directory are group-owned by a group that the user is a member.\n\nCheck the group owner of all files and directories in a local interactive user's home directory with the following command:\n\nNote: The example will be for the user \"smithj\", who has a home directory of \"/home/smithj\".\n\n$ sudo ls -lLR /<home directory>/<users home directory>/\n-rw-r--r-- 1 smithj smithj  18 Mar  5 17:06 file1\n-rw-r--r-- 1 smithj smithj 193 Mar  5 17:06 file2\n-rw-r--r-- 1 smithj sa        231 Mar  5 17:06 file3\n\nIf any files found with a group-owner different from the home directory user private group, check to see if the user is a member of that group with the following command:\n\n$ sudo grep smithj /etc/group\nsa:x:100:juan,shelley,bob,smithj \nsmithj:x:521:smithj\n\nIf any files or directories are group owned by a group that the directory owner is not a member of, this is a finding."
+            "check-content": "Verify all files and directories in a local interactive user home directory are group-owned by a group that the user is a member.\n\nCheck the group owner of all files and directories in a local interactive user's home directory with the following command:\n\nNote: The example will be for the user \"smithj\", who has a home directory of \"/home/smithj\".\n\n$ sudo ls -lLR /<home directory>/<users home directory>/\n-rw-r--r-- 1 smithj smithj  18 Mar  5 17:06 file1\n-rw-r--r-- 1 smithj smithj 193 Mar  5 17:06 file2\n-rw-r--r-- 1 smithj sa        231 Mar  5 17:06 file3\n\nIf any files are found with a group owner different from the home directory user private group, check to see if the user is a member of that group with the following command:\n\n$ sudo grep smithj /etc/group\nsa:x:100:juan,shelley,bob,smithj \nsmithj:x:521:smithj\n\nIf any files or directories are group owned by a group that the directory owner is not a member of verify that it is documented with the information system security officer (ISSO). If it is not, this is a finding."
           }
         }
       },
@@ -27902,6 +27938,45 @@
               "+@name": "M"
             },
             "check-content": "Verify the operating system elevates the SELinux context when an administrator calls the sudo command with the following command:\n\nThis command must be run as root:\n\n# grep -r sysadm_r /etc/sudoers /etc/sudoers.d\n%{designated_group_or_user_name} ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL\n\nIf conflicting results are returned, this is a finding.\n\nIf a designated sudoers administrator group or account(s) is not configured to elevate the SELinux type and role to \"sysadm_t\" and \"sysadm_r\" with the use of the sudo command, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274877",
+        "title": "SRG-OS-000471-GPOS-00215",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274877r1106148_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "RHEL-08-030655",
+          "title": "RHEL 8 must audit any script or executable called by cron as root or by any privileged user.",
+          "description": "<VulnDiscussion>Any script or executable called by cron as root or by any privileged user must be owned by that user, must have the permissions set to 755 or more restrictive, and have no extended rights that allow a nonprivileged user to modify the script or executable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Red Hat Enterprise Linux 8",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Red Hat Enterprise Linux 8",
+            "identifier": "2921"
+          },
+          "ident": {
+            "+content": "CCI-000172",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure RHEL 8 to audit the execution of any system call made by cron as root or as any privileged user.\n\nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\":\nauditctl -w /etc/cron.d/ -p wa -k cronjobs\nauditctl -w /var/spool/cron/ -p wa -k cronjobs\n\nTo load the rules to the kernel immediately, use the following command:\n\n$ sudo augenrules --load",
+            "+@fixref": "F-78883r1101908_fix"
+          },
+          "fix": {
+            "+@id": "F-78883r1101908_fix"
+          },
+          "check": {
+            "+@system": "C-78978r1106147_chk",
+            "check-content-ref": {
+              "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify RHEL 8 is configured to audit the execution of any system call made by cron as root or as any privileged user.\n\n$ sudo auditctl -l | grep /etc/cron.d\n-w /etc/cron.d -p wa -k cronjobs\n\n$ sudo auditctl -l | grep /var/spool/cron\n-w /var/spool/cron -p wa -k cronjobs\n\nIf either of these commands do not return the expected output, or the lines are commented out, this is a finding."
           }
         }
       }

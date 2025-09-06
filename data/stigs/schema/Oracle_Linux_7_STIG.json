@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-08"
     },
     "title": "Oracle Linux 7 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -1020,6 +1020,10 @@
           {
             "+@idref": "V-256977",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
+            "+@selected": "true"
           }
         ]
       },
@@ -1994,6 +1998,10 @@
           },
           {
             "+@idref": "V-256977",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
             "+@selected": "true"
           }
         ]
@@ -2970,6 +2978,10 @@
           {
             "+@idref": "V-256977",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
+            "+@selected": "true"
           }
         ]
       },
@@ -3944,6 +3956,10 @@
           },
           {
             "+@idref": "V-256977",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
             "+@selected": "true"
           }
         ]
@@ -4920,6 +4936,10 @@
           {
             "+@idref": "V-256977",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
+            "+@selected": "true"
           }
         ]
       },
@@ -5894,6 +5914,10 @@
           },
           {
             "+@idref": "V-256977",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
             "+@selected": "true"
           }
         ]
@@ -6870,6 +6894,10 @@
           {
             "+@idref": "V-256977",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
+            "+@selected": "true"
           }
         ]
       },
@@ -7845,6 +7873,10 @@
           {
             "+@idref": "V-256977",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
+            "+@selected": "true"
           }
         ]
       },
@@ -8819,6 +8851,10 @@
           },
           {
             "+@idref": "V-256977",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274875",
             "+@selected": "true"
           }
         ]
@@ -20874,6 +20910,45 @@
               "+@name": "M"
             },
             "check-content": "Verify that the operating system is configured to allow sending email notifications.\n\nNote: The \"mailx\" package provides the \"mail\" command that is used to send email messages.\n\nVerify that the \"mailx\" package is installed on the system:\n\n     $ sudo yum list installed mailx\n\t \n     mailx.x86_64     12.5-19.el7     @ol7_latest\n\t \nIf \"mailx\" package is not installed, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274875",
+        "title": "SRG-OS-000471-GPOS-00215",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274875r1101859_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "OL07-00-030805",
+          "title": "OL 7  must audit any script or executable called by cron as root or by any privileged user.",
+          "description": "<VulnDiscussion>Any script or executable called by cron as root or by any privileged user must be owned by that user and must have the permissions 755 or more restrictive and should have no extended rights that allow any nonprivileged user to modify the script or executable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Oracle Linux 7",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Oracle Linux 7",
+            "identifier": "4089"
+          },
+          "ident": {
+            "+content": "CCI-000172",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure OL 7 to audit the execution of any system call made by cron as root or as any privileged user.\n\nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\":\nauditctl -w /etc/cron.d/ -p wa -k cronjobs\nauditctl -w /var/spool/cron/ -p wa -k cronjobs\n\nTo load the rules to the kernel immediately, use the following command:\n\n$ sudo augenrules --load",
+            "+@fixref": "F-78881r1101858_fix"
+          },
+          "fix": {
+            "+@id": "F-78881r1101858_fix"
+          },
+          "check": {
+            "+@system": "C-78976r1101857_chk",
+            "check-content-ref": {
+              "+@href": "Oracle_Linux_7_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify that OL 7 is configured to audit the execution of any system call made by cron as root or as any privileged user.\n\n$ sudo auditctl -l | grep /etc/cron.d\n-w /etc/cron.d -p wa -k cronjobs\n\n$ sudo auditctl -l | grep /var/spool/cron\n-w /var/spool/cron -p wa -k cronjobs\n\nIf either of these commands do not return the expected output, or the lines are commented out, this is a finding."
           }
         }
       }

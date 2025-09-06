@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-26"
+      "+@date": "2025-05-16"
     },
     "title": "Cisco IOS XE Router NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -3123,12 +3123,12 @@
         "title": "SRG-APP-000395-NDM-000310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-215841r961506_rule",
+          "+@id": "SV-215841r1107207_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001130",
           "title": "The Cisco router must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
-          "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, internet). A remote connection is any connection with a device communicating through an external network (e.g., the internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Cisco IOS XE Router NDM",
             "publisher": "DISA",
@@ -3151,19 +3151,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco router to authenticate SNMP messages as shown in the example below.\n\nR4(config)#snmp-server group V3GROUP v3 auth read V3READ write V3WRITE\nR4(config)#snmp-server user V3USER V3GROUP v3 auth sha xxxxxxx\nR4(config)#snmp-server view V3READ iso included\nR4(config)#snmp-server view V3WRITE iso included\nR4(config)#snmp-server host x.x.x.x version 3 auth V3USER",
-            "+@fixref": "F-17078r287563_fix"
+            "+content": "Configure the Cisco router to authenticate SNMP messages as shown in the example below:\n\nR4(config)#snmp-server group V3GROUP v3 auth read V3READ write V3WRITE\nR4(config)#snmp-server user V3USER V3GROUP v3 auth sha xxxxxxx\nR4(config)#snmp-server host x.x.x.x version 3 auth V3USER",
+            "+@fixref": "F-17078r1107206_fix"
           },
           "fix": {
-            "+@id": "F-17078r287563_fix"
+            "+@id": "F-17078r1107206_fix"
           },
           "check": {
-            "+@system": "C-17080r287562_chk",
+            "+@system": "C-17080r1107205_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XE_Router_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco router configuration to verify that it is compliant with this requirement as shown in the example below.\n\nsnmp-server group V3GROUP v3 auth read V3READ write V3WRITE \nsnmp-server view V3READ iso included\nsnmp-server view V3WRITE iso included\nsnmp-server host x.x.x.x version 3 auth V3USER\n\nAuthentication used by the SNMP users can be viewed via the show snmp user command as shown in the example below.\n\nR4#show snmp user\n\nUser name: V3USER\nEngine ID: 800000090300C2042B540000\nstorage-type: nonvolatile active\nAuthentication Protocol: SHA\nPrivacy Protocol: None\nGroup-name: V3GROUP\n\nIf the Cisco router is not configured to authenticate SNMP messages using a FIPS-validated HMAC, this is a finding."
+            "check-content": "Review the Cisco router configuration to verify that it is compliant with this requirement as shown in the example below.\n\nsnmp-server group V3GROUP v3 auth read V3READ write V3WRITE \nsnmp-server host x.x.x.x version 3 auth V3USER\n\nAuthentication used by the SNMP users can be viewed via the show snmp user command as shown in the example below:\n\nR4#show snmp user\n\nUser name: V3USER\nEngine ID: 800000090300C2042B540000\nstorage-type: nonvolatile active\nAuthentication Protocol: SHA\nPrivacy Protocol: None\nGroup-name: V3GROUP\n\nIf the Cisco router is not configured to authenticate SNMP messages using a FIPS-validated HMAC, this is a finding."
           }
         }
       },

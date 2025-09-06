@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-06-10"
+      "+@date": "2025-05-23"
     },
     "title": "Red Hat Ansible Automation Controller Application Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -796,12 +796,12 @@
         "title": "SRG-APP-000015-AS-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256898r960762_rule",
+          "+@id": "SV-256898r1107643_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APAS-AT-000012",
           "title": "Automation Controller must implement cryptography mechanisms to protect the integrity of information.",
-          "description": "<VulnDiscussion>Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify Automation Controller configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nAutomation Controller utilizes a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using SSH or some other form of approved cryptography. Automation Controller must have the ability to enable a secure remote admin capability.\n\nFIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nAutomation Controller requires the use of Red Hat Enterprise Linux as an operating system and its underlying FIPS validated  cryptographic modules to ensure it meets FIPS 140-2 criteria.\n\nSatisfies: SRG-APP-000015-AS-000010, SRG-APP-000179-AS-000129, SRG-APP-000224-AS-000152, SRG-APP-000231-AS-000133, SRG-APP-000231-AS-000156, SRG-APP-000416-AS-000140, SRG-APP-000428-AS-000265, SRG-APP-000429-AS-000157, SRG-APP-000439-AS-000274, SRG-APP-000440-AS-000167, SRG-APP-000514-AS-000136</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify Automation Controller configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nAutomation Controller utilizes a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using SSH or some other form of approved cryptography. Automation Controller must have the ability to enable a secure remote admin capability.\n\nFIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nAutomation Controller requires the use of Red Hat Enterprise Linux as an operating system and its underlying FIPS-validated cryptographic modules to ensure it meets FIPS 140-2 criteria.\n\nSatisfies: SRG-APP-000015-AS-000010, SRG-APP-000179-AS-000129, SRG-APP-000224-AS-000152, SRG-APP-000231-AS-000133, SRG-APP-000231-AS-000156, SRG-APP-000416-AS-000140, SRG-APP-000428-AS-000265, SRG-APP-000429-AS-000157, SRG-APP-000439-AS-000274, SRG-APP-000440-AS-000167, SRG-APP-000514-AS-000136</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Red Hat Ansible Automation Controller App Server",
             "publisher": "DISA",
@@ -848,19 +848,19 @@
             }
           ],
           "fixtext": {
-            "+content": "As an administrator for each Automation Controller host, configure the Operating System to be FIPS enabled command:\n\nsudo fips-mode-setup --enable\n\nReboot each system.\n\nConfigure Ansible Automation Platform installation location to reside on a LUKS encrypted volume:\n\nAdd a LUKS volume using default or other encrypted volume in accordance with organizationally defined policy. The '/var/lib/awx' filesystem must reside on this volume.\n\nReinstall the Ansible Automation Platform. \n\nNote: The phrasing \"Reinstall the Ansible Automation Platform.\" is applicable here; the installer cannot just be rerun on the same system.\n\nReinstall the operating system on the Automation Controller server with FIPS mode enabled at install time by following the guidance located here:\nhttps://access.redhat.com/solutions/5416081\nOR \nEnable FIPS mode without reinstalling the operating system by following the guidance located here:\nhttps://access.redhat.com/solutions/137833\n\nIf the operating system was reinstalled, reinstall Automation Controller by following the guidance located here:\nhttps://docs.ansible.com/ansible-tower/latest/html/installandreference/index.html",
-            "+@fixref": "F-60515r903515_fix"
+            "+content": "As an administrator for each Automation Controller host, configure the operating system to be FIPS-enabled with the following command:\n\nsudo fips-mode-setup --enable\n\nReboot each system.\n\nConfigure Ansible Automation Platform installation location to reside on a LUKS encrypted volume:\n\nAdd a LUKS volume using default or other encrypted volume in accordance with organizationally defined policy. The '/var/lib/awx' filesystem must reside on this volume.\n\nReinstall the Ansible Automation Platform. \n\nNote: The phrasing \"Reinstall the Ansible Automation Platform.\" is applicable here; the installer cannot just be rerun on the same system.\n\nReinstall the operating system on the Automation Controller server with FIPS mode enabled at install time by following the guidance located here:\nhttps://access.redhat.com/solutions/5416081\nOR \nEnable FIPS mode without reinstalling the operating system by following the guidance located here:\nhttps://access.redhat.com/solutions/137833\n\nIf the operating system was reinstalled, reinstall Automation Controller by following the guidance located here:\nhttps://docs.ansible.com/ansible-tower/latest/html/installandreference/index.html",
+            "+@fixref": "F-60515r1107642_fix"
           },
           "fix": {
-            "+@id": "F-60515r903515_fix"
+            "+@id": "F-60515r1107642_fix"
           },
           "check": {
-            "+@system": "C-60573r903538_chk",
+            "+@system": "C-60573r1107641_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_App_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a System administrator for each Automation Controller host, check if the Operating System is FIPS enabled:\n\nsysctl crypto.fips_enabled\n\nIf fips_enabled is not 1, this is a finding.\n\nVerify the installed volume for Automation Controller is on a LUKS encrypted volume command:\n\nAAPROOT='/var/lib/awx' && cryptsetup status `df -T ${AAPROOT} | cut -d ' ' -f 1 | tail -n 1 `  | grep type | grep -i luks || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nVerify this LUKS encrypted volume is using FIPS-compliant cryptographic functions command:\n\nallowed_FIPS_ciphers=('aes.*\\(256\\|384\\|512\\)') ; echo \"${allowed_FIPS_ciphers[*]}\"  | tr ' ' '\\n' >tempfile && cryptsetup status `df -T ${AAPROOT} | cut -d ' ' -f 1 | tail -n 1 ` | grep -e '\\(cipher\\|keysize\\)' | awk '{print $2}' | paste -s -d '-' | grep -f tempfile 1>/dev/null || echo \"FAILED\" && rm -f tempfile\n\nIf the output is not 1, this is a finding."
+            "check-content": "As a system administrator for each Automation Controller host, check if the operating system is FIPS-enabled:\n\nsysctl crypto.fips_enabled\n\nIf \"fips_enabled\" is not \"1\", this is a finding.\n\nVerify the installed volume for Automation Controller is on a LUKS encrypted volume command:\n\nAAPROOT='/var/lib/awx' && cryptsetup status `df -T ${AAPROOT} | cut -d ' ' -f 1 | tail -n 1 ` | grep type | grep -i luks || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nVerify this LUKS encrypted volume is using FIPS-compliant cryptographic functions command:\n\nallowed_FIPS_ciphers=('aes.*\\(256\\|384\\|512\\)') ; echo \"${allowed_FIPS_ciphers[*]}\" | tr ' ' '\\n' >tempfile && cryptsetup status `df -T ${AAPROOT} | cut -d ' ' -f 1 | tail -n 1 ` | grep -e '\\(cipher\\|keysize\\)' | awk '{print $2}' | paste -s -d '-' | grep -f tempfile 1>/dev/null || echo \"FAILED\" && rm -f tempfile\n\nIf \"FAILED\" is displayed, this is a finding."
           }
         }
       },
@@ -979,7 +979,7 @@
         "title": "SRG-APP-000109-AS-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256901r960915_rule",
+          "+@id": "SV-256901r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000031",
@@ -1024,7 +1024,7 @@
         "title": "SRG-APP-000109-AS-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256902r960915_rule",
+          "+@id": "SV-256902r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000032",
@@ -1177,7 +1177,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256905r986179_rule",
+          "+@id": "SV-256905r1051118_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000047",
@@ -1234,6 +1234,26 @@
             {
               "+content": "CCI-004085",
               "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000767",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001991",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002011",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002014",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
@@ -1258,7 +1278,7 @@
         "title": "SRG-APP-000153-AS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256906r986176_rule",
+          "+@id": "SV-256906r1015790_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000050",
@@ -1271,10 +1291,16 @@
             "subject": "Red Hat Ansible Automation Controller App Server",
             "identifier": "5534"
           },
-          "ident": {
-            "+content": "CCI-004045",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004045",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000770",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Log in to the Automation Controller web console as an administrator and navigate to Access >> Users.\n\nClick the Username to be removed.\n\nSelect \"Delete\" and confirm.",
             "+@fixref": "F-60523r902287_fix"
@@ -1375,7 +1401,7 @@
         "title": "SRG-APP-000371-AS-000077",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256909r986177_rule",
+          "+@id": "SV-256909r1015791_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000093",
@@ -1395,6 +1421,14 @@
             },
             {
               "+content": "CCI-004926",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001891",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002046",
               "+@system": "http://cyber.mil/cci"
             }
           ],

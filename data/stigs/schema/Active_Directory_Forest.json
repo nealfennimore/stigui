@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-13"
+      "+@date": "2025-05-15"
     },
     "title": "Active Directory Forest Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 13 Sep 2024",
+        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -619,7 +619,7 @@
         "title": "SRG-OS-000324",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269098r1028085_rule",
+          "+@id": "SV-269098r1106505_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "AD.3145_AD",
@@ -644,12 +644,12 @@
             "+@id": "F-73029r1028084_fix"
           },
           "check": {
-            "+@system": "C-73128r1028083_chk",
+            "+@system": "C-73128r1106504_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Forest_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Certificate templates with the following extended key usages AND that allow a requestor to supply the subject name in the request must require manual approvaI. In the AD CS web server properties, select \"VulnerableCertTemplate\" properties. Verify that \"Subject Name\" and \"Supply in the request\" are selected.\n\nIf \"Subject Name\" and \"Supply in the request\" are not selected, this is a finding."
+            "check-content": "Certificate templates with the following extended key usages AND that allow a requestor to supply the subject name in the request require manual approval. In the AD CS web server properties, select \"VulnerableCertTemplate\" properties. Verify that \"Subject Name\" and \"Supply in the request\" are selected.\n\nIf \"Subject Name\" AND \"Supply in the request\" are selected and if manual approval is not required, this is a finding. \n\nIf the \"Supply in Request\" is NOT selected, and the Enroll Permissions for the template have been limited to a select group of users/administrators, this is not a finding."
           }
         }
       },

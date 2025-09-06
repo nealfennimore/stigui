@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-05"
     },
     "title": "Apple macOS 15 (Sequoia) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -688,6 +688,14 @@
           {
             "+@idref": "V-272477",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
+            "+@selected": "true"
           }
         ]
       },
@@ -1330,6 +1338,14 @@
           },
           {
             "+@idref": "V-272477",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
             "+@selected": "true"
           }
         ]
@@ -1974,6 +1990,14 @@
           {
             "+@idref": "V-272477",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
+            "+@selected": "true"
           }
         ]
       },
@@ -2616,6 +2640,14 @@
           },
           {
             "+@idref": "V-272477",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
             "+@selected": "true"
           }
         ]
@@ -3260,6 +3292,14 @@
           {
             "+@idref": "V-272477",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
+            "+@selected": "true"
           }
         ]
       },
@@ -3902,6 +3942,14 @@
           },
           {
             "+@idref": "V-272477",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
             "+@selected": "true"
           }
         ]
@@ -4546,6 +4594,14 @@
           {
             "+@idref": "V-272477",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
+            "+@selected": "true"
           }
         ]
       },
@@ -5189,6 +5245,14 @@
           {
             "+@idref": "V-272477",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
+            "+@selected": "true"
           }
         ]
       },
@@ -5831,6 +5895,14 @@
           },
           {
             "+@idref": "V-272477",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274880",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274881",
             "+@selected": "true"
           }
         ]
@@ -13067,6 +13139,96 @@
               "+@name": "M"
             },
             "check-content": "Verify the macOS system is configured to disable iPhone Mirroring with the following command:\n\n/usr/bin/osascript -l JavaScript << EOS\n$.NSUserDefaults.alloc.initWithSuiteName('com.apple.applicationaccess')\\\n.objectForKey('allowiPhoneMirroring').js\nEOS\n\nIf the result is not \"false\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274880",
+        "title": "SRG-OS-000373-GPOS-00156",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274880r1099901_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "APPL-15-004060",
+          "title": "The macOS system must configure sudoers timestamp type.",
+          "description": "<VulnDiscussion>The file /etc/sudoers must be configured to not include a timestamp_type of global or ppid and be configured for timestamp record types of tty.\n\nThis rule ensures that the \"sudo\" command will prompt for the administrator's password at least once in each newly opened terminal window. This prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session by bypassing the normal password prompt requirement.\n\nSatisfies: SRG-OS-000373-GPOS-00156,SRG-OS-000373-GPOS-00157</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Apple macOS 15",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Apple macOS 15",
+            "identifier": "5661"
+          },
+          "ident": [
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Configure the macOS system with sudoers timestamp type with the following command:\n\n/usr/bin/find /etc/sudoers* -type f -exec sed -i '' '/timestamp_type/d; /!tty_tickets/d' '{}' \\;",
+            "+@fixref": "F-78886r1099900_fix"
+          },
+          "fix": {
+            "+@id": "F-78886r1099900_fix"
+          },
+          "check": {
+            "+@system": "C-78981r1099899_chk",
+            "check-content-ref": {
+              "+@href": "Apple_macOS_15__STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the macOS system is configured with sudoers timestamp type with the following command:\n\n/usr/bin/sudo /usr/bin/sudo -V | /usr/bin/awk -F\": \" '/Type of authentication timestamp record/{print $2}'\n\nIf the result is not \"tty\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274881",
+        "title": "SRG-OS-000373-GPOS-00156",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274881r1099904_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "APPL-15-004022",
+          "title": "The macOS system must require users to reauthenticate for privilege escalation when using the \"sudo\" command.",
+          "description": "<VulnDiscussion>The file /etc/sudoers must include a timestamp_timout of 0.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization. When operating systems provide the capability to escalate a functional capability or change user authenticators, it is critical the user reauthenticate.\n\nSatisfies: SRG-OS-000373-GPOS-00156,SRG-OS-000373-GPOS-00157</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Apple macOS 15",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Apple macOS 15",
+            "identifier": "5661"
+          },
+          "ident": [
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Configure the macOS system to require reauthentication when using \"sudo\" with the following command:\n\n/usr/bin/find /etc/sudoers* -type f -exec sed -i '' '/timestamp_timeout/d' '{}' \\;\n/bin/echo \"Defaults timestamp_timeout=0\" >> /etc/sudoers.d/mscp",
+            "+@fixref": "F-78887r1099903_fix"
+          },
+          "fix": {
+            "+@id": "F-78887r1099903_fix"
+          },
+          "check": {
+            "+@system": "C-78982r1099902_chk",
+            "check-content-ref": {
+              "+@href": "Apple_macOS_15__STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the macOS system requires reauthentication when using the \"sudo\" command to elevate privileges with the following command:\n\n/usr/bin/sudo /usr/bin/sudo -V | /usr/bin/grep -c \"Authentication timestamp timeout: 0.0 minutes\"\n\nIf the result is not \"1\", this is a finding."
           }
         }
       }

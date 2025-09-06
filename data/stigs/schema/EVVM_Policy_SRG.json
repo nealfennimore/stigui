@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-03-12"
+      "+@date": "2025-05-29"
     },
     "title": "Enterprise Voice, Video, and Messaging Policy Security Requirements Guide",
     "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 15 Mar 2024",
+        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.1.22916",
+        "+content": "3.5",
         "+@id": "generator"
       },
       {
@@ -252,6 +252,10 @@
           {
             "+@idref": "V-259939",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
+            "+@selected": "true"
           }
         ]
       },
@@ -458,6 +462,10 @@
           },
           {
             "+@idref": "V-259939",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
             "+@selected": "true"
           }
         ]
@@ -666,6 +674,10 @@
           {
             "+@idref": "V-259939",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
+            "+@selected": "true"
           }
         ]
       },
@@ -872,6 +884,10 @@
           },
           {
             "+@idref": "V-259939",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
             "+@selected": "true"
           }
         ]
@@ -1080,6 +1096,10 @@
           {
             "+@idref": "V-259939",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
+            "+@selected": "true"
           }
         ]
       },
@@ -1286,6 +1306,10 @@
           },
           {
             "+@idref": "V-259939",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
             "+@selected": "true"
           }
         ]
@@ -1494,6 +1518,10 @@
           {
             "+@idref": "V-259939",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
+            "+@selected": "true"
           }
         ]
       },
@@ -1701,6 +1729,10 @@
           {
             "+@idref": "V-259939",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
+            "+@selected": "true"
           }
         ]
       },
@@ -1907,6 +1939,10 @@
           },
           {
             "+@idref": "V-259939",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274463",
             "+@selected": "true"
           }
         ]
@@ -3439,12 +3475,12 @@
         "title": "SRG-VOIP-000490",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259929r948775_rule",
+          "+@id": "SV-259929r1111077_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-VOIP-000490",
           "title": "The Session Border Controller (SBC) must be configured to only process packets authenticated from an authorized source within the DISN IPVS network.",
-          "description": "<VulnDiscussion>The function of the SBC is to manage SIP and AS-SIP signaling messages. The SBC also authenticates SIP and AS-SIP signaling messages, ensuring they are from an authorized source. DOD policy dictates that authentication be performed using DOD PKI certificates. This also applies to network hosts and elements. SIP and AS-SIP are not secure protocols. The information passed during a call session is in human-readable plain text. To secure SIP and AS-SIP, TLS is used. TLS is PKI certificate-based and is used for AS-SIP message encryption, authentication, and integrity validation. \n\nNOTE: Authentication is provided by validating the sending appliance's public PKI certificate used to establish the TLS session. AS-SIP messages are not sent until the authenticated TLS session is established.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The function of the SBC is to manage SIP and AS-SIP signaling messages. The SBC also authenticates SIP and AS-SIP signaling messages, ensuring they are from an authorized source. DOD policy dictates that authentication be performed using DOD-approved PKI certificates. This also applies to network hosts and elements. SIP and AS-SIP are not secure protocols. The information passed during a call session is in human-readable plain text. To secure SIP and AS-SIP, TLS is used. TLS is PKI certificate-based and is used for AS-SIP message encryption, authentication, and integrity validation. \n\nNOTE: Authentication is provided by validating the sending appliance's public PKI certificate used to establish the TLS session. AS-SIP messages are not sent until the authenticated TLS session is established.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target Enterprise Voice, Video, and Messaging Policy",
             "publisher": "DISA",
@@ -3457,19 +3493,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Ensure the DISN NIPRNet IPVS SBC is configured to only process packets authenticated from an authorized source as follows:\n- Authenticate outbound SIP and AS-SIP messages as being from the primary or backup LSC (or the site's MFSS and is backup LSC) within the enclave.\n- Authenticate inbound SIP and AS-SIP messages as being from the SBC at the enclave's assigned primary and secondary (backup) MFSS sites.\n\nNOTE: The VVoIP system may allow SIP and SRTP traffic encrypted and encapsulated on port 443 from cloud service providers.",
-            "+@fixref": "F-63567r946707_fix"
+            "+content": "Ensure the DISN NIPRNet IPVS SBC is configured to only process packets authenticated from an authorized source as follows:\n- Authenticate outbound SIP and AS-SIP messages as being from the primary or backup LSC (or the site's MFSS and its backup LSC) within the enclave.\n- Authenticate inbound SIP and AS-SIP messages as being from the SBC at the enclave's assigned primary and secondary (backup) MFSS sites.\n\nNOTE: The VVoIP system may allow SIP and SRTP traffic encrypted and encapsulated on port 443 from cloud service providers.",
+            "+@fixref": "F-63567r1099913_fix"
           },
           "fix": {
-            "+@id": "F-63567r946707_fix"
+            "+@id": "F-63567r1099913_fix"
           },
           "check": {
-            "+@system": "C-63660r946706_chk",
+            "+@system": "C-63660r1099912_chk",
             "check-content-ref": {
               "+@href": "Enterprise_Voice,_Video,_and_Messaging_Policy_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the DISN NIPRNet IPVS SBC is configured to only process packets authenticated from an authorized source as follows:\n- Authenticate outbound SIP and AS-SIP messages as being from the primary or backup Local Session Controller (LSC) (or the site's Multifunction Soft Switch [MFSS] and its backup LSC within the enclave.\n- Authenticate inbound SIP and AS-SIP messages as being from the SBC at the enclave's assigned primary and secondary (backup) MFSS sites.\n\nInspect the configurations of the EBC to determine compliance with the requirement.\n\nIf the SBC does not use DOD PKI to authenticate the source of SIP and AS-SIP packets, this is a finding. \n\nIf the SBC is not configured to validate sending the appliance's public PKI certificate against the DOD PKI registry and CRLs, this is a finding.\n\nNOTE: The VVoIP system may allow SIP and SRTP traffic encrypted and encapsulated on port 443 from cloud service providers."
+            "check-content": "Verify the DISN NIPRNet IPVS SBC is configured to only process packets authenticated from an authorized source as follows:\n- Authenticate outbound SIP and AS-SIP messages as being from the primary or backup Local Session Controller (LSC) (or the site's Multifunction Soft Switch [MFSS] and its backup LSC within the enclave.\n- Authenticate inbound SIP and AS-SIP messages as being from the SBC at the enclave's assigned primary and secondary (backup) MFSS sites.\n\nInspect the configurations of the EBC to determine compliance with the requirement.\n\nIf the SBC does not use DOD-approved PKI to authenticate the source of SIP and AS-SIP packets, this is a finding. \n\nIf the SBC is not configured to validate sending the appliance's public PKI certificate against the DOD-approved PKI registry and CRLs, this is a finding.\n\nNOTE: The VVoIP system may allow SIP and SRTP traffic encrypted and encapsulated on port 443 from cloud service providers."
           }
         }
       },
@@ -3860,6 +3896,45 @@
               "+@name": "M"
             },
             "check-content": "Verify a policy and procedure is in place and enforced that addresses the operation of MAC Authentication Bypass exceptions to 802.1x requirements.\n\nIf a MAC Authentication Bypass policy is not in place and enforced, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274463",
+        "title": "SRG-VOIP-000600",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274463r1107631_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "SRG-VOIP-000600",
+          "title": "A site utilizing a commercial VoIP/SIP provider must use a provider compliant with FCC STIR/SHAKEN protocol rules.",
+          "description": "<VulnDiscussion>The STIR/SHAKEN protocol required by recent FCC regulations ensures the authenticity of calling parties over voice communications. This protocol is aimed to reduce robocalls and spoofing. The carrier can digitally sign and verify the authenticity of caller ID information to combat fraudulent calls.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Enterprise Voice, Video, and Messaging Policy",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Enterprise Voice, Video, and Messaging Policy",
+            "identifier": "5585"
+          },
+          "ident": {
+            "+content": "CCI-001548",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Ensure the commercial provider is compliant with FCC STIR/SHAKEN regulations.",
+            "+@fixref": "F-78461r1107630_fix"
+          },
+          "fix": {
+            "+@id": "F-78461r1107630_fix"
+          },
+          "check": {
+            "+@system": "C-78556r1107629_chk",
+            "check-content-ref": {
+              "+@href": "Enterprise_Voice,_Video,_and_Messaging_Policy_SRG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the commercial provider is compliant with the FCC STIR/SHAKEN regulations.\n\nIf the commercial provider is not compliant with FCC STIR/SHAKEN regulations, this is a finding."
           }
         }
       }

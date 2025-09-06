@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-20"
+      "+@date": "2025-05-16"
     },
     "title": "Kubernetes Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -416,6 +416,18 @@
           {
             "+@idref": "V-254801",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
+            "+@selected": "true"
           }
         ]
       },
@@ -786,6 +798,18 @@
           },
           {
             "+@idref": "V-254801",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
             "+@selected": "true"
           }
         ]
@@ -1158,6 +1182,18 @@
           {
             "+@idref": "V-254801",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
+            "+@selected": "true"
           }
         ]
       },
@@ -1528,6 +1564,18 @@
           },
           {
             "+@idref": "V-254801",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
             "+@selected": "true"
           }
         ]
@@ -1900,6 +1948,18 @@
           {
             "+@idref": "V-254801",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
+            "+@selected": "true"
           }
         ]
       },
@@ -2270,6 +2330,18 @@
           },
           {
             "+@idref": "V-254801",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
             "+@selected": "true"
           }
         ]
@@ -2642,6 +2714,18 @@
           {
             "+@idref": "V-254801",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
+            "+@selected": "true"
           }
         ]
       },
@@ -3013,6 +3097,18 @@
           {
             "+@idref": "V-254801",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
+            "+@selected": "true"
           }
         ]
       },
@@ -3383,6 +3479,18 @@
           },
           {
             "+@idref": "V-254801",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274882",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274883",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-274884",
             "+@selected": "true"
           }
         ]
@@ -6993,6 +7101,123 @@
               "+@name": "M"
             },
             "check-content": "On the Control Plane, change to the manifests' directory at /etc/kubernetes/manifests and run the command:\ngrep -i feature-gates *\n\nFor each manifest file, if the \"--feature-gates\" setting does not exist, does not contain the \"--PodSecurity\" flag, or sets the flag to \"false\", this is a finding.\n\nOn each Control Plane and Worker Node, run the command:\nps -ef | grep kubelet\n\nIf the \"--feature-gates\" option exists, this is a finding. \n\nNote the path to the config file (identified by --config).\n\nInspect the content of the config file:\nIf the \"featureGates\" setting is not present, does not contain the \"PodSecurity\" flag, or sets the flag to \"false\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274882",
+        "title": "SRG-APP-000033-CTR-000100",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274882r1107233_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "CNTR-K8-001162",
+          "title": "Kubernetes Secrets must be encrypted at rest.",
+          "description": "<VulnDiscussion>Kubernetes Secrets may store sensitive information such as passwords, tokens, and keys. These values are stored in the etcd database used by Kubernetes unencrypted. To protect these Secrets at rest, these values must be encrypted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Kubernetes",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Kubernetes",
+            "identifier": "5376"
+          },
+          "ident": {
+            "+content": "CCI-000213",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Edit the Kubernetes API Server manifest file in the /etc/kubernetes/manifests directory on the Kubernetes Master Node. \n\nSet the value of \"--encryption-provider-config\" to the path to the encryption config. \n\nThe encryption config must specify the Secret's resource and provider. Below is an example:\n{\n  \"kind\": \"EncryptionConfiguration\",\n  \"apiVersion\": \"apiserver.config.k8s.io/v1\",\n  \"resources\": [\n    {\n      \"resources\": [\n        \"secrets\"\n      ],\n      \"providers\": [\n        {\n          \"aescbc\": {\n            \"keys\": [\n              {\n                \"name\": \"aescbckey\",\n                \"secret\": \"xxxxxxxxxxxxxxxxxxx\"\n              }\n            ]\n          }\n        },\n        {\n          \"identity\": {}\n        }\n      ]\n    }\n  ]\n}",
+            "+@fixref": "F-78888r1107232_fix"
+          },
+          "fix": {
+            "+@id": "F-78888r1107232_fix"
+          },
+          "check": {
+            "+@system": "C-78983r1107231_chk",
+            "check-content-ref": {
+              "+@href": "Kubernetes_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Change to the /etc/kubernetes/manifests directory on the Kubernetes Master Node. Run the command:\ngrep -i encryption-provider-config *\n\nIf the setting \"encryption-provider-config\" is not configured, this is a finding.\n\nIf the setting is configured, check the contents of the file specified by its argument. \n\nIf the file does not specify the Secret's resource, this is a finding. \n\nIf the identity provider is specified as the first provider for the resource, this is also a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274883",
+        "title": "SRG-APP-000171-CTR-000435",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274883r1107230_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "CNTR-K8-001161",
+          "title": "Sensitive information must be stored using Kubernetes Secrets or an external Secret store provider.",
+          "description": "<VulnDiscussion>Sensitive information, such as passwords, keys, and tokens must not be stored in application code.\n\nKubernetes offers a resource called Secrets that are designed for storing sensitive information for use by applications. Secrets are created and managed separately from application code. Additionally, they can be encrypted at rest and access to the secrets can be controlled via RBAC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Kubernetes",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Kubernetes",
+            "identifier": "5376"
+          },
+          "ident": {
+            "+content": "CCI-004062",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Any sensitive information found must be stored in an approved external Secret store provider or use Kubernetes Secrets (attached on an as-needed basis to pods).",
+            "+@fixref": "F-78889r1107229_fix"
+          },
+          "fix": {
+            "+@id": "F-78889r1107229_fix"
+          },
+          "check": {
+            "+@system": "C-78984r1107228_chk",
+            "check-content-ref": {
+              "+@href": "Kubernetes_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "On the Kubernetes Master node, run the following command:\nkubectl get all,cm -A -o yaml \n\nManually review the output for sensitive information.\n\nIf any sensitive information is found, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-274884",
+        "title": "SRG-APP-000429-CTR-001060",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-274884r1107236_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "CNTR-K8-001163",
+          "title": "Kubernetes must limit Secret access on a need-to-know basis.",
+          "description": "<VulnDiscussion>Kubernetes secrets may store sensitive information such as passwords, tokens, and keys. Access to these secrets should be limited to a need-to-know basis via Kubernetes RBAC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "title": "DPMS Target Kubernetes",
+            "publisher": "DISA",
+            "type": "DPMS Target",
+            "subject": "Kubernetes",
+            "identifier": "5376"
+          },
+          "ident": {
+            "+content": "CCI-002476",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "For Kubernetes accounts that have read access to Secrets without a documented requirement, modify the corresponding Role or ClusterRole to remove list, watch, and get privileges for Secrets.",
+            "+@fixref": "F-78890r1107235_fix"
+          },
+          "fix": {
+            "+@id": "F-78890r1107235_fix"
+          },
+          "check": {
+            "+@system": "C-78985r1107234_chk",
+            "check-content-ref": {
+              "+@href": "Kubernetes_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Review the Kubernetes accounts and their corresponding roles. \n\nIf any accounts have read (list, watch, get) access to Secrets without a documented organizational requirement, this is a finding. \n\nRun the below command to list the workload resources for applications deployed to Kubernetes:\nkubectl get all -A -o yaml \n\nIf Secrets are attached to applications without a documented requirement, this is a finding."
           }
         }
       }

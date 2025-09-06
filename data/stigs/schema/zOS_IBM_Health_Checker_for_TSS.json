@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2022-10-10"
+      "+@date": "2025-06-24"
     },
     "title": "z/OS IBM Health Checker for TSS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 23 Nov 2022",
+        "+content": "Release: 1 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -46,7 +46,7 @@
         "+@id": "conventionsVersion"
       }
     ],
-    "version": "6",
+    "version": "7",
     "Profile": [
       {
         "+@id": "MAC-1_Classified",
@@ -226,7 +226,7 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224738r868699_rule",
+          "+@id": "SV-224738r1116170_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKT001",
@@ -261,12 +261,12 @@
             "+@id": "F-26417r868698_fix"
           },
           "check": {
-            "+@system": "C-26429r868697_chk",
+            "+@system": "C-26429r1105861_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The TSS data set rules for the data sets restricts READ access to auditors.\n\n___ The TSS data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___ The TSS data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s)."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HCKSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZHCK0001)\n\nVerify that the accesses to the IBM Health Checker STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set rules for the data sets restricts READ access to auditors.\n\nThe TSS data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets restricts WRITE and/or greater access to the IBM Health Checker's STC(s) and/or batch user(s)."
           }
         }
       },
@@ -275,11 +275,11 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224739r520336_rule",
+          "+@id": "SV-224739r1116173_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKT030",
-          "title": "IBM Health Checker Started Task name will be properly identified and/or defined to the system ACP.",
+          "title": "IBM Health Checker Started Task name will be properly identified and/or defined to the system Access Control Program (ACP).",
           "description": "<VulnDiscussion>IBM Health Checker requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS IBM Health Checker for TSS",
@@ -303,19 +303,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(HZSPROD) TYPE(USER) -\n\tNAME('STC, IBM Health Checker') DEPT(xxxx) -\n\tFAC(STC,BATCH) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
-            "+@fixref": "F-26418r520335_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(HZSPROD) TYPE(USER) -\n\tNAME('STC, IBM Health Checker') DEPT(xxxx) -\n\tFAC(STC,BATCH) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
+            "+@fixref": "F-26418r1116172_fix"
           },
           "fix": {
-            "+@id": "F-26418r520335_fix"
+            "+@id": "F-26418r1116172_fix"
           },
           "check": {
-            "+@system": "C-26430r520334_chk",
+            "+@system": "C-26430r1116171_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nVerify that the ACID(s) for the IBM Health Checker started task(s) is (are) properly defined.  If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND"
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(@ACIDS)\n\nVerify that the ACID(s) for the IBM Health Checker started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND"
           }
         }
       },
@@ -324,12 +324,12 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224740r520339_rule",
+          "+@id": "SV-224740r1116176_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZHCKT032",
           "title": "IBM Health Checker Started task will be properly defined to the Started Task Table for Top Secret.",
-          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "title": "DPMS Target zOS IBM Health Checker for TSS",
             "publisher": "DISA",
@@ -352,19 +352,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the IBM Health Checker started task(s) thru a corresponding STC table entry.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS ADD(STC) PROCNAME(HZSPROC) ACID(HZSPROC)",
-            "+@fixref": "F-26419r520338_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the IBM Health Checker Started Task(s) is properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the IBM Health Checker started task(s) thru a corresponding STC table entry.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS ADD(STC) PROCNAME(HZSPROC) ACID(HZSPROC)",
+            "+@fixref": "F-26419r1116175_fix"
           },
           "fix": {
-            "+@id": "F-26419r520338_fix"
+            "+@id": "F-26419r1116175_fix"
           },
           "check": {
-            "+@system": "C-26431r520337_chk",
+            "+@system": "C-26431r1116174_chk",
             "check-content-ref": {
               "+@href": "zOS_IBM_Health_Checker_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZHCK0032)\n\nIf the IBM Health Checker started task(s) is (are) defined in the TSS STC record, this is not a finding."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n- PDI(ZHCK0032)\n\nIf the IBM Health Checker started task(s) is (are) defined in the TSS STC record, this is not a finding."
           }
         }
       }

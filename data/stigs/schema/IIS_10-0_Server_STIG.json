@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-11"
+      "+@date": "2025-06-11"
     },
     "title": "Microsoft IIS 10.0 Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
         "+@id": "release-info"
       },
       {
@@ -55,10 +55,6 @@
         "select": [
           {
             "+@idref": "V-218786",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-218787",
             "+@selected": "true"
           },
           {
@@ -241,10 +237,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-218787",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-218788",
             "+@selected": "true"
           },
@@ -421,10 +413,6 @@
         "select": [
           {
             "+@idref": "V-218786",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-218787",
             "+@selected": "true"
           },
           {
@@ -607,10 +595,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-218787",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-218788",
             "+@selected": "true"
           },
@@ -787,10 +771,6 @@
         "select": [
           {
             "+@idref": "V-218786",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-218787",
             "+@selected": "true"
           },
           {
@@ -973,10 +953,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-218787",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-218788",
             "+@selected": "true"
           },
@@ -1153,10 +1129,6 @@
         "select": [
           {
             "+@idref": "V-218786",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-218787",
             "+@selected": "true"
           },
           {
@@ -1339,10 +1311,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-218787",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-218788",
             "+@selected": "true"
           },
@@ -1519,10 +1487,6 @@
         "select": [
           {
             "+@idref": "V-218786",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-218787",
             "+@selected": "true"
           },
           {
@@ -1751,55 +1715,6 @@
               "+@name": "M"
             },
             "check-content": "Note: If the server is hosting WSUS, this is Not Applicable.\n\nOpen the IIS 10.0 Manager.\nClick the IIS 10.0 server name.\nClick the \"Logging\" icon.\nUnder Log Event Destination, verify the \"Both log file and ETW event\" radio button is selected.\n\nIf the \"Both log file and ETW event\" radio button is not selected, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-218787",
-        "title": "SRG-APP-000098-WSR-000060",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-218787r960900_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "IIST-SV-000109",
-          "title": "An IIS 10.0 web server behind a load balancer or proxy server must produce log records containing the source client IP and destination information.",
-          "description": "<VulnDiscussion>Web server logging capability is critical for accurate forensic analysis. Without sufficient and accurate information, a correct replay of the events cannot be determined.\n\nAscertaining the correct source (e.g., source IP), of the events is important during forensic analysis. Correctly determining the source of events will add information to the overall reconstruction of the loggable event. By determining the source of the event correctly, analysis of the enterprise can be undertaken to determine if events tied to the source occurred in other areas within the enterprise.\n\nA web server behind a load balancer or proxy server, when not configured correctly, will record the load balancer or proxy server as the source of every loggable event. When looking at the information forensically, this information is not helpful in the investigation of events. The web server must record with each event the client source of the event.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "title": "DPMS Target Microsoft IIS 10.0 Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft IIS 10.0 Server",
-            "identifier": "4052"
-          },
-          "ident": [
-            {
-              "+content": "SV-109213",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "V-100109",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-000133",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
-          "fixtext": {
-            "+content": "Access the proxy server through which inbound web traffic is passed and configure settings to pass web traffic to the IIS 10.0 web server transparently.",
-            "+@fixref": "F-20257r310837_fix"
-          },
-          "fix": {
-            "+@id": "F-20257r310837_fix"
-          },
-          "check": {
-            "+@system": "C-20259r310836_chk",
-            "check-content-ref": {
-              "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Interview the System Administrator to review the configuration of the IIS 10.0 architecture and determine if inbound web traffic is passed through a proxy.\n\nIf the IIS 10.0 web server is receiving inbound web traffic through a proxy, the audit logs must be reviewed to determine if correct source information is being passed through by the proxy server.\n\nFollow this procedure for web server and each website:\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nClick the \"Logging\" icon.\n\nClick on \"View log files\" under the \"Actions\" pane.\n\nWhen the log file is displayed, review source IP information in log entries and verify the entries do not reflect the IP address of the proxy server.\n\nIf the website is not behind a load balancer or proxy server, this is Not Applicable.\n\nIf the log entries in the log file(s) reflect the IP address of the proxy server as the source, this is a finding.\n\nIf provisions have been made to log the client IP via another field (i.e., utilizing X-Forwarded-For), this is not a finding."
           }
         }
       },
@@ -2298,7 +2213,7 @@
         "title": "SRG-APP-000141-WSR-000081",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218798r960963_rule",
+          "+@id": "SV-218798r1112381_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000124",
@@ -2333,12 +2248,12 @@
             "+@id": "F-20268r310870_fix"
           },
           "check": {
-            "+@system": "C-20270r310869_chk",
+            "+@system": "C-20270r1112381_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nUnder IIS, double-click the \"MIME Types\" icon.\n\nFrom the \"Group by:\" drop-down list, select \"Content Type\".\n\nFrom the list of extensions under \"Application\", verify MIME types for OS shell program extensions have been removed, to include at a minimum, the following extensions:\n\n.exe\n.dll\n.com\n.bat\n.csh\n\nIf any OS shell MIME types are configured, this is a finding."
+            "check-content": "Note: If the server is hosting WSUS, this is not applicable.\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nUnder IIS, double-click the \"MIME Types\" icon.\n\nFrom the \"Group by:\" drop-down list, select \"Content Type\".\n\nFrom the list of extensions under \"Application\", verify MIME types for OS shell program extensions have been removed, to include at a minimum, the following extensions:\n\n.exe\n.dll\n.com\n.bat\n.csh\n\nIf any OS shell MIME types are configured, this is a finding."
           }
         }
       },
@@ -3629,7 +3544,7 @@
         "title": "SRG-APP-000516-WSR-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218827r961863_rule",
+          "+@id": "SV-218827r1112380_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "IIST-SV-000205",
@@ -3664,12 +3579,12 @@
             "+@id": "F-20297r802885_fix"
           },
           "check": {
-            "+@system": "C-20299r810854_chk",
+            "+@system": "C-20299r1112380_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Access the IIS 10.0 Web Server.\nOpen IIS Manager.\nClick the IIS 10.0 web server name.\nOpen on Configuration Editor under Management.\nFor the Section, navigate to system.applicationHost/sites.\nExpand siteDefaults and HSTS.\nIf enabled is not set to True, this is a finding.\nIf includeSubDomains is not set to True, this is a finding.\nIf max-age is not set to a value greater than 0, this is a finding.\nIf redirectHttpToHttps is not True, this is a finding.\n\nIf the website is behind a load balancer or proxy server, and HSTS enablement is handled there, this is Not Applicable.\n\nIf the version of Windows Server does not natively support HSTS, this is not a finding."
+            "check-content": "Note: If the server is hosting WSUS, this is not applicable.\nNote: If the server is providing OCSP, and not otherwise hosting any content, this requirement is not applicable.\n\nAccess the IIS 10.0 Web Server.\nOpen IIS Manager.\nClick the IIS 10.0 web server name.\nOpen on Configuration Editor under Management.\nFor the Section, navigate to system.applicationHost/sites.\nExpand siteDefaults and HSTS.\nIf enabled is not set to True, this is a finding.\nIf includeSubDomains is not set to True, this is a finding.\nIf max-age is not set to a value greater than 0, this is a finding.\nIf redirectHttpToHttps is not True, this is a finding.\n\nIf the website is behind a load balancer or proxy server, and HSTS enablement is handled there, this is not applicable.\n\nIf the version of Windows Server does not natively support HSTS, this is not a finding."
           }
         }
       },
