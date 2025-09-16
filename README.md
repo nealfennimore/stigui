@@ -1,23 +1,20 @@
-# STIGUI
+![Logo](./public/stigui-white-150.png)
 
-A fast, simple, and open-source web application for exploring DISA Security Technical Implementation Guides (STIGs).
+A simple web application for exploring and editing [DISA Security Technical Implementation Guides (STIGs)](https://public.cyber.mil/stigs/compilations/).
 
-## Overview
-
-STIGUI provides an intuitive and responsive interface for accessing and navigating [DISA STIGs](https://public.cyber.mil/stigs/compilations/) directly from your browser. Whether you're a cybersecurity professional, compliance analyst, or systems administrator, STIGUI simplifies your workflow by giving quick access to the latest STIGs without having to install software.
+![Demo](./public/stigui.gif)
 
 ## Features
 
-- **Comprehensive STIG Database:** Browse and search the full collection of DISA STIGs.
-- **Version Control:** Clearly displayed STIG versions and publication dates.
-- **Lightweight Interface:** Minimalist design ensures rapid loading and ease of use on any device.
-- **Open Source:** Freely available and community-driven—contributions welcome!
+- **STIG:** Browse and search the full collection of DISA STIGs.
+- **Export:** Download STIGs in CSV, JSON, and XML
+- **Edit:** Modify STIGs similar to [STIG Viewer 3](https://www.cyber.mil/stigs/srg-stig-tools) with CKLB compatibility
 
 ## Getting Started
 
 ### Online
 
-Access the live web application at [stigui.com](https://stigui.com).
+Access the application at [stigui.com](https://stigui.com).
 
 ## Local Development
 
@@ -34,7 +31,7 @@ Your local instance should now be running at [http://localhost:3000](http://loca
 
 ## Contributing
 
-STIGUI is open-source, and contributions are warmly welcomed!
+STIGUI is open-source, and contributions are welcome!
 
 ## License
 
