@@ -9,10 +9,9 @@ A simple web application for exploring and editing [DISA Security Technical Impl
 - **STIG:** Browse and search the full collection of DISA STIGs.
 - **Export:** Download STIGs in CSV, JSON, and XML
 - **Edit:** Modify STIGs similar to [STIG Viewer 3](https://www.cyber.mil/stigs/srg-stig-tools) with CKLB compatibility
+  - All edits are stored in the browser using IndexDB, and there are no external network requests to any 3rd party tracker or analytics services.
 
 ## Getting Started
-
-### Online
 
 Access the application at [stigui.com](https://stigui.com).
 
