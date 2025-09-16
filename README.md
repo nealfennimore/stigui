@@ -1,4 +1,4 @@
-![Logo](./public/stigui-white-150.png)
+ ![Logo](./public/stigui-border-150.png)
 
 A simple web application for exploring and editing [DISA Security Technical Implementation Guides (STIGs)](https://public.cyber.mil/stigs/compilations/).
 
