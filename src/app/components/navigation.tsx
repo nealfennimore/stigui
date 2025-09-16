@@ -45,8 +45,9 @@ export const Navigation = () => {
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                     tabIndex={100}
                 >
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        {APPNAME}
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white flex items-center">
+                        <img src="/shield.png" className="mr-2 w-[40px]" />
+                        <span>{APPNAME}</span>
                     </span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
