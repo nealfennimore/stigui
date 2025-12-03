@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS CL/SuperSession for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -442,18 +442,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224461r1041304_rule",
+          "+@id": "SV-224461r1144720_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLS0040",
           "title": "CL/SuperSession profile options are set improperly.",
           "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -481,12 +481,12 @@
             "+@id": "F-26126r1041303_fix"
           },
           "check": {
-            "+@system": "C-26138r1041302_chk",
+            "+@system": "C-26138r1144719_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) The following steps are necessary for reviewing the CL/SuperSession options:\n\n1) Request online access from the site administrator to view CL/SuperSession parameter settings.\n2) Once access to the CL/SuperSession Main Menu has been obtained, select the option for the ADMINISTRATOR menu.\n3) From the ADMINISTRATOR menu, select the option for the PROFILE SELECTION menu.\n4) From the PROFILE SELECTION menu, select the View GLOBAL Profile option.\n5) After selection of the View GLOBAL Profile option, the Update GLOBAL Profile menu appears. From this menu select the profile to be reviewed:\n\n- To view the Common profile select: _Common\n- To view the SUPERSESSION profile select: _SupSess\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0040)\n\nb) Compare the security parameters as specified in the Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables in the z/OS STIG Addendum against the CL/SuperSession Profile options.\n\nc) If all options as specified in the Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables in the z/OS STIG Addendum are in effect, there is no finding.\n\nd) If any of the options as specified in the Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables in the z/OS STIG Addendum is not in effect, this is a finding."
+            "check-content": "The following steps are necessary for reviewing the CL/SuperSession options:\n\nRequest online access from the site administrator to view CL/SuperSession parameter settings.\nOnce access to the CL/SuperSession Main Menu has been obtained, select the option for the ADMINISTRATOR menu.\nFrom the ADMINISTRATOR menu, select the option for the PROFILE SELECTION menu.\nFrom the PROFILE SELECTION menu, select the View GLOBAL Profile option.\nAfter selection of the View GLOBAL Profile option, the Update GLOBAL Profile menu appears. From this menu select the profile to be reviewed:\n\n- To view the Common profile, select: _Common\n- To view the SUPERSESSION profile, select: _SupSess\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0040).\n\nCompare the security parameters as specified in the Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables in the z/OS STIG Addendum against the settings in CL/SuperSession.\n\nIf all options as specified in the Required CL/SuperSession Common Profile Options and Required CL/SuperSession Profile Options Tables in the z/OS STIG Addendum are in effect, this is not a finding."
           }
         }
       },
@@ -495,18 +495,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224462r1041307_rule",
+          "+@id": "SV-224462r1145205_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLS0041",
           "title": "CL/SuperSession must be properly configured to generate SMF records for audit trail and accounting reports.",
           "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -538,12 +538,12 @@
             "+@id": "F-26127r1041306_fix"
           },
           "check": {
-            "+@system": "C-26139r1041305_chk",
+            "+@system": "C-26139r1144721_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Version 3 of CL/SuperSession\nReview the member KLKINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nRefer to the following report produced by the z/OS Data Collection:\n\n- EXAM.RPT(SMFOPTS)\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession)\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0041)\n\nb) If the SMF= field specifies an SMF record number, review the SMFOPTS report to verify SMF is writing that record type.\n\nc) If SMF is writing the record number specified by SMF=, there is no finding.\n\nd) If the SMF= field does not specify an SMF record number, or SMF is not writing the record number specified by SMF=, this is a finding."
+            "check-content": "Version 3 of CL/SuperSession\nReview the member KLKINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAF in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure to determine SMF number. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nRefer to the following report produced by the z/OS Data Collection:\n\n- EXAM.RPT(SMFOPTS).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0041).\n\nIf the SMF= field specifies an SMF record number and the SMFOPTS report specifies that SMF is writing the record number specified by SMF=, this is not a finding."
           }
         }
       },
@@ -552,18 +552,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224463r1041310_rule",
+          "+@id": "SV-224463r1145207_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR000",
           "title": "CL/SuperSession Install data sets must be properly protected.",
           "description": "<VulnDiscussion>CL/SuperSession Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -584,19 +584,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that update and allocate access to CL/SuperSession install data sets are limited to systems programmers only and all update and allocate access is logged. Auditors should be granted READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nThe following dataset are an example of data sets to be protected: \nsys2.omegamon.** /* product datasets */\nsys2.omegamon.*.tlsload.** \nsys2.omegamon.*.tlvload.** \nsys3.omegamon.**\nsys3.omegamon.rlsload.**\n\nThe following commands are provided as an example for implementing dataset controls: \n\nad 'sys2.omegamon.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) -\ndata('vendor DS Profile CL/Supersession') \npe 'sys2.omegamon.**' id(syspaudt) acc(a) \npe 'sys2.omegamon.**' id(audtaudt) \nad 'sys2.omegamon.*.tlsload.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) -\ndata('vendor DS fully qualified apf Profile CL/Supersession') \npe 'sys2.omegamon.*.tlsload.**' id(syspaudt) acc(a)\npe 'sys2.omegamon.*.tlsload.**' id(audtaudt) ad 'sys2.omegamon.*.tlvload.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) - \ndata('vendor DS fully qualified apf Profile CL/Supersession') \npe 'sys2.omegamon.*.tlvload.**' id(syspaudt) acc(a) \npe 'sys2.omegamon.*.tlvload.**' id(audtaudt) \nad 'sys3.omegamon.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read) -\ndata('vendor DS Profile CL/Supersession') \npe 'sys3.omegamon.**' id(syspaudt) acc(a) \npe 'sys3.omegamon.**' id(audtaudt) \nad 'sys3.omegamon.rlsload.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read) -\ndata('site DS fully qualified apf Profile CL/Supersession') \npe 'sys3.omegamon.rlsload.**' id(syspaudt) acc(a) \npe 'sys3.omegamon.rlsload.**' id(audtaudt)",
-            "+@fixref": "F-26128r1041309_fix"
+            "+content": "Ensure that WRITE and/or greater access to CL/SuperSession install data sets are limited to systems programmers only and all WRITE and/or greater access is logged. Auditors should be granted READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have UPDATE access for specific data sets, and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nThe following data sets are an example of data sets to be protected: \nsys2.omegamon.** /* product datasets */\nsys2.omegamon.*.tlsload.** \nsys2.omegamon.*.tlvload.** \nsys3.omegamon.**\nsys3.omegamon.rlsload.**\n\nThe following commands are provided as an example for implementing data set controls: \n\nad 'sys2.omegamon.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) -\ndata('vendor DS Profile CL/Supersession') \npe 'sys2.omegamon.**' id(syspaudt) acc(a) \npe 'sys2.omegamon.**' id(audtaudt) \nad 'sys2.omegamon.*.tlsload.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) -\ndata('vendor DS fully qualified apf Profile CL/Supersession') \npe 'sys2.omegamon.*.tlsload.**' id(syspaudt) acc(a)\npe 'sys2.omegamon.*.tlsload.**' id(audtaudt) ad 'sys2.omegamon.*.tlvload.**' uacc(none) owner(sys2) -\naudit(success(update) failures(read) - \ndata('vendor DS fully qualified apf Profile CL/Supersession') \npe 'sys2.omegamon.*.tlvload.**' id(syspaudt) acc(a) \npe 'sys2.omegamon.*.tlvload.**' id(audtaudt) \nad 'sys3.omegamon.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read) -\ndata('vendor DS Profile CL/Supersession') \npe 'sys3.omegamon.**' id(syspaudt) acc(a) \npe 'sys3.omegamon.**' id(audtaudt) \nad 'sys3.omegamon.rlsload.**' uacc(none) owner(sys3) -\naudit(success(update) failures(read) -\ndata('site DS fully qualified apf Profile CL/Supersession') \npe 'sys3.omegamon.rlsload.**' id(syspaudt) acc(a) \npe 'sys3.omegamon.rlsload.**' id(audtaudt)",
+            "+@fixref": "F-26128r1145206_fix"
           },
           "fix": {
-            "+@id": "F-26128r1041309_fix"
+            "+@id": "F-26128r1145206_fix"
           },
           "check": {
-            "+@system": "C-26140r1041308_chk",
+            "+@system": "C-26140r1144723_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSRPT) \n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0000)\n\nb) Verify that access to the CL/SuperSession Install data sets are properly restricted.\n\n___ The RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___ The RACF data set rules for the data sets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc) If all of the above are untrue, there is no finding.\n\nd) If any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSRPT).\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0000).\n\nVerify that access to the CL/SuperSession Install data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe RACF data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access will be logged."
           }
         }
       },
@@ -605,18 +605,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224464r958616_rule",
+          "+@id": "SV-224464r1144728_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR001",
           "title": "CL/SuperSession STC data sets must be properly protected.",
           "description": "<VulnDiscussion>CL/SuperSession STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -633,19 +633,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that WRITE and/or greater access to CL/SuperSession STC data sets are limited to systems programmers and CL/SuperSession STC only. Read access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented  will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nNote: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific. \n\nThe following are an example of data sets to be protected:\nSYS3.OMEGAMON.RLSNAF\nSYS3.OMEGAMON.RLSNAM\nSYS3.OMEGAMON.RLSTDB\nSYS3.OMEGAMON.RLSVLOG\n\nThe following commands are provided as an example for implementing dataset controls: \n\nad 'sys3.omegamon.rlsnaf.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsnaf.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsnaf.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsnaf.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsnaf.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlsnam.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsnam.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsnam.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsnam.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsnam.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlstdb.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlstdb.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlstdb.**' id(kls) acc(a)\npe 'sys3.omegamon.rlstdb.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlstdb.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlsvlog.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsvlog.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsvlog.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsvlog.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsvlog.**' id(*) acc(r)",
-            "+@fixref": "F-26129r868332_fix"
+            "+content": "Ensure that WRITE and/or greater access to CL/SuperSession STC data sets are limited to systems programmers and CL/SuperSession STC only. READ access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented  will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nNote: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific. \n\nThe following are an example of data sets to be protected:\nSYS3.OMEGAMON.RLSNAF\nSYS3.OMEGAMON.RLSNAM\nSYS3.OMEGAMON.RLSTDB\nSYS3.OMEGAMON.RLSVLOG\n\nThe following commands are provided as an example for implementing data set controls: \n\nad 'sys3.omegamon.rlsnaf.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsnaf.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsnaf.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsnaf.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsnaf.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlsnam.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsnam.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsnam.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsnam.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsnam.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlstdb.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlstdb.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlstdb.**' id(kls) acc(a)\npe 'sys3.omegamon.rlstdb.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlstdb.**' id(*) acc(r)\n\nad 'sys3.omegamon.rlsvlog.** uacc(none) owner(sys3) -\naudit(failures(read)) -\ndata('Site Customized CL/Supersession VSAM')\npe 'sys3.omegamon.rlsvlog.**' id(syspaudt) acc(a)\npe 'sys3.omegamon.rlsvlog.**' id(kls) acc(a)\npe 'sys3.omegamon.rlsvlog.**' id(audtaudt) acc(r)\npe 'sys3.omegamon.rlsvlog.**' id(*) acc(r)",
+            "+@fixref": "F-26129r1144727_fix"
           },
           "fix": {
-            "+@id": "F-26129r868332_fix"
+            "+@id": "F-26129r1144727_fix"
           },
           "check": {
-            "+@system": "C-26141r868331_chk",
+            "+@system": "C-26141r1144726_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSSTC)\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0001)\n\nVerify that the accesses to the CL/SuperSession STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The RACF data set access authorizations restrict READ access to auditors and authorized users.\n\n___ The RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The RACF data set rules for the data sets does not restrict WRITE and/or greater access to the product STC(s) and/or batch job(s).\n\n___ The RACF data set access authorizations for the data sets specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(KLSSTC).\n\nAutomated Analysis:\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCLS0001).\n\nVerify that the accesses to the CL/SuperSession STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe RACF data set access authorizations restrict READ access to auditors and authorized users.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets restrict WRITE and/or greater access to the product STC(s) and/or batch job(s).\n\nThe RACF data set access authorizations for the data sets specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -654,18 +654,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224465r958482_rule",
+          "+@id": "SV-224465r1144731_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR030",
-          "title": "CL/SuperSession Started Task name is not properly identified / defined to the system ACP.",
-          "description": "<VulnDiscussion>CL/SuperSession requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "CL/SuperSession Started Task name is not properly identified/defined to the system ACP.",
+          "description": "<VulnDiscussion>CL/SuperSession requires a started task that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -682,19 +682,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The Systems Programmer and IAO will ensure that the started task for CL/SuperSession is properly defined.\n\nReview all session manager security parameters and control options for compliance. Develop a plan of action and implement the changes as specified.\n\nDefine the started task userid KLS for CL/SuperSession.\n\nExample:\n\nAU KLS NAME('STC, SUPERSESSION') NOPASS -\n OWNER(STC) DFLTGRP(STC) -\n DATA('START CL SUPERSESSION')",
-            "+@fixref": "F-26130r519750_fix"
+            "+content": "The Systems Programmer and ISSO will ensure that the started task for CL/SuperSession is properly defined.\n\nReview all session manager security parameters and control options for compliance. Develop a plan of action and implement the changes as specified.\n\nDefine the started task userid KLS for CL/SuperSession.\n\nExample:\n\nAU KLS NAME('STC, SUPERSESSION') NOPASS -\n OWNER(STC) DFLTGRP(STC) -\n DATA('START CL SUPERSESSION')",
+            "+@fixref": "F-26130r1144730_fix"
           },
           "fix": {
-            "+@id": "F-26130r519750_fix"
+            "+@id": "F-26130r1144730_fix"
           },
           "check": {
-            "+@system": "C-26142r519749_chk",
+            "+@system": "C-26142r1144729_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the RACF Data Collection:\n\n-\tRACFCMDS.RPT(LISTUSER)\n\nb)\tIf the userid for the CL/SUPERSESSION started task is defined to the security database, there is NO FINDING.\n\nc)\tIf the userid for the CL/SUPERSESSION started task is not defined to the security database, this is a FINDING."
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(LISTUSER).\n\nVerify that the userid(s) for the CL/SUPERSESSION started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nPROTECTED"
           }
         }
       },
@@ -703,18 +703,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224466r958482_rule",
+          "+@id": "SV-224466r1144734_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR032",
           "title": "CL/SuperSession Started task(s) must be properly defined to the STARTED resource class for RACF.",
-          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product resources must be restricted to only individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -731,19 +731,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The CL/SUPERSESSION system programmer and the IAO will ensure that a product's started sask(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique userid must be assigned for the CL/SUPERSESSION started task(s) thru a corresponding STARTED class entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nrdef started KLS.** uacc(none) owner(admin) audit(all(read)) stdata(user(KLS) group(stc))\n\nsetr racl(started) ref",
-            "+@fixref": "F-26131r519753_fix"
+            "+content": "The CL/SUPERSESSION system programmer and the ISSO will ensure that a product's started sask(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique userid must be assigned for the CL/SUPERSESSION started task(s) thru a corresponding STARTED class entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nrdef started KLS.** uacc(none) owner(admin) audit(all(read)) stdata(user(KLS) group(stc))\n\nsetr racl(started) ref",
+            "+@fixref": "F-26131r1144733_fix"
           },
           "fix": {
-            "+@id": "F-26131r519753_fix"
+            "+@id": "F-26131r1144733_fix"
           },
           "check": {
-            "+@system": "C-26143r519752_chk",
+            "+@system": "C-26143r1144732_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n-\tDSMON.RPT(RACSPT)\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n-\tPDI(ZCLS0032)\n\nVerify that the CL/SUPERSESSION started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry."
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- DSMON.RPT(RACSPT).\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZCLS0032).\n\nVerify that the CL/SUPERSESSION started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry, this is not a finding."
           }
         }
       },
@@ -752,18 +752,18 @@
         "title": "SRG-OS-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224467r987853_rule",
+          "+@id": "SV-224467r1144737_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR038",
           "title": "CL/SuperSessions Resouce Class must be defined or active in the ACP.",
           "description": "<VulnDiscussion>Failure to use a robust ACP to control a product could compromise the integrity and availability of the MVS operating system and user data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -784,19 +784,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that the CL/SuperSession Resource Class(es) is (are) active.  The SYS3.OMEGAMON.qualifier.RLSPARM(KLKINNAM) member for Version 3 of CL/Supersession or the SYS3.OMEGAMON.qualifier.RLSPARM(KLVINNAM) member for version 2 of CL/Superssion contains a \"CLASSES=\" entry, this entry identifies the member that contains the \"VGWAPLST EXTERNAL=\" entry.  The \"VGWAPLST EXTERNAL=\" entry identifies the resource class that is used by CL/SuperSession and this resource class will be active.  Current guidance identifies that APPL is the resource class identified in the above location.\n\nUse the following commands as an example:\n\nSETROPTS CLASSACT(APPL)",
-            "+@fixref": "F-26132r952254_fix"
+            "+content": "Ensure that the CL/SuperSession Resource Class(es) is (are) active. The SYS3.OMEGAMON.qualifier.RLSPARM(KLKINNAM) member for Version 3 of CL/Supersession or the SYS3.OMEGAMON.qualifier.RLSPARM(KLVINNAM) member for version 2 of CL/Supersession contains a \"CLASSES=\" entry, this entry identifies the member that contains the \"VGWAPLST EXTERNAL=\" entry. The \"VGWAPLST EXTERNAL=\" entry identifies the resource class that is used by CL/SuperSession and this resource class will be active. Current guidance identifies that APPL is the resource class identified in the above location.\n\nUse the following commands as an example:\n\nSETROPTS CLASSACT(APPL)",
+            "+@fixref": "F-26132r1144736_fix"
           },
           "fix": {
-            "+@id": "F-26132r952254_fix"
+            "+@id": "F-26132r1144736_fix"
           },
           "check": {
-            "+@system": "C-26144r952253_chk",
+            "+@system": "C-26144r1144735_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(SETROPTS)\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession) \nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZCLSR038)\n\nIf the CL/SuperSession resource class(es) is (are) active, this is not a finding."
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(SETROPTS).\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession) \nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZCLSR038).\n\nIf the CL/SuperSession resource class(es) is (are) active, this is not a finding."
           }
         }
       },
@@ -805,18 +805,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224468r1041312_rule",
+          "+@id": "SV-224468r1144739_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR042",
           "title": "CL/SuperSession KLVINNAM member must be configured in accordance with security requirements.",
           "description": "<VulnDiscussion>CL/SuperSession configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -840,12 +840,12 @@
             "+@id": "F-26133r1041311_fix"
           },
           "check": {
-            "+@system": "C-26145r1028301_chk",
+            "+@system": "C-26145r1144738_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Version 3 of CL/SuperSession\nReview the member KLKINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis (Currently there is no automation for version 3 of CL/SuperSession)\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0042)\n\nIf one of the following configuration settings is specified for each control point defined in the KLVINNAM or KLKINNAM member, this is not a finding.\n\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nRACF -\nCLASSES=APPCLASS -\nNODB\nEXIT=KLVRACVR \n\n(The following is for z/OS CAC logon processing)\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nSAF - (RACF is also acceptable)\nCLASSES=APPCLASS -\nNODB -\nEXIT=KLSNFPTX"
+            "check-content": "Version 3 of CL/SuperSession\nReview the member KLKINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nVersion 2 of CL/SuperSession\nReview the member KLVINNAM in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0042).\n\nIf one of the following configuration settings is specified for each control point defined in the KLKINNAM member for version 3 of CL/SuperSession or KLVINNAM member for version 2 of CL/SuperSession, this is not a finding.\n\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nRACF -\nCLASSES=APPCLASS -\nNODB\nEXIT=KLVRACVR\n\n(The following is for z/OS CAC logon processing)\nDEFAULT DSNAME(SYS3.OMEGAMON.qualifier.RLSNAM) -\nSAF - (RACF is also acceptable)\nCLASSES=APPCLASS -\nNODB -\nEXIT=KLSNFPTX"
           }
         }
       },
@@ -854,18 +854,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224469r1041315_rule",
+          "+@id": "SV-224469r1144741_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCLSR043",
           "title": "CL/SuperSession APPCLASS member is not configured in accordance with the proper security requirements.",
           "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CLSuperSession for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CLSuperSession for RACF",
-            "identifier": "4148"
+            "dc:title": "DPMS Target zOS CLSuperSession for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CLSuperSession for RACF",
+            "dc:identifier": "4148"
           },
           "ident": [
             {
@@ -889,12 +889,12 @@
             "+@id": "F-26134r1041314_fix"
           },
           "check": {
-            "+@system": "C-26146r1041313_chk",
+            "+@system": "C-26146r1144740_chk",
             "check-content-ref": {
               "+@href": "zOS_CLSuperSession_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Review the member APPCLASS in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0043)\n\nb) If the parameters for the member APPCLASS are configured as follows, there is no finding:\n\n\tVGWAPLST EXTERNAL=APPL\n\nc) If the parameters for the member APPCLASS are not configured as specified in (b) above, this is a finding."
+            "check-content": "Review the member APPCLASS in the TLVPARM DD statement concatenation of the CL/SuperSession STC procedure. (This member is located in SYS3.OMEGAMON.qualifier.RLSPARM.)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCLS0043).\n\nIf the parameters for the member APPCLASS are configured as follows, this is not a finding.\n\n\tVGWAPLST EXTERNAL=APPL"
           }
         }
       }

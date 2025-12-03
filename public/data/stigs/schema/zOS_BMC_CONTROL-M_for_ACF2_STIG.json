@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-26"
     },
     "title": "z/OS BMC CONTROL-M for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -413,11 +413,11 @@
           "title": "BMC CONTROL-M security exits are not installed or configured properly.",
           "description": "<VulnDiscussion>The BMC CONTROL-M security exits enable access authorization checking to BMC CONTROL-M commands, features, and online functionality. If these exit(s) is (are) not in place, activities by unauthorized users may result. BMC CONTROL-M security exit(s) interface with the ACP. If an unauthorized exit was introduced into the operating environment, system security could be weakened or bypassed. These exposures may result in the compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -455,18 +455,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224114r1041244_rule",
+          "+@id": "SV-224114r1141450_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA000",
-          "title": "BMC CONTROL-M installation data sets will be properly protected.",
-          "description": "<VulnDiscussion>BMC CONTROL-M installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC CONTROL-M installation datasets will be properly protected.",
+          "description": "<VulnDiscussion>BMC CONTROL-M installation datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -487,19 +487,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M installation data sets are limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to auditors, automated operations, BMC users, operations, production control and scheduling personnel (domain level and decentralized), and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation.  The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.IOA.*.CTMI.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nIOA.-.CTMI.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nIOA.-.CTMI.- UID(<audtaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<autoaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<bmcuser>) R(A) E(A)\nIOA.-.CTMI.- UID(<dpcsaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<operaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<pcspaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(CONTROLM) R(A) E(A)",
-            "+@fixref": "F-25775r868131_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M installation datasets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to auditors, automated operations, BMC users, operations, production control and scheduling personnel (domain level and decentralized), and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS2.IOA.*.CTMI\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nIOA.-.CTMI.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nIOA.-.CTMI.- UID(<audtaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<autoaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<bmcuser>) R(A) E(A)\nIOA.-.CTMI.- UID(<dpcsaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<operaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(<pcspaudt>) R(A) E(A)\nIOA.-.CTMI.- UID(CONTROLM) R(A) E(A)",
+            "+@fixref": "F-25775r1141449_fix"
           },
           "fix": {
-            "+@id": "F-25775r868131_fix"
+            "+@id": "F-25775r1141449_fix"
           },
           "check": {
-            "+@system": "C-25787r868130_chk",
+            "+@system": "C-25787r1141448_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CTMRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCTM0000)\n\nVerify that the accesses to the BMC CONTROL-M installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The ACF2 data set access authorizations restrict READ access to auditors, automated operations, BMC users, operations, production control and scheduling personnel (domain level and decentralized), and BMC STCs and/or batch users.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(CTMRPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZCTM0000).\n\nVerify that the accesses to the BMC CONTROL-M installation datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset access authorizations restrict READ access to auditors, automated operations, BMC users, operations, production control and scheduling personnel (domain level and decentralized), and BMC STCs and/or batch users.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access is logged."
           }
         }
       },
@@ -508,18 +508,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224115r958616_rule",
+          "+@id": "SV-224115r1141453_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA001",
-          "title": "BMC CONTROL-M STC data sets will be properly protected.",
-          "description": "<VulnDiscussion>BMC CONTROL-M STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC CONTROL-M STC datasets will be properly protected.",
+          "description": "<VulnDiscussion>BMC CONTROL-M STC datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -536,19 +536,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M STC data sets are limited to systems programmers only. UPDATE access can be given to scheduled batch jobs, operations, and production control and scheduling personnel, BMC STCs and/or batch users.  READ access can be given to auditors and/or BMC users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.CTMO.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS3)\nIOA.-.CTMO.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMO.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMO.- UID(CONTDAY) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(CONTROLM) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<autoaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<operaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<pcspaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<audtaudt>) R(A) E(A)\nIOA.-.CTMO.- UID(<bmcuser>) R(A) E(A)",
-            "+@fixref": "F-25776r868134_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M STC datasets is limited to systems programmers only. UPDATE access can be given to scheduled batch jobs, operations, production control and scheduling personnel, BMC STCs, and/or batch users. READ access can be given to auditors and/or BMC users.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS3.IOA.*.CTMO\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS3)\nIOA.-.CTMO.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMO.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMO.- UID(CONTDAY) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(CONTROLM) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<autoaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<operaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<pcspaudt>) R(A) W(A)  E(A)\nIOA.-.CTMO.- UID(<audtaudt>) R(A) E(A)\nIOA.-.CTMO.- UID(<bmcuser>) R(A) E(A)",
+            "+@fixref": "F-25776r1141452_fix"
           },
           "fix": {
-            "+@id": "F-25776r868134_fix"
+            "+@id": "F-25776r1141452_fix"
           },
           "check": {
-            "+@system": "C-25788r868133_chk",
+            "+@system": "C-25788r1141451_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CTMSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCTM0001)\n\nVerify that the accesses to the BMC CONTROL-M STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The ACF2 data set access authorizations restricts READ access to auditors and BMC users.\n\n___ The ACF2 data set access authorizations restricts WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set access authorizations restricts UPDATE access to the BMC STCs and/or batch users.\n\n___ The ACF2 data set access authorizations restricts UPDATE access to scheduled batch jobs, operations, and production control and scheduling personnel."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(CTMSTC).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZCTM0001).\n\nVerify that the accesses to the BMC CONTROL-M STC datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset access authorizations restrict READ access to auditors and BMC users.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict UPDATE access to the BMC STCs and/or batch users.\n\nThe ACF2 dataset access authorizations restrict UPDATE access to scheduled batch jobs, operations, and production control and scheduling personnel."
           }
         }
       },
@@ -557,18 +557,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224116r1041245_rule",
+          "+@id": "SV-224116r1141456_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA002",
-          "title": "BMC CONTROL-M User data sets will be properly protected.",
-          "description": "<VulnDiscussion>BMC CONTROL-M User data sets, Repository, have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC CONTROL-M User datasets will be properly protected.",
+          "description": "<VulnDiscussion>BMC CONTROL-M User datasets, Repository, have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -585,19 +585,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M User data sets are limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to the BMC Users, operations, and production control and scheduling personnel (both domain level and Application level). READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.CTMC.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS3)\nIOA.-.CTMC.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMC.-  UID(BMC STCs) R(A) W(A) A(A) E(A)\nIOA.-.CTMC.- UID(<bmcuser>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<operaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<pcspaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<dpcsaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.-  UID(<audtaudt>) R(A) E(A)",
-            "+@fixref": "F-25777r868137_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC CONTROL-M User datasets is limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to the BMC Users, operations, and production control and scheduling personnel (both domain level and application level). READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS3.IOA.*.CTMC\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS3)\nIOA.-.CTMC.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.CTMC.-  UID(BMC STCs) R(A) W(A) A(A) E(A)\nIOA.-.CTMC.- UID(<bmcuser>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<operaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<pcspaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.- UID(<dpcsaudt>) R(A) W(A) E(A)\nIOA.-.CTMC.-  UID(<audtaudt>) R(A) E(A)",
+            "+@fixref": "F-25777r1141455_fix"
           },
           "fix": {
-            "+@id": "F-25777r868137_fix"
+            "+@id": "F-25777r1141455_fix"
           },
           "check": {
-            "+@system": "C-25789r868136_chk",
+            "+@system": "C-25789r1141454_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CTMUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCTM0002)\n\nVerify that the accesses to the BMC CONTROL-M User data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The ACF2 data set access authorizations restrict READ access to auditors.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to the BMC STCs and/or batch users.\n\n___ The ACF2 access authorizations restrict UPDATE access to the BMC Users, operations, and production control and scheduling personnel (both domain level and Application level)."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(CTMUSER).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZCTM0002).\n\nVerify that the accesses to the BMC CONTROL-M User datasets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe ACF2 dataset access authorizations restrict READ access to auditors.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to the BMC STCs and/or batch users.\n\nThe ACF2 access authorizations restrict UPDATE access to the BMC Users, operations, and production control and scheduling personnel (both domain level and application level)."
           }
         }
       },
@@ -606,18 +606,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224117r1041246_rule",
+          "+@id": "SV-224117r1141459_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA003",
-          "title": "BMC CONTROL-M User/Application JCL data sets must be properly protected.",
-          "description": "<VulnDiscussion>BMC CONTROL-M User/Application JCL data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC CONTROL-M User/Application JCL datasets must be properly protected.",
+          "description": "<VulnDiscussion>BMC CONTROL-M User/Application JCL datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -634,19 +634,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that WRITE and/or greater access to BMC CONTROL-M User/Application JCL data sets are limited to systems programmers and/or BMC administrators only. UPDATE access can be given to the production control and scheduling personnel (both domain level and Application level) and BMC STCs and/or batch users. READ access can be given to auditors, automated batch user(s), BMC users, and operations. Access will be based on a documented need to know requirement. Application (external users) will not have access to internal/site data sets.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. \n\nThe installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nIOA.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(IOA)\n- UID(<bmcadmin>) R(A) W(A) A(A) E(A)\n- UID(<syspaudt>) R(A) W(A) A(A) E(A)\n- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\n- UID(CONTDAY) R(A) W(A) E(A)\n- UID(CONTROLM) R(A) W(A) E(A)\n- UID(<dpcsaudt>) R(A) W(A) E(A)\n- UID(<pcspaudt>) R(A) W(A) E(A)\n- UID(<audtaudt>) R(A) E(A)\n- UID(<autoaudt>) R(A) E(A)\n- UID(<bmcuser>) R(A) E(A)\n- UID(<operaudt>) R(A) E(A)",
-            "+@fixref": "F-25778r868140_fix"
+            "+content": "Ensure that WRITE and/or greater access to BMC CONTROL-M User/Application JCL datasets is limited to systems programmers and/or BMC administrators only. UPDATE access can be given to the production control and scheduling personnel (both domain level and application level) and BMC STCs and/or batch users. READ access can be given to auditors, automated batch user(s), BMC users, and operations. Access will be based on a documented need to know requirement. Application (external users) will not have access to internal/site datasets.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. \n\nThe installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nIOA\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(IOA)\n- UID(<bmcadmin>) R(A) W(A) A(A) E(A)\n- UID(<syspaudt>) R(A) W(A) A(A) E(A)\n- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\n- UID(CONTDAY) R(A) W(A) E(A)\n- UID(CONTROLM) R(A) W(A) E(A)\n- UID(<dpcsaudt>) R(A) W(A) E(A)\n- UID(<pcspaudt>) R(A) W(A) E(A)\n- UID(<audtaudt>) R(A) E(A)\n- UID(<autoaudt>) R(A) E(A)\n- UID(<bmcuser>) R(A) E(A)\n- UID(<operaudt>) R(A) E(A)",
+            "+@fixref": "F-25778r1141458_fix"
           },
           "fix": {
-            "+@id": "F-25778r868140_fix"
+            "+@id": "F-25778r1141458_fix"
           },
           "check": {
-            "+@system": "C-25790r868139_chk",
+            "+@system": "C-25790r1141457_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CTMJCL)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCTM0003)\n\nVerify that the accesses to the BMC CONTROL-M User/Application JCL data sets are limited to only those who require access to perform their job duties. If the following guidance is true, this is not a finding.\n\n___ The ACF2 data set access authorizations restrict READ access to auditors, automated batch user(s), BMC user(s), and operations.\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to BMC CONTROL-M administrators and systems programming personnel.\n\n___ The ACF2 data set access authorizations restrict UPDATE access to the Production Control and Scheduling personnel (both domain level and Application level) and BMC STCs and/or batch users. Accesses must be reviewed and approved by the ISSO based on a documented need to perform job duties. Application (external users) will not have access to internal/site data sets.\n\nNote: Update access of the site's DASD Administrator Batch Processing JCL and Procedures must be limited to only the LPAR level DASD Administrators. Update access of the site's (LPAR Level) IA (Security) administrative batch processing JCL and Procedures must be limited to only the LPAR LEVEL ISSO/ISSM Team. It is recommended that multiple data sets be created, one of which that contains JCL and Procedures that are considered restricted and this data set be authorized to those users with justification to maintain and run these restricted JCL and Procedures."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(CTMJCL).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZCTM0003).\n\nVerify that the accesses to the BMC CONTROL-M User/Application JCL datasets are limited to only those who require access to perform their job duties. If the following guidance is true, this is not a finding.\n\nThe ACF2 dataset access authorizations restrict READ access to auditors, automated batch user(s), BMC user(s), and operations.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to BMC CONTROL-M administrators and systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict UPDATE access to the production control and scheduling personnel (both domain level and application level) and BMC STCs and/or batch users. Accesses must be reviewed and approved by the ISSO based on a documented need to perform job duties. Application (external users) will not have access to internal/site datasets.\n\nNote: Update access of the site's DASD Administrator Batch Processing JCL and Procedures must be limited to only the LPAR level DASD Administrators. Update access of the site's (LPAR Level) IA (Security) administrative batch processing JCL and Procedures must be limited to only the LPAR LEVEL ISSO/ISSM Team. It is recommended that multiple datasets be created, one of which contains JCL and Procedures that are considered restricted, and this dataset be authorized to users with justification to maintain and run these restricted JCL and Procedures."
           }
         }
       },
@@ -655,18 +655,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224118r1041249_rule",
+          "+@id": "SV-224118r1141462_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA020",
           "title": "BMC C0NTROL-M resources must be properly defined and protected.",
           "description": "<VulnDiscussion>BMC CONTROL-M can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non-systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -687,19 +687,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Verify that the following are properly specified in the ACP.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources, i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC CONTROL-M Resources and BMC INCONTROL Resources Descriptions tables in the zOS STIG Addendum. These tables list the resources, descriptions, and access and logging requirements. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote: It is the responsibility of the ISSM to determine and document appropriate personnel for access in accordance with DoD 8500.1 para 18(a),(b),(c).\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$key($$ctmpnl3) type(ioa)\n- uid(BMC STCs) allow\n- uid(<operaudt>) allow\n- uid(<pcspaudt>) allow\n- uid(<syspaudt>) allow\n- uid(*) prevent",
-            "+@fixref": "F-25779r1041248_fix"
+            "+content": "Verify that the following are properly specified in the ACP.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources, i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC CONTROL-M Resources and BMC INCONTROL Resources Descriptions tables in the zOS STIG Addendum. These tables list the resources, descriptions, and access and logging requirements. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote: It is the responsibility of the ISSM to determine and document appropriate personnel for access in accordance with DoD 8500.1 para 18(a),(b),(c).\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$key($$ctmpnl3) type(ioa)\n- uid(BMC STCs) allow\n- uid(<operaudt>) allow\n- uid(<pcspaudt>) allow\n- uid(<syspaudt>) allow\n- uid(*) prevent",
+            "+@fixref": "F-25779r1141461_fix"
           },
           "fix": {
-            "+@id": "F-25779r1041248_fix"
+            "+@id": "F-25779r1141461_fix"
           },
           "check": {
-            "+@system": "C-25791r1041247_chk",
+            "+@system": "C-25791r1141460_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection and Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZCTM0020)\n- ACF2CMDS.RPT(RESOURCE) - Alternate report\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCTM0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC CONTROL-M Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources, i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class\n\n___ The ACF2 resources are defined with a default access of PREVENT.\n\n___ The ACF2 resource access authorizations restrict access to the appropriate personnel.\n\n___ The ACF2 resource logging requirements are specified."
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection and dataset and Resource Data Collection:\n\n- SENSITVE.RPT(ZCTM0020).\n- ACF2CMDS.RPT(RESOURCE) - Alternate report.\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZCTM0020).\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC CONTROL-M Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources, i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class.\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel.\n\nThe ACF2 resource logging requirements are specified."
           }
         }
       },
@@ -708,18 +708,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224119r958616_rule",
+          "+@id": "SV-224119r1144178_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA030",
-          "title": "BMC CONTROL-M Started Task name is not properly identified / defined to the system ACP.",
-          "description": "<VulnDiscussion>BMC CONTROL-M requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC CONTROL-M Started Task name is not properly identified/defined to the system ACP.",
+          "description": "<VulnDiscussion>BMC CONTROL-M requires a started task that will be restricted to certain resources, datasets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -736,19 +736,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The BMC CONTROL-M system programmer and the IAO will ensure that a product's Started Task(s) is properly Identified / defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nCHANGE CONTROLM STC MUSASS NO-SMC",
-            "+@fixref": "F-25780r518735_fix"
+            "+content": "The BMC CONTROL-M systems programmer and the ISSO will ensure that a product's Started Task(s) is properly Identified / defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nCHANGE CONTROLM STC MUSASS NO-SMC",
+            "+@fixref": "F-25780r1141464_fix"
           },
           "fix": {
-            "+@id": "F-25780r518735_fix"
+            "+@id": "F-25780r1141464_fix"
           },
           "check": {
-            "+@system": "C-25792r518734_chk",
+            "+@system": "C-25792r1144178_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ATTSTC)\n\nInsure that the logonids(s) for the BMC CONTROL-M started task(s) includes the following:\n\nSTC\nMUSASS\nNO-SMC"
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC).\n\nEnsure that the logonids(s) for the BMC CONTROL-M started task(s) includes the following. If the following attributes are defined, this is not a finding.\n\nSTC\nMUSASS\nNO-SMC"
           }
         }
       },
@@ -757,18 +757,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224120r1041251_rule",
+          "+@id": "SV-224120r1141467_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCTMA040",
           "title": "BMC CONTROL-M configuration/parameter values must be specified properly.",
           "description": "<VulnDiscussion>BMC CONTROL-M configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC CONTROL-M for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC CONTROL-M for ACF2",
-            "identifier": "4104"
+            "dc:title": "DPMS Target zOS BMC CONTROL-M for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC CONTROL-M for ACF2",
+            "dc:identifier": "4104"
           },
           "ident": [
             {
@@ -792,12 +792,12 @@
             "+@id": "F-25781r518738_fix"
           },
           "check": {
-            "+@system": "C-25793r1041250_chk",
+            "+@system": "C-25793r1141466_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_CONTROL-M_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following applicable reports produced by the z/OS Data Collection:\n\n- IOA.RPT(SECPARM)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCTM0040)\n\nThe following keywords will have the specified values in the BMC CONTROL-M security parameter member:\n\nKeyword\tValue\nDEFMCHKM\t$$CTMEDM\nSECTOLM\tNO\nDFMM01\tEXTEND\nDFMM02\tEXTEND\nDFMM08\tEXTEND\nSAFJCARD\tU\nMSUBCHK\tNO"
+            "check-content": "Refer to the following applicable reports produced by the z/OS Data Collection:\n\n- IOA.RPT(SECPARM).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZCTM0040).\n\nThe following keywords will have the specified values in the BMC CONTROL-M security parameter member. This is not a finding.\n\nKeyword\tValue\nDEFMCHKM\t$$CTMEDM\nSECTOLM\tNO\nDFMM01\tEXTEND\nDFMM02\tEXTEND\nDFMM08\tEXTEND\nSAFJCARD\tU\nMSUBCHK\tNO"
           }
         }
       }

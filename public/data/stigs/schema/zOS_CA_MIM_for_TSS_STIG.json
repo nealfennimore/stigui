@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-09-28"
     },
     "title": "z/OS CA MIM for TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -334,18 +334,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224626r1070256_rule",
+          "+@id": "SV-224626r1146053_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIM0040",
           "title": "CA MIM Resource Sharing external security options must be specified properly.",
-          "description": "<VulnDiscussion>CA MIM Resource Sharing offers external security interfaces that are controlled by parameters specified in the MIMINIT member in the MIMPARMS DD statement of the started task procedures.  These interfaces provide security controls for CA MIM. Without proper controls to ensure that security is active, the integrity of the CA MIM Resource Sharing System and the confidentiality of data stored on the system may be compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA MIM Resource Sharing offers external security interfaces that are controlled by parameters specified in the MIMINIT member in the MIMPARMS DD statement of the started task procedures. These interfaces provide security controls for CA MIM. Without proper controls to ensure that security is active, the integrity of the CA MIM Resource Sharing System and the confidentiality of data stored on the system may be compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -369,12 +369,12 @@
             "+@id": "F-26297r1070255_fix"
           },
           "check": {
-            "+@system": "C-26309r1070254_chk",
+            "+@system": "C-26309r1146052_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the contents of MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures.\n \nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZMIM0040)\n\nEnsure the following CA MIM Resource Sharing parameter(s) is (are) specified in the MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures. If the following guidance is true, this is not a finding. \n\nParameter\tValue\nSAFCMDAUTH\tON"
+            "check-content": "Refer to the contents of MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures.\n \nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZMIM0040).\n\nEnsure the following CA MIM Resource Sharing parameter(s) is (are) specified in the MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures. If the following guidance is true, this is not a finding. \n\nParameter\tValue\nSAFCMDAUTH\tON"
           }
         }
       },
@@ -383,18 +383,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224627r1070259_rule",
+          "+@id": "SV-224627r1146353_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMT000",
           "title": "CA MIM Resource Sharing installation data sets will be properly protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -415,19 +415,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to all authorized users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.MIMGR.\nSYS3.MIMGR. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(CA MIM STCs) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(CA MIM STCs) DSN(SYS3.MIMGR.) ACCESS(R)",
-            "+@fixref": "F-26298r1070258_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to all authorized users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.MIMGR\nSYS3.MIMGR (Data sets that are not altered by product STCs; this can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS2.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(CA MIM STCs) DSN(SYS2.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(authorized users) DSN(SYS3.MIMGR.) ACCESS(R)\nTSS PERMIT(CA MIM STCs) DSN(SYS3.MIMGR.) ACCESS(R)",
+            "+@fixref": "F-26298r1146352_fix"
           },
           "fix": {
-            "+@id": "F-26298r1070258_fix"
+            "+@id": "F-26298r1146352_fix"
           },
           "check": {
-            "+@system": "C-26310r1070257_chk",
+            "+@system": "C-26310r1146054_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MIMRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIM0000)\n\nVerify that the accesses to the CA MIM Resource Sharing installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set access authorizations restricts READ access to all authorized users.\n\nThe TSS data set access authorizations restricts WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0000).\n\nVerify that the accesses to the CA MIM Resource Sharing installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set access authorizations restrict READ access to all authorized users.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
           }
         }
       },
@@ -436,18 +436,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224628r958616_rule",
+          "+@id": "SV-224628r1146355_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMT001",
           "title": "CA MIM Resource Sharing STC data sets will be properly protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -464,19 +464,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing STC data sets is limited to systems programmers and/or CA MIM Resource Sharing's STC(s) and/or batch user(s) only. Read access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.MIMGR. (Data sets that are altered by the product's STCs, this can be more specific.)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(CA MIM STCs) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(<audtaudt>) DSN(SYS3.MIMGR) ACCESS(R)\nTSS PERMIT(authorize user) DSN(SYS3.MIMGR) ACCESS(R)",
-            "+@fixref": "F-26299r868728_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing STC data sets is limited to systems programmers and/or CA MIM Resource Sharing's STC(s) and/or batch user(s) only. READ access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.MIMGR (Data sets that are altered by the product's STCs; this can be more specific.)\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(CA MIM STCs) DSN(SYS3.MIMGR) ACCESS(ALL)\nTSS PERMIT(<audtaudt>) DSN(SYS3.MIMGR) ACCESS(R)\nTSS PERMIT(authorize user) DSN(SYS3.MIMGR) ACCESS(R)",
+            "+@fixref": "F-26299r1146354_fix"
           },
           "fix": {
-            "+@id": "F-26299r868728_fix"
+            "+@id": "F-26299r1146354_fix"
           },
           "check": {
-            "+@system": "C-26311r868727_chk",
+            "+@system": "C-26311r1146057_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0001)\n\nVerify that the accesses to the CA MIM Resource Sharing STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The TSS data set access authorizations restrict READ access to auditors and authorized users.\n\n___ The TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The TSS data set access authorizations restrict WRITE and/or greater access to the CA MIM Resource Sharing's STC(s) and/or batch user(s)."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMSTC).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0001).\n\nVerify that the accesses to the CA MIM Resource Sharing STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set access authorizations restrict READ access to auditors and authorized users.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to the CA MIM Resource Sharing's STC(s) and/or batch user(s)."
           }
         }
       },
@@ -485,18 +485,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224629r1070262_rule",
+          "+@id": "SV-224629r1146062_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMT020",
           "title": "CA MIM Resource Sharing resources will be properly defined and protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -513,19 +513,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resources and/or resource prefixes identified below are examples of a possible installation. The actual resources and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse CA MIM Resource Sharing Resources table in the zOS STIG Addendum. This table list the resources, access requirements, and logging requirement for CA MIM Resource Sharing. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote:\tSAFPREFIX identifies the prefix for all resources. The default value for this keyword parameter is MIMGR. It is coded in the MIMINIT member of the data set specified in the MIMPARMS DD statement of the started task procedures.\n\nThe TSS resources as designated in the above table are owned and/or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nTSS ADD(dept-acid) OPERCMDS(prefix)\nTSS PERMIT(syspaudt) OPERCMDS(prefix.ACTIVATE) ACCESS(UPDATE)",
-            "+@fixref": "F-26300r1070261_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resources and/or resource prefixes identified below are examples of a possible installation. The actual resources and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse CA MIM Resource Sharing Resources table in the zOS STIG Addendum. This table list the resources, access requirements, and logging requirement for CA MIM Resource Sharing. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote: SAFPREFIX identifies the prefix for all resources. The default value for this keyword parameter is MIMGR. It is coded in the MIMINIT member of the data set specified in the MIMPARMS DD statement of the started task procedures.\n\nThe TSS resources as designated in the above table are owned and/or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nTSS ADD(dept-acid) OPERCMDS(prefix)\nTSS PERMIT(syspaudt) OPERCMDS(prefix.ACTIVATE) ACCESS(UPDATE)",
+            "+@fixref": "F-26300r1146061_fix"
           },
           "fix": {
-            "+@id": "F-26300r1070261_fix"
+            "+@id": "F-26300r1146061_fix"
           },
           "check": {
-            "+@system": "C-26312r1070260_chk",
+            "+@system": "C-26312r1146060_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZMIM0020)\n-\tTSSCMDS.RPT(#RDT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIM0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe TSS resources are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel."
+            "check-content": "Refer to the following reports produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZMIM0020).\n- TSSCMDS.RPT(#RDT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0020).\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe TSS resources are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel."
           }
         }
       },
@@ -534,18 +534,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224630r958482_rule",
+          "+@id": "SV-224630r1146065_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMT030",
           "title": "CA MIM Resource Sharing Started Task name will be properly identified and/or defined to the system ACP.",
-          "description": "<VulnDiscussion>CA MIM Resource Sharing requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA MIM Resource Sharing requires a started task that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -562,19 +562,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the CA MIM Resource Sharing Started Task(s) is properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(MIMGR) TYPE(USER) -\n\tNAME('STC, CA MIM') DEPT(xxxx) -\n\tFAC(STC,BATCH) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
-            "+@fixref": "F-26301r519660_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the CA MIM Resource Sharing Started Task(s) is properly identified and/or defined to the system ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the system ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(MIMGR) TYPE(USER) -\n\tNAME('STC, CA MIM') DEPT(xxxx) -\n\tFAC(STC,BATCH) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
+            "+@fixref": "F-26301r1146064_fix"
           },
           "fix": {
-            "+@id": "F-26301r519660_fix"
+            "+@id": "F-26301r1146064_fix"
           },
           "check": {
-            "+@system": "C-26313r519659_chk",
+            "+@system": "C-26313r1146063_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nVerify that the ACID(s) for the CA MIM Resource Sharing started task(s) is (are) properly defined.  If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND"
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(@ACIDS).\n\nReview CA MIM Resource Sharing STC/Batch ACID(s). If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND"
           }
         }
       },
@@ -583,18 +583,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224631r958482_rule",
+          "+@id": "SV-224631r1146068_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMT032",
           "title": "CA MIM Resource Sharing Started task will be properly defined to the Started Task Table for Top Secret.",
-          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for TSS",
-            "identifier": "4177"
+            "dc:title": "DPMS Target zOS CA MIM for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for TSS",
+            "dc:identifier": "4177"
           },
           "ident": [
             {
@@ -611,19 +611,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the CA MIM Resource Sharing Started Task(s) is properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the CA MIM Resource Sharing started task(s) thru a corresponding STC table entry.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS ADD(STC) PROCNAME(MIMGR) ACID(MIMGR)",
-            "+@fixref": "F-26302r519663_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the CA MIM Resource Sharing Started Task(s) is properly identified and/or defined to the system ACP. \n\nA unique ACID must be assigned for the CA MIM Resource Sharing started task(s) through a corresponding STC table entry.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS ADD(STC) PROCNAME(MIMGR) ACID(MIMGR)",
+            "+@fixref": "F-26302r1146067_fix"
           },
           "fix": {
-            "+@id": "F-26302r519663_fix"
+            "+@id": "F-26302r1146067_fix"
           },
           "check": {
-            "+@system": "C-26314r519662_chk",
+            "+@system": "C-26314r1146066_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZMIM0032)\n\nIf the CA MIM Resource Sharing started task(s) is (are) defined in the TSS STC record, this is not a finding."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(#STC).\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n- PDI(ZMIM0032).\n\nIf the CA MIM Resource Sharing started task(s) is (are) defined in the TSS STC record, this is not a finding."
           }
         }
       }

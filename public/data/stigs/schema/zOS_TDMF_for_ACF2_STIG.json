@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-26"
     },
     "title": "z/OS TDMF for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -190,18 +190,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224347r1041263_rule",
+          "+@id": "SV-224347r1144122_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZTDM0040",
           "title": "Transparent Data Migration Facility (TDMF) configuration/parameter/option values are not specified properly.",
           "description": "<VulnDiscussion>Transparent Data Migration Facility (TDMF) configuration/parameter/option settings control the security and operational characteristics of product. If these setting values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of system and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS TDMF for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS TDMF for ACF2",
-            "identifier": "4131"
+            "dc:title": "DPMS Target zOS TDMF for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS TDMF for ACF2",
+            "dc:identifier": "4131"
           },
           "ident": [
             {
@@ -218,19 +218,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The product systems programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct.\n \nSee the required parameters below:\n\nParameter Options:\nVOLUME SECURITY = YES\nCHECK TARGET EMPTY = YES\n\nSession Options:\nVolume Security is not available.\nCHECKTarget|CHKTarget\n\nNOTE: The ISSO will ensure that volume resource protection is defined to the ACP and access to volumes be given to the appropiate personnel.",
-            "+@fixref": "F-26012r1041262_fix"
+            "+content": "The product's systems programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct.\n \nRefer to the required parameters below:\n\nParameter Options:\nVOLUME SECURITY = YES\nCHECK TARGET EMPTY = YES\n\nSession Options:\nVolume Security is not available.\nCHECKTarget|CHKTarget\n\nNote: The ISSO will ensure that volume resource protection is defined to the ACP and access to volumes is given to the appropriate personnel.",
+            "+@fixref": "F-26012r1144122_fix"
           },
           "fix": {
-            "+@id": "F-26012r1041262_fix"
+            "+@id": "F-26012r1144122_fix"
           },
           "check": {
-            "+@system": "C-26024r1041261_chk",
+            "+@system": "C-26024r1144121_chk",
             "check-content-ref": {
               "+@href": "zOS_TDMF_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Have the the products systems programmer display the configuration/parameters control statements used in the current runing product to define or enable security.\n\nb) Verify the following specifications:\n\nParameter Options:\nVOLUME SECURITY = YES\nCHECK TARGET EMPTY = YES\n\nSession Options:\nVolume Security is not available.\nCHECKTarget|CHKTarget\n\nc) If (b) above is true, there is no finding.\n\nd) If (b) above is untrue, this is a finding"
+            "check-content": "Have the product's systems programmer display the configuration/parameters control statements used in the current running product to define or enable security.\n\nIf the following keywords specify the values in the Transparent Data Migration Facility (TDMF) security parameter member, this is not a finding.\n\nParameter Options:\nVOLUME SECURITY = YES\nCHECK TARGET EMPTY = YES\n\nSession Options:\nVolume Security is not available.\nCHECKTarget|CHKTarget"
           }
         }
       },
@@ -239,18 +239,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224348r1041266_rule",
+          "+@id": "SV-224348r1141657_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZTDMA000",
-          "title": "Transparent Data Migration Facility (TDMF) installation data sets will be not properly protected.",
-          "description": "<VulnDiscussion>Transparent Data Migration Facility (TDMF) installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Transparent Data Migration Facility (TDMF) installation datasets will be not properly protected.",
+          "description": "<VulnDiscussion>Transparent Data Migration Facility (TDMF) installation datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS TDMF for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS TDMF for ACF2",
-            "identifier": "4131"
+            "dc:title": "DPMS Target zOS TDMF for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS TDMF for ACF2",
+            "dc:identifier": "4131"
           },
           "ident": [
             {
@@ -271,19 +271,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that The ISSO will ensure that WRITE and/or greater access to Transparent Data Migration Facility (TDMF) installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS2.TDMF.\nSYS3.TDMF.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nTDMF.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<audtaudt>) R(A) E(A)\n\n$KEY(SYS3)\nTDMF.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<audtaudt>) R(A) E(A)",
-            "+@fixref": "F-26013r1041265_fix"
+            "+content": "The ISSO will ensure that The ISSO will ensure that WRITE and/or greater access to Transparent Data Migration Facility (TDMF) installation datasets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure that they are properly  restricted to the ACP (Access Control Program) active on the system.\n\nDatasets to be protected will be: \nSYS2.TDMF\nSYS3.TDMF\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nTDMF.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<audtaudt>) R(A) E(A)\n\n$KEY(SYS3)\nTDMF.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nTDMF.- UID(<audtaudt>) R(A) E(A)",
+            "+@fixref": "F-26013r1141656_fix"
           },
           "fix": {
-            "+@id": "F-26013r1041265_fix"
+            "+@id": "F-26013r1141656_fix"
           },
           "check": {
-            "+@system": "C-26025r1041264_chk",
+            "+@system": "C-26025r1141655_chk",
             "check-content-ref": {
               "+@href": "zOS_TDMF_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(TDMFRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZTDM0000)\n\nVerify that the accesses to the Transparent Data Migration Facility (TDMF) installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The ACF2 data set rules for the data sets restricts READ access to auditors.\n\n___ The ACF2 data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access is logged."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(TDMFRPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZTDM0000).\n\nVerify that the accesses to the Transparent Data Migration Facility (TDMF) installation datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset rules for the datasets restrict READ access to auditors.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset rules for the datasets specify that all (i.e., failures and successes) WRITE and/or greater access is logged."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-28"
     },
     "title": "z/OS CA Auditor for TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -226,18 +226,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224618r1041360_rule",
+          "+@id": "SV-224618r1145775_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZADTT000",
           "title": "CA Auditor installation data sets are not properly protected.",
           "description": "<VulnDiscussion>CA Auditor installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Auditor for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Auditor for TSS",
-            "identifier": "4174"
+            "dc:title": "DPMS Target zOS CA Auditor for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Auditor for TSS",
+            "dc:identifier": "4174"
           },
           "ident": [
             {
@@ -258,19 +258,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate access to CA Auditor installation data sets is limited to systems programmers only, and all update and allocate access is logged. Read access can be given to auditors, security administrators, and/or CA Auditor's STCs and batch users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS2.EXAMINE\nSYS2A.EXAMINE\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.EXAMINE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<secaaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(EXAMMON) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2A.EXAMINE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(<secaaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(EXAMMON) DSN(SYS2A.EXAMINE.) ACCESS(R)",
-            "+@fixref": "F-26289r868598_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA Auditor installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to auditors, security administrators, and/or CA Auditor's STCs and batch users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.EXAMINE\nSYS2A.EXAMINE\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2.EXAMINE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<secaaudt>) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(EXAMMON) DSN(SYS2.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(<syspaudt>) DSN(SYS2A.EXAMINE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<audtaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(<secaaudt>) DSN(SYS2A.EXAMINE.) ACCESS(R)\nTSS PERMIT(EXAMMON) DSN(SYS2A.EXAMINE.) ACCESS(R)",
+            "+@fixref": "F-26289r1145774_fix"
           },
           "fix": {
-            "+@id": "F-26289r868598_fix"
+            "+@id": "F-26289r1145774_fix"
           },
           "check": {
-            "+@system": "C-26301r868597_chk",
+            "+@system": "C-26301r1145773_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Auditor_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ADTRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZADT0000)\n\nVerify that the accesses to the CA Auditor installation data sets are properly restricted.\n \n___ The TSS data set rules for the data sets restricts READ access to auditors, security administrators, and/or CA Auditor's STCs and batch users.\n\n___ The TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\n___ The TSS data set rules for the data sets specify that all (i.e., failures and successes) UPDATE and/or ALL access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ADTRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZADT0000).\n\nVerify that the accesses to the CA Auditor installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set rules for the data sets restrict READ access to auditors, security administrators, and/or CA Auditor's STCs and batch users.\n\nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
           }
         }
       },
@@ -279,18 +279,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224619r958616_rule",
+          "+@id": "SV-224619r1146311_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZADTT002",
           "title": "CA Auditor User data sets are not properly protected.",
-          "description": "<VulnDiscussion>CA Auditor User data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA Auditor User data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Auditor for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Auditor for TSS",
-            "identifier": "4174"
+            "dc:title": "DPMS Target zOS CA Auditor for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Auditor for TSS",
+            "dc:identifier": "4174"
           },
           "ident": [
             {
@@ -307,19 +307,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to CA Auditor User data sets are limited to System Programmers,  security personnel and auditors.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be:\n\nSYS3.EXAMINE\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)\nTSS PERMIT(<audtaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)\nTSS PERMIT(<secaaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)",
-            "+@fixref": "F-26290r519567_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA Auditor User data sets are limited to systems programmers, security personnel, and auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be:\n\nSYS3.EXAMINE\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(<syspaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)\nTSS PERMIT(<audtaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)\nTSS PERMIT(<secaaudt>) DSN(SYS3.EXAMINE) ACCESS(ALL)",
+            "+@fixref": "F-26290r1146310_fix"
           },
           "fix": {
-            "+@id": "F-26290r519567_fix"
+            "+@id": "F-26290r1146310_fix"
           },
           "check": {
-            "+@system": "C-26302r519566_chk",
+            "+@system": "C-26302r1145776_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Auditor_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ADTUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZADT0002)\n\nVerify that the accesses to the CA Auditor User data sets are properly restricted.\n\n___\tThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel, security personnel and auditors."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ADTUSER).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZADT0002).\n\nVerify that the accesses to the CA Auditor User data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel, security personnel, and auditors."
           }
         }
       },
@@ -328,18 +328,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224620r1041363_rule",
+          "+@id": "SV-224620r1145780_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZADTT020",
           "title": "CA Auditor resources are not properly defined and protected.",
           "description": "<VulnDiscussion>CA Auditor can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Auditor for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Auditor for TSS",
-            "identifier": "4174"
+            "dc:title": "DPMS Target zOS CA Auditor for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Auditor for TSS",
+            "dc:identifier": "4174"
           },
           "ident": [
             {
@@ -363,12 +363,12 @@
             "+@id": "F-26291r1041362_fix"
           },
           "check": {
-            "+@system": "C-26303r1041361_chk",
+            "+@system": "C-26303r1145779_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Auditor_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following reports produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZADT0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZADT0020)\n\nVerify that the access to the LTDMMAIN resource in the PROGRAM resource class is restricted.\n\n___ The TSS owner is defined for the prefix of the resource and/or the resource classes RDT entry has DEFPROT specified.\n\n___ The TSS rules for the resources are restricted access to systems programmers, auditors, and security personnel."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZADT0020).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZADT0020).\n\nVerify that the access to the LTDMMAIN resource in the PROGRAM resource class is restricted. If the following guidance is true, this is not a finding.\n\nThe TSS owner is defined for the prefix of the resource and/or the resource classes RDT entry has DEFPROT specified.\n\nThe TSS rules for the resources are restricted access to systems programmers, auditors, and security personnel."
           }
         }
       }

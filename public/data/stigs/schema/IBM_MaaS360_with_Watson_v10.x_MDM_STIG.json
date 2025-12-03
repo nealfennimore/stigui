@@ -23,8 +23,8 @@
     },
     "reference": {
       "+@href": "Database Security Technical Implementation Guide, Version 8.1 Release 1 dated 19 September 2007",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": {
       "+content": "Release: 2 Benchmark Date: 26 Apr 2019",
@@ -541,11 +541,11 @@
           "title": "The MaaS360 MDM server must be configured to transfer MaaS360 MDM server logs to another server for storage, analysis, and reporting.\n\nNote: MaaS360 MDM server logs include logs of MDM events and logs transferred to the MaaS360 MDM server by MDM agents of managed devices.",
           "description": "<VulnDiscussion>Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. Since the MaaS360 MDM server has limited capability to store mobile device log files and perform analysis and reporting of mobile device log files, the MaaS360 MDM server must have the capability to transfer log files to an audit log management server.\n\nSFR ID: FMT_SMF.1.1(2) b\nFAU_STG_EXT.1.1(1)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-001851",
@@ -580,11 +580,11 @@
           "title": "The MaaS360 MDM server must be configured to display the required DoD warning banner upon administrator logon.\n\nNote: This requirement is not applicable if the TOE platform is selected in FTA_TAB.1.1 in the Security Target (ST).",
           "description": "<VulnDiscussion>Note: The advisory notice and consent warning message is not required if the general purpose OS or network device displays an advisory notice and consent warning message when the administrator logs on to the general purpose OS or network device prior to accessing the MaaS360 MDM server or MaaS360 MDM server platform.\n\nBefore granting access to the system, the MaaS360 MDM server/server platform is required to display the DoD-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met.\n\nThe approved DoD text must be used as specified in the KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner.\n\n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nSFR ID: FMT_SMF.1.1(2) d</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000048",
@@ -619,11 +619,11 @@
           "title": "The MaaS360 MDM server must be configured to have at least one user in the following Administrator roles: Server primary administrator, security configuration administrator, device user group administrator, auditor.",
           "description": "<VulnDiscussion>Having several administrative roles for the MaaS360 MDM server supports separation of duties. This allows administrator-level privileges to be granted granularly, such as giving application management privileges to one group and security policy privileges to another group. This helps prevent administrators from intentionally or inadvertently altering other settings and configurations they may not understand or approve of, which can weaken overall security and increase the risk of compromise.\n\n- Server primary administrator: Responsible for server installation, initial configuration, and maintenance functions. Responsible for the setup and maintenance of security configuration administrator and auditor accounts. Responsible for the maintenance of applications in the MAS.\n- Security configuration administrator: Responsible for security configuration of the server, defining device user groups, setup and maintenance of device user group administrator accounts, and defining privileges of device user group administrators.\n- Device user group administrator: Responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion. Responsible for defining which apps user groups or individual users have access to in the MAS. Can only perform administrative functions assigned by the security configuration administrator.\n- Auditor: Responsible for reviewing and maintaining server and mobile device audit logs.\n\nSFR ID: FMT_SMR.1.1(1)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": [
             {
@@ -668,11 +668,11 @@
           "title": "The MaaS360 MDM server must be configured to leverage the MDM platform user accounts and groups for MaaS360 MDM server user identification and authentication.",
           "description": "<VulnDiscussion>A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire MaaS360 MDM server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the MaaS360 MDM server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos).\n\nSFR ID: FIA</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000015",
@@ -707,11 +707,11 @@
           "title": "Authentication of MaaS360 MDM platform accounts must be configured so they are implemented via an enterprise directory service.",
           "description": "<VulnDiscussion>A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire MaaS360 MDM server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the MaaS360 MDM server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos).\n\nSFR ID: FIA</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000015",
@@ -746,11 +746,11 @@
           "title": "The MaaS360 MDM server must be configured to enable all required audit events (if function is not automatically implemented during MDM/MAS server install): a. Failure to push a new application on a managed mobile device.",
           "description": "<VulnDiscussion>Failure to generate these audit records makes it more difficult to identify or investigate attempted or successful compromises, potentially causing incidents to last longer than necessary.\n\nSFR ID: FMT_SMF.1.1(3) c,\nFAU_GEN.1.1(2)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": [
             {
@@ -795,11 +795,11 @@
           "title": "The MaaS360 server must be configured to enable all required audit events (if function is not automatically implemented during MDM/MAS server install): b. Failure to update an existing application on a managed mobile device.",
           "description": "<VulnDiscussion>Failure to generate these audit records makes it more difficult to identify or investigate attempted or successful compromises, potentially causing incidents to last longer than necessary.\n\nSFR ID: FMT_SMF.1.1(3) c,\nFAU_GEN.1.1(2)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": [
             {
@@ -844,11 +844,11 @@
           "title": "The MaaS360 server platform must be protected by a DoD-approved firewall.",
           "description": "<VulnDiscussion>Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The MDM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality. All others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the MDM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the MDM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(2) b</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -883,11 +883,11 @@
           "title": "The firewall protecting the MaaS360 server platform must be configured to restrict all network traffic to and from all addresses with the exception of ports, protocols, and IP address ranges required to support MaaS360 server and platform functions.",
           "description": "<VulnDiscussion>Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations. Since MDM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A firewall installed on the MDM server provides a protection mechanism to ensure unwanted service requests do not reach the MDM server and outbound traffic is limited to only MDM server functionality.\n\nSFR ID: FMT_SMF.1.1(2) b</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -922,11 +922,11 @@
           "title": "The firewall protecting the MaaS360 server platform must be configured so that only DoD-approved ports, protocols, and services are enabled. (See the DoD Ports, Protocols, Services Management [PPSM] Category Assurance Levels [CAL] list for DoD-approved ports, protocols, and services.)",
           "description": "<VulnDiscussion>All ports, protocols, and services used on DoD networks must be approved and registered via the DoD PPSM process. This is to ensure that a risk assessment has been completed before a new port, protocol, or service is configured on a DoD network and has been approved by proper DoD authorities. Otherwise, the new port, protocol, or service could cause a vulnerability to the DoD network, which could be exploited by an adversary.\n\nSFR ID: FMT_SMF.1.1(2) b</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -961,11 +961,11 @@
           "title": "The MaaS360 MDM Agent must be configured to implement the management setting: periodicity of reachability events equals six hours or less.",
           "description": "<VulnDiscussion>Key security-related status attributes must be queried frequently so the MaaS360 MDM Agent can report status of devices under management to the Administrator and management. The periodicity of these queries must be configured to an acceptable timeframe. Six hours or less is considered acceptable for normal operations.\n\nSFR ID: FAU_ALT_EXT.2.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-000169",
@@ -1000,11 +1000,11 @@
           "title": "The MaaS360 MDM Agent must provide an alert via the trusted channel to the MDM server for the following event: change in enrollment state.",
           "description": "<VulnDiscussion>Alerts providing notification of a change in enrollment state facilitate verification of the correct operation of security functions. When an MDM server receives such an alert from a MaaS360 MDM Agent, it indicates that the security policy may no longer be enforced on the mobile device. This enables the MDM administrator to take an appropriate remedial action.\n\nSFR ID: FAU_ALT_EXT.2.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM MaaS360 with Watson v10.x MDM",
-            "identifier": "3403"
+            "dc:title": "DPMS Target IBM MaaS360 with Watson v10.x MDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM MaaS360 with Watson v10.x MDM",
+            "dc:identifier": "3403"
           },
           "ident": {
             "+content": "CCI-002699",

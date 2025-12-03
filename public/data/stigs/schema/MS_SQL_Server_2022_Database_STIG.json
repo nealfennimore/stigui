@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -917,11 +917,11 @@
           "title": "SQL Server must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
           "description": "<VulnDiscussion>Enterprise environments make account management for applications and databases challenging and complex. A manual process for account management functions adds the risk of a potential oversight or other error. Managing accounts for the same person in multiple places is inefficient and prone to problems with consistency and synchronization.\n\nA comprehensive application account management process that includes automation helps to ensure that accounts designated as requiring attention are consistently and promptly addressed. \n\nExamples include using automation to act on multiple accounts designated as inactive, suspended, or terminated, or by disabling accounts located in noncentralized account stores, such as multiple servers. Account management functions can also include assignment of group or role membership; identifying account type; specifying user access authorizations (i.e., privileges); account removal, update, or termination; and administrative alerts. Using automated mechanisms can include, for example: using email or text messaging to notify account managers when users are terminated or transferred; using the information system to monitor account usage; and using automated telephone notification to report atypical system account usage.\n\nSQL Server must be configured to automatically use organization-level account management functions, and these functions must immediately enforce the organization's current account policy. \n\nAutomation may comprise differing technologies that when placed together contain an overall mechanism supporting an organization's automated account management requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-000015",
@@ -956,11 +956,11 @@
           "title": "SQL Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
           "description": "<VulnDiscussion>Authentication with a DOD-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If SQL Server does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-000213",
@@ -995,11 +995,11 @@
           "title": "SQL Server must protect against a user falsely repudiating by using system-versioned tables (Temporal Tables).",
           "description": "<VulnDiscussion>Nonrepudiation of actions taken is required to maintain data integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message. \n\nNonrepudiation protects against later claims by a user of not having created, modified, or deleted a particular data item or collection of data in the database.\n\nIn designing a database, the organization must define the types of data and the user actions that must be protected from repudiation. The implementation must then include building audit features into the application data tables and configuring SQL servers’ audit tools to capture the necessary audit trail. Design and implementation also must ensure that applications pass individual user identification to SQL Server, even where the application connects to the DBMS with a standard, shared account.\n\nApplications should use temporal tables to track the changes and history of sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-000166",
@@ -1034,11 +1034,11 @@
           "title": "SQL Server must protect against a user falsely repudiating by ensuring databases are not in a trust relationship.",
           "description": "<VulnDiscussion>Nonrepudiation of actions taken is required to maintain data integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message. \n\nNonrepudiation protects against later claims by a user of not having created, modified, or deleted a particular data item or collection of data in the database.\n\nIn designing a database, the organization must define the types of data and the user actions that must be protected from repudiation. The implementation must then include building audit features into the application data tables and configuring the DBMS's audit tools to capture the necessary audit trail. Design and implementation also must ensure that applications pass individual user identification to the DBMS, even where the application connects to the DBMS with a standard, shared account.\n\nSQL Server provides the ability for high privileged accounts to impersonate users in a database using the TRUSTWORTHY feature. This will allow members of the fixed database role to impersonate any user within the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-000166",
@@ -1073,11 +1073,11 @@
           "title": "SQL Server must allow only the information system security manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
           "description": "<VulnDiscussion>Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent or interfere with the auditing of critical events.\n\nSuppression of auditing could permit an adversary to evade detection.\n\nMisconfigured audits can degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-000171",
@@ -1112,11 +1112,11 @@
           "title": "SQL Server must limit privileges to change software modules, to include stored procedures, functions, and triggers, and links to software external to SQL Server.",
           "description": "<VulnDiscussion>If the system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nAccordingly, only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.\n\nUnmanaged changes that occur to the database software libraries or configuration can lead to unauthorized or compromised installations.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001499",
@@ -1151,11 +1151,11 @@
           "title": "Database objects (including but not limited to tables, indexes, storage, stored procedures, functions, triggers, links to software external to SQL Server, etc.) must be owned by database/DBMS principals authorized for ownership.",
           "description": "<VulnDiscussion>Within the database, object ownership implies full privileges to the owned object, including the privilege to assign access to the owned objects to other subjects. Database functions and procedures can be coded using definer's rights. This allows anyone who uses the object to perform the actions if they were the owner. If not properly managed, this can lead to privileged actions being taken by unauthorized individuals.\n\nConversely, if critical tables or other objects in SQL Server rely on unauthorized owner accounts, these objects may be lost when an account is removed.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001499",
@@ -1190,11 +1190,11 @@
           "title": "The role(s)/group(s) used to modify database structure (including but not limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to software external to SQL Server, etc.) must be restricted to authorized users.",
           "description": "<VulnDiscussion>If SQL Server were to allow any user to make changes to database structure or logic, those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nAccordingly, only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.\n\nUnmanaged changes that occur to the database software libraries or configuration can lead to unauthorized or compromised installations.\n\nDBMS functionality and the nature and requirements of databases will vary; so, while users are not permitted to install unapproved software, there may be instances where the organization allows the user to install approved software packages such as from an approved software repository. The requirements for production servers will be more restrictive than those used for development and research.\n\nThe DBMS must enforce software installation by users based on what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree regarding being potentially malicious is unknown or suspect) by the organization. \n\nIn the case of a database management system, this requirement covers stored procedures, functions, triggers, views, etc.\n\nSatisfies: SRG-APP-000133-DB-000362, SRG-APP-000133-DB-000179, SRG-APP-000378-DB-000365</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": [
             {
@@ -1235,11 +1235,11 @@
           "title": "In the event of a system failure, hardware loss or disk failure, SQL Server must be able to restore necessary databases with least disruption to mission processes.",
           "description": "<VulnDiscussion>Failure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. In the event of a system failure, SQL Server must be able to bring the database back to a consistent state.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001665",
@@ -1274,11 +1274,11 @@
           "title": "The Database Master Key encryption password must meet DOD password complexity requirements.",
           "description": "<VulnDiscussion>Weak passwords may be easily guessed. When passwords are used to encrypt keys used for encryption of sensitive data, the confidentiality of all data encrypted using that key is at risk.\n\nCurrent DOD passwords require the following: \n- minimum of 15 characters;\n- at least one uppercase character;\n- one lowercase character;\n- one special character;\n- one numeric character, and\n- at least eight characters changed from the previous password.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001199",
@@ -1313,11 +1313,11 @@
           "title": "The Database Master Key must be encrypted by the Service Master Key, where a Database Master Key is required and another encryption method has not been specified.",
           "description": "<VulnDiscussion>When not encrypted by the Service Master Key, system administrators or application administrators may access and use the Database Master Key to view sensitive data that they are not authorized to view. Where alternate encryption means are not feasible, encryption by the Service Master Key may be necessary. To help protect sensitive data from unauthorized access by DBAs, mitigations may be required. Mitigations may include automatic alerts or other audit events when the Database Master Key is accessed outside of the application or by a DBA account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001199",
@@ -1352,11 +1352,11 @@
           "title": "The certificate used for encryption must be backed up and stored in a secure location that is not on the SQL Server.",
           "description": "<VulnDiscussion>Backup and recovery of the certificate used for encryption is critical to the complete recovery of the database. Not having this key can lead to loss of data during recovery.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001199",
@@ -1391,11 +1391,11 @@
           "title": "SQL Server must isolate security functions from nonsecurity functions.",
           "description": "<VulnDiscussion>An isolation boundary provides access control and protects the integrity of the hardware, software, and firmware that perform security functions. \n\nSecurity functions are the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based.\n\nDevelopers and implementers can increase the assurance in security functions by employing well-defined security policy models; structured, disciplined, and rigorous hardware and software development techniques; and sound system/security engineering principles. \n\nDatabase Management Systems typically separate security functionality from nonsecurity functionality via separate databases or schemas. Database objects or code implementing security functionality should not be commingled with objects or code implementing application logic. When security and nonsecurity functionality are commingled, users who have access to nonsecurity functionality may be able to access security functionality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001084",
@@ -1430,11 +1430,11 @@
           "title": "Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data transfer policy.",
           "description": "<VulnDiscussion>Applications, including DBMSs, must prevent unauthorized and unintended information transfer via shared system resources. \n\nData used for the development and testing of applications often involves copying data from production. It is important that specific procedures exist for this process, including the conditions under which such transfer may take place, where the copies may reside, and the rules for ensuring sensitive data are not exposed.\n\nCopies of sensitive data must not be misplaced or left in a temporary location without the proper controls.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001090",
@@ -1469,11 +1469,11 @@
           "title": "SQL Server must check the validity of all data inputs except those specifically identified by the organization.",
           "description": "<VulnDiscussion>Invalid user input occurs when a user inserts data or characters into an application's data entry fields and the application is unprepared to process that data. This results in unanticipated application behavior, potentially leading to an application or information system compromise. Invalid user input is one of the primary methods employed when attempting to compromise an application.\n\nWith respect to database management systems, one class of threat is known as SQL Injection, or more generally, code injection. It takes advantage of the dynamic execution capabilities of various programming languages, including dialects of SQL. Potentially, the attacker can gain unauthorized access to data, including security settings, and severely corrupt or destroy the database.\n\nEven when no such hijacking takes place, invalid input that gets recorded in the database, whether accidental or malicious, reduces the reliability and usability of the system. Available protections include data types, referential constraints, uniqueness constraints, range checking, and application-specific logic. Application-specific logic can be implemented within the database in stored procedures and triggers, where appropriate.\n\nThis calls for inspection of application source code, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001310",
@@ -1508,11 +1508,11 @@
           "title": "SQL Server must provide nonprivileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries.",
           "description": "<VulnDiscussion>Any DBMS or associated application providing too much information in error messages on the screen or printout risks compromising the data and security of the system. The structure and content of error messages need to be carefully considered by the organization and development team.\n\nDatabases can inadvertently provide a wealth of information to an attacker through improperly handled error messages. In addition to sensitive business or personal information, database errors can provide host names, IP addresses, usernames, and other system information not required for troubleshooting but very useful to someone targeting the system.\n\nCarefully consider the structure/content of error messages. The extent to which information systems are able to identify and handle error conditions is guided by organizational policy and operational requirements. Information that could be exploited by adversaries includes, for example, logon attempts with passwords entered by mistake as the username, mission/business information that can be derived from (if not stated explicitly by) information recorded, and personal information, such as account numbers, social security numbers, and credit card numbers.\n\nThis calls for inspection of application source code, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001312",
@@ -1547,11 +1547,11 @@
           "title": "SQL Server must associate organization-defined types of security labels having organization-defined security label values with information in process, transit, or storage.",
           "description": "<VulnDiscussion>Without the association of security labels to information, there is no basis for SQL Server to make security-related access-control decisions.\n\nSecurity labels are abstractions representing the basic properties or characteristics of an entity (e.g., subjects and objects) with respect to safeguarding information.\n\nThese labels are typically associated with internal data structures (e.g., tables, rows) within the database and are used to enable the implementation of access control and flow control policies; reflect special dissemination, handling, or distribution instructions; or support other aspects of the information security policy.\n\nOne example includes marking data as classified or CUI. These security labels may be assigned manually or during data processing, but, either way, it is imperative these assignments are maintained while the data is in storage. If the security labels are lost when the data is stored, there is the risk of a data compromise.\n\nThe mechanism used to support security labeling may be a feature of SQL Server, a third-party product, or custom application code.\n\nSatisfies: SRG-APP-000311-DB-000308, SRG-APP-000314-DB-000310</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": [
             {
@@ -1596,11 +1596,11 @@
           "title": "SQL Server must enforce discretionary access control (DAC) policies, as defined by the data owner, over defined subjects and objects.",
           "description": "<VulnDiscussion>DAC is based on the notion that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired because of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user-controlled table permissions.\n\nWhen discretionary access control policies are implemented, subjects are not constrained regarding what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. \n\nA subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. \n\nThe policy is limited by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of DAC require identity-based access control, that limitation is not required for this use of DAC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-002165",
@@ -1635,11 +1635,11 @@
           "title": "Execution of stored procedures and functions that use execute as must be restricted to necessary cases only.",
           "description": "<VulnDiscussion>In certain situations, to provide required functionality, a DBMS needs to execute internal logic (stored procedures, functions, triggers, etc.) and/or external code modules with elevated privileges. However, if the privileges required for execution are at a higher level than the privileges assigned to organizational users invoking the functionality applications/programs, those users are indirectly provided with greater privileges than assigned by organizations.\n\nPrivilege elevation must be used only where necessary and protected from misuse.\n\nThis calls for inspection of application source code, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-002233",
@@ -1674,11 +1674,11 @@
           "title": "SQL Server must enforce access restrictions associated with changes to the configuration of the database(s).",
           "description": "<VulnDiscussion>Failure to provide logical access restrictions associated with changes to configuration may have significant effects on the overall security of the system. \n\nWhen dealing with access restrictions pertaining to change control, it should be noted that any changes to the hardware, software, and/or firmware components of the information system can potentially have significant effects on the overall security of the system. \n\nAccordingly, only qualified and authorized individuals should be allowed to obtain access to system components for the purposes of initiating changes, including upgrades and modifications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-001813",
@@ -1713,11 +1713,11 @@
           "title": "SQL Server must use NSA-approved cryptography to protect classified information in accordance with the data owner’s requirements.",
           "description": "<VulnDiscussion>Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nIt is the responsibility of the data owner to assess the cryptography requirements in light of applicable federal laws, Executive Orders, directives, policies, regulations, and standards.\n\nNSA-approved cryptography for classified networks is hardware based. This requirement addresses the compatibility of a DBMS with the encryption devices.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": {
             "+content": "CCI-002450",
@@ -1752,11 +1752,11 @@
           "title": "SQL Server must implement cryptographic mechanisms to prevent unauthorized modification or disclosure of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components.",
           "description": "<VulnDiscussion>DBMSs handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest. These cryptographic mechanisms may be native to the DBMS or implemented via additional software or operating system/file system settings, as appropriate to the situation.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nThe decision whether and what to encrypt rests with the data owner and is also influenced by the physical measures taken to secure the equipment and media on which the information resides.\n\nSatisfies: SRG-APP-000429-DB-000387</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target MS SQL Server 2022 Database",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "MS SQL Server 2022 Database",
-            "identifier": "5676"
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
           },
           "ident": [
             {

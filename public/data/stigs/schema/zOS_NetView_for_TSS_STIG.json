@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-03-05"
+      "+@date": "2025-09-28"
     },
     "title": "z/OS NetView for TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -370,18 +370,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225580r1070290_rule",
+          "+@id": "SV-225580r1146108_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNET0040",
           "title": "NetView configuration/parameter values must be specified properly.",
           "description": "<VulnDiscussion>NetView configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -409,12 +409,12 @@
             "+@id": "F-27267r1070289_fix"
           },
           "check": {
-            "+@system": "C-27279r1070288_chk",
+            "+@system": "C-27279r1146107_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0040)\n\nEnsure that all NetView configuration requirements are specified. If the following guidance is true, this is not a finding.\n\nKeyword                           Value\nSECOPTS.OPERSEC         SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH      SAF.FAIL|SAF.table"
+            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0040).\n\nIf the following keywords specify the values in the NetView configuration requirements, this is not a finding.\n\nKeyword                           Value\nSECOPTS.OPERSEC         SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH      SAF.FAIL|SAF.table"
           }
         }
       },
@@ -423,18 +423,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225581r1082560_rule",
+          "+@id": "SV-225581r1146363_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT000",
           "title": "NetView install data sets are not properly protected.",
           "description": "<VulnDiscussion>NetView install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -455,19 +455,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate access to NetView install data sets is limited to system programmers only, and all update and allocate access is logged. All other users can have read access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.NETVIEW \nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nThe following commands are provided as a sample for implementing dataset controls:\n\nTSS PERMIT(syspaudt) DSN(SYS2.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS2.netview.) ACCESS(all) ACTION(AUDIT)\n\nTSS PERMIT(syspaudt) DSN(SYS2a.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS2a.netview.) ACCESS(all) ACTION(AUDIT)\n\nTSS PERMIT(syspaudt) DSN(SYS3.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.) ACCESS(all) ACTION(AUDIT)",
-            "+@fixref": "F-27268r1082560_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to NetView install data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. All other users can have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have UPDATE access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.NETVIEW \nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nThe following commands are provided as a sample for implementing data set controls:\n\nTSS PERMIT(syspaudt) DSN(SYS2.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS2.netview.) ACCESS(all) ACTION(AUDIT)\n\nTSS PERMIT(syspaudt) DSN(SYS2a.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS2a.netview.) ACCESS(all) ACTION(AUDIT)\n\nTSS PERMIT(syspaudt) DSN(SYS3.netview.) ACCESS(r)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.) ACCESS(all) ACTION(AUDIT)",
+            "+@fixref": "F-27268r1146362_fix"
           },
           "fix": {
-            "+@id": "F-27268r1082560_fix"
+            "+@id": "F-27268r1146362_fix"
           },
           "check": {
-            "+@system": "C-27280r1070291_chk",
+            "+@system": "C-27280r1146109_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0000)\n\nVerify that access to the NetView install data sets are properly restricted.\n \nThe TSS data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe TSS data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, this is not a finding.\n\nIf any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(NETVRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0000).\n\nVerify that access to the NetView install data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets do not specify that all (i.e., failures and successes) WRITE and/or greater access will be logged."
           }
         }
       },
@@ -476,18 +476,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225582r958616_rule",
+          "+@id": "SV-225582r1146365_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT001",
           "title": "NetView STC data sets are not properly protected.",
           "description": "<VulnDiscussion>NetView STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -504,19 +504,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to NetView STC data sets are limited to System Programmers and NetView STC only, unless a letter justifying access is filed with the IAO. Auditors should have READ access.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS3.NETVIEW.<systemid>.* (VSAM data sets)\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nTSS PERMIT(CNMPROC) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(tstcpaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(CNMPROC) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\nTSS PERMIT(tstcaudt) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\n\nThe VSAM Dataset required for greater than read access are:\nSYS3.NETVIEW.<systemid>.AAUVSPL\nSYS3.NETVIEW.<systemid>.AAUVSSL\nSYS3.NETVIEW.<systemid>.BNJLGPR\nSYS3.NETVIEW.<systemid>.BNJLGSE\nSYS3.NETVIEW.<systemid>.BNJ36PR\nSYS3.NETVIEW.<systemid>.BNJ36SE\nSYS3.NETVIEW.<systemid>.DSIKPNL\nSYS3.NETVIEW.<systemid>.DSILIST\nSYS3.NETVIEW.<systemid>.DSILOGP\nSYS3.NETVIEW.<systemid>.DSILOGS\nSYS3.NETVIEW.<systemid>.DSISVRT\nSYS3.NETVIEW.<systemid>.DSITRCP\nSYS3.NETVIEW.<systemid>.DSITRCS\nSYS3.NETVIEW.<systemid>.SDSIOPEN",
-            "+@fixref": "F-27269r472543_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to NetView STC data sets are limited to systems programmers and NetView STC only, unless a letter justifying access is filed with the ISSO. Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS3.NETVIEW.<systemid>.* (VSAM data sets)\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(CNMPROC) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(tstcpaudt) DSN(SYS3.netview.<systemid>.) ACCESS(R)\nTSS PERMIT(CNMPROC) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\nTSS PERMIT(syspaudt) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\nTSS PERMIT(tstcaudt) DSN(SYS3.netview.<systemid>.) ACCESS(ALL)\n\nThe VSAM Dataset required for greater than READ access are:\nSYS3.NETVIEW.<systemid>.AAUVSPL\nSYS3.NETVIEW.<systemid>.AAUVSSL\nSYS3.NETVIEW.<systemid>.BNJLGPR\nSYS3.NETVIEW.<systemid>.BNJLGSE\nSYS3.NETVIEW.<systemid>.BNJ36PR\nSYS3.NETVIEW.<systemid>.BNJ36SE\nSYS3.NETVIEW.<systemid>.DSIKPNL\nSYS3.NETVIEW.<systemid>.DSILIST\nSYS3.NETVIEW.<systemid>.DSILOGP\nSYS3.NETVIEW.<systemid>.DSILOGS\nSYS3.NETVIEW.<systemid>.DSISVRT\nSYS3.NETVIEW.<systemid>.DSITRCP\nSYS3.NETVIEW.<systemid>.DSITRCS\nSYS3.NETVIEW.<systemid>.SDSIOPEN",
+            "+@fixref": "F-27269r1146364_fix"
           },
           "fix": {
-            "+@id": "F-27269r472543_fix"
+            "+@id": "F-27269r1146364_fix"
           },
           "check": {
-            "+@system": "C-27281r472542_chk",
+            "+@system": "C-27281r1146112_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0001)\n\nVerify that acess to the NetView STC data sets are properly restricted.\n\n___\tThe TSS data set rules for the data sets restricts READ access to auditors.\n\n___\tThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to systems programming personnel.\n\n___\tThe TSS data set rules for the data sets restricts UPDATE and/or ALL access to the product STC(s) and/or batch job(s)."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(NETVSTC).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0001).\n\nVerify that acess to the NetView STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set rules for the data sets restrict READ access to auditors.\n\nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
           }
         }
       },
@@ -525,18 +525,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225583r1070296_rule",
+          "+@id": "SV-225583r1146116_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT020",
           "title": "NetView resources must be properly defined and protected.",
           "description": "<VulnDiscussion>NetView can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -560,12 +560,12 @@
             "+@id": "F-27270r1070295_fix"
           },
           "check": {
-            "+@system": "C-27282r1070294_chk",
+            "+@system": "C-27282r1146115_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZNET0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0020)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe TSS resources and/or generic equivalents as designated in the above table are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table."
+            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZNET0020).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZNET0020).\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe TSS resources and/or generic equivalents as designated in the above table are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table."
           }
         }
       },
@@ -574,18 +574,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225584r958482_rule",
+          "+@id": "SV-225584r1146119_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT030",
-          "title": "NetView Started Task name(s) is not properly identified / defined to the system ACP.",
-          "description": "<VulnDiscussion>NetView requires a started task(s) that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "NetView Started Task name(s) is not properly identified/defined to the system ACP.",
+          "description": "<VulnDiscussion>NetView requires a started task(s) that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -602,19 +602,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The Systems Programmer and IAO will ensure that the started task(s) for NetView is properly defined.\n\nDefine the started task userid CNMPROC and CNMPSSI for NetView.\n\nExample:\n\nTSS CRE(CNMPROC) DEPT(Dept) NAME('NetView') -\n  FAC(STC) MASTFAC(NETVIEW) PASSWORD(password,0) -\n  SOURCE(INTRDR)\nTSS CRE(CNMPSSI) DEPT(Dept) NAME('NetView') -\n  FAC(STC) PASSWORD(password,0) -\n  SOURCE(INTRDR)",
-            "+@fixref": "F-27271r472549_fix"
+            "+content": "The Systems Programmer and ISSO will ensure that the started task(s) for NetView is properly defined.\n\nDefine the started task userid CNMPROC and CNMPSSI for NetView.\n\nExample:\n\nTSS CRE(CNMPROC) DEPT(Dept) NAME('NetView') -\n  FAC(STC) MASTFAC(NETVIEW) PASSWORD(password,0) -\n  SOURCE(INTRDR)\nTSS CRE(CNMPSSI) DEPT(Dept) NAME('NetView') -\n  FAC(STC) PASSWORD(password,0) -\n  SOURCE(INTRDR)",
+            "+@fixref": "F-27271r1146118_fix"
           },
           "fix": {
-            "+@id": "F-27271r472549_fix"
+            "+@id": "F-27271r1146118_fix"
           },
           "check": {
-            "+@system": "C-27283r472548_chk",
+            "+@system": "C-27283r1146117_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following reports produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nb)\tReview the NetView STC/Batch ACID(s) for the following:\n\n___\tIs defined as CNMPROC for the ACID.\n\n___\tIs defined as CNMPSSI for the ACID.\n\n___\tBoth are defined with Facility of STC and/or BATCH.\n\n___\tCNMPROC is defined with Master Facility of NETVIEW.\n\n___\tBoth are sourced to the INTRDR.\n\nc)\tIf all of the above are true, there is NO FINDING.\n\nd)\tIf any of the above is untrue, this is a FINDING."
+            "check-content": "Refer to the following reports produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(@ACIDS).\n\nReview NetView STC/Batch ACID(s). If the following attributes are defined, this is not a finding.\n\nFor CNMPROC\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND\nMASTFAC(NETVIEW)\n\nFor CNMPSSI\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND"
           }
         }
       },
@@ -623,18 +623,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225585r958482_rule",
+          "+@id": "SV-225585r1146122_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT032",
           "title": "IBM Tivoli NetView Started task(s) must be properly defined to the Started Task Table ACID for Top Secret.",
-          "description": "<VulnDiscussion>Access to product  resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product  resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -651,19 +651,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IBM Tivoli NetView system programmer and the IAO will ensure that a product's started task(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the IBM Tivoli NetView started task(s) thru a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(CNMPROC) ACID(CNMPROC)\nTSS ADD(STC) PROCNAME(CNMPSSI) ACID(CNMPSSI)",
-            "+@fixref": "F-27272r472552_fix"
+            "+content": "The IBM Tivoli NetView systems programmer and the ISSO will ensure that a product's started task(s) is (are) properly identified and/or defined to the system ACP. \n\nA unique ACID must be assigned for the IBM Tivoli NetView started task(s) through a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(CNMPROC) ACID(CNMPROC)\nTSS ADD(STC) PROCNAME(CNMPSSI) ACID(CNMPSSI)",
+            "+@fixref": "F-27272r1146121_fix"
           },
           "fix": {
-            "+@id": "F-27272r472552_fix"
+            "+@id": "F-27272r1146121_fix"
           },
           "check": {
-            "+@system": "C-27284r472551_chk",
+            "+@system": "C-27284r1146120_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZNET0032)\n\nVerify that the IBM Tivoli NetView started task(s) is (are) defined in the TSS STC record."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(#STC).\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n- PDI(ZNET0032).\n\nIf the IBM Tivoli NetView started task(s) is (are) defined in the TSS STC record, this is not a finding."
           }
         }
       },
@@ -672,18 +672,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225586r958482_rule",
+          "+@id": "SV-225586r1146124_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETT036",
           "title": "NetView is not properly defined to the Facility Matrix Table for Top Secret.",
           "description": "<VulnDiscussion>Improperly defined security controls for the Product could result in the compromise of the network, operating system, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for TSS",
-            "identifier": "4203"
+            "dc:title": "DPMS Target zOS NetView for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for TSS",
+            "dc:identifier": "4203"
           },
           "ident": [
             {
@@ -707,12 +707,12 @@
             "+@id": "F-27273r472555_fix"
           },
           "check": {
-            "+@system": "C-27285r472554_chk",
+            "+@system": "C-27285r1146123_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values\n-\tTSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup\n\nb)\tIf NETVIEW is properly defined in the Facility Matrix table, there is NO FINDING:\n\nc)\tIf NETVIEW is improperly defined in the Facility Matrix table, this is a FINDING."
+            "check-content": "Refer to the following reports produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values.\n- TSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup.\n\nIf the NETVIEW Facility Matrix table is defined as stated below, this is not a finding.\n\nFACILITY(USERxx=NAME=NETVIEW) \nFACILITY(NETVIEW=MODE=FAIL) \nFACILITY(NETVIEW=PGM=DSI) \nFACILITY(NETVIEW=ACTIVE,SHRPRF,ASUBM,ABEND,MULTIUSER,NOXDEF)\nFACILITY(NETVIEW=LUMSG,STMSG,SIGN(M),INSTDATA,NORNDPW,AUTHINIT)\nFACILITY(NETVIEW=NOPROMPT,NOAUDIT,RES,WARNPW,NOTSOC,LCFTRANS,IJU)\nFACILITY(NETVIEW=MSGLC,NOTRACE,NOEODINIT,NODORMPW,NONPWR)\nFACILITY(NETVIEW=LOG(INIT,SMF,MSG,SEC9))\nFACILITY(NETVIEW=DOWN=GLOBAL,LOCKTIME=00,DEFACID(*NONE*))"
           }
         }
       }

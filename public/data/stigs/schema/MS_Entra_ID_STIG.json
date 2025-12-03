@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -485,11 +485,11 @@
           "title": "Microsoft Entra ID must initiate a session lock after a 15-minute period of inactivity.",
           "description": "<VulnDiscussion>Session locks are temporary actions taken to prevent logical access to organizational systems when users stop work and move away from the immediate vicinity of those systems but do not want to log out because of the temporary nature of their absences. Session locks can be implemented at the operating system level or at the application level. A proximity lock may be used to initiate the session lock (e.g., via a Bluetooth-enabled session or dongle). User-initiated session locking is behavior or policy-based and, as such, requires users to take physical action to initiate the session lock. Session locks are not an acceptable substitute for logging out of systems, such as when organizations require users to log out at the end of workdays.\n\nSatisfies: SRG-APP-000295</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -530,11 +530,11 @@
           "title": "Microsoft Entra ID must automatically disable accounts after a 35-day period of account inactivity.",
           "description": "<VulnDiscussion>Attackers that are able to exploit an inactive account can potentially obtain and maintain undetected access to an application. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained. Applications need to track periods of user inactivity and disable accounts after 35 days of inactivity. Such a process greatly reduces the risk that accounts will be hijacked, leading to a data compromise. \n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to offload those access control functions and focus on core application features and functionality. \n\nThis policy does not apply to either emergency accounts or infrequently used accounts. Infrequently used accounts are local login administrator accounts used by system administrators when network or normal logon/access is not available. Emergency accounts are administrator accounts created in response to crisis situations.\n\nReferences:\nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguser?view=graph-powershell-1.0\nhttps://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http\nhttps://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties\nhttps://learn.microsoft.com/en-us/graph/api/resources/signinactivity?view=graph-rest-1.0#properties\n\nFor any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DOD tenants (IL5), graph endpoints are dod-graph.microsoft.us.\n\nSatisfies: SRG-APP-000025, SRG-APP-000163</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -575,11 +575,11 @@
           "title": "Microsoft Entra ID must enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.",
           "description": "<VulnDiscussion>By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account.\n\nSatisfies: SRG-APP-000345</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -620,11 +620,11 @@
           "title": "Microsoft Entra ID must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the application.",
           "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000068, SRG-APP-000069, SRG-APP-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -685,11 +685,11 @@
           "title": "Microsoft Entra ID must be configured to transfer logs to another server for storage, analysis, and reporting.",
           "description": "<VulnDiscussion>Protection of log data includes ensuring log data is not accidentally lost or deleted. Backing up audit records to a different system or onto separate media than the system being audited on an organizationally defined frequency helps to ensure the audit records will be retained in the event of a catastrophic system failure. \n\nThis also ensures a compromise of the information system being audited does not result in a compromise of the audit records.\n\nThis requirement only applies to applications that have a native backup capability for audit records. Operating system backup requirements cover applications that do not provide native backup functions.\n\nSatisfies: SRG-APP-000358</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -730,11 +730,11 @@
           "title": "Microsoft Entra ID must be configured to use multifactor authentication (MFA).",
           "description": "<VulnDiscussion>Without the use of MFA, the ease of access to privileged functions is greatly increased. \n\nMFA requires the use of two or more factors to achieve authentication. \n\nFactors include: \n(i) Something a user knows (e.g., password/PIN); \n(ii) Something a user has (e.g., cryptographic identification device, token); or \n(iii) Something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user. \n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the internet).\n\nSatisfies: SRG-APP-000149, SRG-APP-000150, SRG-APP-000154, SRG-APP-000155</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": [
             {
@@ -779,11 +779,11 @@
           "title": "Microsoft Entra ID must enforce a 60-day maximum password lifetime restriction.",
           "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.\n\nThis requirement does not include emergency administration accounts, which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": {
             "+content": "CCI-004066",
@@ -818,11 +818,11 @@
           "title": "Microsoft Entra ID must notify system administrators (SAs) and the information system security officer (ISSO) when privileges are being requested.",
           "description": "<VulnDiscussion>When application accounts are modified, user accessibility is affected. Accounts are used for identifying individual users or for identifying the application processes themselves. Sending notification of account modification events to the system administrator and ISSO is one method for mitigating this risk. Such a capability greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nTo address access requirements, many operating systems can be integrated with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": {
             "+content": "CCI-000015",
@@ -857,11 +857,11 @@
           "title": "Microsoft Entra ID must use Privileged Identity Management (PIM).",
           "description": "<VulnDiscussion>Emergency accounts are administrator accounts established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability.\n\nEmergency accounts are different from infrequently used accounts (i.e., local logon accounts used by system administrators when network or normal logon/access is not available). Infrequently used accounts also remain available and are not subject to automatic termination dates. However, an emergency account is normally a different account created for use by vendors or system maintainers.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to offload those access control functions and focus on core application features and functionality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": {
             "+content": "CCI-001682",
@@ -896,11 +896,11 @@
           "title": "Microsoft Entra ID must, for password-based authentication, verify when users create or update passwords that the passwords are not found on the list of commonly used, expected, or compromised passwords.",
           "description": "<VulnDiscussion>Password-based authentication applies to passwords regardless of whether they are used in single-factor or multifactor authentication. Long passwords or passphrases are preferable over shorter passwords. Enforced composition rules provide marginal security benefits while decreasing usability. However, organizations may choose to establish certain rules for password generation (e.g., minimum character length for long passwords) under certain circumstances and can enforce this requirement in IA-5(1)(h). Account recovery can occur, for example, in situations when a password is forgotten. Cryptographically protected passwords include salted one-way cryptographic hashes of passwords. The list of commonly used, compromised, or expected passwords includes passwords obtained from previous breach corpuses, dictionary words, and repetitive or sequential characters. The list includes context-specific words, such as the name of the service, username, and derivatives thereof.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft Entra ID",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft Entra ID",
-            "identifier": "5671"
+            "dc:title": "DPMS Target Microsoft Entra ID",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Entra ID",
+            "dc:identifier": "5671"
           },
           "ident": {
             "+content": "CCI-004061",

@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -2141,11 +2141,11 @@
           "title": "The Juniper EX switch must be configured to limit the number of concurrent management sessions to 10 or an organization-defined value.",
           "description": "<VulnDiscussion>Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator based on account type, role, or access type is helpful in limiting risks related to denial-of-service (DoS) attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions must be defined based upon mission needs and the operational environment for each system. At a minimum, limits must be set for SSH, HTTPS, account of last resort, and root account sessions.\n\nJuniper switches apply session limits per access method (e.g., web management, SSH), which means the limit is applicable to local, remote, and root account sessions. \n\nUnconfigured management access methods are disabled. For instance, if there is no [edit system services ssh] stanza, that service is unavailable and a connection-limit should not be configured because that will enable the service.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -2180,11 +2180,11 @@
           "title": "The Juniper EX switch must be configured to automatically audit account creation.",
           "description": "<VulnDiscussion>Upon gaining access to a network device, an attacker will often first attempt to create a persistent method of reestablishing access. One way to accomplish this is to create a new account. Notification of account creation helps to mitigate this risk. Auditing account creation provides the necessary reconciliation that account management procedures are being followed. Without this audit trail, personnel without the proper authorization may gain access to critical network nodes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000018",
@@ -2219,11 +2219,11 @@
           "title": "The Juniper EX switch must be configured to assign appropriate user roles or access levels to authenticated users.",
           "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DoD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are pre-configured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an ISSM may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM’s user persona to the audit security group. This is still considered privileged access, but the ISSM’s security group is more restrictive than the network administrator’s security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user’s security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user’s directory service group membership.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000213",
@@ -2258,11 +2258,11 @@
           "title": "The Juniper EX switch must be configured to enforce approved authorizations for controlling the flow of management information within the network device based on information flow control policies.",
           "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data.\n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -2303,11 +2303,11 @@
           "title": "The Juniper EX switch must be configured to enforce the limit of three consecutive invalid logon attempts for any given user, after which time it must block any login attempt for that user for 15 minutes.",
           "description": "<VulnDiscussion>By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Introducing a lockout period significantly increases the time required for each brute-force attack and increases the likelihood that security personnel will identify (and can respond to) an ongoing attack and/or that the authorized owner will recognize and report the unauthorized activity.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000044",
@@ -2342,11 +2342,11 @@
           "title": "The Juniper EX switch must be configured to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the device.",
           "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000048",
@@ -2381,11 +2381,11 @@
           "title": "The Juniper device must be configured to produce audit log records containing sufficient information to establish what type of event occurred.",
           "description": "<VulnDiscussion>It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done to compile an accurate risk assessment. Associating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. Without this capability, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000130",
@@ -2420,11 +2420,11 @@
           "title": "The Juniper EX switch must be configured to produce audit records containing information to establish when (date and time) the events occurred.",
           "description": "<VulnDiscussion>It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done in order to compile an accurate risk assessment. Logging the date and time of each detected event provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. In order to establish and correlate the series of events leading up to an outage or attack, it is imperative the date and time are recorded in all log records.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000131",
@@ -2459,11 +2459,11 @@
           "title": "The Juniper EX switch must be configured to produce audit records containing information to establish where the events occurred.",
           "description": "<VulnDiscussion>To compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know where events occurred, such as device hardware components, device software modules, session identifiers, filenames, host names, and functionality.\n\nAssociating information about where the event occurred within the network device provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000132",
@@ -2498,11 +2498,11 @@
           "title": "The Juniper EX switch must be configured to produce audit log records containing information to establish the source of events.",
           "description": "<VulnDiscussion>To compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know the source of the event. The source may be a component, module, or process within the device or an external session, administrator, or device.\n\nAssociating information about where the source of the event occurred provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000133",
@@ -2537,11 +2537,11 @@
           "title": "The Juniper EX switch must be configured to produce audit records that contain information to establish the outcome of the event.",
           "description": "<VulnDiscussion>Without information about the outcome of events, security personnel cannot make an accurate assessment as to whether an attack was successful or if changes were made to the security state of the system.\n\nEvent outcomes can include indicators of event success or failure and event-specific results (e.g., the security state of the device after the event occurred). As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000134",
@@ -2576,11 +2576,11 @@
           "title": "The Juniper EX switch must be configured to generate audit records containing information that establishes the identity of any individual or process associated with the event.",
           "description": "<VulnDiscussion>Without information that establishes the identity of the subjects (i.e., administrators or processes acting on behalf of administrators) associated with the events, security personnel cannot determine responsibility for the potentially harmful event.\n\nEvent identifiers (if authenticated or otherwise known) include, but are not limited to, user database tables, primary key values, user names, or process identifiers.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001487",
@@ -2615,11 +2615,11 @@
           "title": "The Juniper EX switch must be configured to protect audit information from unauthorized modification.",
           "description": "<VulnDiscussion>Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit network device activity.\n\nIf audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the network device must protect audit information from unauthorized modification. \n\nThis requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions and limiting log data locations. \n\nNetwork devices providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights that the user enjoys to make access decisions regarding the modification of audit data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000163",
@@ -2654,11 +2654,11 @@
           "title": "The Juniper EX switch must be configured to protect audit information from unauthorized deletion.",
           "description": "<VulnDiscussion>Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nIf audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the network device must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions utilizing file system protections, restricting access, and backing up log data to ensure log data is retained. \n\nNetwork devices providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights the user enjoys in order to make access decisions regarding the deletion of audit data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000164",
@@ -2693,11 +2693,11 @@
           "title": "The Juniper EX switch must be configured to protect audit tools from unauthorized access.",
           "description": "<VulnDiscussion>Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nNetwork devices providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001493",
@@ -2732,11 +2732,11 @@
           "title": "The Juniper EX switch must be configured to limit privileges to change the software resident within software libraries.",
           "description": "<VulnDiscussion>Changes to any software components of the network device can have significant effects on the overall security of the network. Therefore, only qualified and authorized individuals should be allowed administrative access to the network device for implementing any changes or upgrades. If the network device were to enable nonauthorized users to make changes to software libraries, those changes could be implemented without undergoing testing, validation, and approval.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001499",
@@ -2771,11 +2771,11 @@
           "title": "The Juniper EX switch must be configured to prohibit the use of all unnecessary and/or nonsecure functions, ports, protocols, and/or services.",
           "description": "<VulnDiscussion>To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -2810,11 +2810,11 @@
           "title": "The Juniper EX switch must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
           "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account is created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit must be added to the envelope as a record. Administrators must secure the credentials and disable access to the root account (if possible) when not needed for system administration functions.\n\nJunos does not have default passwords, and the root account cannot be renamed or disabled. The root account password must be saved in the same manner as the account of last resort.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -2855,11 +2855,11 @@
           "title": "The Juniper EX switch must be configured to implement replay-resistant authentication mechanisms for network access to privileged accounts.",
           "description": "<VulnDiscussion>A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001941",
@@ -2894,11 +2894,11 @@
           "title": "The Juniper EX switch must be configured to enforce a minimum 15-character password length.",
           "description": "<VulnDiscussion>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password.\n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -2939,11 +2939,11 @@
           "title": "The Juniper EX switch must be configured to enforce password complexity by requiring that at least one uppercase character be used.",
           "description": "<VulnDiscussion>Use of a complex passwords helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-004066",
@@ -2978,11 +2978,11 @@
           "title": "The Juniper EX switch must be configured to enforce password complexity by requiring that at least one lowercase character be used.",
           "description": "<VulnDiscussion>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-004066",
@@ -3017,11 +3017,11 @@
           "title": "The Juniper EX switch must be configured to enforce password complexity by requiring that at least one numeric character be used.",
           "description": "<VulnDiscussion>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3062,11 +3062,11 @@
           "title": "The Juniper EX switch must be configured to enforce password complexity by requiring that at least one punctuation (special) character be used.",
           "description": "<VulnDiscussion>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3107,11 +3107,11 @@
           "title": "The Juniper EX switch must be configured to require that when a password is changed, the characters are changed in at least eight of the positions within the password.",
           "description": "<VulnDiscussion>If the application allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.\n\nThe number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. In other words, characters may be the same within the two passwords; however, the positions of the like characters must be different.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.\n\nNote: For older Juniper EX versions, only four characters may be changed instead of the DOD-required eight characters. If so, four characters should be selected. This remains a finding when set to four characters, but is mitigated to a CAT 3.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3152,11 +3152,11 @@
           "title": "The Juniper EX switch must be configured to only store cryptographic representations of passwords.",
           "description": "<VulnDiscussion>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nNetwork devices must enforce cryptographic representations of passwords when storing passwords in databases, configuration files, and log files. Passwords must be protected at all times; using a strong one-way hashing encryption algorithm with a salt is the standard method for providing a means to validate a password without having to store the actual password.\n\nPerformance and time required to access are factors that must be considered, and the one-way hash is the most feasible means of securing the password and providing an acceptable measure of password security. If passwords are stored in clear text, they can be plainly read and easily compromised.\n\nIn many instances, verifying the user knows a password is performed using a password verifier. In its simplest form, a password verifier is a computational function that is capable of creating a hash of a password and determining if the value provided by the user matches the stored hash.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3197,11 +3197,11 @@
           "title": "The Juniper EX switch must be configured to use FIPS 140-2/140-3 validated algorithms for authentication to a cryptographic module.",
           "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore, cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-validated and NIST-recommended authentication algorithms.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000803",
@@ -3236,11 +3236,11 @@
           "title": "The Juniper EX switch must be configured to end all network connections associated with a device management session at the end of the session, or the session must be terminated after five minutes of inactivity except to fulfill mission requirements.",
           "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001133",
@@ -3275,11 +3275,11 @@
           "title": "The Juniper device must be configured to only allow authorized administrators to view or change the device configuration, system files, and other files stored either in the device or on removable media (such as a flash drive).",
           "description": "<VulnDiscussion>This requirement is intended to address the confidentiality and integrity of system information at rest (e.g., network device rule sets) when it is located on a storage device within the network device or as a component of the network device. This protection is required to prevent unauthorized alteration, corruption, or disclosure of information when not stored directly on the network device.\n\nFiles on the network device or on removable media used by the device must have their permissions set to allow read or write access to those accounts that are specifically authorized to access or change them. Note that different administrative accounts or roles will have varying levels of access.\n\nFile permissions must be set so that only authorized administrators can read or change their contents. Whenever files are written to removable media and the media removed from the device, the media must be handled appropriately for the classification and sensitivity of the data stored on the device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001199",
@@ -3314,11 +3314,11 @@
           "title": "The Juniper EX switch must be configured to enforce organization-defined role-based access control policies over defined subjects and objects.",
           "description": "<VulnDiscussion>Organizations can create specific roles based on job functions and the authorizations (i.e., privileges) to perform needed operations on organizational information systems associated with the organization-defined roles. When administrators are assigned to the organizational roles, they inherit the authorizations or privileges defined for those roles. RBAC simplifies privilege administration for organizations because privileges are not assigned directly to every administrator (which can be a significant number of individuals for mid- to large-size organizations) but are instead acquired through role assignments. RBAC can be implemented either as a mandatory or discretionary form of access control.\n\nThe RBAC policies and the subjects and objects are defined uniquely for each network device, so they cannot be specified in the requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3359,11 +3359,11 @@
           "title": "The Juniper EX switch must be configured to allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
           "description": "<VulnDiscussion>To ensure network devices have a sufficient storage capacity in which to write the audit logs, they need to be able to allocate audit record storage capacity. The task of allocating audit record storage capacity is usually performed during initial device setup if it is modifiable. \n\nThe value for the organization-defined audit record storage requirement will depend on the amount of storage available on the network device, the anticipated volume of logs, the frequency of transfer from the network device to centralized log servers, and other factors.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001849",
@@ -3398,11 +3398,11 @@
           "title": "The Juniper EX switch must be configured to generate an immediate real-time alert of all audit failure events requiring real-time alerts.",
           "description": "<VulnDiscussion>It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001858",
@@ -3437,11 +3437,11 @@
           "title": "The Juniper EX switch must be configured to synchronize internal information system clocks using redundant authoritative time sources.",
           "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: A time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3490,11 +3490,11 @@
           "title": "The Juniper EX switch must be configured to record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
           "description": "<VulnDiscussion>If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in UTC, a modern continuation of GMT, or local time with an offset from UTC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001890",
@@ -3529,11 +3529,11 @@
           "title": "The Juniper EX switch must be configured to prohibit installation of software without explicit privileged status.",
           "description": "<VulnDiscussion>Allowing anyone to install software, without explicit privileges, creates the risk that untested or potentially malicious software will be installed on the system. This requirement applies to code changes and upgrades for all network devices.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -3574,11 +3574,11 @@
           "title": "The Juniper EX switch must be configured to enforce access restrictions associated with changes to device configuration.",
           "description": "<VulnDiscussion>Failure to provide logical access restrictions associated with changes to device configuration may have significant effects on the overall security of the system. \n\nWhen dealing with access restrictions pertaining to change control, it should be noted that any changes to the hardware, software, and/or firmware components of the device can potentially have significant effects on the overall security of the device. \n\nAccordingly, only qualified and authorized individuals should be allowed to obtain access to device components for the purposes of initiating changes, including upgrades and modifications. \n\nLogical access restrictions include, for example, controls that restrict access to workflow automation, media libraries, abstract layers (e.g., changes implemented into third-party interfaces rather than directly into information systems), and change windows (e.g., changes occur only during specified times, making unauthorized changes easy to discover).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001813",
@@ -3613,11 +3613,11 @@
           "title": "The Juniper EX switch must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
           "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, internet). A remote connection is any connection with a device communicating through an external network (e.g., the internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001967",
@@ -3652,11 +3652,11 @@
           "title": "The Juniper EX switch must use an an NTP service that is hosted by a trusted source or a DOD-compliant enterprise or local NTP server.",
           "description": "<VulnDiscussion>If a trusted time source is not used, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate which may hide attacks or result in inaccurate forensic analysis. \n\nThe recommended solution is that the application or endpoint is configured to point to an enterprise or site-owned time server that is DOD-compliant (instead of directly to an NTP source as implied by the current wording of the requirement). Most products are unable to meet the requirement, but DISA can mitigate the risk by using a trusted time source. So the requirement should state that NTPS is used with USNO NTP as an alternative mitigation for this to be marked as Not a Finding.\n\nMore information can be found at:\nhttps://www.cnmoc.usff.navy.mil/Our-Commands/United-States-Naval-Observatory/Precise-Time-Department/Network-Time-Protocol-NTP/DoD-Customer-Servers/\n\nDOD users should not use tick, tock, or ntp2. There are also instructions for obtaining authenticated NTP at the site listed above.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001967",
@@ -3691,11 +3691,11 @@
           "title": "The Juniper EX switch must be configured to prohibit the use of cached authenticators after an organization-defined time period.",
           "description": "<VulnDiscussion>Some authentication implementations can be configured to use cached authenticators.\n\nIf cached authentication information is out-of-date, the validity of the authentication information may be questionable.\n\nThe organization-defined time period should be established for each device depending on the nature of the device; for example, a device with just a few administrators in a facility with spotty network connectivity may merit a longer caching time period than a device with many administrators.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-002007",
@@ -3730,11 +3730,11 @@
           "title": "The Juniper EX switches must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of nonlocal maintenance and diagnostic communications.",
           "description": "<VulnDiscussion>Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code used for authentication to cryptographic modules.\n\nSeparate requirements for configuring applications and protocols used by each application (e.g., SNMPv3, SSHv2, HTTPS, and other protocols and applications that require server/client authentication) are required to implement this requirement. Where SSH is used, the SSHv2 protocol suite is required because it includes Layer 7 protocols such as SCP and SFTP, which can be used for secure file transfers.\n\nUse only AES Counter (CTR) cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-002890",
@@ -3769,11 +3769,11 @@
           "title": "The Juniper EX switch must be configured to implement cryptographic mechanisms using a FIPS 140-2 approved algorithm to protect the confidentiality of remote maintenance sessions.",
           "description": "<VulnDiscussion>This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.\n\nUse only CTR cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-003123",
@@ -3808,11 +3808,11 @@
           "title": "The Juniper EX switch must be configured to protect against known types of denial-of-service (DoS) attacks by employing organization-defined security safeguards.",
           "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DoD-level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -3847,11 +3847,11 @@
           "title": "The Juniper EX switch must be configured to generate audit records when successful/unsuccessful logon attempts occur.",
           "description": "<VulnDiscussion>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -3886,11 +3886,11 @@
           "title": "The Juniper EX switch must be configured to generate audit records for privileged activities or other system-level access.",
           "description": "<VulnDiscussion>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -3925,11 +3925,11 @@
           "title": "The Juniper EX switch must be configured to generate audit records showing starting and ending time for administrator access to the system.",
           "description": "<VulnDiscussion>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -3964,11 +3964,11 @@
           "title": "The Juniper EX switch must be configured to generate audit records when concurrent logons from different workstations occur.",
           "description": "<VulnDiscussion>Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -4003,11 +4003,11 @@
           "title": "The Juniper EX switch must be configured to offload audit records onto a different system or media than the system being audited.",
           "description": "<VulnDiscussion>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOffloading is a common process in information systems with limited audit storage capacity. Archiving is not required unless space is limited in the audit server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-001851",
@@ -4042,11 +4042,11 @@
           "title": "The Juniper EX switch must be configured to generate log records for a locally developed list of auditable events.",
           "description": "<VulnDiscussion>Auditing and logging are key components of any security architecture. Logging the actions of specific events provides a means to investigate an attack; to recognize resource utilization or capacity thresholds; or to identify an improperly configured network device. If auditing is not comprehensive, it will not be useful for intrusion monitoring, security investigations, and forensic analysis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4087,11 +4087,11 @@
           "title": "The Juniper EX switch must be configured to enforce access restrictions associated with changes to the system components.",
           "description": "<VulnDiscussion>Changes to the hardware or software components of the network device can have significant effects on the overall security of the network. Therefore, only qualified and authorized individuals should be allowed administrative access to the network device for implementing any changes or upgrades. This requirement applies to updates of the application files, configuration, firewall filters, and policy filters.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4132,11 +4132,11 @@
           "title": "The Juniper EX switch must be configured to use an authentication server for the purpose of authenticating users prior to granting administrative access.",
           "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4229,11 +4229,11 @@
           "title": "The Juniper EX switch must be configured to conduct backups of system level information contained in the information system when changes occur.",
           "description": "<VulnDiscussion>System-level information includes default and customized settings and security attributes, including firewall filters that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial-of-service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4274,11 +4274,11 @@
           "title": "The Juniper EX switch must be configured to obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
           "description": "<VulnDiscussion>For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4319,11 +4319,11 @@
           "title": "The Juniper EX switch must be configured to send log data to at least two central log servers for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO).",
           "description": "<VulnDiscussion>The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. Information stored in one location is vulnerable to accidental or incidental deletion or alteration.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4364,11 +4364,11 @@
           "title": "The Juniper EX switch must be configured with an operating system release that is currently supported by the vendor.",
           "description": "<VulnDiscussion>Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -4403,11 +4403,11 @@
           "title": "The Juniper EX switch must change credentials for account of last resort when administrators who know the credential leave the organization.",
           "description": "<VulnDiscussion>A shared/group account credential is a shared form of authentication that allows multiple individuals to access the network device using a single account. If shared/group account credentials are not terminated when individuals leave the group, the user that left the group can still gain access even though they are no longer authorized. There may also be instances when specific user actions need to be performed on the network device without unique administrator identification or authentication. Examples of credentials include passwords and group membership certificates.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": [
             {
@@ -4448,11 +4448,11 @@
           "title": "The Juniper EX switch must prevent nonprivileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.",
           "description": "<VulnDiscussion>Preventing nonprivileged users from executing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges. \n\nPrivileged functions include, for example, establishing accounts, performing system integrity checks, or administering cryptographic key management activities. Nonprivileged users are individuals that do not possess appropriate authorizations.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Juniper EX Series Switches NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Juniper EX Series Switches NDM",
-            "identifier": "5477"
+            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Juniper EX Series Switches NDM",
+            "dc:identifier": "5477"
           },
           "ident": {
             "+content": "CCI-002235",

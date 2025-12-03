@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS BMC IOA for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -377,11 +377,11 @@
           "title": "BMC IOA security exits are not installed or configured properly.",
           "description": "<VulnDiscussion>The BMC IOA security exits enable access authorization checking to BMC IOA commands, features, and online functionality. If these exit(s) is (are) not in place, activities by unauthorized users may result. BMC IOA security exit(s) interface with the ACP. If an unauthorized exit was introduced into the operating environment, system security could be weakened or bypassed. These exposures may result in the compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -419,18 +419,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224244r1070026_rule",
+          "+@id": "SV-224244r1141526_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA000",
-          "title": "BMC IOA installation data sets will be properly protected.",
-          "description": "<VulnDiscussion>BMC IOA installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC IOA installation datasets will be properly protected.",
+          "description": "<VulnDiscussion>BMC IOA installation datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -451,19 +451,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA installation data sets are limited to systems programmers only. READ access can be given to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.IOA.*.IOAI.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nIOA.-.IOAI.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nIOA.-.IOAI.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nIOA.-.IOAI.- UID(<audtaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(<bmcuser>) R(A) E(A)\nIOA.-.IOAI.- UID(<operaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(<pcspaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(BMC STCs) R(A) E(A)",
-            "+@fixref": "F-25905r1070025_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA installation datasets is limited to systems programmers only. READ access can be given to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS2.IOA.*.IOAI\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nIOA.-.IOAI.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nIOA.-.IOAI.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nIOA.-.IOAI.- UID(<audtaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(<bmcuser>) R(A) E(A)\nIOA.-.IOAI.- UID(<operaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(<pcspaudt>) R(A) E(A)\nIOA.-.IOAI.- UID(BMC STCs) R(A) E(A)",
+            "+@fixref": "F-25905r1141525_fix"
           },
           "fix": {
-            "+@id": "F-25905r1070025_fix"
+            "+@id": "F-25905r1141525_fix"
           },
           "check": {
-            "+@system": "C-25917r1070024_chk",
+            "+@system": "C-25917r1141524_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(IOARPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0000)\n\nVerify that the accesses to the BMC IOA installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 data set access authorizations restrict READ access to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users.\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(IOARPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZIOA0000).\n\nVerify that the accesses to the BMC IOA installation datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset access authorizations restrict READ access to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access is logged."
           }
         }
       },
@@ -472,18 +472,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224245r987813_rule",
+          "+@id": "SV-224245r1141529_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA001",
-          "title": "BMC IOA STC data sets must be properly protected.",
-          "description": "<VulnDiscussion>BMC IOA STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC IOA STC datasets must be properly protected.",
+          "description": "<VulnDiscussion>BMC IOA STC datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -500,19 +500,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that WRITE and/or greater access to BMC IOA STC data sets are limited to systems programmers only. UPDATE access can be given to BMC STCs, batch users and BMC administrators. READ access can be given to auditors and BMC users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged.\n\nThe installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \n\nSYS3.IOA.*.IOAO.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS3)\nIOA.-.IOAO.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAO.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAO.- UID(BMC STCs) R(A) W(A) E(A)\nIOA.-.IOAO.- UID(<bmcadmin>)R(A) W(A) E(A)\nIOA.-.IOAO.- UID(<audtaudt>)R(A) E(A)   \nIOA.-.IOAO.- UID(<bmcuser>) R(A) E(A)",
-            "+@fixref": "F-25906r868170_fix"
+            "+content": "Ensure that WRITE and/or greater access to BMC IOA STC datasets is limited to systems programmers only. UPDATE access can be given to BMC STCs, batch users, and BMC administrators. READ access can be given to auditors and BMC users.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged.\n\nThe installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS3.IOA.*.IOAO\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS3)\nIOA.-.IOAO.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAO.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAO.- UID(BMC STCs) R(A) W(A) E(A)\nIOA.-.IOAO.- UID(<bmcadmin>)R(A) W(A) E(A)\nIOA.-.IOAO.- UID(<audtaudt>)R(A) E(A)   \nIOA.-.IOAO.- UID(<bmcuser>) R(A) E(A)",
+            "+@fixref": "F-25906r1141528_fix"
           },
           "fix": {
-            "+@id": "F-25906r868170_fix"
+            "+@id": "F-25906r1141528_fix"
           },
           "check": {
-            "+@system": "C-25918r868169_chk",
+            "+@system": "C-25918r1141527_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(IOASTC)\n\nAutomated Analysis\n\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0001)\n\nVerify that the accesses to the BMC IOA STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The ACF2 data set access authorizations restrict READ access to auditors and BMC users\n\n___ The ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The ACF2 data set access authorizations restrict UPDATE access to the BMC STCs, batch users and BMC administrators."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(IOASTC).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZIOA0001).\n\nVerify that the accesses to the BMC IOA STC datasets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe ACF2 dataset access authorizations restrict READ access to auditors and BMC users\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict UPDATE access to the BMC STCs, batch users, and BMC administrators."
           }
         }
       },
@@ -521,18 +521,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224246r1070029_rule",
+          "+@id": "SV-224246r1141532_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA002",
-          "title": "BMC IOA User data sets will be properly protected.",
-          "description": "<VulnDiscussion>BMC IOA User data sets, IOA Core and Repository, have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "BMC IOA User datasets will be properly protected.",
+          "description": "<VulnDiscussion>BMC IOA User datasets, IOA Core and Repository, have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -549,19 +549,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA User data sets are limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to production control and scheduling personnel and the BMC users. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented  will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.IOAC.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS3)\nIOA.-.IOAC.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(BMC STCs) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(<bmcuser>) R(A) W(A) E(A)\nIOA.-.IOAC.- UID(<pcspaudt>) R(A) W(A) E(A)\nIOA.-.IOAC.- UID(<audtaudt>) R(A) E(A)",
-            "+@fixref": "F-25907r1070028_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA User datasets is limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to production control and scheduling personnel and the BMC users. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented  will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS3.IOA.*.IOAC\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS3)\nIOA.-.IOAC.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(BMC STCs) R(A) W(A) A(A) E(A)\nIOA.-.IOAC.- UID(<bmcuser>) R(A) W(A) E(A)\nIOA.-.IOAC.- UID(<pcspaudt>) R(A) W(A) E(A)\nIOA.-.IOAC.- UID(<audtaudt>) R(A) E(A)",
+            "+@fixref": "F-25907r1141531_fix"
           },
           "fix": {
-            "+@id": "F-25907r1070028_fix"
+            "+@id": "F-25907r1141531_fix"
           },
           "check": {
-            "+@system": "C-25919r1070027_chk",
+            "+@system": "C-25919r1141530_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(IOAUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0002)\n\nVerify that the accesses to the BMC IOA User data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe ACF2 data set access authorizations restricts READ access to auditors.\n\nThe ACF2 data set access authorizations restricts WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set access authorizations restricts WRITE and/or greater access to the BMC STCs and/or batch users.\n\nThe ACF2 data set access authorizations restricts UPDATE access to production control and scheduling personnel and the BMC users."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(IOAUSER).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZIOA0002).\n\nVerify that the accesses to the BMC IOA User datasets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe ACF2 dataset access authorizations restrict READ access to auditors.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to the BMC STCs and/or batch users.\n\nThe ACF2 dataset access authorizations restrict UPDATE access to production control and scheduling personnel and the BMC users."
           }
         }
       },
@@ -570,18 +570,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224247r1069987_rule",
+          "+@id": "SV-224247r1141535_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA020",
           "title": "BMC IOA resources will be properly defined and protected.",
-          "description": "<VulnDiscussion>BMC IOA can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to system programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>BMC IOA can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -602,19 +602,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class.\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC IOA Resources and BMC INCONTROL Resources Descriptions tables in the z/OS STIG Addendum. These tables list the resources, descriptions, and access and logging requirements. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$key($$addcnd) type(ioa)\n- uid(<autoaudt>) allow\n- uid(<operaudt>) allow\n- uid(<pcspaudt>) allow\n- uid(<prodaudt>) allow\n- uid(<syspaudt>) allow\n- uid(*) prevent",
-            "+@fixref": "F-25908r1069986_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class.\n\n(Note: The resource class, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource class, resources, and/or resource prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nUse BMC IOA Resources and BMC INCONTROL Resources Descriptions tables in the z/OS STIG Addendum. These tables list the resources, descriptions, and access and logging requirements. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$key($$addcnd) type(ioa)\n- uid(<autoaudt>) allow\n- uid(<operaudt>) allow\n- uid(<pcspaudt>) allow\n- uid(<prodaudt>) allow\n- uid(<syspaudt>) allow\n- uid(*) prevent",
+            "+@fixref": "F-25908r1141534_fix"
           },
           "fix": {
-            "+@id": "F-25908r1069986_fix"
+            "+@id": "F-25908r1141534_fix"
           },
           "check": {
-            "+@system": "C-25920r1069985_chk",
+            "+@system": "C-25920r1141533_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZIOA0020)\n-\tACF2CMDS.RPT(RESOURCE) - Alternate report\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC IOA Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel.\n\nThe ACF2 resource logging requirements are specified."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(ZIOA0020).\n- ACF2CMDS.RPT(RESOURCE) - Alternate report.\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZIOA0020).\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC IOA Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel.\n\nThe ACF2 resource logging requirements are specified."
           }
         }
       },
@@ -623,18 +623,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224248r958482_rule",
+          "+@id": "SV-224248r1144183_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA030",
           "title": "BMC IOA Started Task name must be properly identified and defined to the system ACP.",
-          "description": "<VulnDiscussion>BMC IOA requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>BMC IOA requires a started task that will be restricted to certain resources, datasets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -651,19 +651,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the BMC IOA Started Task(s) is (are) properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nSET LID\nCHANGE IOAGATE STC MUSASS NO-SMC",
-            "+@fixref": "F-25909r518903_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the BMC IOA Started Task(s) is (are) properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nSET LID\nCHANGE IOAGATE STC MUSASS NO-SMC",
+            "+@fixref": "F-25909r1141537_fix"
           },
           "fix": {
-            "+@id": "F-25909r518903_fix"
+            "+@id": "F-25909r1141537_fix"
           },
           "check": {
-            "+@system": "C-25921r518902_chk",
+            "+@system": "C-25921r1141536_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ATTSTC)\n\nVerify that the logonid(s) for the BMC IOA started task(s) is (are) properly defined.  If the following attributes are defined, this is not a finding.\n\nSTC\nMUSASS\nNO-SMC"
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC).\n\nVerify that the logonid(s) for the BMC IOA started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nSTC\nMUSASS\nNO-SMC"
           }
         }
       },
@@ -672,18 +672,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224249r1069978_rule",
+          "+@id": "SV-224249r1141540_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAA040",
           "title": "BMC IOA configuration/parameter values are not specified properly.",
           "description": "<VulnDiscussion>BMC IOA configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for ACF2",
-            "identifier": "4108"
+            "dc:title": "DPMS Target zOS BMC IOA for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for ACF2",
+            "dc:identifier": "4108"
           },
           "ident": [
             {
@@ -707,12 +707,12 @@
             "+@id": "F-25910r1069977_fix"
           },
           "check": {
-            "+@system": "C-25922r518905_chk",
+            "+@system": "C-25922r1141539_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following applicable reports produced by the z/OS Data Collection:\n\n-\tIOA.RPT(SECPARM)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZIOA0040)\n\nThe following keywords will have the specified values in the BMC IOA security parameter member:\n\nKeyword\tValue\nDEFMCHKI\t$$IOAEDM\nSECTOLI\tNO\nDFMI06\tEXTEND\nDFMI07\tEXTEND\nDFMI09\tEXTEND\nDFMI12\tEXTEND\nDFMI16\tEXTEND\nDFMI32\tEXTEND\nDFMI40\tEXTEND\nDFMI42\tEXTEND\nIOACLASS\tIOAFAC\nSAFSCLAS\tSURROGAT\nIOATCBS\tYES"
+            "check-content": "Refer to the following applicable reports produced by the z/OS Data Collection:\n\n- IOA.RPT(SECPARM).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZIOA0040).\n\nThe following keywords will have the specified values in the BMC IOA security parameter member. This is not a finding.\n\nKeyword\tValue\nDEFMCHKI\t$$IOAEDM\nSECTOLI\tNO\nDFMI06\tEXTEND\nDFMI07\tEXTEND\nDFMI09\tEXTEND\nDFMI12\tEXTEND\nDFMI16\tEXTEND\nDFMI32\tEXTEND\nDFMI40\tEXTEND\nDFMI42\tEXTEND\nIOACLASS\tIOAFAC\nSAFSCLAS\tSURROGAT\nIOATCBS\tYES"
           }
         }
       }

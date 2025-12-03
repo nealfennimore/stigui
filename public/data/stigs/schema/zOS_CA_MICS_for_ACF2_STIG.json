@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-09-23"
     },
     "title": "z/OS CA MICS for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -190,18 +190,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224270r1070032_rule",
+          "+@id": "SV-224270r1141561_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMICA000",
-          "title": "CA MICS Resource Management installation data sets must be properly protected.",
-          "description": "<VulnDiscussion>CA MICS Resource Management installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "CA MICS Resource Management installation datasets must be properly protected.",
+          "description": "<VulnDiscussion>CA MICS Resource Management installation datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MICS for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MICS for ACF2",
-            "identifier": "4114"
+            "dc:title": "DPMS Target zOS CA MICS for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MICS for ACF2",
+            "dc:identifier": "4114"
           },
           "ident": [
             {
@@ -222,19 +222,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure WRITE and/or greater access to CA MICS Resource Management installation data sets is limited to systems programmers and MICS administrators. READ access can be given to all authorized users (e.g., auditors, security administrators, and MICS end users). All failures and successful WRITE and/or greater accesses are logged.  \n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.MICS.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nMICS.- UID(syspaudt) R(A) W(L) A(L) E(A)\nMICS.- UID(tstcaudt) R(A) W(L) A(L) E(A)\nMICS.- UID(micsadm) R(A) W(L) A(L) E(A)\nMICS.- UID(audtaudt) R(A) E(A)\nMICS.- UID(micsuser) R(A) E(A)\nMICS.- UID(secaaudt) R(A) E(A)",
-            "+@fixref": "F-25931r1070031_fix"
+            "+content": "The ISSO will ensure WRITE and/or greater access to CA MICS Resource Management installation datasets is limited to systems programmers and MICS administrators. READ access can be given to all authorized users (e.g., auditors, security administrators, and MICS end users). All failures and successful WRITE and/or greater accesses are logged. \n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be: \nSYS2.MICS\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nMICS.- UID(syspaudt) R(A) W(L) A(L) E(A)\nMICS.- UID(tstcaudt) R(A) W(L) A(L) E(A)\nMICS.- UID(micsadm) R(A) W(L) A(L) E(A)\nMICS.- UID(audtaudt) R(A) E(A)\nMICS.- UID(micsuser) R(A) E(A)\nMICS.- UID(secaaudt) R(A) E(A)",
+            "+@fixref": "F-25931r1141560_fix"
           },
           "fix": {
-            "+@id": "F-25931r1070031_fix"
+            "+@id": "F-25931r1141560_fix"
           },
           "check": {
-            "+@system": "C-25943r1070030_chk",
+            "+@system": "C-25943r1141559_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MICS_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MICSRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIC0000)\n\nVerify that the accesses to the CA MICS Resource Management installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 data set access authorizations restrict READ access to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to MICS administrators.\n\nThe ACF2 data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater accesses are logged."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(MICSRPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZMIC0000).\n\nVerify that the accesses to the CA MICS Resource Management installation datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset access authorizations restrict READ access to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to MICS administrators.\n\nThe ACF2 dataset access authorizations specify that all (i.e., failures and successes) WRITE and/or greater accesses are logged."
           }
         }
       },
@@ -243,18 +243,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224271r1070035_rule",
+          "+@id": "SV-224271r1141564_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMICA002",
-          "title": "CA MICS Resource Management User data sets must be properly protected.",
-          "description": "<VulnDiscussion>CA MICS Resource Management User datasets contain sensitive data obtained through the MICS data collection process. Failure to properly identify and restrict access to these data sets could result in unauthorized access to sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "CA MICS Resource Management User datasets must be properly protected.",
+          "description": "<VulnDiscussion>CA MICS Resource Management User datasets contain sensitive data obtained through the MICS data collection process. Failure to properly identify and restrict access to these datasets could result in unauthorized access to sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MICS for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MICS for ACF2",
-            "identifier": "4114"
+            "dc:title": "DPMS Target zOS CA MICS for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MICS for ACF2",
+            "dc:identifier": "4114"
           },
           "ident": [
             {
@@ -271,19 +271,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure WRITE and/or greater access to CA MICS Resource Management User data sets is limited to SMF Batch user(s), MICS Administrators, and systems programming personnel. READ access can be given to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be (additional data sets may be required):\nSYS2.MICS.DATA.\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nMICS.DATA.- UID(syspaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(tstcaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(micsadm) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(smfbaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(audtaudt) R(A) E(A)\nMICS.DATA.- UID(micsuser) R(A) E(A)\nMICS.DATA.- UID(secaaudt) R(A) E(A)",
-            "+@fixref": "F-25932r1070034_fix"
+            "+content": "The ISSO will ensure WRITE and/or greater access to CA MICS Resource Management User datasets is limited to SMF Batch user(s), MICS Administrators, and systems programming personnel. READ access can be given to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The datasets and/or dataset prefixes identified below are examples of a possible installation. The actual datasets and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nDatasets to be protected will be (additional datasets may be required):\nSYS2.MICS.DATA\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nMICS.DATA.- UID(syspaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(tstcaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(micsadm) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(smfbaudt) R(A) W(A) A(A) E(A)\nMICS.DATA.- UID(audtaudt) R(A) E(A)\nMICS.DATA.- UID(micsuser) R(A) E(A)\nMICS.DATA.- UID(secaaudt) R(A) E(A)",
+            "+@fixref": "F-25932r1141563_fix"
           },
           "fix": {
-            "+@id": "F-25932r1070034_fix"
+            "+@id": "F-25932r1141563_fix"
           },
           "check": {
-            "+@system": "C-25944r1070033_chk",
+            "+@system": "C-25944r1141562_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MICS_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MICSUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIC0002)\n\nVerify that the accesses to the CA MICS Resource Management User data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 data set access authorizations restrict READ access to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 data set access authorizations restrict WRITE and/or greater access to SMF Batch user(s) and MICS Administrators."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(MICSUSER).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZMIC0002).\n\nVerify that the accesses to the CA MICS Resource Management User datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset access authorizations restrict READ access to all authorized users (e.g., auditors, security administrators, and MICS end users).\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset access authorizations restrict WRITE and/or greater access to SMF Batch user(s) and MICS Administrators."
           }
         }
       }
