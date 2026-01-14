@@ -106,11 +106,16 @@ export interface IdentElement {
 }
 
 export interface RuleReference {
-    'dc:title': Title;
-    'dc:publisher': Publisher;
-    'dc:type': Type;
-    'dc:subject': Subject;
-    'dc:identifier': string;
+    'dc:title'?: Title;
+    'dc:publisher'?: Publisher;
+    'dc:type'?: Type;
+    'dc:subject'?: Subject;
+    'dc:identifier'?: string;
+    title?: Title;
+    publisher?: Publisher;
+    type?: Type;
+    subject?: Subject;
+    identifier?: string;
 }
 
 export type Publisher = string;
@@ -496,15 +501,36 @@ const typeMap: any = {
     ),
     RuleReference: o(
         [
-            { json: 'dc:title', js: 'dc:title', typ: r('Title') },
+            { json: 'dc:title', js: 'dc:title', typ: u(undefined, r('Title')) },
             {
                 json: 'dc:publisher',
                 js: 'dc:publisher',
                 typ: u(undefined, r('Publisher')),
             },
-            { json: 'dc:type', js: 'dc:type', typ: r('Type') },
-            { json: 'dc:subject', js: 'dc:subject', typ: r('Subject') },
-            { json: 'dc:identifier', js: 'dc:identifier', typ: '' },
+            { json: 'dc:type', js: 'dc:type', typ: u(undefined, r('Type')) },
+            {
+                json: 'dc:subject',
+                js: 'dc:subject',
+                typ: u(undefined, r('Subject')),
+            },
+            {
+                json: 'dc:identifier',
+                js: 'dc:identifier',
+                typ: u(undefined, ''),
+            },
+            { json: 'title', js: 'title', typ: u(undefined, r('Title')) },
+            {
+                json: 'publisher',
+                js: 'publisher',
+                typ: u(undefined, r('Publisher')),
+            },
+            { json: 'type', js: 'type', typ: u(undefined, r('Type')) },
+            {
+                json: 'subject',
+                js: 'subject',
+                typ: u(undefined, r('Subject')),
+            },
+            { json: 'identifier', js: 'identifier', typ: u(undefined, '') },
         ],
         false
     ),
