@@ -205,7 +205,7 @@ function prettyTypeName(typ: any): string {
                 })
                 .join(', ')}]`;
         }
-    } else if (typeof typ === 'object' && typ.literal !== undefined) {
+    } else if (typeof typ === 'object' && typ?.literal !== undefined) {
         return typ.literal;
     } else {
         return typeof typ;

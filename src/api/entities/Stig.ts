@@ -177,7 +177,7 @@ export class StigWrapper {
     }
 
     get publisher() {
-        return this._stig.Benchmark.reference.publisher;
+        return this._stig.Benchmark?.reference?.['dc:publisher'];
     }
 
     get tags() {

@@ -136,7 +136,8 @@ export default class Checklist extends Convert {
                     }
                     return acc;
                 }, [] as string[]),
-                reference_identifier: group.Rule.reference.identifier,
+                reference_identifier:
+                    group.Rule.reference?.['dc:identifier'] || '',
                 uuid: uuidv4(),
                 stig_uuid: stigId,
                 status: Status.NotReviewed,
@@ -162,7 +163,8 @@ export default class Checklist extends Convert {
                 ] || '',
             version: stig.Benchmark.version,
             uuid: stigId,
-            reference_identifier: groups[0].Rule.reference.identifier,
+            reference_identifier:
+                groups[0].Rule.reference?.['dc:identifier'] || '',
             size: rules.length,
             rules,
         };

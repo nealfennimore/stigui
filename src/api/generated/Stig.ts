@@ -34,7 +34,7 @@ export interface Benchmark {
     'plain-text': PlainText[] | PlainText;
     version: string;
     Profile: Profile[];
-    Group: Group[] | Group;
+    Group: Group[];
 }
 
 export interface Profile {
@@ -63,6 +63,7 @@ export interface Rule {
     fixtext: Fixtext;
     fix: Fix;
     check: Check;
+    // "check-content": string;
 }
 
 export enum Severity {
@@ -74,7 +75,8 @@ export enum Severity {
 
 export interface Check {
     '+@system': string;
-    'check-content-ref': CheckContentRef;
+    'check-content-ref'?: CheckContentRef | null;
+
     'check-content': string;
 }
 
@@ -104,11 +106,11 @@ export interface IdentElement {
 }
 
 export interface RuleReference {
-    title: Title;
-    publisher: Publisher;
-    type: Type;
-    subject: Subject;
-    identifier: string;
+    'dc:title': Title;
+    'dc:publisher': Publisher;
+    'dc:type': Type;
+    'dc:subject': Subject;
+    'dc:identifier': string;
 }
 
 export type Publisher = string;
@@ -140,8 +142,12 @@ export interface PlainText {
 
 export interface BenchmarkReference {
     '+@href': Href | undefined;
-    publisher: Publisher | null;
-    source: string;
+    'dc:publisher': Publisher | null | undefined;
+    // @deprecate
+    publisher: Publisher | null | undefined;
+    'dc:source': string | undefined;
+    // @deprecate
+    source: string | undefined;
 }
 
 export interface Status {
@@ -183,7 +189,7 @@ function prettyTypeName(typ: any): string {
                 })
                 .join(', ')}]`;
         }
-    } else if (typeof typ === 'object' && typ.literal !== undefined) {
+    } else if (typeof typ === 'object' && typ?.literal !== undefined) {
         return typ.literal;
     } else {
         return typeof typ;
@@ -408,7 +414,7 @@ const typeMap: any = {
             },
             { json: 'version', js: 'version', typ: '' },
             { json: 'Profile', js: 'Profile', typ: a(r('Profile')) },
-            { json: 'Group', js: 'Group', typ: u(r('Group'), a(r('Group'))) },
+            { json: 'Group', js: 'Group', typ: a(r('Group')) },
         ],
         false
     ),
@@ -460,7 +466,7 @@ const typeMap: any = {
             {
                 json: 'check-content-ref',
                 js: 'check-content-ref',
-                typ: r('CheckContentRef'),
+                typ: u(undefined, null, r('CheckContentRef')),
             },
             { json: 'check-content', js: 'check-content', typ: '' },
         ],
@@ -490,15 +496,15 @@ const typeMap: any = {
     ),
     RuleReference: o(
         [
-            { json: 'title', js: 'title', typ: r('Title') },
+            { json: 'dc:title', js: 'dc:title', typ: r('Title') },
             {
-                json: 'publisher',
-                js: 'publisher',
+                json: 'dc:publisher',
+                js: 'dc:publisher',
                 typ: u(undefined, r('Publisher')),
             },
-            { json: 'type', js: 'type', typ: r('Type') },
-            { json: 'subject', js: 'subject', typ: r('Subject') },
-            { json: 'identifier', js: 'identifier', typ: '' },
+            { json: 'dc:type', js: 'dc:type', typ: r('Type') },
+            { json: 'dc:subject', js: 'dc:subject', typ: r('Subject') },
+            { json: 'dc:identifier', js: 'dc:identifier', typ: '' },
         ],
         false
     ),
@@ -528,11 +534,17 @@ const typeMap: any = {
         [
             { json: '+@href', js: '+@href', typ: u(undefined, r('Href')) },
             {
+                json: 'dc:publisher',
+                js: 'dc:publisher',
+                typ: u(undefined, null, r('Publisher')),
+            },
+            { json: 'dc:source', js: 'dc:source', typ: u(undefined, '') },
+            {
                 json: 'publisher',
                 js: 'publisher',
-                typ: u(null, r('Publisher')),
+                typ: u(undefined, null, r('Publisher')),
             },
-            { json: 'source', js: 'source', typ: '' },
+            { json: 'source', js: 'source', typ: u(undefined, '') },
         ],
         false
     ),
