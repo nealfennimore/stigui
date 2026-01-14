@@ -13,9 +13,9 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-26"
     },
-    "title": "zOS Websphere Application Server for ACF2 Security Technical Implementation Guide",
+    "title": "zOS WebSphere Application Server for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -298,18 +298,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224349r1041269_rule",
+          "+@id": "SV-224349r1141669_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWAS0010",
-          "title": "MVS data sets for the WebSphere Application Server are not protected in accordance with the proper security requirements.",
-          "description": "<VulnDiscussion>MVS data sets provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment. Failure to properly protect these data sets may lead to unauthorized access. This exposure could compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MVS datasets for the WebSphere Application Server are not protected in accordance with the proper security requirements.",
+          "description": "<VulnDiscussion>MVS datasets provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment. Failure to properly protect these datasets may lead to unauthorized access. This exposure could compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS Websphere Application Server for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS Websphere Application Server for ACF2",
-            "identifier": "4132"
+            "dc:title": "DPMS Target zOS WebSphere Application Server for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS WebSphere Application Server for ACF2",
+            "dc:identifier": "4132"
           },
           "ident": [
             {
@@ -326,19 +326,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WebSphere server data sets restrict UPDATE and/or ALTER access to systems programming personnel.\n\nEnsure the following data set controls are in effect for WAS:\n \n1) UPDATE and ALTER access to HTTP product data sets (i.e., SYS1.IMW.AIMW** and SYS1.IMW.SIMW**) are restricted to systems programming personnel.\n\nNOTE: If the HTTP server is not used with WAS, this check can be ignored.\n\n2) UPDATE and ALTER access to WAS product data sets and associated product data sets are restricted to systems programming personnel.\n\nSYS*.EJS.V3500108.** (WebSphere 3.5)\nSYS*.WAS.V401.** (WebSphere 4.0.1)\nSYS*.OE.** (Java)\nSYS*.JAVA** (Java)\nSYS*.DB2.V710107.** (DB2)\nSYS*.GLD.** (LDAP)\nSYS1.LE.** (Language Environment)",
-            "+@fixref": "F-26014r1041268_fix"
+            "+content": "The ISSO will ensure that WebSphere server datasets restrict WRITE and/or greater access to systems programming personnel.\n\nEnsure the following dataset controls are in effect for WAS:\n \nWRITE and/or greater access to HTTP product datasets (i.e., SYS1.IMW.AIMW** and SYS1.IMW.SIMW**) are restricted to systems programming personnel.\n\nNote: If the HTTP server is not used with WAS, this check can be ignored.\n\nWRITE and/or greater access to WAS product datasets and associated product datasets are restricted to systems programming personnel.\n\nSYS*.EJS.V3500108.** (WebSphere 3.5)\nSYS*.WAS.V401.** (WebSphere 4.0.1)\nSYS*.OE.** (Java)\nSYS*.JAVA** (Java)\nSYS*.DB2.V710107.** (DB2)\nSYS*.GLD.** (LDAP)\nSYS1.LE.** (Language Environment)",
+            "+@fixref": "F-26014r1141668_fix"
           },
           "fix": {
-            "+@id": "F-26014r1041268_fix"
+            "+@id": "F-26014r1141668_fix"
           },
           "check": {
-            "+@system": "C-26026r1041267_chk",
+            "+@system": "C-26026r1141667_chk",
             "check-content-ref": {
-              "+@href": "zOS_Websphere_Application_Server_for_ACF2_STIG.xml",
+              "+@href": "zOS_WebSphere_Application_Server_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following reports produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(HTTPRPT)\n- SENSITVE.RPT(WASRPT)\n\nb) Ensure the following data set controls are in effect for WAS:\n\n___ The ACP data set rules restrict UPDATE and ALTER access to HTTP product data sets (i.e., SYS1.IMW.AIMW** and SYS1.IMW.SIMW**) is restricted to systems programming personnel.\n\nNOTE: If the HTTP server is not used with WAS, this check can be ignored.\n\n___ The ACP data set rules restrict UPDATE and ALTER access to WAS product data sets and associated product data sets are restricted to systems programming personnel.\n\nSYS*.EJS.V3500108.** (WebSphere 3.5)\nSYS*.WAS.V401.** (WebSphere 4.0.1)\nSYS*.OE.** (Java)\nSYS*.JAVA** (Java)\nSYS*.DB2.V710107.** (DB2)\nSYS*.GLD.** (LDAP)\nSYS1.LE.** (Language Environment)\n\nc) If all of the items in (b) are true, there is no finding.\n\nd) If any item in (b) is untrue, this is a finding."
+            "check-content": "Refer to the following reports produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(HTTPRPT).\n- SENSITVE.RPT(WASRPT).\n\nIf the following dataset controls are in effect for WAS, this is not a finding.\n\nThe ACP dataset rules restrict WRITE and/or greater access to HTTP product datasets (i.e., SYS1.IMW.AIMW** and SYS1.IMW.SIMW**) is restricted to systems programming personnel.\n\nNote: If the HTTP server is not used with WAS, this check can be ignored.\n\nThe ACP dataset rules restrict WRITE and/or greater access to WAS product datasets and associated product datasets are restricted to systems programming personnel.\n\nSYS*.EJS.V3500108.** (WebSphere 3.5)\nSYS*.WAS.V401.** (WebSphere 4.0.1)\nSYS*.OE.** (Java)\nSYS*.JAVA** (Java)\nSYS*.DB2.V710107.** (DB2)\nSYS*.GLD.** (LDAP)\nSYS1.LE.** (Language Environment)"
           }
         }
       },
@@ -347,18 +347,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224350r1029512_rule",
+          "+@id": "SV-224350r1141672_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWAS0020",
           "title": "HFS objects for the WebSphere Application Server are not protected in accordance with the proper security requirements.",
-          "description": "<VulnDiscussion>HFS directories and files provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment.  Many of these objects are responsible for the security implementation of WAS.  Failure to properly protect these directories and files may lead to unauthorized access.  This exposure could potentially compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>HFS directories and files provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment. Many of these objects are responsible for the security implementation of WAS. Failure to properly protect these directories and files may lead to unauthorized access. This exposure could compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS Websphere Application Server for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS Websphere Application Server for ACF2",
-            "identifier": "4132"
+            "dc:title": "DPMS Target zOS WebSphere Application Server for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS WebSphere Application Server for ACF2",
+            "dc:identifier": "4132"
           },
           "ident": [
             {
@@ -379,19 +379,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Review the UNIX permission bits, user audit bits, and ownership settings on the HFS directories and files for the products required to support the WAS environment.  \n\nEnsure the HFS permission bits, user audit bits, owner, and group for each directory and file match the specified settings listed in the HFS Permissions Bits table located in the zOS STIG Addendum.",
-            "+@fixref": "F-26015r520935_fix"
+            "+content": "Review the UNIX permission bits, user audit bits, and ownership settings on the HFS directories and files for the products required to support the WAS environment. \n\nVerify the HFS permission bits, user audit bits, owner, and group for each directory and file match the specified settings listed in the HFS Permissions Bits table located in the zOS STIG Addendum.",
+            "+@fixref": "F-26015r1141671_fix"
           },
           "fix": {
-            "+@id": "F-26015r520935_fix"
+            "+@id": "F-26015r1141671_fix"
           },
           "check": {
-            "+@system": "C-26027r1029512_chk",
+            "+@system": "C-26027r1141670_chk",
             "check-content-ref": {
-              "+@href": "zOS_Websphere_Application_Server_for_ACF2_STIG.xml",
+              "+@href": "zOS_WebSphere_Application_Server_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following reports produced by the UNIX System Services Data Collection:\n\n-\tUSSCMDS.RPT(IHSHFSOB)\n-\tUSSCMDS.RPT(WASHFSOB)\n\nFor each IBM HTTP server, supply the following information: (PDS member name - IHSACCTS)\n\n-\tWeb server ID defined to the ACP\n-\tWeb server administration group defined to the ACP\n-\tWeb server standard HFS directory\n\nb)\tThe following notes apply to the requirements specified in the HFS Permission Bits table in the z/OS STIG Addendum:\n\n-\tIf an owner field indicates UID(0) user, any system ID with a UID(0) specification is acceptable.\n-\tWhere an owner field indicates websrv1, the ID of the web server is intended.\n-\tWhere a group field indicates webadmg1, the ID of a local web server administration group is intended.  IMWEB is not a valid local group.\n-\tThe site is free to set the permission and audit bit settings to be more restrictive than the documented values.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7\trwx\t\t(least restrictive)\n6\trw-\n3\t-wx\n2\t-w-\n5\tr-x\n4\tr--\n1\t--x\n0\t---\t\t(most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf\tlog for failed access attempts\na\tlog for failed and successful access\n-\tno auditing\n\nc)\tIf all of the items in (b) are true, there is NO FINDING.\n\nd)\tIf any item in (b) is untrue, this is a FINDING."
+            "check-content": "Refer to the following reports produced by the z/OS Data Collection:\n\n- USSCMDS.RPT(IHSHFSOB).\n- USSCMDS.RPT(WASHFSOB).\n\nFor each IBM HTTP server, supply the following information: (PDS member name - IHSACCTS)\n\n- Web server ID defined to the ACP.\n- Web server administration group defined to the ACP.\n- Web server standard HFS directory.\n\nThe following notes apply to the requirements specified in the HFS Permission Bits table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\n- If an owner field indicates UID(0) user, any system ID with a UID(0) specification is acceptable.\n- Where an owner field indicates websrv1, the ID of the web server is intended.\n- Where a group field indicates webadmg1, the ID of a local web server administration group is intended. IMWEB is not a valid local group.\n- The site is free to set the permission and audit bit settings to be more restrictive than the documented values.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7\trwx\t\t(least restrictive)\n6\trw-\n3\t-wx\n2\t-w-\n5\tr-x\n4\tr--\n1\t--x\n0\t---\t\t(most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf\tlog for failed access attempts\na\tlog for failed and successful access\n-\tno auditing"
           }
         }
       },
@@ -400,18 +400,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224351r958472_rule",
+          "+@id": "SV-224351r1141675_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWAS0030",
           "title": "The CBIND Resource(s) for the WebSphere Application Server is(are) not protected in accordance with security requirements.",
-          "description": "<VulnDiscussion>SAF resources provide the ability to control access to functions and services of the WebSphere Application Server (WAS) environment.  Many of these resources provide operational and administrative support for WAS.  Failure to properly protect these resources may lead to unauthorized access.  This exposure could compromise the integrity and availability of application services and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>SAF resources provide the ability to control access to functions and services of the WebSphere Application Server (WAS) environment. Many of these resources provide operational and administrative support for WAS. Failure to properly protect these resources may lead to unauthorized access. This exposure could compromise the integrity and availability of application services and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS Websphere Application Server for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS Websphere Application Server for ACF2",
-            "identifier": "4132"
+            "dc:title": "DPMS Target zOS WebSphere Application Server for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS WebSphere Application Server for ACF2",
+            "dc:identifier": "4132"
           },
           "ident": [
             {
@@ -428,19 +428,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that the CBIND resource is defined to the ACP with an access of none.\n\nEnsure the following items are in effect for CBIND resource protection:\n\nThe CLASMAP record defines the CBIND resource class.\n\nThe CBIND class defaults to a generic type code of SAF.  It is recommended that a GSO CLASMAP record be added to change this to a site selected resource unique to the CBIND class such as CBI.  The following shows how the suggested change example would be coded:\n\nSET CONTROL(GSO)\nINSERT CLASMAP.cbind RESOURCE(CBIND) RSRCTYPE(cbi) -ENTITYLN(41)\n\nThe CB.BIND.server_name resource is defined to the CBIND resource class with a default access of PREVENT.\n\nAccess to the CB.BIND.server_name resource is restricted to WAS server (STC) logonids and systems management logonids (e.g., WebSphere administrator ID).\n\nExample:\n\n$KEY(CB) TYPE(CBI)\nBBOASR1 UID(was_admin_uid) SERVICE(READ) ALLOW\nBIND.BBOASR1 UID(was_admin_uid) SERVICE(READ) ALLOW\nUID(*) PREVENT",
-            "+@fixref": "F-26016r520938_fix"
+            "+content": "The ISSO will ensure that the CBIND resource is defined to the ACP with an access of none.\n\nEnsure the following items are in effect for CBIND resource protection:\n\nThe CLASMAP record defines the CBIND resource class.\n\nThe CBIND class defaults to a generic type code of SAF. It is recommended that a GSO CLASMAP record be added to change this to a site-selected resource unique to the CBIND class such as CBI. The following shows how the suggested change example would be coded:\n\nSET CONTROL(GSO)\nINSERT CLASMAP.cbind RESOURCE(CBIND) RSRCTYPE(cbi) -ENTITYLN(41)\n\nThe CB.BIND.server_name resource is defined to the CBIND resource class with a default access of PREVENT.\n\nAccess to the CB.BIND.server_name resource is restricted to WAS server (STC) logonids and systems management logonids (e.g., WebSphere administrator ID).\n\nExample:\n\n$KEY(CB) TYPE(CBI)\nBBOASR1 UID(was_admin_uid) SERVICE(READ) ALLOW\nBIND.BBOASR1 UID(was_admin_uid) SERVICE(READ) ALLOW\nUID(*) PREVENT",
+            "+@fixref": "F-26016r1141674_fix"
           },
           "fix": {
-            "+@id": "F-26016r520938_fix"
+            "+@id": "F-26016r1141674_fix"
           },
           "check": {
-            "+@system": "C-26028r520937_chk",
+            "+@system": "C-26028r1141673_chk",
             "check-content-ref": {
-              "+@href": "zOS_Websphere_Application_Server_for_ACF2_STIG.xml",
+              "+@href": "zOS_WebSphere_Application_Server_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following reports produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ACFGSO)\n-\tSENSITVE.RPT(CBIND)\n\nb)\tEnsure the following items are in effect for CBIND resource protection:\n\n2)\tThe CLASMAP record defines the CBIND resource class.\n\n3)\tThe CB.BIND.server_name resource is defined to the CBIND resource class with a default access of PREVENT.\n\n4)\tAccess to the CB.BIND.server_name resource is restricted to WAS server (STC) logonids and systems management logonids (e.g., WebSphere administrator ID).\n\nc)\tIf all items in (b) are true, there is NO FINDING.\n\ne)\tIf any item in (b) is untrue, this is a FINDING."
+            "check-content": "Refer to the following reports produced by the dataset and Resource Data Collection:\n\n- ACF2CMDS.RPT(ACFGSO).\n- SENSITVE.RPT(CBIND).\n\nIf the following items are in effect for CBIND resource protection, this is not a finding.\n\nThe CLASMAP record defines the CBIND resource class.\n\nThe CB.BIND.server_name resource is defined to the CBIND resource class with a default access of PREVENT.\n\nAccess to the CB.BIND.server_name resource is restricted to WAS server (STC) logonids and systems management logonids (e.g., WebSphere administrator ID)."
           }
         }
       },
@@ -449,18 +449,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224352r958482_rule",
+          "+@id": "SV-224352r1141678_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ZWAS0040",
           "title": "Vendor-supplied user accounts for the WebSphere Application Server must be defined to the ACP.",
-          "description": "<VulnDiscussion>Vendor-supplied user accounts are defined to the ACP with factory-set passwords during the installation of the WebSphere Application Server (WAS).  These user accounts are common to all WAS environments and have access to restricted resources and functions.  Failure to delete vendor-supplied user accounts from the ACP may lead to unauthorized access.  This exposure could compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Vendor-supplied user accounts are defined to the ACP with factory-set passwords during the installation of the WebSphere Application Server (WAS). These user accounts are common to all WAS environments and have access to restricted resources and functions. Failure to delete vendor-supplied user accounts from the ACP may lead to unauthorized access. This exposure could compromise the integrity and availability of system services, applications, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS Websphere Application Server for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS Websphere Application Server for ACF2",
-            "identifier": "4132"
+            "dc:title": "DPMS Target zOS WebSphere Application Server for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS WebSphere Application Server for ACF2",
+            "dc:identifier": "4132"
           },
           "ident": [
             {
@@ -481,19 +481,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that the CBADMIN user account is removed or not  defined to the ACP.",
-            "+@fixref": "F-26017r520941_fix"
+            "+content": "The ISSO will ensure that the CBADMIN user account is removed or not  defined to the ACP.",
+            "+@fixref": "F-26017r1141677_fix"
           },
           "fix": {
-            "+@id": "F-26017r520941_fix"
+            "+@id": "F-26017r1141677_fix"
           },
           "check": {
-            "+@system": "C-26029r520940_chk",
+            "+@system": "C-26029r1141676_chk",
             "check-content-ref": {
-              "+@href": "zOS_Websphere_Application_Server_for_ACF2_STIG.xml",
+              "+@href": "zOS_WebSphere_Application_Server_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)       Refer to the following report produced by the ACP Data Collection:\n\nACF2\n-       ACF2CMDS.RPT(LOGONIDS)\nRACF\n-       RACFCMDS.RPT(LISTUSER)       \nTSS\n-       TSSCMDS.RPT(@ACIDS)\n\nAutomated Analysis requires Additional Analysis.\nRefer to the following report produced by the z/OS Data Collection:\n\n-       PDI(ZWAS0040)\n\nb)       If the CBADMIN user account is not defined to the ACP, there is NO FINDING.\n\nc)       If the CBADMIN user account is defined to ACP and the password has NOT been changed from the vendor default of CBADMIN, this is a FINDING with a severity code of CAT I.\n\nd)       If the CBADMIN user account is defined to the ACP and the password has been changed from the vendor default of CBADMIN, this is a FINDING with a severity code of\nCAT II."
+            "check-content": "Refer to the following report produced by the ACP Data Collection:\n\nACF2\n- ACF2CMDS.RPT(LOGONIDS).\nRACF\n- RACFCMDS.RPT(LISTUSER).\nTSS\n- TSSCMDS.RPT(@ACIDS).\n\nAutomated Analysis requires Additional Analysis.\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZWAS0040)\n\nIf the CBADMIN user account is not defined to the ACP, this is not a finding.\n\nIf the CBADMIN user account is defined to ACP and the password has NOT been changed from the vendor default of CBADMIN, this is a finding with a severity of Category I.\n\nIf the CBADMIN user account is defined to the ACP and the password has been changed from the vendor default of CBADMIN, this is a finding with a severity of Category II."
           }
         }
       },
@@ -502,18 +502,18 @@
         "title": "SRG-OS-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224353r958408_rule",
+          "+@id": "SV-224353r1141681_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZWAS0050",
           "title": "The WebSphere Application Server plug-in is not specified in accordance with the proper security requirements.",
-          "description": "<VulnDiscussion>Requests processed by the WebSphere Application Server (WAS) are dependent on directives configured in the HTTP server httpd.conf file.  These directives specify critical files containing the WAS plug-in and WAS configuration.  These files provide the operational and security characteristics of WAS.  Failure to properly configure WAS-related directives could lead to undesirable operations and degraded security.  This exposure may compromise the availability and integrity of applications and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Requests processed by the WebSphere Application Server (WAS) are dependent on directives configured in the HTTP server httpd.conf file. These directives specify critical files containing the WAS plug-in and WAS configuration. These files provide the operational and security characteristics of WAS. Failure to properly configure WAS-related directives could lead to undesirable operations and degraded security. This exposure may compromise the availability and integrity of applications and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS Websphere Application Server for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS Websphere Application Server for ACF2",
-            "identifier": "4132"
+            "dc:title": "DPMS Target zOS WebSphere Application Server for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS WebSphere Application Server for ACF2",
+            "dc:identifier": "4132"
           },
           "ident": [
             {
@@ -538,19 +538,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that the WebSphere Application Server directives in the httpd.conf file are configured as outlined below.\n\nEnsure that all WAS-related directives are configured using the ServerInit, Service, and ServerTerm statements as outlined below.\n\nThe following path entries were added to the /etc/httpd.conf file for WebSphere 3.5:\n ServerInit /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:init_exit /usr/lpp/WebSphere/etc/WebSphere/AppServer/properties/was.conf \nService /webapp/examples/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /*.jhtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService /*.shtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /servlet/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /*.jsp /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit ServerTerm /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:term_exit \n\nThe following path entries are added to the /etc/httpd.conf file for WebSphere 4.0.1:\n \nServerInit -/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:init_exit\n Service - /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:service_exit \nServerTerm - /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:term_exit\n\n NOTE: The /etc/WebSphere clause for ServerInit matches the directory name above where the site customization was.conf file was established. Specific items to review include proper path, was.conf, and plug-in settings.",
-            "+@fixref": "F-26018r520944_fix"
+            "+content": "The ISSO will ensure that the WebSphere Application Server directives in the httpd.conf file are configured as outlined below.\n\nEnsure that all WAS-related directives are configured using the ServerInit, Service, and ServerTerm statements as outlined below.\n\nThe following path entries were added to the /etc/httpd.conf file for WebSphere 3.5:\n\nServerInit /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:init_exit /usr/lpp/WebSphere/etc/WebSphere/AppServer/properties/was.conf \nService /webapp/examples/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /*.jhtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService /*.shtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /servlet/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit \nService /*.jsp /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit ServerTerm /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:term_exit \n\nThe following path entries are added to the /etc/httpd.conf file for WebSphere 4.0.1:\n \nServerInit -/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:init_exit\nService - /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:service_exit \nServerTerm - /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:term_exit\n\nNote: The /etc/WebSphere clause for ServerInit matches the directory name above where the site customization was.conf file was established. Specific items to review include proper path, was.conf, and plug-in settings.",
+            "+@fixref": "F-26018r1141680_fix"
           },
           "fix": {
-            "+@id": "F-26018r520944_fix"
+            "+@id": "F-26018r1141680_fix"
           },
           "check": {
-            "+@system": "C-26030r520943_chk",
+            "+@system": "C-26030r1141679_chk",
             "check-content-ref": {
-              "+@href": "zOS_Websphere_Application_Server_for_ACF2_STIG.xml",
+              "+@href": "zOS_WebSphere_Application_Server_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the UNIX System Services Data Collection:\n\n-\tUSSCMDS.RPT(AHTTPD)\n\nCollect the following information for each IBM HTTP server:\n\n-\tThe JCL procedure library and member name used to start each IBM HTTP server.  DOC(IHSPROCS)\n-\tFor each IBM HTTP server, supply the following information: \n\nWeb server ID defined to the ACP\nWeb server administration group defined to the ACP\nWeb server standard HFS directory\n\nb)\tReview the HTTP server JCL procedure to determine the httpd.conf file to review.\n\nc)\tEnsure that all WAS-related directives are configured using the ServerInit, Service, and ServerTerm statements as outlined below.\n\nThe following path entries were added to the /etc/httpd.conf file for WebSphere 3.5:\n\nServerInit\t/usr/lpp/WebSphere/AppServer/bin/was350plugin.so:init_exit /usr/lpp/WebSphere/etc/WebSphere/AppServer/properties/was.conf\nService\t/webapp/examples/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.jhtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.shtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/servlet/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.jsp /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nServerTerm\t/usr/lpp/WebSphere/AppServer/bin/was350plugin.so:term_exit\n\nThe following path entries are added to the /etc/httpd.conf file for WebSphere 4.0.1:\n\nServerInit -\t /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:init_exit\nService - \t/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:service_exit\nServerTerm - \t/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:term_exit\n\nNOTE:\tThe /etc/WebSphere clause for ServerInit matches the directory name above where the site customization was.conf file was established.\n\nSpecific items to review include proper path, was.conf, and plug-in settings.\n\nd)\tIf all WAS-related directives are configured properly, there is NO FINDING.\n\ne)\tIf any WAS-related directive is not configured properly, this is a FINDING."
+            "check-content": "Refer to the following report produced by the z/OS Data Collection:\n\n- USSCMDS.RPT(AHTTPD).\n\nCollect the following information for each IBM HTTP server:\n\n- The JCL procedure library and member name used to start each IBM HTTP server. DOC(IHSPROCS)\n- For each IBM HTTP server, supply the following information: \n\nWeb server ID defined to the ACP\nWeb server administration group defined to the ACP\nWeb server standard HFS directory\n\nReview the HTTP server JCL procedure to determine the httpd.conf file to review.\n\nIf all WAS-related directives are configured using the ServerInit, Service, and ServerTerm statements as outlined below, this is not a finding.\n\nThe following path entries were added to the /etc/httpd.conf file for WebSphere 3.5:\n\nServerInit\t/usr/lpp/WebSphere/AppServer/bin/was350plugin.so:init_exit /usr/lpp/WebSphere/etc/WebSphere/AppServer/properties/was.conf\nService\t/webapp/examples/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.jhtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.shtml /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/servlet/* /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nService\t/*.jsp /usr/lpp/WebSphere/AppServer/bin/was350plugin.so:service_exit\nServerTerm\t/usr/lpp/WebSphere/AppServer/bin/was350plugin.so:term_exit\n\nThe following path entries are added to the /etc/httpd.conf file for WebSphere 4.0.1:\n\nServerInit -\t /usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:init_exit\nService - \t/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:service_exit\nServerTerm - \t/usr/lpp/WebSphere401/WebServerPlugIn/bin/was400plugin.so:term_exit\n\nNote: The /etc/WebSphere clause for ServerInit matches the directory name above where the site customization was.conf file was established.\n\nSpecific items to review include proper path, was.conf, and plug-in settings."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-09-28"
     },
     "title": "z/OS BMC IOA for TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -442,18 +442,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224598r1070228_rule",
+          "+@id": "SV-224598r1146003_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOA0060",
           "title": "BMC IOA security exits are not installed or configured properly.",
           "description": "<VulnDiscussion>The BMC IOA security exits enable access authorization checking to BMC IOA commands, features, and online functionality. If these exit(s) is (are) not in place, activities by unauthorized users may result. BMC IOA security exit(s) interface with the Access Control Program (ACP). If an unauthorized exit was introduced into the operating environment, system security could be weakened or bypassed. These exposures may result in the compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -470,11 +470,11 @@
             }
           ],
           "fixtext": {
-            "+content": "The system programmer responsible for the BMC IOA will review the BMC IOA operating environment. Ensure that the following security exit(s) is (are) installed properly. Determine if the site has modified the following security exit(s):\n\nIOASE06\nIOASE07\nIOASE09\nIOASE12\nIOASE16\nIOASE32\nIOASE40\nIOASE42\n\nEnsure that the security exit(s) has (have) not been modified.\n\nIf the security exit(s) has (have) been modified, ensure the security exit(s) has (have) been checked as to not violate any security integrity within the system and approval documentation is on file.",
-            "+@fixref": "F-26269r1070227_fix"
+            "+content": "The systems programmer responsible for the BMC IOA will review the BMC IOA operating environment. Ensure that the following security exit(s) is (are) installed properly. Determine if the site has modified the following security exit(s):\n\nIOASE06\nIOASE07\nIOASE09\nIOASE12\nIOASE16\nIOASE32\nIOASE40\nIOASE42\n\nEnsure that the security exit(s) has (have) not been modified.\n\nIf the security exit(s) has (have) been modified, ensure the security exit(s) has (have) been checked as to not violate any security integrity within the system and approval documentation is on file.",
+            "+@fixref": "F-26269r1146002_fix"
           },
           "fix": {
-            "+@id": "F-26269r1070227_fix"
+            "+@id": "F-26269r1146002_fix"
           },
           "check": {
             "+@system": "C-26281r1070226_chk",
@@ -491,18 +491,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224599r1070231_rule",
+          "+@id": "SV-224599r1146341_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT000",
           "title": "BMC IOA installation data sets will be properly protected.",
           "description": "<VulnDiscussion>BMC IOA installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -523,19 +523,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA installation data sets are limited to systems programmers only. READ access can be given to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.IOA.*.IOAI.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<syspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)\nTSS PERMIT(<audtaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(<bmcuser>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)\nTSS PERMIT(<operaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(<pcspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(BMC STCs) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)",
-            "+@fixref": "F-26270r1070230_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA installation data sets are limited to systems programmers only. READ access can be given to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.IOA.*.IOAI.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(<syspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)\nTSS PERMIT(<audtaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(<bmcuser>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)\nTSS PERMIT(<operaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(<pcspaudt>) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ) \nTSS PERMIT(BMC STCs) DSN(SYS2.IOA.*.IOAI.) ACCESS(READ)",
+            "+@fixref": "F-26270r1146340_fix"
           },
           "fix": {
-            "+@id": "F-26270r1070230_fix"
+            "+@id": "F-26270r1146340_fix"
           },
           "check": {
-            "+@system": "C-26282r1070229_chk",
+            "+@system": "C-26282r1146004_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(IOARPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0000)\n\nVerify that the accesses to the BMC IOA installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set access authorizations restrict READ access to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(IOARPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0000).\n\nVerify that the accesses to the BMC IOA installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set access authorizations restrict READ access to auditors, BMC users, operations, production control and scheduling personnel, and BMC STCs and/or batch users.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged."
           }
         }
       },
@@ -544,18 +544,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224600r958616_rule",
+          "+@id": "SV-224600r1146343_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT001",
           "title": "BMC IOA STC data sets must be properly protected.",
           "description": "<VulnDiscussion>BMC IOA STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -572,19 +572,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure that WRITE and/or greater access to BMC IOA STC data sets are limited to systems programmers only. UPDATE access can be given to BMC STCs, batch users and BMC administrators. READ access can be given to auditors and BMC users.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and, if required, that all update and allocate access is logged.\n\nThe installing Systems Programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.IOAO.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(ALL)\nTSS PERMIT(BMC STCs) DSN(SYS3.IOA.*.IOAO.) ACCESS(U)\nTSS PERMIT(<bmcadmin>) DSN(SYS3.IOA.*.IOAO.) ACCESS(U)\nTSS PERMIT(<audtaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(R)   \nTSS PERMIT(<bmcuser>) DSN(SYS3.IOA.*.IOAO.) ACCESS(R)",
-            "+@fixref": "F-26271r868704_fix"
+            "+content": "Ensure that WRITE and/or greater access to BMC IOA STC data sets are limited to systems programmers only. UPDATE access can be given to BMC STCs, batch users and BMC administrators. READ access can be given to auditors and BMC users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and, if required, that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.IOAO.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(ALL)\nTSS PERMIT(BMC STCs) DSN(SYS3.IOA.*.IOAO.) ACCESS(U)\nTSS PERMIT(<bmcadmin>) DSN(SYS3.IOA.*.IOAO.) ACCESS(U)\nTSS PERMIT(<audtaudt>) DSN(SYS3.IOA.*.IOAO.) ACCESS(R)   \nTSS PERMIT(<bmcuser>) DSN(SYS3.IOA.*.IOAO.) ACCESS(R)",
+            "+@fixref": "F-26271r1146342_fix"
           },
           "fix": {
-            "+@id": "F-26271r868704_fix"
+            "+@id": "F-26271r1146342_fix"
           },
           "check": {
-            "+@system": "C-26283r868703_chk",
+            "+@system": "C-26283r1146007_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(IOASTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0001) \nVerify that the accesses to the BMC IOA STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The TSS data set access authorizations restrict READ access to auditors and BMC users.\n\n___ The TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The TSS data set access authorizations restrict UPDATE access to the BMC STCs, batch users and BMC administrators."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(IOASTC).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0001).\n\nVerify that the accesses to the BMC IOA STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set access authorizations restrict READ access to auditors and BMC users.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations restrict UPDATE access to the BMC STCs, batch users and BMC administrators."
           }
         }
       },
@@ -593,18 +593,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224601r1070234_rule",
+          "+@id": "SV-224601r1146345_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT002",
           "title": "BMC IOA User data sets will be properly protected.",
           "description": "<VulnDiscussion>BMC IOA User data sets, IOA Core and Repository, have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -621,19 +621,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA User data sets are limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to production control and scheduling personnel and the BMC users. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.IOAC.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(BMC STCs) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(<bmcuser>) DSN(SYS3.IOA.*.IOAC.) ACCESS(U)\nTSS PERMIT(<pcspaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(U) \nTSS PERMIT(<audtaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(R)",
-            "+@fixref": "F-26272r1070233_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to BMC IOA User data sets are limited to systems programmers and/or BMC STCs and/or batch users only. UPDATE access can be given to production control and scheduling personnel and the BMC users. READ access can be given to auditors.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.IOA.*.IOAC.\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(<syspaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(<tstcaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(BMC STCs) DSN(SYS3.IOA.*.IOAC.) ACCESS(ALL)\nTSS PERMIT(<bmcuser>) DSN(SYS3.IOA.*.IOAC.) ACCESS(U)\nTSS PERMIT(<pcspaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(U) \nTSS PERMIT(<audtaudt>) DSN(SYS3.IOA.*.IOAC.) ACCESS(R)",
+            "+@fixref": "F-26272r1146344_fix"
           },
           "fix": {
-            "+@id": "F-26272r1070233_fix"
+            "+@id": "F-26272r1146344_fix"
           },
           "check": {
-            "+@system": "C-26284r1070232_chk",
+            "+@system": "C-26284r1146010_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(IOAUSER)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0002)\n\nVerify that the accesses to the BMC IOA User data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set access authorizations restricts READ access to auditors.\n\nThe TSS data set access authorizations restricts WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations restricts WRITE and/or greater access to the BMC STCs and/or batch users.\n\nThe TSS data set access authorizations restricts UPDATE access to production control and scheduling personnel and the BMC users."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(IOAUSER).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0002).\n\nVerify that the accesses to the BMC IOA User data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe TSS data set access authorizations restrict READ access to auditors.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set access authorizations restrict WRITE and/or greater access to the BMC STCs and/or batch users.\n\nThe TSS data set access authorizations restrict UPDATE access to production control and scheduling personnel and the BMC users."
           }
         }
       },
@@ -642,18 +642,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224602r1070237_rule",
+          "+@id": "SV-224602r1146014_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT020",
           "title": "BMC IOA resources must be properly defined and protected.",
           "description": "<VulnDiscussion>BMC IOA can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -681,12 +681,12 @@
             "+@id": "F-26273r1070236_fix"
           },
           "check": {
-            "+@system": "C-26285r1070235_chk",
+            "+@system": "C-26285r1146013_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZIOA0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZIOA0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC IOA Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class.\n\nThe TSS resources are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel.\n\nThe TSS resource logging requirements are specified."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZIOA0020).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZIOA0020).\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in BMC IOA Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nNote: To determine what resource class is used review the IOACLASS setting in SECPARM. The \"Trigger\" resources i.e., $$SECxxx (xxx is unique to the product) are defined in the FACILITY resource class.\n\nThe TSS resources are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel.\n\nThe TSS resource logging requirements are specified."
           }
         }
       },
@@ -695,18 +695,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224603r958482_rule",
+          "+@id": "SV-224603r1146017_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT030",
           "title": "BMC IOA Started Task name must be properly identified and defined to the system ACP.",
-          "description": "<VulnDiscussion>BMC IOA requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>BMC IOA requires a started task that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -723,19 +723,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO working with the systems programmer will ensure the BMC IOA Started Task(s) is (are) properly identified and/or defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(IOAGATE) TYPE(USER) -\n\tNAME('*STC* for IOA') DEPT(xxxx) - \n \tFAC(STC,BATCH) -\n\tMASTFAC(IOA) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
-            "+@fixref": "F-26274r518948_fix"
+            "+content": "The ISSO working with the systems programmer will ensure the BMC IOA Started Task(s) is (are) properly identified and/or defined to the system ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the system ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nThe following commands are provided as a sample for defining Started Task(s):\n\nTSS CREATE(IOAGATE) TYPE(USER) -\n\tNAME('*STC* for IOA') DEPT(xxxx) - \n \tFAC(STC,BATCH) -\n\tMASTFAC(IOA) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
+            "+@fixref": "F-26274r1146016_fix"
           },
           "fix": {
-            "+@id": "F-26274r518948_fix"
+            "+@id": "F-26274r1146016_fix"
           },
           "check": {
-            "+@system": "C-26286r518947_chk",
+            "+@system": "C-26286r1146015_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nVerify that the ACID(s) for the BMC IOA started task(s) is (are) properly defined.  If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nMASTFAC(IOA)\nSOURCE(INTRDR)\nNOSUSPEND"
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(@ACIDS).\n\nReview BMC IOA STC/Batch ACID(s). If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND\nMASTFAC(IOA)"
           }
         }
       },
@@ -744,18 +744,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224604r958482_rule",
+          "+@id": "SV-224604r1146020_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT032",
           "title": "BMC IOA Started task(s) must be properly defined to the Started Task Table ACID for Top Secret.",
-          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -772,19 +772,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The BMC IOA system programmer and the IAO will ensure that a product's started task(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the BMC IOA started task(s) thru a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(IOAGATE) ACID(IOAGATE)",
-            "+@fixref": "F-26275r518951_fix"
+            "+content": "The BMC IOA systems programmer and the ISSO will ensure that a product's started task(s) is (are) properly identified and/or defined to the system ACP. \n\nA unique ACID must be assigned for the BMC IOA started task(s) through a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(IOAGATE) ACID(IOAGATE)",
+            "+@fixref": "F-26275r1146019_fix"
           },
           "fix": {
-            "+@id": "F-26275r518951_fix"
+            "+@id": "F-26275r1146019_fix"
           },
           "check": {
-            "+@system": "C-26287r518950_chk",
+            "+@system": "C-26287r1146018_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZIOA0032)\n\nVerify that the BMC IOA started task(s) is (are) defined in the TSS STC record."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(#STC).\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n- PDI(ZIOA0032).\n\nIf the BMC IOA started task(s) is (are) defined in the TSS STC record, this is not a finding."
           }
         }
       },
@@ -793,18 +793,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224605r958482_rule",
+          "+@id": "SV-224605r1146023_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT036",
           "title": "BMC IOA is not properly defined to the Facility Matrix Table for Top Secret.",
           "description": "<VulnDiscussion>Improperly defined security controls for BMC IOA could result in the compromise of the network, operating system, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -821,19 +821,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The BMC IOA system programmer and the IAO will ensure that the TOP SECRET Facility Matrix Table is proper defined using the following example:\n\nIOA:\nFACILITY(USERxx=NAME=IOA,PGM=IOA,ID=nn,ACTIVE,SHRPRF)\nFACILITY(IOA=ASUBM,NOABEND,MULTIUSER,NOXDEF)\nFACILITY(IOA=LUMSG,STMSG,SIGN(S),NORNDPW)\nFACILITY(IOA=NOAUDIT,RES,WARNPW,NOTSOC)\nFACILITY(IOA=MODE=FAIL,LOG(SMF,INIT,MSG,SEC9))\nFACILITY(IOA=UIDACID=8,LOCKTIME=000)",
-            "+@fixref": "F-26276r518954_fix"
+            "+content": "The BMC IOA systems programmer and the ISSO will ensure that the TOP SECRET Facility Matrix Table is proper defined using the following example:\n\nIOA:\nFACILITY(USERxx=NAME=IOA,PGM=IOA,ID=nn,ACTIVE,SHRPRF)\nFACILITY(IOA=ASUBM,NOABEND,MULTIUSER,NOXDEF)\nFACILITY(IOA=LUMSG,STMSG,SIGN(S),NORNDPW)\nFACILITY(IOA=NOAUDIT,RES,WARNPW,NOTSOC)\nFACILITY(IOA=MODE=FAIL,LOG(SMF,INIT,MSG,SEC9))\nFACILITY(IOA=UIDACID=8,LOCKTIME=000)",
+            "+@fixref": "F-26276r1146022_fix"
           },
           "fix": {
-            "+@id": "F-26276r518954_fix"
+            "+@id": "F-26276r1146022_fix"
           },
           "check": {
-            "+@system": "C-26288r518953_chk",
+            "+@system": "C-26288r1146021_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-       TSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values\n-       TSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup\n\nEnsure the BMC IOA Facility Matrix table is defined as follows:\n\nFAC(USERxx=NAME=IOA,PGM=IOA,ID=nn,ACTIVE,SHRPRF,ASUBM)\nFAC(IOA=NOABEND,MULTIUSER,NOXDEF,SIGN(S),RES,LUMSG)\nFAC(IOA=STMSG,WARNPW,NORNDPW,NOAUDIT,NOTSOC,MODE=FAIL)\nFAC(IOA=LOG(SMF,INIT,MSG,SEC9),UIDACID=8,LOCKTIME=000)"
+            "check-content": "Refer to the following reports produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values.\n- TSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup.\n\nIf the BMC IOA Facility Matrix table is defined as stated below, this is not a finding.\n\nFAC(USERxx=NAME=IOA,PGM=IOA,ID=nn,ACTIVE,SHRPRF,ASUBM)\nFAC(IOA=NOABEND,MULTIUSER,NOXDEF,SIGN(S),RES,LUMSG)\nFAC(IOA=STMSG,WARNPW,NORNDPW,NOAUDIT,NOTSOC,MODE=FAIL)\nFAC(IOA=LOG(SMF,INIT,MSG,SEC9),UIDACID=8,LOCKTIME=000)"
           }
         }
       },
@@ -842,18 +842,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224606r1070239_rule",
+          "+@id": "SV-224606r1146025_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZIOAT040",
           "title": "BMC IOA configuration/parameter values are not specified properly.",
           "description": "<VulnDiscussion>BMC IOA configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS BMC IOA for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS BMC IOA for TSS",
-            "identifier": "4172"
+            "dc:title": "DPMS Target zOS BMC IOA for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS BMC IOA for TSS",
+            "dc:identifier": "4172"
           },
           "ident": [
             {
@@ -877,12 +877,12 @@
             "+@id": "F-26277r1070238_fix"
           },
           "check": {
-            "+@system": "C-26289r518956_chk",
+            "+@system": "C-26289r1146024_chk",
             "check-content-ref": {
               "+@href": "zOS_BMC_IOA_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following applicable reports produced by the z/OS Data Collection:\n\n-\tIOA.RPT(SECPARM)\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZIOA0040)\n\nThe following keywords will have the specified values in the BMC IOA security parameter member:\n\nKeyword\tValue\nDEFMCHKI\t$$IOAEDM\nSECTOLI\tNO\nDFMI06\tEXTEND\nDFMI07\tEXTEND\nDFMI09\tEXTEND\nDFMI12\tEXTEND\nDFMI16\tEXTEND\nDFMI32\tEXTEND\nDFMI40\tEXTEND\nDFMI42\tEXTEND\nIOACLASS\tIOA\nTSSCLAS\tACIDCHK\nIOATCBS\tYES"
+            "check-content": "Refer to the following applicable report produced by the z/OS Data Collection:\n\n- IOA.RPT(SECPARM).\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZIOA0040).\n\nIf the following keywords specify the values in the BMC IOA security parameter member, this is not a finding.\n\nKeyword\tValue\nDEFMCHKI\t$$IOAEDM\nSECTOLI\tNO\nDFMI06\tEXTEND\nDFMI07\tEXTEND\nDFMI09\tEXTEND\nDFMI12\tEXTEND\nDFMI16\tEXTEND\nDFMI32\tEXTEND\nDFMI40\tEXTEND\nDFMI42\tEXTEND\nIOACLASS\tIOA\nTSSCLAS\tACIDCHK\nIOATCBS\tYES"
           }
         }
       }

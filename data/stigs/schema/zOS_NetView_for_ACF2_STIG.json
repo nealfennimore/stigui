@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-25"
+      "+@date": "2025-09-26"
     },
     "title": "z/OS NetView for ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -298,18 +298,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224327r1070075_rule",
+          "+@id": "SV-224327r1141608_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNET0040",
           "title": "NetView configuration/parameter values must be specified properly.",
           "description": "<VulnDiscussion>NetView configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for ACF2",
-            "identifier": "4126"
+            "dc:title": "DPMS Target zOS NetView for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for ACF2",
+            "dc:identifier": "4126"
           },
           "ident": [
             {
@@ -330,19 +330,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The systems programmer and ISSO will review NetView configuration parameters and control options for compliance.\n\nTo ensure authentication of users to NetView, ensure that CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure has the following initialization parameter(s) specified:\n\n(Note: The data set identified above is an example of a possible installation. The data set is determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nSECOPTS.OPERSEC=SAFCHECK|SAFDEF\n\nWhen SECOPTS.OPERSEC=SAFCHECK is used, it specifies that operator identification and password or password phrase checking is performed using an SAF security product. The operator identifier must also be defined in DSIOPF, and other attributes given to the operator at logon are taken from the specified profile for the operator in DSIPRF.\n\nSecurity access checks are checked against the authority of the operator that occur when an operator tries to access a data set that is protected in the DATASET class of an SAF product or an MVS system command that is protected in the OPERCMDS class of an SAF product.\n\nWhen SECOPTS.OPERSEC=SAFDEF is used, it specifies that operator identification and password or password phrase checking is done using an SAF security product. Authority to log on as a NetView operator is controlled through the APPL class. The operator identifier must be authorized to the resource name in the APPL class which represents the NetView program.\n\nThe attributes given to the operator at logon are defined in the NETVIEW segment of the user profile for the operator in the SAF product. For more information, refer to IBM Tivoli NetView for z/OS Security Reference.\n\nWhen SECOPTS.OPERSEC=SAFDEF is specified, any value for SECOPTS.CMDAUTH can be used.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nSECOPTS.CMDAUTH=SAF.FAIL|SAF.table\n\nWhen SECOPTS.CMDAUTH=SAF.table is used, table specifies the backup table to be used for immediate commands and when the SAF product cannot make a security decision. This can occur when:\n\n___\tNo resource name is defined in the NETCMDS class which protects or authorizes this command.\n___\tThe NETCMDS class is not active.\n___\tThe security product is not active.\n\nWhen SECOPTS.CMDAUTH=SAF.FAIL is used, command authority checking will fail if the SAF product can reach no decision.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Administration Reference.",
-            "+@fixref": "F-25992r868217_fix"
+            "+content": "The systems programmer and ISSO will review NetView configuration parameters and control options for compliance.\n\nTo ensure authentication of users to NetView, ensure that CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure has the following initialization parameter(s) specified:\n\n(Note: The dataset identified above is an example of a possible installation. The dataset is determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nSECOPTS.OPERSEC=SAFCHECK|SAFDEF\n\nWhen SECOPTS.OPERSEC=SAFCHECK is used, it specifies that operator identification and password or password phrase checking is performed using an SAF security product. The operator identifier must also be defined in DSIOPF, and other attributes given to the operator at logon are taken from the specified profile for the operator in DSIPRF.\n\nSecurity access checks are checked against the authority of the operator that occur when an operator tries to access a dataset that is protected in the DATASET class of an SAF product or an MVS system command that is protected in the OPERCMDS class of an SAF product.\n\nWhen SECOPTS.OPERSEC=SAFDEF is used, it specifies that operator identification and password or password phrase checking is done using an SAF security product. Authority to log on as a NetView operator is controlled through the APPL class. The operator identifier must be authorized to the resource name in the APPL class that represents the NetView program.\n\nThe attributes given to the operator at logon are defined in the NETVIEW segment of the user profile for the operator in the SAF product. For more information, refer to IBM Tivoli NetView for z/OS Security Reference.\n\nWhen SECOPTS.OPERSEC=SAFDEF is specified, any value for SECOPTS.CMDAUTH can be used.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nSECOPTS.CMDAUTH=SAF.FAIL|SAF.table\n\nWhen SECOPTS.CMDAUTH=SAF.table is used, the table specifies the backup table to be used for immediate commands and when the SAF product cannot make a security decision. This can occur when:\n\nNo resource name is defined in the NETCMDS class that protects or authorizes this command.\nThe NETCMDS class is not active.\nThe security product is not active.\n\nWhen SECOPTS.CMDAUTH=SAF.FAIL is used, command authority checking will fail if the SAF product can reach no decision.\n\nAdditional details can be obtained in the IBM Tivoli NetView for z/OS Administration Reference.",
+            "+@fixref": "F-25992r1141607_fix"
           },
           "fix": {
-            "+@id": "F-25992r868217_fix"
+            "+@id": "F-25992r1141607_fix"
           },
           "check": {
-            "+@system": "C-26004r1070074_chk",
+            "+@system": "C-26004r1141606_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0040)\n\nEnsure that all NetView configuration requirements are specified. If the following guidance is true, this is not a finding.\n\nKeyword                         Value\nSECOPTS.OPERSEC        SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH     SAF.FAIL|SAF.table"
+            "check-content": "Review the member CxxSTYLE in the DSIPARM DD statement concatenation of the NetView CNMPROC STC procedure.\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZNET0040).\n\nVerify that all NetView configuration requirements are specified. If the following guidance is true, this is not a finding.\n\nKeyword                                  Value\nSECOPTS.OPERSEC        SAFCHECK|SAFDEF\nSECOPTS.CMDAUTH      SAF.FAIL|SAF.table"
           }
         }
       },
@@ -351,18 +351,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224328r1081043_rule",
+          "+@id": "SV-224328r1141611_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETA000",
-          "title": "NetView install data sets are not properly protected.",
-          "description": "<VulnDiscussion>NetView Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "NetView install datasets are not properly protected.",
+          "description": "<VulnDiscussion>NetView Install datasets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their datasets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for ACF2",
-            "identifier": "4126"
+            "dc:title": "DPMS Target zOS NetView for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for ACF2",
+            "dc:identifier": "4126"
           },
           "ident": [
             {
@@ -383,19 +383,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate access to NetView install data sets is limited to system programmers only, and all update and allocate access is logged. Auditors should have read access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.NETVIEW \nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS2A)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS3)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)",
-            "+@fixref": "F-25993r1081042_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to NetView install datasets is limited to systems programmers only, and all WRITE and/or greater access is logged. Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have UPDATE access for specific datasets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nDatasets to be protected will be: \nSYS2.NETVIEW\nSYS2A.NETVIEW\nSYS3.NETVIEW\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS2A)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)\n\n$KEY(SYS3)\nNETVIEW.- UID(syspaudt) R(A) W(L) A(L) E(A)\nNETVIEW.- UID(audtaudt) R(A) E(A)",
+            "+@fixref": "F-25993r1141610_fix"
           },
           "fix": {
-            "+@id": "F-25993r1081042_fix"
+            "+@id": "F-25993r1141610_fix"
           },
           "check": {
-            "+@system": "C-26005r1070057_chk",
+            "+@system": "C-26005r1141609_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0000)\n\nVerify that access to the NetView install data sets are properly restricted.\n \nThe ACF2 data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe ACF2 data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, this is not a finding.\n\nIf any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(NETVRPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZNET0000).\n\nVerify that access to the NetView install datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset rules for the datasets do not specify that all (i.e., failures and successes) WRITE and/or greater access will be logged."
           }
         }
       },
@@ -404,18 +404,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224329r958616_rule",
+          "+@id": "SV-224329r1144118_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETA001",
-          "title": "NetView STC data sets are not properly protected.",
-          "description": "<VulnDiscussion>NetView STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "NetView STC datasets are not properly protected.",
+          "description": "<VulnDiscussion>NetView STC datasets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for ACF2",
-            "identifier": "4126"
+            "dc:title": "DPMS Target zOS NetView for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for ACF2",
+            "dc:identifier": "4126"
           },
           "ident": [
             {
@@ -432,19 +432,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate access to NetView STC data sets are limited to System Programmers and NetView STC only, unless a letter justifying access is filed with the IAO. Auditors should have READ access.\n\nThe installing Systems Programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. He will identify if any additional groups have update and/or alter access for specific data sets, and once documented he will work with the IAO to see that they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS3.NETVIEW.<SYSTEMID>.- (VSAM data sets)\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nSET RULE\n$KEY(SYS3) \nNETVIEW.<systemid>.- UID(audtaudt) R(A) E(A)\nNETVIEW.<systemid>.- UID(cnmproc) R(A) W(A) A(A) E(A)\nNETVIEW.<systemid>.- UID(syspudt) R(A) W(A) A(A) E(A)\nNETVIEW.<systemid>.- UID(tstcaudt) R(A) W(A) A(A) E(A)\n\nThe VSAM dataset required for greater than read access are:\nSYS3.NETVIEW.<systemid>.AAUVSPL\nSYS3.NETVIEW.<systemid>.AAUVSSL\nSYS3.NETVIEW.<systemid>.BNJLGPR\nSYS3.NETVIEW.<systemid>.BNJLGSE\nSYS3.NETVIEW.<systemid>.BNJ36PR\nSYS3.NETVIEW.<systemid>.BNJ36SE\nSYS3.NETVIEW.<systemid>.DSIKPNL\nSYS3.NETVIEW.<systemid>.DSILIST\nSYS3.NETVIEW.<systemid>.DSILOGP\nSYS3.NETVIEW.<systemid>.DSILOGS\nSYS3.NETVIEW.<systemid>.DSISVRT\nSYS3.NETVIEW.<systemid>.DSITRCP\nSYS3.NETVIEW.<systemid>.DSITRCS\nSYS3.NETVIEW.<systemid>.SDSIOPEN",
-            "+@fixref": "F-25994r520761_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to NetView STC datasets is limited to systems programmers and NetView STC only, unless a letter justifying access is filed with the ISSO. Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented he will work with the ISSO to ensure that they are properly  restricted to the ACP (Access Control Program) active on the system.\n\nDatasets to be protected will be: \nSYS3.NETVIEW.<SYSTEMID>.- (VSAM datasets)\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nSET RULE\n$KEY(SYS3) \nNETVIEW.<systemid>.- UID(audtaudt) R(A) E(A)\nNETVIEW.<systemid>.- UID(cnmproc) R(A) W(A) A(A) E(A)\nNETVIEW.<systemid>.- UID(syspudt) R(A) W(A) A(A) E(A)\nNETVIEW.<systemid>.- UID(tstcaudt) R(A) W(A) A(A) E(A)\n\nThe VSAM dataset required for greater than READ access are:\nSYS3.NETVIEW.<systemid>.AAUVSPL\nSYS3.NETVIEW.<systemid>.AAUVSSL\nSYS3.NETVIEW.<systemid>.BNJLGPR\nSYS3.NETVIEW.<systemid>.BNJLGSE\nSYS3.NETVIEW.<systemid>.BNJ36PR\nSYS3.NETVIEW.<systemid>.BNJ36SE\nSYS3.NETVIEW.<systemid>.DSIKPNL\nSYS3.NETVIEW.<systemid>.DSILIST\nSYS3.NETVIEW.<systemid>.DSILOGP\nSYS3.NETVIEW.<systemid>.DSILOGS\nSYS3.NETVIEW.<systemid>.DSISVRT\nSYS3.NETVIEW.<systemid>.DSITRCP\nSYS3.NETVIEW.<systemid>.DSITRCS\nSYS3.NETVIEW.<systemid>.SDSIOPEN",
+            "+@fixref": "F-25994r1141613_fix"
           },
           "fix": {
-            "+@id": "F-25994r520761_fix"
+            "+@id": "F-25994r1141613_fix"
           },
           "check": {
-            "+@system": "C-26006r520760_chk",
+            "+@system": "C-26006r1144118_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(NETVSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0001)\n\nVerify that acess to the NetView STC data sets are properly restricted.\n\n___\tThe ACF2 data set rules for the data sets restricts READ access to auditors.\n\n___\tThe ACF2 data set rules for the data sets restricts UPDATE and/or ALTER access to systems programming personnel.\n\n___\tThe ACF2 data set rules for the data sets restrictS UPDATE and/or ALTER access to the product STC(s) and/or batch job(s)."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(NETVSTC).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZNET0001).\n\nVerify that access to the NetView STC datasets is properly restricted. If the following guidance is true, this is not a finding.\n\nThe ACF2 dataset rules for the datasets restrict READ access to auditors.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
           }
         }
       },
@@ -453,18 +453,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224330r1070002_rule",
+          "+@id": "SV-224330r1141617_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETA020",
           "title": "NetView resources must be properly defined and protected.",
-          "description": "<VulnDiscussion>NetView can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to system programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>NetView can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for ACF2",
-            "identifier": "4126"
+            "dc:title": "DPMS Target zOS NetView for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for ACF2",
+            "dc:identifier": "4126"
           },
           "ident": [
             {
@@ -481,19 +481,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resource type, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource type, resources, and/or resource prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. This can be bypassed. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. Additional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nUse the NetView Resources table in the z/OS STIG Addendum. This table lists the resources and access requirements for NetView, ensure the following guidelines are followed:\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel.\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$KEY(netid) TYPE(typecode)\nluname.ADDCMD.- UID(syspaudt) ALLOW\n- UID(*) PREVENT",
-            "+@fixref": "F-25995r1070001_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resource type, resources, and/or resource prefixes identified below are examples of a possible installation. The actual resource type, resources, and/or resource prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. This can be bypassed. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. Additional details can be obtained in the IBM Tivoli NetView for z/OS Security Reference.\n\nUse the NetView Resources table in the z/OS STIG Addendum. This table lists the resources and access requirements for NetView, ensure the following guidelines are followed:\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel.\n\nThe following commands are provided as a sample for implementing resource controls:\n\n$KEY(netid) TYPE(typecode)\nluname.ADDCMD.- UID(syspaudt) ALLOW\n- UID(*) PREVENT",
+            "+@fixref": "F-25995r1141616_fix"
           },
           "fix": {
-            "+@id": "F-25995r1070001_fix"
+            "+@id": "F-25995r1141616_fix"
           },
           "check": {
-            "+@system": "C-26007r1070000_chk",
+            "+@system": "C-26007r1141615_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZNET0020)\n-\tACF2CMDS.RPT(RESOURCE) - Alternate report\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZNET0020)\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nEnsure that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel."
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection and dataset and Resource Data Collection:\n\n- SENSITVE.RPT(ZNET0020).\n- ACF2CMDS.RPT(RESOURCE) - Alternate report.\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZNET0020).\n\nWhen SECOPTS.OPERSEC=SAFPW is specified in ZNET0040, this is not applicable. \n\nVerify that all NetView resources and/or generic equivalents are properly protected according to the requirements specified in the NetView Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe ACF2 resources are defined with a default access of PREVENT.\n\nThe ACF2 resource access authorizations restrict access to the appropriate personnel."
           }
         }
       },
@@ -502,18 +502,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224331r958482_rule",
+          "+@id": "SV-224331r1144120_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZNETA030",
-          "title": "NetView Started Task name must be properly identified / defined to the system ACP.",
-          "description": "<VulnDiscussion>NetView requires a started task(s) that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "NetView Started Task name must be properly identified/defined to the system ACP.",
+          "description": "<VulnDiscussion>NetView requires a started task(s) that will be restricted to certain resources, datasets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS NetView for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS NetView for ACF2",
-            "identifier": "4126"
+            "dc:title": "DPMS Target zOS NetView for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS NetView for ACF2",
+            "dc:identifier": "4126"
           },
           "ident": [
             {
@@ -530,19 +530,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The NetView system programmer and the ISSO will ensure that a product's Started Task(s) is properly Identified / defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nCHANGE NETVIEW STC MUSASS NO-SMC",
-            "+@fixref": "F-25996r520767_fix"
+            "+content": "The NetView systems programmer and the ISSO will ensure that a product's Started Task(s) is properly identified/defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nCHANGE NETVIEW STC MUSASS NO-SMC",
+            "+@fixref": "F-25996r1144119_fix"
           },
           "fix": {
-            "+@id": "F-25996r520767_fix"
+            "+@id": "F-25996r1144119_fix"
           },
           "check": {
-            "+@system": "C-26008r520766_chk",
+            "+@system": "C-26008r1141618_chk",
             "check-content-ref": {
               "+@href": "zOS_NetView_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-       ACF2CMDS.RPT(ATTSTC)\n\nIf the logonid for the NetView started task(s) includes MUSASS and NO-SMC, there is NO FINDING.\n\nIf the logonid for the NetView started task(s) is not defined or does not include MUSASS and/or NO-SMC, this is a FINDING."
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC).\n\nVerify that the logonid(s) for the NetView started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nSTC\nMUSASS\nNO-SMC"
           }
         }
       }

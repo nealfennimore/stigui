@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-24"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS CA MIM for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -334,18 +334,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224438r1070116_rule",
+          "+@id": "SV-224438r1144898_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIM0040",
           "title": "CA MIM Resource Sharing external security options must be specified properly.",
-          "description": "<VulnDiscussion>CA MIM Resource Sharing offers external security interfaces that are controlled by parameters specified in the MIMINIT member in the MIMPARMS DD statement of the started task procedures.  These interfaces provide security controls for CA MIM. Without proper controls to ensure that security is active, the integrity of the CA MIM Resource Sharing System and the confidentiality of data stored on the system may be compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA MIM Resource Sharing offers external security interfaces that are controlled by parameters specified in the MIMINIT member in the MIMPARMS DD statement of the started task procedures. These interfaces provide security controls for CA MIM. Without proper controls to ensure that security is active, the integrity of the CA MIM Resource Sharing System and the confidentiality of data stored on the system may be compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -369,12 +369,12 @@
             "+@id": "F-26103r1070115_fix"
           },
           "check": {
-            "+@system": "C-26115r1070114_chk",
+            "+@system": "C-26115r1144897_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the contents of MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures.\n \nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZMIM0040)\n\nEnsure the following CA MIM Resource Sharing parameter(s) is (are) specified in the MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures. If the following guidance is true, this is not a finding. \n\nParameter\tValue\nSAFCMDAUTH\tON"
+            "check-content": "Refer to the contents of MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures.\n \nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZMIM0040).\n\nVerify the following CA MIM Resource Sharing parameter(s) is (are) specified in the MIMINIT member of the data set(s) specified in the MIMPARMS DD statement of the started task procedures. If the following guidance is true, this is not a finding. \n\nParameter\tValue\nSAFCMDAUTH\tON"
           }
         }
       },
@@ -383,18 +383,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224439r1070155_rule",
+          "+@id": "SV-224439r1145257_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMR000",
           "title": "CA MIM Resource Sharing installation data sets will be properly protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -416,18 +416,18 @@
           ],
           "fixtext": {
             "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing installation data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to all authorized users. All failures and successful WRITE and/or greater accesses are logged.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS2.MIMGR.\nSYS3.MIMGR. (Data sets that are not altered by product STCs, can be more specific.)\n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'SYS2.MIMGR.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('CA MIM Resource Sharing Install DS')\npe 'SYS2.MIMGR.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS2.MIMGR.**' id(<audtaudt> authorized users) acc(r)\npe 'SYS2.MIMGR.**' id(CA MIM STCs)\n\nad 'SYS3.MIMGR.**' uacc(none) owner(sys3) -\n\taudit(success(update) failures(read)) -\n\tdata('CA MIM Resource Sharing Install DS')\npe 'SYS3.MIMGR.**' id(<syspaudt> <tstcaudt>) acc(a)\npe 'SYS3.MIMGR.**' id(<audtaudt> authorized users) acc(r)\npe 'SYS3.MIMGR.**' id(CA MIM STCs)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26104r1070154_fix"
+            "+@fixref": "F-26104r1145256_fix"
           },
           "fix": {
-            "+@id": "F-26104r1070154_fix"
+            "+@id": "F-26104r1145256_fix"
           },
           "check": {
-            "+@system": "C-26116r1070153_chk",
+            "+@system": "C-26116r1144899_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(MIMRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIM0000)\n\nVerify that the accesses to the CA MIM Resource Sharing installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set access authorizations restrict READ access to all authorized users.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged.\n\nThe RACF data set access authorizations specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0000).\n\nVerify that the accesses to the CA MIM Resource Sharing installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set access authorizations restrict READ access to all authorized users.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set access authorizations specify that all (i.e., failures and successes) WRITE and/or greater access are logged.\n\nThe RACF data set access authorizations specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -436,18 +436,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224440r958616_rule",
+          "+@id": "SV-224440r1145259_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMR001",
           "title": "CA MIM Resource Sharing STC data sets will be properly protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -464,19 +464,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing STC data sets is limited to systems programmers and/or CA MIM Resource Sharing's STC(s) and/or batch user(s) only. Read access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.MIMGR. (Data sets that are altered by the product's STCs, this can be more specific.)\n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'SYS3.MIMGR.**' uacc(none) owner(sys3) -\n\taudit(failures(read)) -\n\tdata('Vendor DS Profile: CA MIM Resource Sharing')\npe 'SYS3.MIMGR.**' id(<syspaudt> <tstcaudt> CA MIM STCs) acc(a)\npe 'SYS3.MIMGR.**' id(<audtaudt> authorized users) acc(r)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26105r868484_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA MIM Resource Sharing STC data sets is limited to systems programmers and/or CA MIM Resource Sharing's STC(s) and/or batch user(s) only. READ access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\n(Note: The data sets and/or data set prefixes identified below are examples of a possible installation. The actual data sets and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nData sets to be protected will be: \nSYS3.MIMGR. (Data sets that are altered by the product's STCs, this can be more specific.)\n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'SYS3.MIMGR.**' uacc(none) owner(sys3) -\n\taudit(failures(read)) -\n\tdata('Vendor DS Profile: CA MIM Resource Sharing')\npe 'SYS3.MIMGR.**' id(<syspaudt> <tstcaudt> CA MIM STCs) acc(a)\npe 'SYS3.MIMGR.**' id(<audtaudt> authorized users) acc(r)\n\nsetr generic(dataset) refresh",
+            "+@fixref": "F-26105r1145258_fix"
           },
           "fix": {
-            "+@id": "F-26105r868484_fix"
+            "+@id": "F-26105r1145258_fix"
           },
           "check": {
-            "+@system": "C-26117r868483_chk",
+            "+@system": "C-26117r1144902_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0001)\n\nVerify that the accesses to the CA MIM Resource Sharing STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The RACF data set access authorizations restrict READ access to auditors and authorized users.\n\n___ The RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\n___ The RACF data set access authorizations restrict WRITE and/or greater access to the CA MIM Resource Sharing's STC(s) and/or batch user(s).\n\n___ The RACF data set access authorizations for the data sets specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(MIMSTC).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0001).\n\nVerify that the accesses to the CA MIM Resource Sharing STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set access authorizations restrict READ access to auditors and authorized users.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set access authorizations restrict WRITE and/or greater access to the CA MIM Resource Sharing's STC(s) and/or batch user(s).\n\nThe RACF data set access authorizations for the data sets specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -485,18 +485,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224441r1070173_rule",
+          "+@id": "SV-224441r1144907_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMR020",
           "title": "CA MIM Resource Sharing resources will be properly defined and protected.",
           "description": "<VulnDiscussion>CA MIM Resource Sharing can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain nonsystems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -513,19 +513,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resources and/or resource prefixes identified below are examples of a possible installation. The actual resources and/or prefixes are determined when the product is actually installed on a system through the product's installation guide and can be site specific.)\n\nUse CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. This table list the resources, access requirements, and logging requirement for CA MIM Resource Sharing. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote: SAFPREFIX identifies the prefix for all resources. The default value for this keyword parameter is MIMGR. It is coded in the MIMINIT member of the data set specified in the MIMPARMS DD statement of the started task procedures.\n\nThe RACF resources as designated in the above table are defined with a default access of NONE.\n\nThe RACF resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe RACF resource rules for the resources designated in the above table specify UACC(NONE) and NOWARNING.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nRDEFINE OPERCMDS prefix.** UACC(NONE) OWNER(ADMIN) AUDIT(FAILURE(READ))\nRDEFINE OPERCMDES prefix.ACTIVATE UACC(NONE) OWNER(ADMIN) AUDIT(FAILURE(READ))\nPERMIT prefix.ACTIVATE CLASS(OPERCMDS) ACCESS(UPDATE) ID(syspaudt)",
-            "+@fixref": "F-26106r1070172_fix"
+            "+content": "The ISSO will work with the systems programmer to verify that the following are properly specified in the Access Control Program (ACP).\n\n(Note: The resources and/or resource prefixes identified below are examples of a possible installation. The actual resources and/or prefixes are determined when the product is installed on a system through the product's installation guide and can be site specific.)\n\nUse CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. This table lists the resources, access requirements, and logging requirement for CA MIM Resource Sharing. Ensure the guidelines for the resources and/or generic equivalent specified in the z/OS STIG Addendum are followed.\n\nNote: SAFPREFIX identifies the prefix for all resources. The default value for this keyword parameter is MIMGR. It is coded in the MIMINIT member of the data set specified in the MIMPARMS DD statement of the started task procedures.\n\nThe RACF resources as designated in the above table are defined with a default access of NONE.\n\nThe RACF resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe RACF resource rules for the resources designated in the above table specify UACC(NONE) and NOWARNING.\n\nThe following commands are provided as a sample for implementing resource controls:\n\nRDEFINE OPERCMDS prefix.** UACC(NONE) OWNER(ADMIN) AUDIT(FAILURE(READ))\nRDEFINE OPERCMDES prefix.ACTIVATE UACC(NONE) OWNER(ADMIN) AUDIT(FAILURE(READ))\nPERMIT prefix.ACTIVATE CLASS(OPERCMDS) ACCESS(UPDATE) ID(syspaudt)",
+            "+@fixref": "F-26106r1144906_fix"
           },
           "fix": {
-            "+@id": "F-26106r1070172_fix"
+            "+@id": "F-26106r1144906_fix"
           },
           "check": {
-            "+@system": "C-26118r1070171_chk",
+            "+@system": "C-26118r1144905_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZMIM0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZMIM0020)\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe RACF resources are defined with a default access of NONE.\n\nThe RACF resource access authorizations restrict access to the appropriate personnel.\n\nThe RACF resource access authorizations are defined with UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZMIM0020).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZMIM0020).\n\nVerify that the accesses to resources and/or generic equivalent are properly restricted according to the requirements specified in CA MIM Resource Sharing Resources table in the z/OS STIG Addendum. If the following guidance is true, this is not a finding.\n\nThe RACF resources are defined with a default access of NONE.\n\nThe RACF resource access authorizations restrict access to the appropriate personnel.\n\nThe RACF resource access authorizations are defined with UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -534,18 +534,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224442r958482_rule",
+          "+@id": "SV-224442r1144909_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMR030",
           "title": "CA MIM Resource Sharing Started Task name will be properly identified and/or defined to the system ACP.",
-          "description": "<VulnDiscussion>CA MIM Resource Sharing requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA MIM Resource Sharing requires a started task that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -569,12 +569,12 @@
             "+@id": "F-26107r868495_fix"
           },
           "check": {
-            "+@system": "C-26119r868492_chk",
+            "+@system": "C-26119r1144908_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(LISTUSER)\n\nVerify that the userid(s) for the CA MIM Resource Sharing started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nPROTECTED"
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(LISTUSER).\n\nVerify that the userid(s) for the CA MIM Resource Sharing started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nPROTECTED"
           }
         }
       },
@@ -583,18 +583,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224443r958482_rule",
+          "+@id": "SV-224443r1144911_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZMIMR032",
           "title": "CA MIM Resource Sharing Started task will be properly defined to the STARTED resource class for RACF.",
           "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA MIM for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA MIM for RACF",
-            "identifier": "4144"
+            "dc:title": "DPMS Target zOS CA MIM for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA MIM for RACF",
+            "dc:identifier": "4144"
           },
           "ident": [
             {
@@ -618,12 +618,12 @@
             "+@id": "F-26108r868499_fix"
           },
           "check": {
-            "+@system": "C-26120r868498_chk",
+            "+@system": "C-26120r1144910_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_MIM_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- DSMON.RPT(RACSPT)\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZMIM0032)\n\nIf the CA MIM Resource Sharing started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry, this is not a finding."
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- DSMON.RPT(RACSPT).\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZMIM0032).\n\nIf the CA MIM Resource Sharing started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry, this is not a finding."
           }
         }
       }

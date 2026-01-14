@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS FDR for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -190,18 +190,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224481r1041344_rule",
+          "+@id": "SV-224481r1145235_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ZFDR0040",
           "title": "FDR (Fast Dump Restore) security options are improperly specified.",
           "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS FDR for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS FDR for RACF",
-            "identifier": "4151"
+            "dc:title": "DPMS Target zOS FDR for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS FDR for RACF",
+            "dc:identifier": "4151"
           },
           "ident": [
             {
@@ -218,19 +218,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The systems programmer will verify that the security option ALLCALL is set to Yes.\n\n1) Execute the FDR ISPF dialog by entering the following on the command line:\n\n    EXEC 'SYS2.FDR.VXXXX.CLIST(ABRALLOC)'\n\n2) Select 'I' on the FDR PRIMARY OPTIONS MENU for INSTALL.\n\n3) Select '4' on the INSTALLATION OPTIONS MENU to select SETOPT - SET INSTALLATION OPTIONS IN THE FDR GLOBAL OPTIONS TABLE.\n\n4) Verify the FDR program library data set on this panel is set to the current LOADLIB. Example: 'SYS2A.FDR.Vxxxx.LOADLIB'.\n\n5) Select '1' to select SECURITY OPTIONS.\n\n6) On the SET FDR GLOBAL SECURITY OPTIONS, review the ALLCALL setting, ensure it is set to YES.",
-            "+@fixref": "F-26152r1041343_fix"
+            "+content": "The systems programmer will verify that the security option ALLCALL is set to YES.\n\nExecute the FDR ISPF dialog by entering the following on the command line:\n\nEXEC 'SYS2.FDR.VXXXX.CLIST(ABRALLOC)'\n\nSelect 'I' on the FDR PRIMARY OPTIONS MENU for INSTALL.\n\nSelect '4' on the INSTALLATION OPTIONS MENU to select SETOPT - SET INSTALLATION OPTIONS IN THE FDR GLOBAL OPTIONS TABLE.\n\nVerify the FDR program library data set on this panel is set to the current LOADLIB. Example: 'SYS2A.FDR.Vxxxx.LOADLIB'.\n\nSelect '1' to select SECURITY OPTIONS.\n\nOn the SET FDR GLOBAL SECURITY OPTIONS, review the ALLCALL setting, ensure it is set to YES.",
+            "+@fixref": "F-26152r1144823_fix"
           },
           "fix": {
-            "+@id": "F-26152r1041343_fix"
+            "+@id": "F-26152r1144823_fix"
           },
           "check": {
-            "+@system": "C-26164r1041342_chk",
+            "+@system": "C-26164r1145234_chk",
             "check-content-ref": {
               "+@href": "zOS_FDR_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) The following steps are necessary for reviewing the FDR options:\n\n1) Issue the following command on the command line at option 6 in TSO to bring up the FDR ISPF dialog:\n\nEXEC 'SYS2.FDR.Vxxxx.CLIST(ABRALLOC)'\n\n2) Select 'I' on the FDR primary panel for INSTALL.\n3) Select '4' on the FDR installation options panel to select SETOPT.\n4) Verify the FDR Program Library Data Set on this panel specifies the following:\nExample: 'SYS2A.FDR.Vxxxx.LOADLIB'.\n5) Select '1' for SECURITY OPTIONS.\n6) Review the setting for ALLCALL\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZFDR0040)\n\nb) If ALLCALL is set to YES, there is no finding.\n\nc) If ALLCALL is set to NO, this is a finding."
+            "check-content": "The following steps are necessary for reviewing the FDR options:\n\nIssue the following command on the command line at option 6 in TSO to bring up the FDR ISPF dialog:\n\nEXEC 'SYS2.FDR.Vxxxx.CLIST(ABRALLOC)'\n\nSelect \"I\" on the FDR primary panel for INSTALL.\nSelect \"4\" on the FDR installation options panel to select SETOPT.\nVerify the FDR Program Library Data Set on this panel specifies the following:\nExample: 'SYS2A.FDR.Vxxxx.LOADLIB'.\nSelect \"1\" for SECURITY OPTIONS.\nReview the setting for ALLCALL.\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZFDR0040)\n\nIf ALLCALL is set to YES, this is not a finding."
           }
         }
       },
@@ -239,18 +239,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224482r1041347_rule",
+          "+@id": "SV-224482r1145237_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZFDRR000",
           "title": "Fast Dump Restore (FDR) install data sets are not properly protected.",
           "description": "<VulnDiscussion>Fast Dump Restore (FDR) install have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS FDR for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS FDR for RACF",
-            "identifier": "4151"
+            "dc:title": "DPMS Target zOS FDR for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS FDR for RACF",
+            "dc:identifier": "4151"
           },
           "ident": [
             {
@@ -271,19 +271,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate access to Fast Dump Restore (FDR) install data sets is limited to systems programmers only, and all update and allocate access is logged. Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nData sets to be protected will be: \nSYS2.FDR \nSYS2A.FDR \n\nThe following commands are provided as a sample for implementing dataset controls: \n\nad 'sys2.fdr.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('Vendor DS Profile: fdr')\npe 'sys2.fdr.**' id(syspaudt) acc(a)\npe 'sys2.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\nad 'sys2a.fdr.**' uacc(none) owner(sys2a) -\n\taudit(success(update) failures(read)) -\n\tdata('fdr Vendor Datasets')\npe 'sys2a.fdr.**' id(syspaudt) acc(a)\npe 'sys2a.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\nad 'sys3.fdr.**' uacc(none) owner(sys3) -\n\taudit(success(update) failures(read)) -\n\tdata('Site Custom DS Profile: fdr')\npe 'sys3.fdr.**' id(syspaudt) acc(a)\npe 'sys3.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\n\nsetr generic(dataset) refresh",
-            "+@fixref": "F-26153r1041346_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to Fast Dump Restore (FDR) install data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have UPDATE access for specific data sets, and once documented will work with the ISSO to see that they are properly restricted to the ACP (Access Control Program ) active on the system.\n\nData sets to be protected will be: \nSYS2.FDR \nSYS2A.FDR \n\nThe following commands are provided as a sample for implementing data set controls: \n\nad 'sys2.fdr.**' uacc(none) owner(sys2) -\n\taudit(success(update) failures(read)) -\n\tdata('Vendor DS Profile: fdr')\npe 'sys2.fdr.**' id(syspaudt) acc(a)\npe 'sys2.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\nad 'sys2a.fdr.**' uacc(none) owner(sys2a) -\n\taudit(success(update) failures(read)) -\n\tdata('fdr Vendor Datasets')\npe 'sys2a.fdr.**' id(syspaudt) acc(a)\npe 'sys2a.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\nad 'sys3.fdr.**' uacc(none) owner(sys3) -\n\taudit(success(update) failures(read)) -\n\tdata('Site Custom DS Profile: fdr')\npe 'sys3.fdr.**' id(syspaudt) acc(a)\npe 'sys3.fdr.**' id(dasdaudt dasbaudt audtaudt) acc(r)\n\nsetr generic(dataset) refresh",
+            "+@fixref": "F-26153r1145236_fix"
           },
           "fix": {
-            "+@id": "F-26153r1041346_fix"
+            "+@id": "F-26153r1145236_fix"
           },
           "check": {
-            "+@system": "C-26165r1041345_chk",
+            "+@system": "C-26165r1144825_chk",
             "check-content-ref": {
               "+@href": "zOS_FDR_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a) Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(FDRRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZFDR0000)\n\nb) Verify that access to the Fast Dump Restore (FDR) Install data sets are properly restricted.\n \n___ The RACF data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___ The RACF data set rules for the datasets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nc) If all of the above are untrue, there is no finding.\n\nd) If any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(FDRRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZFDR0000).\n\nVerify that access to the Fast Dump Restore (FDR) Install data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe RACF data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access will be logged."
           }
         }
       }

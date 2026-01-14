@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -881,11 +881,11 @@
           "title": "AOS, when used as an IPsec VPN Gateway, must specify Perfect Forward Secrecy (PFS) during Internet Key Exchange (IKE) negotiation.",
           "description": "<VulnDiscussion>PFS generates each new encryption key independently from the previous key. Without PFS, compromise of one key will compromise all communications.\n\nThe phase 2 (Quick Mode) Security Association (SA) is used to create an IPsec session key. Hence, its rekey or key regeneration procedure is very important. The phase 2 rekey can be performed with or without Perfect Forward Secrecy (PFS). With PFS, every time a new IPsec Security Association is negotiated during the Quick Mode, a new Diffie-Hellman (DH) exchange occurs. The new DH shared secret will be included with original keying material (SYKEID_d, initiator nonce, and responder nonce} from phase 1 for generating a new IPsec session key. If PFS is not used, the IPsec session key will always be completely dependent on the original keying material from the Phase-1. Hence, if an older key is compromised at any time, it is possible that all new keys may be compromised.\n\nThe DH exchange is performed in the same manner as was done in phase 1 (Main or Aggressive Mode). However, the phase 2 exchange is protected by encrypting the phase 2 packets with the key derived from the phase 1 negotiation. Because DH negotiations during phase 2 are encrypted, the new IPsec session key has an added element of secrecy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-002418",
@@ -920,11 +920,11 @@
           "title": "AOS, when used as a VPN Gateway, must be configured to use IPsec with SHA-2 at 384 bits or greater for hashing to protect the integrity of remote access sessions.",
           "description": "<VulnDiscussion>Without strong cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nSHA-1 is considered a compromised hashing standard and is being phased out of use by industry and government standards. DOD systems must not be configured to use SHA-1 for integrity of remote access sessions. \n\nThe remote access VPN provides access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nSatisfies: SRG-NET-000063-VPN-000220, SRG-NET-000074-VPN-000250, SRG-NET-000168-VPN-000600, SRG-NET-000230-VPN-000780</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -973,11 +973,11 @@
           "title": "AOS, when used as a VPN Gateway and using public key infrastructure (PKI)-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
           "description": "<VulnDiscussion>Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted. To meet this requirement, the information system must create trusted channels between itself and remote trusted authorized IT product (e.g., syslog server) entities that protect the confidentiality and integrity of communications. The information system must create trusted paths between itself and remote administrators and users that protect the confidentiality and integrity of communications.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is most often used in the context of public key infrastructures, X.509 digital certificates, and Domain Name System Security Extensions (DNSSEC). However, applications that do not use a trusted path are not approved for nonlocal and remote management of DOD information systems.\n\nUse of SSHv2 to establish a trusted channel is approved. Use of FTP, TELNET, HTTP, and SNMPV1 is not approved because they violate the trusted channel rule set. Use of web management tools that are not validated by common criteria may also violate the trusted channel rule set.\n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a certificate authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA.\n\nThis requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000185",
@@ -1012,11 +1012,11 @@
           "title": "AOS, when used as an IPsec VPN Gateway, must use Advanced Encryption Standard (AES) encryption for the Internet Key Exchange (IKE) proposal to protect confidentiality of remote access sessions.",
           "description": "<VulnDiscussion>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAES is the Federal Information Processing Standard (FIPS)-validated cipher block cryptographic algorithm approved for use in DOD. For an algorithm implementation to be listed on a FIPS 140-2/140-3 cryptographic module validation certificate as an approved security function, the algorithm implementation must meet all the requirements of FIPS 140-2/140-3 and must successfully complete the cryptographic algorithm validation process. Currently, the National Institute of Standards and Technology (NIST) has approved the following confidentiality modes to be used with approved block ciphers in a series of special publications: ECB, CBC, OFB, CFB, CTR, XTS-AES, FF1, FF3, CCM, GCM, KW, KWP, and TKW.\n\nSatisfies: SRG-NET-000317-VPN-001090, SRG-NET-000371-VPN-001650, SRG-NET-000400-VPN-001940, SRG-NET-000525-VPN-002330</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -1061,11 +1061,11 @@
           "title": "AOS, when used as a VPN Gateway, must use an approved Commercial Solution for Classified (CSfC) when transporting classified traffic across an unclassified network.",
           "description": "<VulnDiscussion>Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.\n\nThe National Security Agency/Central Security Service's (NSA/CSS) CSfC program enables commercial products to be used in layered solutions to protect classified National Security Systems (NSS) data. Currently, Suite B cryptographic algorithms are specified by the National Institute of Standards and Technology (NIST) and are used by the NSA's Information Assurance Directorate in solutions approved for protecting classified and unclassified NSS. However, quantum-resistant algorithms will be required for future required Suite B implementations.\n\nSatisfies: SRG-NET-000352-VPN-001460, SRG-NET-000565-VPN-002390, SRG-NET-000565-VPN-002400</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-002450",
@@ -1100,11 +1100,11 @@
           "title": "AOS, when used as a VPN Gateway, must uniquely identify all network-connected endpoint devices before establishing a connection.",
           "description": "<VulnDiscussion>Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nFor distributed architectures (e.g., service-oriented architectures), the decisions regarding the validation of identification claims may be made by services separate from the services acting on those decisions. In such situations, it is necessary to provide the identification decisions (as opposed to the actual identifiers) to the services that need to act on those decisions.\n\nThis requirement applies to applications that connect locally, remotely, or through a network to an endpoint device (including, but not limited to, workstations, printers, servers outside a datacenter, Voice Over Internet Protocol [VoIP] phones, and video teleconference codecs). Gateways and service-oriented architecture (SOA) applications are examples of where this requirement would apply.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000778",
@@ -1139,11 +1139,11 @@
           "title": "AOS, when used as a VPN Gateway, must authenticate all network-connected endpoint devices before establishing a connection.",
           "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nFor distributed architectures (e.g., service-oriented architectures), the decisions regarding the validation of authentication claims may be made by services separate from the services acting on those decisions. In such situations, it is necessary to provide authentication decisions (as opposed to the actual authenticators) to the services that need to act on those decisions.\n\nThis requirement applies to applications that connect either locally, remotely, or through a network to an endpoint device (including, but not limited to, workstations, printers, servers (outside a datacenter), VoIP Phones, and VTC codecs). Gateways and SOA applications are examples of where this requirement would apply.\n\nDevice authentication is a solution enabling an organization to manage devices. It is an additional layer of authentication ensuring only specific preauthorized devices can access the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-001958",
@@ -1178,11 +1178,11 @@
           "title": "The Remote Access VPN Gateway and/or client must display the Standard Mandatory DOD Notice and Consent Banner before granting remote access to the network.",
           "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the network ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nIn most VPN implementations, the banner is configured in the management backplane (NDM Security Requirements Guide) and serves as the presentation for the VPN client connection as well as for administrator logon to the device management tool/backplane.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist. This requirement applies to VPN gateways that have the concept of a user account and have the logon function residing on the VPN gateway.\n\nThe banner must be formatted in accordance with applicable DOD policy. Use the following verbiage for VPN gateways that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-NET-000041-VPN-000110, SRG-NET-000042-VPN-000120, SRG-NET-000043-VPN-000130</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -1243,11 +1243,11 @@
           "title": "AOS, when used as a VPN Gateway, must terminate all network connections associated with a communications session at the end of the session.",
           "description": "<VulnDiscussion>Idle Transmission Control Protocol (TCP) sessions can be susceptible to unauthorized access and hijacking attacks. By default, routers do not continually test whether a previously connected TCP endpoint is still reachable. If one end of a TCP connection idles out or terminates abnormally, the opposite end of the connection may still believe the session is available. These \"orphaned\" sessions use up valuable router resources and can be hijacked by an attacker. \n\nTo mitigate this risk, routers must be configured to send periodic keep-alive messages to check that the remote end of a session is still connected. If the remote device fails to respond to the TCP keep-alive message, the sending router will clear the connection and free resources allocated to the session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-001133",
@@ -1282,11 +1282,11 @@
           "title": "For site-to-site VPN implementations using AOS, the Layer 2 Tunneling Protocol (L2TP) must be blocked or denied at the security boundary with the private network so unencrypted L2TP packets cannot traverse into the private network of the enclave.",
           "description": "<VulnDiscussion>Unlike Generic Routing Encapsulation (GRE) (a simple encapsulating header), L2TP is a full-fledged communications protocol with control channel, data channels, and a robust command structure. In addition to Point-to-Point Protocol (PPP), other link layer types (called pseudowires) can be and are defined for delivery in L2TP by separate Internet Engineering Task Force Request for Comments (RFC) documents. Further complexity is created by the capability to define vender-specific parameters beyond those defined in the L2TP specifications.\n\nThe endpoint devices of an L2TP connection can be an L2TP Access Concentrator (LAC), in which case it inputs/outputs the layer 2 protocol to/from the L2TP tunnel. Otherwise, it is an L2TP Network Server (LNS), in which case it inputs/outputs the layer 3 (IP) protocol to/from the L2TP tunnel. The specifications describe three reference models: LAC-LNS, LAC-LAC, and LNS-LNS, the first of which is the most common case. The LAC-LNS model allows a remote access user to reach their home network or internet service provider from a remote location. The remote access user connects to a LAC device, which tunnels the connection home to a waiting LNS. The LAC could also be located on the remote user's laptop, which connects to an LNS at home using a generic internet connection. The other reference models may be used for more obscure scenarios.\n\nAlthough the L2TP protocol does not contain encryption capability, it can be operated over IPsec, which would provide authentication and confidentiality. A remote user in the LAC-LNS model would most likely obtain a dynamically assigned IP address from the home network to ultimately use through the tunnel back to the home network. The outer IP source address used to send the L2TP tunnel packet to the home network is likely to be unknown or highly variable. Also, because the LNS provides the remote user with a dynamic IP address, the firewall at the home network would have to be dynamically updated to accept this address in conjunction with the outer tunnel address. There is also the issue of authentication of the remote user prior to divulging an acceptable IP address. \n\nBecause of all of these complications, the strict filtering rules applied to the IP-in-IP and GRE tunneling cases will likely not be possible in the L2TP scenario.\n\nIn addition to the difficulty of enforcing addresses and endpoints (as explained above), the L2TP protocol itself is a security concern if allowed through a security boundary. In particular:\n\n1. L2TP potentially allows link layer protocols to be delivered from afar. These protocols were intended for link-local scope only and are less defended and not as well known.\n2. The L2TP tunnels can carry IP packets that are very difficult to see and filter because of the additional layer 2 overhead.\n3. L2TP is highly complex and variable (vender-specific variability) and therefore would be a viable target that is difficult to defend. It is better left outside of the main firewall where less damage occurs if the L2TP-processing node is compromised.\n4. Filtering cannot be used to detect and prevent other unintended layer 2 protocols from being tunneled. The strength of the application layer code would have to be relied on to achieve this task.\n5. Regardless of whether the L2TP is handled inside or outside of the main network, a secondary layer of IP filtering is required; therefore, bringing it inside does not save resources.\n\nIt is not recommended to allow unencrypted L2TP packets across the security boundary into the network's protected areas. Reference the Backbone Transport STIG for additional L2TP guidance and use.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -1321,11 +1321,11 @@
           "title": "AOS, when used as a VPN Gateway, must ensure inbound and outbound traffic is configured with a security policy in compliance with information flow control policies.",
           "description": "<VulnDiscussion>Unrestricted traffic may contain malicious traffic, which poses a threat to an enclave or to other connected networks. Additionally, unrestricted traffic may transit a network, which uses bandwidth and other resources.\n\nVPN traffic received from another enclave with different security policy or level of trust must not bypass being inspected by the firewall before being forwarded to the private network.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-001414",
@@ -1360,11 +1360,11 @@
           "title": "AOS, when used as a VPN Gateway, must limit the number of concurrent sessions for user accounts to one or to an organization-defined number.",
           "description": "<VulnDiscussion>VPN gateway management includes the ability to control the number of users and user sessions that utilize a VPN gateway. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to denial-of-service attacks.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based on mission needs and the operational environment for each system.\n\nThe intent of this policy is to ensure the number of concurrent sessions is deliberately set to a number based on the site's mission and not left unlimited.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -1399,11 +1399,11 @@
           "title": "The Remote Access VPN Gateway must use a separate authentication server (e.g., Lightweight Directory Access Protocol [LDAP], Remote Authentication Dial-In User Service [RADIUS], Terminal Access Controller Access-Control System+ [TACACS+] to perform user authentication.",
           "description": "<VulnDiscussion>The VPN interacts directly with public networks and devices and should not contain user authentication information for all users. Authentication, Authorization, and Accounting (AAA) network security services provide the primary framework through which a network administrator can set up access control and authorization on network points of entry or network access servers. It is not advisable to configure access control on the VPN gateway or remote access server. Separation of services provides added assurance to the network if the access control server is compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000187",
@@ -1438,11 +1438,11 @@
           "title": "The VPN Gateway must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users).",
           "description": "<VulnDiscussion>To ensure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses except the following.\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals' in-group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., VPN or proxy capability). This does not apply to authentication for the purpose of configuring the device itself (i.e., device management).\n\nSatisfies: SRG-NET-000138-VPN-000490, SRG-NET-000166-VPN-000590, SRG-NET-000341-VPN-001350</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -1487,11 +1487,11 @@
           "title": "The Remote Access VPN Gateway must terminate remote access network connections after an organization-defined time period.",
           "description": "<VulnDiscussion>This requirement is in response to the DOD Office of Inspector General Audit of Maintaining Cybersecurity in the Coronavirus Disease-2019 Telework Environment.\n\nBest practice is to terminate inactive user sessions after a period; however, when setting timeouts to any VPN connection, the organization must consider the risk to the mission and the purpose of the VPN. VPN connections that provide user access to the network are the prime candidates for VPN session termination and are the primary focus of this requirement.\n\nTo determine if and when the VPN connections warrant termination, the organization must perform a risk assessment to identify the use case for the VPN and determine if periodic VPN session termination puts the mission at significant risk.\n\nThe organization must document the results and the determination of the risk assessment in the VPN section of the System Security Plan. The organization must also configure VPN session terminations in accordance with the risk assessment.\n\nTerminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. Quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. \n\nThis requirement applies to any network element that tracks individual sessions (e.g., stateful inspection firewall, ALG, or VPN).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -1532,11 +1532,11 @@
           "title": "AOS, when used as a VPN Gateway, must renegotiate the security association after 24 hours or less or as defined by the organization.",
           "description": "<VulnDiscussion>When a VPN gateway creates an IPsec security association (SA), resources must be allocated to maintain the SA. These resources are wasted during periods of IPsec endpoint inactivity, which could result in the gateway's inability to create new SAs for other endpoints, thereby preventing new sessions from connecting. \n\nThe Internet Key Exchange (IKE) idle timeout may also be set to allow SAs associated with inactive endpoints to be deleted before the SA lifetime has expired, although this setting is not recommended at this time. The value of one hour or less is a common best practice.\n\nSatisfies: SRG-NET-000337-VPN-001300, SRG-NET-000337-VPN-001290</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-002038",
@@ -1571,11 +1571,11 @@
           "title": "The Remote Access VPN Gateway must be configured to prohibit Point-to-Point Tunneling Protocol (PPTP) and Layer 2 Forwarding (L2F).",
           "description": "<VulnDiscussion>PPTP and L2F are obsolete methods for implementing virtual private networks. Both protocols may be easy to use and readily available, but they have many well-known security issues and exploits. Encryption and authentication are both weak.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -1610,11 +1610,11 @@
           "title": "AOS, when used as a VPN Gateway, must be configured to route sessions to an intrusion detection and prevention system (IDPS) for inspection.",
           "description": "<VulnDiscussion>Remote access devices, such as those providing remote access to network devices and information systems, that lack automated capabilities increase risk and make remote user access management difficult at best.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyberattacks and ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities from a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-001097",
@@ -1649,11 +1649,11 @@
           "title": "AOS, when used as a VPN Gateway, must disable split-tunneling for remote client VPNs.",
           "description": "<VulnDiscussion>Split tunneling would in effect allow unauthorized external connections, making the system more vulnerable to attack and to exfiltration of organizational information.\n\nA VPN hardware or software client with split tunneling enabled provides an unsecured backdoor to the enclave from the internet. With split tunneling enabled, a remote client has access to the internet while at the same time has established a secured path to the enclave via an IPsec tunnel. A remote client connected to the internet that has been compromised by an attacker on the internet provides an attack base to the enclave's private network via the IPsec tunnel. Hence, it is imperative that the VPN gateway enforces a no split-tunneling policy to all remote clients.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-002397",
@@ -1688,11 +1688,11 @@
           "title": "AOS, when used as an IPsec VPN Gateway, must use Internet Key Exchange (IKE) for IPsec VPN security associations (SAs).",
           "description": "<VulnDiscussion>Without IKE, the SPI is manually specified for each security association. IKE peers will negotiate the encryption algorithm and authentication or hashing methods as well as generate the encryption keys.\n\nAn IPsec SA is established using either IKE or manual configuration. When using IKE, the security associations are established when needed and expire after a period of time or volume of traffic threshold. If manually configured, they are established as soon as the configuration is complete at both end points, and they do not expire. When using IKE, the Security Parameter Index (SPI) for each security association is a pseudo-randomly derived number.\n\nWith manual configuration of the IPsec security association, both the cipher key and authentication key are static. Hence, if the keys are compromised, the traffic being protected by the current IPsec tunnel can be decrypted as well as traffic in any future tunnels established by this SA. Furthermore, the peers are not authenticated prior to establishing the SA, which could result in a rogue device establishing an IPsec SA with either of the VPN endpoints.\n\nIKE provides primary authentication to verify the identity of the remote system before negotiation begins. This feature is lost when the IPsec security associations are manually configured, which results in a nonterminating session using static preshared keys.\n\nSatisfies: SRG-NET-000512-VPN-002220, SRG-NET-000132-VPN-000460, SRG-NET-000147-VPN-000530</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": [
             {
@@ -1737,11 +1737,11 @@
           "title": "AOS, when used as a VPN Gateway, must not accept certificates that have been revoked when using PKI for authentication.",
           "description": "<VulnDiscussion>Situations may arise in which the certificate issued by a certificate authority (CA) may need to be revoked before the lifetime of the certificate expires (for example, when the certificate is known to have been compromised).\n\nWhen an incoming Internet Key Exchange (IKE) session is initiated for a remote client or peer whose certificate is revoked, the revocation list configured for use by the VPN server is checked to determine if the certificate is valid. If the certificate is revoked, IKE will fail, and an IPsec security association will not be established for the remote endpoint.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target HPE Aruba Networking AOS VPN",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "HPE Aruba Networking AOS VPN",
-            "identifier": "5645"
+            "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "HPE Aruba Networking AOS VPN",
+            "dc:identifier": "5645"
           },
           "ident": {
             "+content": "CCI-004068",

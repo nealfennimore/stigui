@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -1025,11 +1025,11 @@
           "title": "The RUCKUS ICX device must be configured to assign appropriate user roles or access levels to authenticated users.",
           "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise of and unauthorized access to sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are preconfigured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an information system security manager (ISSM) may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM's user persona to the audit security group. This is still considered privileged access, but the ISSM's security group is more restrictive than the network administrator's security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user's directory service group membership.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-000213",
@@ -1064,11 +1064,11 @@
           "title": "The RUCKUS ICX device must enforce approved authorizations for controlling the flow of management information within the network device based on information flow control policies.",
           "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001368",
@@ -1103,11 +1103,11 @@
           "title": "The RUCKUS ICX device must be configured to enforce the limit of three consecutive invalid logon attempts, after which time it must block any login attempt for 15 minutes.",
           "description": "<VulnDiscussion>By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-000044",
@@ -1142,11 +1142,11 @@
           "title": "The RUCKUS ICX device must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the device.",
           "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.\n\nSatisfies: SRG-APP-000068-NDM-000215, SRG-APP-000069-NDM-000216</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1187,11 +1187,11 @@
           "title": "The RUCKUS ICX device must initiate session auditing upon startup.",
           "description": "<VulnDiscussion>If auditing is enabled late in the startup process, the actions of some start-up processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.\n\nSatisfies: SRG-APP-000092-NDM-000224, SRG-APP-000026-NDM-000208, SRG-APP-000027-NDM-000209, SRG-APP-000028-NDM-000210, SRG-APP-000029-NDM-000211, SRG-APP-000080-NDM-000220, SRG-APP-000091-NDM-000223, SRG-APP-000095-NDM-000225, SRG-APP-000096-NDM-000226, SRG-APP-000097-NDM-000227, SRG-APP-000098-NDM-000228, SRG-APP-000099-NDM-000229, SRG-APP-000100-NDM-000230, SRG-APP-000319-NDM-000283, SRG-APP-000343-NDM-000289, SRG-APP-000381-NDM-000305, SRG-APP-000495-NDM-000318, SRG-APP-000499-NDM-000319, SRG-APP-000503-NDM-000320, SRG-APP-000504-NDM-000321, SRG-APP-000505-NDM-000322, SRG-APP-000506-NDM-000323, SRG-APP-000516-NDM-000334</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1296,11 +1296,11 @@
           "title": "The RUCKUS ICX device must generate audit records containing the full-text recording of privileged commands.",
           "description": "<VulnDiscussion>Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. \n\nOrganizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. The additional information required is dependent on the type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum, the organization must audit full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-000135",
@@ -1335,11 +1335,11 @@
           "title": "The RUCKUS ICX device must be configured to prohibit the use of all unnecessary and/or nonsecure functions, ports, protocols, and/or services",
           "description": "<VulnDiscussion>To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -1374,11 +1374,11 @@
           "title": "The RUCKUS ICX device must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
           "description": "<VulnDiscussion>Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit must be added to the envelope as a record. Administrators must secure the credentials and disable the root account (if possible) when not needed for system administration functions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1419,11 +1419,11 @@
           "title": "The RUCKUS ICX device must enforce password complexity and length requirements.",
           "description": "<VulnDiscussion>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password.\n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.\n\nSatisfies: SRG-APP-000164-NDM-000252, SRG-APP-000166-NDM-000254, SRG-APP-000167-NDM-000255, SRG-APP-000168-NDM-000256, SRG-APP-000169-NDM-000257</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-004066",
@@ -1458,11 +1458,11 @@
           "title": "The RUCKUS ICX device must use FIPS 140-2/140-3 approved algorithms for authentication to a cryptographic module.",
           "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-approved and NIST-recommended authentication algorithms.\n\nSatisfies: SRG-APP-000179-NDM-000265, SRG-APP-000156-NDM-000250, SRG-APP-000172-NDM-000259, SRG-APP-000411-NDM-000330, SRG-APP-000412-NDM-000331, SRG-APP-000880-NDM-000290</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1519,11 +1519,11 @@
           "title": "The RUCKUS ICX device must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after five minutes of inactivity except to fulfill documented and validated mission requirements.",
           "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001133",
@@ -1558,11 +1558,11 @@
           "title": "The RUCKUS ICX device must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
           "description": "<VulnDiscussion>To ensure network devices have a sufficient storage capacity in which to write the audit logs, they must be able to allocate audit record storage capacity. The task of allocating audit record storage capacity is usually performed during initial device setup if it is modifiable. \n\nThe value for the organization-defined audit record storage requirement will depend on the amount of storage available on the network device, the anticipated volume of logs, the frequency of transfer from the network device to centralized log servers, and other factors.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001849",
@@ -1597,11 +1597,11 @@
           "title": "The RUCKUS ICX device must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
           "description": "<VulnDiscussion>If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in UTC, a modern continuation of GMT, or local time with an offset from UTC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001890",
@@ -1636,11 +1636,11 @@
           "title": "The RUCKUS ICX device must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
           "description": "<VulnDiscussion>Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, internet). A remote connection is any connection with a device communicating through an external network (e.g., the internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001967",
@@ -1675,11 +1675,11 @@
           "title": "The RUCKUS ICX device must authenticate Network Time Protocol sources using authentication that is cryptographically based.",
           "description": "<VulnDiscussion>If Network Time Protocol (NTP) is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001967",
@@ -1714,11 +1714,11 @@
           "title": "The RUCKUS ICX device must be configured to protect against known types of denial-of-service (DoS) attacks by employing organization-defined security safeguards.",
           "description": "<VulnDiscussion>DoS is a condition that occurs when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DOD-level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -1753,11 +1753,11 @@
           "title": "Security-relevant firmware updates must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
           "description": "<VulnDiscussion>Security flaws with firmware are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant firmware updates. Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously. \n\nOrganization-defined time periods for updating security-relevant firmware may vary based on a variety of factors including, for example, the security category of the information system or the criticality of the update (i.e., severity of the vulnerability related to the discovered flaw). \n\nThis requirement will apply to software patch management solutions that are used to install firmware patches across the enclave (e.g., mobile device management solutions). Patch criticality, as well as system criticality will vary. Therefore, the tactical situations regarding the patch management process will also vary. This means that the time period utilized must be a configurable parameter. Time frames for application of security-relevant firmware updates may be dependent upon the Information Assurance Vulnerability Management (IAVM) process.\n\nThe application will be configured to check for and install security-relevant firmware updates within an identified time period from the availability of the update. The specific time period will be defined by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-002605",
@@ -1792,11 +1792,11 @@
           "title": "The RUCKUS ICX device must off-load audit records onto a different system or media than the system being audited.",
           "description": "<VulnDiscussion>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.\n\nSatisfies: SRG-APP-000515-NDM-000325, SRG-APP-000360-NDM-000295</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1837,11 +1837,11 @@
           "title": "The RUCKUS ICX device must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
           "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's RUCKUS ICX devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each RUCKUS ICX device.\n\nSatisfies: SRG-APP-000516-NDM-000336, SRG-APP-000700-NDM-000100, SRG-APP-000705-NDM-000110</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1886,11 +1886,11 @@
           "title": "The RUCKUS ICX device must obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
           "description": "<VulnDiscussion>For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this certification authority will suffice.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": [
             {
@@ -1931,11 +1931,11 @@
           "title": "The RUCKUS ICX device must be configured to send log data to at least two central log servers for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO).",
           "description": "<VulnDiscussion>The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. The stored log data can be used to detect weaknesses in security that enable the network IA team to find and address these weaknesses before breaches can occur. Reviewing these logs, whether before or after a security breach, are important in showing whether someone is an internal employee or an outside threat.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-001851",
@@ -1970,11 +1970,11 @@
           "title": "The RUCKUS ICX device  must be running an operating system release that is currently supported by the vendor.",
           "description": "<VulnDiscussion>RUCKUS ICX devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -2009,11 +2009,11 @@
           "title": "The RUCKUS ICX device must be configured to include only approved trust anchors in trust stores or certificate stores managed by the organization.",
           "description": "<VulnDiscussion>Public key infrastructure (PKI) certificates are certificates with visibility external to organizational systems and certificates related to the internal operations of systems, such as application-specific time services. In cryptographic systems with a hierarchical structure, a trust anchor is an authoritative source (i.e., a certificate authority) for which trust is assumed and not derived. A root certificate for a PKI system is an example of a trust anchor. A trust store or certificate store maintains a list of trusted root certificates.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-004909",
@@ -2048,11 +2048,11 @@
           "title": "The RUCKUS ICX device must be configured to synchronize system clocks within and between systems or system components.",
           "description": "<VulnDiscussion>Time synchronization of system clocks is essential for the correct execution of many system services, including identification and authentication processes that involve certificates and time-of-day restrictions as part of access control. Denial of service or failure to deny expired credentials may result without properly synchronized clocks within and between systems and system components. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC. The granularity of time measurements refers to the degree of synchronization between system clocks and reference clocks, such as clocks synchronizing within hundreds of milliseconds or tens of milliseconds. Organizations may define different time granularities for system components. Time service can be critical to other security capabilities such as access control and identification and authentication depending on the nature of the mechanisms used to support the capabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-004922",
@@ -2087,11 +2087,11 @@
           "title": "The RUCKUS ICX device must be configured to compare the internal system clocks on an organization-defined frequency with two organization-defined authoritative time sources.",
           "description": "<VulnDiscussion>Synchronization of internal system clocks with an authoritative source provides uniformity of time stamps for systems with multiple system clocks and systems connected over a network.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target RUCKUS ICX NDM",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "RUCKUS ICX NDM",
-            "identifier": "5695"
+            "dc:title": "DPMS Target RUCKUS ICX NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "RUCKUS ICX NDM",
+            "dc:identifier": "5695"
           },
           "ident": {
             "+content": "CCI-004923",

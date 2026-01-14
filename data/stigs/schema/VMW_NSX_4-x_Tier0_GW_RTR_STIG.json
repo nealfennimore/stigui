@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -701,11 +701,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to disable Protocol Independent Multicast (PIM) on all interfaces that are not required to support multicast routing.",
           "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it could be intercepted by unauthorized or unintended personnel. Limiting where within the network a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DOD IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and thereby knows which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-001414",
@@ -740,11 +740,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have all inactive interfaces removed.",
           "description": "<VulnDiscussion>An inactive interface is rarely monitored or controlled and may expose a network to an undetected attack on that interface. Unauthorized personnel with access to the communication facility could gain access to a router by connecting to a configured interface that is not in use.\n\nIf an interface is no longer used, the configuration must be deleted and the interface disabled. For sub-interfaces, delete sub-interfaces that are on inactive interfaces and delete sub-interfaces that are themselves inactive. If the sub-interface is no longer necessary for authorized communications, it must be deleted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-001414",
@@ -779,11 +779,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have the Dynamic Host Configuration Protocol (DHCP) service disabled if not in use.",
           "description": "<VulnDiscussion>A compromised router introduces risk to the entire network infrastructure, as well as data resources that are accessible via the network. The perimeter defense has no oversight or control of attacks by malicious users within the network. Preventing network breaches from within is dependent on implementing a comprehensive defense-in-depth strategy, including securing each device connected to the network. This is accomplished by following and implementing all security guidance applicable for each node type. A fundamental step in securing each router is to enable only the capabilities required for operation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -818,11 +818,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to use encryption for Open Shortest Path First (OSPF) routing protocol authentication.",
           "description": "<VulnDiscussion>A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication for routing updates. However, using clear-text authentication provides little benefit since an attacker can intercept traffic and view the authentication key. This would allow the attacker to use the authentication key in an attack.\n\nThis requirement applies to all IPv4 and IPv6 protocols that are used to exchange routing or packet forwarding information; this includes all Interior Gateway Protocols (such as OSPF, Enhanced Interior Gateway Routing Protocol [EIGRP], and Intermediate System to Intermediate System [IS-IS]) and exterior gateway protocols (such as Border Gateway Protocol [BGP]), multiprotocol label switching (MPLS)-related protocols (such as Label Distribution Protocol [LDP]), and multicast-related protocols.\n\nTypically routing protocols must be setup on both sides so knowing the authentication key does not necessarily mean an attacker would be able to setup a rogue router and peer with a legitimate one and inject malicious routes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000803",
@@ -857,11 +857,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to restrict it from accepting outbound IP packets that contain an illegitimate address in the source address field by enabling Unicast Reverse Path Forwarding (uRPF).",
           "description": "<VulnDiscussion>A malicious platform can use a compromised host in an enclave to launch cyberattacks on third parties. This is a common practice in \"botnets\", which are a collection of compromised computers using malware to attack other computers or networks. Distributed denial-of-service (DDoS) attacks frequently leverage IP source address spoofing to send packets to multiple hosts that in turn will send return traffic to the hosts with the IP addresses that were forged. This can generate significant amounts of traffic. Therefore, protection measures to counteract IP source address spoofing must be taken. When uRPF is enabled in strict mode, the packet must be received on the interface that the device would use to forward the return packet; thereby mitigating IP source address spoofing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-001094",
@@ -896,11 +896,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to implement message authentication for all control plane protocols.",
           "description": "<VulnDiscussion>A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication for routing updates.\n\nThis requirement applies to all IPv4 and IPv6 protocols that are used to exchange routing or packet forwarding information. This includes Border Gateway Protocol (BGP), Routing Information Protocol (RIP), Open Shortest Path First (OSPF), Enhanced Interior Gateway Routing Protocol (EIGRP), Intermediate System to Intermediate System (IS-IS) and Label Distribution Protocol (LDP).\n\nSatisfies: SRG-NET-000230-RTR-000001, SRG-NET-000230-RTR-000002</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": [
             {
@@ -941,11 +941,11 @@
           "title": "The NSX Tier-0 Gateway must be configured to use a unique password for each autonomous system (AS) with which it peers.",
           "description": "<VulnDiscussion>If the same keys are used between External Border Gateway Protocol (eBGP) neighbors, the chance of a hacker compromising any of the BGP sessions increases. It is possible that a malicious user exists in one autonomous system who would know the key used for the eBGP session. This user would then be able to hijack BGP sessions with other trusted neighbors.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-002205",
@@ -980,11 +980,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have Internet Control Message Protocol (ICMP) unreachable notifications disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Routers automatically send ICMP messages under a wide variety of conditions. Host unreachable ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -1019,11 +1019,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have Internet Control Message Protocol (ICMP) mask replies disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Routers automatically send ICMP messages under a wide variety of conditions. Mask Reply ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -1058,11 +1058,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have Internet Control Message Protocol (ICMP) redirects disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Routers automatically send ICMP messages under a wide variety of conditions. Redirect ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -1097,11 +1097,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to use the Border Gateway Protocol (BGP) maximum prefixes feature to protect against route table flooding and prefix de-aggregation attacks.",
           "description": "<VulnDiscussion>The effects of prefix de-aggregation can degrade router performance due to the size of routing tables and also result in black-holing legitimate traffic. Initiated by an attacker or a misconfigured router, prefix de-aggregation occurs when the announcement of a large prefix is fragmented into a collection of smaller prefix announcements.\n\nIn 1997, misconfigured routers in the Florida Internet Exchange network (AS7007) de-aggregated every prefix in their routing table and started advertising the first /24 block of each of these prefixes as their own. Faced with this additional burden, the internal routers became overloaded and crashed repeatedly. This caused prefixes advertised by these routers to disappear from routing tables and reappear when the routers came back online. As the routers came back after crashing, they were flooded with the routing table information by their neighbors. The flood of information would again overwhelm the routers and cause them to crash. This process of route flapping served to destabilize not only the surrounding network but also the entire internet. Routers trying to reach those addresses would choose the smaller, more specific /24 blocks first. This caused backbone networks throughout North America and Europe to crash.\n\nMaximum prefix limits on peer connections combined with aggressive prefix-size filtering of customers' reachability advertisements will effectively mitigate the de-aggregation risk. BGP maximum prefix must be used on all eBGP routers to limit the number of prefixes that it should receive from a particular neighbor, whether customer or peering autonomous system (AS). Consider each neighbor and how many routes they should be advertising and set a threshold slightly higher than the number expected.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-002385",
@@ -1136,11 +1136,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to use its loopback address as the source address for Internal Border Gateway Protocol (IBGP) peering sessions.",
           "description": "<VulnDiscussion>Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of the Border Gateway Protocol (BGP) routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router’s loopback address instead of the numerous physical interface addresses.\n\nThe routers within the iBGP domain should also use loopback addresses as the source address when establishing BGP sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -1175,11 +1175,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to advertise a hop limit of at least 32 in Router Advertisement messages for IPv6 stateless auto-configuration deployments.",
           "description": "<VulnDiscussion>The Neighbor Discovery (ND) protocol allows a hop limit value to be advertised by routers in a Router Advertisement message being used by hosts instead of the standardized default value. If a very small value was configured and advertised to hosts on the LAN segment, communications would fail due to the hop limit reaching zero before the packets sent by a host reached its destination.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -1214,11 +1214,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have routing protocols disabled if not in use.",
           "description": "<VulnDiscussion>A compromised router introduces risk to the entire network infrastructure, as well as data resources that are accessible via the network. The perimeter defense has no oversight or control of attacks by malicious users within the network. Preventing network breaches from within is dependent on implementing a comprehensive defense-in-depth strategy, including securing each device connected to the network. This is accomplished by following and implementing all security guidance applicable for each node type. A fundamental step in securing each router is to enable only the capabilities required for operation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -1253,11 +1253,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to have multicast disabled if not in use.",
           "description": "<VulnDiscussion>A compromised router introduces risk to the entire network infrastructure, as well as data resources that are accessible via the network. The perimeter defense has no oversight or control of attacks by malicious users within the network. Preventing network breaches from within is dependent on implementing a comprehensive defense-in-depth strategy, including securing each device connected to the network. This is accomplished by following and implementing all security guidance applicable for each node type. A fundamental step in securing each router is to enable only the capabilities required for operation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -1292,11 +1292,11 @@
           "title": "The NSX Tier-0 Gateway router must be configured to use encryption for border gateway protocol (BGP) routing protocol authentication.",
           "description": "<VulnDiscussion>A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication for routing updates. However, using clear-text authentication provides little benefit since an attacker can intercept traffic and view the authentication key. This would allow the attacker to use the authentication key in an attack.\n\nThis requirement applies to all IPv4 and IPv6 protocols that are used to exchange routing or packet forwarding information; this includes all Interior Gateway Protocols (such as Open Shortest Path First [OSPF], Enhanced Interior Gateway Routing Protocol [EIGRP], and Intermediate System to Intermediate System [IS-IS]) and Exterior Gateway Protocols (such as BGP), multiprotocol label switching (MPLS)-related protocols (such as Label Distribution Protocol [LDP]), and multicast-related protocols.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware NSX 4.x Tier-0 Gateway Router",
-            "identifier": "5634"
+            "dc:title": "DPMS Target VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware NSX 4.x Tier-0 Gateway Router",
+            "dc:identifier": "5634"
           },
           "ident": [
             {

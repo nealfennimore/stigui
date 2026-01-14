@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-03-05"
+      "+@date": "2025-09-28"
     },
     "title": "z/OS ROSCOE for TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -406,18 +406,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225598r1082572_rule",
+          "+@id": "SV-225598r1146367_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST000",
           "title": "ROSCOE install data sets are not properly protected.",
           "description": "<VulnDiscussion>ROSCOE install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -438,19 +438,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate/create access to program product data sets is limited to system programmers only, and all update and allocate/create access is logged.  Security Personnel and Auditors should have read access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and allocate/create access and if required that all update and allocate/create access is logged. The installing systems programmer will identify if any additional groups have update access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.ROSCOE \nSYS2A.ROSCOE \nSYS3.ROSCOE \nSYS3A.ROSCOE\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nTSS PERMIT(syspaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \nTSS PERMIT(syspaudt) DSN(SYS2.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \nTSS PERMIT(audtaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \n\nTSS PERMIT(syspaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS2A.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\n\nTSS PERMIT(syspaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\n\nTSS PERMIT(syspaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3A.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)",
-            "+@fixref": "F-27286r1082572_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to program product data sets is limited to systems programmers only, and all WRITE and/or greater access is logged. Security Personnel and Auditors should have READ access.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have WRITE and/or greater access and if required that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have UPDATE access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.ROSCOE \nSYS2A.ROSCOE \nSYS3.ROSCOE \nSYS3A.ROSCOE\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS PERMIT(syspaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \nTSS PERMIT(syspaudt) DSN(SYS2.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \nTSS PERMIT(audtaudt) DSN(SYS2.ROSCOE.) ACCESS(R) \n\nTSS PERMIT(syspaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS2A.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS2A.ROSCOE.) ACCESS(R)\n\nTSS PERMIT(syspaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3.ROSCOE.) ACCESS(R)\n\nTSS PERMIT(syspaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)\nTSS PERMIT(syspaudt) DSN(SYS3A.ROSCOE.) ACCESS(ALL) ACTION(AUDIT)\nTSS PERMIT(secaaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)\nTSS PERMIT(audtaudt) DSN(SYS3A.ROSCOE.) ACCESS(R)",
+            "+@fixref": "F-27286r1146366_fix"
           },
           "fix": {
-            "+@id": "F-27286r1082572_fix"
+            "+@id": "F-27286r1146366_fix"
           },
           "check": {
-            "+@system": "C-27298r1070303_chk",
+            "+@system": "C-27298r1146125_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ROSRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZROS0000)\n\nVerify that access to the ROSCOE Install data sets are properly restricted.\n \nThe TSS data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\nThe TSS data set rules for the data sets does not specify that all (i.e., failures and successes) UPDATE and/or ALTER access will be logged.\n\nIf all of the above are untrue, this is not a finding.\n\nIf any of the above is true, this is a finding."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ROSRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZROS0000).\n\nVerify that access to the ROSCOE Install data sets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access will be logged."
           }
         }
       },
@@ -459,18 +459,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225599r958616_rule",
+          "+@id": "SV-225599r1146130_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST001",
           "title": "ROSCOE STC data sets are not properly protected.",
           "description": "<VulnDiscussion>ROSCOE STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -487,19 +487,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The IAO will ensure that update and allocate/create access to the ROSCOE started task or batch job data sets is limited to system programmers and the started task only and all update and allocate/create access is logged.\n\nThe IAO will ensure that all other accesses to the ROSCOE started task or batch job data sets are properly restricted and all required accesses are properly logged.\n\nData sets to be protected will be\n\nSYS3.ROSCOE.SYS**\nSYS3.ROSCOE.ROSLIB**\n\nThe following commands are provided as a sample for implementing dataset controls: \n\nTSS ADD(SYS3) DSN(SYS3) \nTSS PER(syspaudt) DSN(SYS3.ROSCOE.SYS) ACC(R) \nTSS PER(syspaudt) DSN(SYS3.ROSCOE.SYS) ACC(A) ACTION(AUDIT)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.SYS) ACC(R) \nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.SYS) ACC(A) ACTION(AUDIT)\nTSS PER(syspaudt) DSN(SYS3.ROSCOE.ROSLIB) ACC(R)\nTSS PER(syspaudt) DSN(SYS3.ROSCOE.ROSLIB) ACC(A) ACTION(AUDIT)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.ROSLIB) ACC(R)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.ROSLIB) ACC(A) ACTION(AUDIT)",
-            "+@fixref": "F-27287r520857_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater/create access to the ROSCOE started task or batch job data sets is limited to systems programmers and the started task only and all WRITE and/or greater/create access is logged.\n\nThe ISSO will ensure that all other accesses to the ROSCOE started task or batch job data sets are properly restricted and all required accesses are properly logged.\n\nData sets to be protected will be\n\nSYS3.ROSCOE.SYS**\nSYS3.ROSCOE.ROSLIB**\n\nThe following commands are provided as a sample for implementing data set controls: \n\nTSS ADD(SYS3) DSN(SYS3) \nTSS PER(syspaudt) DSN(SYS3.ROSCOE.SYS) ACC(R) \nTSS PER(syspaudt) DSN(SYS3.ROSCOE.SYS) ACC(A) ACTION(AUDIT)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.SYS) ACC(R) \nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.SYS) ACC(A) ACTION(AUDIT)\nTSS PER(syspaudt) DSN(SYS3.ROSCOE.ROSLIB) ACC(R)\nTSS PER(syspaudt) DSN(SYS3.ROSCOE.ROSLIB) ACC(A) ACTION(AUDIT)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.ROSLIB) ACC(R)\nTSS PER(roscoe stc) DSN(SYS3.ROSCOE.ROSLIB) ACC(A) ACTION(AUDIT)",
+            "+@fixref": "F-27287r1146129_fix"
           },
           "fix": {
-            "+@id": "F-27287r520857_fix"
+            "+@id": "F-27287r1146129_fix"
           },
           "check": {
-            "+@system": "C-27299r520856_chk",
+            "+@system": "C-27299r1146128_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ROSSTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZROS0001)\n\nb)\tVerify that access to the ROSCOE STC data sets are properly restricted.  The data sets in this group are the data sets identified in the ROSACTxx (if used), ROSLIBxx, and SYSAWSx DD statements of the STC or batch JCL.\n \n___\tThe TSS data set rules for the data sets does not restrict UPDATE and/or ALTER access to systems programming personnel.\n\n___\tThe TSS data set rules for the data sets does not restrict UPDATE and/or ALTER access to the product STC(s) and/or batch job(s).\n\nc)\tIf all of the above are untrue, there is NO FINDING.\n\nd)\tIf any of the above is true, this is a FINDING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ROSSTC).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZROS0001).\n\nVerify that access to the ROSCOE STC data sets are properly restricted. The data sets in this group are the data sets identified in the ROSACTxx (if used), ROSLIBxx, and SYSAWSx DD statements of the STC or batch JCL. If the following guidance is true, this is not a finding.\n \nThe TSS data set rules for the data sets restrict WRITE and/or greater access to systems programming personnel.\n\nThe TSS data set rules for the data sets restrict WRITE and/or greater access to the product STC(s) and/or batch job(s)."
           }
         }
       },
@@ -508,18 +508,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225600r1070308_rule",
+          "+@id": "SV-225600r1146132_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST020",
           "title": "ROSCOE resources must be properly defined and protected.",
           "description": "<VulnDiscussion>ROSCOE can run with sensitive system privileges, and potentially can circumvent system controls. Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality and integrity of customer data. Many utilities assign resource controls that can be granted to systems programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -547,12 +547,12 @@
             "+@id": "F-27288r1070307_fix"
           },
           "check": {
-            "+@system": "C-27300r1070306_chk",
+            "+@system": "C-27300r1146131_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(ZROS0020)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZROS0020)\n\nEnsure all ROSCOE resources and/or generic equivalent are properly protected according to the requirements specified in CA ROSCOE Resources table in the z/OS STIG Addendum. Note: Wherever an access or user group is missing, use the Site Security Plan to determine access and/or user group. If the following guidance is true, this is not a finding.\n\nThe TSS resources and/or generic equivalent as designated in the above table are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe TSS resource logging is specified as designated in the above table."
+            "check-content": "Refer to the following report produced by the TSS Data Collection and Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(ZROS0020).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZROS0020).\n\nEnsure all ROSCOE resources and/or generic equivalent are properly protected according to the requirements specified in CA ROSCOE Resources table in the z/OS STIG Addendum. Note: Wherever an access or user group is missing, use the Site Security Plan to determine access and/or user group. If the following guidance is true, this is not a finding.\n\nThe TSS resources and/or generic equivalent as designated in the above table are owned or DEFPROT is specified for the resource class.\n\nThe TSS resource access authorizations restrict access to the appropriate personnel as designated in the above table.\n\nThe TSS resource logging is specified as designated in the above table."
           }
         }
       },
@@ -561,18 +561,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225601r958482_rule",
+          "+@id": "SV-225601r1146135_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST030",
-          "title": "ROSCOE Started Task name is not properly identified / defined to the system ACP.",
-          "description": "<VulnDiscussion>Products that require a started task will require that the started task be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.      </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "ROSCOE Started Task name is not properly identified/defined to the system ACP.",
+          "description": "<VulnDiscussion>Products that require a started task will require that the started task be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -589,19 +589,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ROSCOE system programmer and the IAO will ensure that a product's Started Task(s) is properly Identified / defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nA sample is provided here:\n\nTSS CREATE(ROSCOE) TYPE(USER) -\n\tNAME('*STC* for ROSCO') DEPT(xxxx) - \n                     FAC(STC) -\n\tMASTFAC(ROSCOE) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
-            "+@fixref": "F-27289r520863_fix"
+            "+content": "The ROSCOE systems programmer and the ISSO will ensure that a product's Started Task(s) is properly identified/defined to the system ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the system ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nA sample is provided here:\n\nTSS CREATE(ROSCOE) TYPE(USER) -\n\tNAME('*STC* for ROSCO') DEPT(xxxx) - \n\tFAC(STC) -\n\tMASTFAC(ROSCOE) PASS(xxxxxxxx,0) -\n\tSOURCE(INTRDR) NOSUSPEND",
+            "+@fixref": "F-27289r1146134_fix"
           },
           "fix": {
-            "+@id": "F-27289r520863_fix"
+            "+@id": "F-27289r1146134_fix"
           },
           "check": {
-            "+@system": "C-27301r520862_chk",
+            "+@system": "C-27301r1146133_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(@ACIDS)\n\nb)\tReview each ROSCOE STC/Batch ACID(s) for the following:\n\n___\tIs defined with Facility of STC and/or BATCH.\n\n___\tIs defined with Master Facility of ROSCOE.\n\n___\tIs sourced to the INTRDR.\n\nc)\tIf all of the above are true, there is NO FINDING.\n\nd)\tIf any of the above is untrue, this is a FINDING."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(@ACIDS).\n\nReview ROSCOE STC/Batch ACID(s). If the following attributes are defined, this is not a finding.\n\nFACILITY(STC, BATCH)\nPASSWORD(xxxxxxxx,0)\nSOURCE(INTRDR)\nNOSUSPEND\nMASTFAC(ROSCOE)"
           }
         }
       },
@@ -610,18 +610,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225602r958482_rule",
+          "+@id": "SV-225602r1146138_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST032",
           "title": "ROSCOE Started task(s) must be properly defined to the Started Task Table ACID for Top Secret.",
-          "description": "<VulnDiscussion>Access to product  resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product  resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -638,19 +638,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ROSCOE system programmer and the IAO will ensure that a product's started task(s) is (are) properly identified and/or defined to the System ACP. \n\nA unique ACID must be assigned for the ROSCOE started task(s) thru a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(ROSCOE) ACID(ROSCOE)",
-            "+@fixref": "F-27290r520866_fix"
+            "+content": "The ROSCOE systems programmer and the ISSO will ensure that a product's started task(s) is (are) properly identified and/or defined to the system ACP. \n\nA unique ACID must be assigned for the ROSCOE started task(s) through a corresponding STC table entry.\n\nThe following sample set of commands is shown here as a guideline:\n\nTSS ADD(STC) PROCNAME(ROSCOE) ACID(ROSCOE)",
+            "+@fixref": "F-27290r1146137_fix"
           },
           "fix": {
-            "+@id": "F-27290r520866_fix"
+            "+@id": "F-27290r1146137_fix"
           },
           "check": {
-            "+@system": "C-27302r520865_chk",
+            "+@system": "C-27302r1146136_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(#STC)\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n-\tPDI(ZROS0032)\n\nVerify that the ROSCOE started task(s) is (are) defined in the TSS STC record."
+            "check-content": "Refer to the following report produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(#STC).\n\nAutomated Analysis\nRefer to the following report produced by the TSS Data Collection:\n\n- PDI(ZROS0032).\n\nIf the ROSCOE started task(s) is (are) defined in the TSS STC record, this is not a finding."
           }
         }
       },
@@ -659,18 +659,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225603r958482_rule",
+          "+@id": "SV-225603r1146141_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST036",
           "title": "ROSCOE is not properly defined to the Facility Matrix Table for Top Secret.",
           "description": "<VulnDiscussion>Improperly defined security controls for the Product could result in the compromise of the network, operating system, and customer data.\n\n*****This vulnerability only applies to Top Secret started tasks. *****</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -687,19 +687,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The Facility ROSCOE comes predefined with CA-TSS.  Please ensure you add the following to your TSS parmlib for the FAC(ROSCOE):\n\n****\n****   ROSCOE                                                          *\n****\nFACILITY(ROSCOE=NOLUMSG,NORNDPW)",
-            "+@fixref": "F-27291r520869_fix"
+            "+content": "The Facility ROSCOE comes predefined with CA-TSS. Please ensure you add the following to your TSS parmlib for the FAC(ROSCOE):\n\n****\n****   ROSCOE                                                          *\n****\nFACILITY(ROSCOE=NOLUMSG,NORNDPW)",
+            "+@fixref": "F-27291r1146140_fix"
           },
           "fix": {
-            "+@id": "F-27291r520869_fix"
+            "+@id": "F-27291r1146140_fix"
           },
           "check": {
-            "+@system": "C-27303r520868_chk",
+            "+@system": "C-27303r1146139_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "a)\tRefer to the following reports produced by the TSS Data Collection:\n\n-\tTSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values.\n-\tTSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup.\n\nNOTE:\tThe FACLIST report must be created by DECC security personnel.  The TSSPRMFL report can be used if DECC security personnel have not executed the required steps documented in the TSS Data Collection.\n\nb)\tReview the FACLIST report.  Ensure the Product Facility is properly defined as specified by the product system programmer.\n\nc)\tIf the Product facility control options are defined as indicated by the product system programmer, there is NO FINDING.\n\nd)\tIf any of the Product facility control options are not defined as indicated by the product system programmer , this is a FINDING."
+            "check-content": "Refer to the following reports produced by the TSS Data Collection:\n\n- TSSCMDS.RPT(FACLIST) - Preferred report containing all control option values in effect including default values.\n- TSSCMDS.RPT(TSSPRMFL) - Alternate report containing only control option values explicitly coded at TSS startup.\n\nNote:\tThe FACLIST report must be created by DECC security personnel. The TSSPRMFL report can be used if DECC security personnel have not executed the required steps documented in the TSS Data Collection.\n\nReview the FACLIST report. If the Product Facility is properly defined as specified by the product systems programmer, this is not a finding."
           }
         }
       },
@@ -708,18 +708,18 @@
         "title": "SRG-OS-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225604r1070311_rule",
+          "+@id": "SV-225604r1146143_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST038",
           "title": "Resource Class ROSRES is not defined or active in the Access Control Program (ACP).",
           "description": "<VulnDiscussion>Failure to use a robust ACP to control a product could potentially compromise the integrity and availability of the MVS operating system and user data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -747,12 +747,12 @@
             "+@id": "F-27292r1070310_fix"
           },
           "check": {
-            "+@system": "C-27304r1070309_chk",
+            "+@system": "C-27304r1146142_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACP Data Collection:\n\n-\tTSSCMDS.RPT(#RDT)\n\nEnsure that Product Resource Class(es) is (are) defined in the Resource Definition Table as follows:\n\nNote: Identify all of the attributes and characteristics of the Product resource class in the TSS Resource Definition Table (delete this note).\n\n  RESOURCE CLASS = ROSRES\n   RESOURCE CODE = X'hex code'\n       ATTRIBUTE = MASK|NOMASK,MAXOWN(08),MAXPERMIT(044),ACCESS,DEFPROT\n          ACCESS = NONE(0000),CONTROL(0400),UPDATE(6000),READ(4000)\n          ACCESS = WRITE(2000),ALL(FFFF)\n          DEFACC = READ\n\nIf all of the items in (b) are true, this is not a finding.\n\nIf any item in (b) is untrue, this is a finding."
+            "check-content": "Refer to the following report produced by the ACP Data Collection:\n\n- TSSCMDS.RPT(#RDT).\n\nIf the ROSCOE Resource Class(es) is (are) defined in the Resource Definition Table (RDT) as follows, this is not a finding.\n\n  RESOURCE CLASS = ROSRES\n   RESOURCE CODE = X'hex code'\n       ATTRIBUTE = MASK|NOMASK,MAXOWN(08),MAXPERMIT(044),ACCESS,DEFPROT\n          ACCESS = NONE(0000),CONTROL(0400),UPDATE(6000),READ(4000)\n          ACCESS = WRITE(2000),ALL(FFFF)\n          DEFACC = READ"
           }
         }
       },
@@ -761,18 +761,18 @@
         "title": "SRG-OS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-225605r1070314_rule",
+          "+@id": "SV-225605r1146146_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZROST040",
           "title": "ROSCOE configuration/parameter values are not specified properly.",
           "description": "<VulnDiscussion>Product configuration/parameters control the security and operational characteristics of products. If these parameter values are improperly specified, security and operational controls may be weakened. This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS ROSCOE for TSS",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS ROSCOE for TSS",
-            "identifier": "4206"
+            "dc:title": "DPMS Target zOS ROSCOE for TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS ROSCOE for TSS",
+            "dc:identifier": "4206"
           },
           "ident": [
             {
@@ -793,19 +793,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The product system programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct.\n \nRefer to the required parameters below: Example\n\nKeyword\tValue\nEXTSEC\tTSS\nACFEXT\tYES\nCLLEXT\tYES\nJOBEXT\tYES\nLIBEXT\tYES\nMONEXT\tYES\nPRVEXT\tYES\nRPFEXT\tYES\nUPSEXT\tYES",
-            "+@fixref": "F-27293r1070313_fix"
+            "+content": "The product systems programmer will verify that any configuration/parameters that are required to control the security of the product are properly configured and syntactically correct.\n \nRefer to the required parameters below: Example\n\nKeyword\tValue\nEXTSEC\tTSS\nACFEXT\tYES\nCLLEXT\tYES\nJOBEXT\tYES\nLIBEXT\tYES\nMONEXT\tYES\nPRVEXT\tYES\nRPFEXT\tYES\nUPSEXT\tYES",
+            "+@fixref": "F-27293r1146145_fix"
           },
           "fix": {
-            "+@id": "F-27293r1070313_fix"
+            "+@id": "F-27293r1146145_fix"
           },
           "check": {
-            "+@system": "C-27305r1070312_chk",
+            "+@system": "C-27305r1146144_chk",
             "check-content-ref": {
               "+@href": "zOS_ROSCOE_for_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Have the  product system programmer display the configuration/parameter control statements used in the current running product to define or enable security. This information is located in the SYSIN DD statement in the JCL of the STC/Batch job.\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n-\tPDI(ZROS0040)\n\nVerify the following specifications:\n\nKeyword\tValue\nEXTSEC\tTSS\nACFEXT\tYES\nCLLEXT\tYES\nJOBEXT\tYES\nLIBEXT\tYES\nMONEXT\tYES\nPRVEXT\tYES\nRPFEXT\tYES\nUPSEXT\tYES\n\nIf the above is true, this is not a finding.\n\nIf the above is untrue, this is a finding."
+            "check-content": "Have the  product systems programmer display the configuration/parameter control statements used in the current running product to define or enable security. This information is located in the SYSIN DD statement in the JCL of the STC/Batch job.\n\nAutomated Analysis\nRefer to the following report produced by the z/OS Data Collection:\n\n- PDI(ZROS0040).\n\nIf the following keywords specify the values in the ROSCOE configuration/parameter control member, this is not a finding.\n\nKeyword\tValue\nEXTSEC\tTSS\nACFEXT\tYES\nCLLEXT\tYES\nJOBEXT\tYES\nLIBEXT\tYES\nMONEXT\tYES\nPRVEXT\tYES\nRPFEXT\tYES\nUPSEXT\tYES"
           }
         }
       }

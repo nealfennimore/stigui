@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -701,11 +701,11 @@
           "title": "Digital signatures assigned to strongly named assemblies must be verified.",
           "description": "<VulnDiscussion>A strong name consists of the assembly's identity, simple text name, version number, and culture information (if provided)—plus a public key and a digital signature.  Strong names serve to identify the author of the code.  If digital signatures used to sign strong name assemblies are not verified, any self signed code can be impersonated.  This can lead to a loss of system integrity. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -750,11 +750,11 @@
           "title": "The Trust Providers Software Publishing State must be set to 0x23C00.",
           "description": "<VulnDiscussion>Microsoft Windows operating systems provide a feature called Authenticode.  Authenticode technology and its underlying code signing mechanisms serve to provide a structure to identify software publishers and ensure that software applications have not been tampered with.  Authenticode technology relies on digital certificates and is based on Public Key Cryptography Standards (PKCS) #7 (encrypted key specification), PKCS #10 (certificate request formats), X.509 (certificate specification), and Secure Hash Algorithm (SHA) and MD5 hash algorithms.\n\nThe manner in which the Authenticode technology validates a certificate and determines what is considered a valid certificate can be modified to meet the mission of the Microsoft Windows system.  Each facade of certificate validation is controlled through the bits that makeup the hexadecimal value for the Authenticode setting.  An improper setting will allow non-valid certificates to be accepted and can put the integrity of the system into jeopardy.\n\nThe hexadecimal value of 0x23C00 will implement the following certificate enforcement policy:\n- Trust the Test Root = FALSE\n- Use expiration date on certificates = TRUE\n- Check the revocation list = TRUE\n- Offline revocation server OK (Individual) = TRUE\n- Offline revocation server OK (Commercial) = TRUE\n- Java offline revocation server OK (Individual) = TRUE\n- Java offline revocation server OK (Commercial) = TRUE\n- Invalidate version 1 signed objects = FALSE\n- Check the revocation list on Time Stamp Signer = FALSE\n- Only trust items found in the Trust DB = FALSE</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -799,11 +799,11 @@
           "title": "Developer certificates used with the .NET Publisher Membership Condition must be approved by the ISSO.",
           "description": "<VulnDiscussion>A .Net assembly will satisfy the Publisher Membership Condition if it is signed with a software publisher’s Authenticode X.509v3 digital certificate that can be verified by the Windows operating system as having a chain of trust that leads to a trusted root certificate stored in the user’s certificate store. The Publisher Membership Condition can be used to identify an organization, developer, vendor, or other entity as the ultimate source of the assembly, even if the code itself was obtained from a third party, such as a mirror site. Access to system resources, such as file systems or printers, may then be granted to the assembly based on the trust relationship with the identified entity.\n\nCertificates used to sign assemblies so the Publisher Member Condition may be applied must originate from a trusted source. Using a certificate that is not from a trusted source could potentially violate system integrity and confidentiality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -848,11 +848,11 @@
           "title": "Encryption keys used for the .NET Strong Name Membership Condition must be protected.",
           "description": "<VulnDiscussion>The Strong Name Membership condition requires that member assemblies be defined with Strong Names. A strong name consists of the assembly's identity, simple text name, version number, and culture information (if provided) — plus a public key and a digital signature. If assemblies do not have a strong name assigned, the assembly cannot be unique and the author of the code cannot be uniquely identified. In order to create the strong name, the developer must use a cryptographic key pair to sign the assembly. If the developer does not protect the key, the key can be stolen and used to sign any application, including malware applications. This could adversely affect application integrity and confidentiality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -897,11 +897,11 @@
           "title": "CAS and policy configuration files must be backed up.",
           "description": "<VulnDiscussion>A successful disaster recovery plan requires that CAS policy and CAS policy configuration files are identified and included in systems disaster backup and recovery events. Documentation regarding the location of system and application specific CAS policy configuration files and the frequency in which backups occur is required. If these files are not identified and the information is not documented, there is the potential that critical application configuration files may not be included in disaster recovery events which could lead to an availability risk.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -946,11 +946,11 @@
           "title": "Remoting Services HTTP channels must utilize authentication and encryption.",
           "description": "<VulnDiscussion>Note: Microsoft recommends using the Windows Communication Framework (WCF) rather than using .Net remoting. New development projects should refrain from using .Net remoting capabilities whenever possible.\n\n.NET remoting provides the capability to build widely distributed applications. The application components may reside all on one computer or they may be spread out across the enclave. .NET client applications can make remoting calls to use objects in other processes on the same computer or on any other computer that is reachable over the network. .NET remoting can also be used to communicate with other application domains within the same process. Remoting is achieved via the exposure of endpoints that can be used to establish remote connectivity.\n\nNormally when application code attempts to access a protected resource, a stack walk is performed to ensure that all stack frames have permission to access the resource. However, with .Net 4.0, when a call is made on a remote object, this stack walk is not performed across the remoting boundary. The .Net remoting infrastructure requires FullTrust permission to execute on either the client or the server. \n\nDue to the fact that FullTrust permission is required, Remoting endpoints should be authenticated and encrypted in order to protect the system and the data. \n\nMicrosoft provides three different \"channels\" that are used for remoting. They are HTTP, TCP, and IPC.\n\nAny unauthorized use of a remoting application provides unauthorized access with FullTrust permissions to the system. This can potentially result in a loss of system integrity or confidentiality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -995,11 +995,11 @@
           "title": ".Net Framework versions installed on the system must be supported.",
           "description": "<VulnDiscussion>Unsupported software introduces risks and violates DOD policy. Applications utilizing unsupported versions of .NET introduce substantial risk to the host, network, and the enclave because they leverage an architecture that is no longer updated by the vendor. This introduces potential application integrity, availability, or confidentiality issues.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1044,11 +1044,11 @@
           "title": "The .NET CLR must be configured to use FIPS approved encryption modules.",
           "description": "<VulnDiscussion>FIPS encryption is configured via .NET configuration files.  There are numerous configuration files that affect different aspects of .Net behavior.  The .NET config files are described below.\n \nMachine Configuration Files:\nThe machine configuration file, Machine.config, contains settings that apply to an entire computer. This file is located in the %SYSTEMROOT%\\Microsoft.NET\\Framework\\v4.0.30319\\Config directory for 32 bit .NET 4 installations and %SYSTEMROOT%\\Microsoft.NET\\Framework64\\v4.0.30319\\Config for 64 bit systems.   Machine.config contains configuration settings for machine-wide assembly binding, built-in remoting channels, and ASP.NET.\n\nApplication Configuration Files:\nApplication configuration files contain settings specific to an application. If checking these files, a .NET review of a specific .NET application is most likely being conducted. These files contain configuration settings that the Common Language Runtime reads (such as assembly binding policy, remoting objects, and so on), and settings that the application can read. \n\nThe name and location of the application configuration file depends on the application's host, which can be one of the following: \n\nExecutable–hosted application configuration files. \n\nThe configuration file for an application hosted by the executable host is in the same directory as the application. The name of the configuration file is the name of the application with a .config extension. For example, an application called myApp.exe can be associated with a configuration file called myApp.exe.config. \n\nInternet Explorer-hosted application configuration files. \n\nIf an application hosted in Internet Explorer has a configuration file, the location of this file is specified in a <link> tag with the following syntax.\n\n<link rel=\"ConfigurationFileName\" href=\"location\">\n\nIn this tag, \"location\" represents a URL that point to the configuration file. This sets the application base. The configuration file must be located on the same web site as the application. \n\n.NET 4.0 allows the CLR runtime to be configured to ignore FIPS encryption requirements.  If the CLR is not configured to use FIPS encryption modules, insecure encryption modules might be employed which could introduce an application confidentiality or integrity issue.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1093,11 +1093,11 @@
           "title": ".NET must be configured to validate strong names on full-trust assemblies.",
           "description": "<VulnDiscussion>The \"bypassTrustedAppStrongNames\" setting specifies whether the bypass feature that avoids validating strong names for full-trust assemblies is enabled. By default the bypass feature is enabled in .Net 4, therefore strong names are not validated for correctness when the assembly/program is loaded. Not validating strong names provides a faster application load time but at the expense of performing certificate validation. \n\nFull trust assemblies are .Net applications launched from the local host. Strong names are digital signatures tied to .Net applications/assemblies.  .Net 4 considers applications installed locally to be fully trusted by default and grants these applications full permissions to access host resources. \n\nThe bypass feature applies to any assembly signed with a strong name and having the following characteristics:\n\n    Fully trusted without the StrongName evidence (for example, has MyComputer zone evidence).\n\n    Loaded into a fully trusted AppDomain.\n\n    Loaded from a location under the ApplicationBase property of that AppDomain.\n\n    Not delay-signed.\n\nNot validating the certificates used to sign strong name assemblies will provide a faster application load time, but falsely assumes that signatures used to sign the application are to be implicitly trusted.  Not validating strong name certificates introduces an integrity risk to the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1142,11 +1142,11 @@
           "title": ".Net applications that invoke NetFx40_LegacySecurityPolicy must apply previous versions of .NET STIG guidance.",
           "description": "<VulnDiscussion>CAS policy is .NET runtime version-specific.  In .NET Framework version 4, CAS policy is disabled by default however; it can be re-enabled by using the NetFx40_LegacySecurityPolicy setting on a per application basis. Caspol.exe is provided by Microsoft to set security policy on .Net applications prior to version 4.0. This requirement does not apply to the caspol.exe assembly or other assemblies provided with the Windows OS or the Windows Secure Host Baseline (SHB).\n\nWhen invoking the NetFx40_LegacySecurityPolicy setting in .NET 4, earlier versions of the .NET Framework CAS policy will become active therefore previous .NET STIG guidance that applies to the reactivated versions must also be applied. \n\nFailure to apply applicable versions of STIG guidance can result in the loss of system confidentiality, integrity or availability.  </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1191,11 +1191,11 @@
           "title": "Trust must be established prior to enabling the loading of remote code in .Net 4.",
           "description": "<VulnDiscussion>In the .NET Framework version 3.5 and earlier versions, if an application assembly loaded code/objects from a remote location, that assembly would run partially trusted with a permissions grant set that depended on the zone in which it was loaded. For example, if an assembly was loaded from a web site, it was loaded into the Internet zone and granted the Internet permission set. In other words, it was executed in an Internet sandbox.\n\nIf the same program is run in the .NET Framework version 4, an exception is thrown which effectively states; either explicitly create a sandbox for the assembly or run it in full trust.\n\nThe <loadFromRemoteSources> element specifies the assemblies that run partially trusted in earlier versions of the .NET Framework will be run fully trusted in the .NET Framework 4.\n\nIf loadFromRemoteSources is set to true, the remotely loaded application code is granted full trust.  This could create an integrity vulnerability on the system.  The required method to address this is to explicitly create a sandboxed environment for the remotely loaded code to run in rather than allowing remotely loaded code to run with full trust.\n\nThe appropriate level of trust must be established prior to enabling the loading of remote code in .Net 4 applications and that code must be run in a controlled environment.  The following is an example of the use of loadFromRemoteSources.\n\n<configuration>\n<runtime>\n    <loadFromRemoteSources enabled=\"true\" \"https://my.dodorg.gov\" />\n    <loadFromRemoteSources enabled=\"true\" \"https://192.168.0.*\" />\n    <loadFromRemoteSources enabled=\"false\" \"*\" />\n</runtime>\n</configuration></VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1240,11 +1240,11 @@
           "title": ".NET default proxy settings must be reviewed and approved.",
           "description": "<VulnDiscussion>The .Net framework can be configured to utilize a different proxy or altogether bypass the default proxy settings in the client's browser.  This may lead to the framework using a proxy that is not approved for use.  If the proxy is malicious, this could lead to a loss of application integrity and confidentiality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1289,11 +1289,11 @@
           "title": "Event tracing for Windows (ETW) for Common Language Runtime events must be enabled.",
           "description": "<VulnDiscussion>Event tracing captures information about applications utilizing the .NET CLR and the .NET CLR itself. This includes security oriented information, such as Strong Name and Authenticode verification.  \n\nBeginning with Windows Vista, ETW is enabled by default however, the .Net CLR and .Net applications can be configured to not utilize Event Tracing. If ETW event tracing is disabled, critical events that occurred within the runtime will not be captured in event logs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1338,11 +1338,11 @@
           "title": "Software utilizing .Net 4.0 must be identified and relevant access controls configured.",
           "description": "<VulnDiscussion>With the advent of .Net 4.0, the .Net framework no longer directly configures or enforces security policy for .Net applications.  This task is now relegated to the operating system layer and the security protections built-in to .Net application \"runtime hosts\" that run on the O.S. \n\nExamples of these .Net \"runtime hosts\" include; Internet Explorer, Windows Shell, ASP.NET, Database Engines or any other \"runtime hosts\" that utilize .Net and load the .Net CLR.\n\nSecurity protections include utilizing runtime host security controls such as sandboxing to restrict or control application behavior as designed or required.  \n\nTo compensate for these design changes, Windows provides native solutions such as Software Security Policies (SSP) and Application Locker (AL) which are technologies that can be implemented via Group Policy (GPO).  SSP, AL and similar third party solutions serve to restrict execution of applications, scripts and libraries based upon cryptographic hash, security zones, path and certificate values that are associated with the application files.  Additionally, application developers will utilize \"sandboxing\" techniques within their code in order to isolate 3rd party code libraries from critical system resources.\n\nIn order to assign protections to .Net 4.0 applications, the applications must first be identified and the appropriate hosting security mechanisms configured to accomplish that task.  \n\n.Net STIG guidance cannot be applied if .Net applications are not identified and documented.  The lack of an application inventory introduces confidentiality, availability and integrity vulnerabilities to the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1387,11 +1387,11 @@
           "title": "Remoting Services TCP channels must utilize authentication and encryption.",
           "description": "<VulnDiscussion>Note: Microsoft recommends using the Windows Communication Framework (WCF) rather than .Net remoting. New development projects should refrain from using .Net remoting capabilities whenever possible.\n\n.NET remoting provides the capability to build widely distributed applications. The application components may reside all on one computer or they may be spread out across the enclave. .NET client applications can make remoting calls to use objects in other processes on the same computer or on any other computer that is reachable over the network. .NET remoting can also be used to communicate with other application domains within the same process. Remoting is achieved via the exposure of endpoints that can be used to establish remote connectivity.\n\nNormally when application code attempts to access a protected resource, a stack walk is performed to ensure that all stack frames have permission to access the resource. However, with .Net 4.0, when a call is made on a remote object, this stack walk is not performed across the remoting boundary. The .Net remoting infrastructure requires FullTrust permission to execute on either the client or the server. \n\nDue to the fact that FullTrust permission is required, Remoting endpoints should be authenticated and encrypted in order to protect the system and the data. \n\nMicrosoft provides three different \"channels\" that are used for remoting. They are HTTP, TCP, and IPC.\n\nAny unauthorized use of a remoting application provides unauthorized access with FullTrust permissions to the system. This can potentially result in a loss of system integrity or confidentiality.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {
@@ -1436,11 +1436,11 @@
           "title": "Update and configure the .NET Framework to support TLS.",
           "description": "<VulnDiscussion>Use of the RC4 cipher in TLS could allow an attacker to perform man-in-the-middle attacks and recover plaintext from encrypted sessions. Applications that target .Net version 4.x running on multiple Windows versions could be vulnerable to these types of attacks. The registry settings in this requirement will prevent .Net applications that target the 4.x framework from selecting and utilizing the Schannel.dll RC4 cipher for TLS connections. Applications that use TLS when connecting to remote systems will perform a handshake and negotiate the TLS version and cipher that is to be used between the client and the server. This is standard protocol for all TLS connections. If the server and client are not configured to use the same TLS version and cipher, the TLS connection may fail. Applications should be tested with these registry settings prior to production implementation of the fix in order to avoid application outages.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Microsoft DotNet Framework 4-0",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Microsoft DotNet Framework 4-0",
-            "identifier": "4213"
+            "dc:title": "DPMS Target Microsoft DotNet Framework 4-0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft DotNet Framework 4-0",
+            "dc:identifier": "4213"
           },
           "ident": [
             {

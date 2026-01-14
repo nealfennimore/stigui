@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-25"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS CA VTAPE for ACF2 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -226,18 +226,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224279r1081007_rule",
+          "+@id": "SV-224279r1141660_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZVTAA000",
-          "title": "CA VTAPE installation data sets are not properly protected.",
-          "description": "<VulnDiscussion>CA VTAPE installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "CA VTAPE installation datasets are not properly protected.",
+          "description": "<VulnDiscussion>CA VTAPE installation datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product, which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA VTAPE for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA VTAPE for ACF2",
-            "identifier": "4116"
+            "dc:title": "DPMS Target zOS CA VTAPE for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA VTAPE for ACF2",
+            "dc:identifier": "4116"
           },
           "ident": [
             {
@@ -258,19 +258,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that update and allocate access to CA VTAPE installation data sets is limited to system programmers only, and all update and allocate access is logged. Read access can be given to all authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nData sets to be protected will be: \nSYS2.VTAPE.\nSYS3.VTAPE. (data sets that are not altered by product STCs, can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS2)\nVTAPE.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorized users) R(A) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) E(A)\n\n$KEY(SYS3)\nVTAPE.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorized users) R(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) E(A)",
-            "+@fixref": "F-25940r1081006_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA VTAPE installation datasets is limited to systems programmers only, and all WRITE and/or greater access is logged. READ access can be given to all authorized users.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented, will work with the ISSO to ensure they are properly restricted to the Access Control Program (ACP) active on the system.\n\nDatasets to be protected will be: \nSYS2.VTAPE\nSYS3.VTAPE (Datasets that are not altered by product STCs can be more specific.)\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS2)\nVTAPE.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorized users) R(A) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) E(A)\n\n$KEY(SYS3)\nVTAPE.- UID(<syspaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(L) A(L) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorized users) R(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) E(A)",
+            "+@fixref": "F-25940r1141659_fix"
           },
           "fix": {
-            "+@id": "F-25940r1081006_fix"
+            "+@id": "F-25940r1141659_fix"
           },
           "check": {
-            "+@system": "C-25952r1070066_chk",
+            "+@system": "C-25952r1141658_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_VTAPE_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tSENSITVE.RPT(VTARPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n-\tPDI(ZVTA0000)\n\nVerify that the accesses to the CA VTAPE installation data sets are properly restricted.\n \nThe ACF2 data set rules for the data sets restricts READ access to all authorized users.\n\nThe ACF2 data set rules for the data sets restricts UPDATE and/or ALTER access to systems programming personnel.\n\nThe ACF2 data set rules for the data sets specify that all (i.e., failures and successes) UPDATE and/or ALTER access are logged."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(VTARPT).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZVTA0000).\n\nVerify that the accesses to the CA VTAPE installation datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset rules for the datasets restrict READ access to all authorized users.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to systems programming personnel.\n\nThe ACF2 dataset rules for the datasets specify that all (i.e., failures and successes) WRITE and/or greater access is logged."
           }
         }
       },
@@ -279,18 +279,18 @@
         "title": "SRG-OS-000259",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224280r958616_rule",
+          "+@id": "SV-224280r1141663_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZVTAA001",
-          "title": "CA VTAPE STC data sets will be properly protected.",
-          "description": "<VulnDiscussion>CA VTAPE STC data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "CA VTAPE STC datasets will be properly protected.",
+          "description": "<VulnDiscussion>CA VTAPE STC datasets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these datasets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA VTAPE for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA VTAPE for ACF2",
-            "identifier": "4116"
+            "dc:title": "DPMS Target zOS CA VTAPE for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA VTAPE for ACF2",
+            "dc:identifier": "4116"
           },
           "ident": [
             {
@@ -307,19 +307,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The ISSO will ensure that WRITE and/or greater access to CA VTAPE STC data sets is limited to systems programmers, tape management personnel, and/or CA VTAPE's STC(s) and/or batch user(s) only. Read access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product data sets and categorize them according to who will have update and alter access and if required that all update and allocate access is logged. The installing systems programmer will identify if any additional groups have update and/or alter access for specific data sets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nData sets to be protected will be: \nSYS3.VTAPE (data sets that are altered by the product's STCs, this can be more specific)\n\nThe following commands are provided as a sample for implementing data set controls: \n\n$KEY(SYS3)\nVTAPE.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<tapeaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorize users) R(A) E(A)",
-            "+@fixref": "F-25941r868238_fix"
+            "+content": "The ISSO will ensure that WRITE and/or greater access to CA VTAPE STC datasets is limited to systems programmers, tape management personnel, and/or CA VTAPE's STC(s) and/or batch user(s) only. READ access can be given to auditors and authorized users.\n\nThe installing systems programmer will identify and document the product datasets, categorize them according to who will have WRITE and/or greater access, and if required, ensure that all WRITE and/or greater access is logged. The installing systems programmer will identify if any additional groups have WRITE and/or greater access for specific datasets, and once documented will work with the ISSO to ensure they are properly restricted to the ACP (Access Control Program) active on the system.\n\nDatasets to be protected will be: \nSYS3.VTAPE (Datasets that are altered by the product's STCs can be more specific.)\n\nThe following commands are provided as a sample for implementing dataset controls: \n\n$KEY(SYS3)\nVTAPE.- UID(<syspaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<tapeaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<tstcaudt>) R(A) W(A) A(A) E(A)\nVTAPE.- UID(VTAPE STCs) R(A) W(A) A(A) E(A)\nVTAPE.- UID(<audtaudt>) R(A) E(A)\nVTAPE.- UID(authorize users) R(A) E(A)",
+            "+@fixref": "F-25941r1141662_fix"
           },
           "fix": {
-            "+@id": "F-25941r868238_fix"
+            "+@id": "F-25941r1141662_fix"
           },
           "check": {
-            "+@system": "C-25953r868237_chk",
+            "+@system": "C-25953r1141661_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_VTAPE_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(VTASTC)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZVTA0001)\n\nVerify that the accesses to the CA VTAPE STC data sets are properly restricted. If the following guidance is true, this is not a finding.\n \n___ The ACF2 data set rules for the data sets restricts READ access to auditors and authorized users.\n\n___ The ACF2 data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel and Tape Management personnel.\n\n___ The ACF2 data set rules for the data sets restricts WRITE and/or greater access to the CA VTAPE's STC(s) and/or batch user(s)."
+            "check-content": "Refer to the following report produced by the dataset and Resource Data Collection:\n\n- SENSITVE.RPT(VTASTC).\n\nAutomated Analysis\nRefer to the following report produced by the dataset and Resource Data Collection:\n\n- PDI(ZVTA0001).\n\nVerify that the accesses to the CA VTAPE STC datasets are properly restricted. If the following guidance is true, this is not a finding.\n \nThe ACF2 dataset rules for the datasets restrict READ access to auditors and authorized users.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to systems programming personnel and Tape Management personnel.\n\nThe ACF2 dataset rules for the datasets restrict WRITE and/or greater access to the CA VTAPE's STC(s) and/or batch user(s)."
           }
         }
       },
@@ -328,18 +328,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224281r958482_rule",
+          "+@id": "SV-224281r1144188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZVTAA030",
           "title": "CA VTAPE Started Task name is not properly identified/defined to the system ACP.",
-          "description": "<VulnDiscussion>CA VTAPE requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA VTAPE requires a started task that will be restricted to certain resources, datasets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA VTAPE for ACF2",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA VTAPE for ACF2",
-            "identifier": "4116"
+            "dc:title": "DPMS Target zOS CA VTAPE for ACF2",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA VTAPE for ACF2",
+            "dc:identifier": "4116"
           },
           "ident": [
             {
@@ -356,19 +356,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The CA VTAPE system programmer and the IAO will ensure that a product's Started Task(s) is properly identified/defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nINSERT SVTS STC NO-SMC\nINSERT SVTSAS STC NO-SMC",
-            "+@fixref": "F-25942r519672_fix"
+            "+content": "The CA VTAPE systems programmer and the ISSO will ensure that a product's Started Task(s) is properly identified/defined to the System ACP. \n\nIf the product requires a Started Task, verify that it is properly defined to the System ACP with the proper attributes.\n\nMost installation manuals will indicate how the Started Task is identified and any additional attributes that must be specified.\n\nExample:\n\nSET LID\nINSERT SVTS STC NO-SMC\nINSERT SVTSAS STC NO-SMC",
+            "+@fixref": "F-25942r1141665_fix"
           },
           "fix": {
-            "+@id": "F-25942r519672_fix"
+            "+@id": "F-25942r1141665_fix"
           },
           "check": {
-            "+@system": "C-25954r519671_chk",
+            "+@system": "C-25954r1141664_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_VTAPE_for_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n-\tACF2CMDS.RPT(ATTSTC)\n\nInsure that the logonids(s) for the CA VTAPE started task(s) includes the following:\n\nSTC\nNO-SMC"
+            "check-content": "Refer to the following report produced by the ACF2 Data Collection:\n\n- ACF2CMDS.RPT(ATTSTC).\n\nVerify that the logonid(s) for the CA VTAPE started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nSTC\nNO-SMC"
           }
         }
       }

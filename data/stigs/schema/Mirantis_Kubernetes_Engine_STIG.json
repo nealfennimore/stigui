@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -1709,11 +1709,11 @@
           "title": "The Lifetime Minutes and Renewal Threshold Minutes Login Session Controls on MKE must be set.",
           "description": "<VulnDiscussion>The \"Lifetime Minutes\" and \"Renewal Threshold Minutes\" login session controls in MKE are part of security features that help manage user sessions within the MKE environment. Setting these controls is essential.\n\nMKE must terminate all network connections associated with a communications session at the end of the session, or as follows: For in-band management sessions (privileged sessions), the session must be terminated after 10 minutes of inactivity.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -1762,11 +1762,11 @@
           "title": "In an MSR organization, user permissions and repositories must be configured.",
           "description": "<VulnDiscussion>Configuring user permissions, organizations, and repositories in MSR is crucial for maintaining a secure, organized, and efficient container image management environment. This will provide access control, security, and compliance when utilizing MSR.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001499",
@@ -1801,11 +1801,11 @@
           "title": "User-managed resources must be created in dedicated namespaces.",
           "description": "<VulnDiscussion>Dedicated namespaces act as security boundaries, limiting the blast radius in case of security incidents or misconfigurations. If an issue arises within a specific namespace, it is contained within that namespace and does not affect the resources in other namespaces. Kubernetes provides Role-Based Access Control (RBAC) mechanisms, and namespaces are a fundamental unit for access control. Using dedicated namespaces for user-managed resources provides a level of isolation. Each namespace acts as a separate environment, allowing users or teams to deploy their applications and services without interfering with the resources in other namespaces. This isolation helps prevent unintentional conflicts and ensures a more predictable deployment environment.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -1840,11 +1840,11 @@
           "title": "Least privilege access and need to know must be required to access MKE runtime and instantiate container images.",
           "description": "<VulnDiscussion>To control what is instantiated within MKE, it is important to control access to the runtime. Without this control, container platform specific services and customer services can be introduced without receiving approval and going through proper testing. Only those individuals and roles approved by the organization can have access to the container platform runtime.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -1909,11 +1909,11 @@
           "title": "Only required ports must be open on containers in MKE.",
           "description": "<VulnDiscussion>Ports, protocols, and services within MKE runtime must be controlled and conform to the PPSM CAL. Those ports, protocols, and services that fall outside the PPSM CAL must be blocked by the runtime. Instructions on the PPSM can be found in DOD Instruction 8551.01 Policy.\n\nA container can be run just with the ports defined in the Dockerfile for its image or can be arbitrarily passed runtime parameters to open a list of ports. A periodic review of open ports must be performed.\n\nBy default, all the ports that are listed in the Dockerfile under EXPOSE instruction for an image are opened when a container is run with -P or --publish-all flag.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -1954,11 +1954,11 @@
           "title": "FIPS mode must be enabled.",
           "description": "<VulnDiscussion>During any user authentication, MKE must use FIPS-validated SHA-2 or later protocol to protect the integrity of the password authentication process.\n\nFIPS mode enforces the use of cryptographic algorithms and modules. This ensures a higher level of cryptographic security, reducing the risk of vulnerabilities related to cryptographic functions. FIPS-compliant cryptographic modules are designed to provide strong protection for sensitive data. Enabling FIPS mode helps safeguard cryptographic operations, securing data both at rest and in transit within containerized applications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2027,11 +2027,11 @@
           "title": "MKE must be configured to integrate with an Enterprise Identity Provider.",
           "description": "<VulnDiscussion>Configuring MKE to integrate with an Enterprise Identity Provider enhances security, simplifies user management, ensures compliance, provides auditing capabilities, and offers a more seamless and consistent user experience. It aligns MKE with enterprise standards and contributes to a more efficient and secure environment.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2228,11 +2228,11 @@
           "title": "SSH must not run within Linux containers.",
           "description": "<VulnDiscussion>To limit the attack surface of MKE, it is important that the nonessential services are not installed. Containers are designed to be lightweight and isolated, and introducing SSH can add attack vectors. Unauthorized access or exploitation of SSH vulnerabilities would compromise the security of the container and the host system. SSH is not necessary for process management within containers, as container orchestration platforms provide mechanisms for starting, stopping, and monitoring containerized processes. SSH access within containers may bypass auditing mechanisms, making it harder to track and audit user activities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000213",
@@ -2267,11 +2267,11 @@
           "title": "Swarm Secrets or Kubernetes Secrets must be used.",
           "description": "<VulnDiscussion>Swarm Secrets in Docker Swarm and Kubernetes Secrets both provide mechanisms for encrypting sensitive data at rest. This adds an additional layer of security, ensuring that even if unauthorized access occurs, the stored secrets remain encrypted.\n\nMKE keystore must implement encryption to prevent unauthorized disclosure of information at rest within MKE. By leveraging Docker Secrets or Kubernetes secrets to store configuration files and small amounts of user-generated data (up to 500 kb in size), the data is encrypted at rest by the Engine's FIPS-validated cryptography.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2328,11 +2328,11 @@
           "title": "MKE must have Grants created to control authorization to cluster resources.",
           "description": "<VulnDiscussion>MKE uses Role-Based Access Controls (RBAC) to enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.\n\nUsing an IDP (per this STIG) still requires configure mapping. Refer to the following for more information: https://docs.mirantis.com/mke/3.7/ops/authorize-rolebased-access/rbac-tutorials/access-control-standard.html#access-control-standard.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001368",
@@ -2367,11 +2367,11 @@
           "title": "MKE host network namespace must not be shared.",
           "description": "<VulnDiscussion>MKE can be built with privileges that are not approved within the organization. To limit the attack surface of MKE, it is essential that privileges meet organization requirements.\n\nThe networking mode on a container when set to --net=host, skips placing the container inside a separate network stack. This is potentially dangerous because it allows the container process to open low-numbered ports like any other root process. Thus, a container process can potentially do unexpected things such as shutting down the Docker host. Do not use this option.\n\nBy default, bridge mode is used.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001414",
@@ -2406,11 +2406,11 @@
           "title": "Audit logging must be enabled on MKE.",
           "description": "<VulnDiscussion>Enabling audit logging on MKE enhances security, supports compliance efforts, provides user accountability, and offers valuable insights for incident response and operational management. It is an essential component of maintaining a secure, compliant, and well-managed Kubernetes environment.\n\nWithout generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2479,11 +2479,11 @@
           "title": "MKE must be configured to send audit data to a centralized log server.",
           "description": "<VulnDiscussion>Sending audit data from MKE to a centralized log server enhances centralized monitoring, facilitates efficient incident response, scales effectively, provides redundancy, and helps organizations meet compliance requirements. This is the recommended best practice for managing Kubernetes environments, especially in enterprise settings.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2532,11 +2532,11 @@
           "title": "MSR's self-signed certificates must be replaced with DOD trusted, signed certificates.",
           "description": "<VulnDiscussion>Self-signed certificates pose security risks, as they are not issued by a trusted third party. DOD trusted, signed certificates have undergone a validation process by a trusted CA, reducing the risk of man-in-the-middle attacks and unauthorized access. Using these certificates enhances the trust and authenticity of the communication between clients and the MSR server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2571,11 +2571,11 @@
           "title": "Allowing users and administrators to schedule containers on all nodes must be disabled.",
           "description": "<VulnDiscussion>MKE and MSR are set to disallow administrators and users to schedule containers. This setting must be checked for allowing administrators or users to schedule containers may override essential settings, and therefore is not permitted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2610,11 +2610,11 @@
           "title": "MKE telemetry must be disabled.",
           "description": "<VulnDiscussion>MKE provides a telemetry service that automatically records and transmits data to Mirantis through an encrypted channel for monitoring and analysis purposes. While this channel is secure, it introduces an attack vector and must be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2649,11 +2649,11 @@
           "title": "MSR telemetry must be disabled.",
           "description": "<VulnDiscussion>MSR provides a telemetry service that automatically records and transmits data to Mirantis through an encrypted channel for monitoring and analysis purposes. While this channel is secure, it introduces an attack vector and must be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2688,11 +2688,11 @@
           "title": "For MKE's deployed on an Ubuntu host operating system, the AppArmor profile must be enabled.",
           "description": "<VulnDiscussion>AppArmor protects the Ubuntu OS and applications from various threats by enforcing security policy which is also known as AppArmor profile. The user can either create their own AppArmor profile for containers or use the Docker default AppArmor profile. This would enforce security policies on the containers as defined in the profile.\n\nBy default, docker-default AppArmor profile is applied for running containers and this profile can be found at /etc/apparmor.d/docker.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2727,11 +2727,11 @@
           "title": "If MKE is deployed on a Red Hat or CentOS system, SELinux security must be enabled.",
           "description": "<VulnDiscussion>SELinux provides a Mandatory Access Control (MAC) system on RHEL and CentOS that greatly augments the default Discretionary Access Control (DAC) model. The user can thus add an extra layer of safety by enabling SELinux on the RHEL or CentOS host. When applied to containers, SELinux helps isolate and restrict the actions that containerized processes can perform, reducing the risk of container escapes and unauthorized access.\n\nBy default, no SELinux security options are applied on containers.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2766,11 +2766,11 @@
           "title": "The Docker socket must not be mounted inside any containers.",
           "description": "<VulnDiscussion>The Docker socket docker.sock must not be mounted inside a container, with the exception case being during the installation of Universal Control Plane (UCP) component of Docker Enterprise as it is required for install.\n\nIf the Docker socket is mounted inside a container, it would allow processes running within the container to execute docker commands which effectively allows for full control of the host.\n\nBy default, docker.sock (Linux) and \\\\.\\pipe\\docker_engine (Windows) is not mounted inside containers.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2805,11 +2805,11 @@
           "title": "Linux Kernel capabilities must be restricted within containers.",
           "description": "<VulnDiscussion>By default, MKE starts containers with a restricted set of Linux Kernel Capabilities. Any process may be granted the required capabilities instead of root access. Using Linux Kernel Capabilities, the processes do not have to run as root for almost all the specific areas where root privileges are usually needed. MKE supports the addition and removal of capabilities, allowing the use of a nondefault profile. Remove all capabilities except those explicitly required for the user's container process.\n\nBy default, below capabilities are available for Linux containers:\n\nAUDIT_WRITE\nCHOWN\nDAC_OVERRIDE\nFOWNER\nFSETID\nKILL\nMKNOD\nNET_BIND_SERVICE\nNET_RAW\nSETFCAP\nSETGID\nSETPCAP\nSETUID\nSYS_CHROOT</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2844,11 +2844,11 @@
           "title": "Incoming container traffic must be bound to a specific host interface.",
           "description": "<VulnDiscussion>Privileged ports are those ports below 1024 and that require system privileges for their use. If containers are able to use these ports, the container must be run as a privileged user. MKE must stop containers that try to map to these ports directly. Allowing nonprivileged ports to be mapped to the container-privileged port is the allowable method when a certain port is needed. An example is mapping port 8080 externally to port 80 in the container.\n\nBy default, if the user does not specifically declare the container port to host port mapping, MKE automatically and correctly maps the container port to one available in 49153-65535 block on the host. But, MKE allows a container port to be mapped to a privileged port on the host if the user explicitly declared it. This is because containers are executed with NET_BIND_SERVICE Linux kernel capability that does not restrict the privileged port mapping. The privileged ports receive and transmit various sensitive and privileged data. Allowing containers to use them can bring serious implications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -2883,11 +2883,11 @@
           "title": "CPU priority must be set appropriately on all containers.",
           "description": "<VulnDiscussion>All containers on a Docker host share the resources equally. By using the resource management capabilities of Docker host, such as CPU shares, the user controls the host CPU resources that a container may consume.\n\nBy default, CPU time is divided between containers equally. If CPU shares are not properly set, the container process may have to starve if the resources on the host are not available. If the CPU resources on the host are free, CPU shares do not place any restrictions on the CPU that the container may use.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -2932,11 +2932,11 @@
           "title": "MKE must use a non-AUFS storage driver.",
           "description": "<VulnDiscussion>The aufs storage driver is an old driver based on a Linux kernel patch-set that is unlikely to be merged into the main Linux kernel. aufs driver is also known to cause some serious kernel crashes. aufs only has legacy support from Docker. Most importantly, aufs is not a supported driver in many Linux distributions using latest Linux kernels.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -2971,11 +2971,11 @@
           "title": "MKE's self-signed certificates must be replaced with DOD trusted, signed certificates.",
           "description": "<VulnDiscussion>Self-signed certificates pose security risks, as they are not issued by a trusted third party. DOD trusted, signed certificates have undergone a validation process by a trusted CA, reducing the risk of man-in-the-middle attacks and unauthorized access. MKE uses TLS to protect sessions. Using trusted certificates ensures that only trusted sources can access the MKE cluster.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3016,11 +3016,11 @@
           "title": "The \"Create repository on push\" option in MSR must be disabled.",
           "description": "<VulnDiscussion>Allowing repositories to be created on a push can override essential settings and must not be allowed.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -3055,11 +3055,11 @@
           "title": "Containers must not map to privileged ports.",
           "description": "<VulnDiscussion>Privileged ports are those ports below 1024 and that require system privileges for their use. If containers are able to use these ports, the container must be run as a privileged user. MKE must stop containers that try to map to these ports directly. Allowing nonprivileged ports to be mapped to the container-privileged port is the allowable method when a certain port is needed. An example is mapping port 8080 externally to port 80 in the container.\n\nBy default, if the user does not specifically declare the container port to host port mapping, MKE automatically and correctly maps the container port to one available in 49153-65535 block on the host. But, MKE allows a container port to be mapped to a privileged port on the host if the user explicitly declared it. This is because containers are executed with NET_BIND_SERVICE Linux kernel capability that does not restrict the privileged port mapping. The privileged ports receive and transmit various sensitive and privileged data. Allowing containers to use them can bring serious implications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -3094,11 +3094,11 @@
           "title": "MKE must not permit users to create pods that share host process namespace.",
           "description": "<VulnDiscussion>Controlling information flow between MKE components and container user services instantiated by MKE must enforce organization-defined information flow policies. Example methods for information flow control are: using labels for containers to segregate services; user permissions and roles to limit what user services are available to each user; controlling the user the services are able to execute as; and limiting inter-container network traffic and the resources containers can consume. Process ID (PID) namespaces isolate the PID number space, meaning that processes in different PID namespaces can have the same PID. This is process level isolation between containers and the host.\n\nPID namespace provides separation of processes and removes the view of the system processes, and allows process IDs to be reused including PID 1. If the host's PID namespace is shared with the container, it would allow processes within the container to view all of the processes on the host system.\n\nContainer processes cannot view the processes on the host system. In certain cases, such as system-level containers, the container must share the host's process namespace. System-level containers have a defined label and this access must be documented.\n\nBy default, all containers have the PID namespace enabled and the host's process namespace is not shared with the containers.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000764",
@@ -3133,11 +3133,11 @@
           "title": "IPSec network encryption must be configured.",
           "description": "<VulnDiscussion>IPsec encrypts the data traffic between nodes in a Kubernetes cluster, ensuring that the information exchanged is confidential and protected from unauthorized access. This is particularly important when sensitive or confidential data is transmitted over the network. IPsec not only provides encryption but also ensures the integrity of the transmitted data. Through the use of cryptographic mechanisms, IPsec can detect and prevent tampering or modification of data during transit.\n\nIn a Kubernetes cluster managed by MKE, nodes communicate with each other for various purposes, such as pod networking, service discovery, and cluster coordination. IPsec helps secure these communications, reducing the risk of man-in-the-middle attacks and unauthorized interception.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000778",
@@ -3172,11 +3172,11 @@
           "title": "MKE must preserve any information necessary to determine the cause of the disruption or failure.",
           "description": "<VulnDiscussion>When a failure occurs within MKE, preserving the state of MKE and its components, along with other container services, helps to facilitate container platform restart and return to the operational mode of the organization with less disruption to mission essential processes. When preserving state, considerations for preservation of data confidentiality and integrity must be taken into consideration.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001665",
@@ -3211,11 +3211,11 @@
           "title": "MKE must enable kernel protection.",
           "description": "<VulnDiscussion>System kernel is responsible for memory, disk, and task management. The kernel provides a gateway between the system hardware and software. Kubernetes requires kernel access to allocate resources to the Control Plane. Threat actors that penetrate the system kernel can inject malicious code or hijack the Kubernetes architecture. It is vital to implement protections through Kubernetes components to reduce the attack surface.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001084",
@@ -3250,11 +3250,11 @@
           "title": "All containers must be restricted from acquiring additional privileges.",
           "description": "<VulnDiscussion>To limit the attack surface of MKE, it is important that the nonessential services are not installed and access to the host system uses the concept of least privilege.\n\nRestrict the container from acquiring additional privileges via suid or sgid bits.\n\nA process can set the no_new_priv bit in the kernel. It persists across fork, clone, and execve. The no_new_priv bit ensures that the process or its children processes do not gain any additional privileges via suid or sgid bits. This way, many dangerous operations become a lot less dangerous because there is no possibility of subverting privileged binaries.\n\nno_new_priv prevents LSMs like SELinux from transitioning to process labels that have access not allowed to the current process.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3295,11 +3295,11 @@
           "title": "Host IPC namespace must not be shared.",
           "description": "<VulnDiscussion>IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores, and message queues. IPC namespace on the host must not be shared with the containers and remain isolated unless required.\n\nIf the host's IPC namespace is shared with the container, it would allow processes within the container to view all of the IPC on the host system. This breaks the benefit of IPC level isolation between the host and the containers. Having access to the container can eventually manipulate the host IPC. Do not share the host's IPC namespace with the containers. Only containers with the proper label will share IPC namespace and this access must be documented.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3340,11 +3340,11 @@
           "title": "All containers must be restricted to mounting the root filesystem as read only.",
           "description": "<VulnDiscussion>The container's root filesystem must be treated as a \"golden image\" by using Docker run's --read-only option. This prevents any writes to the container's root filesystem at container runtime and enforces the principle of immutable infrastructure.\n\nEnabling this option forces containers at runtime to explicitly define their data writing strategy to persist or not persist their data. This also reduces security attack vectors since the container instance's filesystem cannot be tampered with or written to unless it has explicit read-write permissions on its filesystem folder and directories.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002233",
@@ -3379,11 +3379,11 @@
           "title": "The default seccomp profile must not be disabled.",
           "description": "<VulnDiscussion>Seccomp filtering provides a means for a process to specify a filter for incoming system calls. The default seccomp profile works on a whitelist basis and allows 311 system calls, blocking all others. It must not be disabled unless it hinders the container application usage. The default seccomp profile blocks syscalls, regardless of --cap-add passed to the container. \n\nA large number of system calls are exposed to every user and process, with many of them going unused for the entire lifetime of the process. Most of the applications do not need all the system calls and thus benefit by having a reduced set of available system calls. The reduced set of system calls reduces the total kernel surface exposed to the application and thus improvises application security.\n\nWhen running a container, it uses the default profile unless it is overridden with the --security-opt option.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002233",
@@ -3418,11 +3418,11 @@
           "title": "Docker CLI commands must be run with an MKE client trust bundle and without unnecessary permissions.",
           "description": "<VulnDiscussion>Running docker CLI commands remotely with a client trust bundle ensures that authentication and role permissions are checked for the command.\n\nUsing --privileged option or --user option in docker exec gives extended Linux capabilities to the command. Do not run docker exec with the --privileged or --user options, especially when running containers with dropped capabilities or with enhanced restrictions. By default, docker exec command runs without --privileged or --user options.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3467,11 +3467,11 @@
           "title": "MKE users must not have permissions to create containers or pods that share the host user namespace.",
           "description": "<VulnDiscussion>To limit the attack surface of MKE, it is important that the nonessential services are not installed and access to the host system uses the concept of least privilege.\n\nUser namespaces ensure that a root process inside the container will be mapped to a nonroot process outside the container. Sharing the user namespaces of the host with the container thus does not isolate users on the host with users on the containers.\n\nBy default, the host user namespace is shared with the containers until user namespace support is enabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002233",
@@ -3506,11 +3506,11 @@
           "title": "Use of privileged Linux containers must be limited to system containers.",
           "description": "<VulnDiscussion>Using the --privileged flag gives all Linux Kernel Capabilities to the container, thus overwriting the --cap-add and --cap-drop flags. The --privileged flag gives all capabilities to the container, and it also lifts all the limitations enforced by the device cgroup controller. Any container that requires this privilege must be documented and approved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002233",
@@ -3545,11 +3545,11 @@
           "title": "The network ports on all running containers must be limited to required ports.",
           "description": "<VulnDiscussion>To validate that the services are using only the approved ports and protocols, the organization must perform a periodic scan/review of MKE and disable functions, ports, protocols, and services deemed to be unneeded or nonsecure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-001762",
@@ -3584,11 +3584,11 @@
           "title": "MKE must only run signed images.",
           "description": "<VulnDiscussion>Controlling the sources where container images can be pulled from allows the organization to define what software can be run within MKE. Allowing any container image to be introduced and instantiated within MKE may introduce malicious code and vulnerabilities to the platform and the hosting system.\n\nMKE registry must deny all container images except for those signed by organizational-approved sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3633,11 +3633,11 @@
           "title": "Vulnerability scanning must be enabled for all repositories in MSR.",
           "description": "<VulnDiscussion>Enabling vulnerability scanning for all repositories in Mirantis Secure Registry (MSR) is a critical security practice that helps organizations identify and mitigate potential security risks associated with container images.\n\nEnabling scanning for all repositories in MSR helps identify and prioritize security issues that could pose risks to the containerized applications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": [
             {
@@ -3682,11 +3682,11 @@
           "title": "Older Universal Control Plane (MKE) and Docker Trusted Registry (DTR) images must be removed from all cluster nodes upon upgrading.",
           "description": "<VulnDiscussion>When upgrading either the UCP or DTR components of MKE, the newer images are pulled (or unpacked if offline) onto engine nodes in a cluster. Once the upgrade is complete, one must manually remove all old image version from the cluster nodes to meet the requirements of this control.\n\nWhen upgrading the Docker Engine - Enterprise component of MKE, the old package version is automatically replaced.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002617",
@@ -3721,11 +3721,11 @@
           "title": "MKE must contain the latest updates.",
           "description": "<VulnDiscussion>MKE must stay up to date with the latest patches, service packs, and hot fixes. Not updating MKE will expose the organization to vulnerabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-002605",
@@ -3760,11 +3760,11 @@
           "title": "MKE must display the Standard Mandatory DOD Notice and Consent Banner before granting access to platform components.",
           "description": "<VulnDiscussion>MKE has countless components where different access levels are needed. To control access, the user must first log in to MKE and then be presented with a DOD-approved use notification banner before granting access to the component. This guarantees privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Mirantis Kubernetes Engine",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Mirantis Kubernetes Engine",
-            "identifier": "5595"
+            "dc:title": "DPMS Target Mirantis Kubernetes Engine",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Mirantis Kubernetes Engine",
+            "dc:identifier": "5595"
           },
           "ident": {
             "+content": "CCI-000048",

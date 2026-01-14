@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -413,11 +413,11 @@
           "title": "Envoy must drop connections to disconnected clients.",
           "description": "<VulnDiscussion>Envoy client connections that are established but no longer connected can consume resources that might otherwise be required by active connections. It is a best practice to terminate connections that are no longer connected to an active client. \n \nEnvoy is hard coded to drop connections after three minutes of idle time. The absence of any \"tcpKeepAliveTimeSec\" settings means this default is in effect. This configuration must be verified and maintained.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -452,11 +452,11 @@
           "title": "Envoy must set a limit on established connections.",
           "description": "<VulnDiscussion>Envoy client connections must be limited to preserve system resources and continue servicing connections without interruption. Without a limit set, the system would be vulnerable to a trivial denial-of-service attack where connections are created en masse and vCenter resources are entirely consumed. \n \nEnvoy comes hard coded with a tested and supported value for \"maxHttpsConnections\" that must be verified and maintained.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -491,11 +491,11 @@
           "title": "Envoy must be configured to operate in FIPS mode.",
           "description": "<VulnDiscussion>Envoy ships with FIPS 140-2 validated OpenSSL cryptographic libraries and is configured by default to run in FIPS mode. This module is used for all cryptographic operations performed by Envoy, including protection of data-in-transit over the client Transport Layer Security (TLS) connection.\n\nSatisfies: SRG-APP-000014-WSR-000006, SRG-APP-000179-WSR-000111, SRG-APP-000416-WSR-000118, SRG-APP-000439-WSR-000188, SRG-APP-000179-WSR-000110</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": [
             {
@@ -544,11 +544,11 @@
           "title": "Envoy must use only Transport Layer Security (TLS) 1.2 for the protection of client connections.",
           "description": "<VulnDiscussion>Envoy can be configured to support TLS 1.0, 1.1, and 1.2. Due to intrinsic problems in TLS 1.0 and TLS 1.1, they are disabled by default. The <protocol> block in the rhttpproxy configuration is commented out by default, and this configuration forces TLS 1.2. \n \nThe block may also be set to \"tls1.2\" in certain upgrade scenarios, but the effect is the same. Uncommenting the block and enabling older protocols is possible; therefore, TLS 1.2 restriction must be verified and maintained.\n\nSatisfies: SRG-APP-000015-WSR-000014, SRG-APP-000172-WSR-000104, SRG-APP-000439-WSR-000151, SRG-APP-000439-WSR-000152, SRG-APP-000439-WSR-000156, SRG-APP-000441-WSR-000181, SRG-APP-000442-WSR-000182</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": [
             {
@@ -601,11 +601,11 @@
           "title": "The Envoy private key file must be protected from unauthorized access.",
           "description": "<VulnDiscussion>Envoy's private key is used to prove the identity of the server to clients and securely exchange the shared secret key used to encrypt communications between the web server and clients. \n \nBy gaining access to the private key, an attacker can pretend to be an authorized server and decrypt the Transport Layer Security (TLS) traffic between a client and the web server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-000186",
@@ -640,11 +640,11 @@
           "title": "Envoy must exclusively use the HTTPS protocol for client connections.",
           "description": "<VulnDiscussion>Remotely accessing vCenter via Envoy involves sensitive information going over the wire. To protect the confidentiality and integrity of these communications, Envoy must be configured to use an encrypted session of HTTPS rather than plain-text HTTP. The Secure Sockets Layer (SSL) configuration block inside the rhttpproxy configuration must be present and correctly configured to safely enable Transport Layer Security (TLS).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-002314",
@@ -679,11 +679,11 @@
           "title": "Envoy (rhttpproxy) log files must be shipped via syslog to a central log server.",
           "description": "<VulnDiscussion>Envoy produces several logs that must be offloaded from the originating system. This information can then be used for diagnostic purposes, forensics purposes, or other purposes relevant to ensuring the availability and integrity of the hosted application. \n \nEnvoy (rhttpproxy) rsyslog configuration is included in the \"VMware-visl-integration\" package and unpacked to \"/etc/vmware-syslog/vmware-services-rhttpproxy.conf\". Ensuring the package hashes are as expected also ensures the shipped rsyslog configuration is present and unmodified.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-001851",
@@ -718,11 +718,11 @@
           "title": "Envoy log files must be shipped via syslog to a central log server.",
           "description": "<VulnDiscussion>Envoy rsyslog configuration is included in the \"VMware-visl-integration\" package and unpacked to \"/etc/vmware-syslog/vmware-services-envoy.conf\". Ensuring the package hashes are as expected also ensures the shipped rsyslog configuration is present and unmodified.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 7.0 vCA RhttpProxy",
-            "identifier": "5526"
+            "dc:title": "DPMS Target VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 7.0 vCA RhttpProxy",
+            "dc:identifier": "5526"
           },
           "ident": {
             "+content": "CCI-001851",

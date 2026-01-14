@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -1169,11 +1169,11 @@
           "title": "Maximum in-memory session count must be set according to application requirements.",
           "description": "<VulnDiscussion>Application management includes the ability to control the number of sessions that use an application by all accounts and/or account types. Limiting the number of allowed sessions is helpful in limiting risks related to Denial of Service attacks.\n\nApplication servers host and expose business logic and application processes. The application server must possess the capability to limit the maximum number of concurrent sessions in a manner that affects the entire application server or on an individual application basis. Although there is some latitude concerning the settings themselves, the settings should follow DoD-recommended values, but the settings should be configurable to allow for future DoD direction. While the DoD will specify recommended values, the values can be adjusted to accommodate the operational requirement of a given system.\n\nThe System Security Plan should be reviewed and the maximum number of concurrent sessions allowable and defined within that plan should be used in the httpSession element. For example, if the maximum number of concurrent sessions is defined in the System Security Plan as 5000, then the httpSession element in ${server.config.dir}/server.xml should be configured as: \n<httpSession maxInMemorySessionCount=\"5000\" allowOverflow=\"false\" />\n\nFor http session security settings to apply, the security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against. The servlet feature (servlet-3.1) must be defined in order to use a web application, and the ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry for authentication of the servlet users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -1208,11 +1208,11 @@
           "title": "The WebSphere Liberty Server Quality of Protection (QoP) must be set to use TLSv1.2 or higher.",
           "description": "<VulnDiscussion>Quality of Protection in WebSphere Liberty specifies the security level, ciphers, and mutual authentication settings for the Secure Socket Layer (SSL/TLS) configuration. For Quality of Protection settings to apply, the security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against. The SSL feature (ssl-1.0) must be defined in order to configure ssl settings, and the ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry for authentication of users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000068",
@@ -1247,11 +1247,11 @@
           "title": "Security cookies must be set to HTTPOnly.",
           "description": "<VulnDiscussion>Web applications use cookies to track users across requests. These cookies, while typically not sensitive in themselves, connect to the existing state on the back-end system. If an intruder were to capture one of these cookies, they could potentially use the cookie to act as the user. Important web traffic should be encrypted using SSL. This includes important cookies.\n\nIn the case of WebSphere Liberty Server, the most important cookies are the LTPA cookie and session cookie; therefore, both should be configured to be only sent over SSL. To set httpOnly on the application server’s cookies, the security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against. The servlet (servlet-3.1) feature must be defined in order to deploy web applications, the ssl (ssl-1.0) feature must be defined in order to do SSL communications, and the ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry for authentication of users. \n\nFor the LTPA cookie,  the httpOnlyCookies element must be set to true: \n<webAppSecurity  ssoCookieName=\"LtpaToken2\"  ssoRequiresSSL=\"true\"    httpOnlyCookies=\"true\"   logoutOnHttpSessionExpire=\"true\"/>   \n\nFor the JSESSIONID cookie, the cookieHttpOnly element must be set to true: \n<httpSession    cookieName=\"JSESSIONID\"    cookieSecure=\"true\"    cookieHttpOnly=\"true\"    cookiePath=\"/\"/></VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-001453",
@@ -1286,11 +1286,11 @@
           "title": "The WebSphere Liberty Server must log remote session and security activity.",
           "description": "<VulnDiscussion>Security auditing must be configured in order to log remote session activity. Security auditing will not be performed unless the audit feature (audit-1.0) has been enabled. The security feature (appSecurity-2.0) must be enabled for the security auditing to capture security transactions. Remote session activity will then be logged, regardless of the user attempting that activity.\n\nSatisfies: SRG-APP-000016-AS-000013, SRG-APP-000080-AS-000045, SRG-APP-000089-AS-000050, SRG-APP-000091-AS-000052, SRG-APP-000095-AS-000056, SRG-APP-000096-AS-000059, SRG-APP-000097-AS-000060, SRG-APP-000098-AS-000061, SRG-APP-000099-AS-000062, SRG-APP-000100-AS-000063, SRG-APP-000101-AS-000072, SRG-APP-000266-AS-000168, SRG-APP-000343-AS-000030, SRG-APP-000172-AS-000121</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1379,11 +1379,11 @@
           "title": "Users in the REST API admin role must be authorized.",
           "description": "<VulnDiscussion>Users with console access and OS permissions to the folders where the Liberty Server is installed can make changes to the server. In addition, REST API calls that execute server management tasks are available and can be executed remotely. Adding a user to the admin role will allow that user to make changes to the server via the REST API calls.\n\nThe admin role must be controlled and users who are in that role must be authorized.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000213",
@@ -1418,11 +1418,11 @@
           "title": "The WebSphere Liberty Server must be configured to offload logs to a centralized system.",
           "description": "<VulnDiscussion>Log processing failures include, but are not limited to, failures in the application server log capturing mechanisms or log storage capacity being reached or exceeded. In some instances, it is preferred to send alarms to individuals rather than to an entire group. Application servers must be able to trigger an alarm and send an alert to, at a minimum, the SA and ISSO in the event there is an application server log processing failure.\n\nSatisfies: SRG-APP-000109-AS-000070, SRG-APP-000358-AS-000064</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1463,11 +1463,11 @@
           "title": "The WebSphere Liberty Server must protect log information from unauthorized access or changes.",
           "description": "<VulnDiscussion>WebSphere Liberty provides the capability to encrypt and sign the log data to prevent unauthorized modification. \n\n- The security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against.  \n- The audit feature (audit-1.0) must be defined in order to generate audit records.\n- The servlet feature (servlet-3.1) must be defined to be able to deploy a web application. \n- The ejb feature (ejbLite-3.1) must be defined to be able to deploy an ejb application.\n- The ssl feature (ssl-1.0) must be defined to be able to generate and use certificates to sign and encrypt logs.\n- The ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry to authenticate users against.\n\nWhen the audit-1.0 feature is defined, all supported audit events will be captured and logged to an audit.log located under ${server.config.dir}/logs.\n\nThe audit log that is currently being logged to is called audit.log. When an audit log fills to a configured maximum capacity, it is archived with a timestamp with the naming convention audit_<timestamp>.log and new records are written to audit.log. \n\nThe audit logs are found under the ${server.config.dir}/logs directory and are named audit.log for the most recent, and audit_<timestamp>.log for any archived logs. \n\nTwo keystores need to be created (ikeyman as part of the JDK may be used) and a personal certificate created in each. One keystore will contain the certificate used to encrypt the logs; the other keystore will contain the certificate used to sign the logs. The audit configuration needs to define the location of these two keystores, their passwords, and the alias of each certificate used to encrypt and sign the logs. As an example:        \n <keyStore\n         id=\"auditEncKeyStore\"\n         password=\"Liberty\"\n         location=\"${server.config.dir}/resources/security/AuditEncryptionKeyStore.jks\"\n         type=\"JKS\" />\n\n      <keyStore\n         id=\"auditSignKeyStore\"\n         password=\"{xor}EzY9Oi0rJg==\"\n         location=\"${server.config.dir}/resources/security/AuditSigningKeyStore2.jks\"\n         type=\"JKS\" />\n\n<auditFileHandler \nencrypt=\"true\"\n        encryptAlias=\"auditencryption\"\n        encryptKeyStoreRef=\"auditEncKeyStore\"\n    sign=\"true\"\n        signingAlias=\"auditsigning2\"\n        signingKeyStoreRef=\"auditSignKeyStore\">\n</auditFileHandler>\n\nSatisfies: SRG-APP-000119-AS-000079, SRG-APP-000120-AS-000080</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1508,11 +1508,11 @@
           "title": "The WebSphere Liberty Server must protect log tools from unauthorized access.",
           "description": "<VulnDiscussion>Protecting log data also includes identifying and protecting the tools used to view and manipulate log data. Depending on the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. Therefore, it is imperative that access to log tools be controlled and protected from unauthorized access. \n\nApplication servers provide a web- and/or a command line-based management functionality for managing the application server log capabilities. In addition, subsets of log tool components may be stored on the file system as jar or xml configuration files. The application server must ensure that in addition to protecting any web-based log tools, any file system-based tools are protected as well.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-001493",
@@ -1547,11 +1547,11 @@
           "title": "The WebSphere Liberty Server must be configured to encrypt log information.",
           "description": "<VulnDiscussion>Protection of log records is of critical importance. Encrypting log records provides a level of protection that does not rely on host-based protections that can be accidentally misconfigured, such as file system permissions. Cryptographic mechanisms are the industry-established standard used to protect the integrity of log data. An example of a cryptographic mechanism is the computation and application of a cryptographic-signed hash using asymmetric cryptography. \n\n- The security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against.  \n- The audit feature (audit-1.0) must be defined in order to generate audit records.\n- The servlet feature (servlet-3.1) must be defined to be able to deploy a web application. \n- The ejb feature (ejbLite-3.1) must be defined to be able to deploy an ejb application.\n- The ssl feature (ssl-1.0) must be defined to be able to generate and use certificates to sign and encrypt logs.\n- The ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry to authenticate users against.\n\nWhen the audit-1.0 feature is defined, all supported audit events will be captured and logged to an audit.log located under ${server.config.dir}/logs.\n\nThe audit log that is currently being logged to is called audit.log. When an audit log fills to a configured maximum capacity, it is archived with a timestamp with the naming convention audit_<timestamp>.log and new records are written to audit.log. \n\nThe audit logs are found under the ${server.config.dir}/logs directory and are named audit.log for the most recent, and audit_<timestamp>.log for any archived logs. \n\nOne keystore needs to be created (ikeyman as part of the JDK may be used) and a personal certificate created. This certificate is used to encrypt the logs. The audit configuration needs to define the location of this keystore, its password, and the alias of the certificate used to encrypt the logs. As an example:        \n <keyStore\n         id=\"auditEncKeyStore\"\n         password=\"Liberty\"\n         location=\"${server.config.dir}/resources/security/AuditEncryptionKeyStore.jks\"\n         type=\"JKS\" />\n\n      <keyStore\n         id=\"auditSignKeyStore\"\n         password=\"{xor}EzY9Oi0rJg==\"\n         location=\"${server.config.dir}/resources/security/AuditSigningKeyStore2.jks\"\n         type=\"JKS\" />\n\n<auditFileHandler \nencrypt=\"true\"\n        encryptAlias=\"auditencryption\"\n        encryptKeyStoreRef=\"auditEncKeyStore\"\n</auditFileHandler>\n\nSatisfies: SRG-APP-000126-AS-000085, SRG-APP-000118-AS-000078, SRG-APP-000267-AS-000170</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1596,11 +1596,11 @@
           "title": "The WebSphere Liberty Server must protect software libraries from unauthorized access.",
           "description": "<VulnDiscussion>Application servers have the ability to specify that the hosted applications use shared libraries. The application server must have a capability to divide roles based upon duties wherein one project user (such as a developer) cannot modify the shared library code of another project user. The application server must also be able to specify that non-privileged users cannot modify any shared library code at all.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-001499",
@@ -1635,11 +1635,11 @@
           "title": "The WebSphere Liberty Server must prohibit or restrict the use of nonsecure ports, protocols, modules, and/or services as defined in the PPSM CAL and vulnerability assessments.",
           "description": "<VulnDiscussion>Some networking protocols may not meet organizational security requirements to protect data and components.\n\nApplication servers natively host a number of various features, such as management interfaces, httpd servers, and message queues. These features all run on TCPIP ports. This creates the potential that the vendor may choose to use port numbers or network services that have been deemed unusable by the organization. The application server must have the capability to both reconfigure and disable the assigned ports without adversely impacting application server operation capabilities. For a list of approved ports and protocols, reference the DoD ports and protocols website at https://powhatan.iiie.disa.mil/ports/cal.html.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000382",
@@ -1674,11 +1674,11 @@
           "title": "The WebSphere Liberty Server must use an LDAP user registry.",
           "description": "<VulnDiscussion>To ensure accountability and prevent unauthorized access, application server users must be uniquely identified and authenticated. This is typically accomplished via the use of a user store which is either local (OS-based) or centralized (LDAP) in nature. Best practice guideline to is to use a centralized enterprise LDAP server.\n\nTo ensure support to the enterprise, the authentication must use an enterprise solution.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000764",
@@ -1713,11 +1713,11 @@
           "title": "Basic Authentication must be disabled.",
           "description": "<VulnDiscussion>Basic authentication does not use a centralized user store like LDAP. Not using a centralized user store complicates user management tasks and increases the risk that user accounts could remain on the system long after users have moved to their next deployment. Basic Auth also stores user credentials and passwords on the system and creates the potential for an attacker to circumvent strong authentication requirements like multi-factor or certificate based authentication.\n\nAllowing failover to Basic Auth allows the Liberty Server to fall back to basic authentication in the event certificate based authentication methods fail. Configuring the Liberty Server to fall back to basic authentication creates the potential for an attacker to circumvent strong authentication requirements and must be avoided.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000764",
@@ -1752,11 +1752,11 @@
           "title": "Multifactor authentication for network access to privileged accounts must be used.",
           "description": "<VulnDiscussion>Multifactor authentication creates a layered defense and makes it more difficult for an unauthorized person to access the application server. If one factor is compromised or broken, the attacker still has at least one more barrier to breach before successfully breaking into the target. Unlike a simple username/password scenario where the attacker could gain access by knowing both the username and password without the user knowing his account was compromised, multifactor authentication adds the requirement that the attacker must have something from the user, such as a token, or to biometrically be the user.\n\nWhen accessing the application server via a network connection, administrative access to the application server must be PKI Hardware Token enabled.\n\nThe high level steps required for configuring Liberty Server to use certificate based authentication include the following:\n\n1. Configure Web Application with client certificate authentication.\n2. Configure Liberty SSL configuration with client authentication.\n3. Configure Liberty LDAP Security Configuration with certificate filter.\n\nSatisfies: SRG-APP-000149-AS-000102, SRG-APP-000151-AS-000103, SRG-APP-000402-AS-000247, SRG-APP-000403-AS-000248, SRG-APP-000177-AS-000126</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1805,11 +1805,11 @@
           "title": "The WebSphere Liberty Server must store only encrypted representations of user passwords.",
           "description": "<VulnDiscussion>WebSphere Liberty can either provide a local account store or integrate with enterprise account stores such as LDAP directories. If the application server stores application passwords in the server.xml configuration files, the application server must store encrypted representations of passwords rather than unencrypted, clear-text passwords.\n\nThe Liberty Application Server provides a SecurityUtility tool that can take a plain-text or encoded password and convert it to an encrypted password. This tool does not update the ${server.config.dir/server.xml file directly; a manual update of the server.xml is needed once the utility is run. \n\nIt is imperative that administrators understand that the SecurityUtility tool must be run for each application password that is stored within the server.xml file.\n\nSatisfies: SRG-APP-000171-AS-000119, SRG-APP-000428-AS-000265, SRG-APP-000429-AS-000157</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1858,11 +1858,11 @@
           "title": "The WebSphere Liberty Server must use TLS-enabled LDAP.",
           "description": "<VulnDiscussion>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nApplication servers have the capability to use either certificates (tokens) or user IDs and passwords in order to authenticate. When the application server transmits or receives passwords, the passwords must be encrypted. The certificate used by LDAP to establish trust with incoming client requests must be imported into a trust keystore created on the Liberty Server (JDK ikeyman may be used to do this). The LDAP configuration must indicate it is using SSL, provide the BindDN and BindPassword and point to the trust keystore containing the LDAP certificate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-000197",
@@ -1897,11 +1897,11 @@
           "title": "The WebSphere Liberty Server must use DoD-issued/signed certificates.",
           "description": "<VulnDiscussion>The cornerstone of PKI is the private key used to encrypt or digitally sign information. The key by itself is a cryptographic value that does not contain specific user information, but the key can be mapped to a user. Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.\n\nSatisfies: SRG-APP-000177-AS-000126, SRG-APP-000427-AS-000264, SRG-APP-000514-AS-000137</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -1946,11 +1946,11 @@
           "title": "The WebSphere Liberty Server must use FIPS 140-2 approved encryption modules when authenticating users and processes.",
           "description": "<VulnDiscussion>Application servers must use and meet requirements of the DOD Enterprise PKI infrastructure for application authentication. Encryption is only as good as the encryption modules used. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nSatisfies: SRG-APP-000179-AS-000129, SRG-APP-000224-AS-000152, SRG-APP-000416-AS-000140, SRG-APP-000439-AS-000155, SRG-APP-000442-AS-000259, SRG-APP-000514-AS-000136</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -2003,11 +2003,11 @@
           "title": "HTTP session timeout must be configured.",
           "description": "<VulnDiscussion>An attacker can take advantage of user sessions that are left open, thus bypassing the user authentication process.\n\nTo thwart the vulnerability of open and unused user sessions, the application server must be configured to close the sessions when a configured condition or trigger event is met.\n\nSession termination terminates all processes associated with a user’s logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nSatisfies: SRG-APP-000295-AS-000263, SRG-APP-000389-AS-000253</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -2052,11 +2052,11 @@
           "title": "Application security must be enabled on the WebSphere Liberty Server.",
           "description": "<VulnDiscussion>Application security enables security for the applications in the environment. This type of security provides application isolation and requirements for authenticating application users. When a user enables security, both administrative and application security is enabled. \n\nApplication security is in effect only when administrative security is enabled via the security feature. If the application server is to be used for only web applications, only the servlet-3.1 feature needs to be defined. If the application server is to be used for only ejb applications, only the ejbLite-3.1 feature needs to be defined. If both web and ejb applications are to be deployed on the application server, then both the servlet-3.1 and ejbLite-3.1 features need to be defined. The check and fix assumes that the application server will have both web and ejb applications deployed.\n\nSatisfies: SRG-APP-000315-AS-000094, SRG-APP-000014-AS-000009</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {
@@ -2097,11 +2097,11 @@
           "title": "Users in a reader-role must be authorized.",
           "description": "<VulnDiscussion>The reader role is a management role that allows read-only access to select administrative REST APIs as well as the Admin Center UI (adminCenter-1.0). Preventing non-privileged users from viewing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges.\n\nUsers granted reader role access must be authorized.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002235",
@@ -2136,11 +2136,11 @@
           "title": "The WebSphere Liberty Server must allocate JVM log record storage capacity in accordance with organization-defined log record storage requirements.",
           "description": "<VulnDiscussion>JVM logs are logs used to store application and runtime related events, rather than audit related events. They are mainly used to diagnose application or runtime bugs. However, they are useful for providing more context when correlated with audit related events. \n\nBy default, Liberty automatically logs the console.log, messages.log, and trace.log but these default settings must be validated.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-001849",
@@ -2175,11 +2175,11 @@
           "title": "The server.xml file must be protected from unauthorized modification.",
           "description": "<VulnDiscussion>When dealing with access restrictions pertaining to change control, it should be noted that any changes to the software, and/or application server configuration could potentially have significant adverse effects on the overall security of the system.\n\nProtect the server.xml file from unauthorized modification by applying file permission restrictions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-001813",
@@ -2214,11 +2214,11 @@
           "title": "The WebSphere Liberty Server must prohibit the use of cached authenticators after an organization-defined time period.",
           "description": "<VulnDiscussion>Larger authentication cache timeout values can increase security risks. For example, a user who is revoked can still log in by using a credential that is cached in the authentication cache until the cache is refreshed.\n\nSmaller authentication cache timeout values can affect performance. When this value is smaller, the Liberty Server accesses the user registry or repository more frequently.\n\nLarger numbers of entries in the authentication cache, which is caused by an increased number of users, increases the memory usage of the authentication cache. Thus, the application server might slow down and affect performance.\n\nIf cached authentication information is out of date, the validity of the authentication information may be questionable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002007",
@@ -2253,11 +2253,11 @@
           "title": "The WebSphere Liberty Server LTPA keys password must be changed.",
           "description": "<VulnDiscussion>The default location of the automatically generated Lightweight Third Party Authentication (LTPA) keys file is ${server.output.dir}/resources/security/ltpa.keys. \n\nThe LTPA keys are encrypted with a randomly generated key and a default password of WebAS is initially used to protect the keys. The password is required when importing the LTPA keys into another server. To protect the security of the LTPA keys, change the password. \n\nWhen the LTPA keys are exchanged between servers, this password must match across the servers for Single Sign On (SSO) to work.\n\nAutomated LTPA key generation can create unplanned outages. Plan to change the LTPA keys during a scheduled outage and do not use automated key changes. Distribute the new keys to all nodes in the cell and to all external systems/cells during this outage window.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002475",
@@ -2292,11 +2292,11 @@
           "title": "The WebSphere Liberty Server must remove all export ciphers to protect the confidentiality and integrity of transmitted information.",
           "description": "<VulnDiscussion>Export grade encryption suites are not strong and do not meet DoD requirements. The encryption for the session becomes easy for the attacker to break. Do not use export grade encryption.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002418",
@@ -2331,11 +2331,11 @@
           "title": "The WebSphere Liberty Server must be configured to use HTTPS only.",
           "description": "<VulnDiscussion>Transmission of data can take place between the application server and a large number of devices/applications external to the application server. Examples are a web client used by a user, a backend database, a log server, or other application servers in an application server cluster.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002421",
@@ -2370,11 +2370,11 @@
           "title": "The WebSphere Liberty Server must install security-relevant software updates within the time period directed by an authoritative source.",
           "description": "<VulnDiscussion>Security vulnerabilities are often addressed by testing and applying the latest security patches and fix packs. The latest fixpacks can be found at: http://www-01.ibm.com/support/docview.wss?uid=swg27009661</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": {
             "+content": "CCI-002605",
@@ -2409,11 +2409,11 @@
           "title": "The WebSphere Liberty Server must generate log records for authentication and authorization events.",
           "description": "<VulnDiscussion>Enabling authentication (SECURITY_AUTHN) and authorization (SECURITY_AUTHZ) event handlers configures the server to record security authorization and authentication events. By logging these events, the logs can be analyzed to identify activity that could be related to security events and to aid post mortem forensic analysis.\n\nSatisfies: SRG-APP-000499-AS-000224, SRG-APP-000495-AS-000220, SRG-APP-000503-AS-000228, SRG-APP-000504-AS-000229, SRG-APP-000505-AS-000230, SRG-APP-000506-AS-000231, SRG-APP-000509-AS-000234, SRG-APP-000092-AS-000053</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target IBM WebSphere Liberty Server",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "IBM WebSphere Liberty Server",
-            "identifier": "5424"
+            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM WebSphere Liberty Server",
+            "dc:identifier": "5424"
           },
           "ident": [
             {

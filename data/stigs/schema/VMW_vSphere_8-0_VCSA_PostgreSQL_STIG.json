@@ -29,8 +29,8 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
@@ -773,11 +773,11 @@
           "title": "The vCenter PostgreSQL service must limit the number of concurrent sessions.",
           "description": "<VulnDiscussion>Database management includes the ability to control the number of users and user sessions utilizing a database management system (DBMS). Unlimited concurrent connections to the DBMS could allow a successful denial-of-service (DoS) attack by exhausting connection resources, and a system can also fail or be degraded by an overload of legitimate users. Limiting the number of concurrent sessions per user is helpful in reducing these risks.\n\nVMware Postgres as deployed on the vCenter Service Appliance (VCSA) comes preconfigured with a \"max_connections\" limit that is appropriate for all tested, supported scenarios. The out-of-the-box configuration is dynamic, based on a lower limit plus allowances for the resources assigned to VCSA and the deployment size. However, this number will always be between 100 and 1000 (inclusive).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000054",
@@ -812,11 +812,11 @@
           "title": "The vCenter PostgreSQL service must enable \"pgaudit\" to provide audit record generation capabilities.",
           "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the database management system (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDOD has defined the list of events for which the DBMS will provide an audit record generation capability as the following:\n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000169",
@@ -851,11 +851,11 @@
           "title": "The vCenter PostgreSQL service configuration files must not be accessible by unauthorized users.",
           "description": "<VulnDiscussion>Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent or interfere with the auditing of critical events.\n\nSuppression of auditing could permit an adversary to evade detection.\n\nMisconfigured audits can degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nSatisfies: SRG-APP-000090-DB-000065, SRG-APP-000121-DB-000202, SRG-APP-000122-DB-000203, SRG-APP-000123-DB-000204, SRG-APP-000380-DB-000360</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -908,11 +908,11 @@
           "title": "The vCenter PostgreSQL service must generate audit records.",
           "description": "<VulnDiscussion>Under some circumstances, it may be useful to monitor who/what is reading privilege/permission/role information. Therefore, it must be possible to configure auditing to do this. Database management systems (DBMS) typically make such information available through views or functions.\n\nThis requirement addresses explicit requests for privilege/permission/role membership information. It does not refer to the implicit retrieval of privileges/permissions/role memberships that PostgreSQL continually performs to determine if any and every action on the database is permitted.\n\nSatisfies: SRG-APP-000091-DB-000066, SRG-APP-000091-DB-000325, SRG-APP-000492-DB-000332, SRG-APP-000492-DB-000333, SRG-APP-000495-DB-000326, SRG-APP-000495-DB-000327, SRG-APP-000495-DB-000328, SRG-APP-000495-DB-000329, SRG-APP-000496-DB-000334, SRG-APP-000496-DB-000335, SRG-APP-000499-DB-000330, SRG-APP-000499-DB-000331, SRG-APP-000501-DB-000336, SRG-APP-000501-DB-000337, SRG-APP-000504-DB-000354, SRG-APP-000504-DB-000355, SRG-APP-000507-DB-000356, SRG-APP-000507-DB-000357</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -947,11 +947,11 @@
           "title": "The vCenter PostgreSQL service must initiate session auditing upon startup.",
           "description": "<VulnDiscussion>Session auditing is for use when a user's activities are under investigation. To be sure of capturing all activity during those periods when session auditing is in use, it needs to be in operation for the whole time the database management system (DBMS) is running.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-001464",
@@ -986,11 +986,11 @@
           "title": "The vCenter PostgreSQL service must produce logs containing sufficient information to establish what type of events occurred.",
           "description": "<VulnDiscussion>Information system auditing capability is critical for accurate forensic analysis. Without establishing what type of event occurred, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit record content that may be necessary to satisfy the requirement of this policy includes, for example, time stamps, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nAssociating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application.\n\nDatabase software is capable of a range of actions on data stored within the database. It is important, for accurate forensic analysis, to know exactly what actions were performed. This requires specific information regarding the event type an audit record is referring to. If event type information is not recorded and stored with the audit record, the record itself is of very limited use.\n\nSatisfies: SRG-APP-000095-DB-000039, SRG-APP-000096-DB-000040, SRG-APP-000097-DB-000041, SRG-APP-000098-DB-000042, SRG-APP-000099-DB-000043, SRG-APP-000100-DB-000201, SRG-APP-000101-DB-000044, SRG-APP-000375-DB-000323</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1055,11 +1055,11 @@
           "title": "The vCenter PostgreSQL service must be configured to protect log files from unauthorized access.",
           "description": "<VulnDiscussion>If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. In addition, access to audit records provides information an attacker could potentially use to his or her advantage.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from any and all unauthorized access. This includes read, write, copy, etc.\n\nSatisfies: SRG-APP-000118-DB-000059, SRG-APP-000119-DB-000060, SRG-APP-000120-DB-000061</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1104,11 +1104,11 @@
           "title": "The vCenter PostgreSQL service must not load unused database components, software, and database objects.",
           "description": "<VulnDiscussion>Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions).\n\nIt is detrimental for software products to provide, or install by default, functionality exceeding requirements or mission objectives.\n\nDatabase management systems (DBMS) must adhere to the principles of least functionality by providing only essential capabilities.\n\nSatisfies: SRG-APP-000141-DB-000091, SRG-APP-000141-DB-000093</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000381",
@@ -1143,11 +1143,11 @@
           "title": "The vCenter PostgreSQL service must be configured to use an authorized port.",
           "description": "<VulnDiscussion>In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols/services on information systems.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component.\n\nTo support the requirements and principles of least functionality, the application must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nDatabase Management Systems using ports, protocols, and services deemed unsafe are open to attack through those ports, protocols, and services. This can allow unauthorized access to the database and through the database to other components of the information system.\n\nSatisfies: SRG-APP-000142-DB-000094, SRG-APP-000383-DB-000364</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1188,11 +1188,11 @@
           "title": "The vCenter PostgreSQL service must require authentication on all connections.",
           "description": "<VulnDiscussion>To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals using shared accounts, for detailed accountability of individual activity.\n\nSatisfies: SRG-APP-000148-DB-000103, SRG-APP-000172-DB-000075</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1233,11 +1233,11 @@
           "title": "The vCenter PostgreSQL service must encrypt passwords for user authentication.",
           "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the database management system (DBMS).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1278,11 +1278,11 @@
           "title": "The vCenter PostgreSQL service must write log entries to disk prior to returning operation success or failure.",
           "description": "<VulnDiscussion>Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. Preserving system state information helps to facilitate system restart and return to the operational mode of the organization with less disruption of mission/business processes.\n\nAggregating log writes saves on performance but leaves a window for log data loss. The logging system inside PostgreSQL is capable of writing logs to disk, fully and completely before the associated operation is returned to the client. This ensures that database activity is always captured, even in the event of a system crash during or immediately after a given operation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-001665",
@@ -1317,11 +1317,11 @@
           "title": "The vCenter PostgreSQL service must provide nonprivileged users with minimal error information.",
           "description": "<VulnDiscussion>Any DBMS or associated application providing too much information in error messages on the screen or printout risks compromising the data and security of the system. The structure and content of error messages need to contain the minimal amount of information.\n\nDatabases can inadvertently provide a wealth of information to an attacker through improperly handled error messages. In addition to sensitive business or personal information, database errors can provide host names, IP addresses, usernames, and other system information not required for troubleshooting but very useful to someone targeting the system.\n\nSatisfies: SRG-APP-000266-DB-000162, SRG-APP-000267-DB-000163</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1362,11 +1362,11 @@
           "title": "The vCenter PostgreSQL service must have log collection enabled.",
           "description": "<VulnDiscussion>Without the ability to centrally manage the content captured in the audit records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe content captured in audit records must be managed from a central location (necessitating automation). Centralized management of audit records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records.\n\nSatisfies: SRG-APP-000356-DB-000314, SRG-APP-000381-DB-000361</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": [
             {
@@ -1407,11 +1407,11 @@
           "title": "The vCenter PostgreSQL service must use Coordinated Universal Time (UTC) for log timestamps.",
           "description": "<VulnDiscussion>If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by PostgreSQL must include date and time. Time is commonly expressed in UTC, a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-001890",
@@ -1446,11 +1446,11 @@
           "title": "The vCenter PostgreSQL service must log all connection attempts.",
           "description": "<VulnDiscussion>For completeness of forensic analysis, it is necessary to track successful and failed attempts to log on to PostgreSQL. Setting \"log_connections\" to \"on\" will cause each attempted connection to the server to be logged, as well as successful completion of client authentication.\n\nSatisfies: SRG-APP-000503-DB-000350, SRG-APP-000503-DB-000351, SRG-APP-000506-DB-000353, SRG-APP-000508-DB-000358</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -1485,11 +1485,11 @@
           "title": "The vCenter PostgreSQL service must log all client disconnections.",
           "description": "<VulnDiscussion>Disconnection may be initiated by the user or forced by the system (as in a timeout) or result from a system or network failure. To the greatest extent possible, all disconnections must be logged.\n\nFor completeness of forensic analysis, it is necessary to know how long a user's (or other principal's) connection to PostgreSQL lasts. This can be achieved by recording disconnections, in addition to logons/connections, in the audit logs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-000172",
@@ -1524,11 +1524,11 @@
           "title": "The vCenter PostgreSQL service must off-load audit data to a separate log management facility.",
           "description": "<VulnDiscussion>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.\n\nThe database management system (DBMS) may write audit records to database tables, to files in the file system, to other kinds of local repository, or directly to a centralized log management system. Whatever the method used, it must be compatible with off-loading the records to the centralized system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "VMware vSphere 8.0 VCSA PostgreSQL",
-            "identifier": "5570"
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA PostgreSQL",
+            "dc:identifier": "5570"
           },
           "ident": {
             "+content": "CCI-001851",

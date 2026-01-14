@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2025-09-27"
     },
     "title": "z/OS CA Common Services for RACF Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -226,18 +226,18 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224433r1041296_rule",
+          "+@id": "SV-224433r1144691_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCCSR000",
           "title": "CA Common Services installation data sets will be properly protected.",
           "description": "<VulnDiscussion>CA Common Services installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Common Services for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Common Services for RACF",
-            "identifier": "4142"
+            "dc:title": "DPMS Target zOS CA Common Services for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Common Services for RACF",
+            "dc:identifier": "4142"
           },
           "ident": [
             {
@@ -265,12 +265,12 @@
             "+@id": "F-26098r1041295_fix"
           },
           "check": {
-            "+@system": "C-26110r1041294_chk",
+            "+@system": "C-26110r1144690_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Common_Services_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CCSRPT)\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCCS0000)\n\nVerify that the accesses to the CA Common Services installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n\n___ The RACF data set rules for the data sets restricts READ access to all authorized users.\n\n___ The RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\n___ The RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access is logged.\n\n___ The RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
+            "check-content": "Refer to the following report produced by the Data Set and Resource Data Collection:\n\n- SENSITVE.RPT(CCSRPT).\n\nAutomated Analysis\nRefer to the following report produced by the Data Set and Resource Data Collection:\n\n- PDI(ZCCS0000).\n\nVerify that the accesses to the CA Common Services installation data sets are properly restricted. If the following guidance is true, this is not a finding.\n\nThe RACF data set rules for the data sets restricts READ access to all authorized users.\n\nThe RACF data set rules for the data sets restricts WRITE and/or greater access to systems programming personnel.\n\nThe RACF data set rules for the data sets specify that all (i.e., failures and successes) WRITE and/or greater access is logged.\n\nThe RACF data set rules for the data sets specify UACC(NONE) and NOWARNING."
           }
         }
       },
@@ -279,18 +279,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224434r958482_rule",
+          "+@id": "SV-224434r1144693_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCCSR030",
           "title": "CA Common Services Started Task name will be properly identified and/or defined to the system ACP.",
-          "description": "<VulnDiscussion>CA Common Services requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>CA Common Services requires a started task that will be restricted to certain resources, data sets, and other system functions. Defining the started task as a userid to the system ACP allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities could compromise the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Common Services for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Common Services for RACF",
-            "identifier": "4142"
+            "dc:title": "DPMS Target zOS CA Common Services for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Common Services for RACF",
+            "dc:identifier": "4142"
           },
           "ident": [
             {
@@ -314,12 +314,12 @@
             "+@id": "F-26099r868318_fix"
           },
           "check": {
-            "+@system": "C-26111r868317_chk",
+            "+@system": "C-26111r1144692_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Common_Services_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(LISTUSER)\n\nVerify that the userid(s) for the CA Common Services started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nPROTECTED"
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- RACFCMDS.RPT(LISTUSER).\n\nVerify that the userid(s) for the CA Common Services started task(s) is (are) properly defined. If the following attributes are defined, this is not a finding.\n\nPROTECTED"
           }
         }
       },
@@ -328,18 +328,18 @@
         "title": "SRG-OS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224435r958482_rule",
+          "+@id": "SV-224435r1144695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ZCCSR032",
           "title": "CA Common Services Started task will be properly defined to the STARTED resource class for RACF.",
-          "description": "<VulnDiscussion>Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could potentially compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Access to product resources must be restricted to only individuals responsible for the application connectivity and who have a requirement to access these resources. Improper control of product resources could compromise the operating system, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target zOS CA Common Services for RACF",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "zOS CA Common Services for RACF",
-            "identifier": "4142"
+            "dc:title": "DPMS Target zOS CA Common Services for RACF",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "zOS CA Common Services for RACF",
+            "dc:identifier": "4142"
           },
           "ident": [
             {
@@ -363,12 +363,12 @@
             "+@id": "F-26100r868321_fix"
           },
           "check": {
-            "+@system": "C-26112r868320_chk",
+            "+@system": "C-26112r1144694_chk",
             "check-content-ref": {
               "+@href": "zOS_CA_Common_Services_for_RACF_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- DSMON.RPT(RACSPT)\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZCCS0032)\n\nIf the CA Common Services started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry, this is not a finding."
+            "check-content": "Refer to the following report produced by the RACF Data Collection:\n\n- DSMON.RPT(RACSPT).\n\nAutomated Analysis\nRefer to the following report produced by the RACF Data Collection:\n\n- PDI(ZCCS0032).\n\nIf the CA Common Services started task(s) is (are) defined to the STARTED resource class profile and/or ICHRIN03 table entry, this is not a finding."
           }
         }
       }

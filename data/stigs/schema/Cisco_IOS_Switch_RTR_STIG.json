@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-06-06"
+      "+@date": "2025-08-22"
     },
     "title": "Cisco IOS Switch RTR Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -29,16 +29,16 @@
     },
     "reference": {
       "+@href": "https://cyber.mil",
-      "publisher": "DISA",
-      "source": "STIG.DOD.MIL"
+      "dc:publisher": "DISA",
+      "dc:source": "STIG.DOD.MIL"
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -2026,18 +2026,18 @@
         "title": "SRG-NET-000018-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220419r622190_rule",
+          "+@id": "SV-220419r1117236_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000010",
           "title": "The Cisco switch must be configured to enforce approved authorizations for controlling the flow of information within the network based on organization-defined information flow control policies.",
           "description": "<VulnDiscussion>Information flow control regulates where information is allowed to travel within a network and between interconnected networks. The flow of all network traffic must be monitored and controlled so it does not introduce any unacceptable risk to the network infrastructure or data. Information flow control policies and enforcement mechanisms are commonly employed by organizations to control the flow of information between designated sources and destinations (e.g., networks, individuals, and devices) within information systems. \n\nEnforcement occurs, for example, in boundary protection devices (e.g., gateways, switches, guards, encrypted tunnels, and firewalls) that employ rule sets or establish configuration settings that restrict information system services, provide a packet-filtering capability based on header information, or provide a message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2082,11 +2082,11 @@
           "title": "The Cisco switch must be configured to enable routing protocol authentication using FIPS 198-1 algorithms with keys not exceeding 180 days of lifetime.",
           "description": "<VulnDiscussion>A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication using FIPS 198-1 algorithms for routing updates.\nIf the keys used for authentication are guessed, the malicious user could create havoc within the network by advertising incorrect routes and redirecting traffic. Some routing protocols allow the use of key chains for authentication. A key chain is a set of keys that is used in succession, with each having a lifetime of no more than 180 days. Changing the keys frequently reduces the risk of them eventually being guessed. If a time period occurs during which no key is activated, neighbor authentication cannot occur, and therefore routing updates will fail.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2128,18 +2128,18 @@
         "title": "SRG-NET-000019-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220424r622190_rule",
+          "+@id": "SV-220424r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000060",
           "title": "The Cisco switch must be configured to have all inactive Layer 3 interfaces disabled.",
           "description": "<VulnDiscussion>An inactive interface is rarely monitored or controlled and may expose a network to an undetected attack on that interface. Unauthorized personnel with access to the communication facility could gain access to a switch by connecting to a configured interface that is not in use. \n\nIf an interface is no longer used, the configuration must be deleted and the interface disabled. For sub-interfaces, delete sub-interfaces that are on inactive interfaces and delete sub-interfaces that are inactive. If the sub-interface is no longer necessary for authorized communications, it must be deleted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2184,11 +2184,11 @@
           "title": "The Cisco switch must not be configured to have any zero-touch deployment feature enabled when connected to an operational network.",
           "description": "<VulnDiscussion>Network devices that are configured via a zero-touch deployment or auto-loading feature can have their startup configuration or image pushed to the device for installation via TFTP or Remote Copy (rcp). Loading an image or configuration file from the network is taking a security risk because the file could be intercepted by an attacker who could corrupt the file, resulting in a denial of service.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2233,11 +2233,11 @@
           "title": "The Cisco switch must be configured to protect against or limit the effects of denial-of-service (DoS) attacks by employing control plane protection.",
           "description": "<VulnDiscussion>The Route Processor (RP) is critical to all network operations because it is the component used to build all forwarding paths for the data plane via control plane processes. It is also instrumental with ongoing network management functions that keep the routers and links available for providing network services. Any disruption to the RP or the control and management planes can result in mission-critical network outages.\n\nA DoS attack targeting the RP can result in excessive CPU and memory utilization. To maintain network stability and RP security, the router must be able to handle specific control plane and management plane traffic that is destined to the RP. In the past, one method of filtering was to use ingress filters on forwarding interfaces to filter both forwarding path and receiving path traffic, as well as limiting traffic destined to the device. However, this method does not scale well as the number of interfaces grows and the size of the ingress filters grows. Control plane policing increases the security of routers and multilayer switches by protecting the RP from unnecessary or malicious traffic. Filtering and rate limiting the traffic flow of control plane packets can be implemented to protect routers against reconnaissance and DoS attacks, allowing the control plane to maintain packet forwarding and protocol states despite an attack or heavy load on the router or multilayer switch.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2290,11 +2290,11 @@
           "title": "The Cisco switch must be configured to have gratuitous ARP disabled on all external interfaces.",
           "description": "<VulnDiscussion>A gratuitous ARP is an ARP broadcast in which the source and destination MAC addresses are the same. It is used to inform the network about a host IP address. A spoofed gratuitous ARP message can cause network mapping information to be stored incorrectly, causing network malfunction.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2339,11 +2339,11 @@
           "title": "The Cisco switch must be configured to have IP directed broadcast disabled on all interfaces.",
           "description": "<VulnDiscussion>An IP directed broadcast is a datagram sent to the broadcast address of a subnet that is not directly attached to the sending machine. The directed broadcast is routed through the network as a unicast packet until it arrives at the target subnet, where it is converted into a link-layer broadcast. Because of the nature of the IP addressing architecture, only the last switch in the chain, which is connected directly to the target subnet, can conclusively identify a directed broadcast. \n\nIP directed broadcasts are used in the extremely common and popular smurf, or denial-of-service (DoS), attacks. In a smurf attack, the attacker sends Internet Control Message Protocol (ICMP) echo requests from a falsified source address to a directed broadcast address, causing all the hosts on the target subnet to send replies to the falsified source. By sending a continuous stream of such requests, the attacker can create a much larger stream of replies, which can completely inundate the host whose address is being falsified. This service should be disabled on all interfaces when not needed to prevent smurf and DoS attacks. \n\nDirected broadcast can be enabled on internal-facing interfaces to support services such as Wake-On-LAN. Case scenario may also include support for legacy applications where the content server and the clients do not support multicast. The content servers send streaming data using UDP broadcast. Used in conjunction with the IP multicast helper-map feature, broadcast data can be sent across a multicast topology. The broadcast streams are converted to multicast and vice versa at the first-hop switches and last-hop switches before entering and leaving the multicast transit area respectively. The last-hop switch must convert the multicast to broadcast. Hence, this interface must be configured to forward a broadcast packet (i.e., a directed broadcast address is converted to the all nodes broadcast address).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2388,11 +2388,11 @@
           "title": "The Cisco switch must be configured to have Internet Control Message Protocol (ICMP) unreachable messages disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Switches automatically send ICMP messages under a wide variety of conditions. Host unreachable ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2437,11 +2437,11 @@
           "title": "The Cisco switch must be configured to have Internet Control Message Protocol (ICMP) mask reply messages disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Switches automatically send ICMP messages under a wide variety of conditions. Mask Reply ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2486,11 +2486,11 @@
           "title": "The Cisco switch must be configured to have Internet Control Message Protocol (ICMP) redirect messages disabled on all external interfaces.",
           "description": "<VulnDiscussion>The ICMP supports IP traffic by relaying information about paths, routes, and network conditions. Switches automatically send ICMP messages under a wide variety of conditions. Redirect ICMP messages are commonly used by attackers for network mapping and diagnosis.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2535,11 +2535,11 @@
           "title": "The Cisco switch must be configured to log all packets that have been dropped at interfaces via an access control list (ACL).",
           "description": "<VulnDiscussion>Auditing and logging are key components of any security architecture. It is essential for security personnel to know what is being done or attempted to be done, and by whom, to compile an accurate risk assessment. Auditing the actions on network devices provides a means to recreate an attack or identify a configuration mistake on the device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2584,11 +2584,11 @@
           "title": "The Cisco switch must be configured to produce audit records containing information to establish where the events occurred.",
           "description": "<VulnDiscussion>Without establishing where events occurred, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack. \n\nTo compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know where events occurred, such as switch components, modules, device identifiers, node names, and functionality. \n\nAssociating information about where the event occurred within the network provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured switch.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2633,11 +2633,11 @@
           "title": "The Cisco switch must be configured to produce audit records containing information to establish the source of the events.",
           "description": "<VulnDiscussion>Without establishing the source of the event, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack. \n\nTo compile an accurate risk assessment and provide forensic analysis, security personnel need to know the source of the event. \n\nIn addition to logging where events occur within the network, the audit records must also identify sources of events such as IP addresses, processes, and node or device names.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2675,18 +2675,18 @@
         "title": "SRG-NET-000019-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220439r622190_rule",
+          "+@id": "SV-220439r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000230",
           "title": "The Cisco switch must be configured to disable the auxiliary port unless it is connected to a secured modem providing encryption and authentication.",
           "description": "<VulnDiscussion>The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network. Additional war dial attacks on the device could degrade the device and the production network. \n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place. The modem will provide full encryption capability (Triple DES) or stronger. The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port; thus, the technician will gain access to the managed device. The token provides a method of strong (two-factor) user authentication. The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals. The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2724,18 +2724,18 @@
         "title": "SRG-NET-000202-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220440r622190_rule",
+          "+@id": "SV-220440r1117241_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-RT-000240",
           "title": "The Cisco perimeter switch must be configured to deny network traffic by default and allow network traffic by exception.",
           "description": "<VulnDiscussion>A deny-all, permit-by-exception network communications traffic policy ensures that only connections that are essential and approved are allowed. \n\nThis requirement applies to both inbound and outbound network communications traffic. All inbound and outbound traffic must be denied by default. Firewalls and perimeter switches should only allow traffic through that is explicitly permitted. The initial defense for the internal network is to block any traffic at the perimeter that is attempting to make a connection to a host residing on the internal network. In addition, allowing unknown or undesirable outbound traffic by the firewall or switch will establish a state that will permit the return of this undesirable traffic inbound.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2773,18 +2773,18 @@
         "title": "SRG-NET-000019-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220441r622190_rule",
+          "+@id": "SV-220441r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000250",
           "title": "The Cisco perimeter switch must be configured to enforce approved authorizations for controlling the flow of information between interconnected networks in accordance with applicable policy.",
           "description": "<VulnDiscussion>Information flow control regulates authorized information to travel within a network and between interconnected networks. Controlling the flow of network traffic is critical so it does not introduce any unacceptable risk to the network infrastructure or data. \n\nAn example of a flow control restriction is blocking outside traffic claiming to be from within the organization. For most switches, internal information flow control is a product of system design.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2829,11 +2829,11 @@
           "title": "The Cisco perimeter switch must be configured to only allow incoming communications from authorized sources to be routed to authorized destinations.",
           "description": "<VulnDiscussion>Unrestricted traffic may contain malicious traffic that poses a threat to an enclave or to other connected networks. Additionally, unrestricted traffic may transit a network, which uses bandwidth and other resources. \n\nTraffic can be restricted directly by an access control list (ACL), which is a firewall function, or by Policy Routing. Policy Routing is a technique used to make routing decisions based on a number of different criteria other than just the destination network, including source or destination network, source or destination address, source or destination port, protocol, packet size, and packet classification. This overrides the switch's normal routing procedures used to control the specific paths of network traffic. It is normally used for traffic engineering but can also be used to meet security requirements; for example, traffic that is not allowed can be routed to the Null0 or discard interface. Policy Routing can also be used to control which prefixes appear in the routing table. \n\nThis requirement is intended to allow network administrators the flexibility to use whatever technique is most effective.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2878,11 +2878,11 @@
           "title": "The Cisco perimeter switch must be configured to block inbound packets with source Bogon IP address prefixes.",
           "description": "<VulnDiscussion>Packets with Bogon IP source addresses should never be allowed to traverse the IP core. Bogon IP networks are RFC1918 addresses or address blocks that have never been assigned by the IANA or have been reserved.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2927,11 +2927,11 @@
           "title": "The Cisco perimeter switch must be configured to filter traffic destined to the enclave in accordance with the guidelines contained in DoD Instruction 8551.1.",
           "description": "<VulnDiscussion>Vulnerability assessments must be reviewed by the System Administrator, and protocols must be approved by the Information Assurance (IA) staff before entering the enclave. \n\nAccess control lists (ACLs) are the first line of defense in a layered security approach. They permit authorized packets and deny unauthorized packets based on port or service type. They enhance the posture of the network by not allowing packets to reach a potential target within the security domain. The lists provided are highly susceptible ports and services that should be blocked or limited as much as possible without adversely affecting customer requirements. Auditing packets attempting to penetrate the network that are stopped by an ACL will allow network administrators to broaden their protective ring and more tightly define the scope of operation. \n\nIf the perimeter is in a Deny-by-Default posture and what is allowed through the filter is in accordance with DoD Instruction 8551.1, and if the permit rule is explicitly defined with explicit ports and protocols allowed, then all requirements related to PPS being blocked would be satisfied.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -2976,11 +2976,11 @@
           "title": "The Cisco perimeter switch must be configured to filter ingress traffic at the external interface on an inbound direction.",
           "description": "<VulnDiscussion>Access lists are used to separate data traffic into that which it will route (permitted packets) and that which it will not route (denied packets). Secure configuration of switches makes use of access lists to restrict access to services on the switch itself as well as filter traffic passing through the switch. \n\nInbound versus Outbound: Some operating systems' default access lists are applied to the outbound queue. The more secure solution is to apply the access list to the inbound queue for three reasons: \n\n- The switch can protect itself before damage is inflicted. \n- The input port is still known and can be filtered on. \n- It is more efficient to filter packets before routing them.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3025,11 +3025,11 @@
           "title": "The Cisco perimeter switch must be configured to filter egress traffic at the internal interface on an inbound direction.",
           "description": "<VulnDiscussion>Access lists are used to separate data traffic into that which it will route (permitted packets) and that which it will not route (denied packets). Secure configuration of switches makes use of access lists to restrict access to services on the switch itself as well as filter traffic passing through the switch. \n\nInbound versus Outbound: Some operating systems' default access lists are applied to the outbound queue. The more secure solution is to apply the access list to the inbound queue for three reasons: \n\n- The switch can protect itself before damage is inflicted. \n- The input port is still known and can be filtered on. \n- It is more efficient to filter packets before routing them.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3074,11 +3074,11 @@
           "title": "The Cisco perimeter switch must be configured to have Link Layer Discovery Protocol (LLDP) disabled on all external interfaces.",
           "description": "<VulnDiscussion>LLDP is a neighbor discovery protocol used to advertise device capabilities, configuration information, and device identity. LLDP is media-and-protocol-independent as it runs over Layer 2; therefore, two network nodes that support different Layer 3 protocols can still learn about each other. \n\nAllowing LLDP messages to reach external network nodes provides an attacker a method to obtain information of the network infrastructure that can be useful to plan an attack.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3123,11 +3123,11 @@
           "title": "The Cisco perimeter switch must be configured to have Cisco Discovery Protocol (CDP) disabled on all external interfaces.",
           "description": "<VulnDiscussion>CDP is a Cisco proprietary neighbor discovery protocol used to advertise device capabilities, configuration information, and device identity. CDP is media-and-protocol-independent as it runs over Layer 2; therefore, two network nodes that support different Layer 3 protocols can still learn about each other. Allowing CDP messages to reach external network nodes provides an attacker a method to obtain information of the network infrastructure that can be useful to plan an attack.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3172,11 +3172,11 @@
           "title": "The Cisco perimeter switch must be configured to have Proxy ARP disabled on all external interfaces.",
           "description": "<VulnDiscussion>When Proxy ARP is enabled on a switch, it allows that switch to extend the network (at Layer 2) across multiple interfaces (LAN segments). Because proxy ARP allows hosts from different LAN segments to look like they are on the same segment, proxy ARP is only safe when used between trusted LAN segments. \n\nAttackers can leverage the trusting nature of proxy ARP by spoofing a trusted host and then intercepting packets. Proxy ARP should always be disabled on switch interfaces that do not require it unless the switch is being used as a LAN bridge.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3221,11 +3221,11 @@
           "title": "The Cisco perimeter switch must be configured to block all outbound management traffic.",
           "description": "<VulnDiscussion>For in-band management, the management network must have its own subnet in order to enforce control and access boundaries provided by Layer 3 network nodes, such as switches and firewalls. Management traffic between the managed network elements and the management network is routed via the same links and nodes as that used for production or operational traffic. Safeguards must be implemented to ensure that the management traffic does not leak past the perimeter of the managed network.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3270,11 +3270,11 @@
           "title": "The Cisco switch must be configured to only permit management traffic that ingresses and egresses the out-of-band management (OOBM) interface.",
           "description": "<VulnDiscussion>The OOBM access switch will connect to the management interface of the managed network elements. The management interface can be a true OOBM interface or a standard interface functioning as the management interface. In either case, the management interface of the managed network element will be directly connected to the OOBM network. \n\nAn OOBM interface does not forward transit traffic, thereby providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. \n\nIf the device does not have an OOBM port, the interface functioning as the management interface must be configured so that management traffic does not leak into the managed network and production traffic does not leak into the management network.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3323,11 +3323,11 @@
           "title": "The Cisco PE switch providing MPLS Layer 2 Virtual Private Network (L2VPN) services must be configured to authenticate targeted Label Distribution Protocol (LDP) sessions used to exchange virtual circuit (VC) information using a FIPS-approved message authentication code algorithm.",
           "description": "<VulnDiscussion>LDP provides the signaling required for setting up and tearing down pseudowires (virtual circuits used to transport Layer 2 frames) across an MPLS IP core network. Using a targeted LDP session, each PE switch advertises a virtual circuit label mapping that is used as part of the label stack imposed on the frames by the ingress PE switch during packet forwarding. Authentication provides protection against spoofed TCP segments that can be introduced into the LDP sessions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3372,11 +3372,11 @@
           "title": "The Cisco PE switch must be configured to block any traffic that is destined to the IP core infrastructure.",
           "description": "<VulnDiscussion>IP addresses can be guessed. Core network elements must not be accessible from any external host. Protecting the core from any attack is vital for the integrity and privacy of customer traffic as well as the availability of transit services. A compromise of the IP core can result in an outage or, at a minimum, non-optimized forwarding of customer traffic. Protecting the core from an outside attack also prevents attackers from using the core to attack any customer. Hence, it is imperative that all switches at the edge deny traffic destined to any address belonging to the IP core infrastructure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3421,11 +3421,11 @@
           "title": "The Cisco PE switch must be configured with Unicast Reverse Path Forwarding (uRPF) loose mode enabled on all CE-facing interfaces.",
           "description": "<VulnDiscussion>The uRPF feature is a defense against spoofing and denial-of-service (DoS) attacks by verifying if the source address of any ingress packet is reachable. To mitigate attacks that rely on forged source addresses, all provider edge switches must enable uRPF loose mode to guarantee that all packets received from a CE switch contain source addresses that are in the route table.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3470,11 +3470,11 @@
           "title": "The Cisco PE switch must be configured to enforce a Quality-of-Service (QoS) policy to provide preferred treatment for mission-critical applications.",
           "description": "<VulnDiscussion>Different applications have unique requirements and toleration levels for delay, jitter, bandwidth, packet loss, and availability. To manage the multitude of applications and services, a network requires a QoS framework to differentiate traffic and provide a method to manage network congestion. The Differentiated Services Model (DiffServ) is based on per-hop behavior by categorizing traffic into different classes and enabling each node to enforce a forwarding treatment to each packet as dictated by a policy. \n\nPacket markings such as IP Precedence and its successor, Differentiated Services Code Points (DSCP), were defined along with specific per-hop behaviors for key traffic types to enable a scalable QoS solution. DiffServ QoS categorizes network traffic, prioritizes it according to its relative importance, and provides priority treatment based on the classification. It is imperative that end-to-end QoS is implemented within the IP core network to provide preferred treatment for mission-critical applications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3519,11 +3519,11 @@
           "title": "The Cisco P switch must be configured to enforce a Quality-of-Service (QoS) policy to provide preferred treatment for mission-critical applications.",
           "description": "<VulnDiscussion>Different applications have unique requirements and toleration levels for delay, jitter, bandwidth, packet loss, and availability. To manage the multitude of applications and services, a network requires a QoS framework to differentiate traffic and provide a method to manage network congestion. The Differentiated Services Model (DiffServ) is based on per-hop behavior by categorizing traffic into different classes and enabling each node to enforce a forwarding treatment to each packet as dictated by a policy. \n\nPacket markings such as IP Precedence and its successor, Differentiated Services Code Points (DSCP), were defined along with specific per-hop behaviors for key traffic types to enable a scalable QoS solution. DiffServ QoS categorizes network traffic, prioritizes it according to its relative importance, and provides priority treatment based on the classification. It is imperative that end-to-end QoS is implemented within the IP core network to provide preferred treatment for mission-critical applications.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3568,11 +3568,11 @@
           "title": "The Cisco switch must be configured to enforce a Quality-of-Service (QoS) policy to limit the effects of packet flooding denial-of-service (DoS) attacks.",
           "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. Packet flooding distributed denial-of-service (DDoS) attacks are referred to as volumetric attacks and have the objective of overloading a network or circuit to deny or seriously degrade performance, which denies access to the services that normally traverse the network or circuit. Volumetric attacks have become relatively easy to launch using readily available tools such as Low Orbit Ion Cannon or botnets. \n\nMeasures to mitigate the effects of a successful volumetric attack must be taken to ensure that sufficient capacity is available for mission-critical traffic. Managing capacity may include, for example, establishing selected network usage priorities or quotas and enforcing them using rate limiting, Quality of Service (QoS), or other resource reservation control methods. These measures may also mitigate the effects of sudden decreases in network capacity that are the result of accidental or intentional physical damage to telecommunications facilities (such as cable cuts or weather-related outages).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3610,18 +3610,18 @@
         "title": "SRG-NET-000019-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220461r622190_rule",
+          "+@id": "SV-220461r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000790",
           "title": "The Cisco multicast switch must be configured to disable Protocol Independent Multicast (PIM) on all interfaces that are not required to support multicast routing.",
           "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. Limiting where, within the network, a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap, while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DoD IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some switches and passing through some switches to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and know which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3659,18 +3659,18 @@
         "title": "SRG-NET-000019-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220462r622190_rule",
+          "+@id": "SV-220462r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000800",
           "title": "The Cisco multicast switch must be configured to bind a Protocol Independent Multicast (PIM) neighbor filter to interfaces that have PIM enabled.",
           "description": "<VulnDiscussion>PIM is a routing protocol used to build multicast distribution trees for forwarding multicast traffic across the network infrastructure. PIM traffic must be limited to only known PIM neighbors by configuring and binding a PIM neighbor filter to interfaces that have PIM enabled. \n\nIf a PIM neighbor filter is not applied to interfaces that have PIM enabled, unauthorized switches can join the PIM domain, discover and use the rendezvous points, and advertise their rendezvous points into the domain. This can result in a denial of service by traffic flooding or in the unauthorized transfer of data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3708,18 +3708,18 @@
         "title": "SRG-NET-000019-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220463r622190_rule",
+          "+@id": "SV-220463r1117237_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000810",
           "title": "The Cisco multicast edge switch must be configured to establish boundaries for administratively scoped multicast traffic.",
           "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. \n\nAdministrative scoped multicast addresses are locally assigned and are to be used exclusively by the enterprise network or enclave. Administrative scoped multicast traffic must not cross the enclave perimeter in either direction. Restricting multicast traffic makes it more difficult for a malicious user to access sensitive traffic. \n\nAdmin-Local scope is encouraged for any multicast traffic within a network intended for network management, as well as for control plane traffic that must reach beyond link-local destinations.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3764,11 +3764,11 @@
           "title": "The Cisco multicast Designated switch (DR) must be configured to filter the Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Report messages to allow hosts to join only multicast groups that have been approved by the organization.",
           "description": "<VulnDiscussion>Real-time multicast traffic can entail multiple large flows of data. Large unicast flows tend to be fairly isolated (i.e., someone doing a file download here or there), whereas multicast can have broader impact on bandwidth consumption, resulting in extreme network congestion. Hence, it is imperative that there is multicast admission control to restrict which multicast group's hosts are allowed to join via IGMP or MLD.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3813,11 +3813,11 @@
           "title": "The Cisco multicast Designated switch (DR) must be configured to filter the Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Report messages to allow hosts to join a multicast group only from sources that have been approved by the organization.",
           "description": "<VulnDiscussion>Real-time multicast traffic can entail multiple large flows of data. Large unicast flows tend to be fairly isolated (i.e., someone doing a file download here or there), whereas multicast can have broader impact on bandwidth consumption, resulting in extreme network congestion. Hence, it is imperative that there is multicast admission control to restrict which multicast groups hosts are allowed to join via IGMP or MLD.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3862,11 +3862,11 @@
           "title": "The Cisco multicast Designated switch (DR) must be configured to limit the number of mroute states resulting from Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Host Membership Reports.",
           "description": "<VulnDiscussion>The current multicast paradigm can let any host join any multicast group at any time by sending an IGMP or MLD membership report to the DR. In a Protocol Independent Multicast (PIM) Sparse Mode network, the DR will send a PIM Join message for the group to the RP. \n\nWithout any form of admission control, this can pose a security risk to the entire multicast domain, specifically the multicast switches along the shared tree from the DR to the RP that must maintain the mroute state information for each group join request. Hence, it is imperative that the DR is configured to limit the number of mroute state information that must be maintained to mitigate the risk of IGMP or MLD flooding.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3911,11 +3911,11 @@
           "title": "The Cisco multicast Designated switch (DR) must be configured to set the shortest-path tree (SPT) threshold to infinity to minimalize source-group (S, G) state within the multicast topology where Any Source Multicast (ASM) is deployed.",
           "description": "<VulnDiscussion>ASM can have many sources for the same groups (many-to-many). For many receivers, the path via the RP may not be ideal compared with the shortest path from the source to the receiver. By default, the last-hop switch will initiate a switch from the shared tree to a source-specific SPT to obtain lower latencies. This is accomplished by the last-hop switch sending an (S, G) Protocol Independent Multicast (PIM) Join toward S (the source). \n\nWhen the last-hop switch begins to receive traffic for the group from the source via the SPT, it will send a PIM Prune message to the RP for the (S, G). The RP will then send a Prune message toward the source. The SPT switchover becomes a scaling issue for large multicast topologies that have many receivers and many sources for many groups because (S, G) entries require more memory than (*, G). Hence, it is imperative to minimize the amount of (S, G) state to be maintained by increasing the threshold that determines when the SPT switchover occurs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -3960,11 +3960,11 @@
           "title": "The Cisco perimeter switch must be configured to restrict it from accepting outbound IP packets that contain an illegitimate address in the source address field via egress filter or by enabling Unicast Reverse Path Forwarding (uRPF).",
           "description": "<VulnDiscussion>A compromised host in an enclave can be used by a malicious platform to launch cyberattacks on third parties. This is a common practice in \"botnets\", which are a collection of compromised computers using malware to attack other computers or networks. DDoS attacks frequently leverage IP source address spoofing to send packets to multiple hosts that in turn will then send return traffic to the hosts with the IP addresses that were forged. \n\nThis can generate significant amounts of traffic. Therefore, protection measures to counteract IP source address spoofing must be taken. When uRPF is enabled in strict mode, the packet must be received on the interface that the device would use to forward the return packet, thereby mitigating IP source address spoofing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -4009,11 +4009,11 @@
           "title": "The Cisco perimeter switch must be configured to block all packets with any IP options.",
           "description": "<VulnDiscussion>Packets with IP options are not fast switched and henceforth must be punted to the switch processor. Hackers who initiate denial-of-service (DoS) attacks on switches commonly send large streams of packets with IP options. Dropping the packets with IP options reduces the load of IP options packets on the switch. The end result is a reduction in the effects of the DoS attack on the switch and on downstream switches.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -4058,11 +4058,11 @@
           "title": "The Cisco PE switch must be configured to ignore or drop all packets with any IP options.",
           "description": "<VulnDiscussion>Packets with IP options are not fast-switched and therefore must be punted to the switch processor. Hackers who initiate denial-of-service (DoS) attacks on switches commonly send large streams of packets with IP options. Dropping the packets with IP options reduces the load of IP options packets on the switch. The end result is a reduction in the effects of the DoS attack on the switch and on downstream switches.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": [
             {
@@ -4107,11 +4107,11 @@
           "title": "The Cisco switch must be configured to have Cisco Express Forwarding enabled.",
           "description": "<VulnDiscussion>The Cisco Express Forwarding (CEF) switching mode replaces the traditional Cisco routing cache with a data structure that mirrors the entire system routing table. Because there is no need to build cache entries when traffic starts arriving for new destinations, CEF behaves more predictably when presented with large volumes of traffic addressed to many destinations such as a SYN flood attacks that. Because many SYN flood attacks use randomized source addresses to which the hosts under attack will reply to, there can be a substantial amount of traffic for a large number of destinations that the switch will have to handle. Consequently, switches configured for CEF will perform better under SYN floods directed at hosts inside the network than switches using the traditional cache.  </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -4146,11 +4146,11 @@
           "title": "The Cisco switch must be configured to advertise a hop limit of at least 32 in Switch Advertisement messages for IPv6 stateless auto-configuration deployments.",
           "description": "<VulnDiscussion>The Neighbor Discovery protocol allows a hop limit value to be advertised by routers in a Router Advertisement message being used by hosts instead of the standardized default value. If a very small value was configured and advertised to hosts on the LAN segment, communications would fail due to the hop limit reaching zero before the packets sent by a host reached its destination.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -4178,18 +4178,18 @@
         "title": "SRG-NET-000512-RTR-000013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237755r648786_rule",
+          "+@id": "SV-237755r999760_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000237",
           "title": "The Cisco switch must not be configured to use IPv6 Site Local Unicast addresses.",
           "description": "<VulnDiscussion>As currently defined, site local addresses are ambiguous and can be present in multiple sites. The address itself does not contain any indication of the site to which it belongs. The use of site-local addresses has the potential to adversely affect network security through leaks, ambiguity, and potential misrouting as documented in section 2 of RFC3879. RFC3879 formally deprecates the IPv6 site-local unicast prefix FEC0::/10 as defined in RFC3513.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -4203,7 +4203,7 @@
             "+@id": "F-40935r648785_fix"
           },
           "check": {
-            "+@system": "C-40973r648784_chk",
+            "+@system": "C-40973r999760_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
@@ -4224,11 +4224,11 @@
           "title": "The Cisco perimeter switch must be configured to suppress Router Advertisements on all external IPv6-enabled interfaces.",
           "description": "<VulnDiscussion>Many of the known attacks in stateless autoconfiguration are defined in RFC 3756 were present in IPv4 ARP attacks. To mitigate these vulnerabilities, links that have no hosts connected such as the interface connecting to external gateways must be configured to suppress router advertisements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-000366",
@@ -4263,11 +4263,11 @@
           "title": "The Cisco perimeter switch must be configured to drop IPv6 undetermined transport packets.",
           "description": "<VulnDiscussion>One of the fragmentation weaknesses known in IPv6 is the undetermined transport packet. This packet contains an undetermined protocol due to fragmentation. Depending on the length of the IPv6 extension header chain, the initial fragment may not contain the layer four port information of the packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
@@ -4302,11 +4302,11 @@
           "title": "The Cisco perimeter switch must be configured drop IPv6 packets with a Routing Header type 0, 1, or 3-255.",
           "description": "<VulnDiscussion>The routing header can be used maliciously to send a packet through a path where less robust security is in place, rather than through the presumably preferred path of routing protocols. Use of the routing extension header has few legitimate uses other than as implemented by Mobile IPv6. \n\nThe Type 0 Routing Header (RFC 5095) is dangerous because it allows attackers to spoof source addresses and obtain traffic in response, rather than the real owner of the address. Secondly, a packet with an allowed destination address could be sent through a Firewall using the Routing Header functionality, only to bounce to a different node once inside. The Type 1 Routing Header is defined by a specification called \"Nimrod Routing\", a discontinued project funded by DARPA. Assuming that most implementations will not recognize the Type 1 Routing Header, it must be dropped. The Type 3–255 Routing Header values in the routing type field are currently undefined and should be dropped inbound and outbound. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
@@ -4334,37 +4334,37 @@
         "title": "SRG-NET-000364-RTR-000202",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237765r856667_rule",
+          "+@id": "SV-237765r1132544_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000394",
           "title": "The Cisco perimeter switch must be configured to drop IPv6 packets containing a Hop-by-Hop header with invalid option type values.",
           "description": "<VulnDiscussion>These options are intended to be for the Destination Options header only. The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it cannot recognize and hence could cause a Denial-of-Service on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to drop IPv6 packets containing a Hop-by-Hop header with invalid option type values as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny hbh any any dest-option-type 4 log\nSW1(config-ipv6-acl)#deny hbh any any dest-option-type 195 log\nSW1(config-ipv6-acl)#deny hbh any any dest-option-type home-address log\nSW1(config-ipv6-acl)# permit ipv6 …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
-            "+@fixref": "F-40940r856260_fix"
+            "+content": "Drop IPv6 packets containing a Hop-by-Hop header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny hbh any any dest-option log\nSW1(config-ipv6-acl)# permit ipv6 …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
+            "+@fixref": "F-40940r1132515_fix"
           },
           "fix": {
-            "+@id": "F-40940r856260_fix"
+            "+@id": "F-40940r1132515_fix"
           },
           "check": {
-            "+@system": "C-40978r856259_chk",
+            "+@system": "C-40978r1132544_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Hop-by-Hop header with option type values of 0x04 (Tunnel Encapsulation Limit), 0xC9 (Home Address Destination), or 0xC3 (NSAP Address) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny hbh any any dest-option-type 4 log\n deny hbh any any dest-option-type 195 log\n deny hbh any any dest-option-type home-address log \n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\n\nIf the switch is not configured to drop IPv6 packets containing a Hop-by-Hop header with invalid option type values, this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Hop-by-Hop header with option type values of 0x04 (Tunnel Encapsulation Limit), 0xC9 (Home Address Destination), or 0xC3 (NSAP Address) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within Hop-by-Hop header. Therefore, all packets with the Hop-by-Hop header option types must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Hop-by-Hop header with destination options, this is a finding."
           }
         }
       },
@@ -4373,37 +4373,37 @@
         "title": "SRG-NET-000364-RTR-000203",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237771r856669_rule",
+          "+@id": "SV-237771r1135076_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000395",
           "title": "The Cisco perimeter switch must be configured to drop IPv6 packets containing a Destination Option header with invalid option type values.",
           "description": "<VulnDiscussion>These options are intended to be for the Hop-by-Hop header only. The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it cannot recognize. Hence, this could cause a Denial-of-Service on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to drop IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload) as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option-type 5 log\nSW1(config-ipv6-acl)#deny 60 any any dest-option-type 194 log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
-            "+@fixref": "F-40944r856263_fix"
+            "+content": "Configure the switch to drop IPv6 packets containing a Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
+            "+@fixref": "F-40944r1135075_fix"
           },
           "fix": {
-            "+@id": "F-40944r856263_fix"
+            "+@id": "F-40944r1135075_fix"
           },
           "check": {
-            "+@system": "C-40985r856262_chk",
+            "+@system": "C-40985r1135074_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option-type 5 log\n deny 60 any any dest-option-type 194 log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload), this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4412,37 +4412,37 @@
         "title": "SRG-NET-000364-RTR-000204",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237773r856671_rule",
+          "+@id": "SV-237773r1135078_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000396",
           "title": "The Cisco perimeter switch must be configured to drop IPv6 packets containing an extension header with the Endpoint Identification option.",
           "description": "<VulnDiscussion>The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it cannot recognize, and hence could cause a Denial-of-Service on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. This option type is associated with the Nimrod Routing system and has no defining RFC document.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to drop IPv6 packets containing an option type values of 0x8A (Endpoint Identification) regardless of whether it appears in a Hop-by-Hop or Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny any any dest-option-type 138 log\nSW1(config-ipv6-acl)#permit ipv6 …\n…\n…\n…\nSW1(config-ipv6-acl)# deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
-            "+@fixref": "F-40945r856266_fix"
+            "+content": "Configure the switch to drop IPv6 packets containing an option type value of 0x8A (Endpoint Identification) regardless of whether it appears in a Hop-by-Hop or Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
+            "+@fixref": "F-40945r1135077_fix"
           },
           "fix": {
-            "+@id": "F-40945r856266_fix"
+            "+@id": "F-40945r1135077_fix"
           },
           "check": {
-            "+@system": "C-40986r856265_chk",
+            "+@system": "C-40986r1132520_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing an extension header with the Endpoint Identification option as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny any any dest-option-type 138 log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\n\nIf the switch is not configured to drop IPv6 packets containing an extension header with the Endpoint Identification option, this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4451,37 +4451,37 @@
         "title": "SRG-NET-000364-RTR-000205",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237775r856673_rule",
+          "+@id": "SV-237775r1132548_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000397",
           "title": "The Cisco perimeter switch must be configured to drop IPv6 packets containing the NSAP address option within Destination Option header.",
           "description": "<VulnDiscussion>The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it cannot recognize, and hence could cause a Denial-of-Service on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. This option type from RFC 1888 (OSI NSAPs and IPv6) has been deprecated by RFC 4048.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to to drop IPv6 packets containing the NSAP address option within Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option-type 195 log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)# deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
-            "+@fixref": "F-40946r856269_fix"
+            "+content": "Configure the switch to drop IPv6 packets containing a Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
+            "+@fixref": "F-40946r1132524_fix"
           },
           "fix": {
-            "+@id": "F-40946r856269_fix"
+            "+@id": "F-40946r1132524_fix"
           },
           "check": {
-            "+@system": "C-40987r856268_chk",
+            "+@system": "C-40987r1132548_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration and determine if filters are bound to the applicable interfaces to drop IPv6 packets containing a Destination Option header with option type value of 0xC3 (NSAP address). \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing the NSAP address option within Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option-type 195 log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nIf the switch is not configured to drop IPv6 packets containing the NSAP address option within Destination Option header, this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration and determine if filters are bound to the applicable interfaces to drop IPv6 packets containing a Destination Option header with option type value of 0xC3 (NSAP address). \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4490,37 +4490,37 @@
         "title": "SRG-NET-000364-RTR-000206",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237777r856675_rule",
+          "+@id": "SV-237777r1132528_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000398",
           "title": "The Cisco perimeter switch must be configured to drop IPv6 packets containing a Hop-by-Hop or Destination Option extension header with an undefined option type.",
           "description": "<VulnDiscussion>The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it cannot recognize, and hence could cause a Denial-of-Service on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
-            "title": "DPMS Target Cisco IOS Switch RTR",
-            "publisher": "DISA",
-            "type": "DPMS Target",
-            "subject": "Cisco IOS Switch RTR",
-            "identifier": "4065"
+            "dc:title": "DPMS Target Cisco IOS Switch RTR",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Cisco IOS Switch RTR",
+            "dc:identifier": "4065"
           },
           "ident": {
             "+content": "CCI-002403",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to drop all inbound IPv6 packets containing an undefined option type value regardless of whether they appear in a Hop-by-Hop or Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny any any dest-option-type 2\nSW1(config-ipv6-acl)#deny any any dest-option-type 3\nSW1(config-ipv6-acl)#deny any any dest-option-type 6\nSW1(config-ipv6-acl)#deny any any dest-option-type 9\nSW1(config-ipv6-acl)#deny any any dest-option-type 10\nSW1(config-ipv6-acl)#deny any any dest-option-type 11\nSW1(config-ipv6-acl)#deny any any dest-option-type 12\nSW1(config-ipv6-acl)#deny any any dest-option-type 13\nSW1(config-ipv6-acl)#deny any any dest-option-type 14\nSW1(config-ipv6-acl)#deny any any dest-option-type 16\n …\nSW1(config-ipv6-acl)#deny any any dest-option-type 34\nSW1(config-ipv6-acl)#deny any any dest-option-type 36\nSW1(config-ipv6-acl)#deny any any dest-option-type 37\nSW1(config-ipv6-acl)#deny any any dest-option-type 39\n…\nSW1(config-ipv6-acl)#deny any any dest-option-type 47\nSW1(config-ipv6-acl)#deny any any dest-option-type 49\n… \nSW1(config-ipv6-acl)#deny any any dest-option-type 255\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6",
-            "+@fixref": "F-40947r856272_fix"
+            "+content": "Configure the switch to drop all inbound IPv6 packets containing destination option type values regardless of whether they appear in a Hop-by-Hop or Destination Option header as shown in the example below.\n\nSW1(config)#ipv6 access-list FILTER_IPV6\nSW1(config-ipv6-acl)#deny 60 any any dest-option log\nSW1(config-ipv6-acl)#deny hbh any any dest-option log\nSW1(config-ipv6-acl)#permit …\n…\n…\n…\nSW1(config-ipv6-acl)#deny ipv6 any any log\nSW1(config-ipv6-acl)#exit\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 traffic-filter FILTER_IPV6\nSW1(config-if)#end",
+            "+@fixref": "F-40947r1132527_fix"
           },
           "fix": {
-            "+@id": "F-40947r856272_fix"
+            "+@id": "F-40947r1132527_fix"
           },
           "check": {
-            "+@system": "C-40988r856271_chk",
+            "+@system": "C-40988r1132526_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration and determine if filters are bound to the applicable interfaces to drop all inbound IPv6 packets containing an undefined option type value regardless of whether they appear in a Hop-by-Hop or Destination Option header. Undefined values are 0x02, 0x03, 0x06, 0x9 – 0xE, 0x10 – 0x22, 0x24, 0x25, 0x27 – 0x2F, and 0x31 – 0xFF.\n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Hop-by-Hop or Destination Option extension header with an undefined option type as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny any any dest-option-type 2\n deny any any dest-option-type 3\n deny any any dest-option-type 6\n deny any any dest-option-type 9\n deny any any dest-option-type 10\n deny any any dest-option-type 11\n deny any any dest-option-type 12\n deny any any dest-option-type 13\n deny any any dest-option-type 14\n deny any any dest-option-type 16\n  …\n deny any any dest-option-type 34\n deny any any dest-option-type 36\n deny any any dest-option-type 37\n deny any any dest-option-type 39\n …\n deny any any dest-option-type 47\n deny any any dest-option-type 49\n … \n deny any any dest-option-type 255\n permit  …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Because hop-by-hop and destination options have the same exact header format, they can be combined under the dest-option-type keyword. Since Hop-by-Hop and Destination Option headers have non-overlapping types, you can use dest-option-type to match either.\n\nIf the switch is not configured to drop IPv6 packets containing a Hop-by-Hop or Destination Option extension header with an undefined option type, this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option and Hop-by-Hop header. Therefore, all packets with the Destination Option header and Hop-by-Hop options must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       }
