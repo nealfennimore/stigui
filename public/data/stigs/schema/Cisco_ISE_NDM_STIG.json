@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-10"
+      "+@date": "2025-12-11"
     },
     "title": "Cisco ISE NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -2026,7 +2026,7 @@
         "title": "SRG-APP-000001-NDM-000200",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242607r1025177_rule",
+          "+@id": "SV-242607r1026047_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CSCO-NM-000010",
@@ -2305,7 +2305,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242614r960969_rule",
+          "+@id": "SV-242614r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000080",
@@ -2896,7 +2896,7 @@
         "title": "SRG-APP-000373-NDM-000298",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242629r1018745_rule",
+          "+@id": "SV-242629r1168433_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000230",
@@ -2928,19 +2928,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Choose Administration >> System >> Settings >> System Time.\n2. Enter unique IP addresses (IPv4/IPv6/FQDN) for the NTP servers.\n3. Check the \"Only allow authenticated NTP servers\" check box to restrict Cisco ISE to use only authenticated NTP servers to keep system and network time.\nDOD requires NTP authentication where available, so configure the NTP server using private keys. Click the NTP Authentication Keys tab and specify one or more authentication keys if any of the servers specified requires authentication via an authentication key, as follows:\n4. Click \"Add\".\n5. Enter the necessary Key ID and Key Value. Specify whether the key in question is trusted by activating or deactivating the Trusted Key option, and click \"OK\". The Key ID field supports numeric values between 1 and 65535 and the Key Value field supports up to 15 alphanumeric characters.\n6. Return to the NTP Server Configuration tab after entering the NTP Server Authentication Keys.\n7. Click \"Save\".",
-            "+@fixref": "F-45861r997480_fix"
+            "+content": "1. Choose Administration >> System >> Settings >> System Time.\n2. Enter unique IP addresses (IPv4/IPv6/FQDN) for the NTP servers.\n3. Configure redundant NTP server addresses.\n\n\nNote: If authentication settings are no longer available, then a DOD-approved solution must be used. Use of MD5 results in a CAT 2 (CSCO-NM-000390) finding since NTP authentication is required. DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+            "+@fixref": "F-45861r1168432_fix"
           },
           "fix": {
-            "+@id": "F-45861r997480_fix"
+            "+@id": "F-45861r1168432_fix"
           },
           "check": {
-            "+@system": "C-45904r714195_chk",
+            "+@system": "C-45904r1168431_chk",
             "check-content-ref": {
               "+@href": "Cisco_ISE_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. View the status of the Network Translation Protocol (NTP) associations.\nshow ntp\n2. Verify a primary and secondary ntp server address is configured.\n\nIf the Cisco ISE is not configured to synchronize internal information system clocks using redundant authoritative time sources, this is a finding."
+            "check-content": "1. View the status of the Network Translation Protocol (NTP) associations.\n\nshow ntp\n\n2. Verify a primary and secondary ntp server address is configured.\n\nIf the Cisco ISE is not configured to synchronize internal information system clocks using redundant authoritative time sources, this is a finding."
           }
         }
       },
@@ -2949,7 +2949,7 @@
         "title": "SRG-APP-000374-NDM-000299",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242630r961443_rule",
+          "+@id": "SV-242630r1167990_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000240",
@@ -2967,19 +2967,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Change the clock to UTC using the CLI.\n\nclock timezone UTC",
-            "+@fixref": "F-45862r714199_fix"
+            "+content": "Change the clock to UTC using the CLI:\nclock timezone UTC\n\nNote: Sites may set the time zone to record time stamps in the local time zone (EDT) and then map to UTC.",
+            "+@fixref": "F-45862r1167989_fix"
           },
           "fix": {
-            "+@id": "F-45862r714199_fix"
+            "+@id": "F-45862r1167989_fix"
           },
           "check": {
-            "+@system": "C-45905r714198_chk",
+            "+@system": "C-45905r1167988_chk",
             "check-content-ref": {
               "+@href": "Cisco_ISE_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. View the clock setting.\nshow clock\n2. Verify the clock is set to use UTC.\n\nIf the Cisco ISE does not use UTC, this is a finding."
+            "check-content": "1. View the clock setting:\nshow clock\n\n2. Verify the clock is set to use UTC.\n\nIf the Cisco ISE does not use UTC, this is a finding."
           }
         }
       },
@@ -3033,7 +3033,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242633r997485_rule",
+          "+@id": "SV-242633r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000270",
@@ -3214,7 +3214,7 @@
         "title": "SRG-APP-000516-NDM-000341",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242638r1025180_rule",
+          "+@id": "SV-242638r1026048_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CSCO-NM-000330",
@@ -3308,7 +3308,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242640r960966_rule",
+          "+@id": "SV-242640r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NM-000350",
@@ -3347,7 +3347,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242641r960966_rule",
+          "+@id": "SV-242641r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NM-000360",
@@ -3464,7 +3464,7 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242644r1025183_rule",
+          "+@id": "SV-242644r1167992_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000390",
@@ -3482,11 +3482,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Choose Administration >> System >> Settings >> System Time.\n2.  Enter unique IP addresses (IPv4/IPv6/FQDN) for the NTP servers.\n3.  Check the \"Only allow authenticated NTP servers\" check box if you want to restrict Cisco ISE to use only authenticated NTP servers to keep system and network time. DOD requires NTP authentication where available, so configure the NTP server using private keys. Click the \"NTP Authentication Keys\" tab and specify one or more authentication keys if any of the specified servers requires authentication via an authentication key, as follows:\n4. Click \"Add\".\n5. Enter the necessary Key ID and Key Value. Specify whether the key in question is trusted by activating or deactivating the Trusted Key option, and click \"OK\". The Key ID field supports numeric values between 1 and 65535, and the Key Value field supports up to 15 alphanumeric characters.\n6. Return to the NTP Server Configuration tab when finished entering the NTP Server Authentication Keys.\n7. Click \"Save\".",
-            "+@fixref": "F-45876r1025182_fix"
+            "+content": "1. Choose Administration >> System >> Settings >> System Time.\n2. Enter unique IP addresses (IPv4/IPv6/FQDN) for the NTP servers.\n3. Check the \"Only allow authenticated NTP servers\" box to restrict Cisco ISE to use only authenticated NTP servers to keep system and network time. DOD requires NTP authentication where available, so configure the NTP server using private keys. \n4. Click the \"NTP Authentication Keys\" tab and specify one or more authentication keys if any of the specified servers requires authentication via an authentication key, as follows:\n    - Click \"Add\".\n    - Enter the necessary Key ID and Key Value. Specify whether the key in question is trusted by activating or deactivating the Trusted Key option, and click \"OK\". The Key ID field supports numeric  values between 1 and 65535, and the Key Value field supports up to 15 alphanumeric characters.\n    - Return to the NTP Server Configuration tab when finished entering the NTP Server Authentication Keys.\n5. Click \"Save\".\n\nNote: If authentication settings are no longer available, then a DOD-approved solution must be used. Use of MD5 results in a CAT 2 finding since NTP authentication is required. DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+            "+@fixref": "F-45876r1167991_fix"
           },
           "fix": {
-            "+@id": "F-45876r1025182_fix"
+            "+@id": "F-45876r1167991_fix"
           },
           "check": {
             "+@system": "C-45919r1025181_chk",
@@ -3962,11 +3962,11 @@
         "title": "SRG-APP-000190-NDM-000267",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242657r961068_rule",
+          "+@id": "SV-242657r1167994_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NM-000520",
-          "title": "The Cisco ISE must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after five minutes of inactivity except to fulfill documented and validated mission requirements.",
+          "title": "The Cisco ISE must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after six minutes of inactivity, except to fulfill documented and validated mission requirements.",
           "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco ISE NDM",
@@ -3980,11 +3980,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Session Timeout for Administrators.\n\n1. Choose Administration >> System >> Admin Access >> Settings >> Session >> Session Timeout.\n2. Type \"6\".\n3. Click \"Save\".",
-            "+@fixref": "F-45889r944328_fix"
+            "+content": "Configure Session Timeout for Administrators.\n\n1. Choose Administration >> System >> Admin Access >> Settings >> Session >> Session Timeout.\n2. Enter \"6\".\n3. Click \"Save\".",
+            "+@fixref": "F-45889r1167993_fix"
           },
           "fix": {
-            "+@id": "F-45889r944328_fix"
+            "+@id": "F-45889r1167993_fix"
           },
           "check": {
             "+@system": "C-45932r944327_chk",
@@ -4001,7 +4001,7 @@
         "title": "SRG-APP-000224-NDM-000270",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242658r961119_rule",
+          "+@id": "SV-242658r1043181_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000530",
@@ -4079,7 +4079,7 @@
         "title": "SRG-APP-000435-NDM-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242660r1025184_rule",
+          "+@id": "SV-242660r1026050_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000550",
@@ -4118,7 +4118,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242661r961863_rule",
+          "+@id": "SV-242661r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NM-000560",

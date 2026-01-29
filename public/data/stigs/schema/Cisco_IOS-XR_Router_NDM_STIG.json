@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-19"
+      "+@date": "2025-12-08"
     },
     "title": "Cisco IOS XR Router NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1139,7 +1139,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216523r991929_rule",
+          "+@id": "SV-216523r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-000140",
@@ -1996,12 +1996,12 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216540r1107163_rule",
+          "+@id": "SV-216540r1156820_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001150",
-          "title": "The Cisco router must be configured to authenticate NTP sources using authentication that is cryptographically based.",
-          "description": "<VulnDiscussion>If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Cisco router must be configured to authenticate Network Time Protocol (NTP) sources using authentication with FIPS-compliant algorithms.",
+          "description": "<VulnDiscussion>If NTP is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS XR Router NDM",
             "dc:publisher": "DISA",
@@ -2024,19 +2024,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco router to authenticate NTP sources using authentication that is cryptographically based as shown in the example below.\n\nRP/0/0/CPU0:R4#ntp authenticate\nRP/0/0/CPU0:R4#ntp authentication-key 1 hmac-sha2-256 xxxxxx\nRP/0/0/CPU0:R4#ntp trusted-key\nRP/0/0/CPU0:R4#ntp server x.x.x.x key 1\nRP/0/0/CPU0:R4#ntp server y.y.y.y key 1",
-            "+@fixref": "F-17772r1107162_fix"
+            "+content": "Configure the Cisco router to authenticate NTP sources using authentication with FIPS-compliant algorithms as shown in the example below:\n\nRP/0/0/CPU0:router# configure\nRP/0/0/CPU0:router(config)# ntp\nRP/0/0/CPU0:router(config-ntp)# authentication-key 1 hmac-sha2 encrypted xxxxxx\nRP/0/0/CPU0:router(config-ntp)# trusted-key 1\nRP/0/0/CPU0:router(config-ntp)# authenticate\nRP/0/0/CPU0:router(config-ntp)# server 198.51.100.1 key 1\nRP/0/0/CPU0:router(config-ntp)# commit",
+            "+@fixref": "F-17772r1156819_fix"
           },
           "fix": {
-            "+@id": "F-17772r1107162_fix"
+            "+@id": "F-17772r1156819_fix"
           },
           "check": {
-            "+@system": "C-17775r1107161_chk",
+            "+@system": "C-17775r1156818_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XR_Router_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco router configuration to verify that it is compliant with this requirement as shown in the configuration example below.\n\nntp\n authentication-key 1 hmac-sha2-256 xxxxxx\n trusted-key 1\n server x.x.x.x key 1\n server y.y.y.y key 1\n\nIf the Cisco router is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
+            "check-content": "Review the Cisco router configuration to verify that it authenticates NTP sources using authentication with FIPS-compliant algorithms as shown in the configuration example below:\n\nntp\nauthentication-key 1 hmac-sha2 encrypted xxxxxx\ntrusted-key 1\nauthenticate\nserver 198.51.100.1 key 1\n\nIf the Cisco router is not configured to authenticate NTP sources using authentication with FIPS-compliant algorithms, this is a finding."
           }
         }
       },
@@ -2192,7 +2192,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216544r961863_rule",
+          "+@id": "SV-216544r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-001370",

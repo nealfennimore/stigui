@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-07-15"
+      "+@date": "2025-11-20"
     },
     "title": "Amazon Linux 2023 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 14 Jul 2025",
+        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -7235,12 +7235,12 @@
         "title": "SRG-OS-000439-GPOS-00195",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-273999r1119985_rule",
+          "+@id": "SV-273999r1155171_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "AZLX-23-000130",
           "title": "Amazon Linux 2023 must be a vendor-supported release.",
-          "description": "<VulnDiscussion>An operating system release is considered \"supported\" if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>An operating system release is considered \"supported\" if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software. Amazon Linux 2023 (AL2023) was released in March 2023 and will be supported until June 30, 2029. \n\nStandard support ends June 30, 2027.\nMaintenance (security and critical fixes only) ends June 30, 2029.\n\nTo check the support status and dates of individual packages, use the following command:\n$ sudo dnf supportinfo --pkg <packagename>\n\nTo get information on all currently installed packages, use:\n$ sudo dnf supportinfo --show installed</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Amazon Linux 2023",
             "dc:publisher": "DISA",
@@ -8274,7 +8274,7 @@
         "title": "SRG-OS-000051-GPOS-00024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274020r1120048_rule",
+          "+@id": "SV-274020r1155173_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-001040",
@@ -8305,12 +8305,12 @@
             "+@id": "F-78016r1120047_fix"
           },
           "check": {
-            "+@system": "C-78111r1120046_chk",
+            "+@system": "C-78111r1155172_chk",
             "check-content-ref": {
               "+@href": "Amazon_Linux_2023_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Amazon Linux 2023 is configured to collect system failure events with the following command: \n \n$ dnf list --installed rsyslog\nInstalled Packages\nrsyslog.x86_64          8.2204.0-3.amzn2023.0.4          @amazonlinux\n \nIf the \"rsyslog\" package is not installed, this is a finding. \n \nCheck that the log service is enabled with the following command: \n \n$ dnf list --installed vsftpd\nError: No matching Packages to list\n \nIf the command above returns \"disabled\", this is a finding."
+            "check-content": "Verify Amazon Linux 2023 is configured to collect system failure events with the following command: \n \n$ dnf list --installed rsyslog\nInstalled Packages\nrsyslog.x86_64          8.2204.0-3.amzn2023.0.4          @amazonlinux\n \nIf the \"rsyslog\" package is not installed, this is a finding. \n \nCheck that the log service is enabled with the following command: \n \nsystemctl is-enabled rsyslog\nenabled\n \nIf the command above returns \"disabled\", this is a finding."
           }
         }
       },
@@ -9569,12 +9569,12 @@
         "title": "SRG-OS-000109-GPOS-00056",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274049r1120135_rule",
+          "+@id": "SV-274049r1120747_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-001240",
           "title": "Amazon Linux 2023 must not permit direct logons to the root account using remote access via SSH.",
-          "description": "<VulnDiscussion>To ensure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated. Additionally, an additional layer of security is gained by extending the policy of not logging directly on as root, even though the communications channel may be encrypted.\n\nA group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. Examples of the group authenticator is the Unix OS \"root\" user account, the Windows \"Administrator\" account, the \"sa\" account, or a \"helpdesk\" account.\n\nFor example, the Unix and Windows operating systems offer a \"switch user\" capability allowing users to authenticate with their individual credentials and, when needed, switch\" to the administrator role. This method provides for unique individual authentication prior to using a group authenticator.\n\nUsers (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on Amazon Linux 2023 without identification or authentication.\n\nRequiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To ensure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated. Additionally, an additional layer of security is gained by extending the policy of not logging directly on as root, even though the communications channel may be encrypted.\n\nA group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. Examples of the group authenticator are the Unix OS \"root\" user account, the Windows \"Administrator\" account, the \"sa\" account, or a \"helpdesk\" account.\n\nFor example, the Unix and Windows operating systems offer a \"switch user\" capability allowing users to authenticate with their individual credentials and, when needed, switch\" to the administrator role. This method provides for unique individual authentication prior to using a group authenticator.\n\nUsers (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on Amazon Linux 2023 without identification or authentication.\n\nRequiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Amazon Linux 2023",
             "dc:publisher": "DISA",
@@ -13097,7 +13097,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274121r1120351_rule",
+          "+@id": "SV-274121r1155161_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002290",
@@ -13115,19 +13115,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Amazon Linux 2023 library files to be protected from unauthorized access. Run the following command, replacing \"[FILE]\" with any library file with a mode more permissive than \"755\".\n\n$ sudo chmod 755 [FILE]",
-            "+@fixref": "F-78117r1120350_fix"
+            "+content": "Configure Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive with the following command.\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec chmod go-w {} +",
+            "+@fixref": "F-78117r1155160_fix"
           },
           "fix": {
-            "+@id": "F-78117r1120350_fix"
+            "+@id": "F-78117r1155160_fix"
           },
           "check": {
-            "+@system": "C-78212r1120349_chk",
+            "+@system": "C-78212r1155159_chk",
             "check-content-ref": {
               "+@href": "Amazon_Linux_2023_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Amazon Linux 2023 systemwide shared library files contained in the following directories have mode \"755\" or less permissive with the following command:\n\n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \\;\n\nIf any systemwide shared library file is found to be group-writable or world-writable, this is a finding."
+            "check-content": "Verify Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" have mode 0755 or less permissive.\n\nCheck that the systemwide shared library files have mode 0755 or less permissive with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022 -exec stat -c \"%n %a\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -13136,7 +13136,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274122r1120354_rule",
+          "+@id": "SV-274122r1155164_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002295",
@@ -13154,19 +13154,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Amazon Linux 2023 systemwide shared library files (/lib, /lib64, /usr/lib and /usr/lib64) to be protected from unauthorized access.\n\nRun the following command, replacing \"[FILE]\" with any library file not owned by \"root\".\n\n$ sudo chown root [FILE]",
-            "+@fixref": "F-78118r1120353_fix"
+            "+content": "Configure Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to be owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec chown root {} +",
+            "+@fixref": "F-78118r1155163_fix"
           },
           "fix": {
-            "+@id": "F-78118r1120353_fix"
+            "+@id": "F-78118r1155163_fix"
           },
           "check": {
-            "+@system": "C-78213r1120352_chk",
+            "+@system": "C-78213r1155162_chk",
             "check-content-ref": {
               "+@href": "Amazon_Linux_2023_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Amazon Linux 2023 systemwide shared library files are owned by \"root\" with the following command:\n\n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \\;\n\nIf any systemwide shared library file is not owned by root, this is a finding."
+            "check-content": "Verify Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root -exec stat -c \"%n %U\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -13175,7 +13175,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274123r1120357_rule",
+          "+@id": "SV-274123r1155167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002300",
@@ -13193,19 +13193,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Amazon Linux 2023 systemwide shared library files (/lib, /lib64, /usr/lib and /usr/lib64) to be protected from unauthorized access.\n\nRun the following command, replacing \"[FILE]\" with any library file not group-owned by \"root\".\n\n$ sudo chgrp root [FILE]",
-            "+@fixref": "F-78119r1120356_fix"
+            "+content": "Configure Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" to be group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec chown :root {} +",
+            "+@fixref": "F-78119r1155166_fix"
           },
           "fix": {
-            "+@id": "F-78119r1120356_fix"
+            "+@id": "F-78119r1155166_fix"
           },
           "check": {
-            "+@system": "C-78214r1120355_chk",
+            "+@system": "C-78214r1155165_chk",
             "check-content-ref": {
               "+@href": "Amazon_Linux_2023_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Amazon Linux 2023 systemwide shared library files are group-owned by \"root\" with the following command:\n\n$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -group root -exec ls -l {} \\;\n\nIf any systemwide shared library file is returned and is not group-owned by a required system account, this is a finding."
+            "check-content": "Verify Amazon Linux 2023 systemwide shared library files contained in the directories \"/lib\", \"/lib64\", \"/usr/lib\", and \"/usr/lib64\" are group owned by root with the following command:\n\n$ sudo find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root -exec stat -c \"%n %G\" {} +\n\nIf any output is returned, this is a finding."
           }
         }
       },
@@ -14882,7 +14882,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274164r1120480_rule",
+          "+@id": "SV-274164r1137695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002500",
@@ -14921,7 +14921,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274165r1120483_rule",
+          "+@id": "SV-274165r1137695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002505",
@@ -14960,7 +14960,7 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274166r1120486_rule",
+          "+@id": "SV-274166r1155170_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AZLX-23-002510",
@@ -14978,19 +14978,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Amazon Linux 2023 to log out idle sessions by editing the /etc/systemd/logind.conf file with the following line:\n\nStopIdleSessionSec=900\n\nThe \"logind\" service must be restarted for the changes to take effect. To restart the \"logind\" service, run the following command:\n\n$ sudo systemctl restart systemd-logind",
-            "+@fixref": "F-78162r1120485_fix"
+            "+content": "Configure Amazon Linux 2023 to log out idle sessions by editing the /etc/systemd/logind.conf file with the following line:\n\nStopIdleSessionSec=600\n\nThe \"logind\" service must be restarted for the changes to take effect. To restart the \"logind\" service, run the following command:\n\n$ sudo systemctl restart systemd-logind",
+            "+@fixref": "F-78162r1155169_fix"
           },
           "fix": {
-            "+@id": "F-78162r1120485_fix"
+            "+@id": "F-78162r1155169_fix"
           },
           "check": {
-            "+@system": "C-78257r1120484_chk",
+            "+@system": "C-78257r1155168_chk",
             "check-content-ref": {
               "+@href": "Amazon_Linux_2023_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Amazon Linux 2023 logs out sessions that are idle for 15 minutes with the following command:\n\n$ sudo grep -i ^StopIdleSessionSec /etc/systemd/logind.conf\nStopIdleSessionSec=900\n\nIf \"StopIdleSessionSec\" is not configured to \"900\" seconds, is commented out, or is missing, this is a finding."
+            "check-content": "Verify Amazon Linux 2023 logs out sessions that are idle for 10 minutes with the following command:\n\n$ sudo grep -i ^StopIdleSessionSec /etc/systemd/logind.conf\n\nStopIdleSessionSec=600\n\nIf \"StopIdleSessionSec\" is not configured to \"600\" seconds, this is a finding."
           }
         }
       },

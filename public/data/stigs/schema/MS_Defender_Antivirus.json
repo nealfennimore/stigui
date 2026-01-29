@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-25"
+      "+@date": "2025-11-25"
     },
     "title": "Microsoft Defender Antivirus Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 24 Sep 2025",
+        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -287,10 +287,6 @@
           },
           {
             "+@idref": "V-278672",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-278673",
             "+@selected": "true"
           },
           {
@@ -569,10 +565,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278673",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-278674",
             "+@selected": "true"
           },
@@ -845,10 +837,6 @@
           },
           {
             "+@idref": "V-278672",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-278673",
             "+@selected": "true"
           },
           {
@@ -1127,10 +1115,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278673",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-278674",
             "+@selected": "true"
           },
@@ -1403,10 +1387,6 @@
           },
           {
             "+@idref": "V-278672",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-278673",
             "+@selected": "true"
           },
           {
@@ -1685,10 +1665,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278673",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-278674",
             "+@selected": "true"
           },
@@ -1961,10 +1937,6 @@
           },
           {
             "+@idref": "V-278672",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-278673",
             "+@selected": "true"
           },
           {
@@ -2243,10 +2215,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278673",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-278674",
             "+@selected": "true"
           },
@@ -2519,10 +2487,6 @@
           },
           {
             "+@idref": "V-278672",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-278673",
             "+@selected": "true"
           },
           {
@@ -4965,7 +4929,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278658r1144053_rule",
+          "+@id": "SV-278658r1156519_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000054",
@@ -4990,12 +4954,12 @@
             "+@id": "F-83097r1133665_fix"
           },
           "check": {
-            "+@system": "C-83192r1144052_chk",
+            "+@system": "C-83192r1156518_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Control whether or not exclusions are visible to Local Admins is set to \"Enabled\"; otherwise, this is a finding.\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\n\nCriteria: If the value \"HideExclusionsFromLocalUsers\" is REG_DWORD = 1, this is not a finding.\n\nIf the value is 0, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Control whether or not exclusions are visible to Local Admins is set to \"Enabled\"; otherwise, this is a finding.\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\n\nCriteria: If the value \"HideExclusionsFromLocalAdmins\" is REG_DWORD = 1, this is not a finding.\n\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -5269,45 +5233,6 @@
               "+@name": "M"
             },
             "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server is set to \"Enabled\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection\n\nCriteria: If the value \"AllowNetworkProtectionOnWinServer\" is REG_DWORD = 1, this is not a finding.\n\nIf the value is 0, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-278673",
-        "title": "SRG-APP-000210",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-278673r1144069_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "WNDF-AV-000069",
-          "title": "Microsoft Defender AV must disable auto exclusions.",
-          "description": "<VulnDiscussion>Custom exclusions apply to scheduled scans, on-demand scans, and always-on real-time protection and monitoring. Exclusions for process-opened files only apply to real-time protection.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Microsoft Defender Antivirus",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Microsoft Defender Antivirus",
-            "dc:identifier": "3985"
-          },
-          "ident": {
-            "+content": "CCI-001170",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> Turn off Auto Exclusions to \"Disabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83112r1133710_fix"
-          },
-          "fix": {
-            "+@id": "F-83112r1133710_fix"
-          },
-          "check": {
-            "+@system": "C-83207r1144068_chk",
-            "check-content-ref": {
-              "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> Turn off Auto Exclusions is set to \"Disabled\"; otherwise, this is a finding.\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Exclusions\n\nCriteria: If the value \"DisableAutoExclusions\" is REG_DWORD = 0, this is not a finding.\n\nIf the value is 1, this is a finding."
           }
         }
       },

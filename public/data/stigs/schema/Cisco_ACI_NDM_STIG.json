@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-06-13"
+      "+@date": "2025-12-11"
     },
     "title": "Cisco ACI NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 27 May 2025",
+        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1054,7 +1054,7 @@
         "title": "SRG-APP-000374-NDM-000299",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271916r1114201_rule",
+          "+@id": "SV-271916r1168349_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000001",
@@ -1072,19 +1072,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure NTP servers to provide UTC time.\n\n1. Navigate to System >> System Setting.\n2. In the Navigation pane, click \"Date and Time\".\n3. In the Work pane, choose \"Display Format, then click \"UTC\".\n4. Click \"Update\".",
-            "+@fixref": "F-75873r1114200_fix"
+            "+content": "Configure NTP servers to provide UTC time.\n\n1. Navigate to System >> Settings.\n2. In the Navigation pane, click \"Date and Time\".\n3. In the Work pane, choose \"Display Format, then click \"UTC\".\n4. Click \"Update\".",
+            "+@fixref": "F-75873r1167996_fix"
           },
           "fix": {
-            "+@id": "F-75873r1114200_fix"
+            "+@id": "F-75873r1167996_fix"
           },
           "check": {
-            "+@system": "C-75966r1114199_chk",
+            "+@system": "C-75966r1168348_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Navigate to System>> System Setting.\n2. In the Navigation pane, click \"Date and Time\".\n3. Verify UTC is selected.\n\nIf the Cisco ACI is not configured to use the UTC time zone, this is a finding."
+            "check-content": "1. Navigate to System >> Settings.\n2. In the Navigation pane, click \"Date and Time\".\n3. Verify UTC is selected.\n\nIf the Cisco ACI is not configured to use the UTC time zone, this is a finding."
           }
         }
       },
@@ -1132,7 +1132,7 @@
         "title": "SRG-APP-000068-NDM-000215",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271918r1114335_rule",
+          "+@id": "SV-271918r1168426_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000003",
@@ -1150,19 +1150,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "The CLI banner is a simple text string to be printed at the terminal before the password prompt. A banner can be defined for the APIC CLI and a separate banner for the switch CLI. The GUI banner displays at the APIC URL before user login authentication. The GUI banner is defined as a URL of a site hosting the desired HTML.\n\n1. In the GUI menu bar, navigate to System >> System Settings >> APIC Identification Preferences.\n2. In the Navigation pane, select \"System Alias and Banners\".\n3. In the \"Work\" pane, copy and paste the banner below in the exact format for each banner type, then click \"Submit\".\n4. To configure an APIC GUI banner, type the URL of a site hosting the desired HTML into the GUI Banner (URL) textbox. The URL site owner must allow the site to be placed in an iFrame to display the informational banner. If the owner of the site sets the x-frame-optiontodenyorsameorigin, the site the URL points to will not appear. Refer to the vendor guide for more details.\n5. Click \"Submit\".\n\nThe banner must read exactly as follows:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"",
-            "+@fixref": "F-75875r1114334_fix"
+            "+content": "The CLI banner is a simple text string to be printed at the terminal before the password prompt. A banner can be defined for the APIC CLI and a separate banner for the switch CLI. \n\n1. In the GUI menu bar, navigate to System >> System Alias and Banners.\n2. In the \"Work\" pane, copy and paste the banner below in the exact format for each banner type, and then click \"Submit\".\n\nThe banner must read exactly as follows:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"",
+            "+@fixref": "F-75875r1168351_fix"
           },
           "fix": {
-            "+@id": "F-75875r1114334_fix"
+            "+@id": "F-75875r1168351_fix"
           },
           "check": {
-            "+@system": "C-75968r1114205_chk",
+            "+@system": "C-75968r1168425_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. On the APIC menu bar, choose System >> System Settings.\n2. In the Navigation pane, click \"System Alias and Banners\".\n3. In the \"Work\" pane, click the verify the Controller CLI Banner, Switch CLI Banner, and GUI Banner (URL) are configured to display the text below.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf the banner is not presented, this is a finding."
+            "check-content": "1. Navigate to System >> System Alias and Banners.\n2. In the \"Work\" pane, verify the Controller CLI Banner and Switch CLI Banner are configured to display the text below.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf the banner is not presented when the system administrators log in, this is a finding."
           }
         }
       },
@@ -1171,7 +1171,7 @@
         "title": "SRG-APP-000065-NDM-000214",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271919r1114340_rule",
+          "+@id": "SV-271919r1168355_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000004",
@@ -1189,19 +1189,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. On the GUI menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Security\".\n3. In the Work pane, choose Management Settings >> Policy tab.\n4. Under Properties, fill out the fields as follows:\n- For Lockout User after multiple failed login attempts, choose \"Enable\".\n- For Number of failed attempts before user is locked out, enter \"3\".\n- For Time period in which consecutive attempts were failed (m), enter \"15\" (or an organization-defined value).\n- For Duration of lockout (m), enter \"15\".\n5. Click \"Submit\".",
-            "+@fixref": "F-75876r1063905_fix"
+            "+content": "1. On the GUI menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Security\".\n3. In the Work pane, choose Default Settings >> Edit\n4. Under Properties, complete the fields as follows:\n- For \"Lockout User after multiple failed login attempts\", choose \"Enable\".\n- For \"Number of failed attempts before user is locked out\", enter \"3\".\n- For \"Time period in which consecutive attempts were failed (m)\", enter \"15\" (or an organization-defined value).\n- For \"Duration of lockout (m)\", enter \"15\".\n5. Click \"Submit\".",
+            "+@fixref": "F-75876r1168354_fix"
           },
           "fix": {
-            "+@id": "F-75876r1063905_fix"
+            "+@id": "F-75876r1168354_fix"
           },
           "check": {
-            "+@system": "C-75969r1063904_chk",
+            "+@system": "C-75969r1168353_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. On the GUI menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Security\".\n3. In the Work pane, choose the Management Settings >> Policy tab.\n4. Under Properties, verify the fields as follows:\n- For Lockout User after multiple failed login attempts, choose \"Enable\".\n- For Number of failed attempts before user is locked out, enter \"3\".\n- For Time period in which consecutive attempts were failed (m), enter \"15\" or an organization-defined value.\n- For Duration of lockout (m), enter \"15\".\n\nIf the Cisco ACI fabric is not configured to enforce the limit of three consecutive invalid logon attempts and lock out users for 15 minutes, this is a finding."
+            "check-content": "1. On the GUI menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Security\".\n3. In the Work pane, choose the Default Settings >> Policy tab.\n4. Under Properties, verify the fields as follows:\n- For \"Lockout User after multiple failed login attempts\", choose \"Enable\".\n- For \"Number of failed attempts before user is locked out\", enter \"3\".\n- For \"Time period in which consecutive attempts were failed (m)\", enter \"15\" or an organization-defined value.\n- For \"Duration of lockout (m)\", enter \"15\".\n\nIf the Cisco ACI fabric is not configured to enforce the limit of three consecutive invalid logon attempts and lock out users for 15 minutes, this is a finding."
           }
         }
       },
@@ -1210,7 +1210,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271920r1114158_rule",
+          "+@id": "SV-271920r1168358_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000005",
@@ -1228,19 +1228,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "From APIC GUI:\n1. Navigate to Fabric >> Fabric Policies >> Pod >> Management Access.\n2. Fabric >> Fabric Policies >> Pod Policies >> Management Access.\n\nDisable insecure or unnecessary ports/protocols, services, and ciphers that have been enabled, such as HTTP, FTP, unauthorized TLS versions, and TELNET.",
-            "+@fixref": "F-75877r1114157_fix"
+            "+content": "From the APIC GUI:\nNavigate to Fabric >> Fabric Policies >> Policies >> Pod >> Management Access. This will limit the ports the management plane is listening on. \n\nAdd an OOB contract to limit the mgmt interfaces to only accept the required port traffic.\nNavigate to Tenants >> mgmt >> Node Management EPGs >> Out-Of-Band EPG - Default.\n\nDisable insecure or unnecessary ports/protocols, services, and ciphers that have been enabled, such as HTTP, FTP, unauthorized TLS versions, and TELNET.",
+            "+@fixref": "F-75877r1168357_fix"
           },
           "fix": {
-            "+@id": "F-75877r1114157_fix"
+            "+@id": "F-75877r1168357_fix"
           },
           "check": {
-            "+@system": "C-75970r1063155_chk",
+            "+@system": "C-75970r1168356_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From APIC GUI:\n1. Navigate to Fabric >> Fabric Policies >> Pod >> Management Access.\n2. Fabric >> Fabric Policies >> Pod Policies >> Management Access.\n\nVerify insecure or unnecessary ports/protocols, services, and ciphers are disabled. This is the default.\n\nIf the Cisco ACI is configured to listen or run unnecessary and/or nonsecure functions, ports, protocols, and/or services, this is a finding."
+            "check-content": "From the APIC GUI:\n1. Navigate to Fabric >> Fabric Policies >> Policies >> Pod >> Management Access. \n2. Navigate to Tenants >> mgmt >> Node Management EPGs >> Out-Of-Band EPG - Default.\n\nVerify insecure or unnecessary ports/protocols, services, and ciphers are disabled. This is the default.\n\nIf the Cisco ACI is configured to listen or run unnecessary and/or nonsecure functions, ports, protocols, and/or services, this is a finding."
           }
         }
       },
@@ -1288,7 +1288,7 @@
         "title": "SRG-APP-000516-NDM-000344",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271922r1114181_rule",
+          "+@id": "SV-271922r1168360_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000007",
@@ -1306,19 +1306,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "From the GUI menu bar:\n1. Navigate to Admin >> AAA >> Security >> Public Key Management >> Certificate Authorities.\n2. Fill in the form, including the trusted CA root certificate and CA intermediate certificate. Click \"Submit\".\n3. Navigate to Admin >> AAA >> Security >> Public Key Management >> Key Rings. Fill out the form and click \"Submit\".\n4. Navigate to Admin >> AAA >> Security >> Public Key Management >> Key Rings. Fill out the form and click \"Submit\".\n5. Get the CSR and send it to the CA Organization. \n6. On the menu bar, navigate to Admin >> AAA >> Security >> Public Key Management >> Key Rings. \n7. Double-click the create Key Ring name and find the Request option. The content in the Request is the CSR. Click \"Submit\".\n8. Update the Signing Certificate on the Web. On the menu bar, navigate to Fabric >> Fabric Policies >> Policies >> Pod >> Management Access >> Default. \n9. In the Admin KeyRing drop-down list, choose the desired KeyRing. Click \"Submit\". After clicking submit, an error occurs due to certificate reasons. Refresh with the new certificate.",
-            "+@fixref": "F-75879r1063162_fix"
+            "+content": "From the GUI menu bar:\n1. Navigate to Admin >> AAA >> Security >> Certificate Authorities.\n2. Complete the form to configure CA root certificate. \n3. Click \"Submit\".",
+            "+@fixref": "F-75879r1168359_fix"
           },
           "fix": {
-            "+@id": "F-75879r1063162_fix"
+            "+@id": "F-75879r1168359_fix"
           },
           "check": {
-            "+@system": "C-75972r1063955_chk",
+            "+@system": "C-75972r1168007_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the GUI menu bar:\n1. Navigate to Admin >> AAA >> Security >> Public Key Management >> Certificate Authorities.\n2. Verify the Issuer is an approved CA.\n\nIf the Cisco ACI does not obtain its public key certificates from an appropriate certificate policy through an approved service provider, this is a finding."
+            "check-content": "From the GUI menu bar:\n1. Navigate to Admin >> AAA >> Security >> Certificate Authorities.\n2. Verify the Issuer is an approved CA.\n\nIf the Cisco ACI does not obtain its public key certificates from an approved certificate policy through an approved service provider, this is a finding."
           }
         }
       },
@@ -1366,12 +1366,12 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271924r1114210_rule",
+          "+@id": "SV-271924r1168362_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000009",
-          "title": "The Cisco Application Policy Infrastructure Controller (APIC) must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
-          "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's Cisco ACIs can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each Cisco ACI.\n\nAPIC policies manage the authentication, authorization, and accounting (AAA) functions of the Cisco ACI fabric. The combination of user privileges, roles, and domains with access rights inheritance enables administrators to configure AAA functions at the managed object level in a granular fashion. Creating a user and assigning a role to that user does not enable access rights. It is necessary to also assign the user to one or more security domains. By default, the ACI fabric includes two special precreated domains:\n- \"All\" allows access to the entire MIT.\n- \"Infra\" allows access to fabric infrastructure objects/subtrees, such as fabric access policies.\n\nSatisfies: SRG-APP-000149-NDM-000247, SRG-APP-000001-NDM-000200</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Cisco APIC must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
+          "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's Cisco ACIs can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each Cisco ACI.\n\nAPIC policies manage the authentication, authorization, and accounting (AAA) functions of the Cisco ACI fabric. The combination of user privileges, roles, and domains with access rights inheritance enables administrators to configure AAA functions at the managed object level in a granular fashion. Creating a user and assigning a role to that user does not enable access rights. It is necessary to also assign the user to one or more security domains. By default, the ACI fabric includes two special pre-created domains:\n- \"All\" allows access to the entire MIT.\n- \"Infra\" allows access to fabric infrastructure objects/subtrees, such as fabric access policies.\n\nSatisfies: SRG-APP-000149-NDM-000247, SRG-APP-000001-NDM-000200</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco ACI NDM",
             "dc:publisher": "DISA",
@@ -1394,19 +1394,19 @@
             }
           ],
           "fixtext": {
-            "+content": "In the APIC, configure redundant RADIUS providers.\n1. On the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\", and then click the \"RADIUS\" tab.\n3. In the Work pane, choose Actions >> Create RADIUS Provider.\n4. Specify the RADIUS host name (or IP address), port, protocol, and management endpoint group.\n5. In the Navigation pane, choose System >> System Settings >> APIC Connectivity Preferences. \n6. In the Work pane, select \"ooband\".\n7. Repeat the above steps for at least one other AAA server.\n\nCreate the login domain for RADIUS:\n1. In the Navigation pane, choose AAA Authentication >> Login Domains.\n2. In the Work pane, choose Actions >> Create Login Domain.\n3. Specify the login domain name, description, realm, and provider group as appropriate.\n\nNote: The above configuration is an example using the RADIUS protocol. However, DOD sites may configure the options for LDAP, RADIUS, or TACACS+.",
-            "+@fixref": "F-75881r1114209_fix"
+            "+content": "In the APIC, configure redundant RADIUS providers.\n1. On the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Authentication\".\n3. In the Work pane, choose \"Providers\",  and then click Actions >> Create Provider.\n4. In the Create Provider screen, enter the Hostname/IP Address, Description, and choose a RADIUS or TACACS+ as the realm from the drop-down list. Provide the configuration details.\n5. Repeat the above steps for at least one other AAA server.\n\nCreate the login domain for RADIUS:\n1. In the Navigation pane, choose AAA Authentication >> Login Domains.\n2. In the Work pane, choose Actions >> Create Login Domain.\n3. Specify the login domain name, description, realm, and provider group as appropriate.\n\nNote: The above configuration is an example using the RADIUS protocol; however, DOD sites may configure the options for RADIUS or TACACS+.",
+            "+@fixref": "F-75881r1168361_fix"
           },
           "fix": {
-            "+@id": "F-75881r1114209_fix"
+            "+@id": "F-75881r1168361_fix"
           },
           "check": {
-            "+@system": "C-75974r1114208_chk",
+            "+@system": "C-75974r1168010_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the AAA configuration:\n1. In the GUI, on the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\" and then click the \"RADIUS\" tab.\n3. Review the configuration for the AAA server.\n4. Review the configuration of the Login Domain(s) used by the site.\n\nNote: The above configuration is an example using the RADIUS protocol. However, DOD sites may configure the options for LDAP, RADIUS, or TACACS+. Roles and user attributes such as limiting concurrent logins to 1 for remote system admins are also needed, but this configuration is done on the remote AAA server.\n\nIf the Cisco ACI is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
+            "check-content": "Review the AAA configuration:\n1. In the GUI, on the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\".\n3. Review the configuration for the configured AAA providers.\n4. Review the configuration of the Login Domain(s) used by the site.\n\nIf the Cisco ACI is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
           }
         }
       },
@@ -1415,7 +1415,7 @@
         "title": "SRG-APP-000516-NDM-000351",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271926r1114339_rule",
+          "+@id": "SV-271926r1168364_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000011",
@@ -1433,19 +1433,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Refer to the Cisco APIC Upgrade/Downgrade Support Matrix for Cisco APIC upgrade and downgrade paths.\n\nInstall a Cisco APIC Software Maintenance Upgrade Patch Using the GUI.\n\nUse the following procedure to install a software maintenance upgrade (SMU) patch on a Cisco APIC:\n1. Add the firmware image that corresponds to the SMU patch to the Cisco APIC. The patch will be listed along with any other firmware images (SMU patches and otherwise).\n2. Set up a controller firmware update. On the Version Selection screen, for the Update Type, choose \"Software Maintenance Upgrade (Install)\", then choose the SMU patch in the Select Firmware section.\n\nInstalling a Switch Software Maintenance Upgrade Patch Using the GUI:\n\nSMU patch installation or uninstallation uses the same update group as a regular firmware upgrade. Because one node can belong to only one update group, when an SMU patch is applied to a specific node, remove that node from the existing group and create a new group that is dedicated to the node so that other nodes are not impacted. When performing a regular firmware upgrade for the entire fabric, delete the dedicated update group used for the SMU patch installation and add the node back to one of the original groups. If all the nodes in the existing group need the SMU patch, reuse the same update group without creating a new update group.\n\n1. Add the firmware image that corresponds to the SMU patch to the Cisco APIC. The Cisco APIC lists the patch along with any other firmware images (SMU patches and otherwise).\n2. Set up a node firmware update. On the Version Selection screen, for the Update Type, choose \"Software Maintenance Upgrade (Install)\", then choose the SMU patch in the Select Firmware section. Click \"Begin Download\" in the Confirmation screen to download the patch to the selected switches. The Firmware Updates tab in the Work pane displays.\n3. In the Work pane, click the upgrade group created. The Node Firmware Update dialog displays with information for the upgrade group.\n4. When the status for the switches is \"Ready to Install\", click \"Actions\".\n\nInstall and Reload: The switches reboot after the SMU patch gets installed. Choose this action to install only one SMU patch, or if installing the final patch of multiple patches.\n\nInstall and Skip Reload: The switches do not reboot after the SMU patch gets installed. Choose this action to install multiple SMU patches and if this patch is not the final patch. In this case, repeat this entire procedure for each additional patch and continue to choose Install and Skip Reload until the final patch is installed. For the final patch, choose Install and Reload. Optionally, choose \"Install and Skip Reload\" and manually reboot the switch after the patch gets installed.",
-            "+@fixref": "F-75883r1114212_fix"
+            "+content": "Refer to the Cisco APIC Upgrade/Downgrade Support Matrix for Cisco APIC upgrade and downgrade paths.\n\nInstall a Cisco APIC Software Maintenance Upgrade Patch.3t\n\nUse the following procedure to install a software maintenance upgrade (SMU) patch on a Cisco APIC:\n1. Add the firmware image that corresponds to the SMU patch to the Cisco APIC. The patch will be listed along with any other firmware images (SMU patches and otherwise).\n2. Set up a controller firmware update. On the Version Selection screen, for the Update Type, choose \"Software Maintenance Upgrade (Install)\", then choose the SMU patch in the Select Firmware section.\n\nInstalling a Switch Software Maintenance Upgrade Patch.\n\nSMU patch installation or uninstallation uses the same update group as a regular firmware upgrade. Because one node can belong to only one update group, when an SMU patch is applied to a specific node, remove that node from the existing group and create a new group dedicated to the node so that other nodes are not impacted. When performing a regular firmware upgrade for the entire fabric, delete the dedicated update group used for the SMU patch installation and add the node back to one of the original groups. If all the nodes in the existing group need the SMU patch, reuse the same update group without creating a new update group.\n\n1. Add the firmware image that corresponds to the SMU patch to the Cisco APIC. The Cisco APIC lists the patch along with any other firmware images (SMU patches and otherwise).\n2. Set up a node firmware update. On the Version Selection screen, for the Update Type, choose \"Software Maintenance Upgrade (Install)\", then choose the SMU patch in the Select Firmware section. Click \"Begin Download\" in the Confirmation screen to download the patch to the selected switches. \n3. In the Firmware Upgrade Work pane, click the upgrade group that was created. The Node Firmware Update dialog displays with information for the upgrade group.\n4. When the status for the switches is \"Ready to Install\", click \"Actions\".\n\nInstall and Reload: The switches reboot after the SMU patch gets installed. Choose this action to install only one SMU patch, or if installing the final patch of multiple patches.\n\nInstall and Skip Reload: The switches do not reboot after the SMU patch gets installed. Choose this action to install multiple SMU patches and if this patch is not the final patch. In this case, repeat this entire procedure for each additional patch and continue to choose Install and Skip Reload until the final patch is installed. For the final patch, choose Install and Reload. Optionally, choose \"Install and Skip Reload\" and manually reboot the switch after the patch gets installed.",
+            "+@fixref": "F-75883r1168363_fix"
           },
           "fix": {
-            "+@id": "F-75883r1114212_fix"
+            "+@id": "F-75883r1168363_fix"
           },
           "check": {
-            "+@system": "C-75976r1114338_chk",
+            "+@system": "C-75976r1168013_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To view the current firmware versions installed on the controllers and switches, type the following command from configuration mode:\n\napic1# configure\napic1(config)# firmware\napic1(config-firmware)# show version\n\nAlternatively, in the GUI navigate to Admin >> Firmware.\n\nRefer to the Cisco APIC Upgrade/Downgrade Support Matrix for Cisco APIC upgrade and downgrade paths.\n\nIf the Cisco ACI fabric, leaf switches, or APIC components have an operating system release that is not currently supported by the vendor, this is a finding."
+            "check-content": "To view the current firmware versions installed on the controllers and switches.\n\nNavigate to Admin >> Firmware.\n\nRefer to the Cisco APIC Upgrade/Downgrade Support Matrix for Cisco APIC upgrade and downgrade paths.\n\nIf the Cisco ACI fabric, leaf switches, or APIC components have an operating system release that is not currently supported by the vendor, this is a finding."
           }
         }
       },
@@ -1454,12 +1454,12 @@
         "title": "SRG-APP-000033-NDM-000212",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271927r1114337_rule",
+          "+@id": "SV-271927r1168428_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000012",
           "title": "The Cisco ACI must be configured to assign appropriate user roles or access levels to authenticated users.",
-          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a Cisco ACI or security domain. The lack of authorization-based access control could result in the immediate compromise of, and unauthorized access to, sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nSecurity domains allow fabric administrators to expose resources selectively to a set of users and provide those users with the required level of permissions to read and modify those resources. By using security domains, multiple sets of users can share the underlying infrastructure while having separated management access to their resources.\n\nAlthough out of scope for this STIG, the authentication server will also need to be configured with the security groups or access levels available on the Cisco ACIs and convey that information to the AAA operator of the Cisco ACI. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator will then create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the Cisco ACI. Once these mappings are configured, authorizations can happen dynamically, based on each user's directory service group membership.\n\nSatisfies: SRG-APP-000033-NDM-000212, SRG-APP-000329-NDM-000287, SRG-APP-000177-NDM-000263, SRG-APP-000910-NDM-000300</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a Cisco ACI or security domain. The lack of authorization-based access control could result in the immediate compromise of, and unauthorized access to, sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access. \n\nThere are multiple ways to provide this function so the site should be prepared to demonstrate in the \"Users\" section that different accounts have different AV pairs, domains, or roles. \n\nSatisfies: SRG-APP-000033-NDM-000212, SRG-APP-000329-NDM-000287, SRG-APP-000177-NDM-000263, SRG-APP-000910-NDM-000300</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco ACI NDM",
             "dc:publisher": "DISA",
@@ -1494,19 +1494,19 @@
             }
           ],
           "fixtext": {
-            "+content": "View the SSP to determine the required organization-defined roles and the least privilege policies required for each role. For example, audit administrator, crypto administrator, system administrator, etc. Assign remote users to roles based on SSP and least privileges. Carefully assign capabilities to each role based on SSP role assignments. Remote authentication server is required, but roles can be created, deleted, or associated access privileges to nodes and resources update in the APIC. To create a new role with reduced permissions, do the following:\n\nTo create or modify roles:\n1. From the GUI, navigate to Admin >> AAA >> Security Management >> Roles.\n2. Create custom roles with appropriate privileges (e.g., read-write access to specific objects).\n3. Associate users with these roles, allowing them to perform specific tasks within the ACI fabric.\n\nNote: This procedure may use preconfigured rules and privileges. Security Domains, Rules, and Custom Roles may also be used depending on the desired architecture and complexity of the implementation. Refer to the vendor documentation to create custom rules, privileges combinations, Rules, and Security domains. These roles are assigned to the remote users in the external authentication server.",
-            "+@fixref": "F-75884r1114215_fix"
+            "+content": "View the SSP to determine the required organization-defined roles and the least privilege policies required for each role. For example, audit administrator, crypto administrator, system administrator, etc. Assign remote users to roles based on SSP and least privileges. Carefully assign capabilities to each role based on SSP role assignments. Remote authentication server is required, but roles can be created, deleted, or associated access privileges to nodes and resources update in the APIC. To create a new role with reduced permissions, do the following:\n\nTo create or modify roles:\n1. From the GUI, navigate to Admin >> AAA >> Security >> Roles.\n2. Create custom roles with appropriate privileges (e.g., read-write access to specific objects).\n3. Associate users with these roles, allowing them to perform specific tasks within the ACI fabric.\n\nNote: This procedure may use preconfigured rules and privileges. Security Domains, Rules, and Custom Roles may also be used depending on the desired architecture and complexity of the implementation. Refer to the vendor documentation to create custom rules, privileges combinations, Rules, and Security domains. These roles are assigned to the remote users in the external authentication server.",
+            "+@fixref": "F-75884r1168427_fix"
           },
           "fix": {
-            "+@id": "F-75884r1114215_fix"
+            "+@id": "F-75884r1168427_fix"
           },
           "check": {
-            "+@system": "C-75977r1114336_chk",
+            "+@system": "C-75977r1168015_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify users are assigned roles based on the SSP. This requirement does not apply to the account of last resort.\n\nFrom the GUI, navigate to Admin >> AAA >> Security Management >> Roles or have the site demonstrate the method used for role and privilege separation.\n\nVerify that the roles are associated with the users in compliance with the SSP required roles and privileges. Read and write access rights must match the level of granularity required by the SSP.\n\nIf any user/group or service account are assigned to roles with privileges that are beyond those required and authorized by the organization, this is a finding."
+            "check-content": "Verify users are assigned roles based on the SSP. This requirement does not apply to the account of last resort.\n\nFrom the GUI, navigate to Admin >> AAA >> Security >> Roles or have the site demonstrate the method used for role and privilege separation.\n\nVerify that the roles are associated with the users in compliance with the SSP required roles and privileges. Read and write access rights must match the level of granularity required by the SSP.\n\nIf any user/group or service account are assigned to roles with privileges that are beyond those required and authorized by the organization, this is a finding."
           }
         }
       },
@@ -1560,7 +1560,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271931r1114365_rule",
+          "+@id": "SV-271931r1168368_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000016",
@@ -1578,19 +1578,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Cisco switch to send log records to a syslog servers.\n\n1: Create a logging server group.\n\n logging server-group <group_name> \n server <server_ip> port <port_number> severity <severity_level>\n\n2: Configure monitoring sources. Define which types of events (audit, event, fault, session) to log to the remote servers. Associate the monitoring \nsource with the server group.\n\nsyslog monitoring source <source_name> \nsyslog monitoring source <source_name> destination <logging_server_group_name> \n\nExample configuration:\n\napic1(config)# logging server-group SYSLOG_SERVER_GROUP\napic1(config)# server 10.0.0.10 port 514 severity informational\napic1(config)# server 10.0.0.20 port 514 severity informational\n\napic1(config)# syslog monitoring source MyEventSource\napic1(config)# syslog monitoring source MyEventSource destination SYSLOG_SERVER_GROUP",
-            "+@fixref": "F-75888r1114364_fix"
+            "+content": "Configure the Cisco switch to send log records to a syslog servers.\n\nNavigate to Admin >> External Data Collectors >> Monitoring Destinations >> Syslog.\n\nProvide the configuration information to create a log server.",
+            "+@fixref": "F-75888r1168367_fix"
           },
           "fix": {
-            "+@id": "F-75888r1114364_fix"
+            "+@id": "F-75888r1168367_fix"
           },
           "check": {
-            "+@system": "C-75981r1114359_chk",
+            "+@system": "C-75981r1168366_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the ACI Fabric is configured to send event messages to syslog servers.\n\nExample configuration:\n\nlogging server-group SYSLOG_SERVER_GROUP\napic1(config)# server 10.0.0.10 port 514 severity informational\napic1(config)# server 10.0.0.20 port 514 severity informational\n.\n.\n.\napic1(config)# syslog monitoring source MyEventSource\napic1(config)# syslog monitoring source MyEventSource destination SYSLOG_SERVER_GROUP\n\nIf the Cisco ACI is not configured to send audit records to at least one central syslog server, this is a finding."
+            "check-content": "Verify the ACI Fabric is configured to send event messages to syslog servers.\n\nNavigate to Admin >> External Data Collectors >> Monitoring Destinations >> Syslog.\n\nIf the Cisco ACI is not configured to send audit records to at least one central syslog server, this is a finding."
           }
         }
       },
@@ -1858,7 +1858,7 @@
         "title": "SRG-APP-000516-NDM-000334",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271944r1113846_rule",
+          "+@id": "SV-271944r1168370_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000029",
@@ -1876,19 +1876,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure locally required events for auditing in compliance with the SSP:\n1. Navigate to the \"Contracts\" section within the tenant. \n2. Within the filter directives, verify the \"Log\" is enabled for permit or deny actions on that filter.",
-            "+@fixref": "F-75901r1064005_fix"
+            "+content": "Configure locally required events for auditing in compliance with the SSP:\n1. Navigate to the \"Contracts\" section within the tenant. \n2. View the existing contracts: Tenants >> {{your_tenant}} >> Contracts >> {{your_contract}}.\n3. Check the directive to enable log is for each filter.",
+            "+@fixref": "F-75901r1168369_fix"
           },
           "fix": {
-            "+@id": "F-75901r1064005_fix"
+            "+@id": "F-75901r1168369_fix"
           },
           "check": {
-            "+@system": "C-75994r1064004_chk",
+            "+@system": "C-75994r1168021_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Configure locally required events for auditing in compliance with the SSP:\n1. Navigate to the Contracts section within the tenant. \n2. Within the filter directives, select \"Log\" to enable logging for permit or deny actions on that filter.\n\nIf locally required events that require auditing are not set to log, this is a finding."
+            "check-content": "Configure locally required events for auditing in compliance with the SSP:\n1. Navigate to the \"Contracts\" section within the tenant. \n2. View the existing contracts: Tenants >> {{your_tenant}} >> Contracts >> {{your_contract}} to verify that log is enabled for each filter.\n\nIf log is not enabled for each filter, this is a finding."
           }
         }
       },
@@ -1897,7 +1897,7 @@
         "title": "SRG-APP-000860-NDM-000250",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271958r1114307_rule",
+          "+@id": "SV-271958r1168373_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000043",
@@ -1925,19 +1925,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Navigate to Admin >> AAA >> Security.\n2. Click the \"Management Settings\" tab.\n3. In the Properties Section, ensure \"Password Strength Check\" is checked.",
-            "+@fixref": "F-75915r1063270_fix"
+            "+content": "1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit.\n3. In the Properties section, verify \"Password Strength Check\" is checked.",
+            "+@fixref": "F-75915r1168372_fix"
           },
           "fix": {
-            "+@id": "F-75915r1063270_fix"
+            "+@id": "F-75915r1168372_fix"
           },
           "check": {
-            "+@system": "C-76008r1063269_chk",
+            "+@system": "C-76008r1168371_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Navigate to Admin >> AAA >> Security.\n2. Click the \"Management Settings\" tab.\n3. In the Properties Section, ensure \"Password Strength Check\" is checked.\n\nIf the Cisco ACI fabric is not configured to allow user selection of long passwords and passphrases, including spaces and all printable characters for password-based authentication, this is a finding."
+            "check-content": "1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit.\n3. In the Properties section, verify \"Password Strength Check\" is checked.\n\nIf the Cisco ACI fabric is not configured to allow user selection of long passwords and passphrases, including spaces and all printable characters for password-based authentication, this is a finding."
           }
         }
       },
@@ -1946,7 +1946,7 @@
         "title": "SRG-APP-000164-NDM-000252",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271960r1113863_rule",
+          "+@id": "SV-271960r1168376_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000045",
@@ -1964,19 +1964,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Admin >> AAA >> Security.\n2. Click the \"Management Settings\" tab.\n3. In the Properties section, ensure \"Password Strength Check'\" is checked.\n4. In the dialog box that opens, ensure \"Password Minimum Length\" is set to \"15\".",
-            "+@fixref": "F-75917r1063276_fix"
+            "+content": "1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit\n3. In the Properties section, verify \"Password Strength Check\" is checked.\n4. In the dialog box that opens, verify \"Password Minimum Length\" is set to \"15\".",
+            "+@fixref": "F-75917r1168375_fix"
           },
           "fix": {
-            "+@id": "F-75917r1063276_fix"
+            "+@id": "F-75917r1168375_fix"
           },
           "check": {
-            "+@system": "C-76010r1063275_chk",
+            "+@system": "C-76010r1168374_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Navigate to Admin >> AAA >> Security.\n2. Click the \"Management Settings\" tab.\n3. In the Properties section, ensure \"Password Strength Check\" is checked.\n\nIf the Cisco ACI fabric is not configured to enforce a minimum 15-character password length, this is a finding."
+            "check-content": "1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit.\n3. In the Properties section, verify \"Password Strength Check\" is checked.\n\nIf the Cisco ACI fabric is not configured to enforce a minimum 15-character password length, this is a finding."
           }
         }
       },
@@ -2034,7 +2034,7 @@
         "title": "SRG-APP-000190-NDM-000267",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271969r1114305_rule",
+          "+@id": "SV-271969r1168379_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CACI-ND-000054",
@@ -2052,19 +2052,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the GUI idle timeout which affects SSH on both APIC and Switches:\n1. Navigate to Admin >> AAA >> Security >> Management Settings.\n2. In the Properties section, ensure \"Web Token Timeout (s)\" is set to 300 or less.",
-            "+@fixref": "F-75926r1064051_fix"
+            "+content": "Set the GUI idle timeout, which affects SSH on both APIC and Switches:\n1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit.\n3. In the Properties section, set \"Web Token Timeout (s)\" to 300 or less.",
+            "+@fixref": "F-75926r1168378_fix"
           },
           "fix": {
-            "+@id": "F-75926r1064051_fix"
+            "+@id": "F-75926r1168378_fix"
           },
           "check": {
-            "+@system": "C-76019r1114220_chk",
+            "+@system": "C-76019r1168377_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the maximum GUI idle duration before requiring login refresh is set to 300 seconds or less:\n\nshow runing-config crypto webtoken\n\nNote: If the output is empty, then the default values are used, this is a finding.\n\nIf ui-idle-timeout-seconds and webtoken-timeout-seconds are not set to 300 seconds or less, this is a finding."
+            "check-content": "Verify the maximum GUI idle duration before requiring login refresh is set to 300 seconds or less:\n\n1. Navigate to Admin >> AAA >> Security.\n2. In the Work pane, choose Default Settings >> Edit.\n3. In the Properties section, verify \"Web Token Timeout (s)\" is set to 300 or less.\n\nNote: If not set, then the default values are used, this is a finding.\n\nIf \"Web Token Timeout (s)\" is not set to 300 or less, this is a finding."
           }
         }
       },
@@ -2073,7 +2073,7 @@
         "title": "SRG-APP-000920-NDM-000320",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271971r1114177_rule",
+          "+@id": "SV-271971r1168430_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000056",
@@ -2091,19 +2091,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Create an NTP policy:\n1. Navigate to Fabric >> Quickstart and click \"Create an NTP Policy Link\".\n2. Fill out the form. \n- Provide a name for the policy.\n- Set the State to \"Enabled\". \n3. Click \"Next\" to define the NTP Sources. \n4. Define at least two DOD-approved time servers. Leave all the default options and click \"OK\". Refer to note below.\n5. Navigate to Fabric >> Fabric Policies submenu >> Pods >> Policy Groups folder to add the NTP Policy to the appropriate Fabric Pod Policy or group to assign to one or more Pods in the fabric.\n6. Right-click on the Policy Groups folder. Select an existing Pod Policy Group or create a new group.\n7. Select the policy for NTP created in the previous step. \n8. Navigate to Fabric >> Fabric Policies submenu >> Pods >> Profiles >> Pod Profile >> default. If needed, with the default Pod Selector selected in the navigation pane, change the Fabric Policy Group to the one created in the previous step. \n\nNote: DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), USNO time servers, and/or GPS. The secondary time source must be located in a different geographic region than the primary time source.",
-            "+@fixref": "F-75928r1114176_fix"
+            "+content": "Create an NTP policy:\n1. Navigate to Fabric >> Quickstart and click \"Create an NTP Policy Link\".\n2. Complete the form. \n- Provide a name for the policy.\n- Set the State to \"Enabled\". \n3. Click \"Next\" to define the NTP Sources. \n4. Define at least two DOD-approved time servers. Leave all the default options and click \"OK\". Refer to note below.\n5. Navigate to Fabric >> Fabric Policies submenu >> Pods >> Policy Groups folder to add the NTP Policy to the appropriate Fabric Pod Policy or group to assign to one or more Pods in the fabric.\n6. Right-click the Policy Groups folder. Select an existing Pod Policy Group or create a new group.\n7. Select the policy for NTP created in the previous step. \n8. Navigate to Fabric >> Fabric Policies submenu >> Pods >> Profiles >> Pod Profile >> default. If needed, with the default Pod Selector selected in the navigation pane, change the Fabric Policy Group to the one created in the previous step. \n\nNote: DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), USNO time servers, and/or GPS. The secondary time source must be located in a different geographic region than the primary time source.",
+            "+@fixref": "F-75928r1168380_fix"
           },
           "fix": {
-            "+@id": "F-75928r1114176_fix"
+            "+@id": "F-75928r1168380_fix"
           },
           "check": {
-            "+@system": "C-76021r1063308_chk",
+            "+@system": "C-76021r1168429_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Navigate to Fabric >> Fabric Policies >> Fabric Security.\n2. Expand \"Policies\".\n3. Expand \"Pod\".\n4. Expand \"Date and Time\".\n5. Expand each \"Date and Time Policy\".\n6. Verify at least two DOD-approved time sources are configured.\n\nNote: DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.\n\nIf Cisco ACI fabric does not use DOD-approved redundant NTP sources that use authentication that is cryptographically based, this is a finding."
+            "check-content": "1. Navigate to Fabric >> Fabric Policies.\n2. Expand \"Policies\".\n3. Expand \"Pod\".\n4. Expand \"Date and Time\".\n5. Expand each \"Date and Time Policy\".\n6. Verify at least two DOD-approved time sources are configured.\n\nNote: DOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.\n\nIf Cisco ACI fabric does not use DOD-approved redundant NTP sources that use authentication that is cryptographically based, this is a finding."
           }
         }
       },
@@ -2151,7 +2151,7 @@
         "title": "SRG-APP-000001-NDM-000200",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271975r1114224_rule",
+          "+@id": "SV-271975r1168383_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CACI-ND-000060",
@@ -2169,19 +2169,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "In the APIC, configure redundant RADIUS providers:\n1. On the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\" and then click the \"RADIUS\" tab.\n3. In the Work pane, choose Actions >> Create RADIUS Provider.\n4. Specify the RADIUS host name (or IP address), port, protocol, and management endpoint group.\n5. In the Navigation pane, choose System >> System Settings >> APIC Connectivity Preferences. In the Work pane, select \"ooband\".\n6. Repeat the above steps for at least one other AAA server.\n\nCreate the login domain for RADIUS:\n1. In the Navigation pane, choose AAA Authentication >> Login Domains.\n2. In the Work pane, choose Actions >> Create Login Domain.\n3. Specify the login domain name, description, realm, and provider group as appropriate.\n\nNote: The above configuration is an example using the RADIUS protocol. However, DOD sites may configure the options for LDAP, RADIUS, or TACACS+.",
-            "+@fixref": "F-75932r1114223_fix"
+            "+content": "In the APIC, configure redundant RADIUS providers.\n1. On the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, choose \"Authentication\".\n3. In the Work pane, choose Providers and click Actions >> Create Provider.\n4. In the Create Provider screen, enter the Hostname/IP Address, Description, and choose a RADIUS or TACACS+ as the realm from the drop-down list. Provide the configuration details.\n\nCreate the login domain for RADIUS:\n1. In the Navigation pane, choose AAA Authentication >> Login Domains.\n2. In the Work pane, choose Actions >> Create Login Domain.\n3. Specify the login domain name, description, realm, and provider group as appropriate.\n\nNote: The above configuration is an example using the RADIUS protocol. However, DOD sites may configure the options for RADIUS or TACACS+.",
+            "+@fixref": "F-75932r1168382_fix"
           },
           "fix": {
-            "+@id": "F-75932r1114223_fix"
+            "+@id": "F-75932r1168382_fix"
           },
           "check": {
-            "+@system": "C-76025r1114222_chk",
+            "+@system": "C-76025r1168035_chk",
             "check-content-ref": {
               "+@href": "Cisco_ACI_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the AAA configuration:\n1. In the GUI, on the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\" and then click the \"RADIUS\" tab.\n3. Review the configuration for the AAA server.\n4. Review the configuration of the Login Domain(s) used by the site.\n\nNote: The above configuration is an example using the RADIUS protocol. However, DOD sites may configure the options for LDAP, RADIUS, or TACACS+. Roles and user attributes such as limiting concurrent logins to 1 for remote system admins are also needed, but this configuration is done on the remote AAA server.\n\nIf the Cisco ACI is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
+            "check-content": "Review the AAA configuration:\n1. In the GUI, on the menu bar, choose Admin >> AAA.\n2. In the Navigation pane, click \"Authentication\".\n3. Review the configuration for the configured AAA providers.\n4. Review the configuration of the Login Domain(s) used by the site.\n\nIf the Cisco ACI is not configured to use at a AAA provider for the purpose of authenticating users prior to granting administrative access, this is a finding."
           }
         }
       }

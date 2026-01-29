@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-24"
+      "+@date": "2025-11-19"
     },
     "title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -10345,12 +10345,12 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254239r1081067_rule",
+          "+@id": "SV-254239r1153440_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-00-000020",
           "title": "Windows Server 2022 passwords for the built-in Administrator account must be changed at least every 60 days.",
-          "description": "<VulnDiscussion>The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the password. The built-in Administrator account is not generally used and its password may not be changed as frequently as necessary. Changing the password for the built-in Administrator account on a regular basis will limit its exposure.\n\nWindows LAPS must be used to change the built-in Administrator account password.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the password. The built-in Administrator account is not generally used and its password may not be changed as frequently as necessary. Changing the password for the built-in Administrator account on a regular basis will limit its exposure.\n\nFor domain-joined systems, Windows LAPS must be used to change the built-in Administrator account password.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server 2022",
             "dc:publisher": "DISA",
@@ -10369,19 +10369,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Change the enabled local Administrator account password at least every 60 days. Windows LAPS must be used to change the built-in Administrator account password. Domain-joined systems can configure this to occur more frequently. LAPS will change the password every 30 days by default. \n\nMore information is available at:\nhttps://techcommunity.microsoft.com/t5/windows-it-pro-blog/by-popular-demand-windows-laps-available-now/ba-p/3788747\nhttps://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview#windows-laps-supported-platforms-and-azure-ad-laps-preview-status",
-            "+@fixref": "F-57675r951094_fix"
+            "+content": "Change the enabled local Administrator account password at least every 60 days. For domain-joined systems, Windows LAPS must be used to change the built-in Administrator account password.\n\nMore information is available at:\nhttps://techcommunity.microsoft.com/t5/windows-it-pro-blog/by-popular-demand-windows-laps-available-now/ba-p/3788747\nhttps://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview#windows-laps-supported-platforms-and-azure-ad-laps-preview-status",
+            "+@fixref": "F-57675r1153439_fix"
           },
           "fix": {
-            "+@id": "F-57675r951094_fix"
+            "+@id": "F-57675r1153439_fix"
           },
           "check": {
-            "+@system": "C-57724r1081066_chk",
+            "+@system": "C-57724r1153438_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If there are no enabled local Administrator accounts, this is not applicable.\n\nReview the password last set date for the enabled local Administrator account.\n\nOn the stand alone or domain-joined workstation:\n\nOpen \"PowerShell\".\n\nEnter \"Get-LocalUser -Name * | Select-Object *\".\n\nIf the \"PasswordLastSet\" date is greater than \"60\" days old for the local Administrator account for administering the computer/domain, this is a finding.\n\nVerify LAPS is configured and operational. \n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Templates >> System >> LAPS >> Password Settings >> Set to enabled. Password Complexity, large letters + small letters + numbers + special, Password Length 14, Password Age 60. If not configured as shown, this is a finding. \n\nVerify LAPS Operational logs >> Event Viewer >> Applications and Services Logs >> Microsoft >> Windows >> LAPS >> Operational. Verify LAPS policy process is completing. If it is not, this is a finding.\n\nIf the server is not a member of a domain this not applicable."
+            "check-content": "If there are no enabled local Administrator accounts, this is Not Applicable.\n\nReview the password last set date for the enabled local Administrator account.\n\nOn the stand alone or domain-joined server:\n\nOpen \"PowerShell\".\n\nEnter \"Get-LocalUser | Where-Object {$_.SID -like \"*500\"} | ForEach-Object ($_.PasswordLastSet){\"$($_.Name) password is: $([int]((Get-Date) - $_.PasswordLastSet).TotalDays) days old\"}\".\n\nIf the \"PasswordLastSet\" date is greater than \"60\" days old for the local Administrator account for administering the computer, this is a finding.\n\nVerify LAPS is configured and operational.\n\nIf the system is a stand alone member server, the LAPS portion of this requirement is Not Applicable.\n\nNavigate to Local Computer Policy >> Computer Configuration >> Administrative Templates >> System >> LAPS >> Password Settings >> Set to enabled. Password Complexity, large letters + small letters + numbers + special, Password Length 14, Password Age 60. If not configured as shown, this is a finding.\n\nVerify LAPS Operational logs >> Event Viewer >> Applications and Services Logs >> Microsoft >> Windows >> LAPS >> Operational. Verify LAPS policy process is completing. If it is not, this is a finding."
           }
         }
       },
@@ -10948,7 +10948,7 @@
         "title": "SRG-OS-000324-GPOS-00125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254254r958726_rule",
+          "+@id": "SV-254254r1153443_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-00-000170",
@@ -10966,19 +10966,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Maintain the default permissions for the HKEY_LOCAL_MACHINE registry hive.\n\nThe default permissions of the higher-level keys are noted below.\n\nHKEY_LOCAL_MACHINE\\SECURITY\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nSYSTEM - Full Control - This key and subkeys\nAdministrators - Special - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SOFTWARE\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SYSTEM\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\nServer Operators - Read - This Key and subkeys (Domain controllers only)\n\nMicrosoft has also given Read permission to the SOFTWARE and SYSTEM registry keys in Windows Server 2022 to the following SID:\nS-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681",
-            "+@fixref": "F-57690r951100_fix"
+            "+content": "Maintain the default permissions for the HKEY_LOCAL_MACHINE registry hive.\n\nThe default permissions of the higher-level keys are noted below.\n\nHKEY_LOCAL_MACHINE\\SECURITY\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nSYSTEM - Full Control - This key and subkeys\nAdministrators - Special - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SOFTWARE\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SYSTEM\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nAuthenticated Users - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\nServer Operators - Read - This Key and subkeys (Domain controllers only)\n\nMicrosoft has also given Read permission to the SOFTWARE and SYSTEM registry keys in Windows Server 2022 to the following SID:\nS-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681",
+            "+@fixref": "F-57690r1153442_fix"
           },
           "fix": {
-            "+@id": "F-57690r951100_fix"
+            "+@id": "F-57690r1153442_fix"
           },
           "check": {
-            "+@system": "C-57739r951099_chk",
+            "+@system": "C-57739r1153441_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the registry permissions for the keys of the HKEY_LOCAL_MACHINE hive noted below.\n\nIf any nonprivileged groups such as Everyone, Users, or Authenticated Users have greater than Read permission, this is a finding.\n\nIf permissions are not as restrictive as the default permissions listed below, this is a finding:\n\nRun \"Regedit\".\n\nRight-click on the registry areas noted below.\n\nSelect \"Permissions\" and the \"Advanced\" button.\n\nHKEY_LOCAL_MACHINE\\SECURITY\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nSYSTEM - Full Control - This key and subkeys\nAdministrators - Special - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SOFTWARE\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SYSTEM\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and Subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\nServer Operators - Read - This Key and subkeys (Domain controllers only)\n\nOther examples under the noted keys may also be sampled. There may be some instances where nonprivileged groups have greater than Read permission.\n\nMicrosoft has given Read permission to the SOFTWARE and SYSTEM registry keys in Windows Server 2022 to the following SID. This is currently not a finding.\nS-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681\n\nIf the defaults have not been changed, these are not a finding."
+            "check-content": "Review the registry permissions for the keys of the HKEY_LOCAL_MACHINE hive noted below.\n\nIf any nonprivileged groups such as Everyone, Users, or Authenticated Users have greater than Read permission, this is a finding.\n\nIf permissions are not as restrictive as the default permissions listed below, this is a finding:\n\nRun \"Regedit\".\n\nRight-click on the registry areas noted below.\n\nSelect \"Permissions\" and \"Advanced\".\n\nHKEY_LOCAL_MACHINE\\SECURITY\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nSYSTEM - Full Control - This key and subkeys\nAdministrators - Special - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SOFTWARE\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nUsers - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\n\nHKEY_LOCAL_MACHINE\\SYSTEM\n\nType - \"Allow\" for all\nInherited from - \"None\" for all\nPrincipal - Access - Applies to\nAuthenticated Users - Read - This key and subkeys\nAdministrators - Full Control - This key and subkeys\nSYSTEM - Full Control - This key and subkeys\nCREATOR OWNER - Full Control - This key and Subkeys\nALL APPLICATION PACKAGES - Read - This key and subkeys\nServer Operators - Read - This Key and subkeys (Domain controllers only)\n\nOther examples under the noted keys may also be sampled. There may be some instances where nonprivileged groups have greater than Read permission.\n\nMicrosoft has given Read permission to the SOFTWARE and SYSTEM registry keys in Windows Server 2022 to the following SID. This is currently not a finding.\nS-1-15-3-1024-1065365936-1281604716-3511738428-1654721687-432734479-3232135806-4053264122-3456934681\n\nIf the defaults have not been changed, these are not a finding."
           }
         }
       },
@@ -17523,11 +17523,11 @@
         "title": "SRG-OS-000066-GPOS-00034",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254413r958448_rule",
+          "+@id": "SV-254413r1153446_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WN22-DC-000290",
-          "title": "Windows Server 2022 domain Controller PKI certificates must be issued by the DoD PKI or an approved External Certificate Authority (ECA).",
+          "title": "Windows Server 2022 domain controller PKI certificates must be issued by the DOD PKI or an approved External Certificate Authority (ECA).",
           "description": "<VulnDiscussion>A PKI implementation depends on the practices established by the Certificate Authority (CA) to ensure the implementation is secure. Without proper practices, the certificates issued by a CA have limited value in authentication functions. The use of multiple CAs from separate PKI implementations results in interoperability issues. If servers and clients do not have a common set of root CA certificates, they are not able to authenticate each other.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server 2022",
@@ -17541,19 +17541,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Obtain a server certificate for the domain controller issued by the DoD PKI or an approved ECA.",
-            "+@fixref": "F-57849r849054_fix"
+            "+content": "Obtain a server certificate for the domain controller issued by the DOD PKI or an approved ECA.",
+            "+@fixref": "F-57849r1153445_fix"
           },
           "fix": {
-            "+@id": "F-57849r849054_fix"
+            "+@id": "F-57849r1153445_fix"
           },
           "check": {
-            "+@system": "C-57898r849053_chk",
+            "+@system": "C-57898r1153444_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nRun \"MMC\".\n\nSelect \"Add/Remove Snap-in\" from the \"File\" menu.\n\nSelect \"Certificates\" in the left pane and click \"Add >\".\n\nSelect \"Computer Account\" and click \"Next\".\n\nSelect the appropriate option for \"Select the computer you want this snap-in to manage\" and click \"Finish\".\n\nClick \"OK\".\n\nSelect and expand the Certificates (Local Computer) entry in the left pane.\n\nSelect and expand the Personal entry in the left pane.\n\nSelect the Certificates entry in the left pane.\n\nIn the right pane, examine the \"Issued By\" field for the certificate to determine the issuing CA.\n\nIf the \"Issued By\" field of the PKI certificate being used by the domain controller does not indicate the issuing CA is part of the DoD PKI or an approved ECA, this is a finding.\n\nIf the certificates in use are issued by a CA authorized by the Component's CIO, this is a CAT II finding.\n\nThere are multiple sources from which lists of valid DoD CAs and approved ECAs can be obtained: \n\nThe Global Directory Service (GDS) website provides an online source. The address for this site is https://crl.gds.disa.mil.\n\nDoD Public Key Enablement (PKE) Engineering Support maintains the InstallRoot utility to manage DoD supported root certificates on Windows computers, which includes a list of authorized CAs. The utility package can be downloaded from the PKI and PKE Tools page on Cyber Exchange:\n\nhttps://https://cyber.mil/pki-pke/"
+            "check-content": "This applies to domain controllers. It is NA for other systems.\n\nRun \"MMC\".\n\nSelect \"Add/Remove Snap-in\" from the \"File\" menu.\n\nSelect \"Certificates\" in the left pane, and then click \"Add >\".\n\nSelect \"Computer Account\", and then click \"Next\".\n\nSelect the appropriate option for \"Select the computer you want this snap-in to manage\", and then click \"Finish\".\n\nClick \"OK\".\n\nSelect and expand the \"Certificates (Local Computer)\" entry in the left pane.\n\nSelect and expand the \"Personal\" entry in the left pane.\n\nSelect the \"Certificates\" entry in the left pane.\n\nIn the right pane, examine the \"Issued By\" field for the certificate to determine the issuing CA.\n\nIf the \"Issued By\" field of the PKI certificate being used by the domain controller does not indicate the issuing CA is part of the DOD PKI or an approved ECA, this is a finding.\n\nIf the certificates in use are issued by a CA authorized by the Component's CIO, this is a CAT II finding.\n\nThere are multiple sources from which lists of valid DOD CAs and approved ECAs can be obtained: \n\nThe Global Directory Service (GDS) website provides an online source. The address for this site is https://crl.gds.disa.mil.\n\nDOD Public Key Enablement (PKE) Engineering Support maintains the InstallRoot utility to manage DOD supported root certificates on Windows computers, which includes a list of authorized CAs. The utility package can be downloaded from the PKI and PKE Tools page on Cyber Exchange: https://www.cyber.mil/pki-pke/tools-configuration-files."
           }
         }
       },

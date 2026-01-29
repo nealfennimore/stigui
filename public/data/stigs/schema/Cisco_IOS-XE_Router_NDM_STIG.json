@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-16"
+      "+@date": "2025-11-24"
     },
     "title": "Cisco IOS XE Router NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1875,7 +1875,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-215812r991874_rule",
+          "+@id": "SV-215812r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-000140",
@@ -3519,11 +3519,11 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-215854r961863_rule",
+          "+@id": "SV-215854r1156415_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-001370",
-          "title": "The Cisco router must be configured to use at least two  authentication servers for the purpose of authenticating users prior to granting administrative access.",
+          "title": "The Cisco router must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
           "description": "<VulnDiscussion>Centralized management of user accounts and authentication increases the administrative access to the router. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS XE Router NDM",
@@ -3547,19 +3547,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Step 1: Configure the Cisco router to use at least two authentication servers as shown in the following example:\n\nR4(config)#radius host 10.1.48.2 key xxxxxx\nR4(config)#radius host 10.1.48.3 key xxxxxx\n\nStep 2: Configure the authentication order to use the authentication servers as primary source for authentication as shown in the following example:\n\nR4(config)#aaa authentication CONSOLE local\n\nR4(config)#aaa authentication login\nLOGIN_AUTHENTICATION group radius local\n\nStep 3: Configure all network connections associated with a device management to use the authentication servers for the purpose of login authentication.\n\nR4(config)#line vty 0 1\nR4(config-line)#login authentication LOGIN_AUTHENTICATION\nR4(config-line)#exit\nR4(config)#line con 0\nR4(config-line)#login authentication CONSOLE\nR4(config-line)#exit \nR4(config)#ip http authentication aaa login-authentication LOGIN_AUTHENTICATION",
-            "+@fixref": "F-17091r939991_fix"
+            "+content": "Step 1: Configure the Cisco router to use at least two authentication servers as shown in the following example:\n\nR4(config)#radius host 10.1.48.2 key xxxxxx\nR4(config)#radius host 10.1.48.3 key xxxxxx\n\nStep 2: Configure the authentication order to use the authentication servers as primary source for authentication as shown in the following example:\n\nR4(config)#aaa authentication CONSOLE group radius local\n\nR4(config)#aaa authentication login LOGIN_AUTHENTICATION group radius local\n\nStep 3: Configure all network connections associated with a device management to use the authentication servers for the purpose of login authentication.\n\nR4(config)#line vty 0 1\nR4(config-line)#login authentication LOGIN_AUTHENTICATION\nR4(config-line)#exit\nR4(config)#line con 0\nR4(config-line)#login authentication CONSOLE\nR4(config-line)#exit \nR4(config)#ip http authentication aaa login-authentication LOGIN_AUTHENTICATION",
+            "+@fixref": "F-17091r1156414_fix"
           },
           "fix": {
-            "+@id": "F-17091r939991_fix"
+            "+@id": "F-17091r1156414_fix"
           },
           "check": {
-            "+@system": "C-17093r939990_chk",
+            "+@system": "C-17093r1156413_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_XE_Router_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco router configuration to verify that the device is configured to use at least two authentication servers as primary source for authentication as shown in the following example:\n\naaa new-model\n!\naaa authentication CONSOLE local\naaa authentication login LOGIN_AUTHENTICATION group radius local\n…\n…\n…\nip http authentication aaa login-authentication LOGIN_AUTHENTICATION\nip http secure-server\n…\n…\n…\nradius-server host x.x.x.x auth-port 1812 acct-port 1813 key xxxxxxx\nradius-server host x.x.x.x auth-port 1812 acct-port 1813 key xxxxxxx\n…\n…\n…\nline con 0\n exec-timeout 5 0\n login authentication CONSOLE\nline vty 0 1\n exec-timeout 5 0\n login authentication LOGIN_AUTHENTICATION\n\nIf the Cisco router is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
+            "check-content": "Review the Cisco router configuration to verify the device is configured to use at least two authentication servers as primary source for authentication as shown in the following example:\n\naaa new-model\n!\naaa authentication CONSOLE  group radius local\naaa authentication login LOGIN_AUTHENTICATION group radius local\n…\n…\n…\nip http authentication aaa login-authentication LOGIN_AUTHENTICATION\nip http secure-server\n…\n…\n…\nradius-server host x.x.x.x auth-port 1812 acct-port 1813 key xxxxxx\nradius-server host x.x.x.x auth-port 1812 acct-port 1813 key xxxxxx\n…\n…\n…\nline con 0\n exec-timeout 5 0\n login authentication CONSOLE\nline vty 0 1\n exec-timeout 5 0\n login authentication LOGIN_AUTHENTICATION\n\nIf the Cisco router is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
           }
         }
       },
@@ -3674,7 +3674,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220139r961863_rule",
+          "+@id": "SV-220139r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-001450",

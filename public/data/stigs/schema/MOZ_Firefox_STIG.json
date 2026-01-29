@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-11"
+      "+@date": "2025-11-25"
     },
     "title": "Mozilla Firefox Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1342,7 +1342,7 @@
         "title": "SRG-APP-000456",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251545r961683_rule",
+          "+@id": "SV-251545r1117151_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "FFOX-00-000001",
@@ -1927,12 +1927,12 @@
         "title": "SRG-APP-000326",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251562r987660_rule",
+          "+@id": "SV-251562r1156569_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000018",
           "title": "Firefox must prevent the user from quickly deleting data.",
-          "description": "<VulnDiscussion>There should not be an option for a user to \"forget\" work they have done. This is required to meet non-repudiation controls.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>There should not be an option for a user to \"forget\" work they have done. This is required to meet nonrepudiation controls.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -1941,23 +1941,23 @@
             "dc:identifier": "5446"
           },
           "ident": {
-            "+content": "CCI-002355",
+            "+content": "CCI-000166",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Windows group policy:\n1. Open the group policy editor tool with \"gpedit.msc\".\n2. Navigate to Policy Path: Computer Configuration\\Administrative Templates\\Mozilla\\Firefox\nPolicy Name: Disable Forget Button\nPolicy State: Enabled\n\nmacOS \"plist\" file:\nAdd the following:\n<key>DisableForgetButton</key>\n<true/>\n\nLinux \"policies.json\" file:\nAdd the following in the policies section:\n\"DisableForgetButton\": true",
-            "+@fixref": "F-54951r807157_fix"
+            "+content": "Windows group policy:\n1. Open the group policy editor tool with \"gpedit.msc\".\n2. Navigate to Policy Path: Computer Configuration >> Administrative Templates >> Mozilla >> Firefox.\nPolicy Name: Disable Forget Button\nPolicy State: Enabled\n\nmacOS \"plist\" file:\nAdd the following:\n<key>DisableForgetButton</key>\n<true/>\n\nLinux \"policies.json\" file:\nAdd the following in the policies section:\n\"DisableForgetButton\": true",
+            "+@fixref": "F-54951r1156568_fix"
           },
           "fix": {
-            "+@id": "F-54951r807157_fix"
+            "+@id": "F-54951r1156568_fix"
           },
           "check": {
-            "+@system": "C-54997r807156_chk",
+            "+@system": "C-54997r1156567_chk",
             "check-content-ref": {
               "+@href": "Mozilla_Firefox_2021_VERSION_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Type \"about:policies\" in the browser address bar. \n\nIf \"DisableForgetButton\" is not displayed under Policy Name or the Policy Value is not \"true\", this is a finding."
+            "check-content": "Enter \"about:policies\" in the browser address bar. \n\nIf \"DisableForgetButton\" is not displayed under Policy Name or the Policy Value is not \"true\", this is a finding."
           }
         }
       },

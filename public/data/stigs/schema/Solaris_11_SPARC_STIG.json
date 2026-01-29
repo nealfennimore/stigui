@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-05"
+      "+@date": "2025-11-20"
     },
     "title": "Solaris 11 SPARC Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -12179,7 +12179,7 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216352r959010_rule",
+          "+@id": "SV-216352r1155799_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-040340",
@@ -12207,19 +12207,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nModify the sshd_config file.\n\n# pfedit /etc/ssh/sshd_config\n\nLocate the line containing:\n\nMaxAuthTries \n\nChange it to:\n\nMaxAuthTries 6\n\nRestart the SSH service.\n\n# svcadm restart svc:/network/ssh\n\nNote: Solaris SSH MaxAuthTries of 6 maps to 3 actual failed attempts.",
-            "+@fixref": "F-17586r462491_fix"
+            "+content": "The root role is required.\n\nModify the sshd_config file.\n\n# pfedit /etc/ssh/sshd_config\n\nLocate the lines containing:\n\nMaxAuthTries\nMaxAuthTriesLog\n\nChange them to:\n\nMaxAuthTries 6\nMaxAuthTriesLog 6\n\nRestart the SSH service.\n\n# svcadm restart svc:/network/ssh\n\nNote: Solaris SSH MaxAuthTries of 6 maps to 3 actual failed attempts.",
+            "+@fixref": "F-17586r1155798_fix"
           },
           "fix": {
-            "+@id": "F-17586r462491_fix"
+            "+@id": "F-17586r1155798_fix"
           },
           "check": {
-            "+@system": "C-17588r462490_chk",
+            "+@system": "C-17588r1155797_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if consecutive login attempts are limited to 3.\n\n# grep \"^MaxAuthTries\" /etc/ssh/sshd_config | grep -v Log\n\nIf the output of this command is not:\n\nMaxAuthTries 6\n\nthis is a finding.\n\nNote: Solaris SSH MaxAuthTries of 6 maps to 3 actual failed attempts."
+            "check-content": "Determine if consecutive login attempts are limited to 3, and that they are logged.\n\n# grep \"^MaxAuthTries\" /etc/ssh/sshd_config\n\nIf the output of this command is not \"MaxAuthTries 6\" and \"MaxAuthTriesLog 6\" this is a finding.\n\nNote: Solaris SSH MaxAuthTries of 6 maps to 3 actual failed attempts."
           }
         }
       },
@@ -15555,12 +15555,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216442r959010_rule",
+          "+@id": "SV-216442r1155800_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SOL-11.1-080010",
           "title": "The operating system must be a supported release.",
-          "description": "<VulnDiscussion>An operating system release is considered supported if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>An operating system release is considered supported if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.\n\nRelease\t\tReleased\t\tPremier Support\t\tExtended Support\n11\t\t09 Nov 2011\t\tNA\t\t\t\t\tNA\n11.1\t\t03 Oct 2012\t\tNA\t\t\t\t\tNA\n11.2\t\t29 Apr 2014\t\tNA\t\t\t\t\tNA\n11.3\t\t26 Oct 2015\t\t01 Jan 2021\t\t\t01 Jan 2027\n11.4\t\t28 Aug 2018\t\t01 Nov 2031\t\t\t01 Nov 2037</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
             "dc:publisher": "DISA",
@@ -18009,7 +18009,7 @@
         "title": "SRG-OS-000424",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-219977r971547_rule",
+          "+@id": "SV-219977r1117271_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-060080",
@@ -18156,7 +18156,7 @@
         "title": "SRG-OS-000424",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-219980r971547_rule",
+          "+@id": "SV-219980r1117271_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-060110",

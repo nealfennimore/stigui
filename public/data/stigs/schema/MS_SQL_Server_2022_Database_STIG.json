@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-29"
+      "+@date": "2025-12-08"
     },
     "title": "Microsoft SQL Server 2022 Database Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 27 May 2025",
+        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -949,7 +949,7 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271119r1107973_rule",
+          "+@id": "SV-271119r1137654_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQLD-22-000300",
@@ -1105,7 +1105,7 @@
         "title": "SRG-APP-000133-DB-000179",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271143r1108045_rule",
+          "+@id": "SV-271143r1167490_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLD-22-001200",
@@ -1130,12 +1130,12 @@
             "+@id": "F-75093r1108044_fix"
           },
           "check": {
-            "+@system": "C-75186r1108043_chk",
+            "+@system": "C-75186r1167489_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2022_Database_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Obtain a listing of schema ownership from the server documentation.\n\nExecute the following query to obtain a current listing of schema ownership.\n\nSELECT S.name AS schema_name, P.name AS owning_principal\nFROM sys.schemas S\nJOIN sys.database_principals P ON S.principal_id = P.principal_id\nORDER BY schema_name\n\nIf any schema is owned by an unauthorized database principal, this is a finding."
+            "check-content": "Obtain a listing of schema ownership from the server documentation.\n\nExecute the following query to obtain a current listing of schema ownership.\n\nSELECT s.name AS schema_name, p.name AS owning_principal\n  FROM sys.schemas s\n  JOIN sys.database_principals p ON s.principal_id = p.principal_id\n WHERE p.name != 'dbo'\n   AND (s.name != p.name\n        or p.name not in\n         ( 'db_accessadmin'\n         , 'db_backupoperator'\n         , 'db_datareader'\n         , 'db_datawriter'\n         , 'db_ddladmin'\n         , 'db_denydatareader'\n         , 'db_denydatawriter'\n         , 'db_owner'\n         , 'db_securityadmin'\n         , 'guest'\n         , 'INFORMATION_SCHEMA'\n         , 'sys'\n         , 'TargetServersRole'\n         , 'SQLAgentUserRole'\n         , 'SQLAgentReaderRole'\n         , 'SQLAgentOperatorRole'\n         , 'DatabaseMailUserRole'\n         , 'db_ssisadmin'\n         , 'db_ssisltduser'\n         , 'db_ssisoperator'\n         , 'replmonitor'\n         , '##MS_SSISServerCleanupJobLogin##'\n         )\n       )\n ORDER BY schema_name\n\nIf any schema is owned by an unauthorized database principal, this is a finding."
           }
         }
       },
@@ -1423,7 +1423,7 @@
         "title": "SRG-APP-000243-DB-000128",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271173r1109197_rule",
+          "+@id": "SV-271173r1137656_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLD-22-002000",
@@ -1540,7 +1540,7 @@
         "title": "SRG-APP-000313-DB-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271184r1109203_rule",
+          "+@id": "SV-271184r1138541_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLD-22-002600",
@@ -1628,12 +1628,12 @@
         "title": "SRG-APP-000342-DB-000302",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271188r1108912_rule",
+          "+@id": "SV-271188r1167492_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLD-22-002900",
           "title": "Execution of stored procedures and functions that use execute as must be restricted to necessary cases only.",
-          "description": "<VulnDiscussion>In certain situations, to provide required functionality, a DBMS needs to execute internal logic (stored procedures, functions, triggers, etc.) and/or external code modules with elevated privileges. However, if the privileges required for execution are at a higher level than the privileges assigned to organizational users invoking the functionality applications/programs, those users are indirectly provided with greater privileges than assigned by organizations.\n\nPrivilege elevation must be used only where necessary and protected from misuse.\n\nThis calls for inspection of application source code, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>In certain situations, to provide required functionality, a DBMS must execute internal logic (stored procedures, functions, triggers, etc.) and/or external code modules with elevated privileges. However, if the privileges required for execution are at a higher level than the privileges assigned to organizational users invoking the functionality applications/programs, those users are indirectly provided with greater privileges than assigned by organizations.\n\nPrivilege elevation must be used only where necessary and protected from misuse.\n\nThis calls for inspection of application source code, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MS SQL Server 2022 Database",
             "dc:publisher": "DISA",
@@ -1653,12 +1653,12 @@
             "+@id": "F-75138r1108179_fix"
           },
           "check": {
-            "+@system": "C-75231r1108891_chk",
+            "+@system": "C-75231r1167491_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2022_Database_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the system documentation to obtain a listing of stored procedures and functions that use impersonation. Execute the following query:\n\nSELECT S.name AS schema_name, O.name AS module_name,\nUSER_NAME(\nCASE M.execute_as_principal_id\nWHEN -2 THEN COALESCE(O.principal_id, S.principal_id)\nELSE M.execute_as_principal_id\nEND\n) AS execute_as\nFROM sys.sql_modules M\nJOIN sys.objects O ON M.object_id = O.object_id\nJOIN sys.schemas S ON O.schema_id = S.schema_id\nWHERE execute_as_principal_id IS NOT NULL\nand       o.name not in \n(             \n'fn_sysdac_get_username',\n                             'fn_sysutility_ucp_get_instance_is_mi',\n                             'sp_send_dbmail',\n                             'sp_SendMailMessage',\n                             'sp_syscollector_create_collection_set',\n                             'sp_syscollector_delete_collection_set',\n                             'sp_syscollector_disable_collector',\n                             'sp_syscollector_enable_collector',\n                             'sp_syscollector_get_collection_set_execution_status',\n                             'sp_syscollector_run_collection_set',\n                             'sp_syscollector_start_collection_set',\n                             'sp_syscollector_update_collection_set',\n                             'sp_syscollector_upload_collection_set',\n                             'sp_syscollector_verify_collector_state',\n                             'sp_syspolicy_add_policy',\n                             'sp_syspolicy_add_policy_category_subscription',\n                             'sp_syspolicy_delete_policy',\n                             'sp_syspolicy_delete_policy_category_subscription',\n                             'sp_syspolicy_update_policy',\n                             'sp_sysutility_mi_add_ucp_registration',\n                             'sp_sysutility_mi_disable_collection',\n                             'sp_sysutility_mi_enroll',\n                             'sp_sysutility_mi_initialize_collection',\n                             'sp_sysutility_mi_remove',\n                             'sp_sysutility_mi_remove_ucp_registration',\n                             'sp_sysutility_mi_upload',\n                             'sp_sysutility_mi_validate_enrollment_preconditions',\n                             'sp_sysutility_ucp_add_mi',\n                             'sp_sysutility_ucp_add_policy',\n                             'sp_sysutility_ucp_calculate_aggregated_dac_health',\n                             'sp_sysutility_ucp_calculate_aggregated_mi_health',\n                             'sp_sysutility_ucp_calculate_computer_health',\n                             'sp_sysutility_ucp_calculate_dac_file_space_health',\n                             'sp_sysutility_ucp_calculate_dac_health',\n                             'sp_sysutility_ucp_calculate_filegroups_with_policy_violations',\n                             'sp_sysutility_ucp_calculate_health',\n                             'sp_sysutility_ucp_calculate_mi_file_space_health',\n                             'sp_sysutility_ucp_calculate_mi_health',\n                             'sp_sysutility_ucp_configure_policies',\n                             'sp_sysutility_ucp_create',\n                             'sp_sysutility_ucp_delete_policy',\n                             'sp_sysutility_ucp_delete_policy_history',\n                             'sp_sysutility_ucp_get_policy_violations',\n                             'sp_sysutility_ucp_initialize',\n                             'sp_sysutility_ucp_initialize_mdw',\n                             'sp_sysutility_ucp_remove_mi',\n                             'sp_sysutility_ucp_update_policy',\n                             'sp_sysutility_ucp_update_utility_configuration',\n                             'sp_sysutility_ucp_validate_prerequisites',\n                             'sp_validate_user',\n                             'syscollector_collection_set_is_running_update_trigger',\n                             'sysmail_help_status_sp'\n)\n\nORDER BY schema_name, module_name\n\nIf any procedures or functions are returned that are not documented, this is a finding."
+            "check-content": "Review the system documentation to obtain a listing of stored procedures and functions that use impersonation. Execute the following query:\n\nSELECT S.name AS schema_name, O.name AS module_name,\nUSER_NAME(\nCASE M.execute_as_principal_id\nWHEN -2 THEN COALESCE(O.principal_id, S.principal_id)\nELSE M.execute_as_principal_id\nEND\n) AS execute_as\nFROM sys.sql_modules M\nJOIN sys.objects O ON M.object_id = O.object_id\nJOIN sys.schemas S ON O.schema_id = S.schema_id\nWHERE execute_as_principal_id IS NOT NULL\nand       O.name not in \n(             \n'fn_sysdac_get_username',\n                             'fn_sysutility_ucp_get_instance_is_mi',\n                             'sp_send_dbmail',\n                             'sp_SendMailMessage',\n                             'sp_syscollector_create_collection_set',\n                             'sp_syscollector_delete_collection_set',\n                             'sp_syscollector_disable_collector',\n                             'sp_syscollector_enable_collector',\n                             'sp_syscollector_get_collection_set_execution_status',\n                             'sp_syscollector_run_collection_set',\n                             'sp_syscollector_start_collection_set',\n                             'sp_syscollector_update_collection_set',\n                             'sp_syscollector_upload_collection_set',\n                             'sp_syscollector_verify_collector_state',\n                             'sp_syspolicy_add_policy',\n                             'sp_syspolicy_add_policy_category_subscription',\n                             'sp_syspolicy_delete_policy',\n                             'sp_syspolicy_delete_policy_category_subscription',\n                             'sp_syspolicy_update_policy',\n                             'sp_sysutility_mi_add_ucp_registration',\n                             'sp_sysutility_mi_disable_collection',\n                             'sp_sysutility_mi_enroll',\n                             'sp_sysutility_mi_initialize_collection',\n                             'sp_sysutility_mi_remove',\n                             'sp_sysutility_mi_remove_ucp_registration',\n                             'sp_sysutility_mi_upload',\n                             'sp_sysutility_mi_validate_enrollment_preconditions',\n                             'sp_sysutility_ucp_add_mi',\n                             'sp_sysutility_ucp_add_policy',\n                             'sp_sysutility_ucp_calculate_aggregated_dac_health',\n                             'sp_sysutility_ucp_calculate_aggregated_mi_health',\n                             'sp_sysutility_ucp_calculate_computer_health',\n                             'sp_sysutility_ucp_calculate_dac_file_space_health',\n                             'sp_sysutility_ucp_calculate_dac_health',\n                             'sp_sysutility_ucp_calculate_filegroups_with_policy_violations',\n                             'sp_sysutility_ucp_calculate_health',\n                             'sp_sysutility_ucp_calculate_mi_file_space_health',\n                             'sp_sysutility_ucp_calculate_mi_health',\n                             'sp_sysutility_ucp_configure_policies',\n                             'sp_sysutility_ucp_create',\n                             'sp_sysutility_ucp_delete_policy',\n                             'sp_sysutility_ucp_delete_policy_history',\n                             'sp_sysutility_ucp_get_policy_violations',\n                             'sp_sysutility_ucp_initialize',\n                             'sp_sysutility_ucp_initialize_mdw',\n                             'sp_sysutility_ucp_remove_mi',\n                             'sp_sysutility_ucp_update_policy',\n                             'sp_sysutility_ucp_update_utility_configuration',\n                             'sp_sysutility_ucp_validate_prerequisites',\n                             'sp_validate_user',\n                             'syscollector_collection_set_is_running_update_trigger',\n                             'sysmail_help_status_sp'\n)\n\nORDER BY schema_name, module_name\n\nIf any procedures or functions are returned that are not documented, this is a finding."
           }
         }
       },
@@ -1706,7 +1706,7 @@
         "title": "SRG-APP-000416-DB-000380",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271199r1108919_rule",
+          "+@id": "SV-271199r1117186_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQLD-22-003200",

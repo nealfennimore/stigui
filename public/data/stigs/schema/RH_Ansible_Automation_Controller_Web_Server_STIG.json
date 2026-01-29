@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2025-11-20"
     },
     "title": "Red Hat Ansible Automation Controller Web Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1171,7 +1171,7 @@
         "title": "SRG-APP-000014-WSR-000006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256941r1016548_rule",
+          "+@id": "SV-256941r1155084_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000030",
@@ -1189,19 +1189,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "As a System Administrator for each Automation Controller Web Server, reconfigure the TLS versions or ciphers used in Automation Controller's web server:\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' `\nsudo -e ${NGINXCONF}\n\nReplace the line beginning with \"ssl_protocols\" to match (note the leading spaces):\n\"        ssl_protocols TLSv1.2;\"\n\nIf the \"ssl_protocols\" variable does not exist, add the line after the line beginning with \"ssl_ciphers\".\n\nReplace the line beginning with \"ssl_ciphers\" to match (note the leading spaces):\n\"        ssl_ciphers PROFILE=SYSTEM;\"\n\nSave the file and exit the text editor. To apply these changes to the running service immediately, restart the NGINX service with the following command:\n\nsudo systemctl restart nginx\n\nDatabase TLS Configuration Fix:\n\nLocate the inventory file used to install Ansible Automation Platform and edit it, ensuring that the following variables are set:\n\npg_sslmode='verify-full'\npostgres_use_ssl=true\n\nRun the setup.sh command in the installer bundle directory to reconfigure the controller to use the new setting:\n\nsudo ./setup.sh",
-            "+@fixref": "F-60558r1016547_fix"
+            "+content": "Web Server TLS and Cipher Configuration\n\nAs a system administrator for each Automation Controller NGINX web server:\n\n1. Identify the active configuration file:\nNGINXCONF=$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\n\n2. Edit the configuration:\nsudo -e \"$NGINXCONF\"\n\n3. Ensure the ssl_protocols line is configured as (note the leading spaces):\n\"        ssl_protocols TLSv1.2 TLSv1.3;\n\nIf the directive does not exist, add it immediately after the ssl_ciphers line.\n\n4. Ensure the ssl_ciphers line is configured as(note the leading spaces):\n\"        ssl_ciphers PROFILE=SYSTEM;\"\n\n5. Save the file and apply the changes:\nsudo nginx -t && sudo systemctl restart nginx\n\nDatabase TLS Configuration\n\n1. Edit the Ansible Automation Platform installer inventory file and set:\npg_sslmode='verify-full'\npostgres_use_ssl=true\n\n\n2. Reconfigure the controller:\nsudo ./setup.sh",
+            "+@fixref": "F-60558r1155083_fix"
           },
           "fix": {
-            "+@id": "F-60558r1016547_fix"
+            "+@id": "F-60558r1155083_fix"
           },
           "check": {
-            "+@system": "C-60616r1016546_chk",
+            "+@system": "C-60616r1155082_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_Web_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a System Administrator for each Automation Controller NGINX web server, a TLS Configuration Check validates the TLS version used by the server:\n\nNGINXCONF=$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\nsudo grep ssl_protocols ${NGINXCONF} | grep 'ssl_protocols TLSv1.2;' || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nA TLS Configuration Check validates the ciphers used for the web server are provided by the underlying host operating system:\n\nNGINXCONF=$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\nsudo grep ssl_ciphers ${NGINXCONF} | grep -q '^  *ssl_ciphers PROFILE=SYSTEM;' || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nA Database TLS Configuration Check validates connections to required resources use TLS connections.\n\nAutomation Controller may be configured to connect to PostgreSQL databases with or without TLS. The Administrator must check the contents of the file at /etc/tower/conf.d/postgres.py with root permissions to determine if pg_sslmode was configured with \"verify-full\" for any external databases at the time of installation.\n\nExecute the following command to test the client-side database configuration:\n\nsudo python3 -c 'exec(open(\"/etc/tower/conf.d/postgres.py\").read()); [print(DATABASES[db][\"OPTIONS\"][\"sslmode\"]) for db in DATABASES if DATABASES[db][\"HOST\"] not in (\"127.0.0.1\", \"localhost\")]' | grep 'verify-full' || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nExecute the following commands to test the server-side database configuration:\n\nPGCON=`sudo python3 -c 'exec(open(\"/etc/tower/conf.d/postgres.py\").read());print(\":\".join((DATABASES[\"default\"][\"HOST\"],DATABASES[\"default\"][\"PORT\"])))'`\npsql \"postgresql://${PGCON}/postgres?sslmode=require\" 2>/dev/null || echo FAILED\n\nIf \"FAILED\" is displayed, this is a finding."
+            "check-content": "1. Web Server Must Enforce TLS 1.2 or Higher\n\nAs a system administrator for each Automation Controller NGINX web server, validate the effective TLS protocol configuration.\n\nObtain the active nginx.conf path:\nNGINXCONF=$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\n\nExecute the following command:\nsudo grep -E '^[[:space:]]*ssl_protocols[[:space:]]+.*(TLSv1\\.2|TLSv1\\.3)' \"$NGINXCONF\" >/dev/null || echo \"FAILED\"\n\n\nPass condition: ssl_protocols includes TLSv1.2 or TLSv1.3.\nFail condition: ssl_protocols missing, or only legacy protocols configured.\n\nIf \"FAILED\" is displayed, this is a finding.\n\n\n2. Web Server Must Use Host OS–Provided Cipher Policy.\n\nValidate the cipher suite binding is set to the system crypto policy.\n\nObtain the active nginx.conf path:\nNGINXCONF=$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\n\n\nExecute the following command:\n\nsudo grep -Eq '^[[:space:]]*ssl_ciphers[[:space:]]+PROFILE=SYSTEM[[:space:]]*;[[:space:]]*$' \"$NGINXCONF\" || echo \"FAILED\"\n\nPass condition: ssl_ciphers PROFILE=SYSTEM; (exact directive, whitespace-tolerant).\n\nIf \"FAILED\" is displayed, this is a finding.\n\n3. External Database Connections Must Use TLS With Certificate Verification.\n\nAutomation Controller may be configured to connect to PostgreSQL databases with or without TLS. The Administrator must check the contents of the file at /etc/tower/conf.d/postgres.py with root permissions to determine if pg_sslmode was configured with \"verify-full\" for any external databases at the time of installation.\n\n3.1 Client-Side\n\nExecute the following command:\nsudo python3 -c 'exec(open(\"/etc/tower/conf.d/postgres.py\").read()); import sys; bad=[n for n,c in DATABASES.items() if c.get(\"HOST\") not in (\"127.0.0.1\",\"localhost\",\"\") and c.get(\"OPTIONS\",{}).get(\"sslmode\")!=\"verify-full\"]; sys.exit(0 if not bad else 1)' || echo \"FAILED\"\n\n\nIf \"FAILED\" is displayed, this is a finding.\n\n3.2 Server-Side\n\nConfirm the database server negotiates TLS.\n\nGet DB host:port for the default connection:\nPGCON=$(sudo python3 -c 'exec(open(\"/etc/tower/conf.d/postgres.py\").read()); import sys; d=DATABASES.get(\"default\",{}); h=d.get(\"HOST\",\"\"); p=d.get(\"PORT\",\"\"); print(f\"{h}:{p}\" if h and p else \"\", end=\"\")')\n\n\nValidate SSL with psql (requires psql client):\n\ntest -n \"$PGCON\" && psql \"postgresql://${PGCON}/postgres?sslmode=require\" -qAt -c '\\conninfo' 2>/dev/null | grep -qi 'SSL connection' || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding."
           }
         }
       },
@@ -1521,7 +1521,7 @@
         "title": "SRG-APP-000141-WSR-000081",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256949r960963_rule",
+          "+@id": "SV-256949r1155087_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000310",
@@ -1539,19 +1539,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "As a System Administrator for each Automation Controller NGINX web server, remove the disallowed mime types:\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \nMIME_TYPES=`grep mime $NGINXCONF | awk '{printf $2}' | sed 's/;$//' ` ;\n disallowed_mime_types=('application.*\\sbin' 'application.*\\sexe' 'application.*\\srpm' 'application.*\\smsi' 'application.*\\smsp application.*\\smsm' 'application.*\\sjs') ; \necho \"${disallowed_mime_types[*]}\" | tr ' ' '\\n' >tempfile ; cat $MIME_TYPES | grep -vf tempfile >$MIME_TYPES; rm -f tempfile\n\nRestart NGINX.",
-            "+@fixref": "F-60566r902360_fix"
+            "+content": "As an SA for each Automation Controller NGINX web server, remove the disallowed mime types:\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \nMIME_TYPES=`grep mime $NGINXCONF | awk '{printf $2}' | sed 's/;$//' ` ;\n disallowed_mime_types=('application.*\\sbin' 'application.*\\sexe' 'application.*\\srpm' 'application.*\\smsi' 'application.*\\smsp application.*\\smsm') ; \necho \"${disallowed_mime_types[*]}\" | tr ' ' '\\n' >tempfile ; cat $MIME_TYPES | grep -vf tempfile >$MIME_TYPES; rm -f tempfile\n\nRestart NGINX.",
+            "+@fixref": "F-60566r1155086_fix"
           },
           "fix": {
-            "+@id": "F-60566r902360_fix"
+            "+@id": "F-60566r1155086_fix"
           },
           "check": {
-            "+@system": "C-60624r902359_chk",
+            "+@system": "C-60624r1155085_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_Web_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a System Administrator for each Automation Controller NGINX web server, check the allowed mime types and associated shell applications:\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; MIME_TYPES=`grep mime $NGINXCONF | awk '{printf $2}' | sed 's/;$//' ` ; disallowed_mime_types=('application.*\\sbin' 'application.*\\sexe' 'application.*\\srpm' 'application.*\\smsi' 'application.*\\smsp application.*\\smsm' 'application.*\\sjs') ; echo \"${disallowed_mime_types[*]}\" | tr ' ' '\\n' >tempfile ; cat $MIME_TYPES | grep -f tempfile 1>/dev/null && echo \"FAILED\"; rm -f tempfile\n\nIf \"FAILED\" is displayed, this is a finding."
+            "check-content": "As a system administrator (SA) for each Automation Controller NGINX web server, check the allowed mime types and associated shell applications:\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; MIME_TYPES=`grep mime $NGINXCONF | awk '{printf $2}' | sed 's/;$//' ` ; disallowed_mime_types=('application.*\\sbin' 'application.*\\sexe' 'application.*\\srpm' 'application.*\\smsi' 'application.*\\smsp application.*\\smsm' ) ; echo \"${disallowed_mime_types[*]}\" | tr ' ' '\\n' >tempfile ; cat $MIME_TYPES | grep -f tempfile 1>/dev/null && echo \"FAILED\"; rm -f tempfile\n\nIf \"FAILED\" is displayed, this is a finding."
           }
         }
       },
@@ -1638,7 +1638,7 @@
         "title": "SRG-APP-000142-WSR-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256952r960966_rule",
+          "+@id": "SV-256952r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000370",
@@ -1716,7 +1716,7 @@
         "title": "SRG-APP-000211-WSR-000030",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256954r961095_rule",
+          "+@id": "SV-256954r1138072_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000440",
@@ -1755,7 +1755,7 @@
         "title": "SRG-APP-000223-WSR-000011",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256955r961116_rule",
+          "+@id": "SV-256955r1043180_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000480",
@@ -1839,7 +1839,7 @@
         "title": "SRG-APP-000251-WSR-000157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256957r961158_rule",
+          "+@id": "SV-256957r1155090_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000610",
@@ -1857,19 +1857,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "As a System Administrator for each Automation Controller NGINX web server, verify the NGINX web server configuration file in use is located at '/etc/nginx/nginx.conf'\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \n\nAdd the directive to the NGINX configuration to force a required charset.\n\nsed -i  '/location/i charset_required; ' $NGINXCONF\n\nReload the NGINX server configurations for all NGINX processes.\n\n$ pkill -HUP nginx",
-            "+@fixref": "F-60574r902384_fix"
+            "+content": "As an SA for each Automation Controller NGINX web server, verify the NGINX web server configuration file in use is located at '/etc/nginx/nginx.conf'\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \n\nAdd the directive to the NGINX configuration to force a required charset.\n\nsed -i  '/location/i charset_required; ' $NGINXCONF\n\nReload the NGINX server configurations for all NGINX processes.\n\n$ pkill -HUP nginx",
+            "+@fixref": "F-60574r1155089_fix"
           },
           "fix": {
-            "+@id": "F-60574r902384_fix"
+            "+@id": "F-60574r1155089_fix"
           },
           "check": {
-            "+@system": "C-60632r902383_chk",
+            "+@system": "C-60632r1155088_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_Web_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a System Administrator for each Automation Controller NGINX web server, verify the configuration requires a charset is mandatory.\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; grep 'charset_required' $NGINXCONF || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding."
+            "check-content": "As a system administrator (SA) for each Automation Controller NGINX web server, verify the configuration requires a charset is mandatory.\n\ngrep 'charset_required' \"$(nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}')\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding."
           }
         }
       },
@@ -2167,7 +2167,7 @@
         "title": "SRG-APP-000441-WSR-000181",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256965r961638_rule",
+          "+@id": "SV-256965r1155093_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000920",
@@ -2185,19 +2185,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "As a System Administrator for each Automation Controller NGINX web server host, verify the NGINX web server configuration file in use is located at \"/etc/nginx.nginx.conf\":\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \n\nVerify the location of the NGINX modules libraries:\n\npushd `nginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | sed -n 's/.*modules-path.*=\\s*\\(.*\\)/\\1/p'`\n\nRemove all modules that violate organizationally defined policy.\nExamine runtime loaded modules:\n\ngrep load_module nginx.conf.test | sed -n 's/^\\s*load_module\\s*\\(.*\\)/\\1/p'\n\nRemove all modules that violate organizationally defined policy.\nExamine the remainder of the modules:\n\nnginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | grep -v modules-path \n\nThese modules are compiled into the core NGINX binaries are cannot be removed. Use of any these modules that violate organizationally defined policy must be mitigated.\n\nTo apply these changes to the running service immediately, restart the NGINX service with the following command:\n\nsudo systemctl restart nginx\n\nAlternatively, reinstall Automation Controller for each web server host.",
-            "+@fixref": "F-60582r902408_fix"
+            "+content": "As an SA for each Automation Controller NGINX web server host, verify the NGINX web server configuration file in use is located at \"/etc/nginx/nginx.conf\":\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` ; \n\nVerify the location of the NGINX modules libraries:\n\npushd `nginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | sed -n 's/.*modules-path.*=\\s*\\(.*\\)/\\1/p'`\n\nRemove all modules that violate organizationally defined policy.\nExamine runtime loaded modules:\n\ngrep load_module nginx.conf.test | sed -n 's/^\\s*load_module\\s*\\(.*\\)/\\1/p'\n\nRemove all modules that violate organizationally defined policy.\nExamine the remainder of the modules:\n\nnginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | grep -v modules-path \n\nThese modules are compiled into the core NGINX binaries are cannot be removed. Use of any these modules that violate organizationally defined policy must be mitigated.\n\nTo apply these changes to the running service immediately, restart the NGINX service with the following command:\n\nsudo systemctl restart nginx\n\nAlternatively, reinstall Automation Controller for each web server host.",
+            "+@fixref": "F-60582r1155092_fix"
           },
           "fix": {
-            "+@id": "F-60582r902408_fix"
+            "+@id": "F-60582r1155092_fix"
           },
           "check": {
-            "+@system": "C-60640r902407_chk",
+            "+@system": "C-60640r1155091_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_Web_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a System Administrator for each Automation Controller NGINX web server host, verify the NGINX web server configuration file in use is located at \"/etc/nginx.nginx.conf\":\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` \n\nIf the file does not exist, this is a finding.\n\nVerify the use of only dynamic modules witch are allowed by organizational policy:\n\nallowed_modules=(ssl_module http_v2_module http_realip_module http_addition_module http_xslt_module=dynamic http_image_filter_module=dynamic http_sub_module http_dav_module  http_mp4_module http_gunzip_module http_gzip_static_module http_random_index_module http_secure_link_module http_degradation_module http_slice_module http_stub_status_module http_perl_module=dynamic http_auth_request_module mail_ssl_module stream_ssl_preread_module http_flv_module) ; echo \"${allowed_modules[*]}\" | tr ' ' '\\n' >/tmp/allowed_modules ; nginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | grep -v modules-path | grep -v -Ff /tmp/allowed_modules && echo \"FAILED\";\n\nVerify the use of only runtime modules which are allowed by organizational policy:\n\ngrep load_module $NGINXCONF  | sed -n 's/^\\s*load_module\\s*\\(.*\\)/\\1/p' | grep -v -Ff /tmp/allowed_modules && echo \"FAILED\" ; rm -f /tmp/allowed_modules\n\nIf the output shows \"FAILED\", this is a finding."
+            "check-content": "As a system administrator (SA) for each Automation Controller NGINX web server host, verify the NGINX web server configuration file in use is located at \"/etc/nginx/nginx.conf\":\n\nNGINXCONF=`nginx -V 2>&1 | tr ' ' '\\n' | sed -ne '/conf-path/{s/.*conf-path=\\(.*\\)/\\1/;p}' ` \n\nIf the file does not exist, this is a finding.\n\nVerify the use of only dynamic modules witch are allowed by organizational policy:\n\nallowed_modules=(ssl_module http_v2_module http_realip_module http_addition_module http_xslt_module=dynamic http_image_filter_module=dynamic http_sub_module http_dav_module  http_mp4_module http_gunzip_module http_gzip_static_module http_random_index_module http_secure_link_module http_degradation_module http_slice_module http_stub_status_module http_perl_module=dynamic http_auth_request_module mail_ssl_module stream_ssl_preread_module http_flv_module) ; echo \"${allowed_modules[*]}\" | tr ' ' '\\n' >/tmp/allowed_modules ; nginx -V 2>&1 | grep module | tr ' ' '\\n' | grep module | grep -v modules-path | grep -v -Ff /tmp/allowed_modules && echo \"FAILED\";\n\nVerify the use of only runtime modules which are allowed by organizational policy:\n\ngrep load_module $NGINXCONF  | sed -n 's/^\\s*load_module\\s*\\(.*\\)/\\1/p' | grep -v -Ff /tmp/allowed_modules && echo \"FAILED\" ; rm -f /tmp/allowed_modules\n\nIf the output shows \"FAILED\", this is a finding."
           }
         }
       },
@@ -2206,7 +2206,7 @@
         "title": "SRG-APP-000456-WSR-000187",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256966r961683_rule",
+          "+@id": "SV-256966r1138080_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APWS-AT-000940",

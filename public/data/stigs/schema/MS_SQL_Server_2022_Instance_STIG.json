@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-09"
+      "+@date": "2025-12-08"
     },
     "title": "Microsoft SQL Server 2022 Instance Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3115,7 +3115,7 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271266r1117167_rule",
+          "+@id": "SV-271266r1137654_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQLI-22-003900",
@@ -4688,7 +4688,7 @@
         "title": "SRG-APP-000243-DB-000373",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271327r1117173_rule",
+          "+@id": "SV-271327r1137657_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-009900",
@@ -4727,7 +4727,7 @@
         "title": "SRG-APP-000243-DB-000373",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271328r1117173_rule",
+          "+@id": "SV-271328r1137657_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-009800",
@@ -4766,7 +4766,7 @@
         "title": "SRG-APP-000243-DB-000374",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271329r1117173_rule",
+          "+@id": "SV-271329r1137658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-010000",
@@ -5234,7 +5234,7 @@
         "title": "SRG-APP-000381-DB-000361",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271351r1111086_rule",
+          "+@id": "SV-271351r1167494_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-011800",
@@ -5265,12 +5265,12 @@
             "+@id": "F-75301r1109035_fix"
           },
           "check": {
-            "+@system": "C-75394r1111085_chk",
+            "+@system": "C-75394r1167493_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2022_Instance_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the SQL configuration to verify that audit records are produced when denied actions occur.\n\nTo determine if an audit is configured, execute the following script:\nSELECT name AS 'Audit Name',\nstatus_desc AS 'Audit Status',\naudit_file_path AS 'Current Audit File'\nFROM sys.dm_server_audit_status\n\nIf no records are returned, this is a finding.\n\nExecute the following to verify the following events are included in the server audit specification:\nAPPLICATION_ROLE_CHANGE_PASSWORD_GROUP,\nAUDIT_CHANGE_GROUP,\nBACKUP_RESTORE_GROUP,\nDATABASE_CHANGE_GROUP,\nDATABASE_OBJECT_ACCESS_GROUP,\nDATABASE_OBJECT_CHANGE_GROUP,\nDATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP,\nDATABASE_OBJECT_PERMISSION_CHANGE_GROUP,\nDATABASE_OWNERSHIP_CHANGE_GROUP,\nDATABASE_OPERATION_GROUP,\nDATABASE_PERMISSION_CHANGE_GROUP,\nDATABASE_PRINCIPAL_CHANGE_GROUP,\nDATABASE_PRINCIPAL_IMPERSONATION_GROUP,\nDATABASE_ROLE_MEMBER_CHANGE_GROUP,\nDBCC_GROUP,\nLOGIN_CHANGE_PASSWORD_GROUP,\nLOGOUT_GROUP,\nSCHEMA_OBJECT_CHANGE_GROUP,\nSCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP,\nSCHEMA_OBJECT_PERMISSION_CHANGE_GROUP,\nSERVER_OBJECT_CHANGE_GROUP,\nSERVER_OBJECT_OWNERSHIP_CHANGE_GROUP,\nSERVER_OBJECT_PERMISSION_CHANGE_GROUP,\nSERVER_OPERATION_GROUP,\nSERVER_PERMISSION_CHANGE_GROUP,\nSERVER_PRINCIPAL_CHANGE_GROUP,\nSERVER_PRINCIPAL_IMPERSONATION_GROUP,\nSERVER_ROLE_MEMBER_CHANGE_GROUP,\nSERVER_STATE_CHANGE_GROUP,\nTRACE_CHANGE_GROUP,\nUSER_CHANGE_PASSWORD_GROUP\n\nSELECT a.name AS 'AuditName',\ns.name AS 'SpecName',\nd.audit_action_name AS 'ActionName',\nd.audited_result AS 'Result'\nFROM sys.server_audit_specifications s\nJOIN sys.server_audits a ON s.audit_guid = a.audit_guid\nJOIN sys.server_audit_specification_details d ON s.server_specification_id = d.server_specification_id\nWHERE a.is_state_enabled = 1\nAND d.audit_action_name IN (\n'APPLICATION_ROLE_CHANGE_PASSWORD_GROUP',\n'AUDIT_CHANGE_GROUP',\n'BACKUP_RESTORE_GROUP',\n'DATABASE_CHANGE_GROUP',\n'DATABASE_OBJECT_ACCESS_GROUP',\n'DATABASE_OBJECT_CHANGE_GROUP',\n'DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'DATABASE_OBJECT_PERMISSION_CHANGE_GROUP',\n'DATABASE_OWNERSHIP_CHANGE_GROUP',\n'DATABASE_OPERATION_GROUP',\n'DATABASE_PERMISSION_CHANGE_GROUP',\n'DATABASE_PRINCIPAL_CHANGE_GROUP',\n'DATABASE_PRINCIPAL_IMPERSONATION_GROUP',\n'DATABASE_ROLE_MEMBER_CHANGE_GROUP', \n'DBCC_GROUP',\n'LOGIN_CHANGE_PASSWORD_GROUP',\n'LOGOUT_GROUP',\n'SCHEMA_OBJECT_CHANGE_GROUP',\n'SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP',\n'SERVER_OBJECT_CHANGE_GROUP',\n'SERVER_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'SERVER_OBJECT_PERMISSION_CHANGE_GROUP',\n'SERVER_OPERATION_GROUP',\n'SERVER_PERMISSION_CHANGE_GROUP',\n'SERVER_PRINCIPAL_CHANGE_GROUP',\n'SERVER_PRINCIPAL_IMPERSONATION_GROUP',\n'SERVER_ROLE_MEMBER_CHANGE_GROUP',\n'SERVER_STATE_CHANGE_GROUP',\n'TRACE_CHANGE_GROUP',\n'USER_CHANGE_PASSWORD_GROUP'\n)\nOrder by d.audit_action_name\n\nIf the identified groups are not returned, this is a finding."
+            "check-content": "Review the SQL configuration to verify that audit records are produced when denied actions occur.\n\nTo determine if an audit is configured, execute the following script:\n\nSELECT name AS 'Audit Name',\nstatus_desc AS 'Audit Status',\naudit_file_path AS 'Current Audit File'\nFROM sys.dm_server_audit_status\n\nIf no records are returned, this is a finding.\n\nExecute the following to verify the following events are included in the server audit specification:\n\nAPPLICATION_ROLE_CHANGE_PASSWORD_GROUP,\nAUDIT_CHANGE_GROUP,\nBACKUP_RESTORE_GROUP,\nDATABASE_CHANGE_GROUP,\nDATABASE_OBJECT_ACCESS_GROUP,\nDATABASE_OBJECT_CHANGE_GROUP,\nDATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP,\nDATABASE_OBJECT_PERMISSION_CHANGE_GROUP,\nDATABASE_OWNERSHIP_CHANGE_GROUP,\nDATABASE_OPERATION_GROUP,\nDATABASE_PERMISSION_CHANGE_GROUP,\nDATABASE_PRINCIPAL_CHANGE_GROUP,\nDATABASE_PRINCIPAL_IMPERSONATION_GROUP,\nDATABASE_ROLE_MEMBER_CHANGE_GROUP,\nDBCC_GROUP,\nLOGIN_CHANGE_PASSWORD_GROUP,\nLOGOUT_GROUP,\nSCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP,\nSCHEMA_OBJECT_PERMISSION_CHANGE_GROUP,\nSERVER_OBJECT_CHANGE_GROUP,\nSERVER_OBJECT_OWNERSHIP_CHANGE_GROUP,\nSERVER_OBJECT_PERMISSION_CHANGE_GROUP,\nSERVER_OPERATION_GROUP,\nSERVER_PERMISSION_CHANGE_GROUP,\nSERVER_PRINCIPAL_CHANGE_GROUP,\nSERVER_PRINCIPAL_IMPERSONATION_GROUP,\nSERVER_ROLE_MEMBER_CHANGE_GROUP,\nSERVER_STATE_CHANGE_GROUP,\nTRACE_CHANGE_GROUP,\nUSER_CHANGE_PASSWORD_GROUP\n\nSELECT a.name AS 'AuditName',\ns.name AS 'SpecName',\nd.audit_action_name AS 'ActionName',\nd.audited_result AS 'Result'\nFROM sys.server_audit_specifications s\nJOIN sys.server_audits a ON s.audit_guid = a.audit_guid\nJOIN sys.server_audit_specification_details d ON s.server_specification_id = d.server_specification_id\nWHERE a.is_state_enabled = 1\nAND d.audit_action_name IN (\n'APPLICATION_ROLE_CHANGE_PASSWORD_GROUP',\n'AUDIT_CHANGE_GROUP',\n'BACKUP_RESTORE_GROUP',\n'DATABASE_CHANGE_GROUP',\n'DATABASE_OBJECT_ACCESS_GROUP',\n'DATABASE_OBJECT_CHANGE_GROUP',\n'DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'DATABASE_OBJECT_PERMISSION_CHANGE_GROUP',\n'DATABASE_OWNERSHIP_CHANGE_GROUP',\n'DATABASE_OPERATION_GROUP',\n'DATABASE_PERMISSION_CHANGE_GROUP',\n'DATABASE_PRINCIPAL_CHANGE_GROUP',\n'DATABASE_PRINCIPAL_IMPERSONATION_GROUP',\n'DATABASE_ROLE_MEMBER_CHANGE_GROUP', \n'DBCC_GROUP',\n'LOGIN_CHANGE_PASSWORD_GROUP',\n'LOGOUT_GROUP',\n'SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP',\n'SERVER_OBJECT_CHANGE_GROUP',\n'SERVER_OBJECT_OWNERSHIP_CHANGE_GROUP',\n'SERVER_OBJECT_PERMISSION_CHANGE_GROUP',\n'SERVER_OPERATION_GROUP',\n'SERVER_PERMISSION_CHANGE_GROUP',\n'SERVER_PRINCIPAL_CHANGE_GROUP',\n'SERVER_PRINCIPAL_IMPERSONATION_GROUP',\n'SERVER_ROLE_MEMBER_CHANGE_GROUP',\n'SERVER_STATE_CHANGE_GROUP',\n'TRACE_CHANGE_GROUP',\n'USER_CHANGE_PASSWORD_GROUP'\n)\nOrder by d.audit_action_name\n\nIf the identified groups are not returned, this is a finding."
           }
         }
       },
@@ -5279,7 +5279,7 @@
         "title": "SRG-APP-000431-DB-000388",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271358r1117179_rule",
+          "+@id": "SV-271358r1137659_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-012400",
@@ -5318,7 +5318,7 @@
         "title": "SRG-APP-000431-DB-000388",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271359r1117179_rule",
+          "+@id": "SV-271359r1137659_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-012300",
@@ -5396,7 +5396,7 @@
         "title": "SRG-APP-000456-DB-000390",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271364r1117151_rule",
+          "+@id": "SV-271364r1137667_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-012800",
@@ -5435,7 +5435,7 @@
         "title": "SRG-APP-000456-DB-000400",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271365r1117151_rule",
+          "+@id": "SV-271365r1138543_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQLI-22-018300",
@@ -5747,7 +5747,7 @@
         "title": "SRG-APP-000855-DB-000240",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271400r1111151_rule",
+          "+@id": "SV-271400r1167497_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-019500",
@@ -5765,19 +5765,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the DBMS to require immediate selection of a new password upon account recovery.\n\nEnsure that all scripts, functions, triggers, and stored procedures that are used to create a user or reset a user's password include a line similar to the following password_option:\nMUST_CHANGE\n\nIf MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement will fail.\n\nMore information can be found at https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-login-transact-sql?view=sql-server-ver16.",
-            "+@fixref": "F-75350r1111150_fix"
+            "+content": "Configure the DBMS to require immediate selection of a new password for accounts using SQL login upon account recovery.\n\nEnsure all scripts, functions, triggers, and stored procedures used to create a user or reset a user's password for SQL logins include a line similar to the following password_option:\n\nMUST_CHANGE\n\nIf MUST_CHANGE is specified, CHECK_EXPIRATION and CHECK_POLICY must be set to ON. Otherwise, the statement will fail.\n\nMore information can be found at https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-login-transact-sql?view=sql-server-ver16.",
+            "+@fixref": "F-75350r1167496_fix"
           },
           "fix": {
-            "+@id": "F-75350r1111150_fix"
+            "+@id": "F-75350r1167496_fix"
           },
           "check": {
-            "+@system": "C-75443r1111149_chk",
+            "+@system": "C-75443r1167495_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2022_Instance_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check for use of SQL Server Authentication:\nSELECT CASE SERVERPROPERTY('IsIntegratedSecurityOnly') WHEN 1 THEN 'Windows Authentication' WHEN 0 THEN 'SQL Server Authentication' END as [Authentication Mode]\n\nIf the returned value in the \"Authentication Mode\" column is \"Windows Authentication\", this is not a finding.\n\nIf the returned value is not \"Windows Authentication\", verify SQL Server is configured to require immediate selection of a new password upon account recovery.\n\nAll scripts, functions, triggers, and stored procedures that are used to create a user or reset a user's password should include a line similar to the following password_option:\nMUST_CHANGE\n\nExample:\nCREATE LOGIN STIG_test WITH PASSWORD ='Password' MUST_CHANGE, \n     CHECK_EXPIRATION = ON,\n     CHECK_POLICY = ON;\n\nIf they do not, this is a finding.\n\nIf SQL Server is not configured to require immediate selection of a new password upon account recovery, this is a finding."
+            "check-content": "Check for use of SQL Server Authentication:\n\nSELECT CASE SERVERPROPERTY('IsIntegratedSecurityOnly') WHEN 1 THEN 'Windows Authentication' WHEN 0 THEN 'SQL Server Authentication' END as [Authentication Mode]\n\nIf the returned value in the \"Authentication Mode\" column is \"Windows Authentication\", this is not a finding.\n\nIf the returned value is not \"Windows Authentication\", verify SQL Server is configured to require immediate selection of a new password upon account recovery.\n\nAll scripts, functions, triggers, and stored procedures used to create a user or reset a user's password for SQL logins should include a line similar to the following password_option:\n\nMUST_CHANGE\n\nExample:\nCREATE LOGIN STIG_test WITH PASSWORD ='Password' MUST_CHANGE, \n     CHECK_EXPIRATION = ON,\n     CHECK_POLICY = ON;\n\nIf they do not, this is a finding.\n\nIf SQL Server is not configured to require immediate selection of a new password upon account recovery for accounts using SQL login, this is a finding."
           }
         }
       },
@@ -5786,7 +5786,7 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-274444r1117167_rule",
+          "+@id": "SV-274444r1137654_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SQLI-22-016200",
