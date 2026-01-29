@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-09"
+      "+@date": "2025-12-09"
     },
     "title": "Oracle Database 19c Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3574,12 +3574,12 @@
         "title": "SRG-APP-000001-DB-000031",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270495r1115953_rule",
+          "+@id": "SV-270495r1167748_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-000100",
           "title": "Oracle Database must limit the number of concurrent sessions for each system account to an organization-defined number of sessions.",
-          "description": "<VulnDiscussion>Database management includes the ability to control the number of users and user sessions using a database management system (DBMS). Unlimited concurrent connections to the DBMS could allow a successful denial-of-service (DoS) attack by exhausting connection resources; and a system can also fail or be degraded by an overload of legitimate users. Limiting the number of concurrent sessions per user is helpful in reducing these risks.\n\nThis requirement addresses concurrent session control for a single account. It does not address concurrent sessions by a single user via multiple system accounts; and it does not deal with the total number of sessions across all accounts.\n\nThe capability to limit the number of concurrent sessions per user must be configured in or added to the DBMS (for example, by use of a logon trigger), when this is technically feasible. Note that it is not sufficient to limit sessions via a web server or application server alone, because legitimate users and adversaries can potentially connect to the DBMS by other means.\n\nThe organization will need to define the maximum number of concurrent sessions by account type, by account, or a combination thereof. In deciding on the appropriate number, it is important to consider the work requirements of the various types of users. For example, two might be an acceptable limit for general users accessing the database via an application; but 10 might be too few for a database administrator using a database management GUI tool, where each query tab and navigation pane may count as a separate session.\n\n(Sessions may also be referred to as connections or logons, which for the purposes of this requirement are synonyms.)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Database management includes the ability to control the number of users and user sessions using a database management system (DBMS). Unlimited concurrent connections to the DBMS could allow a successful denial-of-service (DoS) attack by exhausting connection resources; and a system can also fail or be degraded by an overload of legitimate users. Limiting the number of concurrent sessions per user is helpful in reducing these risks. \n\nThis requirement addresses concurrent session control for a single account. It does not address concurrent sessions by a single user via multiple system accounts; and it does not deal with the total number of sessions across all accounts.\n\nThe capability to limit the number of concurrent sessions per user must be configured in or added to the DBMS by modifying user database profiles.\n\nNote that it is not sufficient to limit sessions via a web server or application server alone, because legitimate users and adversaries can potentially connect to the DBMS by other means.\n\nThe organization must to define the maximum number of concurrent sessions by user type, by account, or a combination thereof. In deciding on the appropriate number, it is important to consider the work requirements of the various types of users. For example, two might be an acceptable limit for general users accessing the database via an application; but three might be too few for a database administrator using a database management GUI tool, where each query tab and navigation pane may count as a separate session: An account associated with a connection pool might require hundreds or thousands.\n\n(Sessions may also be referred to as connections or logons, which for the purposes of this requirement are synonyms.)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3592,19 +3592,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Limit concurrent connections for each system account to a number less than or equal to the organization-defined number of sessions using the following SQL. Create profiles that conform to the requirements. Assign users to the appropriate profile.\n\nThe user profile, ORA_STIG_PROFILE, has been provided with Oracle 19c to satisfy the STIG requirements pertaining to the profile parameters. Oracle recommends that this profile be customized with any site-specific requirements and assigned to all users where applicable. Note: If it remains necessary to create a customized replacement for the password validation function, ORA12C_STIG_VERIFY_FUNCTION can be used as a starting point to verify password complexity.\n \nThe defaults for ORA_STIG_PROFILE are set as follows:\n\nResource Name                                                                       Limit\n---------------------------                                                -----------------------\nCOMPOSITE_LIMIT                                                DEFAULT\nSESSIONS_PER_USER                                            DEFAULT\nCPU_PER_SESSION                                                 DEFAULT\nCPU_PER_CALL                                                       DEFAULT\nLOGICAL_READS_PER_SESSION                        DEFAULT\nLOGICAL_READS_PER_CALL                              DEFAULT\nIDLE_TIME                                                               15\nCONNECT_TIME                                                      DEFAULT\nPRIVATE_SGA                                                          DEFAULT\nFAILED_LOGIN_ATTEMPTS                                  3 \nPASSWORD_LIFE_TIME                                         60\nPASSWORD_REUSE_TIME                                     365\nPASSWORD_REUSE_MAX                                     10\nPASSWORD_VERIFY_FUNCTION  ORA12C_STIG_VERIFY_FUNCTION\nPASSWORD_LOCK_TIME                                       UNLIMITED\nPASSWORD_GRACE_TIME                                     5\n\nThe recommended value for the SESSIONS_PER_USER setting in Oracle 19c is 10 or less. Limiting the number of concurrent sessions can help prevent memory resource exhaustion from poorly formed requests, denial-of-service attacks, and a single user tying up all resources.\n\nChange the value of SESSIONS_PER_USER (along with the other parameters, where relevant) from UNLIMITED to DOD-compliant, site-specific requirements for the ORA_STIG_PROFILE and then assign users to the ORA_STIG_PROFILE profile.",
-            "+@fixref": "F-74429r1115952_fix"
+            "+content": "Limit concurrent connections for each system account to a number less than or equal to the organization-defined number of sessions using the following SQL. Create profiles that conform to the requirements. Assign users to the appropriate profile.\n\nThe user profile, ORA_STIG_PROFILE, has been provided with Oracle 19c to satisfy the STIG requirements pertaining to profile parameters. Oracle recommends that this profile be customized with requirements and assigned to all users through the creation of user type specific profiles such as (Single-Session, Administrators, Application Connection Pool) where applicable. \n\nNote: The ORA_STIG_PROFILE limit for SESSIONS_PER_USER is DEFAULT which is, on installation, not compliant and must be configured for each database and in a container database for CDB$ROOT and, potentially, for each PDB.\n\nSet concurrent sessions for each profile with the following SQL statement, as required.\n\nALTER PROFILE <profile_name> LIMIT SESSIONS_PER_USER <integer>;",
+            "+@fixref": "F-74429r1167747_fix"
           },
           "fix": {
-            "+@id": "F-74429r1115952_fix"
+            "+@id": "F-74429r1167747_fix"
           },
           "check": {
-            "+@system": "C-74528r1064761_chk",
+            "+@system": "C-74528r1167723_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Retrieve the settings for concurrent sessions for each profile with the query:\nSELECT * FROM SYS.DBA_PROFILES WHERE RESOURCE_NAME = 'SESSIONS_PER_USER';\n\nIf the DBMS settings for concurrent sessions for each profile are greater than the site-specific maximum number of sessions, this is a finding."
+            "check-content": "Retrieve the settings for concurrent sessions for each profile with the query:\n\nSELECT con_id, inherited, limit FROM sys.cdb_profiles WHERE resource_name = 'SESSIONS_PER_USER';\n\nIf the DBMS settings for concurrent sessions for each profile are greater than the site-specific maximum number of sessions (or the database maximum number of sessions) for the user type, this is a finding.\n\nThe reason for \"site-specific\" is because two different databases at different \"sites\" could have very different requirements.\nAlso, two different databases at the same \"site\" (data center) could have very different requirements."
           }
         }
       },
@@ -3613,12 +3613,12 @@
         "title": "SRG-APP-000001-DB-000031",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270496r1064766_rule",
+          "+@id": "SV-270496r1167727_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-000200",
           "title": "Oracle Database must protect against or limit the effects of organization-defined types of denial-of-service (DoS) attacks.",
-          "description": "<VulnDiscussion>A variety of technologies exist to limit, or in some cases, eliminate the effects of DoS attacks. For example, boundary protection devices can filter certain types of packets to protect devices on an organization's internal network from being directly affected by DoS attacks.\n\nEmploying increased capacity and bandwidth combined with service redundancy may reduce the susceptibility to some DoS attacks.\n\nSome of the ways databases can limit their exposure to DoS attacks are through limiting the number of connections that can be opened by a single user and database clustering.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DOS attacks, more correctly characterized as \"Denial-of-Service Events\" as they most often the result of run-away processes and accidents, are the result of an excessive demand for a limiting resource.\n\nA variety of technologies exist to limit, or in some cases, eliminate the effects of DoS attacks. For example, boundary protection devices can filter certain types of packets to protect devices on an organization's internal network from being directly affected by DoS attacks but within the database itself, Oracle provides the following mechanisms:\n\n1. Reduction of excessive concurrent connections from a single user (see STIG_ID O19C-00-000100).\n2. Limiting the database connection rate (LISTENER.ORA).\n3. Limiting the amount of CPU available to users with Profile kernel limits.\n4. Limiting the amount of I/O available to users with Profile kernel limits.\n5. Limiting the amount of storage space with tablespace quotas.\n6. Limiting idle time with profile kernel limits.\n\nOther best practices such as limiting the number of parallel handles available to users with Resource Manager Plans or using CMAN are also recommended as part of an overall plan for DoS prevention.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3631,19 +3631,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Implement measures to limit the effects of organization-defined types of DoS attacks.\n\nModify the $ORACLE_HOME/network/admin/listener.ora to establish a Rate Limit.\n\nRestart the listener for changes to take effect.\n\nMore information can be found at https://docs.oracle.com/en/database/oracle/oracle-database/19/netrf/oracle-net-listener-parameters-in-listener-ora.html#GUID-980ED9B7-2D41-4419-BF3E-A1C96FF0F880.",
-            "+@fixref": "F-74430r1064765_fix"
+            "+content": "Implement measures to limit the effects of organization-defined types of DoS attacks.\n\nFor each of the three queries in the Check, if there are findings, make the changes required to bring the environment into compliance.\n\nFor Listing 1:\nModify the $ORACLE_HOME/network/admin/listener.ora to establish a Rate Limit.\nRestart the listener for changes to take effect.\n\nFor Listing 2:\nSet limits on all profiles for CPU_PER_CALL, IDLE_TIME, and LOGICAL_READS_PER_CALL.\n\nFor Listing 3:\nEnforce reasonable limits for tablespace consumption sufficient to prevent a DOS attack from impacting multiple applications or multiple services.",
+            "+@fixref": "F-74430r1167726_fix"
           },
           "fix": {
-            "+@id": "F-74430r1064765_fix"
+            "+@id": "F-74430r1167726_fix"
           },
           "check": {
-            "+@system": "C-74529r1064764_chk",
+            "+@system": "C-74529r1167725_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review database management system (DBMS) settings to verify the DBMS implements measures to limit the effects of the organization-defined types of DoS attacks.\n\nCheck the $ORACLE_HOME/network/admin/listener.ora to verify a Rate Limit has been established. A rate limit is used to prevent DoS attacks on a database or to control a logon storm such as may be caused by an application server reboot.\n\nIf a rate limit has not been set similar to the example below, this is a finding.\n\n- - - - -\nExample of a listener configuration with rate limiting in effect:\n\nCONNECTION_RATE_LISTENER=10\n\nLISTENER=\n(ADDRESS_LIST=\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521)(RATE_LIMIT=yes))\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1522)(RATE_LIMIT=yes))\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1526))\n)\nLISTENER=\n(ADDRESS_LIST=\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521)(RATE_LIMIT=8))\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1522)(RATE_LIMIT=12))\n(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1526))\n)"
+            "check-content": "Review database management system (DBMS) settings to verify the DBMS implements measures to limit the effects of a DoS event.\n\nRate Limit:\n\nCheck the $ORACLE_HOME/network/admin/listener.ora to verify a Rate Limit has been established. A rate limit is used to prevent DoS attacks on a database or to control a logon storm such as may be caused by an application server or pool restart.\n\nIf a rate limit has not been set similar to one of the two examples in Listing 1, this is a finding.\n \nListing 1\nCONNECTION_RATE_LISTENER=10\nLISTENER= (\n  ADDRESS_LIST=\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521)(RATE_LIMIT=yes))\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1522)(RATE_LIMIT=yes))\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1526))\n           )\nLISTENER=\n  (ADDRESS_LIST=\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521)(RATE_LIMIT=8))\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1522)(RATE_LIMIT=12))\n    (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1526))\n           )\n\nDatabase Profiles:\nIf the database profiles, as shown in Listing 2 do not contain resource controls similar to those shown, but appropriate to the target database's infrastructure and utilization, that is a finding.\n\nListing 2\nSELECT cp.con_id, cp.profile, cp.resource_name, cp.limit\nFROM sys.cdb_profiles cp\nWHERE resource_name IN ('CPU_PER_CALL', 'IDLE_TIME', 'LOGICAL_READS_PER_CALL');\nORDER BY 1,2,3;\n\n\nTablespace Quota:\n\nListing 3\nSELECT ctq.con_id, ctq.tablespace_name, ctq.username, ctq.max_bytes, ctq.max_blocks\nFROM sys.cdb_ts_quotas ctq\nWHERE ((max_bytes = -1) OR (max_blocks = -1))\nAND (ctq.con_id, ctq.tablespace_name) IN (SELECT ct.con_id, ct.tablespace_name FROM sys.cdb_tablespaces ct)\nORDER BY 1;\n\nIf any rows returned have a MAX_BYTES or MAX_BLOCKS equal to minus one (-1) that is a finding."
           }
         }
       },
@@ -3652,12 +3652,12 @@
         "title": "SRG-APP-000295-DB-000305",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270497r1064769_rule",
+          "+@id": "SV-270497r1167730_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-000300",
           "title": "Oracle Database must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect.",
-          "description": "<VulnDiscussion>This addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions. \n\nSession termination ends all processes associated with a user's logical session except those batch processes/jobs that are specifically created by the user (i.e., session owner) to continue after the session is terminated. \n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific cases where the system owner, data owner, or organization requires additional assurance.\n\nSatisfies: SRG-APP-000295-DB-000305, SRG-APP-000296-DB-000306</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This addresses the termination of user-initiated logical sessions in contrast to the termination of network connections associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions. \n\nSession termination ends all processes associated with a user's logical session except those batch processes/jobs that are specifically created by the user (i.e., session owner) to continue after the session is terminated. \n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific cases where the system owner, data owner, or organization requires additional assurance.\n\nSatisfies: SRG-APP-000295-DB-000305, SRG-APP-000296-DB-000306</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3676,19 +3676,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the database management system (DBMS) to automatically terminate a user session after organization-defined conditions or trigger events requiring session termination.\n\nTo terminate session after a certain amount of time independent of the consumed resources needed by other users, then set the MAX_IDLE_TIME initialization parameter. The MAX_IDLE_TIME parameter specifies the maximum number of minutes that a session can be idle. After the specified amount of time, MAX_IDLE_TIME kills sessions.\n\nALTER SYSTEM SET max_idle_time=15;",
-            "+@fixref": "F-74431r1064768_fix"
+            "+content": "Configure the database management system (DBMS) to automatically terminate a user session after organization-defined conditions, 15 minutes, or a trigger event requiring session termination.\n\nTo terminate a session after a certain amount of time independent of the consumed resources needed by other users, then set the MAX_IDLE_TIME initialization parameter. The MAX_IDLE_TIME parameter specifies the maximum number of minutes a session can be idle. After the specified amount of time, MAX_IDLE_TIME kills sessions.\n\nALTER SYSTEM SET max_idle_time = 15 \nCOMMENT = 'Altered <date> for STIG compliance'  -- self documenting\nSID = '*'                                       -- required for RAC\nSCOPE = BOTH;",
+            "+@fixref": "F-74431r1167729_fix"
           },
           "fix": {
-            "+@id": "F-74431r1064768_fix"
+            "+@id": "F-74431r1167729_fix"
           },
           "check": {
-            "+@system": "C-74530r1064767_chk",
+            "+@system": "C-74530r1167728_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review system documentation to obtain the organization's definition of circumstances requiring automatic session termination. If the documentation explicitly states that such termination is not required or is prohibited, this is not a finding.\n\nIf no documentation exists or an automatic session termination time is not explicitly defined, assume a time of 15 minutes.\n\nTo check the max_idle_time set, run the following query:\nSELECT VALUE FROM V$PARAMETER WHERE NAME = 'max_idle_time';\n\nIf the value returned does not match the documented requirement (or 15 when none is specified), this is a finding."
+            "check-content": "Review system documentation to obtain the organization's definition of circumstances requiring automatic session termination. If the documentation explicitly states that such termination is not required or is prohibited, this is not a finding.\n\nIf no documentation exists or an automatic session termination time is not explicitly defined, assume a time of 15 minutes.\n\nTo check the max_idle_time set, run the following query:\n\nSELECT gp.inst_id, gp.con_id, gp.value\nFROM sys.gv_$parameter gp\nWHERE gp.name = 'max_idle_time';\n\nIf the value returned is \"0\" or does not match the documented requirement (or 15 when none is specified), this is a finding."
           }
         }
       },
@@ -3697,7 +3697,7 @@
         "title": "SRG-APP-000311-DB-000308",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270498r1064772_rule",
+          "+@id": "SV-270498r1167732_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-000500",
@@ -3725,11 +3725,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Define the policy for security labels defined for the data. \n\nDocument the security label requirements and configure database security labels in accordance with the policy.\n\nTo provide reliable security labeling of information in storage, enable DBMS features; deploy third-party software; or add custom data structures, data elements and application code.\n\nFor additional information on Oracle Label Security:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/olsag/label-security-administrators-guide.pdf.",
-            "+@fixref": "F-74432r1064771_fix"
+            "+content": "Define the policy for security labels defined for the data. \n\nDocument the security label requirements and configure database security labels in accordance with the policy.\n\nTo provide reliable security labeling of information in storage, enable DBMS features; deploy third-party software; or add custom data structures, data elements, and application code.\n\nOracle recommends Oracle Label Security.\n\nFor additional information on Oracle Label Security:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/olsag/label-security-administrators-guide.pdf.",
+            "+@fixref": "F-74432r1167731_fix"
           },
           "fix": {
-            "+@id": "F-74432r1064771_fix"
+            "+@id": "F-74432r1167731_fix"
           },
           "check": {
             "+@system": "C-74531r1064770_chk",
@@ -3785,7 +3785,7 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270500r1117167_rule",
+          "+@id": "SV-270500r1167734_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-001000",
@@ -3809,19 +3809,19 @@
             }
           ],
           "fixtext": {
-            "+content": "If Oracle Database Vault is in use, use it to configure the correct access privileges for each type of user.\n\nIf Oracle Database Vault is not in use, configure the correct access privileges for each type of user using Roles and Profiles.\n\nFor more information on the configuration of Database Vault, refer to the Database Vault Administrator's Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/database-vault-administrators-guide.pdf.",
-            "+@fixref": "F-74434r1064777_fix"
+            "+content": "If Oracle Database Vault is in use, use it to configure the correct access privileges for each type of user.\n\nIf Oracle Database Vault is not in use, configure the correct access privileges for each type of user using Roles and Profiles.\n\nOracle recommends using Database Vault.\n\nFor more information on the configuration of Database Vault, refer to the Database Vault Administrator's Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dvadm/database-vault-administrators-guide.pdf.",
+            "+@fixref": "F-74434r1167444_fix"
           },
           "fix": {
-            "+@id": "F-74434r1064777_fix"
+            "+@id": "F-74434r1167444_fix"
           },
           "check": {
-            "+@system": "C-74533r1064776_chk",
+            "+@system": "C-74533r1167733_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check DBMS settings to determine whether users are restricted from accessing objects and data they are not authorized to access. If appropriate access controls are not implemented to restrict access to authorized users and to restrict the access of those users to objects and data they are authorized to verify, this is a finding.\n\nOne option to isolate access is by using the Oracle Database Vault. To check to verify the Oracle Database Vault is installed, issue the following query:\n\nSQL> SELECT * FROM V$OPTION WHERE PARAMETER = 'Oracle Database Vault';\n\nIf Oracle Database Vault is installed, review its settings for appropriateness and completeness of the access it permits and denies to each type of user. If appropriate and complete, this is not a finding.\n\nIf Oracle Database Vault is not installed, review the roles and profiles in the database and the assignment of users to these for appropriateness and completeness of the access permitted and denied each type of user. If appropriate and complete, this is not a finding.\n\nIf the access permitted and denied each type of user is inappropriate or incomplete, this is a finding.\n\nFollowing are code examples for reviewing roles, profiles, etc.\n\nFind out what role the users have:\nselect * from dba_role_privs where granted_role = '<role>'\n\nList all roles given to a user:\nselect * from dba_role_privs where grantee = '<username>';\n\nList all roles for all users:\ncolumn grantee format a32\ncolumn granted_role format a32\nbreak on grantee\nselect grantee, granted_role from dba_role_privs;\n\nUse the following query to list all privileges given to a user:\n\nselect\nlpad(' ', 2*level) || granted_role \"User roles and privileges\"\nfrom\n(\n/* THE USERS */\nselect \nnull grantee, \nusername granted_role\nfrom \ndba_users\nwhere\nusername like upper('<enter_username>')\n/* THE ROLES TO ROLES RELATIONS */\nunion\nselect \ngrantee,\ngranted_role\nfrom\ndba_role_privs\n/* THE ROLES TO PRIVILEGE RELATIONS */\nunion\nselect\ngrantee,\nprivilege\nfrom\ndba_sys_privs\n)\nstart with grantee is null\nconnect by grantee = prior granted_role;\n\nList which tables a certain role gives SELECT access to using the query:\n\nselect * from role_tab_privs where role='<role>' and privilege = 'SELECT';\n\nList all tables a user can SELECT from using the query:\n\nselect * from dba_tab_privs where GRANTEE ='<username>' and privilege = 'SELECT';\n\nList all users who can SELECT on a particular table (either through being given a relevant role or through a direct grant - e.g., grant select on a table to Joe). The result of this query should also show through which role the user has this access or whether it was a direct grant.\n\nselect \nGrantee,'Granted Through Role' as Grant_Type,\nrole,\ntable_name\nfrom role_tab_privs rtp, dba_role_privs drp\nwhere rtp.role = drp.granted_role\nand table_name = '<TABLENAME>'\nunion\nselect\nGrantee,\n'Direct Grant' as Grant_type,\nnull as role,\ntable_name\nfrom dba_tab_privs\nwhere table_name = '<TABLENAME>';"
+            "check-content": "Check DBMS settings to determine whether users are restricted from accessing objects and data they are not authorized to access. If appropriate access controls are not implemented to restrict access to authorized users and to restrict the access of those users to objects and data they are authorized to verify, this is a finding.\n\nOne option to isolate access is by using the Oracle Database Vault. To check to verify the Oracle Database Vault is installed, issue the following query:\n\nSQL> SELECT * FROM sys.v_$option WHERE parameter = 'Oracle Database Vault';\n\nIf Oracle Database Vault is installed, review its settings for appropriateness and completeness of the access it permits and denies to each type of user. If appropriate and complete, this is not a finding.\n\nIf Oracle Database Vault is not installed, review the roles and profiles in the database and the assignment of users to these for appropriateness and completeness of the access permitted and denied each type of user. If appropriate and complete, this is not a finding.\n\nIf the access permitted and denied each type of user is inappropriate or incomplete, this is a finding.\n\nFollowing are code examples for reviewing roles, profiles, etc.\n\nFind out what role the users have:\n\nselect * from sys.cdb_role_privs where granted_role = '<role>'\n\nList all roles given to a user:\n\nselect * from sys.cba_role_privs where grantee = '<username>';\n\nList all roles for all users:\n\ncolumn grantee format a32\ncolumn granted_role format a32\nbreak on grantee\n\nSELECT con_id, grantee, granted_role\nFROM sys.cdb_role_privs\nORDER BY 1,2,3;\n\nUse the following query to list all privileges given to a user:\n\nSELECT LPAD(' ', 2*level) || granted_role \"User roles and privileges\"\nFROM (\n/* THE USERS */\nSELECT con_id, NULL AS grantee, username granted_role\nFROM sys.cdb_users\nWHERE username LIKE UPPER('<enter_username>')\n/* THE ROLES TO ROLES RELATIONS */\nUNION SELECT con_id, grantee, granted_role\nFROM sys.cdb_role_privs\n/* THE ROLES TO PRIVILEGE RELATIONS */\nUNION\nSELECT con_id, grantee, privilege\nFROM sys.cdb_sys_privs)\nSTART WITH grantee IS NULL\nCONNECT BY grantee = PRIOR granted_role;\n\nList which tables a certain role gives SELECT and READ access to using the query:\n\nSELECT * FROM sys.role_tab_privs WHERE role = '<role>'\nAND privilege IN ('READ', 'SELECT');\n\nList all tables a user can SELECT and READ from using the query:\n\nSELECT * FROM sys.cdb_tab_privs\nWHERE grantee ='<username>' AND privilege IN ('READ', 'SELECT');\n\nList all users who can SELECT on a particular table (either through being given a relevant role or through a direct grant, e.g., grant select on a table to Joe). The result of this query should also show through which role the user has this access or whether it was a direct grant.\n\nSELECT grantee,'Granted Through Role' as Grant_Type, role, table_name\nFROM CONTAINERS(sys.role_tab_privs) rtp, sys.cdb_role_privs crp\nWHERE rtp.role = crp.granted_role\nAND rtp.con_id = crp.con_id\nAND table_name = '<TABLENAME>'\nUNION\nSELECT grantee, 'Direct Grant' as Grant_Type, NULL AS role, table_name\nFROM sys.cdb_tab_privs\nWHERE table_name = '<TABLENAME>';"
           }
         }
       },
@@ -3830,12 +3830,12 @@
         "title": "SRG-APP-000080-DB-000063",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270501r1064781_rule",
+          "+@id": "SV-270501r1167736_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "O19C-00-001700",
           "title": "Oracle Database must protect against an individual who uses a shared account falsely denying having performed a particular action.",
-          "description": "<VulnDiscussion>Nonrepudiation of actions taken is required to maintain application integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message.\n\nNonrepudiation protects individuals against later claims by an author of not having authored a particular document, a sender of not having transmitted a message, a receiver of not having received a message, or a signatory of not having signed a document. \n\nAuthentication via shared accounts does not provide individual accountability for actions taken on the database management system (DBMS) or data. Whenever a single database account is used to connect to the database, a secondary authentication method that provides individual accountability is required. This scenario most frequently occurs when an externally hosted application authenticates individual users to the application and the application uses a single account to retrieve or update database information on behalf of the individual users.\n\nWhen shared accounts are used without another means of identifying individual users, users may deny having performed a particular action.\n\nThis calls for inspection of application source code, which requires collaboration with the application developers. In many cases, the database administrator (DBA) is organizationally separate from the application developers and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the database administrator (DBA) must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.\n\nSatisfies: SRG-APP-000080-DB-000063, SRG-APP-000815-DB-000160</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Nonrepudiation of actions taken is required to maintain application integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message.\n\nNonrepudiation protects individuals against later claims by an author of not having authored a particular document, a sender of not having transmitted a message, a receiver of not having received a message, or a signatory of not having signed a document. \n\nAuthentication via shared accounts does not provide individual accountability for actions taken on the database management system (DBMS) or data. Whenever a single database account is used to connect to the database, a secondary authentication method that provides individual accountability is required. This scenario most frequently occurs when an externally hosted application authenticates individual users to the application and the application uses a single account to retrieve or update database information on behalf of the individual users.\n\nWhen shared accounts are used without another means of identifying individual users, users may deny having performed a particular action.\n\nThis calls for inspection of application source code, which requires collaboration with the application developers. In many cases, the database administrator (DBA) is organizationally separate from the application developers and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.\n\nSatisfies: SRG-APP-000080-DB-000063, SRG-APP-000815-DB-000160</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3854,19 +3854,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Use accounts assigned to individual users. Configure DBMS to provide individual accountability at the DBMS level, and in audit logs, for actions performed under a shared database account.\n\nModify applications and data tables that are not capturing individual user identity to do so.\n\nCreate and enforce the use of individual user IDs for logging on to Oracle tools and third-party products.\n\nIf Oracle auditing is not already enabled, enable it.\n\nIf Standard Auditing is used:\nIf Oracle (or third-party) auditing is not already enabled, enable it. For Oracle auditing, use this query:\n\nALTER SYSTEM SET AUDIT_TRAIL=<audit trail type> SCOPE=SPFILE;\n\nAudit trail type can be 'OS', 'DB', 'DB,EXTENDED', 'XML' or 'XML,EXTENDED'.\n\nAfter executing this statement, it may be necessary to shut down and restart the Oracle database.\n\nIf Unified Auditing is used:\nLink the oracle binary with uniaud_on, and then restart the database. Oracle Database Upgrade Guide describes how to enable unified auditing.\n\nFor more information on the configuration of auditing, refer to the following documents:\n\n\"Auditing Database Activity\" in the Oracle Database 19c Security Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"Monitoring Database Activity with Auditing\" in the Oracle Database Security Guide: \nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"DBMS_AUDIT_MGMT\" in the Oracle Database PL/SQL Packages and Types Reference:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/\n\nOracle Database Upgrade Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/index.html\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations above.\n\nIf this level of auditing does not meet site-specific requirements, consider deploying the Oracle Audit Vault. The Audit Vault is a highly configurable option from Oracle made specifically for performing the audit functions. It has reporting capabilities as well as user-defined rules that provide additional flexibility for complex auditing requirements.",
-            "+@fixref": "F-74435r1064780_fix"
+            "+content": "Use accounts assigned to individual users. Configure DBMS to provide individual accountability at the DBMS level, and in audit logs, for actions performed under a shared database account.\n\nModify applications and data tables that are not capturing individual user identity to do so.\n\nCreate and enforce the use of individual user IDs for logging on to Oracle tools and third-party products.\n\nIf Oracle auditing is not already enabled, enable it.\n\nIf Standard Auditing is used:\nIf Oracle (or third-party) auditing is not already enabled, enable it. For Oracle auditing, use this query:\n\nALTER SYSTEM SET AUDIT_TRAIL=<audit trail type> SID='*' SCOPE=SPFILE;\n\nAudit trail type can be 'OS', 'DB', 'DB,EXTENDED', 'XML' or 'XML,EXTENDED'.\n\nAfter executing this statement, it may be necessary to shut down and restart the Oracle database.\n\nIf Unified Auditing is used:\nLink the oracle binary with uniaud_on, and then restart the database. Oracle Database Upgrade Guide describes how to enable unified auditing.\n\nFor more information on the configuration of auditing, refer to the following documents:\n\n\"Auditing Database Activity\" in the Oracle Database 19c Security Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"Monitoring Database Activity with Auditing\" in the Oracle Database Security Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"DBMS_AUDIT_MGMT\" in the Oracle Database PL/SQL Packages and Types Reference:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/\n\nOracle Database Upgrade Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/index.html\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations above.\n\nIf this level of auditing does not meet site-specific requirements, consider deploying the Oracle Audit Vault. The Audit Vault is a highly configurable option from Oracle made specifically for performing the audit functions. It has reporting capabilities as well as user-defined rules that provide additional flexibility for complex auditing requirements.",
+            "+@fixref": "F-74435r1167447_fix"
           },
           "fix": {
-            "+@id": "F-74435r1064780_fix"
+            "+@id": "F-74435r1167447_fix"
           },
           "check": {
-            "+@system": "C-74534r1064779_chk",
+            "+@system": "C-74534r1167735_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If there are no shared accounts available to more than one user, this is not a finding.\n\nReview database, application, and/or OS settings to determine whether users can be identified as individuals when using shared accounts. If the individual user who is using a shared account cannot be identified, this is a finding.\n\nIf Standard Auditing is used:\nTo ensure that user activities other than SELECT, INSERT, UPDATE, and DELETE are also monitored and attributed to individuals, verify that Oracle auditing is enabled. To verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\nSHOW PARAMETER AUDIT_TRAIL\nor the following SQL query:\n\nSELECT * FROM SYS.V$PARAMETER WHERE NAME = 'audit_trail';\n\nIf the query returns the value \"NONE\", this is a finding.\n\nIf Unified Auditing is used:\nTo ensure that user activities other than SELECT, INSERT, UPDATE, and DELETE are also monitored and attributed to individuals, verify that Oracle auditing is enabled. To verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSELECT * FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';\n\nIf the query returns something other than \"TRUE\", this is a finding."
+            "check-content": "If there are no shared accounts available to more than one user, this is not a finding.\n\nReview database, application, and/or OS settings to determine whether users can be identified as individuals when using shared accounts. \n\nIf the individual user of a shared account cannot be identified, this is a finding.\n\nIf Standard Auditing is used:\nTo ensure user activities other than SELECT, INSERT, UPDATE, and DELETE are also monitored and attributed to individuals, verify that Oracle auditing is enabled. To verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\n\nOr run the following SQL query:\n\ncol display_value format a10\ncol default_value format a10\nSELECT inst_id, con_id, display_value, default_value, isdefault\nFROM sys.gv_$parameter WHERE name = 'audit_trail';\n\nIf the query returns the display_value \"NONE\", for any instance or container, this is a finding.\n\nIf Unified Auditing is used:\nTo ensure that user activities other than SELECT, INSERT, UPDATE, and DELETE are also monitored and attributed to individuals, verify that Oracle auditing is enabled. To verify Oracle is configured to capture audit data, enter the following SQL*Plus query:\n\ncol value format a10\nSELECT inst_id, con_id, value\nFROM sys.gv_$option\nWHERE parameter = 'Unified Auditing';\n\nIf the query returns something other than \"TRUE\", for any instance or container, this is a finding."
           }
         }
       },
@@ -3875,12 +3875,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270502r1064784_rule",
+          "+@id": "SV-270502r1167738_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-001800",
           "title": "Oracle Database must provide audit record generation capability for organization-defined auditable events within the database.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the database management system (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDOD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful login attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logins from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the database management system (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDOD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n(ii) Access actions, such as successful and unsuccessful login attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logins from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3893,19 +3893,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the DBMS's auditing to audit organization-defined auditable events. If preferred, use a third-party tool. The tool must provide the minimum capability to audit the required events.\n\nIf using a third-party product, proceed in accordance with the product documentation. If using Oracle's capabilities, proceed as follows.\n\nIf Standard Auditing is used:\nUse this process to ensure auditable events are captured:\n\nALTER SYSTEM SET AUDIT_TRAIL=<audit trail type> SCOPE=SPFILE;\nAudit trail type can be 'OS', 'DB', 'DB,EXTENDED', 'XML' or 'XML,EXTENDED'.\n\nAfter executing this statement, it may be necessary to shut down and restart the Oracle database.\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations below.\n\nIf Unified Auditing is used:\nUse this process to ensure auditable events are captured:\nLink the oracle binary with uniaud_on, and then restart the database. Oracle Database Upgrade Guide describes how to enable unified auditing.\n\nFor more information on the configuration of auditing, refer to the following documents:\n\n\"Auditing Database Activity\" in the Oracle Database 2 Day + Security Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"Monitoring Database Activity with Auditing\" in the Oracle Database Security Guide: \nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"DBMS_AUDIT_MGMT\" in the Oracle Database PL/SQL Packages and Types Reference:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/\n\nOracle Database Upgrade Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/index.html\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations above.",
-            "+@fixref": "F-74436r1064783_fix"
+            "+content": "Configure the DBMS's auditing to audit organization-defined auditable events. If preferred, use a third-party tool. The tool must provide the minimum capability to audit the required events.\n\nIf using a third-party product, proceed in accordance with the product documentation. If using Oracle's capabilities, proceed as follows.\n\nIf Standard Auditing is used:\nUse this process to ensure auditable events are captured:\n\nALTER SYSTEM SET AUDIT_TRAIL=<audit trail type> SID='*' SCOPE=SPFILE;\n\nAudit trail type can be 'OS', 'DB', 'DB,EXTENDED', 'XML' or 'XML,EXTENDED'.\n\nAfter executing this statement, it may be necessary to shut down and restart the Oracle database.\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations below.\n\nIf Unified Auditing is used:\nUse this process to ensure auditable events are captured:\n\nLink the oracle binary with uniaud_on, and then restart the database. Oracle Database Upgrade Guide describes how to enable unified auditing.\nFor more information on the configuration of auditing, refer to the following documents:\n\n\"Auditing Database Activity\" in the Oracle Database 2 Day + Security Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"Monitoring Database Activity with Auditing\" in the Oracle Database Security Guide: \nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/index.html\n\n\"DBMS_AUDIT_MGMT\" in the Oracle Database PL/SQL Packages and Types Reference:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/\n\nOracle Database Upgrade Guide:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/index.html\n\nIf the site-specific audit requirements are not covered by the default audit options, deploy and configure Fine-Grained Auditing. For details, refer to Oracle documentation at the locations above.",
+            "+@fixref": "F-74436r1167450_fix"
           },
           "fix": {
-            "+@id": "F-74436r1064783_fix"
+            "+@id": "F-74436r1167450_fix"
           },
           "check": {
-            "+@system": "C-74535r1064782_chk",
+            "+@system": "C-74535r1167737_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Using vendor and system documentation, if necessary, verify the DBMS is configured to use Oracle's auditing features, or that a third-party product or custom code is deployed and configured to satisfy this requirement.\n\nIf a third-party product or custom code is used, compare its current configuration with the audit requirements. If any of the requirements is not covered by the configuration, this is a finding.\n\nThe remainder of this Check is applicable specifically where Oracle auditing is in use.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\nSHOW PARAMETER AUDIT_TRAIL\nor the following SQL query:\nSELECT * FROM SYS.V$PARAMETER WHERE NAME = 'audit_trail';\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm that Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSELECT * FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';\n\nIf the query returns something other than \"TRUE\", this is a finding.\n\nTo confirm that Oracle audit is capturing information on the required events, review the contents of the SYS.UNIFIED_AUDIT_TRAIL view. \n\nIf auditable events are not listed, this is a finding."
+            "check-content": "Using vendor and system documentation, if necessary, verify the DBMS is configured to use Oracle's auditing features, or that a third-party product or custom code is deployed and configured to satisfy this requirement.\n\nIf a third-party product or custom code is used, compare its current configuration with the audit requirements. If any of the requirements is not covered by the configuration, this is a finding.\n\nThe remainder of this Check is applicable specifically where Oracle auditing is in use.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\n\nOr the following SQL query:\n\ncol display_value format a10\ncol default_value format a10\nSELECT inst_id, con_id, display_value, default_value, isdefault\nFROM sys.gv_$parameter WHERE name = 'audit_trail';\n\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\ncol value format a10\nSELECT inst_id, con_id, value\nFROM sys.gv_$option\nWHERE parameter = 'Unified Auditing';\n\nIf the query returns something other than \"TRUE\", this is a finding.\n\nTo confirm Oracle audit is capturing information on the required events, review the contents of the SYS.UNIFIED_AUDIT_TRAIL view.\n\nIf auditable events are not listed, this is a finding."
           }
         }
       },
@@ -3953,7 +3953,7 @@
         "title": "SRG-APP-000091-DB-000066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270504r1068292_rule",
+          "+@id": "SV-270504r1167741_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-002000",
@@ -3971,19 +3971,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Both Standard and Unified Auditing are allowed in Oracle Database 19c.\nThe default is mixed auditing mode.\nThe predefined policy ORA_SECURECONFIG is enabled by default in mixed mode.\n\nConfigure the DBMS's auditing settings to include auditing of events on the DOD-selected list of auditable events.\n\n1. Successful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels).\n\nTo audit granting and revocation of any privilege:\ncreate audit policy policy1 actions grant;\ncreate audit policy policy2 actions revoke;\n\nTo audit grants of object privileges on a specific object:\ncreate audit policy policy3 actions grant on <schema>.<object>;\n\nIf Oracle Label Security is enabled, this will audit all OLS administrative actions:\ncreate audit policy policy4 actions component = OLS all;\n\n2. Successful and unsuccessful logon attempts, privileged activities or other system-level access.\n\nTo audit all user logon attempts:\ncreate audit policy policy5 actions logon;\n\nTo audit only logon attempts using administrative privileges (e.g. AS SYSDBA):\naudit policy policy5 by SYS, SYSOPER, SYSBACKUP, SYSDG, SYSKM;\n\n3. Starting and ending time for user access to the system, concurrent logons from different workstations.\n\nThis policy will audit all logon and logoff events. An individual session is identified in the UNIFIED_AUDIT_TRAIL by the tuple (DBID, INSTANCE_ID, SESSIONID) and the start and end time will be indicated by the EVENT_TIMESTAMP of the logon and logoff events:\ncreate audit policy policy6 actions logon, logoff;\n\n4. Successful and unsuccessful accesses to objects.\n\nTo audit all accesses to a specific table:\ncreate audit policy policy7 actions select, insert, delete, alter on <schema>.<object>; \n\nDifferent actions are defined for other object types. To audit all supported actions on a specific object:\ncreate audit policy policy8 actions all on <schema>.<object>;\n\n5. All program initiations.\n\nTo audit execution of any PL/SQL program unit:\ncreate audit policy policy9 actions EXECUTE;\n\nTo audit execution of a specific function, procedure, or package:\ncreate audit policy policy10 actions EXECUTE on <schema>.<object>;\n\n6. All direct access to the information system.\n\n[Not applicable to Database audit. Monitor using OS auditing.]\n\n7. All account creations, modifications, disabling, and terminations.\n\nTo audit all user administration actions:\ncreate audit policy policy11 actions create user, alter user, drop user, change password;\n\n8. All kernel module loads, unloads, and restarts.\n\n[Not applicable to Database audit. Monitor using OS auditing.]\n\n9. All database parameter changes.\n\nTo audit any database parameter changes, dynamic or static:\ncreate audit policy policy12 actions alter database, alter system, create spfile;\n\nApplying the Policy\n\nThe following command will enable the policy in all database sessions and audit both successful and unsuccessful actions:\naudit policy policy1;\n\nTo audit only unsuccessful actions, add the WHENEVER NOT SUCCESSFUL modifier:\naudit policy policy1 whenever not successful;\n\nEither command above can be limited to only database sessions started by a specific user as follows:\naudit policy policy1 by <user>;\naudit policy policy1 by <user> whenever not successful;",
-            "+@fixref": "F-74438r1065229_fix"
+            "+content": "Both Standard and Unified Auditing are allowed in Oracle Database 19c.\nThe default is mixed auditing mode.\nThe predefined policy ORA_SECURECONFIG is enabled by default in mixed mode.\n\nConfigure the DBMS's auditing settings to include auditing of events on the DOD-selected list of auditable events.\n\n1. Successful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels).\n\nTo audit granting and revocation of any privilege:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT;\nCREATE AUDIT POLICY <policy_name> ACTIONS REVOKE;\n\nTo audit grants of object privileges on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT ON <schema>.<object>;\n\nIf Oracle Label Security is enabled, this will audit all OLS administrative actions:\nCREATE AUDIT POLICY <policy_name> ACTIONS COMPONENT = OLS ALL;\n\n2. Successful and unsuccessful logon attempts, privileged activities or other system-level access.\n \nTo audit all user logon attempts:\nCREATE AUDIT POLICY <policy_name> ACTIONS LOGON;\n\nTo audit only logon attempts using administrative privileges (e.g., AS SYSDBA):\nAUDIT POLICY <policy_name> BY sys, sysoper, sysbackup, sysdg, syskm;\n\n3. Starting and ending time for user access to the system, concurrent logons from different workstations.\n\nThis policy will audit all logon and logoff events. An individual session is identified in the UNIFIED_AUDIT_TRAIL by the tuple (DBID, INSTANCE_ID, SESSIONID) and the start and end time will be indicated by the EVENT_TIMESTAMP of the logon and logoff events:\n\nCREATE AUDIT POLICY <policy_name> ACTIONS logon, logoff;\n\n4. Successful and unsuccessful accesses to objects.\n\nTo audit all accesses to a specific table:\nCREATE AUDIT POLICY <policy_name> ACTIONS select, insert, delete, alter ON <schema>.<object>; \n\nDifferent actions are defined for other object types. To audit all supported actions on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS all ON <schema>.<object>;\n \n5. All program initiations.\n\nTo audit execution of any PL/SQL program unit:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute;\n\nTo audit execution of a specific function, procedure, or package:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute ON <schema>.<object>;\n\n6. All direct access to the information system.\n[Not applicable to Database audit. Monitor using OS auditing.]\n\n7. All account creations, modifications, disabling, and terminations.\n\nTo audit all user administration actions:\nCREATE AUDIT POLICY <policy_name> actions create user, alter user, drop user, change password;\n\n8. All kernel module loads, unloads, and restarts.\n[Not applicable to Database audit. Monitor using OS auditing.]\n \n9. All database parameter changes.\n\nTo audit any database parameter changes, dynamic or static:\nCREATE AUDIT POLICY <policy_name> ACTIONS alter database, alter system, create spfile;\n\nApplying the Policy:\n\nThe following command will enable the policy in all database sessions and audit both successful and unsuccessful actions:\nAUDIT POLICY <policy_name>;\n\nTo audit only unsuccessful actions, add the WHENEVER NOT SUCCESSFUL modifier:\nAUDIT POLICY <policy_name> WHENEVER NOT SUCCESSFUL;\n\nEither command above can be limited to only database sessions started by a specific user as follows:\nAUDIT POLICY <policy_name> BY <user>;\nAUDIT POLICY <policy_name> BY <user> WHENEVER NOT SUCCESSFUL;",
+            "+@fixref": "F-74438r1167740_fix"
           },
           "fix": {
-            "+@id": "F-74438r1065229_fix"
+            "+@id": "F-74438r1167740_fix"
           },
           "check": {
-            "+@system": "C-74537r1064788_chk",
+            "+@system": "C-74537r1167739_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check Oracle Database settings to determine if auditing is being performed on the DOD-required list of auditable events supplied in the discussion.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\nor the following SQL query:\nSELECT * FROM SYS.V$PARAMETER WHERE NAME = 'audit_trail';\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm that Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSELECT * FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';\n\nIf Oracle returns a value something other than \"TRUE\", this is a finding.\n\nUnified Audit supports named audit policies, which are defined using the CREATE AUDIT POLICY statement. A policy specifies the actions that should be audited and the objects to which it should apply. If no specific objects are included in the policy definition, it applies to all objects.\n\nA named policy is enabled using the AUDIT POLICY statement. It can be enabled for all users, for specific users only, or for all except a specified list of users. The policy can audit successful actions, unsuccessful actions, or both.\n\nVerifying existing audit policy: existing Unified Audit policies are listed in the view AUDIT_UNIFIED_POLICIES. The AUDIT_OPTION column contains one of the actions specified in a CREATE AUDIT POLICY statement. The AUDIT_OPTION_TYPE column contains \"STANDARD ACTION\" for a policy that applies to all objects or \"OBJECT ACTION\" for a policy that audits actions on a specific object.\n\nselect POLICY_NAME from SYS.AUDIT_UNIFIED_POLICIES where AUDIT_OPTION='GRANT' and AUDIT_OPTION_TYPE='STANDARD ACTION';\n\nTo find policies that audit privilege grants on specific objects:\n\nselect POLICY_NAME,OBJECT_SCHEMA,OBJECT_NAME from SYS.AUDIT_UNIFIED_POLICIES where AUDIT_OPTION='GRANT' and AUDIT_OPTION_TYPE='OBJECT ACTION';\n\nThe view AUDIT_UNIFIED_ENABLED_POLICIES shows which Unified Audit policies are enabled. The ENABLED_OPT and USER_NAME columns show the users for whom the policy is enabled or \"ALL USERS\". The SUCCESS and FAILURE columns indicate if the policy is enabled for successful or unsuccessful actions, respectively.\n\nselect POLICY_NAME,ENABLED_OPTION,ENTITY_NAME,SUCCESS,FAILURE from SYS.AUDIT_UNIFIED_ENABLED_POLICIES;\n\nIf auditing is not being performed for all the events listed above, this is a finding."
+            "check-content": "Check Oracle Database settings to determine if auditing is being performed on the DOD-required list of auditable events supplied in the discussion.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\n\nOr the following SQL query:\n\ncol display_value format a10\ncol default_value format a10\nSELECT inst_id, con_id, display_value, default_value, isdefault\nFROM sys.gv_$parameter WHERE name = 'audit_trail';\n\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\ncol value format a10\nSELECT inst_id, con_id, value\nFROM sys.gv_$option\nWHERE parameter = 'Unified Auditing';\n\nIf Oracle returns a value something other than \"TRUE\", this is a finding.\n\nUnified Audit supports named audit policies, which are defined using the CREATE AUDIT POLICY statement. A policy specifies the actions that should be audited and the objects to which it should apply. If no specific objects are included in the policy definition, it applies to all objects.\n\nA named policy is enabled using the AUDIT POLICY statement. It can be enabled for all users, for specific users only, or for all except a specified list of users. The policy can audit successful actions, unsuccessful actions, or both.\n\nVerifying existing audit policy: existing Unified Audit policies are listed in the view AUDIT_UNIFIED_POLICIES. The AUDIT_OPTION column contains one of the actions specified in a CREATE AUDIT POLICY statement. The AUDIT_OPTION_TYPE column contains \"STANDARD ACTION\" for a policy that applies to all objects or \"OBJECT ACTION\" for a policy that audits actions on a specific object.\n\nSELECT policy_name\nFROM sys.audit_unified_policies\nWHERE audit_option = 'GRANT'\nAND audit_option_type= 'STANDARD ACTION';\n\n\nTo find policies that audit privilege grants on specific objects:\n\ncol policy_name format a20\ncol object_schema format a20\ncol object_name format a30\nSELECT policy_name, object_schema, object_name \nFROM sys.audit_unified_policies \nWHERE audit_option = 'GRANT'\nAND audit_option_type = 'OBJECT ACTION';\n\n\nThe view AUDIT_UNIFIED_ENABLED_POLICIES shows which Unified Audit policies are enabled. The ENABLED_OPT and USER_NAME columns show the users for whom the policy is enabled or \"ALL USERS\". The SUCCESS and FAILURE columns indicate if the policy is enabled for successful or unsuccessful actions, respectively.\n\ncol entity_name format a30\nSELECT policy_name, enabled_option, entity_name, success, failure\nFROM sys.audit_unified_enabled_policies;\n\nIf auditing is not being performed for all the events listed above, this is a finding."
           }
         }
       },
@@ -3992,7 +3992,7 @@
         "title": "SRG-APP-000101-DB-000044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270505r1064793_rule",
+          "+@id": "SV-270505r1167742_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-005600",
@@ -4017,12 +4017,12 @@
             "+@id": "F-74439r1064792_fix"
           },
           "check": {
-            "+@system": "C-74538r1064791_chk",
+            "+@system": "C-74538r1167455_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the system documentation to identify what additional site-specific information not covered by the default audit options, the organization has determined to be necessary. If there are none, this is not a finding.\n\nIf any additional information is defined, compare those auditable events that are not covered by unified auditing with the existing Fine-Grained Auditing (FGA) specifications returned by the following query:\n\nSELECT * FROM SYS.UNIFIED_AUDIT_TRAIL WHERE AUDIT_TYPE = 'FineGrainedAudit';\n\nIf any such auditable event is not covered by the existing FGA specifications, this is a finding."
+            "check-content": "Review the system documentation to identify additional site-specific information not covered by the default audit options, the organization has determined to be necessary. If there are none, this is not a finding.\n\nIf any additional information is defined, compare those auditable events that are not covered by unified auditing with the existing Fine-Grained Auditing (FGA) specifications returned by the following query:\n\nSELECT COUNT(*)\nFROM audsys.unified_audit_trail\nWHERE audit_type = 'FineGrainedAudit';\n\nIf any such auditable event is not covered by the existing FGA specifications, this is a finding."
           }
         }
       },
@@ -4031,7 +4031,7 @@
         "title": "SRG-APP-000357-DB-000316",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270506r1064796_rule",
+          "+@id": "SV-270506r1167744_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-005700",
@@ -4049,19 +4049,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Allocate sufficient audit file/table space to support peak demand.\n\nEnsure that audit tables are in their own tablespaces and that the tablespaces have enough room for the volume of log data that will be produced.\n\nDetailed procedures for how to alter the tablespace for audit logs can be found here:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-TABLESPACE.html.",
-            "+@fixref": "F-74440r1064795_fix"
+            "+content": "Allocate sufficient audit file/table space to support peak demand.\n\nIf audit records are being written to the table sys.aud$, create a new tablespace dedicated to the AUD$ table and move AUD$ using the statement below:\n\nexec sys.dbms_audit_mgmt.move_dbaudit_tables('<tablespace_name>');\n\nEnsure that audit tables are in their own tablespaces and that the tablespaces have enough room for the volume of log data that will be produced.\n\nDetailed procedures for how to alter the tablespace for audit logs can be found here:\nhttps://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/ALTER-TABLESPACE.html.",
+            "+@fixref": "F-74440r1167458_fix"
           },
           "fix": {
-            "+@id": "F-74440r1064795_fix"
+            "+@id": "F-74440r1167458_fix"
           },
           "check": {
-            "+@system": "C-74539r1064794_chk",
+            "+@system": "C-74539r1167743_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the database management system (DBMS) settings to determine whether audit logging is configured to produce logs consistent with the amount of space allocated for logging. If auditing will generate excessive logs so that they may outgrow the space reserved for logging, this is a finding.\n\nIf file-based auditing is in use, check that sufficient space is available to support the file(s). If not, this is a finding.\n\nIf standard, table-based auditing is used, the audit logs are written to a table called AUD$; and if a Virtual Private Database is deployed, a table is created called FGA_LOG$. First, check the current location of the audit trail tables.\n\nCONN / AS SYSDBA\n\nSELECT table_name, tablespace_name\nFROM dba_tables\nWHERE table_name IN ('AUD$', 'FGA_LOG$')\nORDER BY table_name;\n\nTABLE_NAME                     TABLESPACE_NAME\n------------------------------   ------------------------------\nAUD$                                    SYSTEM\nFGA_LOG$                           SYSTEM\n\nIf the tablespace name is SYSTEM, the table needs to be relocated to its own tablespace. Ensure that adequate space is allocated to that tablespace.\n\nIf Unified Auditing is used:\nAudit logs are written to tables in the AUDSYS schema. The default tablespace for AUDSYS is USERS. A separate tablespace should be created to contain audit data. Ensure that adequate space is allocated to that tablespace.\nInvestigate whether there have been any incidents where the database management system (DBMS) ran out of audit log space since the last time the space was allocated or other corrective measures were taken. If there have been, this is a finding."
+            "check-content": "Review the DBMS settings to determine whether audit logging is configured to produce logs consistent with the amount of space allocated for logging. If auditing will generate excessive logs so that they may outgrow the space reserved for logging, this is a finding.\n\nIf file-based auditing is in use, check that sufficient space is available to support the file(s). If not, this is a finding.\n\nIf standard, table-based auditing is used, the audit logs are written to a table called AUD$; and if a Virtual Private Database is deployed, a table is created called FGA_LOG$. \n\nsqlplus connect as sysdba\n\nSELECT table_name, tablespace_name\nFROM dba_tables\nWHERE table_name IN ('AUD$')\nORDER BY table_name;\n\nTABLE_NAME                     TABLESPACE_NAME\n-----------------------------  ------------------------------\nAUD$                           SYSTEM\n\nThe AUD$ table should be in its own tablespace. If the tablespace name is SYSTEM, this is a finding.\n\nCheck the current location of the audit trail tables:\n\nSELECT inst_id, con_id, name, value\nFROM sys.gv_$parameter\nWHERE name IN ('audit_file_dest', 'unified_audit_systemlog');\n\nVerify adequate space is allocated for the audit trail location.\n\nIf Unified Auditing is used:\n\nAudit logs are written to tables in the AUDSYS schema. The default tablespace for AUDSYS is USERS, and it should be in its own tablespace.\n \nIf the tablespace name is USERS, this is a finding. \n\nInvestigate whether there have been any incidents where the DBMS ran out of audit log space since the last time the space was allocated or other corrective measures were taken. If there have been, this is a finding."
           }
         }
       },
@@ -4324,7 +4324,7 @@
         "title": "SRG-APP-000456-DB-000400",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270513r1117151_rule",
+          "+@id": "SV-270513r1138543_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-007400",
@@ -4714,12 +4714,12 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270523r1065302_rule",
+          "+@id": "SV-270523r1167746_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009000",
-          "title": "The Oracle WITH GRANT OPTION privilege must not be granted to nondatabase administrator (DBA) or nonapplication administrator user accounts.",
-          "description": "<VulnDiscussion>An account permission to grant privileges within the database is an administrative function. Minimizing the number and privileges of administrative accounts reduces the chances of privileged account exploitation. Application user accounts must never require WITH GRANT OPTION privileges since, by definition, they require only privileges to execute procedures or view/edit data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Oracle WITH GRANT OPTION privilege must be limited when granted to nondatabase administrator (DBA) or nonapplication administrator user accounts.",
+          "description": "<VulnDiscussion>Specifying WITH GRANT OPTION enables the grantee to grant the object privileges to other users and roles. An account permission to grant privileges within the database is an administrative function. Minimizing the number and privileges of administrative accounts reduces the chances of privileged account exploitation. Application user accounts limit WITH GRANT OPTION privileges since, by definition, they require only privileges to execute procedures or view/edit data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -4732,19 +4732,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke privileges granted the WITH GRANT OPTION from non-DBA and accounts that do not own application objects.\n\nRe-grant privileges without specifying WITH GRANT OPTION.\n\nNote: Do not revoke the system-generated grants such as those found on The SYS_PLSQL_% objects. They are system generated object types (aka ShadowTypes) which are created internally by Oracle when using the Pipelined Table Functions. This can result in (incorrect) compilation failures and/or invalidations when the users who are supposed to have access to the shadow types find themselves without access.",
-            "+@fixref": "F-74457r1065301_fix"
+            "+content": "Revoke privileges granted the WITH GRANT OPTION from non-DBA and accounts that do not own application objects or document the need for WITH GRANT OPTION and get approval.\n\nRe-grant privileges without specifying WITH GRANT OPTION.\n\nNote: Do not revoke the system-generated grants such as those found on SYS_PLSQL_% objects. They are system generated object types (aka ShadowTypes), created internally by Oracle when using the Pipelined Table Functions. This can result in (incorrect) compilation failures and/or invalidations when the users who are supposed to have access to the shadow types find themselves without access.",
+            "+@fixref": "F-74457r1167745_fix"
           },
           "fix": {
-            "+@id": "F-74457r1065301_fix"
+            "+@id": "F-74457r1167745_fix"
           },
           "check": {
-            "+@system": "C-74556r1064845_chk",
+            "+@system": "C-74556r1167460_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Execute the query:\n\nselect grantee||': '||owner||'.'||table_name\nfrom dba_tab_privs \nwhere grantable = 'YES' \nand grantee not in (select distinct owner from dba_objects)\nand grantee not in (select grantee from dba_role_privs where granted_role = 'DBA')\nand table_name not like 'SYS_PLSQL_%'\norder by grantee;\n\nIf any accounts are listed, this is a finding."
+            "check-content": "Execute the query:\n\nselect grantee||': '||owner||'.'||table_name\nfrom dba_tab_privs \nwhere grantable = 'YES' \nand grantee not in (select distinct owner from dba_objects)\nand grantee not in (select grantee from dba_role_privs where granted_role = 'DBA')\nand table_name not like 'SYS_PLSQL_%'\norder by grantee;\n\nIf any accounts are listed, verify accounts are documented and approved for the WITH GRANT option.\nIf non-DBA interactive user or application accounts have WITH GRANT without being documented and approved, this is a finding."
           }
         }
       },
@@ -6592,7 +6592,7 @@
         "title": "SRG-APP-000514-DB-000383",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270571r1117181_rule",
+          "+@id": "SV-270571r1137664_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-016000",
@@ -6631,7 +6631,7 @@
         "title": "SRG-APP-000211-DB-000122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270572r1117171_rule",
+          "+@id": "SV-270572r1137655_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-016100",
@@ -6826,7 +6826,7 @@
         "title": "SRG-APP-000243-DB-000128",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270577r1117173_rule",
+          "+@id": "SV-270577r1137656_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-017400",
@@ -6865,7 +6865,7 @@
         "title": "SRG-APP-000243-DB-000374",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270578r1117173_rule",
+          "+@id": "SV-270578r1137658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-017600",
@@ -7138,7 +7138,7 @@
         "title": "SRG-APP-000456-DB-000390",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270585r1117151_rule",
+          "+@id": "SV-270585r1137667_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-018600",

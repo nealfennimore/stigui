@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-13"
+      "+@date": "2025-11-19"
     },
     "title": "Active Directory Domain Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 13 Sep 2024",
+        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1855,7 +1855,7 @@
         "title": "SRG-OS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243476r1026173_rule",
+          "+@id": "SV-243476r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0016",
@@ -1904,12 +1904,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243477r959010_rule",
+          "+@id": "SV-243477r1153405_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0017",
           "title": "User accounts with domain level administrative privileges must be members of the Protected Users group in domains with a domain functional level of Windows 2012 R2 or higher.",
-          "description": "<VulnDiscussion>User accounts with domain level administrative privileges are highly prized in Pass-the-Hash/credential theft attacks.  The Protected Users group provides extra protections to accounts such as preventing authentication using NTLM.\n\nThese accounts include Enterprise and Domain Admins as well as other accounts that may have domain level privileges.\n\nThe Protected Users group requires a domain functional level of at least Windows 2012 R2 to provide domain level protections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>User accounts with domain level administrative privileges are highly prized in Pass-the-Hash/credential theft attacks. The Protected Users group provides extra protections to accounts such as preventing authentication using NTLM.\n\nThese accounts include Enterprise and Domain Admins as well as other accounts that may have domain level privileges.\n\nThe Protected Users group requires a domain functional level of at least Windows 2012 R2 to provide domain level protections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -1939,12 +1939,12 @@
             "+@id": "F-46709r723465_fix"
           },
           "check": {
-            "+@system": "C-46752r723464_chk",
+            "+@system": "C-46752r1153404_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If the domain functional level is not at least Windows 2012 R2, this is NA.\n\nOpen \"Windows PowerShell\".\n\nEnter \"Get-ADDomain | FL DomainMode\" to determine the domain functional level.\n\nOpen \"Active Directory Users and Computers\" (available from various menus or run \"dsa.msc\"). \n\nCompare membership of the Protected Users group to membership of the following groups. By default, the groups are under the node referenced; however, it is possible to move those under \"Users\" to another location.\nEnterprise Admins (Users node)\nDomain Admins (Users node)\nSchema Admins (Users node)\nAdministrators (Builtin node)\nAccount Operators (Builtin node)\nBackup Operators (Builtin node)\n\nIt is recommended that one account be excluded to ensure availability if there are issues with Kerberos.\n\nExcluding the account left out for availability, if all user accounts from the local domain that are members of the domain level groups above are not also members of the Protected Users group, this is a finding. (User accounts is referring to accounts for personnel, not service accounts.)"
+            "check-content": "Open \"Windows PowerShell\".\n\nEnter \"Get-ADDomain | FL DomainMode\" to determine the domain functional level.\n\nOpen \"Active Directory Users and Computers\" (available from various menus or run \"dsa.msc\"). \n\nCompare membership of the Protected Users group to membership of the following groups. By default, the groups are under the node referenced; however, it is possible to move those under \"Users\" to another location.\n\nEnterprise Admins (Users node)\nDomain Admins (Users node)\nSchema Admins (Users node)\nAdministrators (Builtin node)\nAccount Operators (Builtin node)\nBackup Operators (Builtin node)\n\nIt is recommended that one account be excluded to ensure availability if there are issues with Kerberos.\n\nExcluding the account left out for availability, if all user accounts from the local domain that are members of the domain level groups above are not also members of the Protected Users group, this is a finding. (User accounts is referring to accounts for personnel, not service accounts.)"
           }
         }
       },
@@ -2002,12 +2002,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243479r959010_rule",
+          "+@id": "SV-243479r1153403_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0151",
-          "title": "The Directory Service Restore Mode (DSRM) password must be changed at least annually.",
-          "description": "<VulnDiscussion>The Directory Service Restore Mode (DSRM) password, used to log on to a domain controller (DC) when rebooting into the server recovery mode, is very powerful.  With a weak or known password, someone with local access to the DC can reboot the server and copy or modify the Active Directory database without leaving any trace of the activity.\n\nFailure to change the DSRM password periodically could allow compromised of the Active Directory.  It could also allow an unknown (lost) password to go undetected. If not corrected during a periodic review, the problem might surface during an actual recovery operation and delay or prevent the recovery.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Directory Service Restore Mode (DSRM) passwords must be changed on each Domain Controller (DC) at least annually.",
+          "description": "<VulnDiscussion>The DSRM password, used to log on to a domain controller (DC) when rebooting into the server recovery mode, is very powerful. With a weak or known password, someone with local access to the DC can reboot the server and copy or modify the Active Directory database without leaving any trace of the activity.\n\nFailure to change the DSRM password periodically could allow compromise of the Active Directory. It could also allow an unknown (lost) password to go undetected. If not corrected during a periodic review, the problem might surface during an actual recovery operation and delay or prevent the recovery.\n\nWindows Local Administrator Password Solution (Windows LAPS) is a Windows feature that automatically manages and backs up the password of a local administrator account on a Microsoft Entra-joined or Windows Server Active Directory-joined devices. Windows LAPS can also be used to automatically manage and back up the DSRM account password on a Windows Server Active Directory DC. An authorized administrator can retrieve the DSRM password and use it.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -2030,19 +2030,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Change the DSRM password at least annually.",
-            "+@fixref": "F-46711r723471_fix"
+            "+content": "Change the DSRM passwords on each DC at least annually with the following commands:\n\nC:\\> ntdsutil\nC:\\Windows\\system32\\ntdsutil.exe: Set DSRM Password\nReset DSRM Administrator Password: Reset Password on server <servername>\nFollow prompts to reset the password.",
+            "+@fixref": "F-46711r1153402_fix"
           },
           "fix": {
-            "+@id": "F-46711r723471_fix"
+            "+@id": "F-46711r1153402_fix"
           },
           "check": {
-            "+@system": "C-46754r723470_chk",
+            "+@system": "C-46754r1153401_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the organization has a process that addresses DSRM password change frequency.\n\nIf DSRM passwords are not changed at least annually, this is a finding."
+            "check-content": "Verify the DSRM password for each DC is changed at least annually.\n\nIf logs are retained locally for a sufficient amount of time to capture the log event, the following command will indicate the password reset:\nPS C:\\> Get-WinEvent -FilterHashtable @{Logname='Security'; ID=4794} | Format-Table -Property TimeCreated, Message\n\nTimeCreated                             Message\n-----------                                      -------\n10/29/2025 4:47:12 PM    An attempt was made to set the Directory Services Restore Mode...\n\nIf logs are not available, review the site processes around DSRM password reset to determine compliance.\n\nIf DSRM passwords are not changed for each DC in the domain at least annually, this is a finding."
           }
         }
       },
@@ -2296,7 +2296,7 @@
         "title": "SRG-OS-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243485r958472_rule",
+          "+@id": "SV-243485r1117265_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0200",

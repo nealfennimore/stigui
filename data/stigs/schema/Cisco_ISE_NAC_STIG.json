@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-10"
+      "+@date": "2025-12-10"
     },
     "title": "Cisco ISE NAC Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1237,7 +1237,7 @@
         "title": "SRG-NET-000015-NAC-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242576r812734_rule",
+          "+@id": "SV-242576r1146387_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NC-000020",
@@ -1276,7 +1276,7 @@
         "title": "SRG-NET-000015-NAC-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242577r812736_rule",
+          "+@id": "SV-242577r1146387_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NC-000030",
@@ -1315,7 +1315,7 @@
         "title": "SRG-NET-000015-NAC-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242578r812738_rule",
+          "+@id": "SV-242578r1146387_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NC-000040",
@@ -1354,12 +1354,12 @@
         "title": "SRG-NET-000015-NAC-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242579r1025166_rule",
+          "+@id": "SV-242579r1168085_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NC-000050",
           "title": "The Cisco ISE must verify anti-malware software is installed and up to date on posture required clients defined in the NAC System Security Plan (SSP) prior to granting trusted network access. This is required for compliance with C2C Step 4.",
-          "description": "<VulnDiscussion>New viruses and malware are consistently being discovered. If the host-based security software is not current then it will not be able to defend against exploits that have been previously discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>New viruses and malware are consistently being discovered. If the host-based security software is not current, then it will not be able to defend against exploits that have been previously discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco ISE NAC",
             "dc:publisher": "DISA",
@@ -1372,19 +1372,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If required by the NAC SSP, configure the posture policy to verify that an anti-malware software is up to date. Check the applicable STIG for the operating system to match the value needed for the virus definition file date.\n\n1. Navigate to Work Centers >> Posture >> Policy Elements.\n2. Create Anti-Malware Condition.\na. Expand \"Conditions\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the vendor.\ng. Check \"Definition\".\nh. Check \"Check against latest AV definition file version if available. Otherwise, check against latest definition file date or \"Allow virus definition file to be (<7) days older than the current system date.\" \ni. Select the desired product/products.\nj. Choose \"Submit\".\n3. Create Anti-Malware Remediation.\na. Expand \"Remediation's\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the Remediation Type.\ng. Define the interval between retries.\nh. Define Retry Count.\ni. Select the desired Vendor Name.\nj. Check \"Remediation Option is to enable the Firewall\".\nk. Select the Product Name.\nl. Choose \"Submit\".\n4. Edit the Posture Policy.\na. Navigate to Work Centers >> Posture >> Posture Policy.\nb. Find the Posture Policy that will be applied to the posture required endpoints.\nc. Select the Requirement ensuring there is a green check box to the left of the name indicating it is a mandatory requirement.\nd. Choose \"Done\".\ne. Choose \"Save\".\n\nNote: If any other Definition option is used, the Posture Updates must be updated (Navigate to Work Centers >> Posture >> Settings >> Software Updates >> Posture Updates).\n\nConfigure the posture policy to verify that an anti-malware software is installed.\n1. Navigate to Work Centers >> Posture >> Policy Elements.\n2. Create Anti-Malware Condition.\na. Expand \"Conditions\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the vendor.\ng. Check \"Installation\".\nh. Select the desired product/products.\ni. Choose \"Submit\".\n3. Create Anti-Malware Remediation.\na. Expand \"Remediation's\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the Remediation Type.\ng. Define the interval between retries.\nh. Define Retry Count.\ni. Select the desired Vendor Name.\nj. Check \"Remediation Option is to enable the Firewall\".\nk. Select the Product Name.\nl. Choose \"Submit\".\n4. Edit the Posture Policy.\na. Navigate to Work Centers >> Posture >> Posture Policy.\nb. Find the Posture Policy that will be applied to the posture required endpoints.\nc. Select the Requirement, ensuring there is a green check box to the left of the name indicating it is a mandatory requirement.\nd. Choose \"Done\".\ne. Choose \"Save\".",
-            "+@fixref": "F-45811r1025166_fix"
+            "+content": "If required by the NAC SSP, configure the posture policy to verify an anti-malware software is up to date. Check the applicable STIG for the operating system to match the value needed for the virus definition file date.\n\n1. Navigate to Work Centers >> Posture >> Policy Elements.\n2. Create Anti-Malware Condition.\na. Expand \"Conditions\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the vendor.\ng. Check \"Definition\".\nh. Check \"Check against latest AV definition file version if available. Otherwise, check against latest definition file date or \"Allow virus definition file to be (<7) days older than the current system date.\" \ni. Select the desired product/products.\nj. Choose \"Submit\".\n3. Create Anti-Malware Remediation.\na. Expand \"Remediations\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the Remediation Type.\ng. Define the interval between retries.\nh. Define Retry Count.\ni. Select the desired Vendor Name.\nj. Select the Product Name.\nk. Choose \"Submit\".\n4. Edit the Posture Policy.\na. Navigate to Work Centers >> Posture >> Posture Policy.\nb. Find the Posture Policy that will be applied to the posture required endpoints.\nc. Select the Requirement, ensuring there is a green check box to the left of the name indicating it is a mandatory requirement.\nd. Choose \"Done\".\ne. Choose \"Save\".\n\nNote: If any other Definition option is used, the Posture Updates must be updated (Navigate to Work Centers >> Posture >> Settings >> Software Updates >> Posture Updates).\n\nConfigure the posture policy to verify that an anti-malware software is installed.\n1. Navigate to Work Centers >> Posture >> Policy Elements.\n2. Create Anti-Malware Condition.\na. Expand \"Conditions\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the vendor.\ng. Check \"Installation\".\nh. Select the desired product/products.\ni. Choose \"Submit\".\n3. Create Anti-Malware Remediation.\na. Expand \"Remediations\" on the left of the page.\nb. Choose \"Anti-Malware\".\nc. Choose \"Add\".\nd. Define a Name.\ne. Select the Operating System.\nf. Select the Remediation Type.\ng. Define the interval between retries.\nh. Define Retry Count.\ni. Select the desired Vendor Name.\nj. Check \"Remediation Option is to enable the Firewall\".\nk. Select the Product Name.\nl. Choose \"Submit\".\n4. Edit the Posture Policy.\na. Navigate to Work Centers >> Posture >> Posture Policy.\nb. Find the Posture Policy that will be applied to the posture required endpoints.\nc. Select the Requirement, ensuring there is a green check box to the left of the name indicating it is a mandatory requirement.\nd. Choose \"Done\".\ne. Choose \"Save\".",
+            "+@fixref": "F-45811r1168084_fix"
           },
           "fix": {
-            "+@id": "F-45811r1025166_fix"
+            "+@id": "F-45811r1168084_fix"
           },
           "check": {
-            "+@system": "C-45854r1018682_chk",
+            "+@system": "C-45854r1168083_chk",
             "check-content-ref": {
               "+@href": "Cisco_ISE_NAC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If DOD is not at C2C Step 4 or higher, this is not a finding.\n\nVerify that the posture policy will verify that anti-malware software is installed and up to date.\n\nIf not required by the NAC SSP, this is not a finding.\n\n1. Navigate to Work Center >> Posture >> Posture Policy.\n2. Check the enabled posture policies analyzing all the conditions.\n3. Review the requirements listed on polices that the posture required clients will use.\n4. Navigate to Work Center >> Posture >> Policy Elements.\n5. Review the requirements applied in the posture policy to ensure there are with anti-malware conditions applied.\n6. Review the anti-malware conditions ensuring one is configured to verify that the software is installed, and one is configured to make sure the software is up to date. \n\nIf this requirement is met by another system or application, this is not applicable. \n\nIf there is not a firewall condition tied to a requirement that is applied to an applicable posture policy, this is a finding."
+            "check-content": "If DOD is not at C2C Step 4 or higher, this is not a finding.\n\nVerify the posture policy will verify that anti-malware software is installed and up to date.\n\nIf not required by the NAC SSP, this is not a finding.\n\n1. Navigate to Work Center >> Posture >> Posture Policy.\n2. Check the enabled posture policies analyzing all the conditions.\n3. Review the requirements listed on polices the posture required clients will use.\n4. Navigate to Work Center >> Posture >> Policy Elements.\n5. Review the requirements applied in the posture policy to verify anti-malware conditions have been applied.\n6. Review the anti-malware conditions, to determine if one is configured to verify that the software is installed, and one is configured to verify the software is up to date. \n\nIf this requirement is met by another system or application, this is not applicable. \n\nIf there is not a firewall condition tied to a requirement applied to an applicable posture policy, this is a finding."
           }
         }
       },
@@ -1393,7 +1393,7 @@
         "title": "SRG-NET-000015-NAC-000020",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242580r1025168_rule",
+          "+@id": "SV-242580r1146387_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CSCO-NC-000060",
@@ -1432,7 +1432,7 @@
         "title": "SRG-NET-000015-NAC-000040",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242581r812744_rule",
+          "+@id": "SV-242581r1146389_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000070",
@@ -1471,7 +1471,7 @@
         "title": "SRG-NET-000015-NAC-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242582r812746_rule",
+          "+@id": "SV-242582r1146391_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CSCO-NC-000080",
@@ -1510,7 +1510,7 @@
         "title": "SRG-NET-000015-NAC-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242583r812748_rule",
+          "+@id": "SV-242583r1146392_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000090",
@@ -1549,7 +1549,7 @@
         "title": "SRG-NET-000015-NAC-000100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242584r812750_rule",
+          "+@id": "SV-242584r1146394_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000100",
@@ -1588,7 +1588,7 @@
         "title": "SRG-NET-000015-NAC-000110",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242585r812752_rule",
+          "+@id": "SV-242585r1146395_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000110",
@@ -1627,7 +1627,7 @@
         "title": "SRG-NET-000015-NAC-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242586r1018688_rule",
+          "+@id": "SV-242586r1146396_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000120",
@@ -1666,7 +1666,7 @@
         "title": "SRG-NET-000015-NAC-000130",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242587r812756_rule",
+          "+@id": "SV-242587r1146397_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000130",
@@ -2017,7 +2017,7 @@
         "title": "SRG-NET-000089-NAC-000450",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242598r812778_rule",
+          "+@id": "SV-242598r1038960_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000240",

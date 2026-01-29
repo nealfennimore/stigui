@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2025-11-20"
     },
     "title": "Rancher Government Solutions Multi-Cluster Manager Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -370,7 +370,7 @@
         "title": "SRG-APP-000023-CTR-000055",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252843r1015788_rule",
+          "+@id": "SV-252843r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-RM-000030",
@@ -843,12 +843,12 @@
         "title": "SRG-APP-000645-CTR-001410",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252849r961911_rule",
+          "+@id": "SV-252849r1155126_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-RM-001730",
           "title": "Rancher MCM must prohibit or restrict the use of protocols that transmit unencrypted authentication information or use flawed cryptographic algorithms for transmission.",
-          "description": "<VulnDiscussion>The container platform and its components will adhere to NIST 800-52R2. To ensure that traffic coming through the ingress controller is re-encrypted internally, switch off port 80 on the service object and direct ingress traffic to port 443 over HTTPS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The Rancher application will adhere to NIST 800-52R2. To ensure traffic coming through the ingress controller is re-encrypted internally, switch off port 80 on the service object and direct ingress traffic to port 443 over HTTPS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Rancher Government Solutions Multi-Cluster Manager",
             "dc:publisher": "DISA",
@@ -868,12 +868,12 @@
             "+@id": "F-56255r918223_fix"
           },
           "check": {
-            "+@system": "C-56305r918222_chk",
+            "+@system": "C-56305r1155125_chk",
             "check-content-ref": {
               "+@href": "Rancher_Government_Solutions_Multi-Cluster_Manager_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Navigate to Triple Bar Symbol(Global) >> <local cluster>.\nFrom the kubectl shell (>_) execute:\nkubectl get ingress -n cattle-system rancher -o yaml\n\nVerify the port number for Rancher is using \"443\", like the following:\n  spec:\n    rules:\n    - host: rancher.rfed.us\n      http:\n        paths:\n        - backend:\n            service:\n              name: rancher\n              port:\n                number: 443\n\nFrom the kubectl shell (>_) execute:\nkubectl get networkpolicies -n cattle-system\n\nVerify networkpolicies exist and that they are only allowing traffic to port \"444\" of the Rancher pods, like the following:\nNAME                               POD-SELECTOR   AGE\nrancher-allow-https      app=rancher        10h\nrancher-deny-ingress    app=rancher        10h\n\nIf the ingress output is not using port 443, or there are not network policies in place to only allow traffic to port 444, this is a finding."
+            "check-content": "Navigate to Triple Bar Symbol(Global) >> <local cluster>.\nFrom the kubectl shell (>_), execute:\nkubectl get ingress -n cattle-system rancher -o yaml\n\nVerify the port number for Rancher is using \"443\", like the following:\n  spec:\n    rules:\n    - host: rancher.rfed.us\n      http:\n        paths:\n        - backend:\n            service:\n              name: rancher\n              port:\n                number: 443\n\nFrom the kubectl shell (>_), execute:\nkubectl get networkpolicies -n cattle-system\n\nVerify networkpolicies exist and that they are only allowing traffic to port \"444\" of the Rancher pods, like the following:\nNAME                               POD-SELECTOR   AGE\nrancher-allow-https      app=rancher        10h\nrancher-deny-ingress    app=rancher        10h\n\nIf the ingress output is not using port 443, or there are not network policies in place to only allow traffic to port 444, this is a finding."
           }
         }
       },

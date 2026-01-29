@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-14"
+      "+@date": "2025-12-04"
     },
     "title": "Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3458,11 +3458,11 @@
         "title": "SRG-APP-000033-CTR-000090",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257513r1117167_rule",
+          "+@id": "SV-257513r1156752_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-OS-000090",
-          "title": "OpenShift RBAC access controls must be enforced.",
+          "title": "OpenShift role-based access controls (RBAC) must be enforced.",
           "description": "<VulnDiscussion>Controlling and limiting users access to system services and resources is key to securing the platform and limiting the intentional or unintentional compromising of the system and its services. OpenShift provides a robust RBAC policy system that allows for authorization policies to be as detailed as needed. Additionally, there are two layers of RBAC policies. The first is Cluster RBAC policies which administrators can control who has what access to cluster level services. The other is Local RBAC policies, which allow project developers/administrators to control what level of access users have to a given project or namespace.\n\nOpenShift provides a set of default roles out of the box, and additional roles may be added as needed. Each role has a set of rules controlling what access that role may have, and users and/or groups may be bound to one or more roles. The cluster-admin cluster level RBAC role has complete super admin privileges and it is a required role for select cluster administrators to have.\n\nThe OpenShift Container Platform includes a built-in image registry. The primary purpose is to allow users to create, import, and generally manage images running in the cluster. This registry is integrated with the authentication and authorization (RBAC) services on the cluster.\n\nRestricting access permissions and providing access only to the necessary components and resources within the OpenShift environment reduces the potential impact of security breaches and unauthorized activities.\n\nSatisfies: SRG-APP-000033-CTR-000090, SRG-APP-000033-CTR-000095, SRG-APP-000033-CTR-000100, SRG-APP-000133-CTR-000290, SRG-APP-000133-CTR-000295, SRG-APP-000133-CTR-000300, SRG-APP-000133-CTR-000305, SRG-APP-000133-CTR-000310, SRG-APP-000148-CTR-000350, SRG-APP-000153-CTR-000375, SRG-APP-000340-CTR-000770, SRG-APP-000378-CTR-000880, SRG-APP-000378-CTR-000885, SRG-APP-000378-CTR-000890, SRG-APP-000380-CTR-000900, SRG-APP-000386-CTR-000920</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
@@ -3514,19 +3514,19 @@
             }
           ],
           "fixtext": {
-            "+content": "If users or groups exist that are bound to roles they must not have, modify the user or group permissions using the following cluster and local role binding commands:\n\nRemove a user from a Cluster RBAC role by executing the following:\n\noc adm policy remove-cluster-role-from-user <role> <username>\n\nRemove a group from a Cluster RBAC role by executing the following:\n\noc adm policy remove-cluster-role-from-group <role> <groupname>\n\nRemove a user from a Local RBAC role by executing the following:\n\noc adm policy remove-role-from-user <role> <username>\n\nRemove a group from a Local RBAC role by executing the following:\n\noc adm policy remove-role-from-group <role> <groupname>\n \nNote: For additional information, refer to https://docs.openshift.com/container-platform/4.8/authentication/using-rbac.html.",
-            "+@fixref": "F-61172r921481_fix"
+            "+content": "If users or groups exist that are bound to roles they must not have, modify the user or group permissions using the following cluster and local role binding commands:\n \nRemove a user from a Cluster RBAC role by executing the following:\noc adm policy remove-cluster-role-from-user &lt;role&gt; &lt;username&gt;\n \nRemove a group from a Cluster RBAC role by executing the following:\noc adm policy remove-cluster-role-from-group &lt;role&gt; &lt;groupname&gt;\n \nRemove a user from a Local RBAC role by executing the following:\noc adm policy remove-role-from-user &lt;role&gt; &lt;username&gt;\n \nRemove a group from a Local RBAC role by executing the following:\noc adm policy remove-role-from-group &lt;role&gt; &lt;groupname&gt;\n  \nNote: For additional information, refer to https://docs.openshift.com/container-platform/4.8/authentication/using-rbac.html.\n\nWhere OpenShift Virtualization is enabled:\n\n1. Ensure kubevirt seccomp profile file permission is set to \"700\" or more restrictive:\n$ oc exec <virt-handler-pod> -ti -n openshift-cnv -- chmod 700\n/proc/1/root/var/lib/kubelet/seccomp/kubevirt/kubevirt.json\n\nEnsure kubevirt cache directory permission is set to \"755\" or more restrictive:\n$ oc exec <virt-handler-pod> -ti -n openshift-cnv -- chmod 755\n/var/run/kubevirt-private\n\n2. Remove create access to virtualmachineinstancemigration and migrationpolicy objects in the cluster.\n\nExample: Remove create access given by the clusterRoleBinding for the migrationpolicy for the test user.\n\n# Get all the users and service accounts who can create\nmigrationpolicies\n$ oc adm policy who-can create migrationpolicy\nUsers: system:admin\n..\n\nTest\n\n# Verify that the test user can create the migrationpolicy\n$ oc auth can-i create migrationpolicies --as test\nWarning: resource 'migrationpolicies' is not namespace scoped in group\n'migrations.kubevirt.io'\nyes\n# Find out which rolebinding or clusterrolbinding associated to the\ntest user\n$ oc get rolebindings,clusterrolebindings --all-namespaces -o\ncustom-columns='KIND:kind,NAMESPACE:metadata.namespace,NAME:metadata.n\name,SERVICE_ACCOUNTS:subjects[?(@.kind==\"User\")].name' |grep test\nClusterRoleBinding <none>\nmigration-creator\ntest\n# Inspect the cluster role binding\n$ oc get clusterrolebindings migration-creator -oyaml\napiVersion: rbac.authorization.k8s.io/v1\nkind: ClusterRoleBinding\nmetadata:\nannotations:\nkubectl.kubernetes.io/last-applied-configuration: |\n{\"apiVersion\":\"rbac.authorization.k8s.io/v1\",\"kind\":\"ClusterRoleBindin\ng\",\"metadata\":{\"annotations\":{},\"name\":\"migration-creator\"},\"roleRef\":\n{\"apiGroup\":\"rbac.authorization.k8s.io\",\"kind\":\"ClusterRole\",\"name\":\"m\nigration-creator\"},\"subjects\":[{\"apiGroup\":\"rbac.authorization.k8s.io\"\n,\"kind\":\"User\",\"name\":\"test\"},{\"kind\":\"ServiceAccount\",\"name\":\"test\",\"\nnamespace\":\"default\"}]}\ncreationTimestamp: \"2025-03-06T14:05:04Z\"\nname: migration-creator\nresourceVersion: \"1093678\"\nuid: 96be5dc2-2b30-4734-b5ef-16d9342bbdbf\nroleRef:\napiGroup: rbac.authorization.k8s.io\nkind: ClusterRole\nname: migration-creator\nsubjects:\n- apiGroup: rbac.authorization.k8s.io\nkind: User\nname: test\n- kind: ServiceAccount\nname: test\nnamespace: default\n# Remove the cluster role binding\n$ oc delete clusterrolebindings migration-creator\nclusterrolebinding.rbac.authorization.k8s.io \"migration-creator\"\ndeleted\n# Re-verify that the test user cannot create the migrationpolicy\n$ oc auth can-i create migrationpolicies --as test\nWarning: resource 'migrationpolicies' is not namespace scoped in group\n'migrations.kubevirt.io'\nno\n\n3. Add the appropriate kernel arguments to the MachineConfigPools of the workers nodes and reboot them. \n\nRefer to https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/installation_configuration/installing-customizing#installation-special-config-kargs_installing-customizing\n\nDefault Value: OpenShift does not enable nested virtualization by default.",
+            "+@fixref": "F-61172r1156718_fix"
           },
           "fix": {
-            "+@id": "F-61172r921481_fix"
+            "+@id": "F-61172r1156718_fix"
           },
           "check": {
-            "+@system": "C-61248r921480_chk",
+            "+@system": "C-61248r1156717_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The administrator must verify that OpenShift is configured with the necessary RBAC access controls.\n\nReview the RBAC configuration.\n\nAs the cluster-admin, view the cluster roles and their associated rule sets by executing the following:\n\noc describe clusterrole.rbac\n\nNow, view the current set of cluster role bindings, which shows the users and groups that are bound to various roles by executing the following:\n\noc describe clusterrolebinding.rbac\n\nLocal roles and bindings can be determined by executing the following:\n\noc describe rolebinding.rbac\n\nIf these results show users with privileged access that do not require that access, this is a finding."
+            "check-content": "The administrator must verify OpenShift is configured with the necessary RBAC access controls.\n \nReview the RBAC configuration. \nAs the cluster-admin, view the cluster roles and their associated rule sets by executing the following:\noc describe clusterrole.rbac\n \nView the current set of cluster role bindings, which shows the users and groups that are bound to various roles, by executing the following:\noc describe clusterrolebinding.rbac\n \nDetermine local roles and bindings by executing the following:\noc describe rolebinding.rbac \n\nIf these results show users with privileged access that do not require that access, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n\n1. Execute the following:\n$ for pod in $(oc get pod -n openshift-cnv -l\nkubevirt.io=virt-handler --no-headers -o\ncustom-columns=\"\":metadata.name\"\"); do\noc exec -ti -n openshift-cnv $pod -c virt-handler -- stat -c %a\n/proc/1/root/var/lib/kubelet/seccomp/kubevirt/kubevirt.json\ndone\n\nIf the permissions are set to anything less restrictive than \"700\", this is a finding.\n\n2. Execute the following:\n$ for pod in $(oc get po -n openshift-cnv -l kubevirt.io=virt-handler\n--no-headers -o custom-columns=\"\":metadata.name\"\"); do oc exec $pod\n-ti -n openshift-cnv -- stat -c %a /var/run/kubevirt-private ;done\n\nIf the permissions are set to anything less restrictive than \"755\", this is a finding.\n\n3. Execute the following:\n$oc adm policy who-can create vmim\n\n$ oc adm policy who-can create migrationpolicy\n\nIf these results show users with privileged access that do not require that access, this is a finding.\n\n4. Use the following command to find users, service accounts, and groups who are allowed to create VirtualMachineInterfaceMigration and MigrationPolicy resources:\n$ oc adm policy who-can create vmim\n\n$ oc adm policy who-can create migrationpolicy\n\nIf these list users not authorized to perform namespace admin migration functions, this is a finding.\n\n5. Execute the following:\ncat /sys/module/kvm_intel/parameters/nested \n\nIf the result is \"1\", this is a finding."
           }
         }
       },
@@ -3535,12 +3535,12 @@
         "title": "SRG-APP-000038-CTR-000105",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257514r1117168_rule",
+          "+@id": "SV-257514r1156722_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000100",
           "title": "OpenShift must enforce network policy on the namespace for controlling the flow of information within the container platform based on organization-defined information flow control policies.",
-          "description": "<VulnDiscussion>OpenShift provides several layers of protection to control the flow of information between the container platform components and user services. Each user project is given a separate namespace and OpenShift enforces RBAC policies controlling which projects and services users can access.\n\nOpenShift forces the use of namespaces. Service accounts are a namespace resource as well, so they are segregated. RBAC policies apply to service accounts. In addition, Network Policies are used to control the flow of requests between containers hosted on the container platform.\n\nIt is important to define a default Network Policy on the namespace that will be applied automatically to new projects to prevent unintended requests. These policies can be updated by the project's administrator (with the appropriate RBAC permissions) to apply a policy that is appropriate to the service(s) within the project namespace.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>OpenShift provides several layers of protection to control the flow of information between the container platform components and user services. Each user project is given a separate namespace and OpenShift enforces RBAC policies controlling which projects and services users can access.\n\nOpenShift forces the use of namespaces. Service accounts are a namespace resource as well, so they are segregated. RBAC policies apply to service accounts. In addition, network policies are used to control the flow of requests between containers hosted on the container platform.\n\nIt is important to define a default network policy on the namespace that will be applied automatically to new projects to prevent unintended requests. These policies can be updated by the project's administrator (with the appropriate RBAC permissions) to apply a policy that is appropriate to the service(s) within the project namespace.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
             "dc:publisher": "DISA",
@@ -3553,19 +3553,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Add a Network Policy to an existing project namespace by performing the following steps:\n\n1. Create <YOURFILE>.yaml and insert the desired resource Network Policy content. The following is an example resource quota definition:\n\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: allow-from-same-namespace\n  namespace: <NAMESPACE>\nspec:\n  podSelector: {}\n  ingress:\n  - from:\n    - podSelector: {}\n\n2. Apply the Network Policy definition to the project namespace by executing the following:\n\noc apply -f <YOURFILE>.yaml -n <NAMESPACE>\n\nDetails regarding the configuration of resource Network Policy can be reviewed at https://docs.openshift.com/container-platform/4.12/networking/network_policy/about-network-policy.html.",
-            "+@fixref": "F-61173r921484_fix"
+            "+content": "Add a network policy to an existing project namespace by performing the following steps:\n \n1. Create &lt;YOURFILE&gt;.yaml and insert the desired resource network policy content. The following is an example resource quota definition:\n  apiVersion: networking.k8s.io/v1\n kind: NetworkPolicy\n metadata:\n  name: allow-from-same-namespace\n  namespace: &lt;NAMESPACE&gt;\n spec:\n  podSelector: {}\n  ingress:\n  - from:\n  - podSelector: {}\n \n2. Apply the network policy definition to the project namespace by executing the following:\noc apply -f &lt;YOURFILE&gt;.yaml -n &lt;NAMESPACE&gt;\n \nDetails regarding the configuration of resource network policy can be reviewed at https://docs.openshift.com/container-platform/4.12/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\nEnable MAC-spoof filtering per the deployed networking provider instructions.\n\nInstructions for Bridge CNI and SR-IOV CNI:\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#nw-sriov-network-attachment_virt-connecting-vm-to-sriov",
+            "+@fixref": "F-61173r1156721_fix"
           },
           "fix": {
-            "+@id": "F-61173r921484_fix"
+            "+@id": "F-61173r1156721_fix"
           },
           "check": {
-            "+@system": "C-61249r921483_chk",
+            "+@system": "C-61249r1156720_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that each user namespace has a Network Policy by executing the following:\n\nfor ns in $(oc get namespaces -ojson | jq -r '.items[] | select((.metadata.name | startswith(\"openshift\") | not) and (.metadata.name | startswith(\"kube-\") | not) and .metadata.name != \"default\") | .metadata.name '); do oc get networkpolicy -n$ns; done\n\nIf the above returns any lines saying \"No resources found in <PROJECT> namespace.\", this is a finding. Empty output is not a finding."
+            "check-content": "Verify each user namespace has a network policy by executing the following:\n \n for ns in $(oc get namespaces -ojson | jq -r &#039;.items[] | select((.metadata.name | startswith(&#039;openshift&#039;) | not) and (.metadata.name | startswith(&#039;kube-&#039;) | not) and .metadata.name != &#039;default&#039;) | .metadata.name &#039;); do oc get networkpolicy -n$ns; done\n \nIf the above returns any lines saying &#039;No resources found in &lt;PROJECT&gt; namespace.&#039;, this is a finding. Empty output is not a finding.\n\nWhere OpenShift Virtualization is enabled:\n\nFor SR-IOV, use the following command:\n$ oc get sriovnetwork -o json | jq \".items[].spec.spoofChk\"\n\nIf these results show the setting is off for any network, this is a finding.\n\nFor Bridge CNI, use the following command:\n$ oc get networkattachmentdefinition -o json | jq\n\".items[].spec.config.macspoofchk\"\n\nIf these results show the setting is false for any network, this is a finding."
           }
         }
       },
@@ -3574,12 +3574,12 @@
         "title": "SRG-APP-000039-CTR-000110",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257515r1117169_rule",
+          "+@id": "SV-257515r1156725_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000110",
           "title": "OpenShift must enforce approved authorizations for controlling the flow of information within the container platform based on organization-defined information flow control policies.",
-          "description": "<VulnDiscussion>OpenShift provides several layers of protection to control the flow of information between the container platform components and user services. Each user project is given a separate namespace and OpenShift enforces RBAC policies controlling which projects and services users can access. In addition, Network Policies are used to control the flow of requests to and from externally integrated services to services hosted on the container platform. \n\nIt is important to define a default Network Policy that will be applied automatically to new projects to prevent unintended requests. These policies can be updated by the project's administrator (with the appropriate RBAC permissions) to apply a policy that is appropriate to the service(s) within the project namespace.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>OpenShift provides several layers of protection to control the flow of information between the container platform components and user services. Each user project is given a separate namespace and OpenShift enforces RBAC policies controlling which projects and services users can access. In addition, Network Policies are used to control the flow of requests to and from externally integrated services to services hosted on the container platform. \n\nIt is important to define a default network policy that will be applied automatically to new projects to prevent unintended requests. These policies can be updated by the project's administrator (with the appropriate RBAC permissions) to apply a policy that is appropriate to the service(s) within the project namespace.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
             "dc:publisher": "DISA",
@@ -3592,19 +3592,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure a default network policy as necessary to protect the flow of information by performing the following steps:\n\n1. Create a bootstrap project template (if not already created) by executing the following:\n\noc adm create-bootstrap-project-template -o yaml > template.yaml\n\n2. Edit the template and add Network Policy object definitions before the parameters section. For example, the following section defines two policies: one to allow requests from the same namespace and one to allow from the OpenShift ingress routing service.\n\n- apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n    name: allow-from-same-namespace\n  spec:\n    podSelector:\n    ingress:\n    - from:\n      - podSelector: {}\n- apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n    name: allow-from-openshift-ingress\n  spec:\n    ingress:\n    - from:\n      - namespaceSelector:\n          matchLabels:\n            network.openshift.io/policy-group: ingress\n    podSelector: {}\n    policyTypes:\n    - Ingress\nparameters:\n\n3. Apply the project template to the cluster by executing the following:\n\noc create -f template.yaml -n openshift-config\n\n4. Set the default cluster project request template by executing the following:\n \noc patch project.config.openshift.io/cluster --type=merge -p '{\"spec\":{\"projectRequestTemplate\":{\"name\": \"<PROJECT_REQUEST_TEMPLATE>\"}}}'\n\nFor additional information regarding network policies, refer to https://docs.openshift.com/container-platform/4.8/networking/network_policy/about-network-policy.html.",
-            "+@fixref": "F-61174r921487_fix"
+            "+content": "Configure a default network policy as necessary to protect the flow of information by performing the following steps:\n \n1. Create a bootstrap project template (if not already created) by executing the following:\n oc adm create-bootstrap-project-template -o yaml &gt; template.yaml\n \n2. Edit the template and add network policy object definitions before the parameters section. For example, the following section defines two policies: one to allow requests from the same namespace and one to allow from the OpenShift ingress routing service. \n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-same-namespace\n  spec:\n  podSelector:\n  ingress:\n  - from:\n  - podSelector: {}\n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-openshift-ingress\n  spec:\n  ingress:\n  - from:\n  - namespaceSelector:\n  matchLabels:\n  network.openshift.io/policy-group: ingress\n  podSelector: {}\n  policyTypes:\n  - Ingress\n parameters:\n \n 3. Apply the project template to the cluster by executing the following: \n oc create -f template.yaml -n openshift-config\n \n 4. Set the default cluster project request template by executing the following:  \n oc patch project.config.openshift.io/cluster --type=merge -p &#039;{&#039;spec&#039;:{&#039;projectRequestTemplate&#039;:{&#039;name&#039;: &#039;&lt;PROJECT_REQUEST_TEMPLATE&gt;&#039;}}}&#039;\n \nFor additional information regarding network policies, refer to https://docs.openshift.com/container-platform/4.8/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"replace\", \"path\": \"/spec/featureGates/downwardMetrics\",\n\"value\": false },\n]'",
+            "+@fixref": "F-61174r1156724_fix"
           },
           "fix": {
-            "+@id": "F-61174r921487_fix"
+            "+@id": "F-61174r1156724_fix"
           },
           "check": {
-            "+@system": "C-61250r921486_chk",
+            "+@system": "C-61250r1156723_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check for Network Policy. Verify a default project template is defined by executing the following:\n\noc get project.config.openshift.io/cluster -o jsonpath=\"{.spec.projectRequestTemplate.name}\"\n\nIf no project request template is in use by the project config, this is a finding.\n\nVerify the project request template creates a Network Policy:\n\noc get templates/<PROJECT-REQUEST-TEMPLATE> -n openshift-config -o jsonpath=\"{.objects[?(.kind=='NetworkPolicy')]}{'\\n'}\"\n\nReplace <PROJECT-REQUEST-TEMPLATE> with the name of the project request template returned from the earlier query. If the project template is not defined, or there are no Network Policy definitions in it, this is a finding."
+            "check-content": "Check for network policy. Verify a default project template is defined by executing the following:\noc get project.config.openshift.io/cluster -o jsonpath=&#039;{.spec.projectRequestTemplate.name}&#039;\n \nIf no project request template is in use by the project config, this is a finding.\n \nVerify the project request template creates a network policy: \noc get templates/&lt;PROJECT-REQUEST-TEMPLATE&gt; -n openshift-config -o jsonpath=&#039;{.objects[?(.kind==&#039;NetworkPolicy&#039;)]}{&#039;\\n&#039;}&#039;\n \nReplace &lt;PROJECT-REQUEST-TEMPLATE&gt; with the name of the project request template returned from the earlier query. If the project template is not defined, or there are no network policy definitions in it, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.featureGates.downwardMetrics}'\n\nIf this is set to anything other than \"false\", this is a finding."
           }
         }
       },
@@ -3652,7 +3652,7 @@
         "title": "SRG-APP-000089-CTR-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257517r960879_rule",
+          "+@id": "SV-257517r1156728_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000150",
@@ -3688,19 +3688,19 @@
             }
           ],
           "fixtext": {
-            "+content": "As the cluster administrator, update the APIServer.config.openshift.io/cluster object to set the profile to the defined level of detail. For example, to configure the profile to WriteRequestBodies, meaning that all write requests to any API server object are logged in their entirety, by executing the following:\n\noc patch apiserver.config.openshift.io/cluster --type=merge -p '{\"spec\": {\"audit\": {\"profile\": \"WriteRequestBodies\"}}}'",
-            "+@fixref": "F-61176r921493_fix"
+            "+content": "As the cluster administrator, update the APIServer.config.openshift.io/cluster object to set the profile to the defined level of detail. For example, to configure the profile to WriteRequestBodies, meaning that all write requests to any API server object are logged in their entirety, execute the following:\noc patch apiserver.config.openshift.io/cluster --type=merge -p &#039;{&#039;spec&#039;: {&#039;audit&#039;: {&#039;profile&#039;: &#039;WriteRequestBodies&#039;}}}&#039;\n\nWhere OpenShift Virtualization is enabled:\n\nTo remove the errorPolicy flag on the first disk (index 0) of a given VM, use this command:\n$ oc patch vm <vm-name> --type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/template/spec/domain/devices/disks/0/errorPolicy\"},\n]'",
+            "+@fixref": "F-61176r1156727_fix"
           },
           "fix": {
-            "+@id": "F-61176r921493_fix"
+            "+@id": "F-61176r1156727_fix"
           },
           "check": {
-            "+@system": "C-61252r921492_chk",
+            "+@system": "C-61252r1156726_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To determine at what level the OpenShift audit policy logging verbosity is configured, as a cluster-administrator:execute the following command:\n\noc get apiserver.config.openshift.io/cluster -ojsonpath='{.spec.audit.profile}'\n\nIf the output from the options does not return WriteRequestBodies or AllRequestBodies, this is a finding."
+            "check-content": "To determine at what level the OpenShift audit policy logging verbosity is configured, as a cluster-administrator execute the following command: \noc get apiserver.config.openshift.io/cluster -ojsonpath=&#039;{.spec.audit.profile}&#039;\n \nIf the output from the options does not return WriteRequestBodies or AllRequestBodies, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get vm -ojson -A | jq '.items[] |\nselect(.spec.template.spec.domain.devices.disks[].errorPolicy ==\n\"ignore\")| .metadata.namespace + \"/\" + .metadata.name'\n\nIf the results show errorPolicy is set to \"ignore\", this is a finding."
           }
         }
       },
@@ -4635,7 +4635,7 @@
         "title": "SRG-APP-000148-CTR-000335",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257540r1051115_rule",
+          "+@id": "SV-257540r1156731_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-OS-000400",
@@ -4659,19 +4659,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Apply the machine config that disables root and terminates network connections by executing the following:\n\nfor mcpool in $(oc get mcp -oname | sed \"s:.*/::\" ); do\necho \"apiVersion: machineconfiguration.openshift.io/v1\nkind: MachineConfig\nmetadata:\n  name: 50-sshd-config-$mcpool\n  labels:\n    machineconfiguration.openshift.io/role: $mcpool\nspec:\n   config:\n     ignition:\n       version: 3.1.0\n     storage:\n       files:\n       - contents:\n           source: data:,%0A%23%09$OpenBSD:%20sshd_config%2Cv%201.103%202018%2F04%2F09%2020:41:22%20tj%20Exp%20$%0A%0A%23%20This%20is%20the%20sshd%20server%20system-wide%20configuration%20file.%20%20See%0A%23%20sshd_config%285%29%20for%20more%20information.%0A%0A%23%20This%20sshd%20was%20compiled%20with%20PATH=%2Fusr%2Flocal%2Fbin:%2Fusr%2Fbin:%2Fusr%2Flocal%2Fsbin:%2Fusr%2Fsbin%0A%0A%23%20The%20strategy%20used%20for%20options%20in%20the%20default%20sshd_config%20shipped%20with%0A%23%20OpenSSH%20is%20to%20specify%20options%20with%20their%20default%20value%20where%0A%23%20possible%2C%20but%20leave%20them%20commented.%20%20Uncommented%20options%20override%20the%0A%23%20default%20value.%0A%0A%23%20If%20you%20want%20to%20change%20the%20port%20on%20a%20SELinux%20system%2C%20you%20have%20to%20tell%0A%23%20SELinux%20about%20this%20change.%0A%23%20semanage%20port%20-a%20-t%20ssh_port_t%20-p%20tcp%20%23PORTNUMBER%0A%23%0A%23Port%2022%0A%23AddressFamily%20any%0A%23ListenAddress%200.0.0.0%0A%23ListenAddress%20::%0A%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_rsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ecdsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ed25519_key%0A%0A%23%20Ciphers%20and%20keying%0ARekeyLimit%20512M%201h%0A%0A%23%20System-wide%20Crypto%20policy:%0A%23%20This%20system%20is%20following%20system-wide%20crypto%20policy.%20The%20changes%20to%0A%23%20Ciphers%2C%20MACs%2C%20KexAlgoritms%20and%20GSSAPIKexAlgorithsm%20will%20not%20have%20any%0A%23%20effect%20here.%20They%20will%20be%20overridden%20by%20command-line%20options%20passed%20on%0A%23%20the%20server%20start%20up.%0A%23%20To%20opt%20out%2C%20uncomment%20a%20line%20with%20redefinition%20of%20%20CRYPTO_POLICY=%0A%23%20variable%20in%20%20%2Fetc%2Fsysconfig%2Fsshd%20%20to%20overwrite%20the%20policy.%0A%23%20For%20more%20information%2C%20see%20manual%20page%20for%20update-crypto-policies%288%29.%0A%0A%23%20Logging%0A%23SyslogFacility%20AUTH%0ASyslogFacility%20AUTHPRIV%0A%23LogLevel%20INFO%0A%0A%23%20Authentication:%0A%0A%23LoginGraceTime%202m%0APermitRootLogin%20no%0AStrictModes%20yes%0A%23MaxAuthTries%206%0A%23MaxSessions%2010%0A%0APubkeyAuthentication%20yes%0A%0A%23%20The%20default%20is%20to%20check%20both%20.ssh%2Fauthorized_keys%20and%20.ssh%2Fauthorized_keys2%0A%23%20but%20this%20is%20overridden%20so%20installations%20will%20only%20check%20.ssh%2Fauthorized_keys%0AAuthorizedKeysFile%09.ssh%2Fauthorized_keys%0A%0A%23AuthorizedPrincipalsFile%20none%0A%0A%23AuthorizedKeysCommand%20none%0A%23AuthorizedKeysCommandUser%20nobody%0A%0A%23%20For%20this%20to%20work%20you%20will%20also%20need%20host%20keys%20in%20%2Fetc%2Fssh%2Fssh_known_hosts%0AHostbasedAuthentication%20no%0A%23%20Change%20to%20yes%20if%20you%20don%27t%20trust%20~%2F.ssh%2Fknown_hosts%20for%0A%23%20HostbasedAuthentication%0AIgnoreUserKnownHosts%20yes%0A%23%20Don%27t%20read%20the%20user%27s%20~%2F.rhosts%20and%20~%2F.shosts%20files%0AIgnoreRhosts%20yes%0A%0A%23%20To%20disable%20tunneled%20clear%20text%20passwords%2C%20change%20to%20no%20here%21%0A%23PasswordAuthentication%20yes%0APermitEmptyPasswords%20no%0APasswordAuthentication%20no%0A%0A%23%20Change%20to%20no%20to%20disable%20s%2Fkey%20passwords%0A%23ChallengeResponseAuthentication%20yes%0AChallengeResponseAuthentication%20no%0A%0A%23%20Kerberos%20options%0AKerberosAuthentication%20no%0A%23KerberosOrLocalPasswd%20yes%0A%23KerberosTicketCleanup%20yes%0A%23KerberosGetAFSToken%20no%0A%23KerberosUseKuserok%20yes%0A%0A%23%20GSSAPI%20options%0AGSSAPIAuthentication%20no%0AGSSAPICleanupCredentials%20no%0A%23GSSAPIStrictAcceptorCheck%20yes%0A%23GSSAPIKeyExchange%20no%0A%23GSSAPIEnablek5users%20no%0A%0A%23%20Set%20this%20to%20%27yes%27%20to%20enable%20PAM%20authentication%2C%20account%20processing%2C%0A%23%20and%20session%20processing.%20If%20this%20is%20enabled%2C%20PAM%20authentication%20will%0A%23%20be%20allowed%20through%20the%20ChallengeResponseAuthentication%20and%0A%23%20PasswordAuthentication.%20%20Depending%20on%20your%20PAM%20configuration%2C%0A%23%20PAM%20authentication%20via%20ChallengeResponseAuthentication%20may%20bypass%0A%23%20the%20setting%20of%20%22PermitRootLogin%20without-password%22.%0A%23%20If%20you%20just%20want%20the%20PAM%20account%20and%20session%20checks%20to%20run%20without%0A%23%20PAM%20authentication%2C%20then%20enable%20this%20but%20set%20PasswordAuthentication%0A%23%20and%20ChallengeResponseAuthentication%20to%20%27no%27.%0A%23%20WARNING:%20%27UsePAM%20no%27%20is%20not%20supported%20in%20Fedora%20and%20may%20cause%20several%0A%23%20problems.%0AUsePAM%20yes%0A%0A%23AllowAgentForwarding%20yes%0A%23AllowTcpForwarding%20yes%0A%23GatewayPorts%20no%0AX11Forwarding%20yes%0A%23X11DisplayOffset%2010%0A%23X11UseLocalhost%20yes%0A%23PermitTTY%20yes%0A%0A%23%20It%20is%20recommended%20to%20use%20pam_motd%20in%20%2Fetc%2Fpam.d%2Fsshd%20instead%20of%20PrintMotd%2C%0A%23%20as%20it%20is%20more%20configurable%20and%20versatile%20than%20the%20built-in%20version.%0APrintMotd%20no%0A%0APrintLastLog%20yes%0A%23TCPKeepAlive%20yes%0APermitUserEnvironment%20no%0ACompression%20no%0AClientAliveInterval%20600%0AClientAliveCountMax%200%0A%23UseDNS%20no%0A%23PidFile%20%2Fvar%2Frun%2Fsshd.pid%0A%23MaxStartups%2010:30:100%0A%23PermitTunnel%20no%0A%23ChrootDirectory%20none%0A%23V+G67ersionAddendum%20none%0A%0A%23%20no%20default%20banner%20path%0ABanner%20%2Fetc%2Fissue%0A%0A%23%20Accept%20locale-related%20environment%20variables%0AAcceptEnv%20LANG%20LC_CTYPE%20LC_NUMERIC%20LC_TIME%20LC_COLLATE%20LC_MONETARY%20LC_MESSAGES%0AAcceptEnv%20LC_PAPER%20LC_NAME%20LC_ADDRESS%20LC_TELEPHONE%20LC_MEASUREMENT%0AAcceptEnv%20LC_IDENTIFICATION%20LC_ALL%20LANGUAGE%0AAcceptEnv%20XMODIFIERS%0A%0A%23%20override%20default%20of%20no%20subsystems%0ASubsystem%09sftp%09%2Fusr%2Flibexec%2Fopenssh%2Fsftp-server%0A%0A%23%20Example%20of%20overriding%20settings%20on%20a%20per-user%20basis%0A%23Match%20User%20anoncvs%0A%23%09X11Forwarding%20no%0A%23%09AllowTcpForwarding%20no%0A%23%09PermitTTY%20no%0A%23%09ForceCommand%20cvs%20server%0A%0AUsePrivilegeSeparation%20sandbox\n         mode: 0644\n         overwrite: true\n         path: /etc/ssh/sshd_config\n\" | oc apply -f -\ndone",
-            "+@fixref": "F-61199r921562_fix"
+            "+content": "Apply the machine config that disables root and terminates network connections by executing the following:\nfor mcpool in $(oc get mcp -oname | sed \"s:.*/::\" ); do\necho \"apiVersion: machineconfiguration.openshift.io/v1\nkind: MachineConfig\nmetadata:\n  name: 50-sshd-config-$mcpool\n  labels:\n    machineconfiguration.openshift.io/role: $mcpool\nspec:\n   config:\n     ignition:\n       version: 3.1.0\n     storage:\n       files:\n       - contents:\n           source: data:,%0A%23%09$OpenBSD:%20sshd_config%2Cv%201.103%202018%2F04%2F09%2020:41:22%20tj%20Exp%20$%0A%0A%23%20This%20is%20the%20sshd%20server%20system-wide%20configuration%20file.%20%20See%0A%23%20sshd_config%285%29%20for%20more%20information.%0A%0A%23%20This%20sshd%20was%20compiled%20with%20PATH=%2Fusr%2Flocal%2Fbin:%2Fusr%2Fbin:%2Fusr%2Flocal%2Fsbin:%2Fusr%2Fsbin%0A%0A%23%20The%20strategy%20used%20for%20options%20in%20the%20default%20sshd_config%20shipped%20with%0A%23%20OpenSSH%20is%20to%20specify%20options%20with%20their%20default%20value%20where%0A%23%20possible%2C%20but%20leave%20them%20commented.%20%20Uncommented%20options%20override%20the%0A%23%20default%20value.%0A%0A%23%20If%20you%20want%20to%20change%20the%20port%20on%20a%20SELinux%20system%2C%20you%20have%20to%20tell%0A%23%20SELinux%20about%20this%20change.%0A%23%20semanage%20port%20-a%20-t%20ssh_port_t%20-p%20tcp%20%23PORTNUMBER%0A%23%0A%23Port%2022%0A%23AddressFamily%20any%0A%23ListenAddress%200.0.0.0%0A%23ListenAddress%20::%0A%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_rsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ecdsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ed25519_key%0A%0A%23%20Ciphers%20and%20keying%0ARekeyLimit%20512M%201h%0A%0A%23%20System-wide%20Crypto%20policy:%0A%23%20This%20system%20is%20following%20system-wide%20crypto%20policy.%20The%20changes%20to%0A%23%20Ciphers%2C%20MACs%2C%20KexAlgoritms%20and%20GSSAPIKexAlgorithsm%20will%20not%20have%20any%0A%23%20effect%20here.%20They%20will%20be%20overridden%20by%20command-line%20options%20passed%20on%0A%23%20the%20server%20start%20up.%0A%23%20To%20opt%20out%2C%20uncomment%20a%20line%20with%20redefinition%20of%20%20CRYPTO_POLICY=%0A%23%20variable%20in%20%20%2Fetc%2Fsysconfig%2Fsshd%20%20to%20overwrite%20the%20policy.%0A%23%20For%20more%20information%2C%20see%20manual%20page%20for%20update-crypto-policies%288%29.%0A%0A%23%20Logging%0A%23SyslogFacility%20AUTH%0ASyslogFacility%20AUTHPRIV%0A%23LogLevel%20INFO%0A%0A%23%20Authentication:%0A%0A%23LoginGraceTime%202m%0APermitRootLogin%20no%0AStrictModes%20yes%0A%23MaxAuthTries%206%0A%23MaxSessions%2010%0A%0APubkeyAuthentication%20yes%0A%0A%23%20The%20default%20is%20to%20check%20both%20.ssh%2Fauthorized_keys%20and%20.ssh%2Fauthorized_keys2%0A%23%20but%20this%20is%20overridden%20so%20installations%20will%20only%20check%20.ssh%2Fauthorized_keys%0AAuthorizedKeysFile%09.ssh%2Fauthorized_keys%0A%0A%23AuthorizedPrincipalsFile%20none%0A%0A%23AuthorizedKeysCommand%20none%0A%23AuthorizedKeysCommandUser%20nobody%0A%0A%23%20For%20this%20to%20work%20you%20will%20also%20need%20host%20keys%20in%20%2Fetc%2Fssh%2Fssh_known_hosts%0AHostbasedAuthentication%20no%0A%23%20Change%20to%20yes%20if%20you%20don%27t%20trust%20~%2F.ssh%2Fknown_hosts%20for%0A%23%20HostbasedAuthentication%0AIgnoreUserKnownHosts%20yes%0A%23%20Don%27t%20read%20the%20user%27s%20~%2F.rhosts%20and%20~%2F.shosts%20files%0AIgnoreRhosts%20yes%0A%0A%23%20To%20disable%20tunneled%20clear%20text%20passwords%2C%20change%20to%20no%20here%21%0A%23PasswordAuthentication%20yes%0APermitEmptyPasswords%20no%0APasswordAuthentication%20no%0A%0A%23%20Change%20to%20no%20to%20disable%20s%2Fkey%20passwords%0A%23ChallengeResponseAuthentication%20yes%0AChallengeResponseAuthentication%20no%0A%0A%23%20Kerberos%20options%0AKerberosAuthentication%20no%0A%23KerberosOrLocalPasswd%20yes%0A%23KerberosTicketCleanup%20yes%0A%23KerberosGetAFSToken%20no%0A%23KerberosUseKuserok%20yes%0A%0A%23%20GSSAPI%20options%0AGSSAPIAuthentication%20no%0AGSSAPICleanupCredentials%20no%0A%23GSSAPIStrictAcceptorCheck%20yes%0A%23GSSAPIKeyExchange%20no%0A%23GSSAPIEnablek5users%20no%0A%0A%23%20Set%20this%20to%20%27yes%27%20to%20enable%20PAM%20authentication%2C%20account%20processing%2C%0A%23%20and%20session%20processing.%20If%20this%20is%20enabled%2C%20PAM%20authentication%20will%0A%23%20be%20allowed%20through%20the%20ChallengeResponseAuthentication%20and%0A%23%20PasswordAuthentication.%20%20Depending%20on%20your%20PAM%20configuration%2C%0A%23%20PAM%20authentication%20via%20ChallengeResponseAuthentication%20may%20bypass%0A%23%20the%20setting%20of%20%22PermitRootLogin%20without-password%22.%0A%23%20If%20you%20just%20want%20the%20PAM%20account%20and%20session%20checks%20to%20run%20without%0A%23%20PAM%20authentication%2C%20then%20enable%20this%20but%20set%20PasswordAuthentication%0A%23%20and%20ChallengeResponseAuthentication%20to%20%27no%27.%0A%23%20WARNING:%20%27UsePAM%20no%27%20is%20not%20supported%20in%20Fedora%20and%20may%20cause%20several%0A%23%20problems.%0AUsePAM%20yes%0A%0A%23AllowAgentForwarding%20yes%0A%23AllowTcpForwarding%20yes%0A%23GatewayPorts%20no%0AX11Forwarding%20yes%0A%23X11DisplayOffset%2010%0A%23X11UseLocalhost%20yes%0A%23PermitTTY%20yes%0A%0A%23%20It%20is%20recommended%20to%20use%20pam_motd%20in%20%2Fetc%2Fpam.d%2Fsshd%20instead%20of%20PrintMotd%2C%0A%23%20as%20it%20is%20more%20configurable%20and%20versatile%20than%20the%20built-in%20version.%0APrintMotd%20no%0A%0APrintLastLog%20yes%0A%23TCPKeepAlive%20yes%0APermitUserEnvironment%20no%0ACompression%20no%0AClientAliveInterval%20600%0AClientAliveCountMax%200%0A%23UseDNS%20no%0A%23PidFile%20%2Fvar%2Frun%2Fsshd.pid%0A%23MaxStartups%2010:30:100%0A%23PermitTunnel%20no%0A%23ChrootDirectory%20none%0A%23V+G67ersionAddendum%20none%0A%0A%23%20no%20default%20banner%20path%0ABanner%20%2Fetc%2Fissue%0A%0A%23%20Accept%20locale-related%20environment%20variables%0AAcceptEnv%20LANG%20LC_CTYPE%20LC_NUMERIC%20LC_TIME%20LC_COLLATE%20LC_MONETARY%20LC_MESSAGES%0AAcceptEnv%20LC_PAPER%20LC_NAME%20LC_ADDRESS%20LC_TELEPHONE%20LC_MEASUREMENT%0AAcceptEnv%20LC_IDENTIFICATION%20LC_ALL%20LANGUAGE%0AAcceptEnv%20XMODIFIERS%0A%0A%23%20override%20default%20of%20no%20subsystems%0ASubsystem%09sftp%09%2Fusr%2Flibexec%2Fopenssh%2Fsftp-server%0A%0A%23%20Example%20of%20overriding%20settings%20on%20a%20per-user%20basis%0A%23Match%20User%20anoncvs%0A%23%09X11Forwarding%20no%0A%23%09AllowTcpForwarding%20no%0A%23%09PermitTTY%20no%0A%23%09ForceCommand%20cvs%20server%0A%0AUsePrivilegeSeparation%20sandbox\n         mode: 0644\n         overwrite: true\n         path: /etc/ssh/sshd_config\n\" | oc apply -f -\ndone\n\nWhere OpenShift Virtualization is enabled on versions older than 4.18:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"replace\", \"path\": \"/spec/featureGates/nonRoot\", \"value\":\ntrue },\n]'",
+            "+@fixref": "F-61199r1156730_fix"
           },
           "fix": {
-            "+@id": "F-61199r921562_fix"
+            "+@id": "F-61199r1156730_fix"
           },
           "check": {
-            "+@system": "C-61275r921561_chk",
+            "+@system": "C-61275r1156729_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify SSH is restricted from logging on as root and network connections are terminated.\n\nPrevent logging on directly as \"root\" using SSH by executing the following command:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -i PermitRootLogin /etc/ssh/sshd_config' 2>/dev/null; done\n\nIf the \"PermitRootLogin\" keyword is set to \"yes\", is missing, or is commented out, this is a finding.\n\nVerify all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck the \"ClientAliveCountMax\" and ClientAliveInterval by executing the following command:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -i clientalive /etc/ssh/sshd_config\n' 2>/dev/null; done\n\nIf \"ClientAliveCountMax\" do not exist, is not set to a value of \"0\" in \"/etc/ssh/sshd_config\", or is commented out, this is a finding.\n\nIf \"ClientAliveInterval\" does not exist, or has a value of > 600 in \"/etc/ssh/sshd_config\", or is commented out, this is a finding."
+            "check-content": "Verify SSH is restricted from logging on as root and network connections are terminated.\n\nPrevent logging on directly as \"root\" using SSH by executing the following command:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -i PermitRootLogin /etc/ssh/sshd_config' 2>/dev/null; done\n\nIf the \"PermitRootLogin\" keyword is set to \"yes\", is missing, or is commented out, this is a finding.\n\nVerify all network connections associated with SSH traffic are automatically terminated at the end of the session or after 10 minutes of inactivity.\n\nCheck the \"ClientAliveCountMax\" and ClientAliveInterval by executing the following command:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -i clientalive /etc/ssh/sshd_config\n' 2>/dev/null; done\n\nIf \"ClientAliveCountMax\" do not exist, is not set to a value of \"0\" in \"/etc/ssh/sshd_config\", or is commented out, this is a finding.\n\nIf \"ClientAliveInterval\" does not exist, or has a value of > 600 in \"/etc/ssh/sshd_config\", or is commented out, this is a finding.\n\nWhere OpenShift Virtualization is enabled on versions older than 4.18:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.featureGates.nonRoot}'\n\nIf this is set to anything other than \"true\", this is a finding."
           }
         }
       },
@@ -4982,7 +4982,7 @@
         "title": "SRG-APP-000211-CTR-000530",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257545r1117171_rule",
+          "+@id": "SV-257545r1156734_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000500",
@@ -5000,19 +5000,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Disable and remove passwords from root and core accounts by executing the following:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'usermod -p \"*\" root; usermod -p \"*\" core' 2>/dev/null; done\n\nRemove any additional user accounts from the nodes by executing the following:\n\noc debug node/<node> -- chroot /host /bin/bash -c 'userdel <user>'",
-            "+@fixref": "F-61204r921577_fix"
+            "+content": "Disable and remove passwords from root and core accounts by executing the following:\n\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;usermod -p &#039;*&#039; root; usermod -p &#039;*&#039; core&#039; 2&gt;/dev/null; done\n \nRemove any additional user accounts from the nodes by executing the following:\noc debug node/&lt;node&gt; -- chroot /host /bin/bash -c &#039;userdel &lt;user&gt;&#039;\n\nWhere OpenShift Virtualization is enabled:\noc get rolebinding -ojson | jq -r '.items[] | select(.roleRef.name | contains(\"token.kubevirt.io:generate\")) | .metadata.name' | xargs oc delete rolebinding",
+            "+@fixref": "F-61204r1156733_fix"
           },
           "fix": {
-            "+@id": "F-61204r921577_fix"
+            "+@id": "F-61204r1156733_fix"
           },
           "check": {
-            "+@system": "C-61280r921576_chk",
+            "+@system": "C-61280r1156732_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that root and core are the only user accounts on the nodes by executing the following:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; cat /etc/passwd' 2>/dev/null; done\n\nThe output will look similar to:\n\n<node_name> root:x:0:0:root:/root:/bin/bash\ncore:x:1000:1000:CoreOS Admin:/var/home/core:/bin/bash\ncontainers:x:993:995:User for housing the sub ID range for containers:/var/home/containers:/sbin/nologin\n\nIf there are any user accounts in addition to root, containers, and core, this is a finding.\n\nVerify the root and core users are set to disable password logon by executing the following:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -e \"^root\" -e \"^core\" /etc/shadow' 2>/dev/null; done\n\nThe output will look similar to:\n<node_name>\nroot:*:18367:0:99999:7:::\ncore:*:18939:0:99999:7:::\n\nIf the password entry has anything other than '*', this is a finding."
+            "check-content": "Verify root and core are the only user accounts on the nodes by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; cat /etc/passwd&#039; 2&gt;/dev/null; done\n \nThe output will look similar to:\n&lt;node_name&gt; root:x:0:0:root:/root:/bin/bash\ncore:x:1000:1000:CoreOS Admin:/var/home/core:/bin/bash\ncontainers:x:993:995:User for housing the sub ID range for containers:/var/home/containers:/sbin/nologin\n \nIf there are any user accounts in addition to root, containers, and core, this is a finding.\n \nVerify the root and core users are set to disable password logon by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; grep -e &#039;^root&#039; -e &#039;^core&#039; /etc/shadow&#039; 2&gt;/dev/null; done\n\nThe output will look similar to:\n&lt;node_name&gt;\nroot:*:18367:0:99999:7:::\ncore:*:18939:0:99999:7:::\n \nIf the password entry has anything other than &#039;*&#039;, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get rolebinding -ojson | jq -c '.items[] | select(.roleRef.name\n| contains(\"token.kubevirt.io:generate\"))'\n\nIf these results show users with this rolebinding, this is a finding."
           }
         }
       },
@@ -5117,7 +5117,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257548r1117173_rule",
+          "+@id": "SV-257548r1156737_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000560",
@@ -5135,19 +5135,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Apply the machine config to enable page poisoning by executing the following:\n\nfor mcpool in $(oc get mcp -oname | sed \"s:.*/::\" ); do\necho \"apiVersion: machineconfiguration.openshift.io/v1\nkind: MachineConfig\nmetadata:\n  name: 05-kernelarg-page-poison-$mcpool\n  labels:\n    machineconfiguration.openshift.io/role: $mcpool\nspec:\n  config:\n    ignition:\n      version: 3.1.0\n  kernelArguments:\n  - page_poison=1\n\" | oc apply -f -\ndone",
-            "+@fixref": "F-61207r921586_fix"
+            "+content": "Apply the machine config to enable page poisoning by executing the following: \n\n for mcpool in $(oc get mcp -oname | sed &#039;s:.*/::&#039; ); do\necho &#039;apiVersion: machineconfiguration.openshift.io/v1\nkind: MachineConfig\nmetadata:\n name: 05-kernelarg-page-poison-$mcpool\n labels:\n machineconfiguration.openshift.io/role: $mcpool\nspec:\n config:\n ignition:\n version: 3.1.0\n kernelArguments:\n - page_poison=1\n&#039; | oc apply -f -\ndone \n\nWhere OpenShift Virtualization is enabled and Windows SCF is not in use execute the following:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"replace\", \"path\":\n\"/spec/featureGates/persistentReservation\", \"value\": false },\n]'\n\nWhere OpenShift Virtualization is enabled:\nEdit the object and set the field to false: \n'oc edit hyperconverged kubevirt-hyperconverged -n openshift-cnv'\n\nTo set a shareable flag to false on every disk, this (experimental) command can be used:\n$ oc get vm <vm-name> -o json | jq\n'.spec.template.spec.domain.devices.disks[] += {\"shareable\":false}' |\noc apply -f -",
+            "+@fixref": "F-61207r1156736_fix"
           },
           "fix": {
-            "+@id": "F-61207r921586_fix"
+            "+@id": "F-61207r1156736_fix"
           },
           "check": {
-            "+@system": "C-61283r921585_chk",
+            "+@system": "C-61283r1156735_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check the current CoreOS boot loader configuration has page poisoning enabled by executing the following:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \";  grep page_poison /boot/loader/entries/*.conf|| echo \"not found\"' 2>/dev/null; done\n\nIf \"page_poison\" is not set to \"1\" or returns \"not found\", this is a finding."
+            "check-content": "1. Check the current CoreOS boot loader configuration has page poisoning enabled by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \";  grep page_poison /boot/loader/entries/*.conf|| echo \"not found\"' 2>/dev/null; done\n\nIf \"page_poison\" is not set to \"1\" or returns \"not found\", this is a finding.\n\n2. Where OpenShift Virtualization is enabled, execute the following:\n$ oc get hyperconvergeds kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.ksmConfiguration}'\n\nIf this is set to anything other than \"false\", this is a finding.\n\n3. Where OpenShift Virtualization is enabled, execute the following:\n$ oc get vm -ojson -A | jq '.items[] |\nselect(.spec.template.spec.domain.devices.disks[].shareable == true)|\n.metadata.namespace + \"/\" + .metadata.name'\n\nIf these results show disks flagged the shareable, this is a finding.\n\n4. Where OpenShift Virtualization is enabled, and Windows SCF is not in use:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.featureGates.persistentReservation}'\n\nIf this is set to anything other than \"false\", this is a finding."
           }
         }
       },
@@ -5156,7 +5156,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257549r1117173_rule",
+          "+@id": "SV-257549r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000570",
@@ -5195,7 +5195,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257550r1117173_rule",
+          "+@id": "SV-257550r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000580",
@@ -5234,7 +5234,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257551r1117173_rule",
+          "+@id": "SV-257551r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000590",
@@ -5273,7 +5273,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257552r1117173_rule",
+          "+@id": "SV-257552r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000600",
@@ -5312,7 +5312,7 @@
         "title": "SRG-APP-000243-CTR-000600",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257553r1117173_rule",
+          "+@id": "SV-257553r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000610",
@@ -5650,12 +5650,12 @@
         "title": "SRG-APP-000384-CTR-000915",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257561r961473_rule",
+          "+@id": "SV-257561r1156740_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000740",
           "title": "OpenShift must prevent the installation of patches, service packs, device drivers, or operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization.",
-          "description": "<VulnDiscussion>Integrity of the OpenShift platform is handled by the cluster version operator. The cluster version operator will by default GPG verify the integrity of the release image before applying it. The release image contains a sha256 digest of machine-os-content which is used by the machine config operators for updates. On the host, the container runtime (podman) verifies the integrity of that sha256 when pulling the image before the machine config operator reads its content. Hence, there is end-to-end GPG-verified integrity for the operating system updates (as well as the rest of the cluster components which run as regular containers).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Integrity of the OpenShift platform is handled by the cluster version operator. The cluster version operator will by default GPG verify the integrity of the release image before applying it. The release image contains a sha256 digest of machine-os-content which is used by the machine config operators for updates. On the host, the container runtime (podman) verifies the integrity of that sha256 when pulling the image before the machine config operator reads its content. Hence, there is end-to-end GPG-verified integrity for the operating system updates (as well as the rest of the cluster components, which run as regular containers).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
             "dc:publisher": "DISA",
@@ -5668,19 +5668,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "By default, the integrity of RH CoreOS is checked by cluster version operator on OpenShift platform. If the integrity is not verified, reinstall of the cluster is necessary.\n\nRefer to instructions:\nhttps://docs.openshift.com/container-platform/4.10/installing/index.html",
-            "+@fixref": "F-61220r921625_fix"
+            "+content": "By default, the integrity of RH CoreOS is checked by cluster version operator on OpenShift platform. If the integrity is not verified, reinstall of the cluster is necessary.\n \nRefer to instructions:\nhttps://docs.openshift.com/container-platform/4.10/installing/index.html\n\nWhere OpenShift Virtualization is enabled:\nAnnotations must be removed from the Hyperconverged by directly editing the object with oc edit hyperconverged kubevirt-hyperconverged -n openshift-cnv or by removing the annotation with the annotate command.\n\nExample:\n$ oc annotate --overwrite -n openshift-cnv hco\nkubevirt-hyperconverged\n'containerizeddataimporter.kubevirt.io/jsonpatch-'",
+            "+@fixref": "F-61220r1156739_fix"
           },
           "fix": {
-            "+@id": "F-61220r921625_fix"
+            "+@id": "F-61220r1156739_fix"
           },
           "check": {
-            "+@system": "C-61296r921624_chk",
+            "+@system": "C-61296r1156738_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify integrity of the cluster version, execute the following:\n\noc get clusterversion version \n\nIf the Cluster Version Operator is not installed or the AVAILABLE is not set to True, this is a finding. \n\nRun the following command to retrieve the Cluster Version objects in the system: \n\noc get clusterversion version -o yaml\n\nIf \"verified: true\", under status history for each item is not present, this is a finding."
+            "check-content": "To verify integrity of the cluster version, execute the following:\noc get clusterversion version \n \nIf the Cluster Version Operator is not installed or the AVAILABLE is not set to \"True\", this is a finding. \n \nRun the following command to retrieve the Cluster Version objects in the system: \noc get clusterversion version -o yaml\n \nIf &#039;verified: true&#039;, under status history for each item is not present, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv -o\njsonpath='{.metadata.annotations}'| jq\n'.|has(\"kubevirt.kubevirt.io/jsonpatch\")'\n\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv -o\njsonpath='{.metadata.annotations}'| jq\n'.|has(\"containerizeddataimporter.kubevirt.io/jsonpatch\")'\n\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv -o\njsonpath='{.metadata.annotations}'| jq\n'.|has(\"networkaddonsconfigs.kubevirt.io/jsonpatch\")'\n\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv -o\njsonpath='{.metadata.annotations}'| jq\n'.|has(\"ssp.kubevirt.io/jsonpatch\")'\n\nIf any results are returned aside from empty strings, this is a finding."
           }
         }
       },
@@ -6050,7 +6050,7 @@
         "title": "SRG-APP-000456-CTR-001125",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257571r1117151_rule",
+          "+@id": "SV-257571r1137649_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000890",
@@ -6089,7 +6089,7 @@
         "title": "SRG-APP-000456-CTR-001130",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257572r1117151_rule",
+          "+@id": "SV-257572r1137650_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000900",
@@ -6563,7 +6563,7 @@
         "title": "SRG-APP-000141-CTR-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257584r960963_rule",
+          "+@id": "SV-257584r1156743_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-001020",
@@ -6581,19 +6581,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Apply the machine config to disable USB Storage to load USB Storage kernel module by executing the following:\n\nfor mcpool in $(oc get mcp -oname | sed \"s:.*/::\" ); do\necho \"apiVersion: machineconfiguration.openshift.io/v1\nkind: MachineConfig\nmetadata:\n  name: 80-kernmod-usb-storage-disable-$mcpool\n  labels:\n    machineconfiguration.openshift.io/role: $mcpool\nspec:\n  config:\n    ignition:\n      version: 3.1.0\n    storage:\n      files:\n      - contents:\n          source: data:,install%20usb-storage%20/bin/true%0A\n        mode: 0644\n        path: /etc/modprobe.d/75-kernel_module_usb-storage_disabled.conf\n        overwrite: true\n\" | oc apply -f -\ndone",
-            "+@fixref": "F-61243r921694_fix"
+            "+content": "Apply the machine config to disable USB Storage to load USB Storage kernel module by executing the following:\n \n  for mcpool in $(oc get mcp -oname | sed &#039;s:.*/::&#039; ); do\n echo &#039;apiVersion: machineconfiguration.openshift.io/v1\n kind: MachineConfig\n metadata:\n  name: 80-kernmod-usb-storage-disable-$mcpool\n  labels:\n  machineconfiguration.openshift.io/role: $mcpool\n spec:\n  config:\n  ignition:\n  version: 3.1.0\n  storage:\n  files:\n  - contents:\n  source: data:,install%20usb-storage%20/bin/true%0A\n  mode: 0644\n  path: /etc/modprobe.d/75-kernel_module_usb-storage_disabled.conf\n  overwrite: true\n &#039; | oc apply -f -\n done\n\nWhere OpenShift Virtualization is enabled:\n\nRemove individual devices (e.g. DEVICE_A at index 0):\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/permittedHostDevices/pciHostDevices/0\"},\n\n]'\n\nRemove all devices:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\": \"/spec/permittedHostDevices\"},\n]'",
+            "+@fixref": "F-61243r1156742_fix"
           },
           "fix": {
-            "+@id": "F-61243r921694_fix"
+            "+@id": "F-61243r1156742_fix"
           },
           "check": {
-            "+@system": "C-61319r921693_chk",
+            "+@system": "C-61319r1156741_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system disables the ability to load the USB Storage kernel module by executing the following:\n\nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -r usb-storage /etc/modprobe.d/* | grep -i \"/bin/true\"' 2>/dev/null; done\n\ninstall usb-storage /bin/true\n\nIf the command does not return any output, or the line is commented out, and use of USB Storage is not documented with the Information System Security Officer (ISSO) as an operational requirement, this is a finding."
+            "check-content": "Verify the operating system disables the ability to load the USB Storage kernel module by executing the following:\n  for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; grep -r usb-storage /etc/modprobe.d/* | grep -i &#039;/bin/true&#039;&#039; 2&gt;/dev/null; done\n \n install usb-storage /bin/true\n \nIf the command does not return any output, or the line is commented out, and use of USB Storage is not documented with the information system security officer (ISSO) as an operational requirement, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.permittedHostDevices}'\n\nIf unapproved devices are listed, this is a finding."
           }
         }
       },

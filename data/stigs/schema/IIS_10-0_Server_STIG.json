@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-02"
+      "+@date": "2025-11-25"
     },
     "title": "Microsoft IIS 10.0 Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1687,7 +1687,7 @@
         "title": "SRG-APP-000099-WSR-000061",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218788r960903_rule",
+          "+@id": "SV-218788r1156543_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000110",
@@ -1715,19 +1715,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect the \"Fields\" button.\nUnder \"Custom Fields\", click the \"Add Field...\" button.\nFor each field being added, give a name unique to what the field is capturing.\nClick on the \"Source Type\" drop-down list and select \"Request Header\".\nClick on the \"Source\" drop-down list and select \"Connection\".\nClick \"OK\" to add.\n\nClick on the \"Source Type\" drop-down list and select \"Request Header\".\nClick on the \"Source\" drop-down list and select \"Warning\".\nClick \"OK\" to add.\nClick \"Apply\" under the \"Actions\" pane.",
-            "+@fixref": "F-20258r310840_fix"
+            "+content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect \"Fields\".\nUnder \"Custom Fields\", click \"Add Field...\".\nFor each field being added, give a name unique to what the field is capturing.\nClick on the \"Source Type\" drop-down list and select \"Request Header\".\nClick the \"Source\" drop-down list, and select \"Connection\".\nClick \"OK\" to add.\n\nClick the \"Source Type\" drop-down list, and select \"Request Header\".\nClick the \"Source\" drop-down list, and select \"Warning\".\nClick \"OK\" to add.\nClick \"Apply\" under the \"Actions\" pane.",
+            "+@fixref": "F-20258r1156542_fix"
           },
           "fix": {
-            "+@id": "F-20258r310840_fix"
+            "+@id": "F-20258r1156542_fix"
           },
           "check": {
-            "+@system": "C-20260r310839_chk",
+            "+@system": "C-20260r1156541_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect the \"Fields\" button.\nUnder \"Custom Fields\", verify the following fields have been configured:\nRequest Header >> Connection\nRequest Header >> Warning\nIf any of the above fields are not selected, this is a finding."
+            "check-content": "Note: If the server is hosting WSUS, this is Not Applicable.\n\nAccess the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect \"Fields\".\nUnder \"Custom Fields\", verify the following fields have been configured:\nRequest Header >> Connection.\nRequest Header >> Warning.\nIf any of the above fields are not selected, this is a finding."
           }
         }
       },
@@ -1736,7 +1736,7 @@
         "title": "SRG-APP-000100-WSR-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218789r960906_rule",
+          "+@id": "SV-218789r1156546_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000111",
@@ -1764,19 +1764,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect the \"Fields\" button.\nUnder \"Standard Fields\", select \"User Agent\", \"User Name\", and \"Referrer\".\nUnder \"Custom Fields\", select the following fields:\nClick on the \"Source Type\" drop-down list and select \"Request Header\".\nClick on the \"Source\" drop-down list and select \"Authorization\".\nClick \"OK\" to add.\n\nClick on the \"Source\" drop-down list and select \"Content-Type\".\nClick on the \"Source Type\" drop-down list and select \"Response Header\".\nClick \"OK\" to add.\nClick \"OK\".\nClick \"Apply\" under the \"Actions\" pane.",
-            "+@fixref": "F-20259r505277_fix"
+            "+content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect \"Fields\".\nUnder \"Standard Fields\", select \"User Agent\", \"User Name\", and \"Referrer\".\nUnder \"Custom Fields\", select the following fields:\nClick the \"Source Type\" drop-down list, and select \"Request Header\".\nClick on \"Source\" drop-down, list and select \"Authorization\".\nClick \"OK\" to add.\n\nClick the \"Source\" drop-down list, and select \"Content-Type\".\nClick the \"Source Type\" drop-down list, and select \"Response Header\".\nClick \"OK\" to add.\nClick \"OK\".\nClick \"Apply\" under the \"Actions\" pane.",
+            "+@fixref": "F-20259r1156545_fix"
           },
           "fix": {
-            "+@id": "F-20259r505277_fix"
+            "+@id": "F-20259r1156545_fix"
           },
           "check": {
-            "+@system": "C-20261r505276_chk",
+            "+@system": "C-20261r1156544_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Access the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect the \"Fields\" button.\nUnder \"Standard Fields\", verify \"User Agent\", \"User Name\", and \"Referrer\" are selected.\nUnder \"Custom Fields\", verify the following field has been configured:\nRequest Header >> Authorization\nResponse Header >> Content-Type\nIf any of the above fields are not selected, this is a finding."
+            "check-content": "Note: If the server is hosting WSUS, this is Not Applicable.\n\nAccess the IIS 10.0 web server IIS Manager.\nClick the IIS 10.0 web server name.\nUnder \"IIS\", double-click the \"Logging\" icon.\nVerify the \"Format:\" under \"Log File\" is configured to \"W3C\".\nSelect \"Fields\".\nUnder \"Standard Fields\", verify \"User Agent\", \"User Name\", and \"Referrer\" are selected.\nUnder \"Custom Fields\", verify the following field has been configured:\nRequest Header >> Authorization.\nResponse Header >> Content-Type.\nIf any of the above fields are not selected, this is a finding."
           }
         }
       },
@@ -2324,7 +2324,7 @@
         "title": "SRG-APP-000211-WSR-000030",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218802r1117171_rule",
+          "+@id": "SV-218802r1138072_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IIST-SV-000131",
@@ -2373,7 +2373,7 @@
         "title": "SRG-APP-000211-WSR-000129",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218803r1117171_rule",
+          "+@id": "SV-218803r1138074_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SV-000132",

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-13"
+      "+@date": "2025-12-04"
     },
     "title": "Xylok Security Suite 20.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 10 Dec 2024",
+        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -802,7 +802,7 @@
         "title": "SRG-APP-000380",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269569r1053482_rule",
+          "+@id": "SV-269569r1155155_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "XYLK-20-000334",
@@ -827,12 +827,12 @@
             "+@id": "F-73503r1053481_fix"
           },
           "check": {
-            "+@system": "C-73602r1053480_chk",
+            "+@system": "C-73602r1155154_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check the Xylok lib file permissions with the following command:\n\n$ ls -l /var/lib/xylok\n\nIf \"db\" file has permissions greater than \"0700\", this is a finding.\n\nIf any other file or directory has permissions greater than \"0755\", this is a finding."
+            "check-content": "Check the Xylok lib file permissions with the following command:\n\n$ ls -l /var/lib/xylok/data\n\nIf the \"db\" directory has permissions greater than \"0700\", this is a finding.\n\n$ ls -l /var/lib/xylok\n\nIf any file or directory has permissions greater than \"0755\", this is a finding."
           }
         }
       },
@@ -874,7 +874,7 @@
           "check": {
             "+@system": "C-73603r1053483_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if Xylok is configured to limit its maximum CPU and memory usage with the following command, run from the host machine as a normal user:\n\n$ grep LIMIT_ /etc/xylok.conf\n\nVerify the following settings are configured:\n- LIMIT_MEM set to less than 100 percent of the host machine's memory.\n\n- LIMIT_CPU set to less than 1000.\n\nIf any of the above settings are not present or are blank, this is a finding."
@@ -886,7 +886,7 @@
         "title": "SRG-APP-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269571r1053488_rule",
+          "+@id": "SV-269571r1055707_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "XYLK-20-000003",
@@ -917,12 +917,12 @@
             "+@id": "F-73505r1053487_fix"
           },
           "check": {
-            "+@system": "C-73604r1053486_chk",
+            "+@system": "C-73604r1055707_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify session is configured to lock after 15 minutes of inactivity. Execute the following:\n$ grep SESSION_LENGTH /etc/xylok.conf\n\nSESSION_LENGTH=900\n\nIf \"SESSION_LENGTH\" is set to more than15 minutes or is missing, this is a finding. \n\nNote: The setting is in seconds. 900 sec = 15 min."
+            "check-content": "Verify session is configured to lock after 15 minutes of inactivity. Execute the following:\n$ grep SESSION_LENGTH /etc/xylok.conf\n\nSESSION_LENGTH=900\n\nIf \"SESSION_LENGTH\" is set to more than 15 minutes or is missing, this is a finding. \n\nNote: The setting is in seconds. 900 seconds = 15 minutes"
           }
         }
       },
@@ -972,7 +972,7 @@
           "check": {
             "+@system": "C-73605r1053489_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify session expires after browser is closed. Execute the following:\n$ grep SESSION_EXPIRE_AT_BROWSER_CLOSE /etc/xylok.conf\n\nSESSION_EXPIRE_AT_BROWSER_CLOSE=True\n\nIf \"SESSION_EXPIRE_AT_BROWSER_CLOSE\" is not set to \"True\" or is missing, this is a finding."
@@ -1045,7 +1045,7 @@
           "check": {
             "+@system": "C-73606r1054093_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify HTTP_ONLY is set to \"false\":\n$ grep HTTP_ONLY \n/etc/xylok.conf HTTP_ONLY=false\n\nIf \"HTTP_ONLY=true\" or is not configured, this is a finding."
@@ -1266,7 +1266,7 @@
           "check": {
             "+@system": "C-73607r1053495_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Determine if Xylok is configured to use Active Directory (AD) authentication with the following command, run from the host machine as a normal user:\n\n$ grep -e \"AD_SIGN_IN\" -e \"XYLOK_HOST\" -e \"AD_CLIENT_ID\" /etc/xylok.conf\n\nVerify the following settings are present:\n- AD_SIGN_IN\n- XYLOK_HOST\n- AD_CLIENT_ID\n\nIf any of the above settings are not present, blank, or \"false\" (case insensitive), this is a finding."
@@ -1311,7 +1311,7 @@
           "check": {
             "+@system": "C-73608r1054094_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Standard Mandatory DOD Notice and Consent Banner has been configured:\n\n$ grep BANNER /etc/xylok.conf\n\nIf the Standard Mandatory DOD Notice and Consent Banner is not displayed, this is a finding."
@@ -1372,7 +1372,7 @@
           "check": {
             "+@system": "C-73609r1053501_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Check the Xylok log file directory permissions with the following command:\n\n$ ls -l /var/log/xylok\n\nIf any of the directories have permissions greater than \"0770\", this is a finding."
@@ -1417,7 +1417,7 @@
           "check": {
             "+@system": "C-73610r1053504_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the latest install is being used.\n\nLog on to the GUI and locate the version from the lower left corner. \n\nCompare this version with the latest release on the Xylok portal (https://downloads.xylok.io).\n\nIf the current version is not the latest version from the Xylok portal, this is a finding."
@@ -1456,7 +1456,7 @@
           "check": {
             "+@system": "C-73611r1053507_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify that Xylok's default read-only status is disabled by using the following command:\n\n$ grep READONLY /etc/xylok.conf\n\nIf \"READONLY\" is set to False (case insensitive), is commented out or is missing, this is not a finding."
@@ -1509,7 +1509,7 @@
           "check": {
             "+@system": "C-73612r1053510_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify that Xylok's default ENABLE_PP_TEST_API status is disabled by using the following command:\n\n$ grep ENABLE_PP_TEST_API /etc/xylok.conf\n\nIf \"ENABLE_PP_TEST_API\" exists (case insensitive), this is a finding."
@@ -1548,7 +1548,7 @@
           "check": {
             "+@system": "C-73613r1053513_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify DEBUG is configured. Execute the following:\n$ grep DEBUG /etc/xylok.conf\n\nDEBUG=False\n\nIf \"DEBUG\" is not set to False or is missing, this is a finding."
@@ -1609,7 +1609,7 @@
           "check": {
             "+@system": "C-73614r1054095_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the local accounts and groups are associated with AD and that user privileges are correct. Check accounts as a logged in administrator in Xylok.\n\n1. Verify there are no local users. Navigate to User Menu <username> >> Database Admin >> Users.\nIf any local user(s) exist or users(s) are not current in AD, this is a finding.\nIf any users have privileged access that do not require that access, this is a finding.\n2. Verify there are no removed or local groups. Navigate to User Menu <username> >> Database Admin >> Groups .\nVerify the only groups exist are created by AD and are currently being used by AD.\nIf any groups exist that are not actively being used by AD, this is a finding."
@@ -1648,7 +1648,7 @@
           "check": {
             "+@system": "C-73615r1053519_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Check the Xylok configuration file permissions with the following command:\n\n$ ls -l /etc/xylok.conf\n\nIf this file has permissions greater than \"0644\", this is a finding."
@@ -1687,7 +1687,7 @@
           "check": {
             "+@system": "C-73616r1053522_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "From the host machine as a normal user, verify the host OS generates audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/xylok.conf\" with the following command:\n\nNote: Directions are for Red Hat Enterprise Linux (RHEL) 8 and similar. If using a different OS, the steps may vary.\n\n$ sudo grep /etc/xylok.conf /etc/audit/audit.rules\n\n-w /etc/xylok.conf -p warx -k xylok_config\n\nIf the command does not return a line, or the line is commented out, this is a finding"
@@ -1726,7 +1726,7 @@
           "check": {
             "+@system": "C-73617r1053525_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify that the certificate Xylok uses for SSL is correctly signed with the following command. In this command, replace \"xylok.local\" with the domain named used to access the Xylok instance.\n\n$ openssl s_client -showcerts -servername xylok.local -connect xylok.local:443 </dev/null \nCONNECTED(00000003)\ndepth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1\nverify return:1\ndepth=1 C = US, O = Let's Encrypt, CN = E5\nverify return:1\ndepth=0 CN = xylok.local\nverify return:1\n---\nCertificate chain\n 0 s:CN = xylok.local\n   i:C = US, O = Let's Encrypt, CN = E5\n   a:PKEY: id-ecPublicKey, 256 (bit); sigalg: ecdsa-with-SHA384\n   v:NotBefore: Jun 12 16:44:03 2024 GMT; NotAfter: Sep 10 16:44:02 2024 GMT\n-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n 1 s:C = US, O = Let's Encrypt, CN = E5\n   i:C = US, O = Internet Security Research Group, CN = ISRG Root X1\n   a:PKEY: id-ecPublicKey, 384 (bit); sigalg: RSA-SHA256\n   v:NotBefore: Mar 13 00:00:00 2024 GMT; NotAfter: Mar 12 23:59:59 2027 GMT\n-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n---\nServer certificate\nsubject=CN = xylok.local\nissuer=C = US, O = Let's Encrypt, CN = E5\n---\nNo client certificate CA names sent\nPeer signing digest: SHA256\nPeer signature type: ECDSA\nServer Temp Key: X25519, 253 bits\n---\nSSL handshake has read 2367 bytes and written 380 bytes\nVerification: OK\n---\nNew, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256\nServer public key is 256 bit\nThis TLS version forbids renegotiation.\nCompression: NONE\nExpansion: NONE\nNo ALPN negotiated\nEarly data was not sent\nVerify return code: 0 (ok)\n---\n---\nPost-Handshake New Session Ticket arrived:\nSSL-Session:\n    Protocol  : TLSv1.3\n    Cipher    : TLS_AES_128_GCM_SHA256\n    Session-ID: E03F9C6A59BD7375CF86B43387C63F9BBD16EAA2A9970E64F70E20317D403D22\n    Session-ID-ctx: \n    Resumption PSK: 15BFB16AF236A045FE9F5A0F64834A1B3EA76EE4185936D83560BAE940D01FF4\n    PSK identity: None\n    PSK identity hint: None\n    SRP username: None\n    TLS session ticket lifetime hint: 604800 (seconds)\n    TLS session ticket:\n    0000 - d4 7d 77 f4 01 dd ba 65-57 59 76 e0 ab 8a 75 63   .}w....eWYv...uc\n    0010 - 19 6e cf 1b 44 db 35 c5-27 6b d8 b8 39 76 10 47   .n..D.5.'k..9v.G\n    0020 - f1 75 a5 4b 3a fb 2b 82-b9 f7 3c c5 7f 82 41 d0   .u.K:.+...<...A.\n    0030 - 3d 40 f1 f4 0d ef 8e 55-ee 2f 09 4b 96 d9 16 5a   =@.....U./.K...Z\n    0040 - f2 7d cb af bd 55 4b f9-c8 2d 0d 8f 39 16 af 8c   .}...UK..-..9...\n    0050 - 71 df 92 cc d1 1a ed 5d-71 eb a3 7f f0 8b 65 8c   q......]q.....e.\n    0060 - 5b 16 18 0c 61 b2 cc c7-4b                        [...a...K\n\n    Start Time: 1719438481\n    Timeout   : 7200 (sec)\n    Verify return code: 0 (ok)\n    Extended master secret: no\n    Max Early Data: 0\n---\nread R BLOCK\nDONE\n\n\nIf the output indicates a \"verify error\", Xylok is using a self-signed certificate and this is a finding.\n\nIf the first certificate displayed is not a DOD-approved CA or other approved authority, this is a finding."
@@ -1765,7 +1765,7 @@
           "check": {
             "+@system": "C-73618r1053528_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify USE_SMTP is configured by executing the following:\n$ grep USE_SMTP /etc/xylok.conf\n\nIf \"USE_SMTP\" is not set to \"False\" or is missing, this is a finding."
@@ -1777,7 +1777,7 @@
         "title": "SRG-APP-000745",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269586r1053533_rule",
+          "+@id": "SV-269586r1155158_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "XYLK-20-000291",
@@ -1897,19 +1897,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Create /etc/rsyslog.d/100-xylok.conf with these contents, ensuring the final line points to a valid syslog server.\n\n$ModLoad imfile\n$InputFileName /var/log/xylok/api/current\n$InputFileTag xylok-api:\n$InputFileStateFile /tmp/xylok-api-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor \n\n$InputFileName /var/log/xylok/db/current\n$InputFileTag xylok-db:\n$InputFileStateFile /tmp/xylok-db-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/mx/current\n$InputFileTag xylok-mx:\n$InputFileStateFile /tmp/xylok-mx-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/primary/current\n$InputFileTag xylok-primary:\n$InputFileStateFile /tmp/xylok-primary-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n\n$InputFileName /var/log/xylok/web/current\n$InputFileTag xylok-web:\n$InputFileStateFile /tmp/xylok-web-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/worker/current\n$InputFileTag xylok-worker:\n$InputFileStateFile /tmp/xylok-worker-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor \n\nRestart rsyslog to apply changes:\nsudo systemctl restart rsyslog",
-            "+@fixref": "F-73520r1053532_fix"
+            "+content": "Edit /etc/systemd/journald.conf to include at least these lines:\n\n[Journal]\nForwardToSyslog=yes\n\nEdit /etc/rsyslog.conf to include these lines:\n\nmodule(load=\"imuxsock\") # provides support for local system logging\nmodule(load=\"imjournal\") # provides access to the systemd journal\n*.* @@yoursiem:1234\n\nEnsure yoursiem:1234 points to the correct host and port for your network.\n\nRestart journald and rsyslogd:\n\n    # systemctl restar rsyslog systemd-journald",
+            "+@fixref": "F-73520r1155157_fix"
           },
           "fix": {
-            "+@id": "F-73520r1053532_fix"
+            "+@id": "F-73520r1155157_fix"
           },
           "check": {
-            "+@system": "C-73619r1053531_chk",
+            "+@system": "C-73619r1155156_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify SIEM. On the host server, ensure /etc/rsyslog.d/101-xylok.conf exists and contains the following contents: \n\n$ModLoad imfile\n$InputFileName /var/log/xylok/api/current\n$InputFileTag xylok-api:\n$InputFileStateFile /tmp/xylok-api-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor \n\n$InputFileName /var/log/xylok/db/current\n$InputFileTag xylok-db:\n$InputFileStateFile /tmp/xylok-db-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/mx/current\n$InputFileTag xylok-mx:\n$InputFileStateFile /tmp/xylok-mx-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/primary/current\n$InputFileTag xylok-primary:\n$InputFileStateFile /tmp/xylok-primary-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n\n$InputFileName /var/log/xylok/web/current\n$InputFileTag xylok-web:\n$InputFileStateFile /tmp/xylok-web-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n \n$InputFileName /var/log/xylok/worker/current\n$InputFileTag xylok-worker:\n$InputFileStateFile /tmp/xylok-worker-log-state\n$InputFileSeverity info\n$InputFileFacility local3\n$InputRunFileMonitor\n\nIf the file contents do not monitor all logs in /var/log/xylok/, this is a finding.\n\nIf the rsyslog destination is not configured to send logs to a valid syslog server, this is a finding. \n\nNote: The rsyslog destination host may appear in a different file, often following a format similar to “*.* @siem.example.com:514."
+            "check-content": "Verify that journald sends logs to rsyslog:\n\n    # grep ForwardToSyslog /etc/systemd/journald.conf\n    ForwardToSyslog=yes\n\nIf ForwardToSyslog is commented out or not set to \"yes,\" this is a finding.\n\nVerify that rsyslog is set to receive journald logs:\n\n    # grep '\\(imuxsock\\|imjournal\\)' /etc/rsyslog.conf /etc/rsyslog.d/*\n    module(load=\"imuxsock\") # provides support for local system logging\n    module(load=\"imjournal\") # provides access to the systemd journal\n\nIf either module is not present or disabled, this is a finding.\n\n    # grep '[[:space:]]@.*' /etc/rsyslog.conf /etc/rsyslog.d/*\n    *.*   @@yoursiem:1234\n\nIf rsyslog is not configured to forward logs to a central SIEM server, this is a finding."
           }
         }
       },
@@ -1945,7 +1945,7 @@
           "check": {
             "+@system": "C-73773r1054079_chk",
             "check-content-ref": {
-              "+@href": "U_Xylok_Security_Suite_20-x_V1R0-1.xml",
+              "+@href": "Xylok_Security_Suite_20.x_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify the Xylok Security Suite is using a valid DOD-issued certification with the following command:\n\n$ openssl x509 -noout -text -in /opt/xylok/certs/cert.crt\nCertificate:\n   Data:\n      Version: 3 (0x2)\n      Serial Number: 1 (0x1)\n      Signature Algorithm: sha256WithRSAEncryption\n      Issuer: C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3\n      Validity\n         Not Before: Mar 20 18:46:41 2012 GMT\n         Not After   : Dec 30 18:46:41 2029 GMT\n      Subject: C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3\n      Subject Public Key Info:\n         Public Key Algorithm: rsaEncryption\n\nIf the Issuer is not an approved authority, this is a finding."

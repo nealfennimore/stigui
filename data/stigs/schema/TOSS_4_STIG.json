@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-19"
+      "+@date": "2025-11-20"
     },
     "title": "Tri-Lab Operating System Stack (TOSS) 4 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -8381,7 +8381,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252914r1117265_rule",
+          "+@id": "SV-252914r1137691_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010030",
@@ -8666,7 +8666,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252921r1117267_rule",
+          "+@id": "SV-252921r1137695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010100",
@@ -9413,7 +9413,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252938r991589_rule",
+          "+@id": "SV-252938r1155810_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TOSS-04-010360",
@@ -9431,19 +9431,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to disable the CtrlAltDelBurstAction by added or modifying the following line in the \"/etc/systemd/system.conf\" configuration file:\n\nCtrlAltDelBurstAction=none\n\nReload the daemon for this change to take effect.\n\n$ sudo systemctl daemon-reload",
-            "+@fixref": "F-56341r824137_fix"
+            "+content": "Configure TOSS to disable the CtrlAltDelBurstAction by adding it to a drop file in a \"/etc/systemd/system.conf.d/\" configuration file:\n\nIf no drop file exists, create one with the following command:\n\n$ sudo mkdir -p /etc/systemd/system.conf.d && sudo vi /etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction\n\nEdit the file to contain the setting by adding the following text:\n\nCtrlAltDelBurstAction=none\n\nReload the daemon for this change to take effect.\n\n$ sudo systemctl daemon-reload",
+            "+@fixref": "F-56341r1155809_fix"
           },
           "fix": {
-            "+@id": "F-56341r824137_fix"
+            "+@id": "F-56341r1155809_fix"
           },
           "check": {
-            "+@system": "C-56391r824136_chk",
+            "+@system": "C-56391r1155808_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify TOSS is not configured to reboot the system when Ctrl-Alt-Delete is pressed seven times within two seconds with the following command:\n\n$ sudo grep -i ctrl /etc/systemd/system.conf\n\nCtrlAltDelBurstAction=none\n\nIf the \"CtrlAltDelBurstAction\" is not set to \"none\", commented out, or is missing, this is a finding."
+            "check-content": "Verify TOSS is configured to not reboot the system when Ctrl-Alt-Delete is pressed seven times within two seconds with the following command:\n\n$ sudo grep -iR CtrlAltDelBurstAction /etc/systemd/system*\n/etc/systemd/system.conf.d/55-CtrlAltDel-BurstAction:CtrlAltDelBurstAction=none\n\nIf the \"CtrlAltDelBurstAction\" is not set to \"none\", commented out, or is missing, this is a finding."
           }
         }
       },
@@ -9608,12 +9608,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252943r991589_rule",
+          "+@id": "SV-252943r1155807_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-010410",
           "title": "The TOSS SSH daemon must not allow compression or must only allow compression after successful authentication.",
-          "description": "<VulnDiscussion>If compression is allowed in an SSH connection prior to authentication, vulnerabilities in the compression software could result in compromise of the system from an unauthenticated connection, potentially with root privileges.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If compression is allowed in an SSH connection prior to authentication, vulnerabilities in the compression software could result in compromise of the system from an unauthenticated connection, potentially with root privileges.\n\nCompression options are:\nno - disables compression\ndelayed - allow compression only after authentication\nyes - enables compression before authentication, which can leak sensitive metadata and is not recommended</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
             "dc:publisher": "DISA",
@@ -9626,19 +9626,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Uncomment the \"Compression\" keyword in \"/etc/ssh/sshd_config\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor) on the system and set the value to \"delayed\" or \"no\":\n\nCompression no\n\nThe SSH service must be restarted for changes to take effect.",
-            "+@fixref": "F-56346r824152_fix"
+            "+content": "Uncomment the \"Compression\" keyword in \"/etc/ssh/sshd_config\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor) on the system and set the value to \"delayed\" or \"no\":\n\nCompression no\n\nThe SSH service must be restarted for changes to take effect:\n\n$ sudo systemctl restart sshd.service",
+            "+@fixref": "F-56346r1155806_fix"
           },
           "fix": {
-            "+@id": "F-56346r824152_fix"
+            "+@id": "F-56346r1155806_fix"
           },
           "check": {
-            "+@system": "C-56396r824151_chk",
+            "+@system": "C-56396r1155805_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH daemon performs compression after a user successfully authenticates with the following command:\n\n$ sudo grep -i compression /etc/ssh/sshd_config\n\nCompression delayed\n\nIf the \"Compression\" keyword is set to \"yes\", is missing, or the returned line is commented out, this is a finding."
+            "check-content": "Verify the SSH daemon disables compression or only performs compression after a user successfully authenticates with the following command:\n\n$ sudo grep -ir compression /etc/ssh/sshd_config /etc/ssh/sshd_config\n\n/etc/ssh/sshd_config:Compression no\n\nIf the \"Compression\" keyword is set to \"yes\", is missing, or the returned line is commented out, this is a finding."
           }
         }
       },
@@ -9856,11 +9856,11 @@
         "title": "SRG-OS-000029-GPOS-00010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252949r958402_rule",
+          "+@id": "SV-252949r1155813_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020030",
-          "title": "TOSS must automatically lock graphical user sessions after 15 minutes of inactivity.",
+          "title": "TOSS must automatically lock graphical user sessions after 10 minutes of inactivity.",
           "description": "<VulnDiscussion>A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems need to be able to identify when a user's session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
@@ -9874,19 +9874,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to initiate a screensaver after a 15-minute period of inactivity for graphical user interfaces.\n\nCreate a database to contain the system-wide screensaver settings (if it does not already exist) with the following command:\n\n$ sudo touch /etc/dconf/db/local.d/00-screensaver\n\nEdit /etc/dconf/db/local.d/00-screensaver and add or update the following lines:\n\n[org/gnome/desktop/session]\n# Set the lock time out to 900 seconds before the session is considered idle\nidle-delay=uint32 900\n\nUpdate the system databases:\n\n$ sudo dconf update",
-            "+@fixref": "F-56352r824170_fix"
+            "+content": "Configure the operating system to initiate a screensaver after a 10-minute period of inactivity for graphical user interfaces.\n\nCreate a database to contain the systemwide screensaver settings (if it does not already exist) with the following command:\n\n$ sudo touch /etc/dconf/db/local.d/00-screensaver\n\nEdit /etc/dconf/db/local.d/00-screensaver and add or update the following lines:\n\n[org/gnome/desktop/session]\n# Set the lock time out to 600 seconds before the session is considered idle\nidle-delay=uint32 600\n\nUpdate the system databases:\n\n$ sudo dconf update",
+            "+@fixref": "F-56352r1155812_fix"
           },
           "fix": {
-            "+@id": "F-56352r824170_fix"
+            "+@id": "F-56352r1155812_fix"
           },
           "check": {
-            "+@system": "C-56402r824169_chk",
+            "+@system": "C-56402r1155811_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify TOSS initiates a session lock after at most a 15-minute period of inactivity for graphical user interfaces with the following commands:\n\nNote: This requirement assumes the use of the TOSS default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.\n\n$ sudo gsettings get org.gnome.desktop.session idle-delay\nuint32 900\n\nIf \"idle-delay\" is set to \"0\" or a value greater than \"900\", this is a finding."
+            "check-content": "Verify TOSS initiates a session lock after at most a 10-minute period of inactivity for graphical user interfaces with the following commands:\n\nNote: This requirement assumes the use of the TOSS default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.\n\n$ sudo gsettings get org.gnome.desktop.session idle-delay\nuint32 600\n\nIf \"idle-delay\" is set to \"0\" or a value greater than \"600\", this is a finding."
           }
         }
       },

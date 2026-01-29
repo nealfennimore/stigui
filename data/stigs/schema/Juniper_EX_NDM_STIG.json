@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-03-07"
+      "+@date": "2025-12-10"
     },
     "title": "Juniper EX Series Switches Network Device Management Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -2212,7 +2212,7 @@
         "title": "SRG-APP-000033-NDM-000212",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253883r960792_rule",
+          "+@id": "SV-253883r1137874_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000060",
@@ -2251,7 +2251,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253884r997739_rule",
+          "+@id": "SV-253884r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000070",
@@ -3190,11 +3190,11 @@
         "title": "SRG-APP-000179-NDM-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253911r1082959_rule",
+          "+@id": "SV-253911r1167978_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000340",
-          "title": "The Juniper EX switch must be configured to use FIPS 140-2/140-3 validated algorithms for authentication to a cryptographic module.",
+          "title": "The Juniper EX switch must be configured to use FIPS 140-2/140-3-validated algorithms for authentication to a cryptographic module.",
           "description": "<VulnDiscussion>Unapproved mechanisms used for authentication to the cryptographic module are not validated and therefore, cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only FIPS-validated and NIST-recommended authentication algorithms.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Switches NDM",
@@ -3208,19 +3208,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the password format, SSH algorithms, and the RNG to use only FIPS validated algorithms.\n1. Enter configuration mode.\n2. Configure the password format.\n3. Configure the SSH algorithms.\n4. Configure the RNG.\n5. Commit the configuration.\nuser@host> configure\nuser@host# set system login password format <sha-256|sha-512>\nuser@host# set system services ssh ciphers aes256-ctr\nuser@host# set system services ssh ciphers aes256-cbc\nuser@host# set system services ssh macs hmac-sha2-512\nuser@host# set system services ssh macs hmac-sha2-256\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp521\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp384\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp256\nuser@host# set system rng hmac-drbg\nuser@host# commit",
-            "+@fixref": "F-57314r1082958_fix"
+            "+content": "Configure the password format, SSH algorithms, and the RNG to use only FIPS-validated algorithms.\n1. Enter configuration mode.\n2. Configure the password format.\n3. Configure the SSH algorithms.\n4. Configure the RNG.\n5. Commit the configuration.\nuser@host> configure\nuser@host# set system login password format <sha256|sha512>\nuser@host# set system services ssh ciphers aes256-ctr\nuser@host# set system services ssh ciphers aes256-cbc\nuser@host# set system services ssh macs hmac-sha2-512\nuser@host# set system services ssh macs hmac-sha2-256\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp521\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp384\nuser@host# set system services ssh key-exchange ecdh-sha2-nistp256\nuser@host# set system rng hmac-drbg\nuser@host# commit",
+            "+@fixref": "F-57314r1167977_fix"
           },
           "fix": {
-            "+@id": "F-57314r1082958_fix"
+            "+@id": "F-57314r1167977_fix"
           },
           "check": {
-            "+@system": "C-57363r1082957_chk",
+            "+@system": "C-57363r1167976_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the password format, and that SSH uses FIPS validated algorithms and random number generator (RNG) as shown in the following example configuration.\nuser@host> show configuration system\nlogin {\n    password {\n        :\n        format <sha-256|sha-512>;\n    }\n}\nservices {\n    ssh {\n        :\n        ciphers [ aes256-ctr aes256-cbc];\n        macs [ hmac-sha2-512 hmac-sha2-256 ];\n        key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n        :\n    }\n}\nrng {\n    hmac-drbg;\n}\n\nIf the network device is not configured to use FIPS 140-2/140-3 validated authentication algorithms, this is a finding."
+            "check-content": "Verify the password format, and that SSH uses FIPS-validated algorithms and a random number generator (RNG) as shown in the following example configuration:\n\nuser@host> show configuration system\nlogin {\n    password {\n        :\n        format <sha256|sha-512>;\n    }\n}\nservices {\n    ssh {\n        :\n        ciphers [ aes256-ctr aes256-cbc];\n        macs [ hmac-sha2-512 hmac-sha2-256 ];\n        key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n        :\n    }\n}\nrng {\n    hmac-drbg;\n}\n\nIf the network device is not configured to use FIPS 140-2/140-3-validated authentication algorithms, this is a finding."
           }
         }
       },
@@ -3307,7 +3307,7 @@
         "title": "SRG-APP-000329-NDM-000287",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253916r987662_rule",
+          "+@id": "SV-253916r1137878_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000390",
@@ -3723,12 +3723,12 @@
         "title": "SRG-APP-000411-NDM-000330",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253928r961554_rule",
+          "+@id": "SV-253928r1167981_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000510",
           "title": "The Juniper EX switches must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of nonlocal maintenance and diagnostic communications.",
-          "description": "<VulnDiscussion>Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code used for authentication to cryptographic modules.\n\nSeparate requirements for configuring applications and protocols used by each application (e.g., SNMPv3, SSHv2, HTTPS, and other protocols and applications that require server/client authentication) are required to implement this requirement. Where SSH is used, the SSHv2 protocol suite is required because it includes Layer 7 protocols such as SCP and SFTP, which can be used for secure file transfers.\n\nUse only AES Counter (CTR) cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore, cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code used for authentication to cryptographic modules.\n\nSeparate requirements for configuring applications and protocols used by each application (e.g., SNMPv3, SSHv2, HTTPS, and other protocols and applications that require server/client authentication) are required to implement this requirement. Where SSH is used, the SSHv2 protocol suite is required because it includes layer 7 protocols such as SCP and SFTP, which can be used for secure file transfers.\n\nUse only AES Counter (CTR) cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Switches NDM",
             "dc:publisher": "DISA",
@@ -3741,19 +3741,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the network device to use FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications.\n\nset snmp v3 usm local-engine user <SNMPv3 user> authentication-sha authentication-password \"PSK\"\nset snmp v3 usm local-engine user <SNMPv3 user> privacy-aes128 privacy-password \"PSK\"\nNote: Use the strongest HMAC mutually supported with the NMS (e.g., authentication-sha256, authentication-sha512)\n\nset system services ssh protocol-version v2\nset system services ssh ciphers aes256-ctr\nset system services ssh ciphers aes192-ctr\nset system services ssh ciphers aes128-ctr\nset system services ssh macs hmac-sha2-512\nset system services ssh macs hmac-sha2-256\nset system services ssh key-exchange ecdh-sha2-nistp521\nset system services ssh key-exchange ecdh-sha2-nistp384\nset system services ssh key-exchange ecdh-sha2-nistp256",
-            "+@fixref": "F-57331r944350_fix"
+            "+content": "Configure the network device to use FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications.\n\nset snmp v3 usm local-engine user <SNMPv3 user> authentication-sha authentication-password \"PSK\"\nset snmp v3 usm local-engine user <SNMPv3 user> privacy-aes128 privacy-password \"PSK\"\nNote: Use the strongest HMAC mutually supported with the NMS (e.g., authentication-sha256, authentication-sha512)\n\nset system services ssh protocol-version v2\nset system services ssh ciphers aes256-ctr\nset system services ssh macs hmac-sha2-512\nset system services ssh macs hmac-sha2-256\nset system services ssh key-exchange ecdh-sha2-nistp521\nset system services ssh key-exchange ecdh-sha2-nistp384\nset system services ssh key-exchange ecdh-sha2-nistp256",
+            "+@fixref": "F-57331r1167980_fix"
           },
           "fix": {
-            "+@id": "F-57331r944350_fix"
+            "+@id": "F-57331r1167980_fix"
           },
           "check": {
-            "+@system": "C-57380r944349_chk",
+            "+@system": "C-57380r1167979_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the network device uses FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications.\n\nIf using SNMPv3, verify (minimally) that authentication-sha is configured. Juniper devices also support authentication-sha224/256/384/512. Verify the strongest mutually supported HMAC between the network device and the Network Management Server (NMS) is configured.\n[edit system snmp]\nv3 {\n    usm {\n        local-engine {\n            user <SNMPv3 user> {\n                authentication-sha {\n                    authentication-key \"PSK\"; ## SECRET-DATA\n                }\n            }\n        }\n    }\n}\n\nVerify SSHv2 is configured for protocol V2 only, ciphers [ aes256-ctr aes192-ctr aes128-ctr ], key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ], and macs [ hmac-sha2-512 hmac-sha2-256].\n[edit system services ssh]\n:\nprotocol-version v2;\nciphers [ aes256-ctr aes192-ctr aes128-ctr ];\nmacs [ hmac-sha2-512 hmac-sha2-256 ];\nkey-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n\nIf the network device does not use FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications, this is a finding."
+            "check-content": "Verify the network device uses FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications.\n\nIf using SNMPv3, verify (minimally) that authentication-sha is configured. Juniper devices also support authentication-sha224/256/384/512. Verify the strongest mutually supported HMAC between the network device and the Network Management Server (NMS) is configured.\n\n[edit system snmp]\nv3 {\n    usm {\n        local-engine {\n            user <SNMPv3 user> {\n                authentication-sha {\n                    authentication-key \"PSK\"; ## SECRET-DATA\n                }\n            }\n        }\n    }\n}\n\nVerify SSHv2 is configured for protocol V2 only, ciphers [ aes256-ctr ], key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ], and macs [ hmac-sha2-512 hmac-sha2-256].\n[edit system services ssh]\n:\nprotocol-version v2;\nciphers [ aes256-ctr];\nmacs [ hmac-sha2-512 hmac-sha2-256 ];\nkey-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n\nIf the network device does not use FIPS-validated HMAC to protect the integrity of nonlocal maintenance and diagnostic communications, this is a finding."
           }
         }
       },
@@ -3762,11 +3762,11 @@
         "title": "SRG-APP-000412-NDM-000331",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253929r961557_rule",
+          "+@id": "SV-253929r1167984_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000520",
-          "title": "The Juniper EX switch must be configured to implement cryptographic mechanisms using a FIPS 140-2 approved algorithm to protect the confidentiality of remote maintenance sessions.",
+          "title": "The Juniper EX switch must be configured to implement cryptographic mechanisms using a FIPS 140-2/140-3 approved algorithm to protect the confidentiality of remote maintenance sessions.",
           "description": "<VulnDiscussion>This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.\n\nUse only CTR cipher block chaining modes in compliance with CVE-2008-5161, plugin 70658 based on vendor guidance in KB20853. This prevents certain plaintext attacks in OpenSSH.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Switches NDM",
@@ -3780,19 +3780,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the network device to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions using a FIPS 140-2 approved algorithm.\n\nset snmp v3 usm local-engine user <SNMPv3 user> authentication-sha authentication-password \"PSK\"\nset snmp v3 usm local-engine user <SNMPv3 user> privacy-aes128 privacy-password \"PSK\"\nNote: Use the strongest HMAC mutually supported with the NMS (e.g., authentication-sha256, authentication-sha512)\n\nset system services ssh protocol-version v2\nset system services ssh ciphers aes256-ctr\nset system services ssh ciphers aes192-ctr\nset system services ssh ciphers aes128-ctr\nset system services ssh macs hmac-sha2-512\nset system services ssh macs hmac-sha2-256\nset system services ssh key-exchange ecdh-sha2-nistp521\nset system services ssh key-exchange ecdh-sha2-nistp384\nset system services ssh key-exchange ecdh-sha2-nistp256",
-            "+@fixref": "F-57332r944353_fix"
+            "+content": "Configure the network device to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions using a FIPS 140-2/FIPS 140-3 approved algorithm.\n\nset snmp v3 usm local-engine user <SNMPv3 user> authentication-sha authentication-password \"PSK\"\nset snmp v3 usm local-engine user <SNMPv3 user> privacy-aes128 privacy-password \"PSK\"\nNote: Use the strongest HMAC mutually supported with the NMS (e.g., authentication-sha256, authentication-sha512)\n\nset system services ssh protocol-version v2\nset system services ssh ciphers aes256-ctr\nset system services ssh macs hmac-sha2-512\nset system services ssh macs hmac-sha2-256\nset system services ssh key-exchange ecdh-sha2-nistp521\nset system services ssh key-exchange ecdh-sha2-nistp384\nset system services ssh key-exchange ecdh-sha2-nistp256",
+            "+@fixref": "F-57332r1167983_fix"
           },
           "fix": {
-            "+@id": "F-57332r944353_fix"
+            "+@id": "F-57332r1167983_fix"
           },
           "check": {
-            "+@system": "C-57381r944352_chk",
+            "+@system": "C-57381r1167982_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the network device configuration to determine if cryptographic mechanisms are implemented using a FIPS 140-2 approved algorithm to protect the confidentiality of remote maintenance sessions.\n\nIf using SNMPv3, verify (minimally) that authentication-sha is configured. Juniper devices also support authentication-sha224/256/384/512. Verify the strongest mutually supported HMAC between the network device and the Network Management Server (NMS) is configured.\n[edit system snmp]\nv3 {\n    usm {\n        local-engine {\n            user <SNMPv3 user> {\n                authentication-sha {\n                    authentication-key \"PSK\"; ## SECRET-DATA\n                }\n            }\n        }\n    }\n}\n\nVerify SSHv2 is configured for protocol V2 only, ciphers [ aes256-ctr aes192-ctr aes128-ctr ], key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ], and macs [ hmac-sha2-512 hmac-sha2-256 ].\n[edit system services ssh]\n:\nprotocol-version v2;\nciphers [ aes256-ctr aes192-ctr aes128-ctr ];\nmacs [ hmac-sha2-512 hmac-sha2-256 ];\nkey-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n\nIf the network device is not configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions using a FIPS 140-2 approved algorithm, this is a finding."
+            "check-content": "Review the network device configuration to determine if cryptographic mechanisms are implemented using a FIPS 140-2/FIPS 140-3 approved algorithm to protect the confidentiality of remote maintenance sessions.\n\nIf using SNMPv3, verify (minimally) that authentication-sha is configured. Juniper devices also support authentication-sha224/256/384/512. Verify the strongest mutually supported HMAC between the network device and the Network Management Server (NMS) is configured.\n\n[edit system snmp]\nv3 {\n    usm {\n        local-engine {\n            user <SNMPv3 user> {\n                authentication-sha {\n                    authentication-key \"PSK\"; ## SECRET-DATA\n                }\n            }\n        }\n    }\n}\n\nVerify SSHv2 is configured for protocol V2 only, ciphers [ aes256-ctr ], key-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ], and macs [ hmac-sha2-512 hmac-sha2-256 ].\n[edit system services ssh]\n:\nprotocol-version v2;\nciphers [ aes256-ctr];\nmacs [ hmac-sha2-512 hmac-sha2-256 ];\nkey-exchange [ ecdh-sha2-nistp521 ecdh-sha2-nistp384 ecdh-sha2-nistp256 ];\n\nIf the network device is not configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions using a FIPS 140-2/FIPS 140-3 approved algorithm, this is a finding."
           }
         }
       },
@@ -4125,7 +4125,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253941r1001014_rule",
+          "+@id": "SV-253941r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000640",
@@ -4312,7 +4312,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253944r1028872_rule",
+          "+@id": "SV-253944r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000670",

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-12"
+      "+@date": "2025-11-25"
     },
     "title": "Dragos Platform 2.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1001,7 +1001,7 @@
         "title": "SRG-APP-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270917r1058026_rule",
+          "+@id": "SV-270917r1155096_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000220",
@@ -1037,19 +1037,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Download the following script and put it in the /root directory on the sitestore where the DOD Banner is to be applied (see below).\n\n2. Run the script with the following syntax: \npython3 DOD_Banner_Config_Utility.py, and go to the sitestore login page to verify the banner is present.\n\n3. Schedule the cron with the following syntax to ensure the change survives reboots: \n5 * * * * python3 /root/DOD_Banner_Config_Utility.py --persist-banner\n\nDOD_Banner_Config_Utility.py\n\nUtility: import os, json, sys, time\n# Created by bdudley@dragos.com to assist with Dragos STIG implementation\n# specifically related to DoD Banner for web UI before login\nos.chdir(\"/root\")\n# version compatibility check\nif 'Platform Version: 2.4.' not in os.popen(\"dragoscmd version\").read():\n    print(\"This version of the Dragos platform is incompatible with this script.\")\n    exit()\nDOD_BANNER_JS = \"alert('You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\\\\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\\\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\\\n-At any time, the USG may inspect and seize data stored on this IS.\\\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.');\"\nfstream = open('banner.js', 'w')\nfstream.write(DOD_BANNER_JS)\nfstream.close()\n# get the platform-ui container id\nplatformui = os.popen(\"kubectl get pods | grep platform-ui | grep -v platform-ui-logger | awk '{print $1}'\").read().strip()\nBANNER_DIR = '/usr/share/nginx/html/source/'\nHTML_DIR = '/usr/share/nginx/html/'\nif \"--restore-defaults\" in sys.argv:\n    print(\"Restoring to default, no banner.\")\n    os.system(\"kubectl -n dragos-sitestore cp ./index.html.bak \"+platformui+\":\"+HTML_DIR+\"index.html\")\n    print(\"Done, reload the page to test changes.\")\n    exit()\n# this will check periodically to make sure the banner changes persisted, and re-apply them if not\nif \"--persist-banner\" in sys.argv:\n    # check the current settings\n    current_html = os.popen(\"curl -k https://localhost\").read()\n    if \"./source/banner.js\" in current_html:\n        print(\"Banner is currently set, taking no action.\")\n        exit()\n    else:\n        fstream = open(\"banner.log\", \"a\")\n        fstream.write(\"[\"+time.ctime().replace(\"  \", \"\")+\"] banner was not set, setting banner now.\\n\")\n        fstream.close()\n    # put the banner js file in the appropriate directory\n    os.system(\"kubectl -n dragos-sitestore cp ./banner.js \"+platformui+\":\"+BANNER_DIR+\"banner.js\")\n    # update the current version of index.html in the pod\n    os.system(\"kubectl -n dragos-sitestore cp ./index.html.patched \"+platformui+\":\"+HTML_DIR+\"index.html\")\n    exit()\n# is the sitestore up and running?\nif \"System is ready.\" not in os.popen(\"dragoscmd system k3s status\").read():\n    print(\"System is not ready, wait until all pods are started before configuring banner.\")\n    exit()\n# is there a backup of the old index.html file\nif os.path.exists('index.html.bak') == False:\n    print(\"Creating an index.html backup...\")\n    os.system(\"kubectl -n dragos-sitestore cp \"+platformui+\":\"+HTML_DIR+\"index.html ./index.html.bak\")\n    print(\"Done.\")\n# put the banner js file in the appropriate directory\nos.system(\"kubectl -n dragos-sitestore cp ./banner.js \"+platformui+\":\"+BANNER_DIR+\"banner.js\")\n# perform appropriate patching on the index.html backup\nfstream = open(\"index.html.bak\", \"r\")\nhtml = fstream.read()\nfstream.close()\noriginal = '<script nonce=\"**CSP_NONCE**\" type=\"module\" crossorigin'\nreplacement = '<script src=\"./source/banner.js\" nonce=\"**CSP_NONCE**\"></script><script nonce=\"**CSP_NONCE**\" type=\"module\" crossorigin'\nfstream = open(\"index.html.patched\", \"w\")\nfstream.write(html.replace(original, replacement))\nfstream.close()\n# update the current version of index.html in the pod\nos.system(\"kubectl -n dragos-sitestore cp ./index.html.patched \"+platformui+\":\"+HTML_DIR+\"index.html\")\nprint(\"Banner configuration changes complete, reload the login page (or logout) to see the popup.  If the formatting for the popup needs to be adjusted, make the changes in the banner block above and re-run this script.\")\nprint(\"\\nUse the below format to create a cron that makes the banner persist through reboots:\\n\\n*/5 * * * * python3 /root/DOD_Banner_Config_Utility.py --persist-banner\\n\\n\")",
-            "+@fixref": "F-74861r1058026_fix"
+            "+content": "1. Download the following script, and put it in the /root directory on the sitestore where you want to apply the DOD Banner:\n\nimport os, json, sys, time\n# Created by bdudley@dragos.com to assist with Dragos STIG implementation\n# specifically related to DOD Banner for web UI before login\nos.chdir(\"/root\")\n# version compatibility check\nif 'Platform Version: 2.' not in os.popen(\"dragoscmd version\").read():\n    print(\"This version of the Dragos platform is incompatible with this script.\")\n    exit()\nDOD_BANNER_JS = \"alert('You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\\\\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\\\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\\\n-At any time, the USG may inspect and seize data stored on this IS.\\\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.');\"\nfstream = open('banner.js', 'w')\nfstream.write(DOD_BANNER_JS)\nfstream.close()\n# get the platform-ui container id\nplatformui = os.popen(\"kubectl get pods | grep platform-ui | grep -v platform-ui-logger | awk '{print $1}'\").read().strip()\nBANNER_DIR = '/usr/share/nginx/html/source/'\nHTML_DIR = '/usr/share/nginx/html/'\nif \"--restore-defaults\" in sys.argv:\n    print(\"Restoring to default, no banner.\")\n    os.system(\"kubectl -n dragos-sitestore cp ./index.html.bak \"+platformui+\":\"+HTML_DIR+\"index.html\")\n    print(\"Done, reload the page to test changes.\")\n    exit()\n# this will check periodically to make sure the banner changes persisted, and re-apply them if not\nif \"--persist-banner\" in sys.argv:\n    # check the current settings\n    current_html = os.popen(\"curl -k https://localhost\").read()\n    if \"./source/banner.js\" in current_html:\n        print(\"Banner is currently set, taking no action.\")\n        exit()\n    else:\n        fstream = open(\"banner.log\", \"a\")\n        fstream.write(\"[\"+time.ctime().replace(\"  \", \"\")+\"] banner was not set, setting banner now.\\n\")\n        fstream.close()\n    # put the banner js file in the appropriate directory\n    os.system(\"kubectl -n dragos-sitestore cp ./banner.js \"+platformui+\":\"+BANNER_DIR+\"banner.js\")\n    # update the current version of index.html in the pod\n    os.system(\"kubectl -n dragos-sitestore cp ./index.html.patched \"+platformui+\":\"+HTML_DIR+\"index.html\")\n    exit()\n# is the sitestore up and running?\nif \"System is ready.\" not in os.popen(\"dragoscmd system k3s status\").read():\n    print(\"System is not ready, wait until all pods are started before configuring banner.\")\n    exit()\n# is there a backup of the old index.html file\nif os.path.exists('index.html.bak') == False:\n    print(\"Creating an index.html backup...\")\n    os.system(\"kubectl -n dragos-sitestore cp \"+platformui+\":\"+HTML_DIR+\"index.html ./index.html.bak\")\n    print(\"Done.\")\n# put the banner js file in the appropriate directory\nos.system(\"kubectl -n dragos-sitestore cp ./banner.js \"+platformui+\":\"+BANNER_DIR+\"banner.js\")\n# perform appropriate patching on the index.html backup\nfstream = open(\"index.html.bak\", \"r\")\nhtml = fstream.read()\nfstream.close()\noriginal = '<script nonce=\"**CSP_NONCE**\" type=\"module\" crossorigin'\nreplacement = '<script src=\"./source/banner.js\" nonce=\"**CSP_NONCE**\"></script><script nonce=\"**CSP_NONCE**\" type=\"module\" crossorigin'\nfstream = open(\"index.html.patched\", \"w\")\nfstream.write(html.replace(original, replacement))\nfstream.close()\n# update the current version of index.html in the pod\nos.system(\"kubectl -n dragos-sitestore cp ./index.html.patched \"+platformui+\":\"+HTML_DIR+\"index.html\")\nprint(\"Banner configuration changes complete, reload the login page (or logout) to see the popup.  If the formatting for the popup needs to be adjusted, make the changes in the banner block above and re-run this script.\")\nprint(\"\\nUse the below format to create a cron that makes the banner persist through reboots:\\n\\n*/5 * * * * python3 /root/DOD_Banner_Config_Utility.py --persist-banner\\n\\n\")\n\n2. Run the script with the following syntax: python3 DOD_Banner_Config_Utility.py, and go to the sitestore login page to verify the banner is present.\n3. Schedule the cron with the following syntax to make sure the change survives reboots: 5 * * * * python3 /root/DOD_Banner_Config_Utility.py --persist-banner",
+            "+@fixref": "F-74861r1155095_fix"
           },
           "fix": {
-            "+@id": "F-74861r1058026_fix"
+            "+@id": "F-74861r1155095_fix"
           },
           "check": {
-            "+@system": "C-74960r1057392_chk",
+            "+@system": "C-74960r1155094_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the Standard Mandatory DOD Notice and Consent Banner appears before being granted access to Dragos Platform UI. \n\nIf the Standard Mandatory DOD Notice is not presented, this is a finding."
+            "check-content": "Verify that the Standard Mandatory DOD Notice and Consent Banner appears before being granted access to Dragos Platform UI. \n\nIf the Standard Mandatory DOD Notice is not presented, this is a finding.\n\nExample Banner: You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\\\\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\\\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\\\n-At any time, the USG may inspect and seize data stored on this IS.\\\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."
           }
         }
       },
@@ -1058,12 +1058,12 @@
         "title": "SRG-APP-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270919r1107124_rule",
+          "+@id": "SV-270919r1155099_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000240",
           "title": "The Dragos Platform must only allow local administrative and service user accounts.",
-          "description": "<VulnDiscussion>Only two default accounts facilitate the initial setup and configuration of the Platform. These accounts provide immediate access to the system, allowing administrators to quickly get the system up and running without needing to create new user accounts during the initial installation phase.\n\nDuring maintenance, updates, or support operations, default accounts allow vendor support teams to access the system without needing to manage a variety of customer-specific accounts. This can streamline support activities and reduce downtime.\n\nDefault accounts passwords need to be protected so they cannot be exploited by attackers to gain unauthorized access to the system.\n\nSatisfies: SRG-APP-000080, SRG-APP-000234</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Only default accounts facilitate the initial setup and configuration of the Platform. These accounts provide immediate access to the system, allowing administrators to quickly get the system up and running without needing to create new user accounts during the initial installation phase. These accounts are: UI Administrator, DragOS CLI standard user (dragos), DragOS CLI admin context user (dragos_admin) or user created authorized accounts.\n\nDuring maintenance, updates, or support operations, default accounts allow vendor support teams to access the system without needing to manage a variety of customer-specific accounts. This can streamline support activities and reduce downtime.\n\nDefault accounts passwords need to be protected so they cannot be exploited by attackers to gain unauthorized access to the system.\n\nSatisfies: SRG-APP-000080, SRG-APP-000234</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Dragos Platform 2.x",
             "dc:publisher": "DISA",
@@ -1082,19 +1082,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Remove users except the UI Administrator and DragOS CLI Service Account.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nClick the kebab menu next to the user and select \"Delete User\".\n\nClick \"DELETE\" in the verification window.",
-            "+@fixref": "F-74863r1107123_fix"
+            "+content": "Remove users except the UI Administrator, DragOS CLI Service Accounts, and user-created authorized user accounts..\n\nWhile logged in to the Dragos Platform UI with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nClick the kebab menu next to the user and select \"Delete User\".\n\nClick \"DELETE\" in the verification window. If using SSO/OIDC, removing the username/password authentication provider is sufficient when a user has multiple authentication providers.\n\nFor DragOS Cli: run the command \"system users show\" to verify only built-in and user created/authorized accounts are present. To remove unwanted accounts, run the command \"configu user remove <username>\".\n\nNote: Any accounts not built-in or managed by the CLI will be removed when configuration is applied.",
+            "+@fixref": "F-74863r1155098_fix"
           },
           "fix": {
-            "+@id": "F-74863r1107123_fix"
+            "+@id": "F-74863r1155098_fix"
           },
           "check": {
-            "+@system": "C-74962r1107122_chk",
+            "+@system": "C-74962r1155097_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any local user except the UI Administrator and DragOS CLI Service Account exists, this is a finding."
+            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform UI with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any local user except the UI Administrator, DragOS CLI standard user (dragos), DragOS CLI admin context user (dragos_admin), or user-created authorized accounts exist, this is a finding."
           }
         }
       },
@@ -1230,12 +1230,12 @@
         "title": "SRG-APP-000133",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270947r1058031_rule",
+          "+@id": "SV-270947r1155102_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "DRAG-OT-000520",
           "title": "Dragos Platforms must limit privileges and not allow the ability to run shell.",
-          "description": "<VulnDiscussion>If Dragos Platform were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to applications with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.\n\nSatisfies: SRG-APP-000133, SRG-APP-000206, SRG-APP-000246, SRG-APP-000340, SRG-APP-000342, SRG-APP-000384</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If Dragos Platform were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to applications with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.\n\nSatisfies: SRG-APP-000133, SRG-APP-000206, SRG-APP-000246, SRG-APP-000340, SRG-APP-000342, SRG-APP-000384</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Dragos Platform 2.x",
             "dc:publisher": "DISA",
@@ -1270,19 +1270,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Uninstall shell environment:\n\nLog in to the Dragos Platform CLI. \n\nExecute the following command:\nrun ushell\n\nOnce this is done, users cannot initiate communications outside low threshold (nonuser configurable) ICMP packets. Nonsigned installation packages cannot be added to the Dragos Platform. This command removes the shell from the Platform; it cannot be reinstalled without installing Dragos Platform from baseline images.",
-            "+@fixref": "F-74891r1058031_fix"
+            "+content": "Uninstall shell environment:\n\nLog in to the Dragos Platform CLI. \n\nExecute the following command:\nelevate\n\nEnter the elevate password, then execute the following command:\ndisable shell\n\nOnce this has been executed, users cannot create interactive bash shell sessions. This command removes the shell from the Platform; it can only be enabled again if the dragos_admin user authenticates and changes the configuration for maintenance.\n\nNote: Access to the bash shell via the \"run shell\" command is disabled bu default.",
+            "+@fixref": "F-74891r1155101_fix"
           },
           "fix": {
-            "+@id": "F-74891r1058031_fix"
+            "+@id": "F-74891r1155101_fix"
           },
           "check": {
-            "+@system": "C-74990r1058030_chk",
+            "+@system": "C-74990r1155100_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify shell environment:\n\nLog in to the Dragos Platform CLI. \n\nExecute the following command:\nrun shell\n\nIf the option \"run shell\" executes successfully and places the terminal session into a shell environment, this is a finding.\n\nNote: A shell environment will be noticeable because the terminal line will be in the format \"user@dragos:~$\" compared to dragoscmd, which would be \"dragos>\". If shell is properly uninstalled, the return will be \"Error: No such command 'shell'.\""
+            "check-content": "Verify shell environment:\n\nLog in to the Dragos Platform CLI. \n\nExecute the following command:\nelevate\n\nEnter the elevate (admin) password, then execute the following command:\nrun shell\n\nIf the option \"run shell\" executes successfully and places the terminal session into a shell environment, this is a finding.\n\nNote: A shell environment will be noticeable because the terminal line will be in the format \"user@dragos:~$\" compared to dragoscmd, which would be \"dragos>\". If shell is properly uninstalled, the return will be \"Error: No such command 'shell'.\" The shell can be enabled and disabled as needed for troubleshooting efforts with appropriate authentication as dragos_admin."
           }
         }
       },
@@ -1330,7 +1330,7 @@
         "title": "SRG-APP-000164",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270955r1058011_rule",
+          "+@id": "SV-270955r1155105_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000650",
@@ -1370,19 +1370,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Change password configurations.\n\nIn the UI, navigate to Admin >> SiteStore Management >> Authentication Providers.\n\nClick \"EDIT\" in the Local Authentication section. \n\nChange the fields to the following settings:\nPassword Expiration = \"2 months\" or less\nPassword Reuse Limit = \"5\" or less\nMinimum Length = \"15\" or greater\nUppercase and lowercase letters = Checked\nSpecial characters = Checked\nNumeric characters = Checked\n\nClick \"SAVE\".",
-            "+@fixref": "F-74899r1058010_fix"
+            "+content": "Change password configurations.\n\nIn the UI, navigate to Admin >> SiteStore Management >> Authentication Providers.\n\nClick \"EDIT\" in the Local Authentication section. \n\nChange the fields to the following settings:\nPassword Expiration = \"2 months\" or less\nPassword Reuse Limit = \"5\" or less\nMinimum Length = \"15\" or greater\nUppercase and lowercase letters = Checked\nSpecial characters = Checked\nNumeric characters = Checked\nNumber of failed logins = 5\nWithin = 15 minutes\nResults in = 60 minute lockout\n\n\nClick \"SAVE\".\n\nFor DragOS CLI: Passwords must meet a minimum requirement of 15 characters. Maximum password age is 1 year by default, and is configurable via the CLI.",
+            "+@fixref": "F-74899r1155104_fix"
           },
           "fix": {
-            "+@id": "F-74899r1058010_fix"
+            "+@id": "F-74899r1155104_fix"
           },
           "check": {
-            "+@system": "C-74998r1057506_chk",
+            "+@system": "C-74998r1155103_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check password configurations.\nIn the UI, navigate to Admin >> SiteStore Management >> Authentication Providers.\n \nClick \"EDIT\" in the Local Authentication section. \n\nVerify the following settings:\n1. Password Expiration is set to \"2 months\" or less. \n2. Password Reuse Limit is set to \"5\" or less.\n3. Minimum Length is set to \"15\" or greater. \n4. Uppercase and lowercase letters is checked.\n5. Special characters is checked.\n6. Numeric characters is checked.\n\nIf any settings are not configured correctly, this is a finding."
+            "check-content": "Check password configurations.\nIn the UI, navigate to Admin >> SiteStore Management >> Authentication Providers.\n \nClick \"EDIT\" in the Local Authentication section. \n\nVerify the following settings:\n1. Password Expiration is set to \"2 months\" or less. \n2. Password Reuse Limit is set to \"5\" or less.\n3. Minimum Length is set to \"15\" or greater. \n4. Uppercase and lowercase letters is checked.\n5. Special characters is checked.\n6. Numeric characters is checked.\n7. Number of failed logins is set to \"5\", within is set to \"15 minutes\", results in is set to \"60 minute lockout\".\n\nIf any settings are not configured correctly, this is a finding."
           }
         }
       },

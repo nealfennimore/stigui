@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-23"
+      "+@date": "2025-11-20"
     },
     "title": "Red Hat Ansible Automation Controller Application Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1073,7 +1073,7 @@
         "title": "SRG-APP-000118-AS-000078",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256903r960930_rule",
+          "+@id": "SV-256903r1155081_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000034",
@@ -1117,19 +1117,19 @@
             }
           ],
           "fixtext": {
-            "+content": "As a system administrator for each Automation Controller host, set the permissions and owner of Automation Controller's NGINX log directory:\nchmod 770 /var/log/nginx\nchown nginx:root /var/log/nginx\n\nSet the permissions and owner of Automation Controller's log directory: \nchmod 770 /var/log/tower\nchown awx:awx /var/log/tower\n\nSet the permissions and owner of Automation Controller's supervisor log directory:\nchmod 770 /var/log/supervisor/\nchown root:root /var/log/supervisor/",
-            "+@fixref": "F-60520r902278_fix"
+            "+content": "As a system administrator for each Automation Controller host, set the permissions and owner of Automation Controller's NGINX log directory:\nchmod 770 /var/log/nginx\nchown nginx:root /var/log/nginx\n\nSet the permissions and owner of Automation Controller's log directory: \nchmod 750 /var/log/tower\nchown awx:awx /var/log/tower\n\nSet the permissions and owner of Automation Controller's supervisor log directory:\nchmod 770 /var/log/supervisor/\nchown root:root /var/log/supervisor/",
+            "+@fixref": "F-60520r1155080_fix"
           },
           "fix": {
-            "+@id": "F-60520r902278_fix"
+            "+@id": "F-60520r1155080_fix"
           },
           "check": {
-            "+@system": "C-60578r903539_chk",
+            "+@system": "C-60578r1155079_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Ansible_Automation_Controller_App_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As an administrator, log into each Automation Controller host. Inspect the current permissions and owner of Automation Controller's NGINX log directory:\nstat -c \"%a %U %G\" /var/log/nginx/ | grep \"770 nginx root\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nInspect the current permissions and owner of Automation Controller's log directory:\n$ stat -c \"%a %U %G\" /var/log/tower/ | grep \"750 awx awx\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nInspect the current permissions and owner of Automation Controller's supervisor log directory:\nstat -c \"%a %U %G\" /var/log/supervisor/ | grep \"770 root root\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding."
+            "check-content": "As an administrator, log in to each Automation Controller host. Inspect the current permissions and owner of Automation Controller's NGINX log directory:\nstat -c \"%a %U %G\" /var/log/nginx/ | grep \"770 nginx root\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nInspect the current permissions and owner of Automation Controller's log directory:\n$ stat -c \"%a %U %G\" /var/log/tower/ | grep \"750 awx awx\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding.\n\nInspect the current permissions and owner of Automation Controller's supervisor log directory:\nstat -c \"%a %U %G\" /var/log/supervisor/ | grep \"770 root root\" || echo \"FAILED\"\n\nIf \"FAILED\" is displayed, this is a finding."
           }
         }
       },
@@ -1499,7 +1499,7 @@
         "title": "SRG-APP-000456-AS-000266",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256911r961683_rule",
+          "+@id": "SV-256911r1137612_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-AT-000122",

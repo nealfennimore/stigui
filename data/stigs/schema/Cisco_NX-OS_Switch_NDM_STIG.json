@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-02"
+      "+@date": "2025-12-08"
     },
     "title": "Cisco NX OS Switch NDM Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1875,7 +1875,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220479r1117168_rule",
+          "+@id": "SV-220479r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-000140",
@@ -2989,12 +2989,12 @@
         "title": "SRG-APP-000395-NDM-000347",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220502r1107166_rule",
+          "+@id": "SV-220502r1156823_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-ND-001150",
-          "title": "The Cisco switch must be configured to authenticate Network Time Protocol (NTP) sources using authentication that is cryptographically based.",
-          "description": "<VulnDiscussion>If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Cisco switch must be configured to authenticate Network Time Protocol (NTP) sources using authentication with FIPS-compliant algorithms.",
+          "description": "<VulnDiscussion>If NTP is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco NX-OS Switch NDM",
             "dc:publisher": "DISA",
@@ -3017,19 +3017,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication that is cryptographically based as shown in the example below:\n\nSW1(config)# ntp authenticate\nSW1(config)# ntp authentication-key 1 hmac-sha2-256 xxxxxx\nSW1(config)# ntp trusted-key 1\nSW1(config)# ntp server 10.1.12.10 key 1\nSW1(config)# ntp server 10.1.22.13 key 1\nSW1(config)# ntp commit\nSW1(config)# end",
-            "+@fixref": "F-22206r1107165_fix"
+            "+content": "Configure the Cisco switch to authenticate NTP sources using authentication with FIPS-compliant algorithms as shown in the example below:\n\nSW1# configure terminal\nSW1(config)# feature ntp\nSW1(config)# ntp authentication-key 1 md5 xxxxxx\nSW1(config)# ntp trusted-key 1\nSW1(config)# ntp authenticate\nSW1(config)# ntp server 10.1.12.10 key 1\nSW1(config)# ntp commit\nSW1(config)# end\nSW1# copy running-config startup-config\n\nNote: The ntp commit command can be omitted if CFS is not enabled for NTP.",
+            "+@fixref": "F-22206r1156822_fix"
           },
           "fix": {
-            "+@id": "F-22206r1107165_fix"
+            "+@id": "F-22206r1156822_fix"
           },
           "check": {
-            "+@system": "C-22217r1107164_chk",
+            "+@system": "C-22217r1156821_chk",
             "check-content-ref": {
               "+@href": "Cisco_NX-OS_Switch_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Cisco switch configuration to verify that it is compliant with this requirement as shown in the configuration example below:\n\nntp distribute\nntp server 10.1.12.10 key 1\nntp server 10.1.22.13 key 1\nntp authenticate\nntp authentication-key 1 hmac-sha2-256 xxxxxx\nntp trusted-key 1\nntp commit\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication that is cryptographically based, this is a finding."
+            "check-content": "Review the Cisco switch configuration to verify it authenticates NTP sources using authentication with FIPS-compliant algorithms as shown in the configuration example below:\n\nshow running-config ntp\n\nntp authentication-key 1 md5 xxxxxx\nntp server 10.1.12.10 key 1\nntp trusted-key 1\nntp authenticate\n\nNote: Cisco NX-OS is limited to MD5 for NTP authentication, and incurs a permanent finding as it is not FIPS compliant. MD5 partially reduces the risk but cannot fully mitigate it.\n\nIf the Cisco switch is not configured to authenticate NTP sources using authentication with FIPS-compliant algorithms, this is a finding."
           }
         }
       },
@@ -3430,7 +3430,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220513r961863_rule",
+          "+@id": "SV-220513r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-001370",
@@ -3585,7 +3585,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220516r961863_rule",
+          "+@id": "SV-220516r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-ND-001450",
