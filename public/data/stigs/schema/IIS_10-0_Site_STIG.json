@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-25"
+      "+@date": "2026-02-26"
     },
     "title": "Microsoft IIS 10.0 Site Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 14 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 15 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -224,6 +224,10 @@
           {
             "+@idref": "V-278953",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
+            "+@selected": "true"
           }
         ]
       },
@@ -402,6 +406,10 @@
           },
           {
             "+@idref": "V-278953",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
             "+@selected": "true"
           }
         ]
@@ -582,6 +590,10 @@
           {
             "+@idref": "V-278953",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
+            "+@selected": "true"
           }
         ]
       },
@@ -760,6 +772,10 @@
           },
           {
             "+@idref": "V-278953",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
             "+@selected": "true"
           }
         ]
@@ -940,6 +956,10 @@
           {
             "+@idref": "V-278953",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
+            "+@selected": "true"
           }
         ]
       },
@@ -1118,6 +1138,10 @@
           },
           {
             "+@idref": "V-278953",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
             "+@selected": "true"
           }
         ]
@@ -1298,6 +1322,10 @@
           {
             "+@idref": "V-278953",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
+            "+@selected": "true"
           }
         ]
       },
@@ -1477,6 +1505,10 @@
           {
             "+@idref": "V-278953",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
+            "+@selected": "true"
           }
         ]
       },
@@ -1655,6 +1687,10 @@
           },
           {
             "+@idref": "V-278953",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283673",
             "+@selected": "true"
           }
         ]
@@ -2854,7 +2890,7 @@
         "title": "SRG-APP-000295-WSR-000012",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218762r1043182_rule",
+          "+@id": "SV-218762r1192782_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000235",
@@ -2889,12 +2925,12 @@
             "+@id": "F-20233r311185_fix"
           },
           "check": {
-            "+@system": "C-20235r766902_chk",
+            "+@system": "C-20235r1192781_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If this IIS 10.0 installation is supporting Microsoft Exchange, and not otherwise hosting any content, this requirement is Not Applicable.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\nClick the Application Pools.\nHighlight an Application Pool to review and click \"Advanced Settings\" in the \"Actions\" pane.\nScroll down to the \"Process Model\" section and verify the value for \"Idle Time-out\" is not \"0\".\n\nIf the \"Idle Time-out\" is set to \"0\", this is a finding."
+            "check-content": "Note: If the IIS 10.0 installation is supporting Microsoft Exchange, WSUS, or SharePoint and is not otherwise hosting any content, this requirement is not applicable.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nClick the Application Pools.\n\nHighlight an Application Pool to review and click \"Advanced Settings\" in the \"Actions\" pane.\n\nScroll down to the \"Process Model\" section and verify the value for \"Idle Time-out\" is not \"0\".\n\nIf the \"Idle Time-out\" is set to \"0\", this is a finding."
           }
         }
       },
@@ -3295,7 +3331,7 @@
         "title": "SRG-APP-000516-WSR-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218771r961863_rule",
+          "+@id": "SV-218771r1192784_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000251",
@@ -3330,12 +3366,12 @@
             "+@id": "F-20242r311212_fix"
           },
           "check": {
-            "+@system": "C-20244r311211_chk",
+            "+@system": "C-20244r1192783_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the IIS Application Pool is hosting Microsoft SharePoint, this is Not Applicable.\n\nIf this IIS 10.0 installation is supporting Microsoft Exchange, and not otherwise hosting any content, this requirement is Not Applicable.\n\nOpen the IIS 10.0 Manager.\n\nClick \"Application Pools\".\n\nIn the list of Application Pools, review the \"Applications\" column and verify unique application pools for each website.\n\nIf any Application Pools are being used for more than one website, this is a finding."
+            "check-content": "Note: If the IIS Application Pool is hosting Microsoft SharePoint, this is not applicable.\n\nNote: If the IIS 10.0 installation is supporting Microsoft Exchange and is not otherwise hosting any content, this requirement is not applicable.\n\nOpen the IIS 10.0 Manager.\n\nClick \"Application Pools\".\n\nIn the list of Application Pools, right-click any Application Pool, and select View Applications.\n\nRemove the filter using the prompt.\n\nCompare the Site and Application Pool columns. If any Application Pools are being used for more than one Site, this is a finding."
           }
         }
       },
@@ -3736,7 +3772,7 @@
         "title": "SRG-APP-000266-WSR-000159",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278953r1135550_rule",
+          "+@id": "SV-278953r1192787_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000270",
@@ -3754,19 +3790,58 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to \"HKLM\\System\\CurrentControlSet\\Services\\HTTP\\Parameters\".\n\nCreate REG_DWORD \"DisableServerHeader” and set it to \"2\".\n\nNote: This can be performed multiple ways; this is an example.",
-            "+@fixref": "F-83392r1135549_fix"
+            "+content": "Navigate to \"HKLM\\System\\CurrentControlSet\\Services\\HTTP\\Parameters\".\n\nCreate REG_DWORD \"DisableServerHeader” and set it to \"1\".\n\nNote: This can be performed multiple ways; this is an example.",
+            "+@fixref": "F-83392r1192786_fix"
           },
           "fix": {
-            "+@id": "F-83392r1135549_fix"
+            "+@id": "F-83392r1192786_fix"
           },
           "check": {
-            "+@system": "C-83487r1135548_chk",
+            "+@system": "C-83487r1192785_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the server is hosting WSUS, this is not applicable.\n\nOpen Registry Editor.\n\nNavigate to \"HKLM\\System\\CurrentControlSet\\Services\\HTTP\\Parameters\".\n\nVerify \"DisableServerHeader” is set to \"2\".\n\nIf REG_DWORD DisableServerHeader is not set to \"2\", this is a finding.\n\nIf the system administrator can show that Server Version information has been removed via other means, such as using a rewrite outbound rule, this is not a finding."
+            "check-content": "Note: If the server is hosting WSUS, this is not applicable.\n\nOpen Registry Editor.\n\nNavigate to \"HKLM\\System\\CurrentControlSet\\Services\\HTTP\\Parameters\".\n\nVerify \"DisableServerHeader” is set to \"1\".\n\nIf REG_DWORD DisableServerHeader is not set to \"1\", this is a finding.\n\nIf the system administrator (SA) can show that Server Version information has been removed via other means, such as using a rewrite outbound rule, this is not a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-283673",
+        "title": "SRG-APP-000120-WSR-000070",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-283673r1193224_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "IIST-SI-000275",
+          "title": "The log information from the IIS 10.0 website must be protected from unauthorized modification or deletion.",
+          "description": "<VulnDiscussion>A major tool in exploring the website use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the system administrator (SA) and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.\n\nSatisfies: SRG-APP-000120-WSR-000070, SRG-APP-000118-WSR-000068, SRG-APP-000118-WSR-000069</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Microsoft IIS 10.0 Site",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft IIS 10.0 Site",
+            "dc:identifier": "4051"
+          },
+          "ident": {
+            "+content": "CCI-000164",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Open the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nFor each Site:\n\nClick the \"Logging\" icon.\n\nClick \"Browse\" and navigate to the directory where the log files are stored.\n\nRight-click the log file directory to review and click \"Properties\".\n\nClick the \"Security\" tab.\n\nSet the log file permissions for the appropriate group(s).\n\nClick \"OK\".\n\nSelect \"Apply\" in the \"Actions\" pane.",
+            "+@fixref": "F-88143r1193223_fix"
+          },
+          "fix": {
+            "+@id": "F-88143r1193223_fix"
+          },
+          "check": {
+            "+@system": "C-88238r1193222_chk",
+            "check-content-ref": {
+              "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "This does not apply to service account IDs used by automated services necessary to process, manage, and store log files.\n\nOpen the IIS 10.0 Manager.\n\nClick the IIS 10.0 web server name.\n\nFor each Site:\n\nClick the \"Logging\" icon.\n\nClick \"Browse\" and navigate to the directory where the log files are stored.\n\nRight-click the log file directory to review.\n\nClick \"Properties\".\n\nClick the \"Security\" tab.\n\nVerify log file access is restricted as follows. Otherwise, this is a finding.\n\nSYSTEM - Full Control, This folder, subfolders and files\nAdministrators - Full Control, This folder, subfolders and files (Lower permission levels are permitted)\n\nNote:  A \"Web Administrators\", etc., type group that is an approved group of administrators is also allowed and must be given \"Full Control, This folder, subfolders and files\" permissions. (Lower permission levels are permitted.)"
           }
         }
       }

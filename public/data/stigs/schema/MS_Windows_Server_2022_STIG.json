@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-19"
+      "+@date": "2026-02-13"
     },
     "title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -163,10 +163,6 @@
           },
           {
             "+@idref": "V-254265",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-254266",
             "+@selected": "true"
           },
           {
@@ -1305,10 +1301,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-254266",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-254267",
             "+@selected": "true"
           },
@@ -2441,10 +2433,6 @@
           },
           {
             "+@idref": "V-254265",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-254266",
             "+@selected": "true"
           },
           {
@@ -3583,10 +3571,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-254266",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-254267",
             "+@selected": "true"
           },
@@ -4719,10 +4703,6 @@
           },
           {
             "+@idref": "V-254265",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-254266",
             "+@selected": "true"
           },
           {
@@ -5861,10 +5841,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-254266",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-254267",
             "+@selected": "true"
           },
@@ -6997,10 +6973,6 @@
           },
           {
             "+@idref": "V-254265",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-254266",
             "+@selected": "true"
           },
           {
@@ -8139,10 +8111,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-254266",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-254267",
             "+@selected": "true"
           },
@@ -9275,10 +9243,6 @@
           },
           {
             "+@idref": "V-254265",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-254266",
             "+@selected": "true"
           },
           {
@@ -10753,12 +10717,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254249r991589_rule",
+          "+@id": "SV-254249r1186387_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-00-000120",
-          "title": "Windows Server 2022 must have a host-based intrusion detection or prevention system.",
-          "description": "<VulnDiscussion>A properly configured Host-based Intrusion Detection System (HIDS) or Host-based Intrusion Prevention System (HIPS) provides another level of defense against unauthorized access to critical servers. With proper configuration and logging enabled, such a system can stop and/or alert for many attempts to gain unauthorized access to resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Windows Server 2022 must have a host-based intrusion detection and prevention service installed.",
+          "description": "<VulnDiscussion>A properly configured Host-based Intrusion Detection System (HIDS) and Host-based Intrusion Prevention System (HIPS) provides another level of defense against unauthorized access to critical servers. With proper configuration and logging enabled, such a system can stop and/or alert for many attempts to gain unauthorized access to resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server 2022",
             "dc:publisher": "DISA",
@@ -10771,19 +10735,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Install a HIDS or HIPS on each server.",
-            "+@fixref": "F-57685r848562_fix"
+            "+content": "Install a HIDS and HIPS on each server.",
+            "+@fixref": "F-57685r1186386_fix"
           },
           "fix": {
-            "+@id": "F-57685r848562_fix"
+            "+@id": "F-57685r1186386_fix"
           },
           "check": {
-            "+@system": "C-57734r848561_chk",
+            "+@system": "C-57734r1186385_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine whether there is a HIDS or HIPS on each server. \n\nIf the HIPS component of ESS is installed and active on the host and the alerts of blocked activity are being logged and monitored, this meets the requirement. \n\nA HIDS device is not required on a system that has the role as the Network Intrusion Device (NID). However, this exception needs to be documented with the Information System Security Officer (ISSO).\n\nIf a HIDS is not installed on the system, this is a finding."
+            "check-content": "Determine if there is a HIDS and HIPS on each server. \n\nA HIDS device is not required on a system that has the role as the Network Intrusion Device (NID). However, this exception needs to be documented with the information system security officer (ISSO).\n\nIf a HIDS and HIPS are not installed on the system, this is a finding."
           }
         }
       },
@@ -11366,7 +11330,7 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254264r958478_rule",
+          "+@id": "SV-254264r1186389_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-00-000270",
@@ -11391,12 +11355,12 @@
             "+@id": "F-57700r848607_fix"
           },
           "check": {
-            "+@system": "C-57749r848606_chk",
+            "+@system": "C-57749r1186388_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Required roles and features will vary based on the function of the individual system.\n\nRoles and features specifically required to be disabled per the STIG are identified in separate requirements.\n\nIf the organization has not documented the roles and features required for the system(s), this is a finding.\n\nThe PowerShell command \"Get-WindowsFeature\" will list all roles and features with an \"Install State\"."
+            "check-content": "Required roles and features will vary based on the function of the individual system.\n\nRoles and features specifically required to be disabled per the STIG are identified in separate requirements.\n\nIf the organization has not documented the roles and features required for the system(s), this is a finding.\n\nThe PowerShell command \"Get-WindowsFeature | Where-Object {$_. installstate -eq \"Installed\"} | Format-List Displayname, Name, Featuretype\" will list all roles and features with an \"Installed\" state."
           }
         }
       },
@@ -11442,45 +11406,6 @@
               "+@name": "M"
             },
             "check-content": "Determine if a host-based firewall is installed and enabled on the system.\n\nIf a host-based firewall is not installed and enabled on the system, this is a finding.\n\nThe configuration requirements will be determined by the applicable firewall STIG."
-          }
-        }
-      },
-      {
-        "+@id": "V-254266",
-        "title": "SRG-OS-000191-GPOS-00080",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-254266r1000154_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "WN22-00-000290",
-          "title": "Windows Server 2022 must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where Endpoint Security Solution (ESS) is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).",
-          "description": "<VulnDiscussion>Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws. The operating system may have an integrated solution incorporating continuous scanning using ESS and periodic scanning using other tools.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Microsoft Windows Server 2022",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Microsoft Windows Server 2022",
-            "dc:identifier": "5485"
-          },
-          "ident": {
-            "+content": "CCI-000366",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Install a DOD-approved ESS software and ensure it is operating continuously.",
-            "+@fixref": "F-57702r997810_fix"
-          },
-          "fix": {
-            "+@id": "F-57702r997810_fix"
-          },
-          "check": {
-            "+@system": "C-57751r997809_chk",
-            "check-content-ref": {
-              "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Verify DOD-approved ESS software is installed and properly operating. Ask the site information system security manager (ISSM) for documentation of the ESS software installation and configuration.\n\nIf the ISSM is not able to provide a documented configuration for an installed ESS or if the ESS software is not properly maintained or used, this is a finding.\n\nNote: Example of documentation can be a copy of the site's configuration control board (CCB)-approved software baseline with version of software noted or a memo from the ISSM stating current ESS software and version."
           }
         }
       },
@@ -15302,12 +15227,12 @@
         "title": "SRG-OS-000341-GPOS-00132",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254359r958752_rule",
+          "+@id": "SV-254359r1186393_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WN22-CC-000280",
-          "title": "Windows Server 2022 Security event log size must be configured to 196608 KB or greater.",
-          "description": "<VulnDiscussion>Inadequate log size will cause the log to fill up quickly. This may prevent audit events from being recorded properly and require frequent attention by administrative personnel.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Windows Server 2022 security event log size must be configured to a value that holds at least one week's worth of audit records.",
+          "description": "<VulnDiscussion>Inadequate log size will cause the log to fill up quickly. This may prevent audit events from being recorded properly and require frequent attention by administrative personnel. System administrators (SAs) must monitor the volume of security event audit records and increase the registry value for the log size as needed.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server 2022",
             "dc:publisher": "DISA",
@@ -15320,19 +15245,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Event Log Service >> Security >> Specify the maximum log file size (KB) to \"Enabled\" with a \"Maximum Log Size (KB)\" of \"196608\" or greater.",
-            "+@fixref": "F-57795r848892_fix"
+            "+content": "Configure the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Event Log Service >> Security >> Specify the maximum log file size (KB) to \"Enabled\" with a \"Maximum Log Size (KB)\" of a value that will contain one week of audit records or greater.",
+            "+@fixref": "F-57795r1186392_fix"
           },
           "fix": {
-            "+@id": "F-57795r848892_fix"
+            "+@id": "F-57795r1186392_fix"
           },
           "check": {
-            "+@system": "C-57844r848891_chk",
+            "+@system": "C-57844r1186391_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_2022_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If the system is configured to write events directly to an audit server, this is NA.\n\nIf the following registry value does not exist or is not configured as specified, this is a finding:\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security\\\n\nValue Name: MaxSize\n\nType: REG_DWORD\nValue: 0x00030000 (196608) (or greater)"
+            "check-content": "If the system is configured to write events directly to an audit server, this is not applicable.\n\nThe registry configuration setting below must be set (at least) to a value equal to the size needed to contain one week's worth of audit records in the security event log. The value used below is an example that assumes a typical week’s log size of 5GB.\n\nIf the following registry value does not exist or is not configured as specified, this is a finding:\n\nNote: The following registry entry is an example; the value must equal at least one week's worth of records.\n\nRegistry Hive: HKEY_LOCAL_MACHINE\nRegistry Path: \\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security\\\n\nValue Name: MaxSize\n\nType: REG_DWORD\nValue:0x49960800 (5120000) (or greater)"
           }
         }
       },

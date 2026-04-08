@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-20"
+      "+@date": "2026-02-19"
     },
     "title": "Tri-Lab Operating System Stack (TOSS) 4 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -8582,12 +8582,12 @@
         "title": "SRG-OS-000125-GPOS-00065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252919r958510_rule",
+          "+@id": "SV-252919r1190841_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "TOSS-04-010080",
-          "title": "The TOSS operating system must implement DoD-approved encryption in the OpenSSL package.",
-          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nTOSS incorporates system-wide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssl.config file.\n\nSatisfies: SRG-OS-000125-GPOS-00065, SRG-OS-000250-GPOS-00093</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The TOSS operating system must implement DOD-approved encryption in the OpenSSL package.",
+          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nTOSS incorporates systemwide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssl.config file.\n\nSatisfies: SRG-OS-000125-GPOS-00065, SRG-OS-000250-GPOS-00093</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
             "dc:publisher": "DISA",
@@ -8606,19 +8606,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the TOSS OpenSSL library to use only DoD-approved TLS encryption by editing the following lines in the \"/etc/crypto-policies/back-ends/opensslcnf.config\" file:\n\nMinProtocol = TLSv1.2\nDTLS.MinProtocol = DTLSv1.2\n\nA reboot is required for the changes to take effect.",
-            "+@fixref": "F-56322r824080_fix"
+            "+content": "Configure the TOSS OpenSSL library to use only DOD-approved TLS encryption by editing the following lines in the \"/etc/crypto-policies/back-ends/opensslcnf.config\" file:\n\nMinProtocol = TLSv1.2\nDTLS.MinProtocol = DTLSv1.2\n\nA reboot is required for the changes to take effect.",
+            "+@fixref": "F-56322r1190840_fix"
           },
           "fix": {
-            "+@id": "F-56322r824080_fix"
+            "+@id": "F-56322r1190840_fix"
           },
           "check": {
-            "+@system": "C-56372r824079_chk",
+            "+@system": "C-56372r1190839_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the OpenSSL library is configured to use only DoD-approved TLS encryption:\n\n$ sudo grep -i MinProtocol /etc/crypto-policies/back-ends/opensslcnf.config\n\nTLS.MinProtocol = TLSv1.2\nDTLS.MinProtocol = DTLSv1.2\n\nIf the \"TLS.MinProtocol\" is set to anything older than \"TLSv1.2\" or the \"DTLS.MinProtocol\" is set to anything older than DTLSv1.2, this is a finding."
+            "check-content": "Verify the OpenSSL library is configured to use only DOD-approved TLS encryption:\n\n$ sudo grep -i MinProtocol /etc/crypto-policies/back-ends/opensslcnf.config\n\nTLS.MinProtocol = TLSv1.2\nDTLS.MinProtocol = DTLSv1.2\n\nIf the \"TLS.MinProtocol\" is set to anything older than \"TLSv1.2\" or the \"DTLS.MinProtocol\" is set to anything older than DTLSv1.2, this is a finding."
           }
         }
       },
@@ -8801,12 +8801,12 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252924r991554_rule",
+          "+@id": "SV-252924r1190843_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "TOSS-04-010140",
-          "title": "The TOSS operating system must implement DoD-approved encryption to protect the confidentiality of SSH connections.",
-          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nTOSS incorporates system-wide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.\n\nBy specifying a cipher list with the order of ciphers being in a \"strongest to weakest\" orientation, the system will automatically attempt to use the strongest cipher for securing SSH connections.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000394-GPOS-00174</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The TOSS operating system must implement DOD-approved encryption to protect the confidentiality of SSH connections.",
+          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nTOSS incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.\n\nBy specifying a cipher list with the order of ciphers being in a \"strongest to weakest\" orientation, the system will automatically attempt to use the strongest cipher for securing SSH connections.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000394-GPOS-00174</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
             "dc:publisher": "DISA",
@@ -8832,12 +8832,12 @@
             "+@id": "F-56327r824095_fix"
           },
           "check": {
-            "+@system": "C-56377r824094_chk",
+            "+@system": "C-56377r1190842_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH daemon is configured to use only ciphers employing FIPS 140-2-approved algorithms:\n\nVerify that system-wide crypto policies are in effect:\n\n$ sudo grep CRYPTO_POLICY /etc/sysconfig/sshd\n\n# CRYPTO_POLICY=\n\nIf the \"CRYPTO_POLICY\" is uncommented, this is a finding.\n\nVerify which system-wide crypto policy is in use:\n\n$ sudo update-crypto-policies --show\n\nFIPS\n\nCheck that the ciphers in the back-end configurations are FIPS 140-2-approved algorithms with the following command:\n\n$ sudo grep -i ciphers /etc/crypto-policies/back-ends/openssh.config /etc/crypto-policies/back-ends/opensshserver.config\n\n/etc/crypto-policies/back-ends/openssh.config:Ciphers aes256-ctr,aes192-ctr,aes128-ctr\n/etc/crypto-policies/back-ends/opensshserver.config:CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr'\n/etc/crypto-policies/back-ends/opensshserver.config:CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr'\n\nIf the cipher entries in the \"openssh.config\" and \"opensshserver.config\" files have any ciphers other than \"aes256-ctr,aes192-ctr,aes128-ctr\", the order differs from the example above, if they are missing, or commented out, this is a finding."
+            "check-content": "Verify the SSH daemon is configured to use only ciphers employing FIPS 140-2-approved algorithms:\n\nVerify that systemwide crypto policies are in effect:\n\n$ sudo grep CRYPTO_POLICY /etc/sysconfig/sshd\n\n# CRYPTO_POLICY=\n\nIf the \"CRYPTO_POLICY\" is uncommented, this is a finding.\n\nVerify which systemwide crypto policy is in use:\n\n$ sudo update-crypto-policies --show\n\nFIPS\n\nCheck that the ciphers in the back-end configurations are FIPS 140-2-approved algorithms with the following command:\n\n$ sudo grep -i ciphers /etc/crypto-policies/back-ends/openssh.config /etc/crypto-policies/back-ends/opensshserver.config\n\n/etc/crypto-policies/back-ends/openssh.config:Ciphers aes256-ctr,aes192-ctr,aes128-ctr\n/etc/crypto-policies/back-ends/opensshserver.config:CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr'\n/etc/crypto-policies/back-ends/opensshserver.config:CRYPTO_POLICY='-oCiphers=aes256-ctr,aes192-ctr,aes128-ctr'\n\nIf the cipher entries in the \"openssh.config\" and \"opensshserver.config\" files have any ciphers other than \"aes256-ctr,aes192-ctr,aes128-ctr\", the order differs from the example above, if they are missing, or commented out, this is a finding."
           }
         }
       },
@@ -8846,12 +8846,12 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252925r991554_rule",
+          "+@id": "SV-252925r1190838_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "TOSS-04-010150",
-          "title": "The TOSS operating system must implement DoD-approved TLS encryption in the GnuTLS package.",
-          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nTransport Layer Security (TLS) encryption is a required security setting as a number of known vulnerabilities have been reported against Secure Sockets Layer (SSL) and earlier versions of TLS. Encryption of private information is essential to ensuring data confidentiality. If private information is not encrypted, it can be intercepted and easily read by an unauthorized party. SQL Server must use a minimum of FIPS 140-2-approved TLS version 1.2, and all non-FIPS-approved SSL and TLS versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nThe GnuTLS library offers an API to access secure communications protocols. SSLv2 is not available in the GnuTLS library. The TOSS system-wide crypto policy defines employed algorithms in the /etc/crypto-policies/back-ends/gnutls.config file.5</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The TOSS operating system must implement DOD-approved TLS encryption in the GnuTLS package.",
+          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nTransport Layer Security (TLS) encryption is a required security setting as a number of known vulnerabilities have been reported against Secure Sockets Layer (SSL) and earlier versions of TLS. Encryption of private information is essential to ensuring data confidentiality. If private information is not encrypted, it can be intercepted and easily read by an unauthorized party. SQL Server must use a minimum of FIPS 140-2-approved TLS version 1.2, and all non-FIPS-approved SSL and TLS versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nThe GnuTLS library offers an API to access secure communications protocols. SSLv2 is not available in the GnuTLS library. The TOSS systemwide crypto policy defines employed algorithms in the /etc/crypto-policies/back-ends/gnutls.config file.5</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
             "dc:publisher": "DISA",
@@ -8864,19 +8864,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the TOSS GnuTLS library to use only DoD-approved encryption by adding the following line to \"/etc/crypto-policies/back-ends/gnutls.config\":\n\n+VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0\n\nA reboot is required for the changes to take effect.",
-            "+@fixref": "F-56328r824098_fix"
+            "+content": "Configure the TOSS GnuTLS library to use only DOD-approved encryption by adding the following line to \"/etc/crypto-policies/back-ends/gnutls.config\":\n\n+VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0\n\nA reboot is required for the changes to take effect.",
+            "+@fixref": "F-56328r1190837_fix"
           },
           "fix": {
-            "+@id": "F-56328r824098_fix"
+            "+@id": "F-56328r1190837_fix"
           },
           "check": {
-            "+@system": "C-56378r824097_chk",
+            "+@system": "C-56378r1190836_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the GnuTLS library is configured to only allow DoD-approved SSL/TLS Versions:\n\n$ sudo grep -io +vers.* /etc/crypto-policies/back-ends/gnutls.config\n\n+VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0:+COMP-NULL:%PROFILE_MEDIUM\n\nIf the \"gnutls.config\" does not list \"-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0\" to disable unapproved SSL/TLS versions, this is a finding."
+            "check-content": "Verify the GnuTLS library is configured to only allow DOD-approved SSL/TLS Versions:\n\n$ sudo grep -io +vers.* /etc/crypto-policies/back-ends/gnutls.config\n\n+VERS-ALL:-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0:+COMP-NULL:%PROFILE_MEDIUM\n\nIf the \"gnutls.config\" does not list \"-VERS-DTLS0.9:-VERS-SSL3.0:-VERS-TLS1.0:-VERS-TLS1.1:-VERS-DTLS1.0\" to disable unapproved SSL/TLS versions, this is a finding."
           }
         }
       },
@@ -9725,7 +9725,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252946r958388_rule",
+          "+@id": "SV-252946r1190835_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020000",
@@ -9750,12 +9750,12 @@
             "+@id": "F-56349r824161_fix"
           },
           "check": {
-            "+@system": "C-56399r824160_chk",
+            "+@system": "C-56399r1184489_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"/etc/security/faillock.conf\" file is configured to lock an account after three unsuccessful logon attempts within 15 minutes:\n\n$ sudo grep -e \"deny =\" -e \"fail_interval =\" /etc/security/faillock.conf\ndeny = 3\nfail_interval = 900\n\nIf the \"deny\" option is set to \"0\", more than \"3\", is missing, or is commented out, this is a finding.\nIf the \"fail_interval\" option is set to less than \"900\", is missing, or is commented out, this is a finding.\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is Not Applicable."
+            "check-content": "Verify the \"/etc/security/faillock.conf\" file is configured to lock an account after three unsuccessful logon attempts within 15 minutes:\n\n$ sudo grep -e \"deny =\" -e \"fail_interval =\" /etc/security/faillock.conf\ndeny = 3\nfail_interval = 900\n\nIf the \"deny\" option is set to \"0\", more than \"3\", is missing, or is commented out, this is a finding.\nIf the \"fail_interval\" option is set to less than \"900\", is missing, or is commented out, this is a finding."
           }
         }
       },
@@ -10692,12 +10692,12 @@
         "title": "SRG-OS-000480-GPOS-00230",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252969r991592_rule",
+          "+@id": "SV-252969r1190845_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TOSS-04-020300",
-          "title": "All TOSS local interactive user home directories must have mode 0770 or less permissive.",
-          "description": "<VulnDiscussion>Users' home directories/folders may contain information of a sensitive nature. Non-privileged users should coordinate any sharing of information with an SA through shared resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "All TOSS local interactive user home directories must have mode 0750 or less permissive.",
+          "description": "<VulnDiscussion>Users' home directories/folders may contain information of a sensitive nature. Nonprivileged users should coordinate any sharing of information with a system administrator (SA) through shared resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target TOSS 4",
             "dc:publisher": "DISA",
@@ -10710,19 +10710,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Change the mode of interactive user's home directories to \"0770.\" To change the mode of a local interactive user's home directory, use the following command:\n\nNote: The example will be for the user \"smithj.\"\n\n$ sudo chmod 0770 /home/smithj",
-            "+@fixref": "F-56372r824230_fix"
+            "+content": "Change the mode of interactive user's home directories to \"0750\" using the following command:\n\nNote: The example will be for the user \"disauser\".\n\n$ sudo chmod 0750 /home/disauser",
+            "+@fixref": "F-56372r1184492_fix"
           },
           "fix": {
-            "+@id": "F-56372r824230_fix"
+            "+@id": "F-56372r1184492_fix"
           },
           "check": {
-            "+@system": "C-56422r824229_chk",
+            "+@system": "C-56422r1190844_chk",
             "check-content-ref": {
               "+@href": "TOSS_4_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system limits the ability of non-privileged users to grant other users direct access to the contents of their home directories/folders.\n\nEnsure that the user permissions on all user home directories is set to 770 permissions with the following command:\n\n$ find $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd) -maxdepth 0 -not -perm 770 -ls\n\nIf there is any output, this is a finding."
+            "check-content": "Verify TOSS 4 limits the ability of nonprivileged users to grant other users' direct access to the contents of their home directories/folders.\n\nVerify the user permissions on all user home directories is set to \"750\" permissions with the following command:\n\n$ find $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd) -maxdepth 0 -not -perm 750 -ls\n\nIf there is any output, this is a finding."
           }
         }
       },

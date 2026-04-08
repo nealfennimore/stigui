@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-10-29"
+      "+@date": "2026-03-04"
     },
     "title": "HYCU Protege Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 22 Oct 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -2143,7 +2143,7 @@
         "title": "SRG-APP-000845-NDM-000220",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268217r1038727_rule",
+          "+@id": "SV-268217r1067634_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000600",
@@ -2221,7 +2221,7 @@
         "title": "SRG-APP-000033-NDM-000212",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268222r1038366_rule",
+          "+@id": "SV-268222r1137874_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000040",
@@ -2260,7 +2260,7 @@
         "title": "SRG-APP-000329-NDM-000287",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268223r1038369_rule",
+          "+@id": "SV-268223r1137878_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000050",
@@ -2305,7 +2305,7 @@
         "title": "SRG-APP-000038-NDM-000213",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268225r1038375_rule",
+          "+@id": "SV-268225r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000070",
@@ -2715,7 +2715,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268236r1038659_rule",
+          "+@id": "SV-268236r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000190",
@@ -3649,7 +3649,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268259r1038477_rule",
+          "+@id": "SV-268259r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000510",
@@ -3922,7 +3922,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268267r1038760_rule",
+          "+@id": "SV-268267r1043189_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000590",
@@ -4078,7 +4078,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268274r1038763_rule",
+          "+@id": "SV-268274r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000670",
@@ -4201,7 +4201,7 @@
         "title": "SRG-APP-000457-NDM-000352",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268296r1038767_rule",
+          "+@id": "SV-268296r1137881_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000900",
@@ -4240,7 +4240,7 @@
         "title": "SRG-APP-000190-NDM-000267",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268301r1038739_rule",
+          "+@id": "SV-268301r1195282_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000950",
@@ -4265,12 +4265,12 @@
             "+@id": "F-72225r1038602_fix"
           },
           "check": {
-            "+@system": "C-72322r1038738_chk",
+            "+@system": "C-72322r1195281_chk",
             "check-content-ref": {
               "+@href": "HYCU_Protege_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Log in to the HYCU VM console. For console connections, check for the value of the \"TMOUT\" option in \"/home/hycu/.bashrc\" with the following command:\ngrep TMOUT /home/hycu/.bashrc\n\nIf the \"TMOUT\" value is not set to \"300\" or less, this is a finding.\n\nFor SSH connections, check for the value of the \"ClientAliveInterval\" option in \"/etc/ssh/sshd_config\" with the following command:\ngrep ClientAliveInterval /etc/ssh/sshd_config\n\nIf the \"ClientAliveInterval\" value is not set to \"5\" or less, this is a finding.\n\nFor UI connections, run the following command to check configured HYCU session timeout:\ncat /opt/grizzly/config.properties | grep api.session.expiration.minutes\n\nIf not configured at \"5\" or less, this is a finding."
+            "check-content": "Log in to the HYCU VM console. For console connections, check for the value of the \"TMOUT\" option in \"/home/hycu/.bashrc\" with the following command:\ngrep TMOUT /home/hycu/.bashrc\n\nIf the \"TMOUT\" value is not set to \"300\" or less, this is a finding.\n\nFor SSH connections, check for the value of the \"ClientAliveInterval\" option in \"/etc/ssh/sshd_config\" with the following command:\ngrep ClientAliveInterval /etc/ssh/sshd_config\n\nIf the \"ClientAliveInterval\" value is not set to \"300\" or less, this is a finding.\n\nFor UI connections, run the following command to check configured HYCU session timeout:\ncat /opt/grizzly/config.properties | grep api.session.expiration.minutes\n\nIf not configured at \"5\" or less, this is a finding."
           }
         }
       },
@@ -4279,7 +4279,7 @@
         "title": "SRG-APP-000224-NDM-000270",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268302r1038606_rule",
+          "+@id": "SV-268302r1043181_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000960",
@@ -4318,7 +4318,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268303r1038770_rule",
+          "+@id": "SV-268303r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000970",

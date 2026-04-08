@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-24"
+      "+@date": "2026-02-06"
     },
     "title": "Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -8156,7 +8156,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260501r958566_rule",
+          "+@id": "SV-260501r1184052_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232080",
@@ -8174,11 +8174,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate ownership to the directories used by the systemd journal: \n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/systemd.conf\" file: \n \nz /run/log/journal 2640 root systemd-journal - - \nz /var/log/journal 2640 root systemd-journal - - \n \nRestart the system for the changes to take effect.",
-            "+@fixref": "F-64138r953315_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate ownership to the directories used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/etc/tmpfiles.d/zzz-systemd-stig.conf\" file: \n \nz /run/log/journal 2750 root systemd-journal - -\nz /var/log/journal 2750 root systemd-journal - -\nz /var/log/journal/%m 2750 root systemd-journal - -\n \nRestart the system for the changes to take effect.",
+            "+@fixref": "F-64138r1184051_fix"
           },
           "fix": {
-            "+@id": "F-64138r953315_fix"
+            "+@id": "F-64138r1184051_fix"
           },
           "check": {
             "+@system": "C-64230r953314_chk",
@@ -8195,7 +8195,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260502r958566_rule",
+          "+@id": "SV-260502r1184054_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232085",
@@ -8213,11 +8213,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate group-ownership to the directories used by the systemd journal: \n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/systemd.conf\" file: \n \nz /run/log/journal 2640 root systemd-journal - - \nz /var/log/journal 2640 root systemd-journal - - \n \nRestart the system for the changes to take effect.",
-            "+@fixref": "F-64139r953318_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate group-ownership to the directories used by the systemd journal.\n \nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/etc/tmpfiles.d/zzz-systemd-stig.conf\" file: \n \nz /run/log/journal 2750 root systemd-journal - -\nz /var/log/journal 2750 root systemd-journal - - \nz /var/log/journal/%m 2750 root systemd-journal - -\n \nRestart the system for the changes to take effect.",
+            "+@fixref": "F-64139r1184053_fix"
           },
           "fix": {
-            "+@id": "F-64139r953318_fix"
+            "+@id": "F-64139r1184053_fix"
           },
           "check": {
             "+@system": "C-64231r953317_chk",
@@ -8234,7 +8234,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260503r958566_rule",
+          "+@id": "SV-260503r1184056_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232090",
@@ -8252,11 +8252,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate ownership to the files used by the systemd journal: \n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/systemd.conf\" file: \n \nZ /run/log/journal/%m ~2640 root systemd-journal - - \nz /var/log/journal/%m 2640 root systemd-journal - - \nz /var/log/journal/%m/system.journal 0640 root systemd-journal - - \n \nRestart the system for the changes to take effect.",
-            "+@fixref": "F-64140r953321_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate ownership to the files used by the systemd journal.\n \nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/etc/tmpfiles.d/zzz-systemd-stig.conf\" file: \n \nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n \nRestart the system for the changes to take effect.",
+            "+@fixref": "F-64140r1184055_fix"
           },
           "fix": {
-            "+@id": "F-64140r953321_fix"
+            "+@id": "F-64140r1184055_fix"
           },
           "check": {
             "+@system": "C-64232r953320_chk",
@@ -8273,7 +8273,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260504r958566_rule",
+          "+@id": "SV-260504r1184058_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-232095",
@@ -8291,11 +8291,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate group-ownership to the files used by the systemd journal: \n \nAdd or modify the following line in the \"/usr/lib/tmpfiles.d/systemd.conf\" file: \n \nZ /run/log/journal/%m ~2640 root systemd-journal - - \nz /var/log/journal/%m 2640 root systemd-journal - - \nz /var/log/journal/%m/system.journal 0640 root systemd-journal - - \n \nRestart the system for the changes to take effect.",
-            "+@fixref": "F-64141r953324_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to set the appropriate group-ownership to the files used by the systemd journal.\n \nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n \nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n \nRestart the system for the changes to take effect.",
+            "+@fixref": "F-64141r1184057_fix"
           },
           "fix": {
-            "+@id": "F-64141r953324_fix"
+            "+@id": "F-64141r1184057_fix"
           },
           "check": {
             "+@system": "C-64233r953323_chk",
@@ -8747,7 +8747,7 @@
         "title": "SRG-OS-000480-GPOS-00232",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260516r991593_rule",
+          "+@id": "SV-260516r1184061_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-251020",
@@ -8765,19 +8765,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Enable and start the ufw by using the following command:  \n  \n     $ sudo systemctl enable ufw.service --now",
-            "+@fixref": "F-64153r953360_fix"
+            "+content": "Enable the ufw by using the following command: \n \n    $ sudo ufw enable\n\nNote: Enabling the firewall will potentially disrupt ssh sessions.",
+            "+@fixref": "F-64153r1184060_fix"
           },
           "fix": {
-            "+@id": "F-64153r953360_fix"
+            "+@id": "F-64153r1184060_fix"
           },
           "check": {
-            "+@system": "C-64245r953359_chk",
+            "+@system": "C-64245r1184059_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Uncomplicated Firewall (ufw) is enabled on the system with the following command:  \n  \n     $ systemctl status ufw.service | grep -i \"active:\" \n     Active: active (exited) since Thu 2022-12-25 00:00:01 NZTD; 365 days 11h ago \n  \nIf \"ufw.service\" is \"inactive\", this is a finding.  \n  \nIf the ufw is not installed, ask the system administrator if another application firewall is installed. If no application firewall is installed, this is a finding."
+            "check-content": "Verify the ufw is enabled on the system with the following command: \n \n    $ sudo ufw status\n    Status: active\n \nIf the above command returns the status as \"inactive\" or any type of error, this is a finding. \n\nIf the ufw is not installed, ask the system administrator if another application firewall is installed. If a different firewall is active on the system, this is not a finding."
           }
         }
       },
@@ -9130,7 +9130,7 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260525r958390_rule",
+          "+@id": "SV-260525r1184064_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255020",
@@ -9170,19 +9170,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Set the parameter Banner in \"/etc/ssh/sshd_config\" to point to the \"/etc/issue.net\" file:  \n  \n     $ sudo sed -i '/^Banner/d' /etc/ssh/sshd_config \n     $ sudo sed -i '$aBanner /etc/issue.net' /etc/ssh/sshd_config  \n  \nReplace the text in \"/etc/issue.net\" with the Standard Mandatory DOD Notice and Consent Banner:  \n  \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.  \n  \nRestart the SSH daemon for the changes to take effect and then signal the SSH server to reload the configuration file:  \n  \n     $ sudo systemctl -s SIGHUP kill sshd",
-            "+@fixref": "F-64162r953387_fix"
+            "+content": "Set the parameter banner in \"/etc/ssh/sshd_config\" to point to the \"/etc/issue.net\" file:  \n  \n     $ sudo sed -i '/^Banner/d' /etc/ssh/sshd_config \n     $ sudo sed -i '$aBanner /etc/issue.net' /etc/ssh/sshd_config  \n  \nReplace the text in \"/etc/issue.net\" with the Standard Mandatory DOD Notice and Consent Banner:  \n  \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n  \nRestart the SSH daemon for the changes to take effect and then signal the SSH server to reload the configuration file:  \n  \n     $ sudo systemctl -s SIGHUP kill sshd",
+            "+@fixref": "F-64162r1184063_fix"
           },
           "fix": {
-            "+@id": "F-64162r953387_fix"
+            "+@id": "F-64162r1184063_fix"
           },
           "check": {
-            "+@system": "C-64254r953386_chk",
+            "+@system": "C-64254r1184062_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Ubuntu 22.04 LTS displays the Standard Mandatory DOD Notice and Consent Banner before granting access to Ubuntu 22.04 LTS via an SSH logon by using the following command:  \n  \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'banner' \n     /etc/ssh/sshd_config:Banner /etc/issue.net \n  \nThe command will return the banner option along with the name of the file that contains the SSH banner. If the line is commented out, missing, or conflicting results are returned, this is a finding. \n  \nVerify the specified banner file matches the Standard Mandatory DOD Notice and Consent Banner exactly:  \n  \n     $ cat /etc/issue.net  \n     You are accessing a U.S. Government (USG) Information System (IS) that is \n     provided for USG-authorized use only. By using this IS (which includes any \n     device attached to this IS), you consent to the following conditions: \n     -The USG routinely intercepts and monitors communications on this IS for \n     purposes including, but not limited to, penetration testing, COMSEC monitoring, \n     network operations and defense, personnel misconduct (PM), law enforcement \n     (LE), and counterintelligence (CI) investigations. \n     -At any time, the USG may inspect and seize data stored on this IS. \n     -Communications using, or data stored on, this IS are not private, are subject \n     to routine monitoring, interception, and search, and may be disclosed or used \n     for any USG-authorized purpose. \n     -This IS includes security measures (e.g., authentication and access controls) \n     to protect USG interests--not for your personal benefit or privacy. \n     -Notwithstanding the above, using this IS does not constitute consent to PM, LE \n     or CI investigative searching or monitoring of the content of privileged \n     communications, or work product, related to personal representation or services \n     by attorneys, psychotherapists, or clergy, and their assistants. Such \n     communications and work product are private and confidential. See User \n     Agreement for details. \n \nIf the banner text does not match the Standard Mandatory DOD Notice and Consent Banner exactly, this is a finding."
+            "check-content": "Verify Ubuntu 22.04 LTS displays the Standard Mandatory DOD Notice and Consent Banner before granting access to Ubuntu 22.04 LTS via an SSH logon by using the following command:  \n  \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'banner' \n     /etc/ssh/sshd_config:Banner /etc/issue.net \n  \nThe command will return the banner option along with the name of the file that contains the SSH banner. If the line is commented out, missing, or conflicting results are returned, this is a finding. \n  \nVerify the specified banner file matches the Standard Mandatory DOD Notice and Consent Banner exactly:  \n  \n$ cat /etc/issue.net  \n     You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n \nIf the banner text does not match the Standard Mandatory DOD Notice and Consent Banner exactly, this is a finding."
           }
         }
       },
@@ -9718,7 +9718,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260539r1069103_rule",
+          "+@id": "SV-260539r1184066_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-22-271030",
@@ -9736,11 +9736,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to disable the Ctrl-Alt-Delete sequence when using a graphical user interface.\n\nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/settings-daemon/plugins/media-keys]\nlogout=\"\"\n\nUpdate the dconf settings:\n\n$ sudo dconf update",
-            "+@fixref": "F-64176r1069102_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to disable the Ctrl-Alt-Delete sequence when using a graphical user interface.\n\nCreate or edit a file named /etc/dconf/db/local.d/00-mediakeys with the following contents:\n\n[org/gnome/settings-daemon/plugins/media-keys]\nlogout=@as []\n\nUpdate the dconf settings:\n\n$ sudo dconf update",
+            "+@fixref": "F-64176r1184065_fix"
           },
           "fix": {
-            "+@id": "F-64176r1069102_fix"
+            "+@id": "F-64176r1184065_fix"
           },
           "check": {
             "+@system": "C-64268r953428_chk",

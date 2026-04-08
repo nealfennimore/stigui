@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-19"
+      "+@date": "2026-02-11"
     },
     "title": "Active Directory Domain Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 7 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -1659,7 +1659,7 @@
         "title": "SRG-OS-000112",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243471r958494_rule",
+          "+@id": "SV-243471r1186313_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0008",
@@ -1694,12 +1694,12 @@
             "+@id": "F-46703r854326_fix"
           },
           "check": {
-            "+@system": "C-46746r854325_chk",
+            "+@system": "C-46746r1186312_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify local administrator accounts on domain systems are using unique passwords. If local administrator accounts on domain systems are sharing a password, this is a finding.\n\nIt is highly recommended to use Microsoft's Local Administrator Password Solution (LAPS), which provides an automated solution for maintaining and regularly changing a local administrator password for domain-joined systems. LAPS can manage a single local administrator account. The default is the built-in administrator account; however, it can be configured to manage an administrator account of a different name. If additional local administrator accounts exist across systems, the organization must have a process to require unique passwords on each system for the additional accounts.\n\nThe AO may approve other automated solutions that provide this capability.\n\nIf LAPS has been installed and enabled in the domain, the following PowerShell query will return a list of systems that do not have a local administrator password managed by LAPS. (The LAPS PowerShell module requires PowerShell 2.0 or higher and .NET Framework 4.0.)\n\nOpen \"Windows PowerShell\".\nIf the LAPS PowerShell module has not been previously imported, execute the following first: \"Import-Module AdmPwd.ps\".\nExecute \"Get-AdmPwdPassword -ComputerName * | Where-object {$_.password -eq $null}\"\n\nReview the returned list for validity.\n\nExclude computers with \"OU=Domain Controllers\" in the DistinguishedName field.  Other possible exceptions include but are not limited to non-Windows computers in Active Directory.\n\nIf any active/deployed Windows systems that are not managed by another process to ensure unique passwords for local administrator accounts are listed, this is a finding.\n\nIf the query fails, the organization must demonstrate that passwords for local administrator accounts are properly managed to ensure unique passwords for each. If not, this is a finding."
+            "check-content": "Verify local administrator accounts on domain systems are using unique passwords. If local administrator accounts on domain systems are sharing a password, this is a finding.\n\nIt is recommended to use Microsoft's Local Administrator Password Solution (LAPS), which provides an automated solution for maintaining and regularly changing a local administrator password for domain-joined systems. LAPS can manage a single local administrator account. The default is the built-in administrator account; however, it can be configured to manage an administrator account of a different name. If additional local administrator accounts exist across systems, the organization must have a process to require unique passwords on each system for the additional accounts.\n\nThe authorizing official (AO) may approve other automated solutions that provide this capability.\n\nOpen \"Windows PowerShell\".\n\nGet-ADComputer -Filter * -Properties msLAPS-EncryptedPassword | Where-Object { $_.\"msLAPS-EncryptedPassword\" -eq $null } | Select-Object Name\n\nThe newer \"Windows LAPS\" function stores the LAPS password in the object attribute \"msLAPS-EncryptedPassword\" as long as the \"encrypted\" option was selected when setting up the LAPS GPO settings. This will check that location. If \"encrypted\" wasn't enabled when setting up LAPS, then adjust the search command to be \"msLAPS-Password\" instead.\n\nReview the returned list for validity.\n\nIf any active/deployed Windows systems that are not managed by another process to ensure unique passwords for local administrator accounts are listed, this is a finding.\n\nIf the query fails, the organization must demonstrate that passwords for local administrator accounts are properly managed to ensure unique passwords for each. If not, this is a finding."
           }
         }
       },

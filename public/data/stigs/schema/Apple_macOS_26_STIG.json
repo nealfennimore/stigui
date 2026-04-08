@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-10-01"
+      "+@date": "2026-02-11"
     },
     "title": "Apple macOS 26 (Tahoe) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 11 Sep 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -686,11 +686,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -1333,11 +1333,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -1980,11 +1980,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -2627,11 +2627,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -3274,11 +3274,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -3921,11 +3921,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -4568,11 +4568,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -5215,11 +5215,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -5862,11 +5862,11 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-278915",
+            "+@idref": "V-279329",
             "+@selected": "true"
           },
           {
-            "+@idref": "V-279329",
+            "+@idref": "V-282964",
             "+@selected": "true"
           }
         ]
@@ -6684,7 +6684,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277046r1148590_rule",
+          "+@id": "SV-277046r1184568_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-000054",
@@ -6728,11 +6728,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the macOS system to limit SSHD to FIPS-compliant connections with the following command:\n\nif [ -f /etc/ssh/crypto.conf ] && /usr/bin/grep -q \"Include /etc/ssh/crypto.conf\" /etc/ssh/sshd_config.d/100-macos.conf 2>/bin/null; then\n/bin/ln -fs /etc/ssh/crypto/fips.conf /etc/ssh/crypto.conf\nfi\n\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n/usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\nfips_sshd_config=(\"Ciphers aes128-gcm@openssh.com\" \"HostbasedAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"HostKeyAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\" \"KexAlgorithms ecdh-sha2-nistp256\" \"MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-256\" \"PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"CASignatureAlgorithms ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\")\nsshd_config=$(/usr/sbin/sshd -G)\nfor config in $fips_sshd_config; do\nif ! echo $sshd_config | /usr/bin/grep -q -i \"$config\" 2>/dev/null; then\n/usr/bin/grep -qxF \"$config\" \"${include_dir}01-mscp-sshd.conf\" 2>/dev/null || echo \"$config\" >> \"${include_dir}01-mscp-sshd.conf\"\nfi\ndone\n\nfor file in $(ls ${include_dir}); do\nif [[ \"$file\" == \"100-macos.conf\" ]]; then\ncontinue\nfi\nif [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\nbreak\nfi\n/bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone",
-            "+@fixref": "F-81106r1148589_fix"
+            "+content": "Configure the macOS system to limit SSHD to FIPS-compliant connections with the following command:\n\nif [ -f /etc/ssh/crypto.conf ] && /usr/bin/grep -q \"Include /etc/ssh/crypto.conf\" /etc/ssh/sshd_config.d/100-macos.conf 2>/dev/null; then\n/bin/ln -fs /etc/ssh/crypto/fips.conf /etc/ssh/crypto.conf\nfi\n\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n/usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\nfips_sshd_config=(\"Ciphers aes128-gcm@openssh.com\" \"HostbasedAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"HostKeyAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\" \"KexAlgorithms ecdh-sha2-nistp256\" \"MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-256\" \"PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"CASignatureAlgorithms ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\")\nsshd_config=$(/usr/sbin/sshd -G)\nfor config in $fips_sshd_config; do\nif ! echo $sshd_config | /usr/bin/grep -q -i \"$config\" 2>/dev/null; then\n/usr/bin/grep -qxF \"$config\" \"${include_dir}01-mscp-sshd.conf\" 2>/dev/null || echo \"$config\" >> \"${include_dir}01-mscp-sshd.conf\"\nfi\ndone\n\nfor file in $(ls ${include_dir}); do\nif [[ \"$file\" == \"100-macos.conf\" ]]; then\ncontinue\nfi\nif [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\nbreak\nfi\n/bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone",
+            "+@fixref": "F-81106r1184567_fix"
           },
           "fix": {
-            "+@id": "F-81106r1148589_fix"
+            "+@id": "F-81106r1184567_fix"
           },
           "check": {
             "+@system": "C-81201r1148588_chk",
@@ -13027,7 +13027,7 @@
         "title": "SRG-OS-000439-GPOS-00195",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277185r1149427_rule",
+          "+@id": "SV-277185r1186397_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-999999",
@@ -13045,58 +13045,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Install the latest updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).",
-            "+@fixref": "F-81245r1149006_fix"
+            "+content": "Install the latest updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).\nhttps://support.apple.com/en-us/108382 \n\nIf enrolled in an MDM, consult the MDM's documentation for automated methods.",
+            "+@fixref": "F-81245r1186396_fix"
           },
           "fix": {
-            "+@id": "F-81245r1149006_fix"
+            "+@id": "F-81245r1186396_fix"
           },
           "check": {
-            "+@system": "C-81340r1149181_chk",
+            "+@system": "C-81340r1184564_chk",
             "check-content-ref": {
               "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify security-relevant software updates are installed on the operating system within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).\n\nClick the Apple icon on the menu at the top left corner of the screen.\nSelect \"About This Mac\".\nSelect \"More Info...\".\nUnder the macOS section, there are details about the update version. Compare this to the latest available macOS update version.\n\nIf the installed updates are not the latest, and the latest updates have been available for 30 days or more, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-278915",
-        "title": "SRG-OS-000830-GPOS-00300",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-278915r1149198_rule",
-          "+@weight": "10.0",
-          "+@severity": "high",
-          "version": "APPL-26-006000",
-          "title": "The macOS system must be a version supported by the vendor.",
-          "description": "<VulnDiscussion>Unsupported software and systems should not be used because fixes to newly identified bugs will not be implemented by the vendor. The lack of support can result in potential vulnerabilities.\n\nSoftware and systems at unsupported servicing levels or releases will not receive security updates for new vulnerabilities, which leaves them subject to exploitation.\n\nWhen maintenance updates and patches are no longer available, software is no longer considered supported and should be upgraded or decommissioned.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Apple macOS 26 (Tahoe)",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Apple macOS 26 (Tahoe)",
-            "dc:identifier": "5718"
-          },
-          "ident": {
-            "+content": "CCI-003376",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Upgrade to a supported version of the operating system.",
-            "+@fixref": "F-83354r1149191_fix"
-          },
-          "fix": {
-            "+@id": "F-83354r1149191_fix"
-          },
-          "check": {
-            "+@system": "C-83449r1149190_chk",
-            "check-content-ref": {
-              "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Verify the operating system version.\n\nClick the Apple icon on the menu at the top left corner of the screen.\nSelect the \"About This Mac\" option.\n\nIf the operating system version is no longer supported by the vendor, this is a finding."
+            "check-content": "Verify security-relevant software updates are installed on the operating system within 30 days with the following command:\n\nsoftwareupdate_date_epoch=$(/bin/date -j -f \"%Y-%m-%d\" \"$(/usr/bin/defaults read /Library/Preferences/com.apple.SoftwareUpdate.plist LastFullSuccessfulDate | /usr/bin/awk '{print $1}')\" \"+%s\")\nthirty_days_epoch=$(/bin/date -v -30d \"+%s\")\nif [[ $softwareupdate_date_epoch -lt $thirty_days_epoch ]]; then\n/bin/echo \"0\"\nelse\n/bin/echo \"1\"\nfi\n\nIf the result is not \"1\", this is a finding."
           }
         }
       },
@@ -13136,6 +13097,45 @@
               "+@name": "M"
             },
             "check-content": "Verify the macOS system is configured to skip Apple Intelligence during Setup Assistant with the following command:\n\n/usr/bin/osascript -l JavaScript 2>/dev/null << EOS\n$.NSUserDefaults.alloc.initWithSuiteName('com.apple.SetupAssistant.managed')\\\n.objectForKey('SkipSetupItems').containsObject(\"Intelligence\")\nEOS\n\nIf the result is not \"true\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-282964",
+        "title": "SRG-OS-000830-GPOS-00300",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-282964r1184571_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "APPL-26-006000",
+          "title": "The macOS system must be a version supported by the vendor.",
+          "description": "<VulnDiscussion>Unsupported software and systems should not be used because fixes to newly identified bugs will not be implemented by the vendor. The lack of support can result in potential vulnerabilities.\n\nSoftware and systems at unsupported servicing levels or releases will not receive security updates for new vulnerabilities, which leaves them subject to exploitation.\n\nWhen maintenance updates and patches are no longer available, software is no longer considered supported and should be upgraded or decommissioned.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Apple macOS 26 (Tahoe)",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Apple macOS 26 (Tahoe)",
+            "dc:identifier": "5718"
+          },
+          "ident": {
+            "+content": "CCI-003376",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Upgrade to a supported version of the operating system.",
+            "+@fixref": "F-87431r1184570_fix"
+          },
+          "fix": {
+            "+@id": "F-87431r1184570_fix"
+          },
+          "check": {
+            "+@system": "C-87526r1184569_chk",
+            "check-content-ref": {
+              "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the operating system version.\n\nClick the Apple icon on the menu at the top left corner of the screen.\nSelect the \"About This Mac\" option.\n\nIf the operating system version is no longer supported by the vendor, this is a finding."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-22"
+      "+@date": "2026-03-04"
     },
     "title": "Cisco IOS XE Switch RTR Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3286,7 +3286,7 @@
         "title": "SRG-NET-000018-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220986r1117236_rule",
+          "+@id": "SV-220986r1195275_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000010",
@@ -3321,12 +3321,12 @@
             "+@id": "F-22690r408753_fix"
           },
           "check": {
-            "+@system": "C-22701r408752_chk",
+            "+@system": "C-22701r1195274_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS-XE_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that ACLs are configured to allow or deny traffic for specific source and destination addresses as well as ports and protocols. For example, the configuration below will allow only printer traffic into subnet 10.1.12.0/24 and SQL traffic into subnet 10.1.13.0/24. ICMP is allowed for troubleshooting and OSPF is the routing protocol used within the network.\n\ninterface GigabitEthernet0/1\n no switchport\n ip address 10.2.1.1 255.255.255.252\n ip access-group FILTER_SERVER_TRAFFIC in \n…\n…\n…\nip access-list extended FILTER_SERVER_TRAFFIC\n permit tcp any 10.1.12.0 0.0.0.255 eq lpd 631 9100\n permit tcp any 10.1.13.0 0.0.0.255 eq 1433 1434 4022\n permit icmp any any\n permit ospf any any\n deny ip any any\n\nAlternate: Inter-VLAN routing\n\ninterface Vlan12\n ip address 10.1.12.1 255.255.255.0\n ip access-group FILTER_PRINTER_VLAN out\n!\ninterface Vlan13\n ip address 10.1.13.1 255.255.255.0\n ip access-group FILTER_SQL_VLAN out\n…\n…\n…\nip access-list extended FILTER_PRINTER_VLAN\n permit tcp any any eq lpd 631 9100\n permit icmp any any\n deny ip any any\nip access-list extended FILTER_SQL_VLAN\n permit tcp any any eq 1433 1434 4022\n permit icmp any any\n deny ip any any\n\nIf the switch is not configured to enforce approved authorizations for controlling the flow of information within the network based on organization-defined information flow control policies, this is a finding."
+            "check-content": "If Virtual Routing and Forwarding (VRF) is used to segment traffic and force traffic to traverse through next generation firewalls with ACLs, this requirement is not applicable.\n\nReview the switch configuration to verify that ACLs are configured to allow or deny traffic for specific source and destination addresses as well as ports and protocols. For example, the configuration below will allow only printer traffic into subnet 10.1.12.0/24 and SQL traffic into subnet 10.1.13.0/24. ICMP is allowed for troubleshooting and OSPF is the routing protocol used within the network.\n\ninterface GigabitEthernet0/1\n no switchport\n ip address 10.2.1.1 255.255.255.252\n ip access-group FILTER_SERVER_TRAFFIC in \n…\n…\n…\nip access-list extended FILTER_SERVER_TRAFFIC\n permit tcp any 10.1.12.0 0.0.0.255 eq lpd 631 9100\n permit tcp any 10.1.13.0 0.0.0.255 eq 1433 1434 4022\n permit icmp any any\n permit ospf any any\n deny ip any any\n\nAlternate: Inter-VLAN routing\n\ninterface Vlan12\n ip address 10.1.12.1 255.255.255.0\n ip access-group FILTER_PRINTER_VLAN out\n!\ninterface Vlan13\n ip address 10.1.13.1 255.255.255.0\n ip access-group FILTER_SQL_VLAN out\n…\n…\n…\nip access-list extended FILTER_PRINTER_VLAN\n permit tcp any any eq lpd 631 9100\n permit icmp any any\n deny ip any any\nip access-list extended FILTER_SQL_VLAN\n permit tcp any any eq 1433 1434 4022\n permit icmp any any\n deny ip any any\n\nIf the switch is not configured to enforce approved authorizations for controlling the flow of information within the network based on organization-defined information flow control policies, this is a finding."
           }
         }
       },
@@ -3388,7 +3388,7 @@
         "title": "SRG-NET-000019-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220991r1117237_rule",
+          "+@id": "SV-220991r1137913_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000060",
@@ -3935,7 +3935,7 @@
         "title": "SRG-NET-000019-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221006r1117237_rule",
+          "+@id": "SV-221006r1137906_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000230",
@@ -3984,7 +3984,7 @@
         "title": "SRG-NET-000202-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221007r1117241_rule",
+          "+@id": "SV-221007r1137935_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-RT-000240",
@@ -4033,7 +4033,7 @@
         "title": "SRG-NET-000019-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221008r1117237_rule",
+          "+@id": "SV-221008r1137907_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000250",
@@ -4776,7 +4776,7 @@
         "title": "SRG-NET-000018-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221023r1117236_rule",
+          "+@id": "SV-221023r1137894_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000490",
@@ -4825,7 +4825,7 @@
         "title": "SRG-NET-000018-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221024r1117236_rule",
+          "+@id": "SV-221024r1137895_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000500",
@@ -4874,7 +4874,7 @@
         "title": "SRG-NET-000018-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221025r1117236_rule",
+          "+@id": "SV-221025r1137896_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000510",
@@ -4923,7 +4923,7 @@
         "title": "SRG-NET-000018-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221026r1117236_rule",
+          "+@id": "SV-221026r1137897_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000520",
@@ -5021,7 +5021,7 @@
         "title": "SRG-NET-000018-RTR-000006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221028r1117236_rule",
+          "+@id": "SV-221028r1137898_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000540",
@@ -5070,7 +5070,7 @@
         "title": "SRG-NET-000018-RTR-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221029r1117236_rule",
+          "+@id": "SV-221029r1137905_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000550",
@@ -6246,7 +6246,7 @@
         "title": "SRG-NET-000019-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221053r1117237_rule",
+          "+@id": "SV-221053r1137908_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000790",
@@ -6295,7 +6295,7 @@
         "title": "SRG-NET-000019-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221054r1117237_rule",
+          "+@id": "SV-221054r1137911_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000800",
@@ -6344,7 +6344,7 @@
         "title": "SRG-NET-000019-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221055r1117237_rule",
+          "+@id": "SV-221055r1137912_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000810",
@@ -6442,7 +6442,7 @@
         "title": "SRG-NET-000019-RTR-000013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221057r1117237_rule",
+          "+@id": "SV-221057r1137930_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000830",
@@ -6491,7 +6491,7 @@
         "title": "SRG-NET-000019-RTR-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221058r1117237_rule",
+          "+@id": "SV-221058r1137932_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000840",
@@ -6883,7 +6883,7 @@
         "title": "SRG-NET-000018-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221066r1117236_rule",
+          "+@id": "SV-221066r1137900_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000920",
@@ -6932,7 +6932,7 @@
         "title": "SRG-NET-000018-RTR-000008",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221067r1117236_rule",
+          "+@id": "SV-221067r1137902_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000930",
@@ -6981,7 +6981,7 @@
         "title": "SRG-NET-000018-RTR-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-221068r1117236_rule",
+          "+@id": "SV-221068r1137903_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000940",

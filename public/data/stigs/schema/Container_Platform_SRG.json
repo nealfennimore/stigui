@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-15"
+      "+@date": "2025-09-10"
     },
     "title": "Container Platform Security Requirements Guide",
     "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 4 Benchmark Date: 28 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -800,6 +800,10 @@
           {
             "+@idref": "V-270876",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
+            "+@selected": "true"
           }
         ]
       },
@@ -1554,6 +1558,10 @@
           },
           {
             "+@idref": "V-270876",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
             "+@selected": "true"
           }
         ]
@@ -2310,6 +2318,10 @@
           {
             "+@idref": "V-270876",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
+            "+@selected": "true"
           }
         ]
       },
@@ -3064,6 +3076,10 @@
           },
           {
             "+@idref": "V-270876",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
             "+@selected": "true"
           }
         ]
@@ -3820,6 +3836,10 @@
           {
             "+@idref": "V-270876",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
+            "+@selected": "true"
           }
         ]
       },
@@ -4574,6 +4594,10 @@
           },
           {
             "+@idref": "V-270876",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
             "+@selected": "true"
           }
         ]
@@ -5330,6 +5354,10 @@
           {
             "+@idref": "V-270876",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
+            "+@selected": "true"
           }
         ]
       },
@@ -6084,6 +6112,10 @@
           },
           {
             "+@idref": "V-270876",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
             "+@selected": "true"
           }
         ]
@@ -6840,6 +6872,10 @@
           {
             "+@idref": "V-270876",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278968",
+            "+@selected": "true"
           }
         ]
       }
@@ -7201,12 +7237,12 @@
         "title": "SRG-APP-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233026r960792_rule",
+          "+@id": "SV-233026r1137638_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000033-CTR-000090",
-          "title": "Least privilege access and need to know must be required to access the container platform registry.",
-          "description": "<VulnDiscussion>The container platform registry is used to store images and is the keeper of truth for trusted images within the platform. To guarantee the images integrity, access to the registry must be limited to those individuals who need to perform tasks to the images such as the update, creation, or deletion of images. Without this control access, images can be deleted that are in use by the container platform causing a denial of service (DoS), and images can be modified or introduced without going through the testing and validation process allowing for the intentional or unintentional introduction of containers with flaws and vulnerabilities.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Least privilege access and need-to-know must be required to access the container platform registry.",
+          "description": "<VulnDiscussion>The container platform registry is used to store images and is the keeper of truth for trusted images within the platform. To guarantee the images integrity, access to the registry must be limited to those individuals who need to perform tasks to the images such as the update, creation, or deletion of images. Without this control access, images can be deleted that are in use by the container platform causing a denial of service (DoS), and images can be modified or introduced without going through the testing and validation process allowing for the intentional or unintentional introduction of containers with flaws and vulnerabilities.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -7219,11 +7255,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform to use least privilege and need to know when granting access to the container platform registry. The fix ensures the proper roles and permissions are configured.",
-            "+@fixref": "F-35930r600566_fix"
+            "+content": "Configure the container platform to use least privilege and need-to-know when granting access to the container platform registry. This fix ensures the proper roles and permissions are configured.",
+            "+@fixref": "F-35930r1137616_fix"
           },
           "fix": {
-            "+@id": "F-35930r600566_fix"
+            "+@id": "F-35930r1137616_fix"
           },
           "check": {
             "+@system": "C-35962r601602_chk",
@@ -7240,12 +7276,12 @@
         "title": "SRG-APP-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233027r960792_rule",
+          "+@id": "SV-233027r1137639_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000033-CTR-000095",
-          "title": "Least privilege access and need to know must be required to access the container platform runtime.",
-          "description": "<VulnDiscussion>The container platform runtime is used to instantiate containers. If this process is accessed by those persons who are not authorized, those containers offering services can be brought to a denial of service (DoS) situation, disabling a large number of services with a small change to the container platform. To limit this threat, it is important to limit access to the runtime to only those individuals with runtime duties.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Least privilege access and need-to-know must be required to access the container platform runtime.",
+          "description": "<VulnDiscussion>The container platform runtime is used to instantiate containers. If this process is accessed by those persons who are not authorized, those containers offering services can be brought to a denial-of-service (DoS) situation, disabling a large number of services with a small change to the container platform. To limit this threat, it is important to limit access to the runtime to only those individuals with runtime duties.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -7258,11 +7294,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform to use least privilege and need to know when granting access to the container runtime. The fix ensures the proper roles and permissions are configured.",
-            "+@fixref": "F-35931r600569_fix"
+            "+content": "Configure the container platform to use least privilege and need-to-know when granting access to the container runtime. This fix ensures the proper roles and permissions are configured.",
+            "+@fixref": "F-35931r1137618_fix"
           },
           "fix": {
-            "+@id": "F-35931r600569_fix"
+            "+@id": "F-35931r1137618_fix"
           },
           "check": {
             "+@system": "C-35963r600568_chk",
@@ -7279,12 +7315,12 @@
         "title": "SRG-APP-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233028r960792_rule",
+          "+@id": "SV-233028r1137640_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000033-CTR-000100",
-          "title": "Least privilege access and need to know must be required to access the container platform keystore.",
-          "description": "<VulnDiscussion>The container platform keystore is used to store access keys and tokens for trusted access to and from the container platform. The keystore gives the container platform a method to store the confidential data in a secure way and to encrypt the data when at rest. If this data is not protected through access controls, it can be used to access trusted sources as the container platform breaking the trusted relationship. To circumvent unauthorized access to the keystore, the container platform must have access controls in place to only allow those individuals with keystore duties.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Least privilege access and need-to-know must be required to access the container platform keystore.",
+          "description": "<VulnDiscussion>The container platform keystore is used to store access keys and tokens for trusted access to and from the container platform. The keystore gives the container platform a method to store the confidential data in a secure way and to encrypt the data when at rest. If this data is not protected through access controls, it can be used to access trusted sources as the container platform breaking the trusted relationship. To circumvent unauthorized access to the keystore, the container platform must have access controls in place to only allow those individuals with keystore duties.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -7297,11 +7333,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform to use least privilege and need to know when granting access to the container keystore. The fix ensures the proper roles and permissions are configured.",
-            "+@fixref": "F-35932r600572_fix"
+            "+content": "Configure the container platform to use least privilege and need-to-know when granting access to the container keystore. This fix ensures the proper roles and permissions are configured.",
+            "+@fixref": "F-35932r1137620_fix"
           },
           "fix": {
-            "+@id": "F-35932r600572_fix"
+            "+@id": "F-35932r1137620_fix"
           },
           "check": {
             "+@system": "C-35964r600571_chk",
@@ -7318,12 +7354,12 @@
         "title": "SRG-APP-000038",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233029r960801_rule",
+          "+@id": "SV-233029r1137641_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000038-CTR-000105",
           "title": "The container platform must enforce approved authorizations for controlling the flow of information within the container platform based on organization-defined information flow control policies.",
-          "description": "<VulnDiscussion>Controlling information flow between the container platform components and container user services instantiated by the container platform must enforce organization-defined information flow policies. Example methods for information flow control are using labels and separate namespace for containers to segregate services; user permissions and roles to limit what user services are available to each user; controlling the user the services are able to execute as; and limiting inter-container network traffic and the resources containers can consume.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Controlling information flow between the container platform components and container user services instantiated by the container platform must enforce organization-defined information flow policies. Example methods for information flow control are using labels and separate namespace for containers to segregate services; user permissions and roles to limit what user services are available to each user; controlling the user the services are able to execute as; and limiting inter-container network traffic and the resources containers can consume.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -7357,12 +7393,12 @@
         "title": "SRG-APP-000039",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233030r960804_rule",
+          "+@id": "SV-233030r1137642_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000039-CTR-000110",
           "title": "The container platform must enforce approved authorizations for controlling the flow of information between interconnected systems and services based on organization-defined information flow control policies.",
-          "description": "<VulnDiscussion>Controlling information flow between the container platform components and container user services instantiated by the container platform must enforce organization-defined information flow policies. Example methods for information flow control are: using labels for containers to segregate services; user permissions and roles to limit what user services are available to each user; controlling the user the services are able to execute as; and limiting inter-container network traffic and the resources containers can consume.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Controlling information flow between the container platform components and container user services instantiated by the container platform must enforce organization-defined information flow policies. Example methods for information flow control are: using labels for containers to segregate services; user permissions and roles to limit what user services are available to each user; controlling the user the services are able to execute as; and limiting inter-container network traffic and the resources containers can consume.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -9853,12 +9889,12 @@
         "title": "SRG-APP-000211",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233114r961095_rule",
+          "+@id": "SV-233114r1137643_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000211-CTR-000530",
           "title": "The container platform must separate user functionality (including user interface services) from information system management functionality.",
-          "description": "<VulnDiscussion>Separating user functionality from management functionality is a requirement for all the components within the container platform. Without the separation, users may have access to management functions that can degrade the container platform and the services being offered and can offer a method to bypass testing and validation of functions before introduced into a production environment.\n\nThe separation should be enforced by each component within the container platform.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Separating user functionality from management functionality is a requirement for all the components within the container platform. Without the separation, users may have access to management functions that can degrade the container platform and the services being offered and can offer a method to bypass testing and validation of functions before introduced into a production environment.\n\nThe separation should be enforced by each component within the container platform.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -10087,12 +10123,12 @@
         "title": "SRG-APP-000243",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233127r961149_rule",
+          "+@id": "SV-233127r1137644_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000243-CTR-000595",
           "title": "The container platform must prohibit containers from accessing privileged resources.",
-          "description": "<VulnDiscussion>Containers images instantiated within the container platform may request access to host system resources. Access to privileged resources can allow for unauthorized and unintended transfer of information, but in some cases, these resources may be needed for the service being offered by the container. By default, containers should be denied instantiation when privileged system resources are requested and granted only after approval has been given.\n\nWhen access to privileged resources is necessary for a container, a new policy for execution should be written for the container. The default behavior must not give containers privileged access to host system resources.\n\nExamples of system resources that should be protected are kernel namespaces and host system sensitive directories such as /etc and /usr.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Containers images instantiated within the container platform may request access to host system resources. Access to privileged resources can allow for unauthorized and unintended transfer of information, but in some cases, these resources may be needed for the service being offered by the container. By default, containers should be denied instantiation when privileged system resources are requested and granted only after approval has been given.\n\nWhen access to privileged resources is necessary for a container, a new policy for execution should be written for the container. The default behavior must not give containers privileged access to host system resources.\n\nExamples of system resources that should be protected are kernel namespaces and host system sensitive directories such as /etc and /usr.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -10126,12 +10162,12 @@
         "title": "SRG-APP-000243",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233128r961149_rule",
+          "+@id": "SV-233128r1137645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000243-CTR-000600",
           "title": "The container platform must prevent unauthorized and unintended information transfer via shared system resources.",
-          "description": "<VulnDiscussion>The container platform makes host system resources available to container services. These shared resources, such as the host system kernel, network connections, and storage, must be protected to prevent unauthorized and unintended information transfer. The protections must be implemented for users and processes acting on behalf of users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The container platform makes host system resources available to container services. These shared resources, such as the host system kernel, network connections, and storage, must be protected to prevent unauthorized and unintended information transfer. The protections must be implemented for users and processes acting on behalf of users.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -11764,12 +11800,12 @@
         "title": "SRG-APP-000431",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233221r961608_rule",
+          "+@id": "SV-233221r1137646_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000431-CTR-001065",
           "title": "The container platform runtime must maintain separate execution domains for each container by assigning each container a separate address space.",
-          "description": "<VulnDiscussion>Container namespace access is limited upon runtime execution. Each container is a distinct process so that communication between containers is performed in a manner controlled through security policies that limits the communication so one container cannot modify another container. Different groups of containers with different security needs should be deployed in separate namespaces as a first level of isolation.\n\nNamespaces are a key boundary for network policies, orchestrator access control restrictions, and other important security controls. Separating workloads into namespaces can help contain attacks and limit the impact of mistakes or destructive actions by authorized users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Container namespace access is limited upon runtime execution. Each container is a distinct process so that communication between containers is performed in a manner controlled through security policies that limits the communication so one container cannot modify another container. Different groups of containers with different security needs should be deployed in separate namespaces as a first level of isolation.\n\nNamespaces are a key boundary for network policies, orchestrator access control restrictions, and other important security controls. Separating workloads into namespaces can help contain attacks and limit the impact of mistakes or destructive actions by authorized users.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -12115,11 +12151,11 @@
         "title": "SRG-APP-000456",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233233r961683_rule",
+          "+@id": "SV-233233r1137649_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000456-CTR-001125",
-          "title": "The container platform registry must contain the latest images with most recent updates and execute within the container platform runtime as authorized by IAVM, CTOs, DTMs, and STIGs.",
+          "title": "The container platform registry must contain the latest images with most recent security-relevant software updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).",
           "description": "<VulnDiscussion>Software supporting the container platform, images in the registry must stay up to date with the latest patches, service packs, and hot fixes. Not updating the container platform and container images will expose the organization to vulnerabilities.\n\nFlaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.\n\nOrganization-defined time periods for updating security-relevant container platform components may vary based on a variety of factors including, for example, the security category of the information system or the criticality of the update (i.e., severity of the vulnerability related to the discovered flaw).\n\nThis requirement will apply to software patch management solutions that are used to install patches across the enclave and to applications themselves that are not part of that patch management solution. For example, many browsers today provide the capability to install their own patch software. Patch criticality, as well as system criticality will vary. Therefore, the tactical situations regarding the patch management process will also vary. This means that the time period utilized must be a configurable parameter. Time frames for application of security-relevant software updates may be dependent upon the Information Assurance Vulnerability Management (IAVM) process.\n\nThe container platform components will be configured to check for and install security-relevant software updates within an identified time period from the availability of the update. The container platform registry will ensure the images are current. The specific time period will be defined by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
@@ -12133,19 +12169,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform registry to use approved vendor repository to ensure latest images containing security-relevant updates are installed.",
-            "+@fixref": "F-36137r601187_fix"
+            "+content": "Configure the container platform registry to use an approved vendor repository to ensure the latest images containing security-relevant updates are installed within 30 days unless a time period is directed by an authoritative source (IAVM, CTOs, DTMs, STIGs, etc.).",
+            "+@fixref": "F-36137r1137633_fix"
           },
           "fix": {
-            "+@id": "F-36137r601187_fix"
+            "+@id": "F-36137r1137633_fix"
           },
           "check": {
-            "+@system": "C-36169r601827_chk",
+            "+@system": "C-36169r1137632_chk",
             "check-content-ref": {
               "+@href": "Container_Platform__SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review documentation and configuration to determine if the container platform registry inspects and contains approved vendor repository latest images containing security-relevant updates within a timeframe directed by an authoritative source (IAVM, CTOs, DTMs, STIGs, etc.). \n\nIf the container platform registry does not contain the latest image with security-relevant updates within the time period directed by the authoritative source, this is a finding.\n\nThe container platform registry should help the user understand where the code in the environment was deployed from, and must provide controls that prevent deployment from untrusted sources or registries."
+            "check-content": "Review documentation and configuration to determine if the container platform registry inspects and contains the latest approved vendor repository images containing security-relevant updates within 30 days unless the time period is directed by an authoritative source (IAVM, CTOs, DTMs, STIGs, etc.). \n\nIf the container platform registry does not contain the latest image with security-relevant updates within 30 days unless a time period directed by the authoritative source, this is a finding.\n\nThe container platform registry should help the user understand where the code in the environment was deployed from, and must provide controls that prevent deployment from untrusted sources or registries."
           }
         }
       },
@@ -12154,11 +12190,11 @@
         "title": "SRG-APP-000456",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233234r961683_rule",
+          "+@id": "SV-233234r1137650_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000456-CTR-001130",
-          "title": "The container platform runtime must have updates installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+          "title": "The container platform runtime must have security-relevant software updates installed within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
           "description": "<VulnDiscussion>The container platform runtime must be carefully monitored for vulnerabilities, and when problems are detected, they must be remediated quickly. A vulnerable runtime exposes all containers it supports, as well as the host itself, to potentially significant risk. Organizations should use tools to look for Common Vulnerabilities and Exposures (CVEs) vulnerabilities in the runtimes deployed, to upgrade any instances at risk, and to ensure that orchestrators only allow deployments to properly maintained runtimes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
@@ -12172,19 +12208,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform registry to use approved vendor repository to ensure latest images containing security-relevant updates are installed within the time period directed by the authoritative source.",
-            "+@fixref": "F-36138r601190_fix"
+            "+content": "Configure the container platform registry to use an approved vendor repository to ensure the latest images containing security-relevant updates are installed within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+            "+@fixref": "F-36138r1137636_fix"
           },
           "fix": {
-            "+@id": "F-36138r601190_fix"
+            "+@id": "F-36138r1137636_fix"
           },
           "check": {
-            "+@system": "C-36170r601829_chk",
+            "+@system": "C-36170r1137635_chk",
             "check-content-ref": {
               "+@href": "Container_Platform__SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review documentation and configuration to determine if the container platform registry inspects and contains approved vendor repository latest images containing security-relevant updates within a timeframe directed by an authoritative source (IAVM, CTOs, DTMs, STIGs, etc.). \n\nIf the container platform registry does not contain the latest image with security-relevant updates within the time period directed by the authoritative source, this is a finding.\n\nThe container platform registry should help the user understand where the code in the environment was deployed from and must provide controls that prevent deployment from untrusted sources or registries."
+            "check-content": "Review documentation and configuration to determine if the container platform registry inspects and contains the latest approved vendor repository images containing security-relevant updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).\n\nIf the container platform registry does not contain the latest image with security-relevant updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs), this is a finding.\n\nThe container platform registry should help the user understand from where the code in the environment was deployed and must provide controls that prevent deployment from untrusted sources or registries."
           }
         }
       },
@@ -13051,12 +13087,12 @@
         "title": "SRG-APP-000514",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233271r961857_rule",
+          "+@id": "SV-233271r1137647_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000514-CTR-001315",
-          "title": "The container platform must use a valid FIPS 140-2 approved cryptographic modules to generate hashes.",
-          "description": "<VulnDiscussion>The cryptographic module used must have at least one validated hash algorithm. This validated hash algorithm must be used to generate cryptographic hashes for all cryptographic security function within the container platform components being evaluated.\n\nFIPS 140-2 precludes the use of invalidated cryptography for the cryptographic protection of sensitive or valuable data within Federal systems. Unvalidated cryptography is viewed by NIST as providing no protection to the information or data. In effect, the data would be considered unprotected plaintext. If the agency specifies that the information or data be cryptographically protected, then FIPS 140-2 is applicable. In essence, if cryptography is required, it must be validated. Cryptographic modules that have been approved for classified use may be used in lieu of modules that have been validated against the FIPS 140-2 standard.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The container platform must use a valid FIPS 140-2 or FIPS 140-3 approved cryptographic module to generate hashes.",
+          "description": "<VulnDiscussion>The cryptographic module used must have at least one validated hash algorithm. This validated hash algorithm must be used to generate cryptographic hashes for all cryptographic security function within the container platform components being evaluated.\n\nFIPS 140-2/140-3 precludes the use of invalidated cryptography for the cryptographic protection of sensitive or valuable data within federal systems. Unvalidated cryptography is viewed by NIST as providing no protection to the information or data. In effect, the data would be considered unprotected plaintext. If the agency specifies that the information or data be cryptographically protected, then FIPS 140-2/140-3 is applicable. In essence, if cryptography is required, it must be validated. Cryptographic modules that have been approved for classified use may be used in lieu of modules that have been validated against the FIPS 140-2/140-3 standard.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -13069,19 +13105,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the container platform to use valid FIPS 140-2 approved cryptographic modules to generate hashes.",
-            "+@fixref": "F-36175r601301_fix"
+            "+content": "Configure the container platform to use valid FIPS 140-2/140-3 approved cryptographic modules to generate hashes.",
+            "+@fixref": "F-36175r1137629_fix"
           },
           "fix": {
-            "+@id": "F-36175r601301_fix"
+            "+@id": "F-36175r1137629_fix"
           },
           "check": {
-            "+@system": "C-36207r855440_chk",
+            "+@system": "C-36207r1137628_chk",
             "check-content-ref": {
               "+@href": "Container_Platform__SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the container platform configuration to validate that valid FIPS 140-2 approved cryptographic modules are being used to generate hashes. \n\nIf non-valid or unapproved FIPS 140-2 cryptographic modules are being used to generate hashes, this is a finding."
+            "check-content": "Review the container platform configuration to validate that valid FIPS 140-2/140-3 approved cryptographic modules are being used to generate hashes. \n\nIf non-valid or unapproved FIPS 140-2/140-3 cryptographic modules are being used to generate hashes, this is a finding."
           }
         }
       },
@@ -13324,12 +13360,12 @@
         "title": "SRG-APP-000635",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233289r961908_rule",
+          "+@id": "SV-233289r1137648_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000635-CTR-001405",
           "title": "The container platform must use a FIPS-validated cryptographic module to implement encryption services for unclassified information requiring confidentiality.",
-          "description": "<VulnDiscussion>Unvalidated cryptography is viewed by NIST as providing no protection to the information or data. In effect, the data would be considered unprotected plaintext. If the agency specifies that the information or data be cryptographically protected, then FIPS 140-2 is applicable. In essence, if cryptography is required, it must be validated. Cryptographic modules that have been approved for classified use may be used in lieu of modules that have been validated against the FIPS 140-2 standard.\n\nCryptographic module used must have one FIPS-validated encryption algorithm (i.e., validated Advanced Encryption Standard [AES]). This validated algorithm must be used for encryption for cryptographic security function within the container platform component and information residing in the container platform registry and keystore.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Unvalidated cryptography is viewed by NIST as providing no protection to the information or data. In effect, the data would be considered unprotected plaintext. If the agency specifies that the information or data be cryptographically protected, then FIPS 140-2/140-3 is applicable. In essence, if cryptography is required, it must be validated. Cryptographic modules that have been approved for classified use may be used in lieu of modules that have been validated against the FIPS 140-2/140-3 standard.\n\nThe cryptographic module used must have one FIPS-validated encryption algorithm (i.e., validated Advanced Encryption Standard [AES]). This validated algorithm must be used for encryption for cryptographic security function within the container platform component and information residing in the container platform registry and keystore.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Container Platform",
             "dc:publisher": "DISA",
@@ -14135,6 +14171,45 @@
               "+@name": "M"
             },
             "check-content": "Review the container platform configuration to determine that the root filesystem is mounted as read-only.\n\nIf the container platform does not enforce such access restrictions, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-278968",
+        "title": "SRG-APP-001035",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-278968r1137653_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "SRG-APP-001035-CTR-000323",
+          "title": "The container platform must be a version supported by the vendor.",
+          "description": "<VulnDiscussion>Unsupported software and systems should not be used because fixes to newly identified bugs will not be implemented by the vendor. The lack of support can result in potential vulnerabilities.\n\nSoftware and systems at unsupported servicing levels or releases will not receive security updates for new vulnerabilities, which leaves them subject to exploitation.\n\nWhen maintenance updates and patches are no longer available, software is no longer considered supported and should be upgraded or decommissioned.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Container Platform",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Container Platform",
+            "dc:identifier": "5239"
+          },
+          "ident": {
+            "+content": "CCI-003376",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Install a container platform version supported by the vendor.",
+            "+@fixref": "F-83421r1137652_fix"
+          },
+          "fix": {
+            "+@id": "F-83421r1137652_fix"
+          },
+          "check": {
+            "+@system": "C-83516r1137651_chk",
+            "check-content-ref": {
+              "+@href": "Container_Platform__SRG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the container platform is a version supported by the vendor.\n\nIf the container platform is not a version supported by the vendor, this is a finding."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-11"
+      "+@date": "2026-02-25"
     },
     "title": "Microsoft Edge Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -292,6 +292,10 @@
           {
             "+@idref": "V-279940",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
+            "+@selected": "true"
           }
         ]
       },
@@ -538,6 +542,10 @@
           },
           {
             "+@idref": "V-279940",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
             "+@selected": "true"
           }
         ]
@@ -786,6 +794,10 @@
           {
             "+@idref": "V-279940",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
+            "+@selected": "true"
           }
         ]
       },
@@ -1032,6 +1044,10 @@
           },
           {
             "+@idref": "V-279940",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
             "+@selected": "true"
           }
         ]
@@ -1280,6 +1296,10 @@
           {
             "+@idref": "V-279940",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
+            "+@selected": "true"
           }
         ]
       },
@@ -1526,6 +1546,10 @@
           },
           {
             "+@idref": "V-279940",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
             "+@selected": "true"
           }
         ]
@@ -1774,6 +1798,10 @@
           {
             "+@idref": "V-279940",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
+            "+@selected": "true"
           }
         ]
       },
@@ -2021,6 +2049,10 @@
           {
             "+@idref": "V-279940",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
+            "+@selected": "true"
           }
         ]
       },
@@ -2267,6 +2299,10 @@
           },
           {
             "+@idref": "V-279940",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283439",
             "+@selected": "true"
           }
         ]
@@ -4628,6 +4664,45 @@
               "+@name": "M"
             },
             "check-content": "The policy value for \"Computer Configuration/Administrative Templates/Microsoft Edge/Control access to Microsoft 365 Copilot writing assistance in Microsoft Edge for Business\" must be set to \"disabled\".\n\nUse the Windows Registry Editor to navigate to the following key:\nHKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\n\nIf the value for \"ComposeInlineEnabled\" is not set to \"REG_DWORD = 0\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-283439",
+        "title": "SRG-APP-000141",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-283439r1192850_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "EDGE-00-000070",
+          "title": "Spell checking provided by Microsoft Editor must be disabled.",
+          "description": "<VulnDiscussion>The Microsoft Editor service provides enhanced spell and grammar checking for editable text fields on web pages.\n\nIf this policy is enabled or incorrectly configured, Microsoft Editor spell check can be used for eligible text fields.\n\nIf you disable this policy, spell check can only be provided by local engines that use platform or Hunspell services. The results from these engines might be less informative than the results Microsoft Editor can provide.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Microsoft Edge",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Edge",
+            "dc:identifier": "5280"
+          },
+          "ident": {
+            "+content": "CCI-000381",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Set the policy value for \"Computer Configuration/Administrative Templates/Microsoft Edge/Spell checking provided by Microsoft Editor\" to \"Disabled\".",
+            "+@fixref": "F-87909r1188325_fix"
+          },
+          "fix": {
+            "+@id": "F-87909r1188325_fix"
+          },
+          "check": {
+            "+@system": "C-88004r1188324_chk",
+            "check-content-ref": {
+              "+@href": "Microsoft_Edge_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "The policy value for \"Computer Configuration/Administrative Templates/Microsoft Edge/Spell checking provided by Microsoft Editor\" must be set to \"Disabled\".\n\nUse the Windows Registry Editor to navigate to the following key:\n\nHKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\n\nIf the value for MicrosoftEditorProofingEnabled is not set to \"REG_DWORD = 0\", this is a finding."
           }
         }
       }

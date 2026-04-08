@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-22"
+      "+@date": "2026-02-06"
     },
     "title": "Samsung Android 16 COBO Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Aug 2025",
+        "+content": "Release: 3 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1984,7 +1984,7 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276541r1139767_rule",
+          "+@id": "SV-276541r1183721_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "KNOX-16-011000",
@@ -2002,19 +2002,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Samsung Android 16 device to disable the ability of the user from wiping the Android device. In addition, enable the admin to inject a recovery account on the device so they can unlock FRP.\n\nOn the MDM console, do the following:\n\nCOBO/COPE procedures – disallow factory reset:\n1. Open user restrictions.\n2. Enable \"Disallow Factory Reset\".\n\n\nCOBO/COPE procedures – set factory reset protection policy:\n1. Select Device owner management >> Set factory reset protection.\n2. From the \"Accounts\" section, go to Add Account >> Enter recovery account, then press \"Ok\".\n3. From the \"Enabled\" section, select \"Enabled\" to enable factory reset protection policy.\n4. Press \"Save\" to confirm all changes.\n\nAPI: addUserRestriction, DISALLOW_FACTORY_RESET and setFactoryResetProtectionPolicy",
-            "+@fixref": "F-80601r1139766_fix"
+            "+content": "Configure Samsung Android 16 device to disable the ability of the user from wiping the Android device. In addition, enable the admin to inject a recovery account on the device so they can unlock FRP.\n\nOn the MDM console, do the following:\n\nCOBO procedures – disallow factory reset:\n1. Open user restrictions.\n2. Enable \"Disallow Factory Reset\".\n\nCOBO procedures – set factory reset protection policy:\n1. Select Device owner management >> Set factory reset protection.\n2. From the \"Accounts\" section, go to Add Account >> Enter recovery account, then press \"Ok\".\n3. From the \"Enabled\" section, select \"Enabled\" to enable factory reset protection policy.\n4. Press \"Save\" to confirm all changes.\n\nAPI: addUserRestriction, DISALLOW_FACTORY_RESET and setFactoryResetProtectionPolicy",
+            "+@fixref": "F-80601r1183720_fix"
           },
           "fix": {
-            "+@id": "F-80601r1139766_fix"
+            "+@id": "F-80601r1183720_fix"
           },
           "check": {
-            "+@system": "C-80696r1139143_chk",
+            "+@system": "C-80696r1183719_chk",
             "check-content-ref": {
               "+@href": "Samsung_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review configuration settings to confirm the user is unable to perform a factory reset and the admin has the ability to inject a recovery account on the device to unlock Factory Reset Protection (FRP).\n\nThis check procedure is performed on the device management tool and the Samsung Android 16 device.\n\nOn the MDM console:\n\nVerify factory reset configuration.\nCOBO/COPE procedures:\n1. Open user restrictions.\n2. Verify that \"Disallow Factory Reset\" is enabled.\n\nVerify factory reset protection policy configuration.\n1. From the Android Enterprise policy management, go to the Factory Reset Protection section.\n3. Verify \"Factory Reset Protection\" is set to \"Allow/Enabled\".\n4. Verify the correct Google Account ID(s) is listed as allowed to unlock the FRP.\n\nOn the managed Samsung Android 16 device, verify factory reset configuration.\n\nCOBO/COPE:\n1. Open Settings >> General management >> Reset.\n2. Tap the \"Factory data reset\" option.\n3. Verify the \"Action not allowed\" pop up appears and that the factory data reset does not proceed.\n\nIf the Android device user is able to perform a factory reset or the admin cannot unlock the Android phone after an FRP event, this is a finding."
+            "check-content": "Review configuration settings to confirm the user is unable to perform a factory reset and the admin has the ability to inject a recovery account on the device to unlock Factory Reset Protection (FRP).\n\nThis check procedure is performed on the device management tool and the Samsung Android 16 device.\n\nOn the MDM console:\n\nVerify factory reset configuration.\nCOBO procedures:\n1. Open user restrictions.\n2. Verify \"Disallow Factory Reset\" is enabled.\n\nVerify factory reset protection policy configuration.\n1. From the Android Enterprise policy management, go to the Factory Reset Protection section.\n2. Verify \"Factory Reset Protection\" is set to \"Allow/Enabled\".\n3. Verify the correct Google Account ID(s) is/are listed as allowed to unlock the FRP.\n\nOn the managed Samsung Android 16 device, verify factory reset configuration.\n\nCOBO:\n1. Open Settings >> General management >> Reset.\n2. Tap the \"Factory data reset\" option.\n3. Verify the \"Action not allowed\" pop up appears and that the factory data reset does not proceed.\n\nIf the Android device user is able to perform a factory reset or the admin cannot unlock the Android phone after an FRP event, this is a finding."
           }
         }
       },
