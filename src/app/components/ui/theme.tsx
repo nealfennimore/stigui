@@ -3,13 +3,7 @@
 import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
-
-/**
- * Inline script injected before paint to set the initial theme class on
- * <html>, avoiding a flash of the wrong theme on a static export. Kept as a
- * string so it can run synchronously in <head>.
- */
-export const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}})();`;
+``;
 
 export const ThemeToggle = () => {
     const [theme, setTheme] = useState<Theme>("light");
@@ -20,7 +14,7 @@ export const ThemeToggle = () => {
         setTheme(
             document.documentElement.classList.contains("dark")
                 ? "dark"
-                : "light"
+                : "light",
         );
     }, []);
 
