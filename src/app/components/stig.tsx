@@ -3,6 +3,8 @@ import Checklist from "@/api/entities/Checklist";
 import { Classification, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
 import { Sidebar } from "@/app/components/sidebar";
+import { buttonClasses } from "@/app/components/ui/button";
+import { TableCard } from "@/app/components/ui/card";
 import { useStigContext } from "@/app/context/stig";
 import { IDB } from "@/app/db";
 import { download } from "@/app/utils";
@@ -96,20 +98,18 @@ const Button = ({
     index: number;
     stigId: string;
 }) => {
-    const selectedClassName =
-        classfication === selectedClassfication
-            ? "dark:bg-zinc-500 bg-zinc-200"
-            : "dark:bg-zinc-800 bg-white";
+    const isSelected = classfication === selectedClassfication;
+    const selectedClassName = isSelected
+        ? "bg-accent text-accent-foreground border-accent z-10"
+        : "bg-surface text-muted hover:bg-surface-muted hover:text-foreground";
 
-    const idxClassName =
-        index === 0 ? "rounded-s-lg border" : "border-t border-b";
-    const idxClassName2 =
-        index === 2 ? "rounded-e-lg border" : "border-t border-b";
+    const idxClassName = index === 0 ? "rounded-s-md" : "-ml-px";
+    const idxClassName2 = index === 2 ? "rounded-e-md" : "";
 
     return (
         <Link
             href={`/stigs/${stigId}/${classfication}`}
-            className={`px-4 py-2 text-sm font-medium text-zinc-900 border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white ${selectedClassName} ${idxClassName} ${idxClassName2}`}
+            className={`px-4 py-2 text-sm font-medium border border-border-strong focus:z-10 transition-colors ${selectedClassName} ${idxClassName} ${idxClassName2}`}
             onClick={() => setClassficationLevel(classfication)}
         >
             {classfication}
@@ -193,7 +193,7 @@ export const StigView = ({
                     ],
                     columns: [
                         <Link
-                            className="flex flex-col whitespace-nowrap"
+                            className="flex flex-col whitespace-nowrap font-medium text-accent hover:underline"
                             href={`/stigs/${stigId}/groups/${group.id}`}
                         >
                             {group.id}
@@ -227,9 +227,12 @@ export const StigView = ({
                 {hasGroup && (
                     <>
                         <GroupInfo group={group} />
-                        <div className="text-zinc-600 dark:text-zinc-500 flex flex-row justify-start items-center">
+                        <div className="flex flex-row justify-start items-center">
                             <Link
-                                className="text-sm ml-4"
+                                className={buttonClasses({
+                                    variant: "secondary",
+                                    size: "sm",
+                                })}
                                 href={`/stigs/${stigId}/groups/${group.id}`}
                             >
                                 Go to {group.id}
@@ -238,14 +241,13 @@ export const StigView = ({
                     </>
                 )}
             </Sidebar>
-            <h1 className="text-3xl mt-6">{stig.title}</h1>
+            <h1 className="text-3xl font-semibold tracking-tight mt-6 text-foreground">
+                {stig.title}
+            </h1>
             <p className="text-base discussion">{stig.description}</p>
 
-            <section className="text-zinc-600 dark:text-zinc-500 text-xs w-full flex justify-between items-center">
-                <aside
-                    className="inline-flex rounded-md shadow-xs"
-                    role="group"
-                >
+            <section className="w-full flex justify-between items-center gap-4 flex-wrap">
+                <aside className="inline-flex" role="group">
                     {classifications.map((classification, index) => (
                         <Button
                             key={classification}
@@ -257,13 +259,13 @@ export const StigView = ({
                         />
                     ))}
                 </aside>
-                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col align-end text-end">
+                <div className="text-muted text-xs flex flex-col items-end text-end">
                     <span>Date: {stig.date}</span>
                     <span>Version: {stig.version}</span>
                 </div>
             </section>
 
-            <section className="w-full flex justify-between items-center">
+            <section className="w-full flex justify-between items-center gap-4 flex-wrap">
                 <div>
                     {counts.map(([severity, count]) => (
                         <SeverityBadge
@@ -284,7 +286,7 @@ export const StigView = ({
                         />
                     ))}
                 </div>
-                <div className="text-zinc-600 dark:text-zinc-500 text-xs flex">
+                <div className="flex flex-wrap gap-2">
                     <button
                         onClick={() =>
                             download(
@@ -292,7 +294,10 @@ export const StigView = ({
                                 `${stig.id}.xml`
                             )
                         }
-                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
+                        className={buttonClasses({
+                            variant: "ghost",
+                            size: "sm",
+                        })}
                     >
                         XML ⬇️
                     </button>
@@ -303,13 +308,19 @@ export const StigView = ({
                                 `${stig.id}.json`
                             )
                         }
-                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
+                        className={buttonClasses({
+                            variant: "ghost",
+                            size: "sm",
+                        })}
                     >
                         JSON ⬇️
                     </button>
                     <button
                         onClick={() => toCSV(stig)}
-                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col mr-4"
+                        className={buttonClasses({
+                            variant: "ghost",
+                            size: "sm",
+                        })}
                     >
                         CSV ⬇️
                     </button>
@@ -317,7 +328,10 @@ export const StigView = ({
                         onClick={() =>
                             toEditor(stig, classificationLevel, router)
                         }
-                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                        className={buttonClasses({
+                            variant: "secondary",
+                            size: "sm",
+                        })}
                     >
                         Edit 📝
                     </button>
@@ -325,7 +339,7 @@ export const StigView = ({
             </section>
 
             <section className="w-full flex flex-col">
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <TableCard>
                     <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
                         <Table
                             sorters={sorters}
@@ -336,7 +350,7 @@ export const StigView = ({
                             formRef={formRef}
                         />
                     </form>
-                </div>
+                </TableCard>
             </section>
         </Suspense>
     );

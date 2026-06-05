@@ -1,5 +1,6 @@
 "use client";
 import { APPNAME } from "@/app/constants";
+import { ThemeToggle } from "@/app/components/ui/theme";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export const Navigation = () => {
@@ -38,26 +39,27 @@ export const Navigation = () => {
     }, [isOpen]);
 
     return (
-        <nav className="bg-white dark:bg-zinc-900 fixed w-full z-20 top-0 start-0 border-b border-zinc-200 dark:border-zinc-700">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav className="bg-surface/90 backdrop-blur fixed w-full z-20 top-0 start-0 border-b border-border">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3">
                 <a
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                     tabIndex={100}
                 >
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white flex items-center">
-                        <img src="/shield.png" className="mr-2 w-[40px]" />
+                    <span className="self-center text-xl font-semibold tracking-tight whitespace-nowrap text-foreground flex items-center">
+                        <img src="/shield.png" className="mr-2 w-[32px]" />
                         <span>{APPNAME}</span>
                     </span>
                 </a>
-                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div className="flex items-center md:order-2 gap-1">
+                    <ThemeToggle />
                     <div className="relative inline-block text-left">
                         <div>
                             <button
                                 type="button"
-                                className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-zinc-500 shadow-sm"
+                                className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-transparent p-2 text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
                                 id="menu-button"
-                                aria-expanded="true"
+                                aria-expanded={isOpen}
                                 aria-haspopup="true"
                                 onClick={() => setIsOpen(!isOpen)}
                             >
@@ -78,7 +80,7 @@ export const Navigation = () => {
                         </div>
                         {isOpen && (
                             <div
-                                className="absolute top-10 right-0 z-100 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none divide-y divide-zinc-100 dark:bg-zinc-800 dark:divide-zinc-700"
+                                className="absolute top-12 right-0 z-[100] mt-2 w-56 origin-top-right rounded-lg bg-surface shadow-lg ring-1 ring-border focus:outline-none divide-y divide-border"
                                 role="menu"
                                 aria-orientation="vertical"
                                 aria-labelledby="menu-button"
@@ -90,7 +92,7 @@ export const Navigation = () => {
                                 <div className="py-1" role="none">
                                     <a
                                         href="/editor"
-                                        className="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-400 flex flex-row"
+                                        className="flex flex-row items-center px-4 py-2 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
                                         tabIndex={100}
                                     >
                                         Editor
@@ -99,7 +101,7 @@ export const Navigation = () => {
                                 <div className="py-1" role="none">
                                     <a
                                         href="https://github.com/nealfennimore/stig"
-                                        className="block px-4 py-2 text-sm text-zinc-700 dark:text-zinc-400 flex flex-row"
+                                        className="flex flex-row items-center gap-2 px-4 py-2 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
                                         tabIndex={100}
                                     >
                                         <svg
@@ -115,6 +117,7 @@ export const Navigation = () => {
                                                 clipRule="evenodd"
                                             ></path>
                                         </svg>
+                                        GitHub
                                     </a>
                                 </div>
                             </div>

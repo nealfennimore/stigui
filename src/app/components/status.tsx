@@ -24,10 +24,10 @@ const StatusColor = {
         "bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300",
 };
 const StatusColorSelected = {
-    [Status.Open]: "border border-red-200 dark:border-red-700",
-    [Status.NotReviewed]: "border border-zinc-200 dark:border-zinc-700",
-    [Status.NotAFinding]: "border border-green-200 dark:border-green-700",
-    [Status.NotApplicable]: "border border-stone-200 dark:border-stone-700",
+    [Status.Open]: "ring-2 ring-red-400 dark:ring-red-500",
+    [Status.NotReviewed]: "ring-2 ring-zinc-400 dark:ring-zinc-500",
+    [Status.NotAFinding]: "ring-2 ring-green-400 dark:ring-green-500",
+    [Status.NotApplicable]: "ring-2 ring-stone-400 dark:ring-stone-500",
 };
 
 export const StatusBadge = ({
@@ -50,12 +50,14 @@ export const StatusBadge = ({
 
     return (
         <Element
-            className={`text-sm max-sm:text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm whitespace-nowrap ${color}`}
+            className={`inline-flex items-center text-sm max-sm:text-xs font-medium me-2 mb-1 px-2.5 py-1 rounded-md whitespace-nowrap capitalize transition-shadow ${
+                onClick ? "cursor-pointer" : ""
+            } ${color}`}
             onClick={onClick}
         >
             <span>{status.replaceAll("_", " ")}</span>
             {!isNaN(Number(count)) && (
-                <span className="text-xs ml-1">{count}</span>
+                <span className="text-xs ml-1.5 opacity-70">{count}</span>
             )}
         </Element>
     );

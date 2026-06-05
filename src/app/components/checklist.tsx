@@ -9,6 +9,8 @@ import {
 } from "@/api/generated/Checklist";
 import { RuleEdit } from "@/app/components/client/editor/rule";
 import { Sidebar } from "@/app/components/sidebar";
+import { buttonClasses } from "@/app/components/ui/button";
+import { TableCard } from "@/app/components/ui/card";
 import { IDB, IDBChecklist } from "@/app/db";
 import { debounce, download } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
@@ -306,23 +308,26 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 {checklist?.stigs.map((stig) => (
                     <div key={stig.uuid}>
                         <section className="my-4 w-full flex flex-col">
-                            <h1 className="text-3xl my-6">
+                            <h1 className="text-3xl font-semibold tracking-tight mb-6 text-foreground">
                                 {checklist?.title}
                             </h1>
                             <ChecklistTargetData checklist={checklist} />
-                            <div className="w-full flex flex-col justify-between">
-                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
+                            <div className="w-full flex flex-col gap-1">
+                                <div className="text-muted text-xs flex justify-between">
                                     <span>{stig.display_name}</span>
                                     <span>Version {stig.version}</span>
                                 </div>
-                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-between">
+                                <div className="text-muted text-xs flex justify-between">
                                     <span>{stig.size} rules</span>
                                     <span>{stig.release_info}</span>
                                 </div>
-                                <div className="text-zinc-600 dark:text-zinc-500 text-xs mr-4 flex justify-end">
+                                <div className="text-xs flex justify-end mt-1">
                                     <button
                                         onClick={() => toCKLB(checklist)}
-                                        className="text-zinc-600 dark:text-zinc-500 text-xs flex flex-col"
+                                        className={buttonClasses({
+                                            variant: "secondary",
+                                            size: "sm",
+                                        })}
                                     >
                                         CKLB ⬇️
                                     </button>
@@ -397,19 +402,21 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                             </div>
                         </aside>
                         <section className="w-full flex flex-col">
-                            <Table
-                                formRef={formRef}
-                                filters={filters}
-                                sorters={sorters}
-                                tableHeaders={tableHeaders}
-                                tableBody={tableBody}
-                                initialOrders={[
-                                    Order.NONE,
-                                    Order.DESC,
-                                    Order.NONE,
-                                    Order.NONE,
-                                ]}
-                            />
+                            <TableCard>
+                                <Table
+                                    formRef={formRef}
+                                    filters={filters}
+                                    sorters={sorters}
+                                    tableHeaders={tableHeaders}
+                                    tableBody={tableBody}
+                                    initialOrders={[
+                                        Order.NONE,
+                                        Order.DESC,
+                                        Order.NONE,
+                                        Order.NONE,
+                                    ]}
+                                />
+                            </TableCard>
                         </section>
                     </div>
                 ))}

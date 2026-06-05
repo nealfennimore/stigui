@@ -25,10 +25,10 @@ const SeverityColor = {
         "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
 };
 const SeverityColorSelected = {
-    [Severity.High]: "border border-red-200 dark:border-red-700",
-    [Severity.Medium]: "border border-orange-200 dark:border-orange-700",
-    [Severity.Low]: "border border-yellow-200 dark:border-yellow-700",
-    [Severity.Info]: "border border-blue-200 dark:border-blue-700",
+    [Severity.High]: "ring-2 ring-red-400 dark:ring-red-500",
+    [Severity.Medium]: "ring-2 ring-orange-400 dark:ring-orange-500",
+    [Severity.Low]: "ring-2 ring-yellow-400 dark:ring-yellow-500",
+    [Severity.Info]: "ring-2 ring-blue-400 dark:ring-blue-500",
 };
 
 export const SeverityBadge = ({
@@ -51,12 +51,14 @@ export const SeverityBadge = ({
 
     return (
         <Element
-            className={`text-sm max-sm:text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm ${color}`}
+            className={`inline-flex items-center text-sm max-sm:text-xs font-medium me-2 mb-1 px-2.5 py-1 rounded-md transition-shadow ${
+                onClick ? "cursor-pointer" : ""
+            } ${color}`}
             onClick={onClick}
         >
             <span>{severity}</span>
             {!isNaN(Number(count)) && (
-                <span className="text-xs ml-1">{count}</span>
+                <span className="text-xs ml-1.5 opacity-70">{count}</span>
             )}
         </Element>
     );

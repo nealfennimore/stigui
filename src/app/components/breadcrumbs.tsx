@@ -47,11 +47,11 @@ export const Breadcrumbs = ({ stigId, group, editor }: BreadcrumbsProps) => {
     }
 
     return (
-        <aside className="flex flex-row items-center justify-start w-full">
+        <aside className="flex flex-row flex-wrap items-center justify-start w-full">
             {links.map((link, index) => (
                 <span key={index}>
                     <Link
-                        className="text-sm text-zinc-400"
+                        className="text-sm text-muted hover:text-accent transition-colors"
                         href={link.href}
                         aria-disabled={link.disabled}
                         tabIndex={60}
@@ -59,7 +59,7 @@ export const Breadcrumbs = ({ stigId, group, editor }: BreadcrumbsProps) => {
                         {link.text}
                     </Link>
                     {index < links.length - 1 && (
-                        <span className="text-sm mx-2 text-zinc-300">
+                        <span className="text-sm mx-2 text-subtle">
                             {" "}
                             &gt;{" "}
                         </span>

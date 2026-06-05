@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { themeScript } from "@/app/components/ui/theme";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -24,12 +25,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head>
+                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
                 <script src="/service-worker.js" />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-zinc-900 dark:text-zinc-100`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-canvas text-foreground`}
             >
                 {children}
             </body>

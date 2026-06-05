@@ -20,26 +20,20 @@ export const ContentNavigation = ({
     const previousRef = useRef<HTMLAnchorElement>(null);
     const nextRef = useRef<HTMLAnchorElement>(null);
 
-    let nextClasses = "rounded-r-lg rounded-l-lg";
-    if (previous) {
-        nextClasses = "rounded-r-lg";
-    }
-    let prevClasses = "rounded-r-lg rounded-l-lg";
-    if (next) {
-        prevClasses = "rounded-l-lg border-r";
-    }
+    const linkClasses =
+        "flex flex-row items-center gap-2 py-2 px-4 text-sm font-medium text-foreground bg-surface border border-border-strong rounded-md hover:bg-surface-muted hover:text-accent transition-colors";
 
     return (
-        <aside className="w-5/6 flex flex-row mb-4">
-            {previous && (
+        <aside className="w-full flex flex-row justify-between gap-3 mb-4">
+            {previous ? (
                 <Link
                     href={makeUrl(stigId, previous)}
-                    className={`flex flex-row items-center py-2 px-4 text-zinc-900 border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:border-zinc-700 dark:text-white dark:hover:text-white dark:h dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white dark:bg-zinc-800 ${prevClasses}`}
+                    className={linkClasses}
                     tabIndex={10}
                     ref={previousRef}
                 >
                     <svg
-                        className="w-6 h-6 text-gray-500"
+                        className="w-5 h-5 text-subtle"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -52,19 +46,21 @@ export const ContentNavigation = ({
                             d="M15 19l-7-7 7-7"
                         ></path>
                     </svg>
-                    <span className="mr-4 ml-2">{previous.id}</span>
+                    <span>{previous.id}</span>
                 </Link>
+            ) : (
+                <span />
             )}
             {next && (
                 <Link
                     href={makeUrl(stigId, next)}
-                    className={`flex flex-row items-center py-2 px-4 text-zinc-900 border-zinc-200 hover:bg-zinc-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700  dark:border-zinc-700 dark:text-white dark:hover:text-white dark:h dark:border-zinc-700 dark:text-white dark:hover:text-white dark:hover:bg-zinc-700 dark:focus:ring-blue-500 dark:focus:text-white dark:bg-zinc-800 ${nextClasses}`}
+                    className={linkClasses}
                     tabIndex={11}
                     ref={nextRef}
                 >
-                    <span className="ml-4 mr-2">{next.id}</span>
+                    <span>{next.id}</span>
                     <svg
-                        className="w-6 h-6 text-gray-500"
+                        className="w-5 h-5 text-subtle"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

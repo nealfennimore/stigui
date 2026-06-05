@@ -5,6 +5,7 @@ import {
     Order,
     Table,
 } from "@/app/components/table";
+import { TableCard } from "@/app/components/ui/card";
 import { useManifestContext } from "@/app/context/manifest";
 import Link from "next/link";
 import { useMemo, useRef } from "react";
@@ -45,7 +46,7 @@ export const Stigs = () => {
                 values: [element.title, element.version, element.date],
                 columns: [
                     <Link
-                        className="flex flex-col"
+                        className="flex flex-col font-medium text-foreground hover:text-accent transition-colors"
                         href={`/stigs/${element.id}`}
                     >
                         {element.title}
@@ -59,21 +60,27 @@ export const Stigs = () => {
     );
 
     return (
-        <>
-            <section className="w-full flex flex-col">
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-                        <Table
-                            sorters={sorters}
-                            filters={filters}
-                            tableHeaders={tableHeaders}
-                            tableBody={tableBody}
-                            initialOrders={[Order.ASC, Order.NONE, Order.NONE]}
-                            formRef={formRef}
-                        />
-                    </form>
-                </div>
-            </section>
-        </>
+        <section className="w-full flex flex-col gap-4">
+            <div>
+                <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+                    Security Technical Implementation Guides
+                </h1>
+                <p className="text-sm text-muted mt-1">
+                    Browse and search available STIGs.
+                </p>
+            </div>
+            <TableCard>
+                <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+                    <Table
+                        sorters={sorters}
+                        filters={filters}
+                        tableHeaders={tableHeaders}
+                        tableBody={tableBody}
+                        initialOrders={[Order.ASC, Order.NONE, Order.NONE]}
+                        formRef={formRef}
+                    />
+                </form>
+            </TableCard>
+        </section>
     );
 };

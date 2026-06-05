@@ -2,24 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Design tokens.
+ * Values are space-separated RGB channels so Tailwind's `<alpha-value>`
+ * opacity modifiers work (e.g. `bg-surface/50`, `ring-ring/40`).
+ */
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --canvas: 250 250 250; /* zinc-50  – page background */
+    --surface: 255 255 255; /* white    – cards, panels, nav */
+    --surface-muted: 244 244 245; /* zinc-100 – table headers, subtle fills */
+
+    --foreground: 24 24 27; /* zinc-900 – primary text */
+    --muted: 82 82 91; /* zinc-600 – secondary text */
+    --subtle: 161 161 170; /* zinc-400 – tertiary text, icons */
+
+    --border: 228 228 231; /* zinc-200 – hairlines */
+    --border-strong: 212 212 216; /* zinc-300 – inputs, dividers */
+
+    --accent: 79 70 229; /* indigo-600 */
+    --accent-hover: 67 56 202; /* indigo-700 */
+    --accent-foreground: 255 255 255; /* text on accent */
+    --accent-subtle: 238 242 255; /* indigo-50 – tinted backgrounds */
+
+    --ring: 99 102 241; /* indigo-500 – focus rings */
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+.dark {
+    --canvas: 9 9 11; /* zinc-950 */
+    --surface: 24 24 27; /* zinc-900 */
+    --surface-muted: 39 39 42; /* zinc-800 */
 
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    --foreground: 244 244 245; /* zinc-100 */
+    --muted: 161 161 170; /* zinc-400 */
+    --subtle: 113 113 122; /* zinc-500 */
+
+    --border: 39 39 42; /* zinc-800 */
+    --border-strong: 63 63 70; /* zinc-700 */
+
+    --accent: 129 140 248; /* indigo-400 */
+    --accent-hover: 165 180 252; /* indigo-300 */
+    --accent-foreground: 24 24 27; /* zinc-900 */
+    --accent-subtle: 30 27 75; /* indigo-950 */
+
+    --ring: 129 140 248; /* indigo-400 */
 }
 
-body > div {
-    min-height: calc(100vh - 136px);
+@layer base {
+    body {
+        color: rgb(var(--foreground));
+        background: rgb(var(--canvas));
+        font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    }
+
+    body > div {
+        min-height: calc(100vh - 136px);
+    }
+
+    /* Consistent focus treatment across interactive elements. */
+    :focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px rgb(var(--canvas)),
+            0 0 0 4px rgb(var(--ring) / 0.7);
+        border-radius: 0.375rem;
+    }
+}
+
+/* Long-form rule discussion / description text. */
+.discussion {
+    line-height: 1.6;
+    color: rgb(var(--muted));
 }

@@ -2,82 +2,36 @@
 import { GroupWrapper } from "@/api/entities/Stig";
 import { ContentNavigation } from "@/app/components/content_navigation";
 import { SeverityBadge } from "@/app/components/severity";
+import { TableCard } from "@/app/components/ui/card";
 import { useStigContext } from "@/app/context/stig";
 import { Suspense } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { Table } from "./table";
 
+const InfoPanel = ({
+    title,
+    children,
+}: {
+    title: React.ReactNode;
+    children: React.ReactNode;
+}) => (
+    <section className="w-full flex flex-col">
+        <div className="rounded-lg border border-border bg-surface shadow-card overflow-hidden">
+            <h3 className="px-6 py-3.5 text-xs font-semibold tracking-wide uppercase text-muted bg-surface-muted border-b border-border">
+                {title}
+            </h3>
+            <div className="px-6 py-4 text-sm text-foreground whitespace-pre-line">
+                {children}
+            </div>
+        </div>
+    </section>
+);
+
 export const GroupInfo = ({ group }: { group: GroupWrapper }) => (
     <>
-        <section className="w-full flex flex-col">
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                    <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">
-                                Description
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            key={`${group.id}`}
-                            className="even:bg-white even:dark:bg-zinc-900 odd:bg-zinc-50 odd:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line"
-                        >
-                            <td className="px-6 py-4 whitespace-pre-line">
-                                {group.rule.description}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <section className="w-full flex flex-col">
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                    <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">
-                                ℹ️ Check
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            key={`${group.id}`}
-                            className="even:bg-white even:dark:bg-zinc-900 odd:bg-zinc-50 odd:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line"
-                        >
-                            <td className="px-6 py-4 whitespace-pre-line">
-                                {group.rule.check}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <section className="w-full flex flex-col">
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400">
-                    <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">
-                                ✔️ Fix
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr
-                            key={`${group.id}`}
-                            className="even:bg-white even:dark:bg-zinc-900 odd:bg-zinc-50 odd:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200 text-zinc-900 whitespace-nowrap dark:text-zinc-300 whitespace-pre-line"
-                        >
-                            <td className="px-6 py-4 whitespace-pre-line">
-                                {group.rule.fixText}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <InfoPanel title="Description">{group.rule.description}</InfoPanel>
+        <InfoPanel title="ℹ️ Check">{group.rule.check}</InfoPanel>
+        <InfoPanel title="✔️ Fix">{group.rule.fixText}</InfoPanel>
     </>
 );
 
@@ -103,8 +57,10 @@ export const GroupView = ({
             <Breadcrumbs stigId={stigId} group={group} />
 
             <section className="w-full flex flex-col">
-                <h1 className="text-3xl my-6">{group.rule.title}</h1>
-                <div className="relative overflow-x-auto shadow-sm sm:rounded-lg">
+                <h1 className="text-3xl font-semibold tracking-tight my-6 text-foreground">
+                    {group.rule.title}
+                </h1>
+                <TableCard>
                     <Table
                         tableHeaders={[
                             {
@@ -167,7 +123,7 @@ export const GroupView = ({
                             },
                         ]}
                     />
-                </div>
+                </TableCard>
             </section>
             <ContentNavigation
                 stigId={stigId}

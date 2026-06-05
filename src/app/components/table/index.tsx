@@ -54,20 +54,19 @@ const Sortable = ({ text, colIndex, orders, setOrders }: SortableProps) => {
     };
 
     let order = orders?.[colIndex] ?? Order.NONE;
-    let top = order === Order.ASC ? "" : "dark:stroke-zinc-500 stroke-zinc-100";
-    let bottom =
-        order === Order.DESC ? "" : "dark:stroke-zinc-500 stroke-zinc-100";
+    let top = order === Order.ASC ? "stroke-accent" : "stroke-subtle";
+    let bottom = order === Order.DESC ? "stroke-accent" : "stroke-subtle";
 
     return (
         <button
             type="button"
-            className="flex items-center text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300"
+            className="flex items-center gap-1 text-xs font-semibold tracking-wide text-muted uppercase hover:text-foreground transition-colors"
             onClick={toggleOrder}
         >
             {text}
             <input type="hidden" name={`orders_${colIndex}`} value={order} />
             <svg
-                className="w-4 h-4 ms-1"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -110,11 +109,11 @@ interface SearchableProps {
 
 const Searchable = ({ text, colIndex }: SearchableProps) => {
     return (
-        <span className="ml-4">
+        <span className="ml-3">
             <input
                 name={`searches_${colIndex}`}
                 type="text"
-                className="w-full px-2 py-1 text-xs text-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-400 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full normal-case font-normal tracking-normal px-2 py-1 text-xs text-foreground bg-surface placeholder:text-subtle border border-border-strong rounded-md transition-colors focus:border-accent focus-visible:outline-none focus:ring-2 focus:ring-ring/40"
                 placeholder={`Filter ${text}`}
             />
         </span>
@@ -149,7 +148,7 @@ function TableHeader({
     return (
         <th
             scope="col"
-            className={`px-6 py-3 uppercase ${className ?? ""}`}
+            className={`px-6 py-3.5 ${className ?? ""}`}
             data-searchable="true"
         >
             <div className="flex items-center">
@@ -162,7 +161,7 @@ function TableHeader({
                     />
                 )}
                 {!sorter && (
-                    <span className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-300">
+                    <span className="text-xs font-semibold tracking-wide text-muted uppercase">
                         {text}
                     </span>
                 )}
@@ -181,12 +180,16 @@ function TableHeader({
 
 function TableRow({ columns, classNames, onClick }: TableRowProps) {
     return (
-        <tr className="odd:bg-white odd:dark:bg-zinc-900 even:bg-zinc-50 even:dark:bg-zinc-800 border-b dark:border-zinc-700 border-zinc-200">
+        <tr
+            className={`bg-surface border-b border-border last:border-0 hover:bg-surface-muted transition-colors ${
+                onClick ? "cursor-pointer" : ""
+            }`}
+        >
             {columns.map((Element, idx) => (
                 <td
                     key={idx}
                     scope="row"
-                    className={`px-6 py-4 text-zinc-900 dark:text-zinc-300 whitespace-pre-line ${
+                    className={`px-6 py-4 text-foreground whitespace-pre-line ${
                         classNames?.[idx] ?? ""
                     }`}
                     onClick={onClick}
@@ -334,10 +337,10 @@ export function Table({
 
     return (
         <table
-            className="w-full text-sm text-left rtl:text-right text-zinc-500 dark:text-zinc-400"
+            className="w-full text-sm text-left rtl:text-right text-muted"
             onChange={debouncedHandleChange}
         >
-            <thead className="text-xs text-zinc-700 uppercase bg-zinc-50 dark:bg-zinc-700 dark:text-zinc-400">
+            <thead className="bg-surface-muted border-b border-border">
                 <tr>
                     {tableHeaders.map((headerProps, index) => (
                         <TableHeader
