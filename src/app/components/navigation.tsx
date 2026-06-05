@@ -1,6 +1,6 @@
 "use client";
-import { APPNAME } from "@/app/constants";
 import { ThemeToggle } from "@/app/components/ui/theme";
+import { APPNAME } from "@/app/constants";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 export const Navigation = () => {
@@ -12,7 +12,7 @@ export const Navigation = () => {
                 setIsOpen(false);
             }
         },
-        []
+        [],
     );
     const onClick = useMemo(
         () => (event: MouseEvent) => {
@@ -21,7 +21,7 @@ export const Navigation = () => {
             }
             setIsOpen(false);
         },
-        []
+        [],
     );
 
     useEffect(() => {
@@ -57,7 +57,7 @@ export const Navigation = () => {
                         <div>
                             <button
                                 type="button"
-                                className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-transparent p-2 text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
+                                className="inline-flex w-full items-center justify-center gap-x-1.5 rounded-md bg-transparent p-2 text-muted hover:bg-surface-muted hover:text-foreground transition-colors relative top-[3px]"
                                 id="menu-button"
                                 aria-expanded={isOpen}
                                 aria-haspopup="true"
