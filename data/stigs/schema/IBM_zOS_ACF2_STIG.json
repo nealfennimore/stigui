@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-15"
+      "+@date": "2026-03-09"
     },
     "title": "IBM z/OS ACF2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -451,10 +451,6 @@
           },
           {
             "+@idref": "V-223523",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-223524",
             "+@selected": "true"
           },
           {
@@ -1365,10 +1361,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-223524",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-223525",
             "+@selected": "true"
           },
@@ -2273,10 +2265,6 @@
           },
           {
             "+@idref": "V-223523",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-223524",
             "+@selected": "true"
           },
           {
@@ -3187,10 +3175,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-223524",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-223525",
             "+@selected": "true"
           },
@@ -4095,10 +4079,6 @@
           },
           {
             "+@idref": "V-223523",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-223524",
             "+@selected": "true"
           },
           {
@@ -5009,10 +4989,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-223524",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-223525",
             "+@selected": "true"
           },
@@ -5917,10 +5893,6 @@
           },
           {
             "+@idref": "V-223523",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-223524",
             "+@selected": "true"
           },
           {
@@ -6831,10 +6803,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-223524",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-223525",
             "+@selected": "true"
           },
@@ -7739,10 +7707,6 @@
           },
           {
             "+@idref": "V-223523",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-223524",
             "+@selected": "true"
           },
           {
@@ -13198,7 +13162,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-223519r1137691_rule",
+          "+@id": "SV-223519r1195303_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ACF2-FT-000030",
@@ -13226,19 +13190,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Ensure the UNIX permission bits and user audit bits on the HFS directories and files for the FTP Server conform to the specifications in the table below:\n\nFTP Server HFS Object Security Settings\nFile Permission Bits User Audit Bits\n/usr/sbin/ftpd 1740 fff\n/usr/sbin/ftpdns 1755 fff\n/usr/sbin/tftpd 0644 faf\n/etc/ftp.data 0744 faf\n/etc/ftp.banner 0744 faf\n\nThe /usr/sbin/ftpd and /usr/sbin/ftpdns objects are symbolic links to /usr/lpp/tcpip/sbin/ftpd and /usr/lpp/tcpip/sbin/ftpdns respectively. The permission and user audit bits on the targets of the symbolic links must have the required settings.\n\nThe TFTP Server does not perform any user identification or authentication, allowing any client to connect to the TFTP Server. Due to this lack of security, the TFTP Server will not be used. The TFTP Client is not secured from use.\n\nThe /etc/ftp.data file may not be the configuration file the server uses. It is necessary to check the SYSFTPD DD statement in the FTP started task JCL to determine the actual file.\n\nThe /etc/ftp.banner file may not be the banner file the server uses. It is necessary to check the BANNER statement in the FTP Data configuration file to determine the actual file.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7 rwx (least restrictive)\n6 rw-\n3 -wx\n2 -w-\n5 r-x\n4 r--\n1 --x\n0 --- (most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf log for failed access attempts\na log for failed and successful access\n- no auditing\n\nSome of the files listed above (e.g., /etc/ftp.data) are not used in every configuration. While the absence of a file is generally not a security issue, the existence of a file that has not been properly secured can often be an issue. Therefore, all files that do exist should have the specified permission and audit bit settings.\n\nThe following commands can be used (from a user account with an effective UID(0)) to update the permission bits and audit bits:\n\nchmod 1740 /usr/lpp/tcpip/sbin/ftpd\nchaudit rwx=f /usr/lpp/tcpip/sbin/ftpd\nchmod 1755 /usr/lpp/tcpip/sbin/ftpdns\nchaudit rwx=f /usr/lpp/tcpip/sbin/ftpdns\nchmod 0744 /etc/ftp.data\nchaudit w=sf,rx+f /etc/ftp.data\nchmod 0744 /etc/ftp.banner\nchaudit w=sf,rx+f /etc/ftp.banner",
-            "+@fixref": "F-25180r504622_fix"
+            "+content": "Ensure the UNIX permission bits and user audit bits on the HFS directories and files for the FTP Server conform to the specifications in the table below:\n\nFTP Server HFS Object Security Settings\nFile Permission Bits User Audit Bits\n/usr/sbin/ftpd 1740 fff\n/usr/sbin/ftpdns 1755 fff\n/etc/ftp.data 0744 faf\n/etc/ftp.banner 0744 faf\n\nThe /usr/sbin/ftpd and /usr/sbin/ftpdns objects are symbolic links to /usr/lpp/tcpip/sbin/ftpd and /usr/lpp/tcpip/sbin/ftpdns respectively. The permission and user audit bits on the targets of the symbolic links must have the required settings.\n\nThe /etc/ftp.data file may not be the configuration file the server uses. It is necessary to check the SYSFTPD DD statement in the FTP started task JCL to determine the actual file.\n\nThe /etc/ftp.banner file may not be the banner file the server uses. It is necessary to check the BANNER statement in the FTP Data configuration file to determine the actual file.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7 rwx (least restrictive)\n6 rw-\n3 -wx\n2 -w-\n5 r-x\n4 r--\n1 --x\n0 --- (most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf log for failed access attempts\na log for failed and successful access\n- no auditing\n\nSome of the files listed above (e.g., /etc/ftp.data) are not used in every configuration. While the absence of a file is generally not a security issue, the existence of a file that has not been properly secured can often be an issue. Therefore, all files that do exist should have the specified permission and audit bit settings.\n\nThe following commands can be used (from a user account with an effective UID(0)) to update the permission bits and audit bits:\n\nchmod 1740 /usr/lpp/tcpip/sbin/ftpd\nchaudit rwx=f /usr/lpp/tcpip/sbin/ftpd\nchmod 1755 /usr/lpp/tcpip/sbin/ftpdns\nchaudit rwx=f /usr/lpp/tcpip/sbin/ftpdns\nchmod 0744 /etc/ftp.data\nchaudit w=sf,rx+f /etc/ftp.data\nchmod 0744 /etc/ftp.banner\nchaudit w=sf,rx+f /etc/ftp.banner",
+            "+@fixref": "F-25180r1195302_fix"
           },
           "fix": {
-            "+@id": "F-25180r504622_fix"
+            "+@id": "F-25180r1195302_fix"
           },
           "check": {
-            "+@system": "C-25192r504621_chk",
+            "+@system": "C-25192r1195301_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the ISPF Command shell enter:\nomvs\nAt the input line enter:\ncd /usr/sbin/\nenter\nls -alW\n\nIf the following file permission and user Audit Bits are true, this is not a finding.\n\n/usr/sbin/ftpd 1740 fff\n/usr/sbin/ftpdns 1755 fff\n/usr/sbin/tftpd 0644 faf\ncd \nls -alW\n\nIf the following file permission and user Audit Bits are true, this is not a finding.\n\n/etc/ftp.data 0744 faf\n/etc/ftp.banner 0744 faf\n\nNOTES: Some of the files listed above are not used in every configuration. The absence of a file is not considered a finding.\n\nThe /usr/sbin/ftpd and /usr/sbin/ftpdns objects are symbolic links to /usr/lpp/tcpip/sbin/ftpd and /usr/lpp/tcpip/sbin/ftpdns respectively. The permission and user audit bits on the targets of the symbolic links must have the required settings.\n\nThe /etc/ftp.data file may not be the configuration file the server uses. It is necessary to check the SYSFTPD DD statement in the FTP started task JCL to determine the actual file.\n\nThe TFTP Server does not perform any user identification or authentication, allowing any client to connect to the TFTP Server. Due to this lack of security, the TFTP Server will not be used. The TFTP Client is not secured from use. The permission bits for /usr/sbin/tftpd should be set to \"644\".\n\nThe /etc/ftp.banner file may not be the banner file the server uses. It is necessary to check the BANNER statement in the FTP Data configuration file to determine the actual file. Also, the permission bit setting for this file must be set as indicated in the table above. A more restrictive set of permissions is not permitted.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7 rwx (least restrictive)\n6 rw-\n3 -wx\n2 -w-\n5 r-x\n4 r--\n1 --x\n0 --- (most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf log for failed access attempts\na log for failed and successful access\n- no auditing"
+            "check-content": "From the ISPF Command shell, enter:\nomvs\nAt the input line enter:\ncd /usr/sbin/\nenter\nls -alW\n\nIf the following file permission and user Audit Bits are true, this is not a finding.\n\n/usr/sbin/ftpd 1740 fff\n/usr/sbin/ftpdns 1755 fff\n\ncd \nls -alW\n\nIf the following file permission and user Audit Bits are true, this is not a finding.\n\n/etc/ftp.data 0744 faf\n/etc/ftp.banner 0744 faf\n\nNOTE: Some of the files listed above are not used in every configuration. The absence of a file is not considered a finding.\n\nThe /usr/sbin/ftpd and /usr/sbin/ftpdns objects are symbolic links to /usr/lpp/tcpip/sbin/ftpd and /usr/lpp/tcpip/sbin/ftpdns, respectively. The permission and user audit bits on the targets of the symbolic links must have the required settings.\n\nThe /etc/ftp.data file may not be the configuration file the server uses. It is necessary to check the SYSFTPD DD statement in the FTP started task JCL to determine the actual file.\n\nThe /etc/ftp.banner file may not be the banner file the server uses. It is necessary to check the BANNER statement in the FTP Data configuration file to determine the actual file. Also, the permission bit setting for this file must be set as indicated in the table above. A more restrictive set of permissions is not permitted.\n\nThe following represents a hierarchy for permission bits from least restrictive to most restrictive:\n\n7 rwx (least restrictive)\n6 rw-\n3 -wx\n2 -w-\n5 r-x\n4 r--\n1 --x\n0 --- (most restrictive)\n\nThe possible audit bits settings are as follows:\n\nf log for failed access attempts\na log for failed and successful access\n- no auditing"
           }
         }
       },
@@ -13406,55 +13370,6 @@
               "+@name": "M"
             },
             "check-content": "Provide a list(s) of the locations for all FTP Control cards within a given application/AIS, ensuring no FTP control cards are within in-stream JCL, JCL libraries or any open access data sets. The list must indicate which application uses the PDS, and access requirements for those PDSes (who and what level of access). Lists/spreadsheet used for documenting the meeting of this requirement must be maintained by the responsible Application/AIS Team, available upon request and not maintained by Mainframe ISSO.\n\nObtain the list/spreadsheet from the Application/AIS Team.\n\nAccess to FTP scripts and/or data files located on host system(s) that contain FTP userid and or password will be restricted to those individuals responsible for the application connectivity and who have a legitimate requirement to know the userid and password on a remote system. \n\nFTP Control Cards within In-stream JCL, within JCL libraries or open access libraries/data sets is a finding. \n\nIf there is anyone not listed within the spreadsheet by userid that has access of Read or greater to the FTP control cards, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-223524",
-        "title": "SRG-OS-000368-GPOS-00154",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-223524r958804_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "ACF2-FT-000080",
-          "title": "The IBM z/OS TFTP Server program must be properly protected.",
-          "description": "<VulnDiscussion>Control of program execution is a mechanism used to prevent execution of unauthorized programs. Some operating systems may provide a capability that runs counter to the mission or provides users with functionality that exceeds mission requirements. This includes functions and services installed at the operating system level.\n\nSome of the programs, installed by default, may be harmful or may not be necessary to support essential organizational operations (e.g., key missions, functions). Removal of executable programs is not always possible; therefore, establishing a method of preventing program execution is critical to maintaining a secure system baseline.\n\nMethods for complying with this requirement include restricting execution of programs in certain environments, while preventing execution in other environments; or limiting execution of certain program functionality based on organization-defined criteria (e.g., privileges, subnets, sandboxed environments, or roles).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target IBM zOS ACF2",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "IBM zOS ACF2",
-            "dc:identifier": "4100"
-          },
-          "ident": [
-            {
-              "+content": "SV-106857",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "V-97753",
-              "+@system": "http://cyber.mil/legacy"
-            },
-            {
-              "+content": "CCI-001764",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
-          "fixtext": {
-            "+content": "Configure the resource controls for the TFTP Server programs TFTPD and EZATD and ensure all access is restricted.\n\nEvaluate the impact of implementing the following change. Develop a plan of action and implement the change as required.\n\nConfigure the resource controls for the TFTP Server programs TFTPD and EZATD and ensure all access is restricted.\n\nExamples:\nSET CONTROL(GSO)\nCHANGE PPGM PGM-MASK(TFTPD EZATD) ADD\n\nF ACF2,REFRESH(PPGM)\n\n$KEY(TFTPD) TYPE(PGM)\nUID(*) PREVENT \n\nSET R(PGM)\nCOMPILE 'ACF2.MVA.PGM(TFTPD)' STORE\n\nF ACF2,REBUILD(PGM) \n\n$KEY(EZATD) TYPE(PGM)\nUID(*) PREVENT \n\nSET R(PGM)\nCOMPILE 'ACF2.MVA.PGM(EZATD)' STORE\n\nF ACF2,REBUILD(PGM)",
-            "+@fixref": "F-25185r504631_fix"
-          },
-          "fix": {
-            "+@id": "F-25185r504631_fix"
-          },
-          "check": {
-            "+@system": "C-25197r504630_chk",
-            "check-content-ref": {
-              "+@href": "IBM_zOS_ACF2_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "From the ACF Command screen enter:\nSET CONTROL(GSO)\nLIST LIKE(PPGM-)\n\nIf Programs TFTPD and EZATD are not defined in the GSO PPGM record, this is a finding.\n\nFrom the ACF Command screen enter:\nSET RESOURCE(PGM)\nLIST LIKE(-)\n\nIf Program resources TFTPD and EZATD are not defined in the PROGRAM resource class, this is a finding.\n\nIf No access to the program resources TFTPD and EZATD is permitted, this is not a finding."
           }
         }
       },
@@ -16738,12 +16653,12 @@
         "title": "SRG-OS-000104-GPOS-00051",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-223592r958482_rule",
+          "+@id": "SV-223592r1196248_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ACF2-SL-000030",
           "title": "IBM z/OS Syslog daemon must be properly defined and secured.",
-          "description": "<VulnDiscussion>The Syslog daemon, known as syslogd, is a zOS UNIX daemon that provides a central processing point for log messages issued by other zOS UNIX processes. It is also possible to receive log messages from other network-connected hosts. Some of the IBM Communications Server components that may send messages to syslog are the FTP, TFTP, zOS UNIX Telnet, DNS, and DHCP servers. The messages may be of varying importance levels including general process information, diagnostic information, critical error notification, and audit-class information. Primarily because of the potential to use this information in an audit process, there is a security interest in protecting the syslogd process and its associated data. \n\nThe Syslog daemon requires special privileges and access to sensitive resources to provide its system services. Failure to properly define and control the Syslog daemon could lead to unauthorized access. This exposure may result in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The Syslog daemon, known as syslogd, is a z/OS Unix daemon that provides a central processing point for log messages issued by other z/OS Unix processes. It is also possible to receive log messages from other network-connected hosts. Some of the IBM Communications Server components that may send messages to Syslog are the FTP, z/OS Unix Telnet, DNS, and DHCP servers. The messages may be of varying importance and may include general process information, diagnostic information, critical error notification, and audit-class information. There is a security interest in protecting the syslogd process and its associated data because of the potential to use this information in an audit process. \n\nThe Syslog daemon requires special privileges and access to sensitive resources to provide its system services. Failure to properly define and control the Syslog daemon could lead to unauthorized access. This exposure may result in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM zOS ACF2",
             "dc:publisher": "DISA",
@@ -16773,12 +16688,12 @@
             "+@id": "F-25253r504750_fix"
           },
           "check": {
-            "+@system": "C-25265r836662_chk",
+            "+@system": "C-25265r1196162_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The syslog daemon is defined as SYSLOGD.\n\nFrom the ACF command screen enter:\nSET LID\nLIST SYSLOGD\n\nIf the Syslog daemon is not defined, this is a finding.\n\nIf the SYSLOGD logonid is not defined with the STC attribute, this is a finding.\n\nIf the SYSLOGD userid has UID(0), HOME('/'), and PROGRAM('/bin/sh') specified in the OMVS segment, this is not a finding. \n\nIf Syslog daemon is started from /etc/rc then ensure that the _BPX_JOBNAME and _BPX_USERID environment variables are assigned a value of SYSLOGD."
+            "check-content": "The Syslog daemon is defined as SYSLOGD.\n\nFrom the ACF command screen enter:\nSET LID\nLIST SYSLOGD\n\nIf the Syslog daemon is not defined, this is a finding.\n\nIf the SYSLOGD logonid is not defined with the STC attribute, this is a finding.\n\nIf the SYSLOGD userid has UID(0), HOME('/'), and PROGRAM('/bin/sh') specified in the OMVS segment, this is not a finding. \n\nIf Syslog daemon is started from /etc/rc then ensure that the _BPX_JOBNAME and _BPX_USERID environment variables are assigned a value of SYSLOGD."
           }
         }
       },
@@ -18537,7 +18452,7 @@
         "title": "SRG-OS-000096-GPOS-00050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-223633r958480_rule",
+          "+@id": "SV-223633r1195309_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ACF2-US-000180",
@@ -18565,19 +18480,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Review the settings in The /etc/inetd.conf file determine if every entry in the file represents a service that is actually in use. Services that are not in use must be disabled to reduce potential security exposures.\n\nThe following services must be disabled in /etc/inetd.conf unless justified and documented with the ISSO:\n\nRESTRICTED NETWORK SERVICES\n\nService Port\nChargen 19\nDaytime 13\nDiscard 9\nEcho 7\nExec 512\nfinger 79\nshell 514\ntime 37\nlogin 513\nsmtp 25\ntimed 525\nnameserver 42\nsystat 11\nuucp 540\nnetstat 15\ntalk 517\nqotd 17\ntftp 69\n\n/etc/inetd.conf\n\nThe /etc/inetd.conf file is used by the INETD daemon. It specifies how INETD is to handle service requests on network sockets. Specifically, there is one entry in inetd.conf for each service. Each service entry specifies several parameters. The login_name parameter is of special interest. It specifies the userid under which the forked daemon is to execute. This userid is defined to the ESM and it may require a UID(0) (i.e., superuser authority) value.",
-            "+@fixref": "F-25294r695456_fix"
+            "+content": "Review the settings in the /etc/inetd.conf file determine if every entry in the file represents a service that is actually in use. Services that are not in use must be disabled to reduce potential security exposures.\n\nThe following services must be disabled in /etc/inetd.conf unless justified and documented with the ISSO:\n\nRESTRICTED NETWORK SERVICES\n\nService Port\nChargen 19\nDaytime 13\nDiscard 9\nEcho 7\nExec 512\nfinger 79\nshell 514\ntime 37\nlogin 513\nsmtp 25\ntimed 525\nnameserver 42\nsystat 11\nuucp 540\nnetstat 15\ntalk 517\nqotd 17\n \n\n/etc/inetd.conf\n\nThe /etc/inetd.conf file is used by the INETD daemon. It specifies how INETD is to handle service requests on network sockets. Specifically, there is one entry in inetd.conf for each service. Each service entry specifies several parameters. The login_name parameter is of special interest. It specifies the userid under which the forked daemon is to execute. This userid is defined to the ESM and it may require a UID(0) (i.e., superuser authority) value.",
+            "+@fixref": "F-25294r1195308_fix"
           },
           "fix": {
-            "+@id": "F-25294r695456_fix"
+            "+@id": "F-25294r1195308_fix"
           },
           "check": {
-            "+@system": "C-25306r695455_chk",
+            "+@system": "C-25306r1195307_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the UNIX System Services ISPF Shell enter:\n/etc/inetd.conf\n\nIf any Restricted Network Services that are listed below are specified or not commented out unless justified and documented with the ISSO, this is a finding.\n\nRESTRICTED NETWORK SERVICES/PORTS\nService Port\nChargen 19\nDaytime 13\nDiscard 9\nEcho 7\nExec 512\nfinger 79\nshell 514\ntime 37\nlogin 513\nsmtp 25\ntimed 525\nnameserver 42\nsystat 11\nuucp 540\nnetstat 15\ntalk 517\nqotd 17\ntftp 69"
+            "check-content": "From the UNIX System Services ISPF Shell, enter:\n/etc/inetd.conf\n\nIf any Restricted Network Services that are listed below are specified or not commented out unless justified and documented with the information system security officer (ISSO), this is a finding.\n\nRESTRICTED NETWORK SERVICES/PORTS\nService Port\nChargen 19\nDaytime 13\nDiscard 9\nEcho 7\nExec 512\nfinger 79\nshell 514\ntime 37\nlogin 513\nsmtp 25\ntimed 525\nnameserver 42\nsystat 11\nuucp 540\nnetstat 15\ntalk 517\nqotd 17"
           }
         }
       },
@@ -19731,7 +19646,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-275951r1169915_rule",
+          "+@id": "SV-275951r1195460_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ACF2-IC-000060",
@@ -19756,12 +19671,12 @@
             "+@id": "F-79972r1169769_fix"
           },
           "check": {
-            "+@system": "C-80067r1169811_chk",
+            "+@system": "C-80067r1195304_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_ACF2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the ISCF Command Shell, enter \nACF \nSET RESOURCEm(,<rsctype>)\nList Like(-)\n\nConsult the ICSF administrator, security administrator, and the site security plan for appropriate access.\n\nIf the ACF2 rules for each resource are restrictive to the appropriate users, this is not a finding."
+            "check-content": "From the ISPF Command Shell, enter:\n\nACF \nSET RESOURCE(<rsctype>)\nList Like(-)\n\nConsult the ICSF administrator, security administrator, and the site security plan for appropriate access.\n\nIf the ACF2 rules for each resource are restrictive to the appropriate users, this is not a finding."
           }
         }
       },

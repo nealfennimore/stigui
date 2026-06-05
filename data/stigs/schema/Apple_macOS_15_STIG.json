@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-19"
+      "+@date": "2026-02-06"
     },
     "title": "Apple macOS 15 (Sequoia) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 7 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -6639,7 +6639,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268438r1131191_rule",
+          "+@id": "SV-268438r1184563_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-15-000054",
@@ -6683,11 +6683,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the macOS system to limit SSHD to FIPS-compliant connections with the following command:\n\nif [ -f /etc/ssh/crypto.conf ] && /usr/bin/grep -q \"Include /etc/ssh/crypto.conf\" /etc/ssh/sshd_config.d/100-macos.conf 2>/bin/null; then\n/bin/ln -fs /etc/ssh/crypto/fips.conf /etc/ssh/crypto.conf\nfi\n\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n/usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\nfips_sshd_config=(\"Ciphers aes128-gcm@openssh.com\" \"HostbasedAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"HostKeyAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\" \"KexAlgorithms ecdh-sha2-nistp256\" \"MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-256\" \"PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"CASignatureAlgorithms ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\")\nsshd_config=$(/usr/sbin/sshd -G)\nfor config in $fips_sshd_config; do\nif ! echo $sshd_config | /usr/bin/grep -q -i \"$config\" 2>/dev/null; then\n/usr/bin/grep -qxF \"$config\" \"${include_dir}01-mscp-sshd.conf\" 2>/dev/null || echo \"$config\" >> \"${include_dir}01-mscp-sshd.conf\"\nfi\ndone\n\nfor file in $(ls ${include_dir}); do\nif [[ \"$file\" == \"100-macos.conf\" ]]; then\ncontinue\nfi\nif [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\nbreak\nfi\n/bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone",
-            "+@fixref": "F-72369r1131190_fix"
+            "+content": "Configure the macOS system to limit SSHD to FIPS-compliant connections with the following command:\n\nif [ -f /etc/ssh/crypto.conf ] && /usr/bin/grep -q \"Include /etc/ssh/crypto.conf\" /etc/ssh/sshd_config.d/100-macos.conf 2>/dev/null; then\n/bin/ln -fs /etc/ssh/crypto/fips.conf /etc/ssh/crypto.conf\nfi\n\ninclude_dir=$(/usr/bin/awk '/^Include/ {print $2}' /etc/ssh/sshd_config | /usr/bin/tr -d '*')\n\nif [[ -z $include_dir ]]; then\n/usr/bin/sed -i.bk \"1s/.*/Include \\/etc\\/ssh\\/sshd_config.d\\/\\*/\" /etc/ssh/sshd_config\nfi\n\nfips_sshd_config=(\"Ciphers aes128-gcm@openssh.com\" \"HostbasedAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"HostKeyAlgorithms ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\" \"KexAlgorithms ecdh-sha2-nistp256\" \"MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-256\" \"PubkeyAcceptedAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com\" \"CASignatureAlgorithms ecdsa-sha2-nistp256,sk-ecdsa-sha2-nistp256@openssh.com\")\nsshd_config=$(/usr/sbin/sshd -G)\nfor config in $fips_sshd_config; do\nif ! echo $sshd_config | /usr/bin/grep -q -i \"$config\" 2>/dev/null; then\n/usr/bin/grep -qxF \"$config\" \"${include_dir}01-mscp-sshd.conf\" 2>/dev/null || echo \"$config\" >> \"${include_dir}01-mscp-sshd.conf\"\nfi\ndone\n\nfor file in $(ls ${include_dir}); do\nif [[ \"$file\" == \"100-macos.conf\" ]]; then\ncontinue\nfi\nif [[ \"$file\" == \"01-mscp-sshd.conf\" ]]; then\nbreak\nfi\n/bin/mv ${include_dir}${file} ${include_dir}20-${file}\ndone",
+            "+@fixref": "F-72369r1184562_fix"
           },
           "fix": {
-            "+@id": "F-72369r1131190_fix"
+            "+@id": "F-72369r1184562_fix"
           },
           "check": {
             "+@system": "C-72468r1131189_chk",

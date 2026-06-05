@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-09"
+      "+@date": "2026-02-25"
     },
     "title": "Apache Tomcat Application Server 9 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3133,7 +3133,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222931r1117167_rule",
+          "+@id": "SV-222931r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TCAT-AS-000060",
@@ -3186,7 +3186,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222932r1117167_rule",
+          "+@id": "SV-222932r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000070",
@@ -3235,7 +3235,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222933r1117167_rule",
+          "+@id": "SV-222933r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000080",
@@ -3284,7 +3284,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222934r1117167_rule",
+          "+@id": "SV-222934r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000090",
@@ -3333,7 +3333,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222935r1117167_rule",
+          "+@id": "SV-222935r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000100",
@@ -5018,7 +5018,7 @@
         "title": "SRG-APP-000211-AS-000146",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222969r1117171_rule",
+          "+@id": "SV-222969r1137579_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000780",
@@ -5067,7 +5067,7 @@
         "title": "SRG-APP-000211-AS-000146",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222970r1117171_rule",
+          "+@id": "SV-222970r1137579_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-000790",
@@ -6332,7 +6332,7 @@
         "title": "SRG-APP-000504-AS-000229",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222998r961827_rule",
+          "+@id": "SV-222998r1193096_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-001590",
@@ -6360,19 +6360,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the Tomcat server as a privileged user, use the auditctl command.\n\nsudo auditctl  -w $CATALINA_HOME/bin -p wa -k tomcat\n\nValidate the audit watch was created.\nsudo auditctl -l \n\nThe user should see: \n-w $CATALINA_HOME/ -p wa -k tomcat",
-            "+@fixref": "F-24659r426439_fix"
+            "+content": "From the Tomcat server as a privileged user:\n\n1. Identify the home folder for the Tomcat server:\n#grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nLines similar to the following should be returned:\nEnvironment=\"CATALINA_HOME=/opt/tomcat\"\nEnvironment=\"CATALINA_BASE=/opt/tomcat\"\nwhere /opt/tomcat in the example will be referred to as <homefolderpath>\n\n2. Add rules to a rules file. These files will typically be /etc/audit/rules.d/audit.rules or stig.rules. Open the rules file <rulesfile> in a text editor.\n\n3. Alter or add the following line to the rules file, replacing <homefolderpath> with the actual path. (e.g., /opt/tomcat):\n-w <homefolderpath>/bin -p wa -k tomcat\n\n4. Load the rules, replacing <rulesfile> with the actual filename (e.g., audit.rules):\n#auditctl -R <rulesfile>\n\n5. Make the rules persistent:\n#augenrules --load",
+            "+@fixref": "F-24659r1193095_fix"
           },
           "fix": {
-            "+@id": "F-24659r426439_fix"
+            "+@id": "F-24659r1193095_fix"
           },
           "check": {
-            "+@system": "C-24670r426438_chk",
+            "+@system": "C-24670r1192753_chk",
             "check-content-ref": {
               "+@href": "Apache_Tomcat_Application_Server_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Run the following commands From the Tomcat server as a privileged user:\n\nIdentify the home folder for the Tomcat server. \n\nsudo grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nCheck the audit rules for the Tomcat folders.\n\nsudo auditctl -l $CATALINA_HOME/bin |grep -i bin\n\nIf the results do not include -w $CATALINA_HOME/bin -p wa -k tomcat, or if there are no results, this is a finding."
+            "check-content": "Check the audit rules for the Tomcat folders. Run the following command from the Tomcat server as a privileged user:\n\nsudo auditctl -l | grep $CATALINA_HOME/bin\n\nIf the results do not include \"-w $CATALINA_HOME/bin -p wa -k tomcat\" or if there are no results, this is a finding."
           }
         }
       },
@@ -6381,7 +6381,7 @@
         "title": "SRG-APP-000504-AS-000229",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-222999r961827_rule",
+          "+@id": "SV-222999r1193098_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-001591",
@@ -6409,19 +6409,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the Tomcat server as a privileged user, use the auditctl command.\n\nsudo auditctl  -w $CATALINA_BASE/conf -p wa -k tomcat\n\nValidate the audit watch was created.\nsudo auditctl -l \n\nThe user should see: \n-w $CATALINA_HOME/ -p wa -k tomcat",
-            "+@fixref": "F-24660r426442_fix"
+            "+content": "From the Tomcat server as a privileged user:\n\n1. Identify the home folder for the Tomcat server:\n#grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nLines similar to the following should be returned:\nEnvironment=\"CATALINA_HOME=/opt/tomcat\"\nEnvironment=\"CATALINA_BASE=/opt/tomcat\"\nwhere /opt/tomcat in the example will be referred to as <homefolderpath>\n\n2. Add rules to a rules file. These files will typically be /etc/audit/rules.d/audit.rules or stig.rules. Open the rules file <rulesfile> in a text editor.\n\n3. Alter or add the following line to the rules file, replacing <homefolderpath> with the actual path. (e.g., /opt/tomcat):\n-w <homefolderpath>/conf -p wa -k tomcat\n\n4. Load the rules, replacing <rulesfile> with the actual filename (e.g., audit.rules):\n#auditctl -R <rulesfile>\n\n5. Make the rules persistent:\n#augenrules --load",
+            "+@fixref": "F-24660r1193097_fix"
           },
           "fix": {
-            "+@id": "F-24660r426442_fix"
+            "+@id": "F-24660r1193097_fix"
           },
           "check": {
-            "+@system": "C-24671r426441_chk",
+            "+@system": "C-24671r1192756_chk",
             "check-content-ref": {
               "+@href": "Apache_Tomcat_Application_Server_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Run the following commands From the Tomcat server as a privileged user:\n\nIdentify the home folder for the Tomcat server. \n\nsudo grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nCheck the audit rules for the Tomcat folders.\n\nsudo auditctl -l $CATALINA_HOME/bin |grep -i conf\n\nIf the results do not include -w $CATALINA_BASE/conf -p wa -k tomcat, or if there are no results, this is a finding."
+            "check-content": "Check the audit rules for the Tomcat folders. Run the following command from the Tomcat server as a privileged user:\n\nsudo auditctl -l | grep $CATALINA_HOME/conf\n\nIf the results do not include \"-w $CATALINA_BASE/conf -p wa -k tomcat\" or if there are no results, this is a finding."
           }
         }
       },
@@ -6430,7 +6430,7 @@
         "title": "SRG-APP-000504-AS-000229",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-223000r961827_rule",
+          "+@id": "SV-223000r1193100_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCAT-AS-001592",
@@ -6458,19 +6458,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the Tomcat server as a privileged user, use the auditctl command.\n\nsudo auditctl  -w $CATALINA_HOME/lib -p wa -k tomcat\n\nValidate the audit watch was created.\nsudo auditctl -l \n\nThe user should see: \n-w $CATALINA_HOME/ -p wa -k tomcat",
-            "+@fixref": "F-24661r426445_fix"
+            "+content": "From the Tomcat server as a privileged user:\n\n1. Identify the home folder for the Tomcat server:\n#grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nLines similar to the following should be returned:\nEnvironment=\"CATALINA_HOME=/opt/tomcat\"\nEnvironment=\"CATALINA_BASE=/opt/tomcat\"\nwhere /opt/tomcat in the example will be referred to as <homefolderpath>\n\n2. Add rules to a rules file. These files will typically be /etc/audit/rules.d/audit.rules or stig.rules. Open the rules file <rulesfile> in a text editor.\n\n3. Alter or add the following line to the rules file, replacing <homefolderpath> with the actual path. (e.g., /opt/tomcat):\n-w <homefolderpath>/lib -p wa -k tomcat\n\n4. Load the rules, replacing <rulesfile> with the actual filename (e.g., audit.rules):\n#auditctl -R <rulesfile>\n\n5. Make the rules persistent:\n#augenrules --load",
+            "+@fixref": "F-24661r1193099_fix"
           },
           "fix": {
-            "+@id": "F-24661r426445_fix"
+            "+@id": "F-24661r1193099_fix"
           },
           "check": {
-            "+@system": "C-24672r426444_chk",
+            "+@system": "C-24672r1192759_chk",
             "check-content-ref": {
               "+@href": "Apache_Tomcat_Application_Server_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Run the following commands From the Tomcat server as a privileged user:\n\nIdentify the home folder for the Tomcat server. \n\nsudo grep -i -- 'catalina_home\\|catalina_base' /etc/systemd/system/tomcat.service\n\nCheck the audit rules for the Tomcat folders\n\nsudo auditctl -l $CATALINA_HOME/bin |grep -i lib\n\nIf the results do not include -w $CATALINA_HOME/lib -p wa -k tomcat, or if there are no results, this is a finding."
+            "check-content": "Check the audit rules for the Tomcat folders. Run the following command from the Tomcat server as a privileged user:\n\nsudo auditctl -l | grep $CATALINA_HOME/lib\n\nIf the results do not include \"-w $CATALINA_HOME/lib -p wa -k tomcat\" or if there are no results, this is a finding."
           }
         }
       },
@@ -6479,7 +6479,7 @@
         "title": "SRG-APP-000514-AS-000137",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-223001r1117181_rule",
+          "+@id": "SV-223001r1137585_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "TCAT-AS-001640",

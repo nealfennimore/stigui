@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-19"
+      "+@date": "2026-02-06"
     },
     "title": "Google Android 14 COBO Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -2038,7 +2038,7 @@
         "title": "PP-MDF-333240",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258392r1117267_rule",
+          "+@id": "SV-258392r1137817_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-14-008500",
@@ -2077,7 +2077,7 @@
         "title": "PP-MDF-333250",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258393r1117267_rule",
+          "+@id": "SV-258393r1137819_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-14-008600",
@@ -2680,7 +2680,7 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276960r1134312_rule",
+          "+@id": "SV-276960r1183801_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-14-013000",
@@ -2698,19 +2698,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Google Android 14 device to disable the ability of the user to wipe the Android device. Enable the admin to inject a recovery account on the device so they can unlock FRP.\n\nOn the MDM console:\n\nDisallow factory reset:\n\nCOBO and COPE:\n\n1. Open user restrictions.\n2. Enable \"Disallow Factory Reset\".\n\nSet factory reset protection policy:\n\nCOBO and COPE: \n\n1. Device owner management >> Set factory reset protection.\n2. From Accounts Section: Add Account >> Enter recovery account >> press \"Ok\".\n3. From Enabled Section: Select \"Enabled\" to enable FRP policy.\n4. Press \"Save\" to confirm all changes.\n\nConfiguration API: factoryResetDisabled, frpAdminEmails[ ]",
-            "+@fixref": "F-81020r1134311_fix"
+            "+content": "Configure Google Android 14 device to disable the ability of the user to wipe the Android device. Enable the admin to inject a recovery account on the device so they can unlock FRP.\n\nOn the MDM console:\n\nDisallow factory reset:\n\nCOBO:\n\n1. Open user restrictions.\n2. Enable \"Disallow Factory Reset\".\n\nSet factory reset protection policy:\n\nCOBO: \n\n1. Device owner management >> Set factory reset protection.\n2. From Accounts Section: Add Account >> Enter recovery account >> press \"Ok\".\n3. From Enabled Section: Select \"Enabled\" to enable FRP policy.\n4. Press \"Save\" to confirm all changes.\n\nConfiguration API: factoryResetDisabled, frpAdminEmails[ ]",
+            "+@fixref": "F-81020r1183800_fix"
           },
           "fix": {
-            "+@id": "F-81020r1134311_fix"
+            "+@id": "F-81020r1183800_fix"
           },
           "check": {
-            "+@system": "C-81115r1134310_chk",
+            "+@system": "C-81115r1183799_chk",
             "check-content-ref": {
               "+@href": "Google_Android_14_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review configuration settings to confirm that the user is unable to perform a factory reset and the admin has the ability to inject a recovery account on the device so they can unlock Factory Reset Protection (FRP).\n\nThis check procedure is performed on the device management tool and the Google Android 14 device.\n\nOn the MDM console:\n\nVerify factory reset configuration:\n\nCOBO and COPE:\n\n1. Open user restrictions.\n2. Verify that \"Disallow Factory Reset\" is enabled.\n\nVerify factory reset protection policy configuration:\n\nFrom the Android Enterprise policy management:\n\n1. Go to the Factory Reset Protection section.\n2. Verify that \"Factory Reset Protection\" is set to \"Allow/Enabled\".\n3. Verify that the correct Google Account ID(s) is/are listed as allowed to unlock the FRP.\n\nOn the managed Google Android 14 device, verify factory reset configuration:\n\nCOBO and COPE:\n\n1. Open Settings >> General management >> Reset.\n2. Tap the \"Factory data reset\" option.\n3. Verify that the \"Action not allowed\" pop-up appears and factory data reset does not proceed.\n\nIf the Android device user is able to perform a factory reset or the admin cannot unlock the Android phone after an FRP event, this is a finding."
+            "check-content": "Review configuration settings to confirm that the user is unable to perform a factory reset and the admin has the ability to inject a recovery account on the device so they can unlock Factory Reset Protection (FRP).\n\nThis check procedure is performed on the device management tool and the Google Android 14 device.\n\nOn the MDM console:\n\nVerify factory reset configuration:\n\nCOBO:\n\n1. Open user restrictions.\n2. Verify that \"Disallow Factory Reset\" is enabled.\n\nVerify factory reset protection policy configuration:\n\nFrom the Android Enterprise policy management:\n\n1. Go to the Factory Reset Protection section.\n2. Verify that \"Factory Reset Protection\" is set to \"Allow/Enabled\".\n3. Verify that the correct Google Account ID(s) is/are listed as allowed to unlock the FRP.\n\nOn the managed Google Android 14 device, verify factory reset configuration:\n\nCOBO:\n\n1. Open Settings >> General management >> Reset.\n2. Tap the \"Factory data reset\" option.\n3. Verify that the \"Action not allowed\" pop-up appears and factory data reset does not proceed.\n\nIf the Android device user is able to perform a factory reset or the admin cannot unlock the Android phone after an FRP event, this is a finding."
           }
         }
       },

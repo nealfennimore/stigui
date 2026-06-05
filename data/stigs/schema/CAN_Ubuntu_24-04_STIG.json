@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-24"
+      "+@date": "2026-02-06"
     },
     "title": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -10053,7 +10053,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270711r1101772_rule",
+          "+@id": "SV-270711r1184069_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-24-300025",
@@ -10071,19 +10071,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to disable the Ctrl-Alt-Delete sequence when using a graphical user interface.\n\nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/settings-daemon/plugins/media-keys]\nlogout=['']\n\nUpdate the dconf settings:\n\n$ sudo dconf update",
-            "+@fixref": "F-74645r1101771_fix"
+            "+content": "Configure Ubuntu 24.04 LTS to disable the Ctrl-Alt-Delete sequence when using a graphical user interface.\n\nCreate or edit a file named /etc/dconf/db/local.d/00-mediakeys with the following contents:\n\n[org/gnome/settings-daemon/plugins/media-keys]\nlogout=@as []\n\nUpdate the dconf settings:\n\n$ sudo dconf update",
+            "+@fixref": "F-74645r1184068_fix"
           },
           "fix": {
-            "+@id": "F-74645r1101771_fix"
+            "+@id": "F-74645r1184068_fix"
           },
           "check": {
-            "+@system": "C-74744r1101770_chk",
+            "+@system": "C-74744r1184067_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_24.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Ubuntu 24.04 LTS is not configured to reboot the system when Ctrl-Alt-Delete is pressed when using a graphical user interface with the following command:\n\n$ gsettings get org.gnome.settings-daemon.plugins.media-keys logout\n['']\n\nIf the \"logout\" key is bound to an action, is commented out, or is missing, this is a finding."
+            "check-content": "Verify Ubuntu 24.04 LTS is not configured to reboot the system when Ctrl-Alt-Delete is pressed when using a graphical user interface with the following command:\n\n$ gsettings get org.gnome.settings-daemon.plugins.media-keys logout\n@as []\n\nIf the \"logout\" key is bound to an action, is commented out, or is missing, this is a finding."
           }
         }
       },
@@ -11957,7 +11957,7 @@
         "title": "SRG-OS-000205-GPOS-00083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270757r1066760_rule",
+          "+@id": "SV-270757r1184072_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-700020",
@@ -11975,19 +11975,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to set the appropriate permissions to the files and directories used by the systemd journal:\n\n$ sudo nano /usr/lib/tmpfiles.d/systemd.conf\n\nEdit the following lines of the configuration file:\n\nz /run/log/journal 2640 root systemd-journal - -\nZ /run/log/journal/%m ~2640 root systemd-journal - -\nz /var/log/journal 2640 root systemd-journal - -\nz /var/log/journal/%m 2640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: The system must be restarted for these settings to take effect.",
-            "+@fixref": "F-74691r1066759_fix"
+            "+content": "Configure the system to set the appropriate permissions to the files and directories used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n\nz /run/log/journal 0640 root systemd-journal - -\nZ /run/log/journal/%m ~0640 root systemd-journal - -\nz /var/log/journal 0640 root systemd-journal - -\nz /var/log/journal/%m 0640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: Restart the system for these settings to take effect.",
+            "+@fixref": "F-74691r1184071_fix"
           },
           "fix": {
-            "+@id": "F-74691r1066759_fix"
+            "+@id": "F-74691r1184071_fix"
           },
           "check": {
-            "+@system": "C-74790r1066758_chk",
+            "+@system": "C-74790r1184070_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_24.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the /run/log/journal and /var/log/journal directories have permissions set to \"2640\" or less permissive with the following command:\n\n$ sudo find /run/log/journal /var/log/journal  -type d -exec stat -c \"%n %a\" {} \\;\n/run/log/journal 2640\n/var/log/journal 2640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e 2640\n\nIf any output returned has a permission set greater than 2640, this is a finding.\n\nVerify all files in the /run/log/journal and /var/log/journal directories have permissions set to \"640\" or less permissive with the following command:\n\n$ sudo find /run/log/journal /var/log/journal  -type f -exec stat -c \"%n %a\" {} \\;\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system.journal 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/user-1000@0005f97cd4a8c9b5a.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system@0005f97cd2a1e0a7-d58b848af46813a4.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system@0005f97cb900e501-55ea053b7f75ae1c.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/user-1000.journal 640\n\nIf any output returned has a permission set greater than \"640\", this is a finding."
+            "check-content": "Verify the /run/log/journal and /var/log/journal directories have permissions set to \"640\" or less permissive with the following command:\n\n$ sudo find /run/log/journal /var/log/journal  -type d -exec stat -c \"%n %a\" {} \\;\n/run/log/journal 640\n/var/log/journal 640\n/var/log/journal/6a52424faa6e480ea5fc7346b9345792 640\n\nIf any output returned has a permission set greater than 640, this is a finding.\n\nVerify all files in the /run/log/journal and /var/log/journal directories have permissions set to \"640\" or less permissive with the following command:\n\n$ sudo find /run/log/journal /var/log/journal  -type f -exec stat -c \"%n %a\" {} \\;\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system.journal 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/user-1000@0005f97cd4a8c9b5a.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system@0005f97cd2a1e0a7-d58b848af46813a4.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/system@0005f97cb900e501-55ea053b7f75ae1c.journal~ 640\n/var/log/journal/d5745ad455d34fb8b6f78be37c1fcd3e/user-1000.journal 640\n\nIf any output returned has a permission set greater than \"640\", this is a finding."
           }
         }
       },
@@ -12113,7 +12113,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270761r1067180_rule",
+          "+@id": "SV-270761r1184074_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-700060",
@@ -12131,11 +12131,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to set the appropriate group-ownership to the directories used by the systemd journal:\n\n$ sudo nano /usr/lib/tmpfiles.d/systemd.conf\n\nEdit the following lines of the configuration file:\n\nz /run/log/journal 2640 root systemd-journal - -\nz /var/log/journal 2640 root systemd-journal - -\n\nNote: The system must be restarted for these settings to take effect.",
-            "+@fixref": "F-74695r1067180_fix"
+            "+content": "Configure the system to set the appropriate group-ownership to the directories used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n\nz /run/log/journal 0640 root systemd-journal - -\nz /var/log/journal 0640 root systemd-journal - -\n\nNote: Restart the system for these settings to take effect.",
+            "+@fixref": "F-74695r1184073_fix"
           },
           "fix": {
-            "+@id": "F-74695r1067180_fix"
+            "+@id": "F-74695r1184073_fix"
           },
           "check": {
             "+@system": "C-74794r1066770_chk",
@@ -12152,7 +12152,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270762r1066775_rule",
+          "+@id": "SV-270762r1184076_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-700070",
@@ -12170,11 +12170,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to set the appropriate group-ownership to the files used by the systemd journal:\n\nZ /run/log/journal/%m ~2640 root systemd-journal - -\nz /var/log/journal/%m 2640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: The system must be restarted for these settings to take effect.",
-            "+@fixref": "F-74696r1066774_fix"
+            "+content": "Configure the system to set the appropriate group-ownership to the files used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n\nZ /run/log/journal/%m ~0640 root systemd-journal - -\nz /var/log/journal/%m 0640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: Restart the system for these settings to take effect.",
+            "+@fixref": "F-74696r1184075_fix"
           },
           "fix": {
-            "+@id": "F-74696r1066774_fix"
+            "+@id": "F-74696r1184075_fix"
           },
           "check": {
             "+@system": "C-74795r1066773_chk",
@@ -12191,7 +12191,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270763r1066778_rule",
+          "+@id": "SV-270763r1184078_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-700080",
@@ -12209,11 +12209,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to set the appropriate ownership to the directories used by the systemd journal:\n\n$ sudo nano /usr/lib/tmpfiles.d/systemd.conf\n\nEdit the following lines of the configuration file:\n\nz /run/log/journal 2640 root systemd-journal - -\nz /var/log/journal 2640 root systemd-journal - -\n\nNote: The system must be restarted for these settings to take effect.",
-            "+@fixref": "F-74697r1066777_fix"
+            "+content": "Configure the system to set the appropriate ownership to the directories used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n\nz /run/log/journal 0640 root systemd-journal - -\nz /var/log/journal 0640 root systemd-journal - -\n\nNote: Restart the system for these settings to take effect.",
+            "+@fixref": "F-74697r1184077_fix"
           },
           "fix": {
-            "+@id": "F-74697r1066777_fix"
+            "+@id": "F-74697r1184077_fix"
           },
           "check": {
             "+@system": "C-74796r1066776_chk",
@@ -12230,7 +12230,7 @@
         "title": "SRG-OS-000206-GPOS-00084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270764r1066781_rule",
+          "+@id": "SV-270764r1184080_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-700090",
@@ -12248,11 +12248,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to set the appropriate ownership to the files used by the systemd journal:\n\n$ sudo nano /usr/lib/tmpfiles.d/systemd.conf\n\nEdit the following lines of the configuration file:\n\nZ /run/log/journal/%m ~2640 root systemd-journal - -\nz /var/log/journal/%m 2640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: The system must be restarted for these settings to take effect.",
-            "+@fixref": "F-74698r1066780_fix"
+            "+content": "Configure the system to set the appropriate ownership to the files used by the systemd journal.\n\nCreate a drop-in file if it does not already exist with the following command:\n\n$ sudo vi /etc/tmpfiles.d/zzz-systemd-stig.conf\n \nAdd or modify the following lines in the \"/usr/lib/tmpfiles.d/zzz-systemd-stig.conf\" file: \n\nZ /run/log/journal/%m ~0640 root systemd-journal - -\nz /var/log/journal/%m 0640 root systemd-journal - -\nz /var/log/journal/%m/system.journal 0640 root systemd-journal - -\n\nNote: Restart the system for these settings to take effect.",
+            "+@fixref": "F-74698r1184079_fix"
           },
           "fix": {
-            "+@id": "F-74698r1066780_fix"
+            "+@id": "F-74698r1184079_fix"
           },
           "check": {
             "+@system": "C-74797r1066779_chk",

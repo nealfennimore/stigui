@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-08"
+      "+@date": "2026-03-09"
     },
     "title": "MS SQL Server 2016 Database Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -1975,7 +1975,7 @@
         "title": "SRG-APP-000428-DB-000386",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213926r1167473_rule",
+          "+@id": "SV-213926r1196261_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQL6-D0-003300",
@@ -2010,12 +2010,12 @@
             "+@id": "F-15142r313211_fix"
           },
           "check": {
-            "+@system": "C-15144r1167472_chk",
+            "+@system": "C-15144r1196260_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2016_Database_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the system documentation to determine whether the organization has defined the information at rest that is to be protected from modification, which must include, at a minimum, PII and classified information. \n\nIf no information is identified as requiring such protection, this is not a finding. \n\nReview the configuration of SQL Server, Windows, and additional software as relevant. \n\nIf full-disk encryption is required, and Windows or the storage system is not configured for this, this is a finding. \n\nIf database transparent data encryption (TDE) is called for, check whether it is enabled: \n\nSELECT\nDB_NAME(database_id) AS [Database Name], CASE encryption_state WHEN 0 THEN 'No database encryption key present, no encryption' \nWHEN 1 THEN 'Unencrypted' \nWHEN 2 THEN 'Encryption in progress' \nWHEN 3 THEN 'Encrypted' \nWHEN 4 THEN 'Key change in progress' \nWHEN 5 THEN 'Decryption in progress' \nWHEN 6 THEN 'Protection change in progress' \nEND AS [Encryption State]\nFROM sys.dm_database_encryption_keys\n\nFor each user database for which encryption is called for and that is marked Unencrypted, this is a finding. \n\nIf table/column encryption and/or a separation between those who own the data (and can view it) and those who manage the data (but should have no access) is required for PII or similar types of data, use Always Encrypted. The details for configuring Always Encrypted are located here: https://msdn.microsoft.com/en-us/library/mt163865.aspx.\n\nReview the definitions and contents of the relevant tables/columns for the Always Encryption settings, if any of the information defined as requiring cryptographic protection is not encrypted this is a finding."
+            "check-content": "Review the system documentation to determine whether the organization has defined the information at rest be protected from modification, which must include at a minimum, PII and classified information. \n\nIf no information is identified as requiring such protection, this is not a finding. \n\nReview the configuration of SQL Server, Windows, and additional software as relevant. \n\nIf full-disk encryption is required, and Windows or the storage system is not configured for this, this is a finding. \n\nIf database transparent data encryption (TDE) is called for, verify it is enabled: \n\nSELECT db.name AS DatabaseName, db.is_encrypted AS IsEncrypted,\nCASE\nWHEN dm.encryption_state = 0 THEN 'No database encryption key present, no encryption'\nWHEN dm.encryption_state = 1 THEN 'Unencrypted'\nWHEN dm.encryption_state = 2 THEN 'Encryption in progress'\nWHEN dm.encryption_state = 3 THEN 'Encrypted'\nWHEN dm.encryption_state = 4 THEN 'Key change in progress'\nWHEN dm.encryption_state = 5 THEN 'Decryption in progress'\nWHEN dm.encryption_state = 6 THEN 'Protection change in progress'\nEND AS EncryptionState,\ndm.encryption_state AS EncryptionState,\ndm.key_algorithm AS KeyAlgorithm,\ndm.key_length AS KeyLength\nFROM sys.databases db\nLEFT OUTER JOIN sys.dm_database_encryption_keys dm ON db.database_id = dm.database_id\nWHERE db.database_id NOT IN (1,2,3,4)\n\nFor each user database for which encryption is called for and that is marked Unencrypted, this is a finding. \n\nIf table/column encryption and/or a separation between those who own the data (and can view it) and those who manage the data (but should have no access) is required for PII or similar types of data, use Always Encrypted. The details for configuring Always Encrypted are located here: https://msdn.microsoft.com/en-us/library/mt163865.aspx.\n\nReview the definitions and contents of the relevant tables/columns for the Always Encrypted settings. If any of the information that requires cryptographic protection is not encrypted, this is a finding."
           }
         }
       },

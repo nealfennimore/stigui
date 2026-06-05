@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-08"
+      "+@date": "2026-02-25"
     },
     "title": "Microsoft SQL Server 2022 Database Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 3 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -140,6 +140,10 @@
           {
             "+@idref": "V-271201",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
+            "+@selected": "true"
           }
         ]
       },
@@ -234,6 +238,10 @@
           },
           {
             "+@idref": "V-271201",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
             "+@selected": "true"
           }
         ]
@@ -330,6 +338,10 @@
           {
             "+@idref": "V-271201",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
+            "+@selected": "true"
           }
         ]
       },
@@ -424,6 +436,10 @@
           },
           {
             "+@idref": "V-271201",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
             "+@selected": "true"
           }
         ]
@@ -520,6 +536,10 @@
           {
             "+@idref": "V-271201",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
+            "+@selected": "true"
           }
         ]
       },
@@ -614,6 +634,10 @@
           },
           {
             "+@idref": "V-271201",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
             "+@selected": "true"
           }
         ]
@@ -710,6 +734,10 @@
           {
             "+@idref": "V-271201",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
+            "+@selected": "true"
           }
         ]
       },
@@ -805,6 +833,10 @@
           {
             "+@idref": "V-271201",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
+            "+@selected": "true"
           }
         ]
       },
@@ -899,6 +931,10 @@
           },
           {
             "+@idref": "V-271201",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-283667",
             "+@selected": "true"
           }
         ]
@@ -1745,7 +1781,7 @@
         "title": "SRG-APP-000428-DB-000386",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-271201r1109210_rule",
+          "+@id": "SV-271201r1192914_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SQLD-22-003300",
@@ -1776,12 +1812,51 @@
             "+@id": "F-75151r1108218_fix"
           },
           "check": {
-            "+@system": "C-75244r1109209_chk",
+            "+@system": "C-75244r1192913_chk",
             "check-content-ref": {
               "+@href": "MS_SQL_Server_2022_Database_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the system documentation to determine whether the organization has defined the information at rest that is to be protected from disclosure or modification, which must include, at a minimum, PII and classified information. \n\nIf no information is identified as requiring such protection, this is not a finding. \n\nReview the configuration of SQL Server, Windows, and additional software as relevant. \n\nIf full-disk encryption is required, and Windows or the storage system is not configured for this, this is a finding. \n\nIf database transparent data encryption (TDE) is called for, check whether it is enabled: \n\nSELECT\nDB_NAME(database_id) AS [Database Name], CASE encryption_state WHEN 0 THEN 'No database encryption key present, no encryption' \nWHEN 1 THEN 'Unencrypted' \nWHEN 2 THEN 'Encryption in progress' \nWHEN 3 THEN 'Encrypted' \nWHEN 4 THEN 'Key change in progress' \nWHEN 5 THEN 'Decryption in progress' \nWHEN 6 THEN 'Protection change in progress' \nEND AS [Encryption State]\nFROM sys.dm_database_encryption_keys\n\nFor each user database for which encryption is called for and it is marked Unencrypted, this is a finding. \n\nIf table/column encryption and/or a separation between those who own the data (and can view it) and those who manage the data (but should have no access) is required for PII or similar types of data, use Always Encrypted. The details for configuring Always Encrypted are located here: https://msdn.microsoft.com/en-us/library/mt163865.aspx.\n\nReview the definitions and contents of the relevant tables/columns for the Always Encryption settings, if any of the information defined as requiring cryptographic protection is not encrypted this is a finding."
+            "check-content": "Review the system documentation to determine whether the organization has defined the information at rest that is to be protected from disclosure or modification, which must include, at a minimum, PII and classified information.\n\nIf no information is identified as requiring such protection, this is not a finding. \n\nReview the configuration of SQL Server, Windows, and additional software as relevant. \n\nIf full-disk encryption is required, and Windows or the storage system is not configured for this, this is a finding. \n\nIf database transparent data encryption (TDE) is called for, verify it is enabled: \n\nSELECT db.name AS DatabaseName, db.is_encrypted AS IsEncrypted,\nCASE\nWHEN dm.encryption_state = 0 THEN 'No database encryption key present, no encryption'\nWHEN dm.encryption_state = 1 THEN 'Unencrypted'\nWHEN dm.encryption_state = 2 THEN 'Encryption in progress'\nWHEN dm.encryption_state = 3 THEN 'Encrypted'\nWHEN dm.encryption_state = 4 THEN 'Key change in progress'\nWHEN dm.encryption_state = 5 THEN 'Decryption in progress'\nWHEN dm.encryption_state = 6 THEN 'Protection change in progress'\nEND AS EncryptionState,\ndm.encryption_state AS EncryptionState,\ndm.key_algorithm AS KeyAlgorithm,\ndm.key_length AS KeyLength\nFROM sys.databases db\nLEFT OUTER JOIN sys.dm_database_encryption_keys dm ON db.database_id = dm.database_id\nWHERE db.database_id NOT IN (1,2,3,4)\n\nFor each user database requiring encryption that is marked Unencrypted, this is a finding. \n\nIf table/column encryption and/or a separation between those who own the data (and can view it) and those who manage the data (but should have no access) is required for PII or similar types of data, use Always Encrypted. The details for configuring Always Encrypted are located here: https://msdn.microsoft.com/en-us/library/mt163865.aspx.\n\nReview the definitions and contents of the relevant tables/columns for the Always Encrypted settings. If any of the information requiring cryptographic protection that is not encrypted this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-283667",
+        "title": "SRG-APP-000080-DB-000063",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-283667r1192917_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "SQLD-22-004250",
+          "title": "SQL Server must protect against a user falsely repudiating by ensuring that only unique Active Directory user accounts can connect to the database.",
+          "description": "<VulnDiscussion>Nonrepudiation is required to maintain data integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message. \n\nNonrepudiation protects against later claims by a user of not having created, modified, or deleted a particular data item or collection of data in the database.\n\nIn designing a database, the organization must define the types of data and the user actions that must be protected from repudiation. The implementation must then include building audit features into the application data tables and configuring SQL Server’s audit tools to capture the necessary audit trail. Design and implementation also must ensure that applications pass individual user identification to SQL Server, even where the application connects to the DBMS with a standard, shared account.\n\nIf the computer account of a remote computer is granted access to a SQL Server database, any service or scheduled task running as NT AUTHORITY\\SYSTEM or NT AUTHORITY\\NETWORK SERVICE can log into the instance and perform actions. These actions cannot be traced back to a specific user or process.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target MS SQL Server 2022 Database",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "MS SQL Server 2022 Database",
+            "dc:identifier": "5676"
+          },
+          "ident": {
+            "+content": "CCI-000166",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Ensure all logins are uniquely identifiable and authenticate all users who log on to the system. This likely would be done using a combination of Active Directory with unique accounts and the SQL Server by ensuring mapping to individual accounts. Verify server documentation to ensure accounts are documented and unique.\n\nRemove any undocumented accounts or shared accounts that cannot be individually authenticated.",
+            "+@fixref": "F-88137r1192916_fix"
+          },
+          "fix": {
+            "+@id": "F-88137r1192916_fix"
+          },
+          "check": {
+            "+@system": "C-88232r1192915_chk",
+            "check-content-ref": {
+              "+@href": "MS_SQL_Server_2022_Database_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Execute the following query:\n\nSELECT name\nFROM sys.database_principals\nWHERE type in ('U','G')\nAND name LIKE '%$'\n\nIf no users are returned, this is not a finding.\n\nIf users are returned, determine whether each user is a computer account.\n\nLaunch PowerShell and execute the following code:\n\nNote: <name> represents the username portion of the user. For example, if the user is \"CONTOSO\\user1$\", the username is \"user1\".\n\n([ADSISearcher]\"(&(ObjectCategory=Computer)(Name=<name>))\").FindAll()\n\nIf no account information is returned, this is not a finding.\n\nIf account information is returned, this is a finding."
           }
         }
       }

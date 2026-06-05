@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-11"
+      "+@date": "2026-03-04"
     },
     "title": "Dell OS10 Switch Router Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 10 Dec 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1630,7 +1630,7 @@
         "title": "SRG-NET-000018-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269849r1051932_rule",
+          "+@id": "SV-269849r1137893_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000010",
@@ -1669,7 +1669,7 @@
         "title": "SRG-NET-000018-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269850r1051935_rule",
+          "+@id": "SV-269850r1137894_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000020",
@@ -1708,7 +1708,7 @@
         "title": "SRG-NET-000018-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269851r1051938_rule",
+          "+@id": "SV-269851r1137895_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000030",
@@ -1747,7 +1747,7 @@
         "title": "SRG-NET-000018-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269852r1051941_rule",
+          "+@id": "SV-269852r1137896_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000040",
@@ -1786,7 +1786,7 @@
         "title": "SRG-NET-000018-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269853r1051944_rule",
+          "+@id": "SV-269853r1137897_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000050",
@@ -1825,7 +1825,7 @@
         "title": "SRG-NET-000018-RTR-000006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269854r1051947_rule",
+          "+@id": "SV-269854r1137898_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "OS10-RTR-000060",
@@ -1864,7 +1864,7 @@
         "title": "SRG-NET-000018-RTR-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269855r1051950_rule",
+          "+@id": "SV-269855r1195280_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "OS10-RTR-000100",
@@ -1882,19 +1882,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the router to reject updates from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.\n\nStep 1: Configure a prefix list for each customer containing prefixes belonging to each.\n\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST1 permit 10.*\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST1 deny .*\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST2 permit 200\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST2 deny .*\n\nStep 2: Configure the route map referencing the configured prefix list.\n\nOS10(config)# route-map AS_PATH_FILTER_CUST1_MAP 50\nOS10(config-route-map)# match ip address prefix-list AS_PATH_FILTER_CUST1\nOS10(config-route-map)# exit\nOS10(config)# route-map AS_PATH_FILTER_CUST2_MAP 50\nOS10(config-route-map)# match ip address prefix-list AS_PATH_FILTER_CUST2\nOS10(config-route-map)# exit\n\nStep 3: Apply the route-map inbound to each external BGP neighbor.\n\nOS10(config)# router bgp 10\nOS10(config-router-bgp-10)# neighbor 50.1.1.1\nOS10(config-router-neighbor)# address-family ipv4 unicast\nOS10(config-router-bgp-neighbor-af)# route-map AS_PATH_FILTER_CUST1_MAP in\nOS10(config-router-bgp-neighbor-af)# exit\nOS10(config-router-neighbor)# exit\nOS10(config-router-bgp-10)# neighbor 60.1.1.1\nOS10(config-router-neighbor)# address-family ipv4 unicast\nOS10(config-router-bgp-neighbor-af)# route-map AS_PATH_FILTER_CUST2_MAP in\nOS10(config-router-bgp-neighbor-af)# exit\nOS10(config-router-neighbor)# exit\nOS10(config-router-bgp-10)# exit",
-            "+@fixref": "F-73789r1051949_fix"
+            "+content": "Configure the router to reject updates from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.\n\nStep 1: Configure an as-path access list for each customer containing prefixes belonging to each.\n\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST1 permit 10.*\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST1 deny .*\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST2 permit 200\nOS10(config)# ip as-path access-list AS_PATH_FILTER_CUST2 deny .*\n\nStep 2: Configure the route map referencing the configured as-path access list.\n\nOS10(config)# route-map AS_PATH_FILTER_CUST1_MAP 50\nOS10(config-route-map)# match ip address prefix-list AS_PATH_FILTER_CUST1\nOS10(config-route-map)# exit\nOS10(config)# route-map AS_PATH_FILTER_CUST2_MAP 50\nOS10(config-route-map)# match ip address prefix-list AS_PATH_FILTER_CUST2\nOS10(config-route-map)# exit\n\nStep 3: Apply the route-map inbound to each external BGP neighbor.\n\nOS10(config)# router bgp 10\nOS10(config-router-bgp-10)# neighbor 50.1.1.1\nOS10(config-router-neighbor)# address-family ipv4 unicast\nOS10(config-router-bgp-neighbor-af)# route-map AS_PATH_FILTER_CUST1_MAP in\nOS10(config-router-bgp-neighbor-af)# exit\nOS10(config-router-neighbor)# exit\nOS10(config-router-bgp-10)# neighbor 60.1.1.1\nOS10(config-router-neighbor)# address-family ipv4 unicast\nOS10(config-router-bgp-neighbor-af)# route-map AS_PATH_FILTER_CUST2_MAP in\nOS10(config-router-bgp-neighbor-af)# exit\nOS10(config-router-neighbor)# exit\nOS10(config-router-bgp-10)# exit",
+            "+@fixref": "F-73789r1195279_fix"
           },
           "fix": {
-            "+@id": "F-73789r1051949_fix"
+            "+@id": "F-73789r1195279_fix"
           },
           "check": {
-            "+@system": "C-73888r1051948_chk",
+            "+@system": "C-73888r1195278_chk",
             "check-content-ref": {
               "+@href": "Dell_OS10_Switch_Router_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the router configuration to verify the router is configured to deny updates received from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.\n\nStep 1: Review router configuration and verify that there is an as-path access-list statement defined to only accept routes from a CE router whose AS did not originate the route. \n\nOS10# show running-configuration as-path\n!\n...\nip as-path access-list AS_PATH_FILTER_CUST1 permit 10.*\nip as-path access-list AS_PATH_FILTER_CUST1 deny .*\nip as-path access-list AS_PATH_FILTER_CUST2 permit 200\nip as-path access-list AS_PATH_FILTER_CUST2 deny .*\n...\n\nStep 2: Verify the route map applied to the external neighbors references the configured as-path access list shown above.\n\nOS10# show running-configuration route-map\n!\nroute-map AS_PATH_FILTER_CUST1_MAP permit 50\nmatch ip address prefix-list AS_PATH_FILTER_CUST1\n!\nroute-map AS_PATH_FILTER_CUST2_MAP permit 60\nmatch ip address prefix-list AS_PATH_FILTER_CUST2\n! \n\nStep 3: Verify the route map applied to the external neighbors references the appropriate route maps shown above.\n\n!\nrouter bgp 10\n!\nneighbor 50.1.1.1\n  !\n  address-family ipv4 unicast\n   route-map AS_PATH_FILTER_CUST1_MAP in\nneighbor 60.1.1.1\n  !\n  address-family ipv4 unicast\n   route-map AS_PATH_FILTER_CUST2_MAP in\n\n\nIf the router is not configured to reject updates from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer, this is a finding."
+            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the router configuration to verify the router is configured to deny updates received from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.\n\nStep 1: Review router configuration and verify that there is an as-path access-list statement defined to only accept routes from a CE router whose AS did not originate the route. \n\nOS10# show running-configuration as-path\n!\n...\nip as-path access-list AS_PATH_FILTER_CUST1 permit 10.*\nip as-path access-list AS_PATH_FILTER_CUST1 deny .*\nip as-path access-list AS_PATH_FILTER_CUST2 permit 200\nip as-path access-list AS_PATH_FILTER_CUST2 deny .*\n...\n\nStep 2: Verify the route map applied to the external neighbors references the configured as-path access list shown above.\n\nOS10# show running-configuration route-map\n!\nroute-map AS_PATH_FILTER_CUST1_MAP permit 50\nmatch ip address as-path AS_PATH_FILTER_CUST1\n!\nroute-map AS_PATH_FILTER_CUST2_MAP permit 60\nmatch ip address prefix-list AS_PATH_FILTER_CUST2\n! \n\nStep 3: Verify the route map applied to the external neighbors references the appropriate route maps shown above.\n\n!\nrouter bgp 10\n!\nneighbor 50.1.1.1\n  !\n  address-family ipv4 unicast\n   route-map AS_PATH_FILTER_CUST1_MAP in\nneighbor 60.1.1.1\n  !\n  address-family ipv4 unicast\n   route-map AS_PATH_FILTER_CUST2_MAP in\n\nIf the router is not configured to reject updates from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer, this is a finding."
           }
         }
       },
@@ -1903,7 +1903,7 @@
         "title": "SRG-NET-000019-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269857r1051956_rule",
+          "+@id": "SV-269857r1137908_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000130",
@@ -1942,7 +1942,7 @@
         "title": "SRG-NET-000019-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269858r1051959_rule",
+          "+@id": "SV-269858r1137911_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000140",
@@ -1981,7 +1981,7 @@
         "title": "SRG-NET-000019-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269859r1051962_rule",
+          "+@id": "SV-269859r1137913_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "OS10-RTR-000160",
@@ -2020,7 +2020,7 @@
         "title": "SRG-NET-000019-RTR-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269861r1052431_rule",
+          "+@id": "SV-269861r1137919_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "OS10-RTR-000180",
@@ -2059,7 +2059,7 @@
         "title": "SRG-NET-000019-RTR-000011",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269863r1052433_rule",
+          "+@id": "SV-269863r1137925_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000200",
@@ -2098,7 +2098,7 @@
         "title": "SRG-NET-000019-RTR-000012",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269864r1051977_rule",
+          "+@id": "SV-269864r1137928_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OS10-RTR-000210",
@@ -2137,7 +2137,7 @@
         "title": "SRG-NET-000019-RTR-000013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269865r1051980_rule",
+          "+@id": "SV-269865r1137930_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "OS10-RTR-000220",
@@ -2176,7 +2176,7 @@
         "title": "SRG-NET-000019-RTR-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269866r1051983_rule",
+          "+@id": "SV-269866r1137932_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "OS10-RTR-000230",

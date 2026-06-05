@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-11"
+      "+@date": "2025-09-10"
     },
     "title": "Network Device Management Security Requirements Guide",
     "description": "This Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 4 Benchmark Date: 28 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -468,6 +468,10 @@
           {
             "+@idref": "V-264308",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
+            "+@selected": "true"
           }
         ]
       },
@@ -890,6 +894,10 @@
           },
           {
             "+@idref": "V-264308",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
             "+@selected": "true"
           }
         ]
@@ -1314,6 +1322,10 @@
           {
             "+@idref": "V-264308",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
+            "+@selected": "true"
           }
         ]
       },
@@ -1736,6 +1748,10 @@
           },
           {
             "+@idref": "V-264308",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
             "+@selected": "true"
           }
         ]
@@ -2160,6 +2176,10 @@
           {
             "+@idref": "V-264308",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
+            "+@selected": "true"
           }
         ]
       },
@@ -2582,6 +2602,10 @@
           },
           {
             "+@idref": "V-264308",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
             "+@selected": "true"
           }
         ]
@@ -3006,6 +3030,10 @@
           {
             "+@idref": "V-264308",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
+            "+@selected": "true"
           }
         ]
       },
@@ -3428,6 +3456,10 @@
           },
           {
             "+@idref": "V-264308",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
             "+@selected": "true"
           }
         ]
@@ -3852,6 +3884,10 @@
           {
             "+@idref": "V-264308",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278996",
+            "+@selected": "true"
           }
         ]
       }
@@ -4254,12 +4290,12 @@
         "title": "SRG-APP-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-202017r960792_rule",
+          "+@id": "SV-202017r1137874_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000033-NDM-000212",
           "title": "The network device must be configured to assign appropriate user roles or access levels to authenticated users.",
-          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DoD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are pre-configured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an ISSM may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM’s user persona to the audit security group. This is still considered privileged access, but the ISSM’s security group is more restrictive than the network administrator’s security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user’s security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user’s directory service group membership.\n</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are pre-configured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an ISSM may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM’s user persona to the audit security group. This is still considered privileged access, but the ISSM’s security group is more restrictive than the network administrator’s security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user’s security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user’s directory service group membership.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
             "dc:publisher": "DISA",
@@ -4289,7 +4325,7 @@
             "+@id": "F-2144r663932_fix"
           },
           "check": {
-            "+@system": "C-2143r663931_chk",
+            "+@system": "C-2143r1137873_chk",
             "check-content-ref": {
               "+@href": "Network_Device_Management_SRG.xml",
               "+@name": "M"
@@ -4303,12 +4339,12 @@
         "title": "SRG-APP-000038",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-202018r960801_rule",
+          "+@id": "SV-202018r1137875_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000038-NDM-000213",
           "title": "The network device must enforce approved authorizations for controlling the flow of management information within the network device based on information flow control policies.",
-          "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
             "dc:publisher": "DISA",
@@ -6561,12 +6597,12 @@
         "title": "SRG-APP-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-202092r987662_rule",
+          "+@id": "SV-202092r1137878_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000329-NDM-000287",
           "title": "If the network device uses role-based access control, the network device must enforce organization-defined role-based access control policies over defined subjects and objects.",
-          "description": "<VulnDiscussion>Organizations can create specific roles based on job functions and the authorizations (i.e., privileges) to perform needed operations on organizational information systems associated with the organization-defined roles. When administrators are assigned to the organizational roles, they inherit the authorizations or privileges defined for those roles. RBAC simplifies privilege administration for organizations because privileges are not assigned directly to every administrator (which can be a significant number of individuals for mid- to large-size organizations) but are instead acquired through role assignments. RBAC can be implemented either as a mandatory or discretionary form of access control.\n\nThe RBAC policies and the subjects and objects are defined uniquely for each network device, so they cannot be specified in the requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Organizations can create specific roles based on job functions and the authorizations (i.e., privileges) to perform needed operations on organizational information systems associated with the organization-defined roles. When administrators are assigned to the organizational roles, they inherit the authorizations or privileges defined for those roles. RBAC simplifies privilege administration for organizations because privileges are not assigned directly to every administrator (which can be a significant number of individuals for mid- to large-size organizations) but are instead acquired through role assignments. RBAC can be implemented either as a mandatory or discretionary form of access control.\n\nThe RBAC policies and the subjects and objects are defined uniquely for each network device, so they cannot be specified in the requirement.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
             "dc:publisher": "DISA",
@@ -6593,19 +6629,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the network device or its associated authentication server to enforce role-based access control policy over defined subjects and objects.",
-            "+@fixref": "F-2219r381918_fix"
+            "+content": "Configure the network device or its associated authentication server to enforce RBAC policy over defined subjects and objects.",
+            "+@fixref": "F-2219r1137877_fix"
           },
           "fix": {
-            "+@id": "F-2219r381918_fix"
+            "+@id": "F-2219r1137877_fix"
           },
           "check": {
-            "+@system": "C-2218r381917_chk",
+            "+@system": "C-2218r1137876_chk",
             "check-content-ref": {
               "+@href": "Network_Device_Management_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if the network device enforces role-based access control policy over defined subjects and objects.  This requirement may be verified by demonstration, configuration review, or validated test results. This requirement may be met through use of a properly configured authentication server if the device is configured to use the authentication server. If role-based access control policy is not enforced over defined subjects and objects, this is a finding."
+            "check-content": "Determine if the network device enforces role-based access control policy over defined subjects and objects. This requirement may be verified by demonstration, configuration review, or validated test results. This requirement may be met through use of a properly configured authentication server if the device is configured to use the authentication server. If RBAC policy is not enforced over defined subjects and objects, this is a finding."
           }
         }
       },
@@ -7904,12 +7940,12 @@
         "title": "SRG-APP-000516",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-202132r961863_rule",
+          "+@id": "SV-202132r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000516-NDM-000336",
-          "title": "The network device must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
-          "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The network device must be configured to use at least one authentication server for the purpose of authenticating users prior to granting administrative access. For boundary devices, two authentication servers are required.",
+          "description": "<VulnDiscussion>Centralized management of authentication settings increases the security of remote and nonlocal access methods. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.\n\nA network boundary device is a piece of networking hardware that sits at the edge of a network, controlling the flow of data traffic between the internal network and external networks like the internet. It acts as a gatekeeper, enforcing security policies and protecting the internal network from unauthorized access and malicious attacks. Having a second authentication server delivers a defense in depth approach for critical boundary devices.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
             "dc:publisher": "DISA",
@@ -7932,19 +7968,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Step 1: Configure the network device to use at least two authentication servers.\n\nStep 2: Configure the authentication order to use the authentication servers as primary source for authentication.\n\nStep 3: Configure all network connections associated with a device management to use the authentication servers for the purpose of login authentication.",
-            "+@fixref": "F-2259r916110_fix"
+            "+content": "1. Configure the network device to use at least one authentication server or configure the network boundary device to use at least two authentication servers.\n2. Configure the authentication order to use the authentication servers as primary source for authentication.\n3. Configure all network connections associated with a device management to use the authentication servers for the purpose of login authentication.",
+            "+@fixref": "F-2259r1137886_fix"
           },
           "fix": {
-            "+@id": "F-2259r916110_fix"
+            "+@id": "F-2259r1137886_fix"
           },
           "check": {
-            "+@system": "C-2258r916109_chk",
+            "+@system": "C-2258r1137885_chk",
             "check-content-ref": {
               "+@href": "Network_Device_Management_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the network device configuration to verify that the device is configured to use at least two authentication servers as primary source for authentication.\n\nIf the network device is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
+            "check-content": "Review the network device configuration to verify that the device is configured to use at least one authentication server as a primary source for authentication. For boundary devices, verify that the device is configured to use at least two authentication servers for authentication.\n\nIf the network device is not configured to use at least one authentication server for the purpose of authenticating users prior to granting administrative access, this is a finding.\n\nIf the network boundary device is not configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access, this is a finding."
           }
         }
       },
@@ -8161,12 +8197,12 @@
         "title": "SRG-APP-000516",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213467r961863_rule",
+          "+@id": "SV-213467r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000516-NDM-000350",
-          "title": "The network device must be configured to send log data to at least two central log servers for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO).",
-          "description": "<VulnDiscussion>The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. The stored log data can used to detect weaknesses in security that enable the network IA team to find and address these weaknesses before breaches can occur. Reviewing these logs, whether before or after a security breach, are important in showing whether someone is an internal employee or an outside threat.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The network device must be configured to send log data to at least one central log server for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO). For boundary devices, two log servers are required.",
+          "description": "<VulnDiscussion>The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. The stored log data can be used to detect weaknesses in security that enable the network IA team to find and address these weaknesses before breaches can occur. Reviewing these logs, whether before or after a security breach, are important in showing whether someone is an internal employee or an outside threat.\n\nA network boundary device is a piece of networking hardware that sits at the edge of a network, controlling the flow of data traffic between the internal network and external networks like the internet. It acts as a gatekeeper, enforcing security policies and protecting the internal network from unauthorized access and malicious attacks. Having a second central log server delivers a defense in depth approach for critical boundary devices.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
             "dc:publisher": "DISA",
@@ -8189,19 +8225,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the network device to send log data to at least two central log servers.",
-            "+@fixref": "F-14690r916113_fix"
+            "+content": "Configure the network device to send log data to at least one central log server.\n\nConfigure the network boundary device to send log data to at least two central log servers.",
+            "+@fixref": "F-14690r1137889_fix"
           },
           "fix": {
-            "+@id": "F-14690r916113_fix"
+            "+@id": "F-14690r1137889_fix"
           },
           "check": {
-            "+@system": "C-14692r916112_chk",
+            "+@system": "C-14692r1137888_chk",
             "check-content-ref": {
               "+@href": "Network_Device_Management_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the network device is configured to send log data to at least two central log servers. \n\nIf the network device is not configured to send log data to at least two central log servers, this is a finding."
+            "check-content": "Verify the network device is configured to send log data to at least one central log server. For boundary devices, verify the network device is configured to send log data to at least two central log servers. \n\nIf the network device is not configured to send log data to at least one central log server, this is a finding.\n\nIf the network boundary device is not configured to send log data to at least two central log servers, this is a finding."
           }
         }
       },
@@ -8435,11 +8471,11 @@
         "title": "SRG-APP-000457",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256777r991609_rule",
+          "+@id": "SV-256777r1137881_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000457-NDM-000352",
-          "title": "The network device must install security-relevant software updates within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+          "title": "The network device must install security-relevant firmware updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).",
           "description": "<VulnDiscussion>Security flaws with firmware are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant firmware updates. Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Network Device Management",
@@ -8458,24 +8494,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-002605",
+              "+content": "CCI-002607",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "Institute and adhere to policies and procedures to ensure that patches are consistently applied to the network device within the time allowed.",
-            "+@fixref": "F-60395r891337_fix"
+            "+content": "Install security-relevant firmware updates within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).",
+            "+@fixref": "F-60395r1137880_fix"
           },
           "fix": {
-            "+@id": "F-60395r891337_fix"
+            "+@id": "F-60395r1137880_fix"
           },
           "check": {
-            "+@system": "C-60452r991549_chk",
+            "+@system": "C-60452r1137879_chk",
             "check-content-ref": {
               "+@href": "Network_Device_Management_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Obtain evidence that software updates are consistently applied to the network device within the time frame defined for each patch.\n\nIf such evidence cannot be obtained, or the evidence that is obtained indicates a pattern of noncompliance, this is a finding.\n\nIf the network device does not install security-relevant updates within the time period directed by the authoritative source, this is a finding."
+            "check-content": "Verify the network device has security-relevant firmware updates installed within 30 days unless the time period is directed by an authoritative source (e.g., IAVM, CTOs, DTMs, STIGs).\n\nIf the network device does not install security-relevant firmware updates within 30 days unless the time period is directed by an authoritative source, this is a finding."
           }
         }
       },
@@ -8866,6 +8902,45 @@
               "+@name": "M"
             },
             "check-content": "Verify the network device is configured to compare the internal system clocks on an organization-defined frequency with organization-defined authoritative time source.\n\nIf the network device is not configured to compare the internal system clocks on an organization-defined frequency with organization-defined authoritative time source, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-278996",
+        "title": "SRG-APP-001035",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-278996r1137884_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "SRG-APP-001035-NDM-000340",
+          "title": "The network device must be a version supported by the vendor.",
+          "description": "<VulnDiscussion>Unsupported software and systems should not be used because fixes to newly identified bugs will not be implemented by the vendor. The lack of support can result in potential vulnerabilities.\n\nSoftware and systems at unsupported servicing levels or releases will not receive security updates for new vulnerabilities, which leaves them subject to exploitation.\n\nWhen maintenance updates and patches are no longer available, software is no longer considered supported and should be upgraded or decommissioned.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Network Device Management",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Network Device Management",
+            "dc:identifier": "2890"
+          },
+          "ident": {
+            "+content": "CCI-003376",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Install or upgrade the network device to a version supported by the vendor.",
+            "+@fixref": "F-83449r1137883_fix"
+          },
+          "fix": {
+            "+@id": "F-83449r1137883_fix"
+          },
+          "check": {
+            "+@system": "C-83544r1137882_chk",
+            "check-content-ref": {
+              "+@href": "Network_Device_Management_SRG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify that the network device is a version supported by the vendor.\n\nIf the network device is not a version supported by the vendor, this is a finding."
           }
         }
       }

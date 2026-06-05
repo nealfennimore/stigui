@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-24"
+      "+@date": "2026-02-05"
     },
     "title": "Red Hat Enterprise Linux 8 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 7 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -13333,7 +13333,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230222r1017041_rule",
+          "+@id": "SV-230222r1184233_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010010",
@@ -13358,12 +13358,12 @@
             "+@id": "F-32866r567413_fix"
           },
           "check": {
-            "+@system": "C-32891r567412_chk",
+            "+@system": "C-32891r1184232_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system security patches and updates are installed and up to date. Updates are required to be applied with a frequency determined by the site or Program Management Office (PMO).\n\nObtain the list of available package security updates from Red Hat. The URL for updates is https://rhn.redhat.com/errata/. It is important to note that updates provided by Red Hat may not be present on the system if the underlying packages are not installed.\n\nCheck that the available package security updates have been installed on the system with the following command:\n\n$ sudo yum history list | more\n\nLoaded plugins: langpacks, product-id, subscription-manager\nID | Command line | Date and time | Action(s) | Altered\n-------------------------------------------------------------------------------\n70 | install aide | 2020-03-05 10:58 | Install | 1 \n69 | update -y | 2020-03-04 14:34 | Update | 18 EE\n68 | install vlc | 2020-02-21 17:12 | Install | 21 \n67 | update -y | 2020-02-21 17:04 | Update | 7 EE\n\nIf package updates have not been performed on the system within the timeframe the site/program documentation requires, this is a finding.\n\nTypical update frequency may be overridden by Information Assurance Vulnerability Alert (IAVA) notifications from CYBERCOM.\n\nIf the operating system is in non-compliance with the Information Assurance Vulnerability Management (IAVM) process, this is a finding."
+            "check-content": "Note: If the system is not an internet connected system, this is not applicable.\n\nVerify the operating system security patches and updates are installed and up to date. Updates are required to be applied with a frequency determined by the site or Program Management Office (PMO).\n\nObtain the list of available package security updates from Red Hat. The URL for updates is https://rhn.redhat.com/errata/. It is important to note that updates provided by Red Hat may not be present on the system if the underlying packages are not installed.\n\nCheck that the available package security updates have been installed on the system with the following command:\n\n$ sudo yum history list | more\n\nLoaded plugins: langpacks, product-id, subscription-manager\nID | Command line | Date and time | Action(s) | Altered\n-------------------------------------------------------------------------------\n70 | install aide | 2020-03-05 10:58 | Install | 1 \n69 | update -y | 2020-03-04 14:34 | Update | 18 EE\n68 | install vlc | 2020-02-21 17:12 | Install | 21 \n67 | update -y | 2020-02-21 17:04 | Update | 7 EE\n\nIf package updates have not been performed on the system within the timeframe the site/program documentation requires, this is a finding.\n\nTypical update frequency may be overridden by Information Assurance Vulnerability Alert (IAVA) notifications from CYBERCOM.\n\nIf the operating system is in non-compliance with the Information Assurance Vulnerability Management (IAVM) process, this is a finding."
           }
         }
       },
@@ -13450,7 +13450,7 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230225r1069297_rule",
+          "+@id": "SV-230225r1184236_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010040",
@@ -13468,19 +13468,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via the ssh.\n\nEdit the \"/etc/ssh/sshd_config\" file to uncomment the banner keyword and configure it to point to a file that will contain the logon banner (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor). An example configuration line is:\n\nbanner /etc/issue\n\nEither create the file containing the banner or replace the text in the file with the Standard Mandatory DOD Notice and Consent Banner. The DOD-required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nThe SSH service must be restarted for changes to take effect.",
-            "+@fixref": "F-32869r951589_fix"
+            "+content": "Configure the operating system to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via the ssh.\n\nEdit the \"/etc/ssh/sshd_config\" file to uncomment the banner keyword and configure it to point to a file that will contain the logon banner (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor). An example configuration line is:\n\nbanner /etc/issue\n\nEither create the file containing the banner or replace the text in the file with the Standard Mandatory DOD Notice and Consent Banner. The DOD-required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nThe SSH service must be restarted for changes to take effect.",
+            "+@fixref": "F-32869r1184235_fix"
           },
           "fix": {
-            "+@id": "F-32869r951589_fix"
+            "+@id": "F-32869r1184235_fix"
           },
           "check": {
-            "+@system": "C-32894r1069203_chk",
+            "+@system": "C-32894r1184234_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify any publicly accessible connection to the operating system displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.\n\nCheck for the location of the banner file being used with the following command:\n\n$ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*banner'\n\n/etc/ssh/sshd_config:banner /etc/issue\n\nThis command will return the banner keyword and the name of the file that contains the ssh banner (in this case \"/etc/issue\").\n\nIf the line is commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding.\n\nView the file specified by the banner keyword to check that it matches the text of the Standard Mandatory DOD Notice and Consent Banner:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf the system does not display a graphical logon banner or the banner does not match the Standard Mandatory DOD Notice and Consent Banner, this is a finding.\n\nIf the text in the file does not match the Standard Mandatory DOD Notice and Consent Banner, this is a finding."
+            "check-content": "Verify any publicly accessible connection to the operating system displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.\n\nCheck for the location of the banner file being used with the following command:\n\n$ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH '^\\s*banner'\n\n/etc/ssh/sshd_config:banner /etc/issue\n\nThis command will return the banner keyword and the name of the file that contains the ssh banner (in this case \"/etc/issue\").\n\nIf the line is commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding.\n\nView the file specified by the banner keyword to check that it matches the text of the Standard Mandatory DOD Notice and Consent Banner:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf the system does not display a graphical logon banner or the banner does not match the Standard Mandatory DOD Notice and Consent Banner, this is a finding.\n\nIf the text in the file does not match the Standard Mandatory DOD Notice and Consent Banner, this is a finding."
           }
         }
       },
@@ -14443,9 +14443,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230251r1155370_rule",
+          "+@id": "SV-230251r1184240_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010290",
           "title": "The RHEL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 8 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/opensshserver.config file.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174, SRG-OS-000125-GPOS-00065</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -14482,9 +14482,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230252r1155364_rule",
+          "+@id": "SV-230252r1184241_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010291",
           "title": "The RHEL 8 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 8 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/opensshserver.config file.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174, SRG-OS-000125-GPOS-00065</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -14923,7 +14923,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230266r1017084_rule",
+          "+@id": "SV-230266r1184246_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010372",
@@ -14947,19 +14947,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the operating system to disable kernel image loading.\n\nAdd or edit the following line in a system configuration file, in the \"/etc/sysctl.d/\" directory:\n\nkernel.kexec_load_disabled = 1\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-32910r858747_fix"
+            "+content": "Configure RHEL 8 to disable kernel image loading.\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-kernel_kexec_load_disabled.conf\n\nAdd the following to the file:\nkernel.kexec_load_disabled = 1\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-32910r1184245_fix"
           },
           "fix": {
-            "+@id": "F-32910r858747_fix"
+            "+@id": "F-32910r1184245_fix"
           },
           "check": {
-            "+@system": "C-32935r858746_chk",
+            "+@system": "C-32935r1184244_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system is configured to disable kernel image loading with the following commands:\n\nCheck the status of the kernel.kexec_load_disabled kernel parameter.\n\n$ sudo sysctl kernel.kexec_load_disabled\n\nkernel.kexec_load_disabled = 1\n\nIf \"kernel.kexec_load_disabled\" is not set to \"1\" or is missing, this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -r kernel.kexec_load_disabled /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf:kernel.kexec_load_disabled = 1\n\nIf \"kernel.kexec_load_disabled\" is not set to \"1\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to disable kernel image loading.\n\nCheck the status of the \"kernel.kexec_load_disabled\" kernel parameter with the following command:\n\n$ sudo sysctl kernel.kexec_load_disabled\nkernel.kexec_load_disabled = 1\n\nIf \"kernel.kexec_load_disabled\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -14968,7 +14968,7 @@
         "title": "SRG-OS-000312-GPOS-00122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230267r1017085_rule",
+          "+@id": "SV-230267r1184249_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010373",
@@ -14986,19 +14986,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to enable DAC on symlinks.\n\nAdd or edit the following line in a system configuration file, in the \"/etc/sysctl.d/\" directory:\n\nfs.protected_symlinks = 1\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-32911r858750_fix"
+            "+content": "Configure RHEL 8 to enable DAC on symlinks with the following:\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-fs_protected_symlinks.conf\n\nAdd the following to the file:\nfs.protected_symlinks = 1\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-32911r1184248_fix"
           },
           "fix": {
-            "+@id": "F-32911r858750_fix"
+            "+@id": "F-32911r1184248_fix"
           },
           "check": {
-            "+@system": "C-32936r858749_chk",
+            "+@system": "C-32936r1184247_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system is configured to enable DAC on symlinks with the following commands:\n\nCheck the status of the fs.protected_symlinks kernel parameter.\n\n$ sudo sysctl fs.protected_symlinks\n\nfs.protected_symlinks = 1\n\nIf \"fs.protected_symlinks\" is not set to \"1\" or is missing, this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -r fs.protected_symlinks /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf:fs.protected_symlinks = 1\n\nIf \"fs.protected_symlinks\" is not set to \"1\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to enable DAC on symlinks.\n\nCheck the status of the \"fs.protected_symlinks\" kernel parameter with the following command:\n\n$ sudo sysctl fs.protected_symlinks\nfs.protected_symlinks = 1\n\nIf \"fs.protected_symlinks\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -15007,7 +15007,7 @@
         "title": "SRG-OS-000312-GPOS-00122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230268r1017086_rule",
+          "+@id": "SV-230268r1184252_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010374",
@@ -15025,19 +15025,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to enable DAC on hardlinks.\n\nAdd or edit the following line in a system configuration file, in the \"/etc/sysctl.d/\" directory:\n\nfs.protected_hardlinks = 1\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-32912r858753_fix"
+            "+content": "Configure RHEL 8 to enable DAC on hardlinks.\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-fs_protected_hardlinks.conf\n\nAdd the following to the file:\nfs.protected_hardlinks = 1\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-32912r1184251_fix"
           },
           "fix": {
-            "+@id": "F-32912r858753_fix"
+            "+@id": "F-32912r1184251_fix"
           },
           "check": {
-            "+@system": "C-32937r858752_chk",
+            "+@system": "C-32937r1184250_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system is configured to enable DAC on hardlinks with the following commands:\n\nCheck the status of the fs.protected_hardlinks kernel parameter.\n\n$ sudo sysctl fs.protected_hardlinks\n\nfs.protected_hardlinks = 1\n\nIf \"fs.protected_hardlinks\" is not set to \"1\" or is missing, this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -r fs.protected_hardlinks /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf:fs.protected_hardlinks = 1\n\nIf \"fs.protected_hardlinks\" is not set to \"1\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to enable DAC on hardlinks.\n\nCheck the status of the \"fs.protected_hardlinks\" kernel parameter with the following command:\n\n$ sudo sysctl fs.protected_hardlinks\nfs.protected_hardlinks = 1\n\nIf \"fs.protected_hardlinks\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -15046,7 +15046,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230269r1137695_rule",
+          "+@id": "SV-230269r1184255_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "RHEL-08-010375",
@@ -15064,19 +15064,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to restrict access to the kernel message buffer.\n\nAdd or edit the following line in a system configuration file, in the \"/etc/sysctl.d/\" directory:\n\nkernel.dmesg_restrict = 1\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-32913r858755_fix"
+            "+content": "Configure RHEL 8 to restrict access to the kernel message buffer.\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-dmesg_restrict.conf\n\nAdd the following to the file:\nkernel.dmesg_restrict = 1\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-32913r1184254_fix"
           },
           "fix": {
-            "+@id": "F-32913r858755_fix"
+            "+@id": "F-32913r1184254_fix"
           },
           "check": {
-            "+@system": "C-32938r833295_chk",
+            "+@system": "C-32938r1184253_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system is configured to restrict access to the kernel message buffer with the following commands:\n\nCheck the status of the kernel.dmesg_restrict kernel parameter.\n\n$ sudo sysctl kernel.dmesg_restrict\n\nkernel.dmesg_restrict = 1\n\nIf \"kernel.dmesg_restrict\" is not set to \"1\" or is missing, this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -r kernel.dmesg_restrict /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf:kernel.dmesg_restrict = 1\n\nIf \"kernel.dmesg_restrict\" is not set to \"1\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to restrict access to the kernel message buffer.\n\nCheck the status of the \"kernel.dmesg_restrict\" kernel parameter with the following command:\n\n$ sudo sysctl kernel.dmesg_restrict\nkernel.dmesg_restrict = 1\n\nIf \"kernel.dmesg_restrict\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -15085,7 +15085,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230270r1137695_rule",
+          "+@id": "SV-230270r1184258_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "RHEL-08-010376",
@@ -15103,19 +15103,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to prevent kernel profiling by unprivileged users.\n\nAdd or edit the following line in a system configuration file, in the \"/etc/sysctl.d/\" directory:\n\nkernel.perf_event_paranoid = 2\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-32914r858757_fix"
+            "+content": "Configure RHEL 8 to prevent kernel profiling by nonprivileged users.\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-kernel_perf_event_paranoid.conf\n\nAdd the following to the file:\nkernel.perf_event_paranoid = 2\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-32914r1184257_fix"
           },
           "fix": {
-            "+@id": "F-32914r858757_fix"
+            "+@id": "F-32914r1184257_fix"
           },
           "check": {
-            "+@system": "C-32939r833297_chk",
+            "+@system": "C-32939r1184256_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system is configured to prevent kernel profiling by unprivileged users with the following commands:\n\nCheck the status of the kernel.perf_event_paranoid kernel parameter.\n\n$ sudo sysctl kernel.perf_event_paranoid\n\nkernel.perf_event_paranoid = 2\n\nIf \"kernel.perf_event_paranoid\" is not set to \"2\" or is missing, this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -r kernel.perf_event_paranoid /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf:kernel.perf_event_paranoid = 2\n\nIf \"kernel.perf_event_paranoid\" is not set to \"2\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to prevent kernel profiling by nonprivileged users.\n\nCheck the status of the \"kernel.perf_event_paranoid\" kernel parameter.\n\n$ sudo sysctl kernel.perf_event_paranoid\nkernel.perf_event_paranoid = 2\n\nIf \"kernel.perf_event_paranoid\" is not set to \"2\" or is missing, this is a finding."
           }
         }
       },
@@ -16246,7 +16246,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230301r1155405_rule",
+          "+@id": "SV-230301r1184262_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010580",
@@ -16271,12 +16271,12 @@
             "+@id": "F-32945r567650_fix"
           },
           "check": {
-            "+@system": "C-32970r1155404_chk",
+            "+@system": "C-32970r1184261_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: This control is not applicable to vfat file systems.\n\nVerify all non-root local partitions are mounted with the \"nodev\" option with the following command:\n\n$ sudo mount | grep '^/dev\\S* on /\\S' | grep --invert-match 'nodev'\n\nIf any output is produced, this is a finding."
+            "check-content": "Verify all nonroot local partitions are mounted with the \"nodev\" option with the following command:\n\n$ sudo mount | grep '^/dev\\S* on /\\S' | grep --invert-match 'nodev'\n\nIf any output is produced, this is a finding."
           }
         }
       },
@@ -17377,7 +17377,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230332r1017144_rule",
+          "+@id": "SV-230332r1184264_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020010",
@@ -17402,12 +17402,12 @@
             "+@id": "F-32976r567743_fix"
           },
           "check": {
-            "+@system": "C-33001r567742_chk",
+            "+@system": "C-33001r1184263_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system locks an account after three unsuccessful logon attempts with the following commands:\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"deny\" option is not set to \"3\" or less (but not \"0\") on the \"preauth\" line with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\nIf any line referencing the \"pam_faillock.so\" module is commented out, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"deny\" option is not set to \"3\" or less (but not \"0\") on the \"preauth\" line with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\nIf any line referencing the \"pam_faillock.so\" module is commented out, this is a finding."
+            "check-content": "Verify the system locks an account after three unsuccessful logon attempts with the following commands:\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"deny\" option is not set to \"3\" or less (but not \"0\") on the \"preauth\" line with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\nIf any line referencing the \"pam_faillock.so\" module is commented out, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"deny\" option is not set to \"3\" or less (but not \"0\") on the \"preauth\" line with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\nIf any line referencing the \"pam_faillock.so\" module is commented out, this is a finding."
           }
         }
       },
@@ -17455,7 +17455,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230334r1017146_rule",
+          "+@id": "SV-230334r1184266_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020012",
@@ -17480,12 +17480,12 @@
             "+@id": "F-32978r567749_fix"
           },
           "check": {
-            "+@system": "C-33003r567748_chk",
+            "+@system": "C-33003r1184265_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system locks an account after three unsuccessful logon attempts within a period of 15 minutes with the following commands:\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"fail_interval\" option is not set to \"900\" or less (but not \"0\") on the \"preauth\" lines with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"fail_interval\" option is not set to \"900\" or less (but not \"0\") on the \"preauth\" lines with the \"pam_faillock.so\" module, or is missing from this line, this is a finding."
+            "check-content": "Verify the system locks an account after three unsuccessful logon attempts within a period of 15 minutes with the following commands:\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"fail_interval\" option is not set to \"900\" or less (but not \"0\") on the \"preauth\" lines with the \"pam_faillock.so\" module, or is missing from this line, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"fail_interval\" option is not set to \"900\" or less (but not \"0\") on the \"preauth\" lines with the \"pam_faillock.so\" module, or is missing from this line, this is a finding."
           }
         }
       },
@@ -17533,7 +17533,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230336r1017148_rule",
+          "+@id": "SV-230336r1184268_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020014",
@@ -17558,12 +17558,12 @@
             "+@id": "F-32980r567755_fix"
           },
           "check": {
-            "+@system": "C-33005r567754_chk",
+            "+@system": "C-33005r1184267_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system locks an account after three unsuccessful logon attempts within a period of 15 minutes until released by an administrator with the following commands:\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"unlock_time\" option is not set to \"0\" on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"unlock_time\" option is not set to \"0\" on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding."
+            "check-content": "Verify the system locks an account after three unsuccessful logon attempts within a period of 15 minutes until released by an administrator with the following commands:\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"unlock_time\" option is not set to \"0\" on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"unlock_time\" option is not set to \"0\" on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding."
           }
         }
       },
@@ -17611,7 +17611,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230338r1017150_rule",
+          "+@id": "SV-230338r1184270_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020016",
@@ -17636,12 +17636,12 @@
             "+@id": "F-32982r567761_fix"
           },
           "check": {
-            "+@system": "C-33007r567760_chk",
+            "+@system": "C-33007r1184269_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the faillock directory contents persists after a reboot with the following commands:\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"dir\" option is not set to a non-default documented tally log directory on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"dir\" option is not set to a non-default documented tally log directory on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding."
+            "check-content": "Verify the faillock directory contents persists after a reboot with the following commands:\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"dir\" option is not set to a non-default documented tally log directory on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"dir\" option is not set to a non-default documented tally log directory on the \"preauth\" and \"authfail\" lines with the \"pam_faillock.so\" module, or is missing from these lines, this is a finding."
           }
         }
       },
@@ -17689,7 +17689,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230340r1017152_rule",
+          "+@id": "SV-230340r1184272_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020018",
@@ -17714,12 +17714,12 @@
             "+@id": "F-32984r567767_fix"
           },
           "check": {
-            "+@system": "C-33009r567766_chk",
+            "+@system": "C-33009r1184271_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system prevents informative messages from being presented to the user pertaining to logon information with the following commands:\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"silent\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"silent\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
+            "check-content": "Verify the system prevents informative messages from being presented to the user pertaining to logon information with the following commands:\n\nNote: This check applies to RHEL versions 8.0 and 8.1, if the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"silent\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"silent\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
           }
         }
       },
@@ -17767,7 +17767,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230342r1017154_rule",
+          "+@id": "SV-230342r1184274_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020020",
@@ -17792,12 +17792,12 @@
             "+@id": "F-32986r567773_fix"
           },
           "check": {
-            "+@system": "C-33011r646871_chk",
+            "+@system": "C-33011r1184273_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system logs user name information when unsuccessful logon attempts occur with the following commands:\n\nIf the system is RHEL version 8.2 or newer, this check is not applicable.\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"audit\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"audit\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
+            "check-content": "Verify the system logs user name information when unsuccessful logon attempts occur with the following commands:\n\nIf the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"audit\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"audit\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
           }
         }
       },
@@ -17845,7 +17845,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230344r1017156_rule",
+          "+@id": "SV-230344r1184276_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-020022",
@@ -17870,12 +17870,12 @@
             "+@id": "F-32988r567779_fix"
           },
           "check": {
-            "+@system": "C-33013r646873_chk",
+            "+@system": "C-33013r1184275_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check that the system includes the root account when locking an account after three unsuccessful logon attempts within a period of 15 minutes with the following commands:\n\nIf the system is RHEL version 8.2 or newer, this check is not applicable.\n\nNote: If the System Administrator demonstrates the use of an approved centralized account management method that locks an account after three unsuccessful logon attempts within a period of 15 minutes, this requirement is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"even_deny_root\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"even_deny_root\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
+            "check-content": "Verify the system includes the root account when locking an account after three unsuccessful logon attempts within a period of 15 minutes with the following commands:\n\nIf the system is RHEL version 8.2 or newer, this check is not applicable.\n\n$ sudo grep pam_faillock.so /etc/pam.d/password-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"even_deny_root\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding.\n\n$ sudo grep pam_faillock.so /etc/pam.d/system-auth\n\nauth required pam_faillock.so preauth dir=/var/log/faillock silent audit deny=3 even_deny_root fail_interval=900 unlock_time=0\nauth required pam_faillock.so authfail dir=/var/log/faillock unlock_time=0\naccount required pam_faillock.so\n\nIf the \"even_deny_root\" option is missing from the \"preauth\" line with the \"pam_faillock.so\" module, this is a finding."
           }
         }
       },
@@ -22621,9 +22621,9 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230492r1134888_rule",
+          "+@id": "SV-230492r1184277_rule",
           "+@weight": "10.0",
-          "+@severity": "high",
+          "+@severity": "medium",
           "version": "RHEL-08-040010",
           "title": "RHEL 8 must not install packages from the Extra Packages for Enterprise Linux (EPEL) repository.",
           "description": "<VulnDiscussion>The EPEL is a repository of high-quality open-source packages for enterprise-class Linux distributions such as RHEL, CentOS, AlmaLinux, Rocky Linux, and Oracle Linux. These packages are not part of the official distribution but are built using the same Fedora build system to ensure compatibility and maintain quality standards.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -22660,7 +22660,7 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230493r1017276_rule",
+          "+@id": "SV-230493r1184280_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-040020",
@@ -22678,19 +22678,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the operating system to disable the built-in or attached camera when not in use.\n\nBuild or modify the \"/etc/modprobe.d/blacklist.conf\" file by using the following example:\n\n     install uvcvideo /bin/false\n     blacklist uvcvideo\n\nReboot the system for the settings to take effect.",
-            "+@fixref": "F-33137r942914_fix"
+            "+content": "Configure the operating system to disable the built-in or attached camera when not in use.\n\nAdd or update the followind lines in the \"/etc/modprobe.d/blacklist.conf\" file:\n\n     install uvcvideo /bin/false\n     blacklist uvcvideo\n\nReboot the system for the settings to take effect.",
+            "+@fixref": "F-33137r1184279_fix"
           },
           "fix": {
-            "+@id": "F-33137r942914_fix"
+            "+@id": "F-33137r1184279_fix"
           },
           "check": {
-            "+@system": "C-33162r942913_chk",
+            "+@system": "C-33162r1184278_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If the device or operating system does not have a camera installed, this requirement is not applicable.\n\nThis requirement is not applicable to mobile devices (smartphones and tablets), where the use of the camera is a local AO decision.\n\nThis requirement is not applicable to dedicated VTC suites located in approved VTC locations that are centrally managed.\n\nFor an external camera, if there is not a method for the operator to manually disconnect the camera at the end of collaborative computing sessions, this is a finding.\n\nFor a built-in camera, the camera must be protected by a camera cover (e.g., laptop camera cover slide) when not in use. If the built-in camera is not protected with a camera cover, or is not physically disabled, this is a finding.\n\nIf the camera is not disconnected, covered, or physically disabled, determine if it is being disabled via software with the following commands:\n\nVerify the operating system disables the ability to load the uvcvideo kernel module.\n\n     $ sudo grep -r uvcvideo /etc/modprobe.d/* | grep \"/bin/false\"\n     install uvcvideo /bin/false\n\nIf the command does not return any output, or the line is commented out, and the collaborative computing device has not been authorized for use, this is a finding.\n\nVerify the camera is disabled via blacklist with the following command:\n\n     $ sudo grep -r uvcvideo /etc/modprobe.d/* | grep \"blacklist\"\n     blacklist uvcvideo\n\nIf the command does not return any output or the output is not \"blacklist uvcvideo\", and the collaborative computing device has not been authorized for use, this is a finding."
+            "check-content": "If the device or operating system does not have a camera installed, this is not applicable.\n\nThis requirement is not applicable to mobile devices (smartphones and tablets), where the use of the camera is a local authorizing official (AO) decision.\n\nThis requirement is not applicable to dedicated VTC suites located in approved VTC locations that are centrally managed.\n\nFor an external camera, if there is not a method for the operator to manually disconnect the camera at the end of collaborative computing sessions, this is a finding.\n\nFor a built-in camera, the camera must be protected by a camera cover (e.g., laptop camera cover slide) when not in use. If the built-in camera is not protected with a camera cover, or is not physically disabled, this is a finding.\n\nIf the camera is not disconnected, covered, or physically disabled, determine if it is being disabled via software.\n\nVerify the operating system disables the ability to load the uvcvideo kernel module and ensure that the uvcvideo protocol module is disabled with the following command:\n\n$ sudo grep -r uvcvideo /etc/modprobe.d/* | grep \"blacklist\"\n\n/etc/modprobe.d/blacklist:install uvcvideo /bin/false\n/etc/modprobe.d/blacklist:blacklist uvcvideo\n\nIf the command does not return uncommented output and the collaborative computing device has not been authorized for use, this is a finding."
           }
         }
       },
@@ -24688,7 +24688,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230547r1017309_rule",
+          "+@id": "SV-230547r1184283_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-040283",
@@ -24706,19 +24706,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure RHEL 8 to restrict exposed kernel pointer addresses access by adding the following line to a file, in the \"/etc/sysctl.d\" directory:\n\nkernel.kptr_restrict = 1\n\nRemove any configurations that conflict with the above from the following locations: \n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nThe system configuration files need to be reloaded for the changes to take effect. To reload the contents of the files, run the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-33191r858825_fix"
+            "+content": "Configure RHEL 8 to restrict exposed kernel pointer addresses access.\n\nCreate a drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-kernel_kptr_restrict.conf\n\nAdd the following to the file:\nkernel.kptr_restrict = 1\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-33191r1184282_fix"
           },
           "fix": {
-            "+@id": "F-33191r858825_fix"
+            "+@id": "F-33191r1184282_fix"
           },
           "check": {
-            "+@system": "C-33216r833362_chk",
+            "+@system": "C-33216r1184281_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 8 restricts exposed kernel pointer addresses access with the following commands:\n\n$ sudo sysctl kernel.kptr_restrict\n\nkernel.kptr_restrict = 1\n\nIf the returned line does not have a value of \"1\" or \"2\", or a line is not returned, this is a finding.\n\nCheck that the configuration files are present to enable this network parameter.\n\n$ sudo grep -r kernel.kptr_restrict /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-sysctl.conf: kernel.kptr_restrict = 1\n\nIf \"kernel.kptr_restrict\" is not set to \"1\" or \"2\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
+            "check-content": "Verify RHEL 8 is configured to restrict exposed kernel pointer address access.\n\nVerify the runtime status of the \"kernel.kptr_restrict\" kernel parameter with the following command:\n\n$ sudo sysctl kernel.kptr_restrict \nkernel.kptr_restrict = 1\n\nIf \"kernel.kptr_restrict\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -24766,7 +24766,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-230549r1155416_rule",
+          "+@id": "SV-230549r1184286_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-040285",
@@ -24784,19 +24784,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure RHEL 8 to use reverse path filtering on IPv4 interfaces by default.\n\nAdd or edit the following line in a single system configuration file in the \"/etc/sysctl.d/\" directory:\n\nCreate a configuration file if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/ipv4_rp_filter.conf\n\nnet.ipv4.conf.default.rp_filter = 1\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-33193r1155415_fix"
+            "+content": "Configure RHEL 8 to use reverse path filtering on IPv4 interfaces by default.\n\nAdd or edit the following line in a single system configuration file in the \"/etc/sysctl.d/\" directory:\n\nCreate a configuration file if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/ipv4_rp_filter.conf\n\nnet.ipv4.conf.all.rp_filter = 1\n\nLoad settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-33193r1184285_fix"
           },
           "fix": {
-            "+@id": "F-33193r1155415_fix"
+            "+@id": "F-33193r1184285_fix"
           },
           "check": {
-            "+@system": "C-33218r1155414_chk",
+            "+@system": "C-33218r1184284_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 8 uses reverse path filtering on IPv4 interfaces with the following commands:\n\n$ sudo sysctl net.ipv4.conf.default.rp_filter\n\nnet.ipv4.conf.default.rp_filter = 1\n\nIf \"net.ipv4.conf.default.rp_filter\" is not set to \"1\" or is missing, this is a finding."
+            "check-content": "Verify RHEL 8 uses reverse path filtering on IPv4 interfaces with the following commands:\n\n$ sudo sysctl net.ipv4.conf.all.rp_filter\n\nnet.ipv4.conf.all.rp_filter = 1\n\nIf \"net.ipv4.conf.all.rp_filter\" is not set to \"1\" or is missing, this is a finding."
           }
         }
       },
@@ -25786,7 +25786,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-244530r1155403_rule",
+          "+@id": "SV-244530r1184260_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-08-010572",
@@ -25811,12 +25811,12 @@
             "+@id": "F-47762r743838_fix"
           },
           "check": {
-            "+@system": "C-47805r1155402_chk",
+            "+@system": "C-47805r1184259_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For vfat file systems and for systems that use BIOS, this is Not Applicable.\n\nVerify the /boot/efi directory is mounted with the \"nosuid\" option with the following command:\n\n$ sudo mount | grep '\\s/boot/efi\\s'\n\n/dev/sda1 on /boot/efi type vfat (rw,nosuid,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)\n\nIf the /boot/efi file system does not have the \"nosuid\" option set, this is a finding."
+            "check-content": "Note: For systems that use BIOS, this is not applicable.\n\nVerify the /boot/efi directory is mounted with the \"nosuid\" option with the following command:\n\n$ sudo mount | grep '\\s/boot/efi\\s'\n\n/dev/sda1 on /boot/efi type vfat (rw,nosuid,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)\n\nIf the /boot/efi file system does not have the \"nosuid\" option set, this is a finding."
           }
         }
       },
@@ -27409,9 +27409,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-272482r1155367_rule",
+          "+@id": "SV-272482r1184242_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010296",
           "title": "The RHEL 8 SSH client must be configured to use only DOD-approved Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection. \n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography, enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash. \n\nRHEL 8 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -27448,9 +27448,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-272483r1155361_rule",
+          "+@id": "SV-272483r1184243_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010297",
           "title": "The RHEL 8 SSH client must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection. \n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography, enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash. \n\nRHEL 8 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174, SRG-OS-000125-GPOS-00066</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -27604,9 +27604,9 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279930r1156343_rule",
+          "+@id": "SV-279930r1184239_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010280",
           "title": "RHEL 8 IP tunnels must use FIPS 140-3-approved cryptographic algorithms.",
           "description": "<VulnDiscussion>Overriding the system crypto policy makes the behavior of the Libreswan service violate expectations and makes system configuration more fragmented.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -27629,12 +27629,12 @@
             "+@id": "F-84395r1156342_fix"
           },
           "check": {
-            "+@system": "C-84490r1156341_chk",
+            "+@system": "C-84490r1184238_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the ipsec service is not installed, this requirement is Not Applicable.\n\nVerify the IPsec service uses the system crypto policy with the following command:\n\n$ sudo grep include /etc/ipsec.conf /etc/ipsec.d/*.conf\n\n/etc/ipsec.conf:include /etc/crypto-policies/back-ends/libreswan.config\n/etc/ipsec.conf:include /etc/ipsec.d/*.conf\n\nIf the ipsec configuration file does not contain \"include /etc/crypto-policies/back-ends/libreswan.config\", this is a finding."
+            "check-content": "Note: If the IPsec service is not installed, this is not applicable.\n\nVerify the IPsec service uses the system crypto policy with the following command:\n\n$ sudo grep include /etc/ipsec.conf /etc/ipsec.d/*.conf\n\n/etc/ipsec.conf:include /etc/crypto-policies/back-ends/libreswan.config\n/etc/ipsec.conf:include /etc/ipsec.d/*.conf\n\nIf the ipsec configuration file does not contain \"include /etc/crypto-policies/back-ends/libreswan.config\", this is a finding."
           }
         }
       },
@@ -27643,9 +27643,9 @@
         "title": "SRG-OS-000423-GPOS-00187",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279931r1156346_rule",
+          "+@id": "SV-279931r1184237_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-08-010275",
           "title": "RHEL 8 must implement DOD-approved encryption in the bind package.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 8 incorporates systemwide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/ directory.\n\nSatisfies: SRG-OS-000423-GPOS-00187, SRG-OS-000426-GPOS-00190</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",

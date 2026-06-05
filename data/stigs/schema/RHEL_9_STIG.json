@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-24"
+      "+@date": "2026-02-05"
     },
     "title": "Red Hat Enterprise Linux 9 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -16547,7 +16547,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257787r1137691_rule",
+          "+@id": "SV-257787r1184288_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-212010",
@@ -16572,12 +16572,12 @@
             "+@id": "F-61452r925347_fix"
           },
           "check": {
-            "+@system": "C-61528r1044835_chk",
+            "+@system": "C-61528r1184287_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the boot loader superuser password has been set with the following command:\n\n$ sudo grep password_pbkdf2 /etc/grub2.cfg \n\npassword_pbkdf2  <superusers-accountname>   ${GRUB2_PASSWORD}  \n\nTo verify the boot loader superuser account password has been set and the password encrypted, run the following command:\n\n$ sudo cat /boot/grub2/user.cfg \n\nGRUB2_PASSWORD=grub.pbkdf2.sha512.10000.C4E08AC72FBFF7E837FD267BFAD7AEB3D42DDC\n2C99F2A94DD5E2E75C2DC331B719FE55D9411745F82D1B6CFD9E927D61925F9BBDD1CFAA0080E0\n916F7AB46E0D.1302284FCCC52CD73BA3671C6C12C26FF50BA873293B24EE2A96EE3B57963E6D7\n0C83964B473EC8F93B07FE749AA6710269E904A9B08A6BBACB00A2D242AD828 \n\nIf a \"GRUB2_PASSWORD\" is not set, this is a finding."
+            "check-content": "Note: For systems that use UEFI, this is not applicable.\n\nVerify the boot loader superuser password has been set with the following command:\n\n$ sudo grep password_pbkdf2 /etc/grub2.cfg \n\npassword_pbkdf2  <superusers-accountname>   ${GRUB2_PASSWORD}  \n\nTo verify the boot loader superuser account password has been set and the password encrypted, run the following command:\n\n$ sudo cat /boot/grub2/user.cfg \n\nGRUB2_PASSWORD=grub.pbkdf2.sha512.10000.C4E08AC72FBFF7E837FD267BFAD7AEB3D42DDC\n2C99F2A94DD5E2E75C2DC331B719FE55D9411745F82D1B6CFD9E927D61925F9BBDD1CFAA0080E0\n916F7AB46E0D.1302284FCCC52CD73BA3671C6C12C26FF50BA873293B24EE2A96EE3B57963E6D7\n0C83964B473EC8F93B07FE749AA6710269E904A9B08A6BBACB00A2D242AD828 \n\nIf a \"GRUB2_PASSWORD\" is not set, this is a finding."
           }
         }
       },
@@ -16742,12 +16742,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257792r1044842_rule",
+          "+@id": "SV-257792r1184289_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-212035",
           "title": "RHEL 9 must disable virtual system calls.",
-          "description": "<VulnDiscussion>System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls to be executed in userspace to alleviate the context switching expense.\n\nVirtual system calls provide an opportunity of attack for a user who has control of the return instruction pointer. Disabling virtual system calls help to prevent return oriented programming (ROP) attacks via buffer overflows and overruns. If the system intends to run containers based on RHEL 6 components, then virtual system calls will need enabled so the components function properly.\n\nSatisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000134-GPOS-00068</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls System calls are special routines in the Linux kernel, which userspace applications ask to do privileged tasks. Invoking a system call is an expensive operation because the processor must interrupt the currently executing task and switch context to kernel mode and then back to userspace after the system call completes. Virtual system calls map into user space a page that contains some variables and the implementation of some system calls. This allows the system calls to be executed in user space to alleviate the context-switching expense.\n\nVirtual system calls provide an opportunity of attack for a user who has control of the return instruction pointer. Disabling virtual system calls help to prevent return-oriented programming attacks via buffer overflows and overruns.\n\nSatisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000134-GPOS-00068</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat Enterprise Linux 9",
             "dc:publisher": "DISA",
@@ -18123,7 +18123,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257825r1044888_rule",
+          "+@id": "SV-257825r1184291_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-215010",
@@ -18154,12 +18154,12 @@
             "+@id": "F-61490r925461_fix"
           },
           "check": {
-            "+@system": "C-61566r1044887_chk",
+            "+@system": "C-61566r1184290_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that RHEL 9 subscription-manager package is installed with the following command:\n\n$ dnf list --installed subscription-manager\n\nExample output:\n\nsubscription-manager.x86_64          1.29.26-3.el9_0\n\nIf the \"subscription-manager\" package is not installed, this is a finding."
+            "check-content": "Note: If the system is not an internet connected system, this requirement is not applicable.\n\nVerify that RHEL 9 subscription-manager package is installed with the following command:\n\n$ dnf list --installed subscription-manager\n\nExample output:\n\nsubscription-manager.x86_64          1.29.26-3.el9_0\n\nIf the \"subscription-manager\" package is not installed, this is a finding."
           }
         }
       },
@@ -19563,7 +19563,7 @@
         "title": "SRG-OS-000368-GPOS-00154",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257862r1155661_rule",
+          "+@id": "SV-257862r1184295_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-231105",
@@ -19588,12 +19588,12 @@
             "+@id": "F-61527r1051264_fix"
           },
           "check": {
-            "+@system": "C-61603r1155660_chk",
+            "+@system": "C-61603r1184294_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For systems that use vfat file systems and for systems that use BIOS, this requirement is not applicable. \n\nVerify the /boot/efi directory is mounted with the \"nosuid\" option with the following command:\n\n$ mount | grep '\\s/boot/efi\\s'\n\n/dev/sda1 on /boot/efi type vfat (rw,nosuid,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)\n\nIf the /boot/efi file system does not have the \"nosuid\" option set, this is a finding.\n\nNote: This control is not applicable to vfat file systems."
+            "check-content": "Note: For systems that use BIOS, this is not applicable. \n\nVerify the /boot/efi directory is mounted with the \"nosuid\" option with the following command:\n\n$ mount | grep '\\s/boot/efi\\s'\n\n/dev/sda1 on /boot/efi type vfat (rw,nosuid,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro)\n\nIf the /boot/efi file system does not have the \"nosuid\" option set, this is a finding.\n\nNote: This control is not applicable to vfat file systems."
           }
         }
       },
@@ -19680,7 +19680,7 @@
         "title": "SRG-OS-000368-GPOS-00154",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257865r1155636_rule",
+          "+@id": "SV-257865r1184297_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-231120",
@@ -19705,12 +19705,12 @@
             "+@id": "F-61530r1155635_fix"
           },
           "check": {
-            "+@system": "C-61606r1155634_chk",
+            "+@system": "C-61606r1184296_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify \"/dev/shm\" is mounted with the \"nosuid\" option with the following command:\n\n$ findmnt /dev/shm\n\n/dev/shm tmpfs  tmpfs  rw,nodev,nosuid,noexec,seclabel\n\nIf the mount options for /dev/shm does not include nosuid, this is a finding."
+            "check-content": "Verify \"/dev/shm\" is mounted with the \"nosuid\" option with the following command:\n\n$ findmnt /dev/shm\n/dev/shm tmpfs  tmpfs  rw,nodev,nosuid,noexec,seclabel\n\nIf the mount options for /dev/shm does not include nosuid, this is a finding."
           }
         }
       },
@@ -20314,7 +20314,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257881r1155663_rule",
+          "+@id": "SV-257881r1184299_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-231200",
@@ -20339,12 +20339,12 @@
             "+@id": "F-61546r925629_fix"
           },
           "check": {
-            "+@system": "C-61622r1155662_chk",
+            "+@system": "C-61622r1184298_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: This control is not applicable to vfat file systems.\n\nVerify all non-root local partitions are mounted with the \"nodev\" option with the following command:\n\n$ sudo mount | grep '^/dev\\S* on /\\S' | grep --invert-match 'nodev'\n\nIf any output is produced, this is a finding."
+            "check-content": "Verify all nonroot local partitions are mounted with the \"nodev\" option with the following command:\n\n$ sudo mount | grep '^/dev\\S* on /\\S' | grep --invert-match 'nodev'\n\nIf any output is produced, this is a finding."
           }
         }
       },
@@ -20626,7 +20626,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257889r1044959_rule",
+          "+@id": "SV-257889r1184302_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-232045",
@@ -20644,19 +20644,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the mode of the local initialization files to \"0740\" with the following command:\n\nNote: The example will be for the wadea user, who has a home directory of \"/home/wadea\".\n\n$ sudo chmod 0740 /home/wadea/.<INIT_FILE>",
-            "+@fixref": "F-61554r925653_fix"
+            "+content": "Set the mode of the local initialization files to \"0740\" with the following command:\n\nNote: The example will be for the disauser user, who has a home directory of \"/home/disauser\".\n\n$ sudo chmod 0740 /home/disauser/.<INIT_FILE>",
+            "+@fixref": "F-61554r1184301_fix"
           },
           "fix": {
-            "+@id": "F-61554r925653_fix"
+            "+@id": "F-61554r1184301_fix"
           },
           "check": {
-            "+@system": "C-61630r1044958_chk",
+            "+@system": "C-61630r1184300_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that all local initialization files have a mode of \"0740\" or less permissive with the following command:\n\t\nNote: The example will be for the \"bingwa\" user, who has a home directory of \"/home/bingwa\".\n\t\n$ find /home/bingwa/.[^.]* -maxdepth 0 -perm -740 -exec stat -c \"%a %n\" {} \\; | more\n\n755 /home/bingwa/.somepermissivefile\n\t\nIf any local initialization files are returned, this indicates a mode more permissive than \"0740\", and this is a finding."
+            "check-content": "Verify all local initialization files have a mode of \"0740\" or less permissive with the following command:\n\t\nNote: The example will be for the \"disauser\" user, who has a home directory of \"/home/disauser\".\n\t\n$ sudo find /home /root -maxdepth 2 -type f -name \".*\" -perm /037 -ls\n\n755 /home/disauser/.somepermissivefile\n\t\nIf any local initialization files are returned, this indicates a mode more permissive than \"0740\", and this is a finding."
           }
         }
       },
@@ -20665,7 +20665,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257890r1044961_rule",
+          "+@id": "SV-257890r1184305_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-232050",
@@ -20683,19 +20683,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Change the mode of interactive user's home directories to \"0750\". To change the mode of a local interactive user's home directory, use the following command:\n\nNote: The example will be for the user \"wadea\".\n\n$ sudo chmod 0750 /home/wadea",
-            "+@fixref": "F-61555r925656_fix"
+            "+content": "Change the mode of interactive user's home directories to \"0750\" using the following command:\n\nNote: The example will be for the user \"disauser\".\n\n$ sudo chmod 0750 /home/disauser",
+            "+@fixref": "F-61555r1184304_fix"
           },
           "fix": {
-            "+@id": "F-61555r925656_fix"
+            "+@id": "F-61555r1184304_fix"
           },
           "check": {
-            "+@system": "C-61631r1044960_chk",
+            "+@system": "C-61631r1184303_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the assigned home directory of all local interactive users has a mode of \"0750\" or less permissive with the following command:\n\nNote: This may miss interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information.\n\n$ stat -L -c '%a %n' $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd) 2>/dev/null\n\n700 /home/bingwa\n\nIf home directories referenced in \"/etc/passwd\" do not have a mode of \"0750\" or less permissive, this is a finding."
+            "check-content": "Verify the assigned home directory of all local interactive users has a mode of \"0750\" or less permissive with the following command:\n\nNote: This may miss interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information.\n\n$ stat -L -c '%a %n' $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd) 2>/dev/null\n\n700 /home/disauser\n\nIf home directories referenced in \"/etc/passwd\" do not have a mode of \"0750\" or less permissive, this is a finding."
           }
         }
       },
@@ -22817,7 +22817,7 @@
         "title": "SRG-OS-000096-GPOS-00050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257946r958480_rule",
+          "+@id": "SV-257946r1184307_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "RHEL-09-252025",
@@ -22848,12 +22848,12 @@
             "+@id": "F-61611r925824_fix"
           },
           "check": {
-            "+@system": "C-61687r925823_chk",
+            "+@system": "C-61687r1184306_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 9 disables the chrony daemon from acting as a server with the following command:\n\n$ grep -w port /etc/chrony.conf\n\nport 0\n\nIf the \"port\" option is not set to \"0\", is commented out, or is missing, this is a finding."
+            "check-content": "Note: If the server is serving as an NTP server, this is not applicable.\n\nVerify RHEL 9 disables the chrony daemon from acting as a server with the following command:\n\n$ grep -w port /etc/chrony.conf\n\nport 0\n\nIf the \"port\" option is not set to \"0\", is commented out, or is missing, this is a finding."
           }
         }
       },
@@ -24465,9 +24465,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257989r1051240_rule",
+          "+@id": "SV-257989r1184309_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-255065",
           "title": "The RHEL 9 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 9 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/opensshserver.config file.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -24504,9 +24504,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257991r1051246_rule",
+          "+@id": "SV-257991r1184311_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-255075",
           "title": "The RHEL 9 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 9 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/opensshserver.config file.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -26726,7 +26726,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258044r1045135_rule",
+          "+@id": "SV-258044r1184313_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-411025",
@@ -26751,12 +26751,12 @@
             "+@id": "F-61709r926118_fix"
           },
           "check": {
-            "+@system": "C-61785r1045134_chk",
+            "+@system": "C-61785r1184312_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the default umask for all local interactive users is \"077\".\n\nIdentify the locations of all local interactive user home directories by looking at the \"/etc/passwd\" file.\n\nCheck all local interactive user initialization files for interactive users with the following command:\n\nNote: The example is for a system that is configured to create users home directories in the \"/home\" directory.\n\n$ sudo find /home -maxdepth 2 -type f -name \".[^.]*\" -exec grep -iH -d skip --exclude=.bash_history umask {} \\;\n\n/home/wadea/.bash_history:grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile\n/home/wadea/.bash_history:grep -i umask /etc/login.defs\n\nIf any local interactive user initialization files are found to have a umask statement that sets a value less restrictive than \"077\", this is a finding."
+            "check-content": "Verify that the default umask for all local interactive users is \"077\".\n\nIdentify the locations of all local interactive user home directories by looking at the \"/etc/passwd\" file.\n\nCheck all local interactive user initialization files for interactive users with the following command:\n\nNote: The example is for a system that is configured to create users home directories in the \"/home\" directory.\n\n$ sudo find /home -maxdepth 2 -type f -name \".[^.]*\" -exec grep -iH -d skip --exclude=.bash_history umask {} \\;\n\n/home/disauser/.bash_history:grep -i umask /etc/bashrc /etc/csh.cshrc /etc/profile\n/home/disauser/.bash_history:grep -i umask /etc/login.defs\n\nIf any local interactive user initialization files are found to have a umask statement that sets a value less restrictive than \"077\", this is a finding."
           }
         }
       },
@@ -27064,7 +27064,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258052r1155588_rule",
+          "+@id": "SV-258052r1184315_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-411065",
@@ -27082,11 +27082,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Create home directories to all local interactive users that currently do not have a home directory assigned. Use the following commands to create the user home directory assigned in \"/etc/ passwd\":\n\nNote: The example will be for the user wadea, who has a home directory of \"/home/wadea\", a user identifier (UID) of \"wadea\", and a group identifier (GID) of \"users assigned\" in \"/etc/passwd\".\n\n$ sudo mkdir /home/wadea \n$ sudo chown wadea /home/wadea\n$ sudo chgrp users /home/wadea\n$ sudo chmod 0750 /home/wadea",
-            "+@fixref": "F-61717r1155587_fix"
+            "+content": "Create home directories to all local interactive users that currently do not have a home directory assigned. Use the following commands to create the user home directory assigned in \"/etc/ passwd\":\n\nNote: The example will be for the user disauser, who has a home directory of \"/home/disauser\", a user identifier (UID) of \"disauser\", and a group identifier (GID) of \"users assigned\" in \"/etc/passwd\".\n\n$ sudo mkdir /home/disauser \n$ sudo chown disauser /home/disauser\n$ sudo chgrp users /home/disauser\n$ sudo chmod 0750 /home/disauser",
+            "+@fixref": "F-61717r1184314_fix"
           },
           "fix": {
-            "+@id": "F-61717r1155587_fix"
+            "+@id": "F-61717r1184314_fix"
           },
           "check": {
             "+@system": "C-61793r1155586_chk",
@@ -27103,7 +27103,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258053r991589_rule",
+          "+@id": "SV-258053r1184318_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-411070",
@@ -27121,19 +27121,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Change the group owner of a local interactive user's home directory to the group found in \"/etc/passwd\". To change the group owner of a local interactive user's home directory, use the following command:\n\nNote: The example will be for the user \"wadea\", who has a home directory of \"/home/wadea\", and has a primary group of users.\n\n$ sudo chgrp users /home/wadea",
-            "+@fixref": "F-61718r926145_fix"
+            "+content": "Change the group owner of a local interactive user's home directory to the group found in \"/etc/passwd\". To change the group owner of a local interactive user's home directory, use the following command:\n\nNote: The example will be for the user \"disauser\", who has a home directory of \"/home/disauser\", and has a primary group of users.\n\n$ sudo chgrp users /home/disauser",
+            "+@fixref": "F-61718r1184317_fix"
           },
           "fix": {
-            "+@id": "F-61718r926145_fix"
+            "+@id": "F-61718r1184317_fix"
           },
           "check": {
-            "+@system": "C-61794r926144_chk",
+            "+@system": "C-61794r1184316_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the assigned home directory of all local interactive users is group-owned by that user's primary GID with the following command:\n\nNote: This may miss local interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information. The returned directory \"/home/wadea\" is used as an example.\n\n$ sudo ls -ld $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd)\n\ndrwxr-x--- 2 wadea admin 4096 Jun 5 12:41 wadea\n\nCheck the user's primary group with the following command:\n\n$ sudo grep $(grep wadea /etc/passwd | awk -F: ‘{print $4}') /etc/group\n\nadmin:x:250:wadea,jonesj,jacksons\n\nIf the user home directory referenced in \"/etc/passwd\" is not group-owned by that user's primary GID, this is a finding."
+            "check-content": "Verify the assigned home directory of all local interactive users is group-owned by that user's primary GID with the following command:\n\nNote: This may miss local interactive users that have been assigned a privileged user identifier (UID). Evidence of interactive use may be obtained from a number of log files containing system logon information. The returned directory \"/home/disauser\" is used as an example.\n\n$ sudo ls -ld $(awk -F: '($3>=1000)&&($7 !~ /nologin/){print $6}' /etc/passwd)\n\ndrwxr-x--- 2 disauser admin 4096 Jun 5 12:41 disauser\n\nCheck the user's primary group with the following command:\n\n$ sudo grep $(grep disauser /etc/passwd | awk -F: ‘{print $4}') /etc/group\n\nadmin:x:250:disauser,doduser,nsauser\n\nIf the user home directory referenced in \"/etc/passwd\" is not group-owned by that user's primary GID, this is a finding."
           }
         }
       },
@@ -27640,7 +27640,7 @@
         "title": "SRG-OS-000480-GPOS-00228",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258072r1045155_rule",
+          "+@id": "SV-258072r1184320_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-412055",
@@ -27665,12 +27665,12 @@
             "+@id": "F-61737r926202_fix"
           },
           "check": {
-            "+@system": "C-61813r1045154_chk",
+            "+@system": "C-61813r1184319_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/bashrc\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" \"/etc/bashrc\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/bashrc \n\n[ `umask` -eq 0 ] && umask 077  \n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
+            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/bashrc\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" in the \"/etc/bashrc\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/bashrc \n\n[ `umask` -eq 0 ] && umask 077  \n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
           }
         }
       },
@@ -27679,7 +27679,7 @@
         "title": "SRG-OS-000480-GPOS-00228",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258073r1045157_rule",
+          "+@id": "SV-258073r1184322_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-412060",
@@ -27704,12 +27704,12 @@
             "+@id": "F-61738r926205_fix"
           },
           "check": {
-            "+@system": "C-61814r1045156_chk",
+            "+@system": "C-61814r1184321_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/csh.cshrc\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" \"/etc/csh.cshrc\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/csh.cshrc \n\numask 077\n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
+            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/csh.cshrc\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" in the \"/etc/csh.cshrc\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/csh.cshrc \n\numask 077\n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
           }
         }
       },
@@ -27757,7 +27757,7 @@
         "title": "SRG-OS-000480-GPOS-00228",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258075r991590_rule",
+          "+@id": "SV-258075r1184324_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-412070",
@@ -27782,12 +27782,12 @@
             "+@id": "F-61740r926211_fix"
           },
           "check": {
-            "+@system": "C-61816r926210_chk",
+            "+@system": "C-61816r1184323_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/profile\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" \"/etc/profile\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/profile \n\numask 077\n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
+            "check-content": "Verify the \"umask\" setting is configured correctly in the \"/etc/profile\" file with the following command:\n\nNote: If the value of the \"umask\" parameter is set to \"000\" in the \"/etc/profile\" file, the Severity is raised to a CAT I.\n\n$ grep umask /etc/profile \n\numask 077\n\nIf the value for the \"umask\" parameter is not \"077\", or the \"umask\" parameter is missing or is commented out, this is a finding."
           }
         }
       },
@@ -30493,7 +30493,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258143r1155671_rule",
+          "+@id": "SV-258143r1184329_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-652025",
@@ -30518,12 +30518,12 @@
             "+@id": "F-61808r1155670_fix"
           },
           "check": {
-            "+@system": "C-61884r1155669_chk",
+            "+@system": "C-61884r1184328_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the system administrator can demonstrate that another tool (e.g., SPLUNK) is being used to manage log off-load and aggregation in lieu of rsyslog, this check is not applicable.\n\nVerify RHEL 9 is not configured to receive remote logs using rsyslog with the following commands:\n\n$ ss -tulnp | grep rsyslog\n\nIf no output is returned, rsyslog is not listening for remote messages, and is compliant.\n\nIf output appears, check for configured ports (514 is the default for syslog).\n\nCheck for remote logging configuration in rsyslog by examining the rsyslog configuration files:\n\n$ sudo grep -E 'InputTCPServerRun | UDPServerRun | RELPServerRun | imtcp | imudp | imrelp' /etc/rsyslog.conf /etc/rsyslog.d/*\n\nIf this command returns uncommented lines enabling network listeners, the system is accepting remote logs.  If this system is not documented and authorized as a log aggregation server, this is a finding."
+            "check-content": "Note: If the system administrator (SA) can demonstrate that another tool (e.g., SPLUNK) is being used to manage log off-load and aggregation in lieu of rsyslog, this is not applicable.\n\nVerify RHEL 9 is not configured to receive remote logs using rsyslog with the following command:\n\n$ ss -tulnp | grep rsyslog\n\nIf no output is returned, rsyslog is not listening for remote messages and is compliant.\n\nIf output appears, check for configured ports (514 is the default for syslog).\n\nCheck for remote logging configuration in rsyslog by examining the rsyslog configuration files:\n\n$ sudo grep -E 'InputTCPServerRun|UDPServerRun|RELPServerRun|imtcp|imudp|imrelp' /etc/rsyslog.conf /etc/rsyslog.d/*\n\nIf this command returns uncommented lines enabling network listeners, the system is accepting remote logs.  If this system is not documented and authorized as a log aggregation server, this is a finding."
           }
         }
       },
@@ -31411,7 +31411,7 @@
         "title": "SRG-OS-000342-GPOS-00133",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258162r958754_rule",
+          "+@id": "SV-258162r1184331_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-653065",
@@ -31436,12 +31436,12 @@
             "+@id": "F-61827r926472_fix"
           },
           "check": {
-            "+@system": "C-61903r926471_chk",
+            "+@system": "C-61903r1184330_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that RHEL 9 audit system is configured to take an appropriate action when the internal event queue is full:\n\n$ sudo grep -i overflow_action /etc/audit/auditd.conf \n\noverflow_action = syslog\n\nIf the value of the \"overflow_action\" option is not set to \"syslog\", \"single\", \"halt\" or the line is commented out, ask the system administrator (SA) to indicate how the audit logs are offloaded to a different system or media.\n\nIf there is no evidence that the transfer of the audit logs being offloaded to another system or media takes appropriate action if the internal event queue becomes full, this is a finding."
+            "check-content": "Verify that RHEL 9 audit system is configured to take an appropriate action when the internal event queue is full:\n\n$ sudo grep -i overflow_action /etc/audit/auditd.conf \n\noverflow_action = syslog\n\nIf the value of the \"overflow_action\" option is not set to \"syslog\", \"single\", \"halt\" or the line is commented out, ask the system administrator (SA) to indicate how the audit logs are offloaded to a different system or media.\n\nIf there is no evidence that the audit system is configured to off-load the audit logs to another system or media and if the overflow action is not set to take appropriate action if the internal event queue becomes full, this is a finding."
           }
         }
       },
@@ -35079,12 +35079,12 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258230r1155585_rule",
+          "+@id": "SV-258230r1184334_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "RHEL-09-671010",
           "title": "RHEL 9 must enable FIPS mode.",
-          "description": "<VulnDiscussion>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated. This includes NIST FIPS-validated cryptography for the following: Provisioning digital signatures, generating cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000125-GPOS-00065, SRG-OS-000396-GPOS-00176, SRG-OS-000423-GPOS-00187, SRG-OS-000478-GPOS-00223</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government because this provides assurance they have been tested and validated.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000125-GPOS-00065, SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174, SRG-OS-000396-GPOS-00176, SRG-OS-000423-GPOS-00187, SRG-OS-000478-GPOS-00223</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat Enterprise Linux 9",
             "dc:publisher": "DISA",
@@ -35111,19 +35111,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the operating system to implement FIPS mode with the following command\n\n$ sudo fips-mode-setup --enable\n\nTo ensure the kernel enables FIPS mode for early boot, \"fips=1\" must be added to the grub config:\n$ sudo grubby --update-kernel=ALL --args=\"fips=1\"\n\nVerify the setting with the following command:\n$ cat /proc/cmdline\nBOOT_IMAGE=(hd0,gpt2)/vmlinuz-5.14.0-570.21.1.el9_6.x86_64 root=/dev/mapper/rhel-root ro resume=/dev/mapper/rhel-swap rd.luks.uuid=luks-cd37eb8d-a2c3-4671-96ee-1e6a3a681561 rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb quiet fips=1 boot=UUID=acbbb4ee-adc0-4cb2-9546-afab857b8849 audit_backlog_limit=8192 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M\n\nReboot the system for the changes to take effect.",
-            "+@fixref": "F-61895r1155584_fix"
+            "+content": "Configure RHEL 9 to implement FIPS mode.\n\nIf this check fails on an installed system, it is a permanent finding until the system is reinstalled with \"fips=1\" during installation.",
+            "+@fixref": "F-61895r1184333_fix"
           },
           "fix": {
-            "+@id": "F-61895r1155584_fix"
+            "+@id": "F-61895r1184333_fix"
           },
           "check": {
-            "+@system": "C-61971r1155583_chk",
+            "+@system": "C-61971r1184332_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 9 is in FIPS mode with the following command:\n\n$ sudo fips-mode-setup --check\nFIPS mode is enabled.\n\nIf FIPS mode is not enabled, this is a finding.\n\nIf any other lines are returned by the above command, run the following command to see the currently applied crypto-policy:\n\n$ update-crypto-policies --show\nFIPS\n\nIf the policy is not \"FIPS\" or a FIPS policy authorized by and documented with the ISSO, this is a finding."
+            "check-content": "Verify RHEL 9 is in FIPS mode with the following command:\n\n$ cat /proc/sys/crypto/fips_enabled\n1\n\nIf the command does not return \"1\", this is a finding."
           }
         }
       },
@@ -35181,9 +35181,9 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258232r1045440_rule",
+          "+@id": "SV-258232r1184335_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-671020",
           "title": "RHEL 9 IP tunnels must use FIPS 140-3 approved cryptographic algorithms.",
           "description": "<VulnDiscussion>Overriding the system crypto policy makes the behavior of the Libreswan service violate expectations, and makes system configuration more fragmented.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35265,9 +35265,9 @@
         "title": "SRG-OS-000396-GPOS-00176",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258234r1051250_rule",
+          "+@id": "SV-258234r1184292_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-215100",
           "title": "RHEL 9 must have the crypto-policies package installed.",
           "description": "<VulnDiscussion>Centralized cryptographic policies simplify applying secure ciphers across an operating system and the applications that run on that operating system. Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.\n\nSatisfies: SRG-OS-000396-GPOS-00176, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35363,9 +35363,9 @@
         "title": "SRG-OS-000396-GPOS-00176",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258241r1106302_rule",
+          "+@id": "SV-258241r1184293_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-215105",
           "title": "RHEL 9 must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
           "description": "<VulnDiscussion>Centralized cryptographic policies simplify applying secure ciphers across an operating system and the applications that run on that operating system. Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.\n\nSatisfies: SRG-OS-000396-GPOS-00176, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35412,9 +35412,9 @@
         "title": "SRG-OS-000423-GPOS-00187",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258242r958908_rule",
+          "+@id": "SV-258242r1184336_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-672050",
           "title": "RHEL 9 must implement DOD-approved encryption in the bind package.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nRHEL 9 incorporates system-wide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/ directory.\n\nSatisfies: SRG-OS-000423-GPOS-00187, SRG-OS-000426-GPOS-00190</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35574,9 +35574,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270177r1051237_rule",
+          "+@id": "SV-270177r1184308_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-255064",
           "title": "The RHEL 9 SSH client must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection. \n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography, enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash. \n\nRHEL 9 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35613,9 +35613,9 @@
         "title": "SRG-OS-000250-GPOS-00093",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270178r1051243_rule",
+          "+@id": "SV-270178r1184310_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "RHEL-09-255070",
           "title": "The RHEL 9 SSH client must be configured to use only DOD-approved Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
           "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection. \n\nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography, enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash. \n\nRHEL 9 incorporates systemwide crypto policies by default. The SSH configuration file has no effect on the ciphers, MACs, or algorithms unless specifically defined in the /etc/sysconfig/sshd file. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/openssh.config file.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -35652,7 +35652,7 @@
         "title": "SRG-OS-000368-GPOS-00154",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270180r1045182_rule",
+          "+@id": "SV-270180r1184327_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-09-433016",
@@ -35670,19 +35670,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure RHEL 9 to employ a deny-all, permit-by-exception application allow listing policy with \"fapolicyd\".\n\nWith the \"fapolicyd\" installed and enabled, configure the daemon to function in permissive mode until the allow list is built correctly to avoid system lockout. Do this by editing the \"/etc/fapolicyd/fapolicyd.conf\" file with the following line:\n\npermissive = 1\n\nBuild the allow list in a file within the \"/etc/fapolicyd/rules.d\" directory, ensuring the last rule is \"deny perm=any all : all\".\n\nOnce it is determined the allow list is built correctly, set the \"fapolicyd\" to enforcing mode by editing the \"permissive\" line in the /etc/fapolicyd/fapolicyd.conf file.\n\npermissive = 0",
-            "+@fixref": "F-74114r1045181_fix"
+            "+content": "Configure RHEL 9 to employ a deny-all, permit-by-exception application allow listing policy with \"fapolicyd\".\n\nWith the \"fapolicyd\" installed and enabled, configure the daemon to function in permissive mode until the allow list is built correctly to avoid system lockout. Do this by editing the \"/etc/fapolicyd/fapolicyd.conf\" file with the following line:\n\npermissive = 1\n\nBuild the allow list in a file within the \"/etc/fapolicyd/rules.d\" directory, ensuring the last rule implements a deny-all policy, such as \"deny perm=any all : all\".\n\nOnce it is determined the allow list is built correctly, set the \"fapolicyd\" to enforcing mode by editing the \"permissive\" line in the /etc/fapolicyd/fapolicyd.conf file.\n\npermissive = 0",
+            "+@fixref": "F-74114r1184326_fix"
           },
           "fix": {
-            "+@id": "F-74114r1045181_fix"
+            "+@id": "F-74114r1184326_fix"
           },
           "check": {
-            "+@system": "C-74213r1045180_chk",
+            "+@system": "C-74213r1184325_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the RHEL 9 \"fapolicyd\" employs a deny-all, permit-by-exception policy.\n\nCheck that \"fapolicyd\" is in enforcement mode with the following command:\n\n$ sudo grep permissive /etc/fapolicyd/fapolicyd.conf\n\npermissive = 0\n\nCheck that \"fapolicyd\" employs a deny-all policy on system mounts with the following commands:\n\n$ sudo tail /etc/fapolicyd/compiled.rules\n\nallow exe=/usr/bin/python3.7 : ftype=text/x-python\ndeny_audit perm=any pattern=ld_so : all\ndeny perm=any all : all\n\nIf \"fapolicyd\" is not running in enforcement mode with a deny-all, permit-by-exception policy, this is a finding."
+            "check-content": "Verify the RHEL 9 \"fapolicyd\" employs a deny-all, permit-by-exception policy.\n\nVerify \"fapolicyd\" is in enforcement mode with the following command:\n\n$ sudo grep permissive /etc/fapolicyd/fapolicyd.conf\n\npermissive = 0\n\nIf \"fapolicyd\" is not running in enforcement mode, this is a finding.\n\nCheck that \"fapolicyd\" employs a deny-all policy on system mounts with the following commands:\n\n$ sudo tail /etc/fapolicyd/compiled.rules\n\nallow exe=/usr/bin/python3.7 : ftype=text/x-python\ndeny_audit perm=any pattern=ld_so : all\ndeny perm=any all : all\n\nIf \"fapolicyd\" is not running with a deny-all, permit-by-exception policy, this is a finding.\n\nNote: \"deny_log\" or \"deny_audit\" options meet the security requirements.  These options will generate higher volumes of logs."
           }
         }
       },

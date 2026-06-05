@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-04"
+      "+@date": "2025-09-22"
     },
     "title": "Firewall Security Requirements Guide",
     "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 28 Oct 2025",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.1",
         "+@id": "generator"
       },
       {
@@ -188,6 +188,10 @@
           {
             "+@idref": "V-263649",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
+            "+@selected": "true"
           }
         ]
       },
@@ -330,6 +334,10 @@
           },
           {
             "+@idref": "V-263649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
             "+@selected": "true"
           }
         ]
@@ -474,6 +482,10 @@
           {
             "+@idref": "V-263649",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
+            "+@selected": "true"
           }
         ]
       },
@@ -616,6 +628,10 @@
           },
           {
             "+@idref": "V-263649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
             "+@selected": "true"
           }
         ]
@@ -760,6 +776,10 @@
           {
             "+@idref": "V-263649",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
+            "+@selected": "true"
           }
         ]
       },
@@ -902,6 +922,10 @@
           },
           {
             "+@idref": "V-263649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
             "+@selected": "true"
           }
         ]
@@ -1046,6 +1070,10 @@
           {
             "+@idref": "V-263649",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
+            "+@selected": "true"
           }
         ]
       },
@@ -1188,6 +1216,10 @@
           },
           {
             "+@idref": "V-263649",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
             "+@selected": "true"
           }
         ]
@@ -1332,6 +1364,10 @@
           {
             "+@idref": "V-263649",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-278972",
+            "+@selected": "true"
           }
         ]
       }
@@ -1342,12 +1378,12 @@
         "title": "SRG-NET-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206674r604133_rule",
+          "+@id": "SV-206674r1137684_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-NET-000019-FW-000003",
           "title": "The firewall must be configured to use filters that use packet headers and packet attributes, including source and destination IP addresses and ports, to prevent the flow of unauthorized or suspicious traffic between interconnected networks with different security policies (including perimeter firewalls and server VLANs).",
-          "description": "<VulnDiscussion>Information flow control regulates where information is allowed to travel within a network and between interconnected networks. Blocking or restricting detected harmful or suspicious communications between interconnected networks enforces approved authorizations for controlling the flow of traffic.\n\nThe firewall that filters traffic outbound to interconnected networks with different security policies must be configured with filters (i.e., rules, access control lists [ACLs], screens, and policies) that permit, restrict, or block traffic based on organization-defined traffic authorizations. Filtering must include packet header and packet attribute information, such as IP addresses and port numbers.\n\nConfigure filters to perform certain actions when packets match specified attributes, including the following actions:\n\n- Apply a policy\n- Accept, reject, or discard the packets\n- Classify the packets based on their source address\n- Evaluate the next term in the filter\n- Increment a packet counter\n- Set the packets’ loss priority\n- Specify an IPsec SA (if IPsec is used in the implementation)\n- Specify the forwarding path\n- Write an alert or message to the system log</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Information flow control regulates where information is allowed to travel within a network and between interconnected networks. Blocking or restricting detected harmful or suspicious communications between interconnected networks enforces approved authorizations for controlling the flow of traffic.\n\nThe firewall that filters traffic outbound to interconnected networks with different security policies must be configured with filters (i.e., rules, access control lists [ACLs], screens, and policies) that permit, restrict, or block traffic based on organization-defined traffic authorizations. Filtering must include packet header and packet attribute information, such as IP addresses and port numbers.\n\nConfigure filters to perform certain actions when packets match specified attributes, including the following actions:\n\n- Apply a policy.\n- Accept, reject, or discard the packets.\n- Classify the packets based on their source address.\n- Evaluate the next term in the filter.\n- Increment a packet counter.\n- Set the packets’ loss priority.\n- Specify an IPsec SA (if IPsec is used in the implementation).\n- Specify the forwarding path.\n- Write an alert or message to the system log.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Firewall",
             "dc:publisher": "DISA",
@@ -1370,11 +1406,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure filters in the firewall to examine characteristics of incoming and outgoing packets, including but not limited to the following:\n\n- Bit fields in the packet header, including IP fragmentation flags, IP options, and TCP flags\n\n- IP version 4 (IPv4) numeric range, including destination port, DiffServ code point (DSCP) value, fragment offset, Internet Control Message Protocol (ICMP) code, ICMP packet type, interface group, IP precedence, packet length, protocol, and TCP and UDP source and destination port\n\n- IP version 6 (IPv6) numeric range, including class of service (CoS) priority, destination address, destination port, ICMP code, ICMP packet type, interface group, IP address, next header, packet length, source address, source port, and TCP and UDP source and destination port\n\n- Source and destination address and prefix list",
-            "+@fixref": "F-6931r297802_fix"
+            "+content": "Configure filters in the firewall to examine characteristics of incoming and outgoing packets, including but not limited to the following:\n\n- Bit fields in the packet header, including IP fragmentation flags, IP options, and TCP flags.\n\n- IPv4 numeric range, including destination port, DiffServ code point (DSCP) value, fragment offset, Internet Control Message Protocol (ICMP) code, ICMP packet type, interface group, IP precedence, packet length, protocol, and TCP and UDP source and destination port.\n\n- IPv6 numeric range, including class of service (CoS) priority, destination address, destination port, ICMP code, ICMP packet type, interface group, IP address, next header, packet length, source address, source port, and TCP and UDP source and destination port.\n\n- Source and destination address and prefix list.",
+            "+@fixref": "F-6931r1137683_fix"
           },
           "fix": {
-            "+@id": "F-6931r297802_fix"
+            "+@id": "F-6931r1137683_fix"
           },
           "check": {
             "+@system": "C-6931r297801_chk",
@@ -1391,12 +1427,12 @@
         "title": "SRG-NET-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206675r604133_rule",
+          "+@id": "SV-206675r1137685_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-NET-000019-FW-000004",
           "title": "The firewall must immediately use updates made to policy enforcement mechanisms such as firewall rules, security policies, and security zones.",
-          "description": "<VulnDiscussion>Information flow policies regarding dynamic information flow control include, for example, allowing or disallowing information flows based on changes to the Ports, Protocols, Services Management [PPSM] Category Assurance Levels [CAL] list, vulnerability assessments, or mission conditions. Changing conditions include changes in the threat environment and detection of potentially harmful or adverse events.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Information flow policies regarding dynamic information flow control include, for example, allowing or disallowing information flows based on changes to the Ports, Protocols, Services Management (PPSM) Category Assurance Levels (CAL) list, vulnerability assessments, or mission conditions. Changing conditions include changes in the threat environment and detection of potentially harmful or adverse events.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Firewall",
             "dc:publisher": "DISA",
@@ -2028,12 +2064,12 @@
         "title": "SRG-NET-000202",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206694r604133_rule",
+          "+@id": "SV-206694r1137686_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-NET-000202-FW-000039",
           "title": "The firewall must deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception).",
-          "description": "<VulnDiscussion>To prevent malicious or accidental leakage of traffic, organizations must implement a deny-by-default security posture at the network perimeter. Such rulesets prevent many malicious exploits or accidental leakage by restricting the traffic to only known sources and only those ports, protocols, or services that are permitted and operationally necessary.\n\nAs a managed boundary interface, the firewall must block all inbound and outbound network traffic unless a filter is installed to explicitly allow it. The allow filters must comply with the Ports, Protocols, and Services Management (PPSM) Category Assurance List (CAL) and Vulnerability Assessment (VA).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To prevent malicious or accidental leakage of traffic, organizations must implement a deny-by-default security posture at the network perimeter. Such rulesets prevent many malicious exploits or accidental leakage by restricting the traffic to only known sources and only those ports, protocols, or services that are permitted and operationally necessary.\n\nAs a managed boundary interface, the firewall must block all inbound and outbound network traffic unless a filter is installed to explicitly allow it. The allow filters must comply with the Ports, Protocols, and Services Management (PPSM) Category Assurance List (CAL) and Vulnerability Assessment (VA).\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Firewall",
             "dc:publisher": "DISA",
@@ -2273,11 +2309,11 @@
         "title": "SRG-NET-000335",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206700r855863_rule",
+          "+@id": "SV-206700r1140705_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-NET-000335-FW-000017",
-          "title": "If communication with the central audit server is lost, the firewall must generate a real-time alert to, at a minimum, the SCA and ISSO.",
+          "title": "If communication with the central audit server is lost, the firewall must generate a real-time alert to, at a minimum, the systems adminsitrator (SA) and information system security officer (ISSO).",
           "description": "<VulnDiscussion>Without a real-time alert (less than a second), security personnel may be unaware of an impending failure of the audit functions and system operation may be adversely impacted. Alerts provide organizations with urgent messages. Automated alerts can be conveyed in a variety of ways, including via a regularly monitored console, telephonically, via electronic mail, via text message, or via websites.\n\nLog processing failures include software/hardware errors, failures in the log capturing mechanisms, and log storage capacity being reached or exceeded. Most firewalls use UDP to send audit records to the server and cannot tell if the server has received the transmission, thus the site should either implement a connection-oriented communications solution (e.g., TCP) or implement a heartbeat with the central audit server and send an alert if it is unreachable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Firewall",
@@ -2301,19 +2337,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the firewall (or another network device) to send an alert via instant message, email, or another authorized method to the SCA, ISSO, and other identified personnel for any log failure event where the filtering functions are unable to write events to the central audit server.",
-            "+@fixref": "F-6957r297880_fix"
+            "+content": "Configure the firewall (or another network device) to send an alert via instant message, email, or another authorized method to the SA, ISSO, and other identified personnel for any log failure event where the filtering functions are unable to write events to the central audit server.",
+            "+@fixref": "F-6957r1140704_fix"
           },
           "fix": {
-            "+@id": "F-6957r297880_fix"
+            "+@id": "F-6957r1140704_fix"
           },
           "check": {
-            "+@system": "C-6957r297879_chk",
+            "+@system": "C-6957r1140703_chk",
             "check-content-ref": {
               "+@href": "Firewall_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "If a network device such as the events, network management, or SNMP server is configured to send an alert when communication is lost with the central audit server, this is not a finding.\n\nVerify the firewall is configured to send an alert via instant message, email, SNMP, or another authorized method to the SCA, ISSO, and other identified personnel when communication is lost with the central audit server.\n\nIf the firewall is not configured to send an immediate alert via an approved method when communication is lost with the central audit server, this is a finding."
+            "check-content": "If a network device such as the events, network management, or SNMP server is configured to send an alert when communication is lost with the central audit server, this is not a finding.\n\nVerify the firewall is configured to send an alert via instant message, email, SNMP, or another authorized method to the SA, ISSO, and other identified personnel when communication is lost with the central audit server.\n\nIf the firewall is not configured to send an immediate alert via an approved method when communication is lost with the central audit server, this is a finding."
           }
         }
       },
@@ -2900,12 +2936,12 @@
         "title": "SRG-NET-000715",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-263648r982549_rule",
+          "+@id": "SV-263648r1137687_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-NET-000715-FW-000120",
           "title": "The firewall must be configured to implement physically or logically separate subnetworks to isolate organization-defined critical system components and functions.",
-          "description": "<VulnDiscussion>Separating critical system components and functions from other noncritical system components and functions through separate subnetworks may be necessary to reduce susceptibility to a catastrophic or debilitating breach or compromise that results in system failure. For example, physically separating the command and control function from the in-flight entertainment function through separate subnetworks in a commercial aircraft provides an increased level of assurance in the trustworthiness of critical system functions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Separating critical system components and functions from other noncritical system components and functions through separate subnetworks may be necessary to reduce susceptibility to a catastrophic or debilitating breach or compromise that results in system failure. For example, physically separating the command and control function from the in-flight entertainment function through separate subnetworks in a commercial aircraft provides an increased level of assurance in the trustworthiness of critical system functions.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Firewall",
             "dc:publisher": "DISA",
@@ -2970,6 +3006,51 @@
               "+@name": "M"
             },
             "check-content": "Verify the firewall is configured to establish organization-defined alternate communications paths for system operations organizational command and control.\n\nIf the firewall is not configured to establish organization-defined alternate communications paths for system operations organizational command and control, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-278972",
+        "title": "SRG-NET-000323",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-278972r1137690_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "SRG-NET-000323-FW-000007",
+          "title": "The firewall must use organization-defined security attributes associated with organization-defined information, source, and destination objects to enforce organization-defined information flow control policies as a basis for flow control decisions.",
+          "description": "<VulnDiscussion>A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If information flow is not enforced based on approved authorizations, the system may become compromised. Information flow control regulates where information is allowed to travel within a system and between interconnected systems. Security attributes may be used to manage information flow control. \n\nInformation flow enforcement mechanisms compare security attributes associated with information (data content and data structure) and source/destination objects, and respond appropriately (e.g., block, quarantine, alert administrator) when the mechanisms encounter information flows not allowed by information flow policies. For example, an information object labeled Secret would be allowed to flow to a destination object labeled Secret, but an information object labeled Top Secret would not be allowed to flow to a destination object labeled Secret. Security attributes can also include, for example, source and destination addresses employed in traffic filter firewalls. Flow enforcement using security attributes can be used, for example, to control the release of certain types of information.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Firewall",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Firewall",
+            "dc:identifier": "2912"
+          },
+          "ident": [
+            {
+              "+content": "CCI-002190",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
+          "fixtext": {
+            "+content": "Configure the firewall to use organization-defined security attributes associated with organization-defined information, source, and destination objects to enforce organization-defined information flow control policies as a basis for flow control decisions.",
+            "+@fixref": "F-83425r1137689_fix"
+          },
+          "fix": {
+            "+@id": "F-83425r1137689_fix"
+          },
+          "check": {
+            "+@system": "C-83520r1137688_chk",
+            "check-content-ref": {
+              "+@href": "Firewall_SRG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify the firewall is configured to use organization-defined security attributes associated with organization-defined information, source, and destination objects to enforce organization-defined information flow control policies as a basis for flow control decisions.\n\nIf the firewall does not use organization-defined security attributes to enforce information flow control policies as a basis for flow control decisions, this is a finding."
           }
         }
       }

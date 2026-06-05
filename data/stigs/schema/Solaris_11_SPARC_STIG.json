@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-20"
+      "+@date": "2026-02-19"
     },
     "title": "Solaris 11 SPARC Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -13779,11 +13779,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216395r958390_rule",
+          "+@id": "SV-216395r1184793_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050380",
-          "title": "The operating system must display the DoD approved system use notification message or banner before granting access to the system for general system logons.",
+          "title": "The operating system must display the DOD-approved system use notification message or banner before granting access to the system for general system logons.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13807,19 +13807,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nEdit the contents of these two files and ensure that the proper DoD banner message is viewable.\n\n# pfedit /etc/motd\n# pfedit /etc/issue\n\nThe DoD required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests -- not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"",
-            "+@fixref": "F-17629r371274_fix"
+            "+content": "The root role is required.\n\nEdit the contents of these two files and ensure that the proper DOD banner message is viewable.\n\n# pfedit /etc/motd\n# pfedit /etc/issue\n\nThe DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.",
+            "+@fixref": "F-17629r1184338_fix"
           },
           "fix": {
-            "+@id": "F-17629r371274_fix"
+            "+@id": "F-17629r1184338_fix"
           },
           "check": {
-            "+@system": "C-17631r371273_chk",
+            "+@system": "C-17631r1184337_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the contents of these two files and check that the proper DoD banner message is configured.\n\n# cat /etc/motd\n# cat /etc/issue\n\nIf the DoD-approved banner text is not in the files, this is a finding."
+            "check-content": "Review the contents of these two files and check that the proper DOD banner message is configured.\n\n# cat /etc/motd\n# cat /etc/issue\n\nIf the DOD-approved banner text is not in the files, this is a finding."
           }
         }
       },
@@ -13877,11 +13877,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216397r958390_rule",
+          "+@id": "SV-216397r1184796_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050410",
-          "title": "The GNOME service must display the DoD approved system use notification message or banner before granting access to the system.",
+          "title": "The GNOME service must display the DOD-approved system use notification message or banner before granting access to the system.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13909,19 +13909,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nIf the system does not use XWindows, this is not applicable.\n\n# pfedit /etc/issue \n\nInsert the proper DoD banner message text. The DoD required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests -- not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n# pfedit /etc/gdm/Init/Default\n\nAdd the following content before the \"exit 0\" line of the file.\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue",
-            "+@fixref": "F-17631r371280_fix"
+            "+content": "The root role is required.\n\nIf the system does not use XWindows, this is not applicable.\n\n# pfedit /etc/issue \n\nInsert the proper DOD banner message text. The DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# pfedit /etc/gdm/Init/Default\n\nAdd the following content before the \"exit 0\" line of the file.\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue",
+            "+@fixref": "F-17631r1184341_fix"
           },
           "fix": {
-            "+@id": "F-17631r371280_fix"
+            "+@id": "F-17631r1184341_fix"
           },
           "check": {
-            "+@system": "C-17633r371279_chk",
+            "+@system": "C-17633r1184340_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This item does not apply if a graphic login is not configured.\n\nLog in to the Gnome Graphical interface. If the approved banner message does not appear, this is a finding.\n\n# cat /etc/issue\n\n# grep /etc/gdm/Init/Default zenity\n\nIf /etc/issue does not contain that DoD-approved banner message or /etc/gdm/Init/Default does not contain the line:\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue\n\nthis is a finding."
+            "check-content": "This item does not apply if a graphic login is not configured.\n\nLog in to the Gnome Graphical interface. If the approved banner message does not appear, this is a finding.\n\n# cat /etc/issue\n\n# grep /etc/gdm/Init/Default zenity\n\nIf /etc/issue does not contain that DOD-approved banner message or /etc/gdm/Init/Default does not contain the line:\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue\n\nthis is a finding."
           }
         }
       },
@@ -13930,11 +13930,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216398r958390_rule",
+          "+@id": "SV-216398r1184798_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050430",
-          "title": "The FTP service must display the DoD approved system use notification message or banner before granting access to the system.",
+          "title": "The FTP service must display the DOD-approved system use notification message or banner before granting access to the system.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13958,19 +13958,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required. \n\nThe package: pkg:/service/network/ftp must be installed.\n\n# pfedit /etc/issue \n\nInsert the proper DoD banner message text. The DoD required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests -- not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n# echo \"DisplayConnect /etc/issue\" >> /etc/proftpd.conf\n\n# svcadm restart ftp",
-            "+@fixref": "F-17632r371283_fix"
+            "+content": "The root role is required. \n\nThe package: pkg:/service/network/ftp must be installed.\n\n# pfedit /etc/issue \n\nInsert the proper DOD banner message text. The DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# echo \"DisplayConnect /etc/issue\" >> /etc/proftpd.conf\n\n# svcadm restart ftp",
+            "+@fixref": "F-17632r1184344_fix"
           },
           "fix": {
-            "+@id": "F-17632r371283_fix"
+            "+@id": "F-17632r1184344_fix"
           },
           "check": {
-            "+@system": "C-17634r371282_chk",
+            "+@system": "C-17634r1184343_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if the FTP server package is installed:\n\n# pkg list service/network/ftp \n\nIf the package is not installed, this check does not apply.\n\n# grep DisplayConnect /etc/proftpd.conf\n\nIf:\n\nDisplayConnect /etc/issue\n\ndoes not appear, this is a finding.\n\nIf /etc/issue does not contain the approved DoD text, this is a finding."
+            "check-content": "Determine if the FTP server package is installed:\n\n# pkg list service/network/ftp \n\nIf the package is not installed, this check does not apply.\n\n# grep DisplayConnect /etc/proftpd.conf\n\nIf:\n\nDisplayConnect /etc/issue\n\ndoes not appear, this is a finding.\n\nIf /etc/issue does not contain the approved DOD text, this is a finding."
           }
         }
       },
@@ -16241,11 +16241,11 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216456r959010_rule",
+          "+@id": "SV-216456r1190826_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SOL-11.1-080160",
-          "title": "SNMP communities, users, and passphrases must be changed from the default.",
+          "title": "SNMP default community strings and passphrases must be changed from vendor defaults.",
           "description": "<VulnDiscussion>Whether active or not, default SNMP passwords, users, and passphrases must be changed to maintain security. If the service is running with the default authenticators, then anyone can gather data about the system and the network and use the information to potentially compromise the integrity of the system or network(s).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -16269,19 +16269,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nChange the default snmpd.conf community passwords. To change them, locate the snmpd.conf file and edit it.\n\n# pfedit [filename]\n\nLocate the line system-group-read-community which has a default password of public and make the password something more random (less guessable). Make the same changes for the lines that read system- group-write-community, read-community, write-community, trap, and trap-community. Read the information in the file carefully. The trap is defining who to send traps to, for instance, by default. It is not a password, but the name of a host.",
-            "+@fixref": "F-17690r371457_fix"
+            "+content": "The root role is required.\n\nStop the SNMP service:\n# svcadm disable svc: /application/management/net-snmp:default\n\nOpen the /etc/snmp/snmpd.conf file and remove any lines containing default values.\n# pfedit [/path/filename]\n\nCreate a new SNMPv3 user with strong authentication and privacy keys (if the service is required).\n\nRestart the service (if the service is required).\n# svcadm enable svc: /application/management/net-snmp:default\n\nEnsure permissions on the configuration files are restricted:\n# chmod 600 /etc/snmp/snmp.conf",
+            "+@fixref": "F-17690r1190825_fix"
           },
           "fix": {
-            "+@id": "F-17690r371457_fix"
+            "+@id": "F-17690r1190825_fix"
           },
           "check": {
-            "+@system": "C-17692r793029_chk",
+            "+@system": "C-17692r1190824_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The root role is required.\n\nCheck the SNMP configuration for default passwords.\nLocate and examine the SNMP configuration.\n\nProcedure:\n\nFind any occurrences of the snmpd.conf file delivered with Solaris packages:\n\n# pkg search -l -Ho path snmpd.conf | awk '{ print \"/\"$1 }'\n\n# more [filename]\n\nIdentify any community names or user password configurations. If any community name or password is set to a default value, such as public, private, snmp-trap, or password, this is a finding."
+            "check-content": "Verify the Solaris 11 system does not use default SNMP community strings or passphrases.\n\nThe root role is required.\n\nFind any occurrences of the snmpd.conf file delivered with Solaris packages:\n\n# pkg search -l -Ho path snmpd.conf | awk '{ print \"/\"$1 }'\n/etc/net-snmp/snmp/snmpd.conf\n\nFor each listed file, use the following command to review its contents:\n\n# more [filename]\n\nReview SNMP trap configurations for default community strings:\n\n# grep trap /etc/net-snmp/snmp/snmpd.conf\n\nIdentify any community names, trap communities, or user password configurations set to default values. \nExamples: public, private, trap, public@localhost, password\n\nIf any default values are present, this is a finding."
           }
         }
       },

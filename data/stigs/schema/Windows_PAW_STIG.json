@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-23"
+      "+@date": "2026-02-25"
     },
     "title": "Microsoft Windows PAW Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 3 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1382,7 +1382,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243450r991589_rule",
+          "+@id": "SV-243450r1192854_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WPAW-00-001050",
@@ -1410,19 +1410,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement a whitelist of authorized PAW applications using Device Guard. See the Device Guard Deployment Guide (https://docs.microsoft.com/en-us/windows/device-security/device-guard/device-guard-deployment-guide) for deployment information and hardware requirements and the IAD Device Guard document \"Implementing a Secure Administrative Workstation using Device Guard\" at https://github.com/iadgov/Secure-Host-Baseline/tree/master/Device%20Guard.",
-            "+@fixref": "F-46682r722920_fix"
+            "+content": "Implement an allowlist of authorized PAW applications using Device Guard.",
+            "+@fixref": "F-46682r1192853_fix"
           },
           "fix": {
-            "+@id": "F-46682r722920_fix"
+            "+@id": "F-46682r1192853_fix"
           },
           "check": {
-            "+@system": "C-46725r804959_chk",
+            "+@system": "C-46725r1192852_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_PAW_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: This requirement is Not Applicable (NA) if the Endpoint Security Solution (ESS) managed system is used on the PAW and application white listing is enforced.\n\nVerify Device Guard is enforcing a code integrity policy to restrict authorized applications.\n\nRun \"PowerShell\" with elevated privileges (run as administrator).\n\nEnter the following:\n\n\"Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\\Microsoft\\Windows\\DeviceGuard | FL *codeintegrity*\"\n\nIf \"CodeIntegrityPolicyEnforcementStatus\" does not have a value of \"2\" indicating \"Enforced\", this is a finding. \n\n(For reference: 0 - Not Configured; 1 - Audit; 2 - Enforced)\n\nAlternately:\n\n- Run \"System Information\".\n- Under \"System Summary\", verify the following:\n\nIf \"Device Guard Code Integrity Policy\" does not display \"Enforced\", this is finding."
+            "check-content": "Verify Device Guard is enforcing a code integrity policy to restrict authorized applications.\n\nRun \"PowerShell\" with elevated privileges (run as administrator).\n\nEnter the following:\n\n\"Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\\Microsoft\\Windows\\DeviceGuard | FL *codeintegrity*\"\n\nIf \"CodeIntegrityPolicyEnforcementStatus\" does not have a value of \"2\" indicating \"Enforced\", this is a finding. \n\n(For reference: 0 - Not Configured; 1 - Audit; 2 - Enforced)\n\nAlternately:\n\nRun \"System Information\".\n\nUnder \"System Summary\", verify the following:\n\nIf \"Device Guard Code Integrity Policy\" does not display \"Enforced\", this is finding."
           }
         }
       },
@@ -1431,7 +1431,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243451r991589_rule",
+          "+@id": "SV-243451r1192857_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WPAW-00-001060",
@@ -1459,19 +1459,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement a whitelist of authorized PAW applications using Device Guard. See the Device Guard Deployment Guide (https://docs.microsoft.com/en-us/windows/device-security/device-guard/device-guard-deployment-guide) for deployment information and hardware requirements and the IAD Device Guard document \"Implementing a Secure Administrative Workstation using Device Guard\" at https://github.com/iadgov/Secure-Host-Baseline/tree/master/Device%20Guard.",
-            "+@fixref": "F-46683r722923_fix"
+            "+content": "Implement an allowlist of authorized PAW applications using Device Guard.",
+            "+@fixref": "F-46683r1192856_fix"
           },
           "fix": {
-            "+@id": "F-46683r722923_fix"
+            "+@id": "F-46683r1192856_fix"
           },
           "check": {
-            "+@system": "C-46726r804961_chk",
+            "+@system": "C-46726r1192855_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_PAW_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: This requirement is Not Applicable (NA) if the Endpoint Security Solution (ESS) managed system is used on the PAW and application white listing is enforced.\n\nVerify Device Guard is enforcing a code integrity policy to restrict authorized applications.\n\nRun \"PowerShell\" with elevated privileges (run as administrator).\n\nEnter the following:\n\n\"Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\\Microsoft\\Windows\\DeviceGuard | FL *codeintegrity*\"\n\nIf \"UserModeCodeIntegrityPolicyEnforcementStatus\" does not have a value of \"2\" indicating \"Enforced\", this is a finding.\n\n(For reference: 0 - Not Configured; 1 - Audit; 2 - Enforced)\n\nAlternately:\n\n- Run \"System Information\".\n- Under \"System Summary\", verify the following:\n\nIf \"Device Guard user mode Code Integrity\" does not display \"Enforced\", this is finding."
+            "check-content": "Verify Device Guard is enforcing a code integrity policy to restrict authorized applications.\n\nRun \"PowerShell\" with elevated privileges (run as administrator).\n\nEnter the following:\n\n\"Get-CimInstance -ClassName Win32_DeviceGuard -Namespace root\\Microsoft\\Windows\\DeviceGuard | FL *codeintegrity*\"\n\nIf \"UserModeCodeIntegrityPolicyEnforcementStatus\" does not have a value of \"2\" indicating \"Enforced\", this is a finding.\n\n(For reference: 0 - Not Configured; 1 - Audit; 2 - Enforced)\n\nAlternately:\n\nRun \"System Information\".\n\nUnder \"System Summary\", verify the following:\n\nIf \"Device Guard user mode Code Integrity\" does not display \"Enforced\", this is finding."
           }
         }
       },
@@ -1578,7 +1578,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243454r958514_rule",
+          "+@id": "SV-243454r1117266_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WPAW-00-001300",
@@ -1676,7 +1676,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243456r958514_rule",
+          "+@id": "SV-243456r1117266_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WPAW-00-001500",
@@ -1884,7 +1884,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243460r991589_rule",
+          "+@id": "SV-243460r1192860_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WPAW-00-002100",
@@ -1916,19 +1916,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Determine which inbound ports, services, addresses, or subnets are needed on the PAW for the organization's monitoring, scanning, and management tools.\n\nConfigure the host-based firewall on the PAW to block all inbound connection requests except for organizational monitoring, scanning, and management tools or for inbound connections that are responses to outbound connection requests.\n\nConfigure the host-based firewall on the PAW to block users with local administrative access from creating or modifying local firewall rules.\n\nNote: The exact configuration procedure will depend on which host-based firewall (for example, ESS) is used on the PAW. DoD sites should refer to DoD policies and firewall STIGs to determine acceptable firewalls products.",
-            "+@fixref": "F-46692r852045_fix"
+            "+content": "Determine which inbound ports, services, addresses, or subnets are needed on the PAW for the organization's monitoring, scanning, and management tools.\n\nConfigure the host-based firewall on the PAW to block all inbound connection requests except for organizational monitoring, scanning, and management tools or for inbound connections that are responses to outbound connection requests.\n\nConfigure the host-based firewall on the PAW to block users with local administrative access from creating or modifying local firewall rules.\n\nNote: The exact configuration procedure will depend on which host-based firewall is used on the PAW. DOD sites should refer to DOD policies and firewall STIGs to determine acceptable firewall products.",
+            "+@fixref": "F-46692r1192859_fix"
           },
           "fix": {
-            "+@id": "F-46692r852045_fix"
+            "+@id": "F-46692r1192859_fix"
           },
           "check": {
-            "+@system": "C-46735r852044_chk",
+            "+@system": "C-46735r1192858_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_PAW_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Obtain a list of all ports and services required for site monitoring, scanning, and management tools.\n\nReview the configuration setting of the PAW host-based firewall.\n\nVerify the firewall is configured to block all inbound ports and services from a PAW except as needed for monitoring, scanning, and management tools or when the inbound communication is a response to an outbound connection request.\n\nNote: The exact procedure for verifying the configuration will depend on which host-based firewall (for example, Endpoint Security Solution [ESS]) is used on the PAW. DoD sites should refer to DoD policies and firewall STIGs to determine acceptable firewalls products.\n\nIf the PAW host-based firewall is not configured to block all inbound ports and services from a PAW except as needed for monitoring, scanning, and management tools or when the inbound communication is a response to an outbound connection request, this is a finding."
+            "check-content": "Obtain a list of all ports and services required for site monitoring, scanning, and management tools.\n\nReview the configuration setting of the PAW host-based firewall.\n\nVerify the firewall is configured to block all inbound ports and services from a PAW except as needed for monitoring, scanning, and management tools or when the inbound communication is a response to an outbound connection request.\n\nNote: The exact procedure for verifying the configuration will depend on which host-based firewall is used on the PAW. DOD sites should refer to DOD policies and firewall STIGs to determine acceptable firewall products.\n\nIf the PAW host-based firewall is not configured to block all inbound ports and services from a PAW except as needed for monitoring, scanning, and management tools or when the inbound communication is a response to an outbound connection request, this is a finding."
           }
         }
       },
@@ -1937,7 +1937,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243461r991589_rule",
+          "+@id": "SV-243461r1192862_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WPAW-00-002200",
@@ -1969,11 +1969,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the PAW host-based firewall to block outbound connection requests to the internet gateway or configure the PAW with an internet proxy address with a loopback address. Allowed exceptions include connections to communicate with IT resources being managed via the PAW, including the management console of authorized public cloud services, with domain controllers, or with a digital credential verification service (for example, OCSP).\n\nIf the PAW host-based firewall method is used, configure the firewall to block outbound connection requests to the internet gateway. The exact configuration procedure will depend on which host-based firewall (for example, Endpoint Security Solution [ESS]) is used on the PAW. DoD sites should refer to DoD policies and firewall STIGs to determine acceptable firewalls products.\n\nIf the internet proxy address with a loopback address method is used, consider using the configuration instructions listed in the Microsoft Privileged Access Workstation paper.\n\nIn addition, disable the capability of the administrator to manually override the proxy settings on each PAW.",
-            "+@fixref": "F-46693r852048_fix"
+            "+content": "Configure the PAW host-based firewall to block outbound connection requests to the internet gateway or configure the PAW with an internet proxy address with a loopback address. Allowed exceptions include connections to communicate with IT resources being managed via the PAW, including the management console of authorized public cloud services, with domain controllers, or with a digital credential verification service (for example, OCSP).\n\nIf the PAW host-based firewall method is used, configure the firewall to block outbound connection requests to the internet gateway. The exact configuration procedure will depend on which host-based firewall is used on the PAW. DOD sites should refer to DOD policies and firewall STIGs to determine acceptable firewall products.\n\nIf the internet proxy address with a loopback address method is used, consider using the configuration instructions listed in the Microsoft Privileged Access Workstation paper.\n\nIn addition, disable the capability of the administrator to manually override the proxy settings on each PAW.",
+            "+@fixref": "F-46693r1192861_fix"
           },
           "fix": {
-            "+@id": "F-46693r852048_fix"
+            "+@id": "F-46693r1192861_fix"
           },
           "check": {
             "+@system": "C-46736r852047_chk",

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-25"
+      "+@date": "2026-02-18"
     },
     "title": "Dragos Platform 2.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 6 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -1058,12 +1058,12 @@
         "title": "SRG-APP-000080",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270919r1155099_rule",
+          "+@id": "SV-270919r1190805_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DRAG-OT-000240",
           "title": "The Dragos Platform must only allow local administrative and service user accounts.",
-          "description": "<VulnDiscussion>Only default accounts facilitate the initial setup and configuration of the Platform. These accounts provide immediate access to the system, allowing administrators to quickly get the system up and running without needing to create new user accounts during the initial installation phase. These accounts are: UI Administrator, DragOS CLI standard user (dragos), DragOS CLI admin context user (dragos_admin) or user created authorized accounts.\n\nDuring maintenance, updates, or support operations, default accounts allow vendor support teams to access the system without needing to manage a variety of customer-specific accounts. This can streamline support activities and reduce downtime.\n\nDefault accounts passwords need to be protected so they cannot be exploited by attackers to gain unauthorized access to the system.\n\nSatisfies: SRG-APP-000080, SRG-APP-000234</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Only two default UI accounts facilitate the initial setup and configuration of the platform. These accounts provide immediate access to the system, allowing administrators to quickly get the system up and running without needing to create new user accounts during the initial installation phase.\n\nDuring maintenance, updates, or support operations, default accounts allow vendor support teams to access the system without needing to manage a variety of customer-specific accounts. This can streamline support activities and reduce downtime.\n\nDefault accounts passwords must be changed and protected so they cannot be exploited by attackers to gain unauthorized access to the system.\n\nSatisfies: SRG-APP-000080, SRG-APP-000234</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Dragos Platform 2.x",
             "dc:publisher": "DISA",
@@ -1082,19 +1082,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Remove users except the UI Administrator, DragOS CLI Service Accounts, and user-created authorized user accounts..\n\nWhile logged in to the Dragos Platform UI with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nClick the kebab menu next to the user and select \"Delete User\".\n\nClick \"DELETE\" in the verification window. If using SSO/OIDC, removing the username/password authentication provider is sufficient when a user has multiple authentication providers.\n\nFor DragOS Cli: run the command \"system users show\" to verify only built-in and user created/authorized accounts are present. To remove unwanted accounts, run the command \"configu user remove <username>\".\n\nNote: Any accounts not built-in or managed by the CLI will be removed when configuration is applied.",
-            "+@fixref": "F-74863r1155098_fix"
+            "+content": "Remove any nondefault user accounts configured to authenticate with username and password or configure an approved identity provider for all required user accounts.\n\n1.Remove user:\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\nClick the kebab menu next to the user and select \"Delete User\".\nClick \"DELETE\" in the verification window.\n\n2. Add Authentication method:\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\nClick the kebab menu next to the user and select \"Edit User\".\nClick \"Authentication\" in the page selector.\nAdd information to appropriate authentication method and click \"Save\".",
+            "+@fixref": "F-74863r1188291_fix"
           },
           "fix": {
-            "+@id": "F-74863r1155098_fix"
+            "+@id": "F-74863r1188291_fix"
           },
           "check": {
-            "+@system": "C-74962r1155097_chk",
+            "+@system": "C-74962r1188290_chk",
             "check-content-ref": {
               "+@href": "Dragos_Platform_2.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform UI with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any local user except the UI Administrator, DragOS CLI standard user (dragos), DragOS CLI admin context user (dragos_admin), or user-created authorized accounts exist, this is a finding."
+            "check-content": "Verify local user accounts.\n\nWhile logged in to the Dragos Platform with a user account with administrative privileges, navigate to Admin >> User Management >> Users.\n\nIf any user except the UI administrator account is configured to authenticate with username and password, this is a finding."
           }
         }
       },

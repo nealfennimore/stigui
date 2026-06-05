@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-28"
+      "+@date": "2026-02-13"
     },
     "title": "Rancher Government Solutions RKE2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 6 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -874,7 +874,7 @@
         "title": "SRG-APP-000014-CTR-000035",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254553r1016525_rule",
+          "+@id": "SV-254553r1188297_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-R2-000010",
@@ -926,19 +926,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the use of strong TLS settings.\n\nEdit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\nkube-controller-manager-arg: \n- \"tls-min-version=VersionTLS12\" [or higher]\n- \"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\"\nkube-scheduler-arg: \n- \"tls-min-version=VersionTLS12\"\n- \"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\"\nkube-apiserver-arg: \n- \"tls-min-version=VersionTLS12\"\n- \"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\"\n\nOnce configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server",
-            "+@fixref": "F-57986r1016524_fix"
+            "+content": "Configure the use of strong TLS settings.\n\nEdit the RKE2 server configuration file on all RKE2 server hosts, located at \"/etc/rancher/rke2/config.yaml\", to contain the following:\n\nkube-controller-manager-arg:\n\n\"tls-min-version=VersionTLS12\" [or higher]\n\"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\" kube-scheduler-arg:\n\"tls-min-version=VersionTLS12\"\n\"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\" kube-apiserver-arg:\n\"tls-min-version=VersionTLS12\"\n\"tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\"\n\nOnce the configuration file is updated, restart the RKE2 server using the command: \n\nsystemctl restart rke2-server",
+            "+@fixref": "F-57986r1188296_fix"
           },
           "fix": {
-            "+@id": "F-57986r1016524_fix"
+            "+@id": "F-57986r1188296_fix"
           },
           "check": {
-            "+@system": "C-58037r1016523_chk",
+            "+@system": "C-58037r1188295_chk",
             "check-content-ref": {
               "+@href": "Rancher_Government_Solutions_RKE2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use strong TLS settings. \n\nOn an RKE2 server, run each command: \n\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\n/bin/ps -ef | grep kube-controller-manager | grep -v grep \n\n/bin/ps -ef | grep kube-scheduler | grep -v grep\n\nFor each, look for the existence of tls-min-version (use this command for an aid \"| grep tls-min-version\"): \nIf the setting \"tls-min-version\" is not configured or it is set to \"VersionTLS10\" or \"VersionTLS11\", this is a finding.\n\nFor each, look for the existence of the tls-cipher-suites. \nIf \"tls-cipher-suites\" is not set for all servers, or does not contain the following, this is a finding: \n\n--tls-cipher-suites=suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
+            "check-content": "Use strong TLS settings.\n\nOn the RKE2 server, run each command:\n\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\n/bin/ps -ef | grep kube-controller-manager | grep -v grep\n\n/bin/ps -ef | grep kube-scheduler | grep -v grep\n\nFor each, look for the existence of tls-min-version (use this command for an aid \"| grep tls-min-version\"). \n\nIf the setting \"tls-min-version\" is not configured or it is set to \"VersionTLS10\" or \"VersionTLS11\", this is a finding.\n\nFor each, look for the existence of the tls-cipher-suites. \n\nIf \"tls-cipher-suites\" is not set for all servers, or does not contain the following, this is a finding.\n\n--tls-cipher-suites=suites=TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
           }
         }
       },
@@ -986,7 +986,7 @@
         "title": "SRG-APP-000026-CTR-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254555r1056186_rule",
+          "+@id": "SV-254555r1188300_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-R2-000060",
@@ -1082,19 +1082,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Audit logging and policies:\n\nEdit the /etc/rancher/rke2/config.yaml file, and enable the audit policy:\naudit-policy-file: /etc/rancher/rke2/audit-policy.yaml\n\n1. Edit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, so that it contains required configuration.\n\n--audit-policy-file= Path to the file that defines the audit policy configuration. (Example: /etc/rancher/rke2/audit-policy.yaml)\n--audit-log-mode=blocking-strict\n\nIf configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server\n\n2. Edit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, so that it contains required configuration.\n\nIf using RKE2 v1.24 or older, set:\nprofile: cis-1.6\n\nIf using RKE2 v1.25 or newer, set:\nprofile: cis-1.23\n\nAvailable with October 2023 releases (v1.25.15+rke2r1, v1.26.10+rke2r1, v1.27.7+rke2r1, v1.28.3+rke2r1), use the generic profile \"cis\".\n\nIf configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server\n\n3. Edit the audit policy file, by default located at /etc/rancher/rke2/audit-policy.yaml to look like below:\n\napiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  name: rke2-audit-policy\nrules:\n  - level: Metadata\n    resources:\n    - group: \"\"\n      resources: [\"secrets\"]\n  - level: RequestResponse\n    resources:\n    - group: \"\"\n      resources: [\"*\"]\n\nIf configuration files are updated on a host, restart the RKE2 Service. Run the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
-            "+@fixref": "F-57988r1028344_fix"
+            "+content": "Edit the \"/etc/rancher/rke2/config.yaml\" file and enable the audit-policy-file: /etc/rancher/rke2/audit-policy.yaml\n\nEdit the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, so it contains the required configuration.\n\n--audit-policy-file= Path to the file that defines the audit policy configuration. (Example: /etc/rancher/rke2/audit-policy.yaml) --audit-log-mode=blocking-strict\n\nIf configuration file is updated, restart the RKE2 using the command \"systemctl restart rke2-server\" for server hosts or \"systemctl restart rke2-agent\" for agent hosts.\n\nEdit the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, so that it contains required configuration.\n\nIf using RKE2 v1.24 or older, set: profile: cis-1.6\n\nIf using RKE2 v1.25 or newer, set: profile: cis-1.23\n\nFor October 2023 releases (v1.25.15+rke2r1, v1.26.10+rke2r1, v1.27.7+rke2r1, v1.28.3+rke2r1), use the generic profile \"cis\".\n\nIf configuration file is updated, restart RKE2 using the command \"systemctl restart rke2-server\" for server hosts or \"systemctl restart rke2-agent\" for agent hosts.\n\nEdit the audit policy file, by default, located at /etc/rancher/rke2/audit-policy.yaml to look like the following:\n\napiVersion: audit.k8s.io/v1 kind: Policy metadata: name: rke2-audit-policy rules:\n\nlevel: Metadata resources:\ngroup: \"\" resources: [\"secrets\"]\nlevel: RequestResponse resources:\ngroup: \"\" resources: [\"*\"]\n\nIf configuration files are updated on a host, restart the RKE2 service using the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
+            "+@fixref": "F-57988r1188299_fix"
           },
           "fix": {
-            "+@id": "F-57988r1028344_fix"
+            "+@id": "F-57988r1188299_fix"
           },
           "check": {
-            "+@system": "C-58039r1056186_chk",
+            "+@system": "C-58039r1188298_chk",
             "check-content-ref": {
               "+@href": "Rancher_Government_Solutions_RKE2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Audit logging and policies:\n\n1. On all hosts running RKE2 Server, run the command:\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\nIf --audit-policy-file is not set, this is a finding.\nIf --audit-log-mode is not = \"blocking-strict\", this is a finding.\n\n2. Ensure the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, contains CIS profile setting. Run the following command:\ncat /etc/rancher/rke2/config.yaml \n\nRKE2 can be started with the profile flag set to cis, cis-1.23, or cis-1.6 depending on the RKE2 version. Available with October 2023 releases (v1.25.15+rke2r1, v1.26.10+rke2r1, v1.27.7+rke2r1, v1.28.3+rke2r1), use the generic profile: \"cis\".\n\nIf a value for profile is not found or is not set correctly, this is a finding. (Example: \"profile: cis\")\n\n3. Check the contents of the audit-policy file.\nBy default, RKE2 expects the audit-policy file to be located at /etc/rancher/rke2/audit-policy.yaml; however, this location can be overridden in the /etc/rancher/rke2/config.yaml file with argument 'kube-apiserver-arg: \"audit-policy-file=/etc/rancher/rke2/audit-policy.yaml\"'.\n\nIf the audit policy file does not exist or does not look like the following, this is a finding.\n\napiVersion: audit.k8s.io/v1\nkind: Policy\nmetadata:\n  name: rke2-audit-policy\nrules:\n  - level: Metadata\n    resources:\n    - group: \"\"\n      resources: [\"secrets\"]\n  - level: RequestResponse\n    resources:\n    - group: \"\"\n      resources: [\"*\"]"
+            "check-content": "Audit logging and policies:\n\nOn all hosts running RKE2, run the command: \n\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\nIf --audit-policy-file is not set, this is a finding. If --audit-log-mode is not = \"blocking-strict\", this is a finding.\n\nEnsure the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, contains CIS profile setting. Run the following command: cat /etc/rancher/rke2/config.yaml\nRKE2 can be started with the profile flag set to cis, cis-1.23, or cis-1.6 depending on the RKE2 version. Available with October 2023 releases (v1.25.15+rke2r1, v1.26.10+rke2r1, v1.27.7+rke2r1, v1.28.3+rke2r1), use the generic profile: \"cis\".\n\nIf a value for profile is not found or is not set correctly, this is a finding. (Example: \"profile: cis\")\n\nCheck the contents of the audit-policy file. By default, RKE2 expects the audit-policy file to be located at /etc/rancher/rke2/audit-policy.yaml; however, this location can be overridden in the /etc/rancher/rke2/config.yaml file with argument 'kube-apiserver-arg: \"audit-policy-file=/etc/rancher/rke2/audit-policy.yaml\"'.\nIf the audit policy file does not exist or does not look like the following, this is a finding.\n\napiVersion: audit.k8s.io/v1 kind: Policy metadata: name: rke2-audit-policy rules:\n\nlevel: Metadata resources:\ngroup: \"\" resources: [\"secrets\"]\nlevel: RequestResponse resources:\ngroup: \"\" resources: [\"*\"]"
           }
         }
       },
@@ -1181,7 +1181,7 @@
         "title": "SRG-APP-000033-CTR-000095",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254559r1137639_rule",
+          "+@id": "SV-254559r1188303_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CNTR-R2-000130",
@@ -1199,19 +1199,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Edit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\nkubelet-arg:\n--read-only-port=0\n\nIf configuration files are updated on a host, restart the RKE2 Service. Run the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
-            "+@fixref": "F-57992r940056_fix"
+            "+content": "Edit the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, to contain the following: kubelet-arg: --read-only-port=0\n\nIf configuration files are updated on a host, restart the RKE2 service using the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
+            "+@fixref": "F-57992r1188302_fix"
           },
           "fix": {
-            "+@id": "F-57992r940056_fix"
+            "+@id": "F-57992r1188302_fix"
           },
           "check": {
-            "+@system": "C-58043r940055_chk",
+            "+@system": "C-58043r1188301_chk",
             "check-content-ref": {
               "+@href": "Rancher_Government_Solutions_RKE2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ensure read-only-port is set correctly so anonymous requests will be rejected.\n\nRun this command on each node:\n/bin/ps -ef | grep kubelet | grep -v grep\n\nIf --read-only-port is not set to \"0\" or is not configured, this is a finding."
+            "check-content": "Ensure read-only-port is set so anonymous requests will be rejected.\n\nRun the following command on each node:\n\n/bin/ps -ef | grep kubelet | grep -v grep\n\nIf --read-only-port is not set to \"0\" or is not configured, this is a finding."
           }
         }
       },
@@ -1511,7 +1511,7 @@
         "title": "SRG-APP-000190-CTR-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254568r1016534_rule",
+          "+@id": "SV-254568r1188305_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-R2-000890",
@@ -1529,11 +1529,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Edit the RKE2 Server configuration file on all RKE2 Agent hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\nkubelet-arg:\n- streaming-connection-idle-timeout=5m\n\nIf configuration files are updated on a host, restart the RKE2 Service. \nRun the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
-            "+@fixref": "F-58001r1016533_fix"
+            "+content": "Edit the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\nkubelet-arg: --streaming-connection-idle-timeout=5m\n\nIf configuration files are updated on a host, restart the RKE2 service using the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
+            "+@fixref": "F-58001r1188304_fix"
           },
           "fix": {
-            "+@id": "F-58001r1016533_fix"
+            "+@id": "F-58001r1188304_fix"
           },
           "check": {
             "+@system": "C-58052r1016532_chk",
@@ -1550,7 +1550,7 @@
         "title": "SRG-APP-000233-CTR-000585",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254569r1016537_rule",
+          "+@id": "SV-254569r1188307_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-R2-000940",
@@ -1568,11 +1568,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Edit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\nkubelet-arg:\n --protect-kernel-defaults=true\n\nIf configuration files are updated on a host, restart the RKE2 Service. \nRun the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
-            "+@fixref": "F-58002r1016536_fix"
+            "+content": "Edit the RKE2 configuration file on all RKE2 hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\nkubelet-arg: --protect-kernel-defaults=true\n\nIf configuration files are updated on a host, restart the RKE2 service using the command \"systemctl restart rke2-server\" for server hosts and \"systemctl restart rke2-agent\" for agent hosts.",
+            "+@fixref": "F-58002r1188306_fix"
           },
           "fix": {
-            "+@id": "F-58002r1016536_fix"
+            "+@id": "F-58002r1188306_fix"
           },
           "check": {
             "+@system": "C-58053r1016535_chk",

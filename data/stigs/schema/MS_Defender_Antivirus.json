@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-25"
+      "+@date": "2026-02-17"
     },
     "title": "Microsoft Defender Antivirus Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
         "+@id": "release-info"
       },
       {
@@ -2628,12 +2628,12 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213428r961194_rule",
+          "+@id": "SV-213428r1190706_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WNDF-AV-000004",
           "title": "Microsoft Defender AV must be configured to run and scan for malware and other potentially unwanted software.",
-          "description": "<VulnDiscussion>This policy setting turns off Microsoft Defender Antivirus. If this policy setting is enabled, Microsoft Defender Antivirus does not run and computers are not scanned for malware or other potentially unwanted software. \n\nWhen the setting is disabled and a third-party antivirus solution is installed, the two applications can both simultaneously try to protect the system. The two AV solutions both attempt to quarantine the same threat and will fight for access to delete the file. Users will see conflicts and the system may lock up until the two solutions finish processing. \n\nWhen the setting is not configured and a third-party antivirus solution is installed, both applications coexist on the system without conflicts.  Defender Antivirus will automatically disable itself and will enable if the third-party solution stops functioning.  When the setting is not configured and Defender Antivirus is the only AV solution, Defender AV will run (default state) and receive definition updates. An administrator account is needed to turn off the service. A standard user cannot disable the service.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This policy setting turns off Microsoft Defender Antivirus. If this policy setting is enabled, Microsoft Defender Antivirus does not run and computers are not scanned for malware or other potentially unwanted software. \n\nWhen the setting is disabled and a third-party antivirus solution is installed, the two applications can both simultaneously try to protect the system. The two AV solutions both attempt to quarantine the same threat and will fight for access to delete the file. Users will see conflicts and the system may lock up until the two solutions finish processing. \n\nWhen the setting is not configured and a third-party antivirus solution is installed, both applications coexist on the system without conflicts. Defender Antivirus will automatically disable itself and will enable if the third-party solution stops functioning. When the setting is not configured and Defender Antivirus is the only AV solution, Defender AV will run (default state) and receive definition updates. An administrator account is needed to turn off the service. A standard user cannot disable the service.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
             "dc:publisher": "DISA",
@@ -2651,7 +2651,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -2677,7 +2677,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213429r961194_rule",
+          "+@id": "SV-213429r1190707_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000005",
@@ -2700,7 +2700,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -2726,7 +2726,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213430r961194_rule",
+          "+@id": "SV-213430r1190710_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000006",
@@ -2749,24 +2749,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft  Defender Antivirus >> Exclusions >> \"Process Exclusions\" to \"Disabled\" or \"Not Configured\".",
-            "+@fixref": "F-14653r823031_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> \"Process Exclusions\" to \"Disabled\" or \"Not Configured\".",
+            "+@fixref": "F-14653r1190709_fix"
           },
           "fix": {
-            "+@id": "F-14653r823031_fix"
+            "+@id": "F-14653r1190709_fix"
           },
           "check": {
-            "+@system": "C-14655r820137_chk",
+            "+@system": "C-14655r1190708_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> \"Process Exclusions\" is set to \"Disabled\" or \"Not Configured\".\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Exclusions\n\nCriteria: If the value \"Exclusions_Processes\" does not exist, this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> \"Process Exclusions\" is set to \"Disabled\" or \"Not Configured\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key:\nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Exclusions\n\nCriteria: If the value \"Exclusions_Processes\" does not exist, this is not a finding."
           }
         }
       },
@@ -2775,7 +2775,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213431r961194_rule",
+          "+@id": "SV-213431r1190712_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000007",
@@ -2798,7 +2798,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -2810,12 +2810,12 @@
             "+@id": "F-14654r823033_fix"
           },
           "check": {
-            "+@system": "C-14656r820140_chk",
+            "+@system": "C-14656r1190711_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> \"Turn off Auto Exclusions\" is set to \"Disabled\".\n     \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Exclusions\n\nCriteria: If the value \"DisableAutoExclusions\" is REG_DWORD = 0, this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Exclusions >> \"Turn off Auto Exclusions\" is set to \"Disabled\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Exclusions\n\nCriteria: If the value \"DisableAutoExclusions\" is REG_DWORD = 0, this is not a finding."
           }
         }
       },
@@ -2873,7 +2873,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213433r961194_rule",
+          "+@id": "SV-213433r1190715_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000009",
@@ -2896,24 +2896,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "This is applicable to unclassified systems. For other systems this is NA.\n\nSet the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft  Defender Antivirus >> MAPS >> \"Configure the 'Block at First Sight' feature\" to \"Enabled\".",
-            "+@fixref": "F-14656r823037_fix"
+            "+content": "This is applicable to unclassified systems. For other systems this is NA.\n\nSet the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MAPS >> \"Configure the 'Block at First Sight' feature\" to \"Enabled\".",
+            "+@fixref": "F-14656r1190714_fix"
           },
           "fix": {
-            "+@id": "F-14656r823037_fix"
+            "+@id": "F-14656r1190714_fix"
           },
           "check": {
-            "+@system": "C-14658r820146_chk",
+            "+@system": "C-14658r1190713_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This is applicable to unclassified systems. For other systems this is NA.\n\nVerify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MAPS >> \"Configure the 'Block at First Sight' feature\" is set to \"Enabled\".\n     \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Spynet\n\nCriteria: If the value \"DisableBlockAtFirstSeen\" is REG_DWORD = 0, this is not a finding."
+            "check-content": "This is applicable to unclassified systems. For other systems this is NA.\n\nVerify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MAPS >> \"Configure the 'Block at First Sight' feature\" is set to \"Enabled\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Spynet\n\nCriteria: If the value \"DisableBlockAtFirstSeen\" is REG_DWORD = 0, this is not a finding."
           }
         }
       },
@@ -3020,7 +3020,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213436r961194_rule",
+          "+@id": "SV-213436r1190716_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000012",
@@ -3043,7 +3043,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3265,7 +3265,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213441r961194_rule",
+          "+@id": "SV-213441r1190717_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000017",
@@ -3288,7 +3288,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3314,7 +3314,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213442r1144028_rule",
+          "+@id": "SV-213442r1190718_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000018",
@@ -3337,7 +3337,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3363,7 +3363,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213443r961194_rule",
+          "+@id": "SV-213443r1190719_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000019",
@@ -3386,7 +3386,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3461,12 +3461,12 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213445r961194_rule",
+          "+@id": "SV-213445r1190720_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000021",
           "title": "Microsoft Defender AV must be configured to always enable real-time protection.",
-          "description": "<VulnDiscussion>This policy setting turns off real-time protection prompts for known malware detection. Microsoft Defender Antivirus alerts  when malware or potentially unwanted software attempts to install itself or to run on your computer. If this policy setting is enabled, Microsoft Defender Antivirus will not prompt users to take actions on malware detections. If this policy setting is disabled or not configured, Microsoft Defender Antivirus will prompt users to take actions on malware detections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This policy setting turns off real-time protection prompts for known malware detection. Microsoft Defender Antivirus alerts when malware or potentially unwanted software attempts to install itself or to run on a user's computer. If this policy setting is enabled, Microsoft Defender Antivirus will not prompt users to take actions on malware detections. If this policy setting is disabled or not configured, Microsoft Defender Antivirus will prompt users to take actions on malware detections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
             "dc:publisher": "DISA",
@@ -3484,7 +3484,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3559,7 +3559,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213447r961194_rule",
+          "+@id": "SV-213447r1190721_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000023",
@@ -3582,7 +3582,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3608,7 +3608,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213448r961194_rule",
+          "+@id": "SV-213448r1190722_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000024",
@@ -3631,7 +3631,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001242",
+              "+content": "CCI-002624",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3804,7 +3804,7 @@
         "title": "SRG-APP-000276",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213452r961188_rule",
+          "+@id": "SV-213452r1190723_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WNDF-AV-000028",
@@ -3827,7 +3827,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001240",
+              "+content": "CCI-004964",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -3853,7 +3853,7 @@
         "title": "SRG-APP-000276",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213453r961188_rule",
+          "+@id": "SV-213453r1190724_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WNDF-AV-000029",
@@ -3876,7 +3876,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-001240",
+              "+content": "CCI-004964",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -4539,7 +4539,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278647r1144030_rule",
+          "+@id": "SV-278647r1190726_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000043",
@@ -4557,11 +4557,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83086r1134292_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83086r1190725_fix"
           },
           "fix": {
-            "+@id": "F-83086r1134292_fix"
+            "+@id": "F-83086r1190725_fix"
           },
           "check": {
             "+@system": "C-83181r1144029_chk",
@@ -4578,7 +4578,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278648r1144032_rule",
+          "+@id": "SV-278648r1190728_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000044",
@@ -4596,11 +4596,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83087r1134294_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83087r1190727_fix"
           },
           "fix": {
-            "+@id": "F-83087r1134294_fix"
+            "+@id": "F-83087r1190727_fix"
           },
           "check": {
             "+@system": "C-83182r1144031_chk",
@@ -4617,7 +4617,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278649r1144034_rule",
+          "+@id": "SV-278649r1190730_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000045",
@@ -4635,11 +4635,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83088r1134296_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83088r1190729_fix"
           },
           "fix": {
-            "+@id": "F-83088r1134296_fix"
+            "+@id": "F-83088r1190729_fix"
           },
           "check": {
             "+@system": "C-83183r1144033_chk",
@@ -4656,12 +4656,12 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278650r1144036_rule",
+          "+@id": "SV-278650r1190732_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000046",
           "title": "Microsoft Defender AV must use advanced protection against ransomware.",
-          "description": "<VulnDiscussion>This policy setting provides an extra layer of protection against ransomware. It uses both client and cloud heuristics to determine whether a file resembles ransomware. \nThis rule doesn't block files that have one or more of the following characteristics:\n\n- The file is found to be unharmful in the Microsoft cloud.\n- The file is a valid signed file.\n-  The file is prevalent enough to not be considered as ransomware.\n- The rule tends to err on the side of caution to prevent ransomware. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This policy setting provides an extra layer of protection against ransomware. It uses both client and cloud heuristics to determine whether a file resembles ransomware. This rule does not block files that have one or more of the following characteristics:\n\n- The file is found to be unharmful in the Microsoft cloud.\n- The file is a valid signed file.\n- The file is prevalent enough to not be considered as ransomware.\n- The rule tends to err on the side of caution to prevent ransomware.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
             "dc:publisher": "DISA",
@@ -4674,11 +4674,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"c1db55ab-c21a-4637-bb3f-a12568109d35\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83089r1134275_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"c1db55ab-c21a-4637-bb3f-a12568109d35\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83089r1190731_fix"
           },
           "fix": {
-            "+@id": "F-83089r1134275_fix"
+            "+@id": "F-83089r1190731_fix"
           },
           "check": {
             "+@system": "C-83184r1144035_chk",
@@ -4695,11 +4695,11 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278651r1144039_rule",
+          "+@id": "SV-278651r1190734_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000047",
-          "title": "Microsoft Defender AV must block process creations originating from PSExec and WMI commands.",
+          "title": "Microsoft Defender AV must audit process creations originating from PSExec and WMI commands.",
           "description": "<VulnDiscussion>This policy setting blocks processes created through PsExec and WMI from running. Both PsExec and WMI can remotely execute code. There is a risk of malware abusing functionality of PsExec and WMI for command and control purposes, or to spread an infection throughout an organization's network.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
@@ -4713,11 +4713,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"d1e49aac-8f56-4280-b9ba-993a6d77406c\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83090r1144038_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"d1e49aac-8f56-4280-b9ba-993a6d77406c\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.",
+            "+@fixref": "F-83090r1190733_fix"
           },
           "fix": {
-            "+@id": "F-83090r1144038_fix"
+            "+@id": "F-83090r1190733_fix"
           },
           "check": {
             "+@system": "C-83185r1144037_chk",
@@ -4734,11 +4734,11 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278652r1144042_rule",
+          "+@id": "SV-278652r1190736_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000048",
-          "title": "Microsoft Defender AV must block persistence through WMI event subscription.",
+          "title": "Microsoft Defender AV must audit persistence through WMI event subscription.",
           "description": "<VulnDiscussion>This policy setting prevents malware from abusing WMI to attain persistence on a device.\n\nFileless threats employ various tactics to stay hidden, to avoid being seen in the file system, and to gain periodic execution control. Some threats can abuse the WMI repository and event model to stay hidden.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
@@ -4752,11 +4752,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"e6db77e5-3df2-4cf1-b95a-636979351e5b\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83091r1144041_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"e6db77e5-3df2-4cf1-b95a-636979351e5b\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.",
+            "+@fixref": "F-83091r1190735_fix"
           },
           "fix": {
-            "+@id": "F-83091r1144041_fix"
+            "+@id": "F-83091r1190735_fix"
           },
           "check": {
             "+@system": "C-83186r1144040_chk",
@@ -4773,11 +4773,11 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278653r1144045_rule",
+          "+@id": "SV-278653r1190738_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000049",
-          "title": "Microsoft Defender AV must block executable files from running unless they meet a prevalence, age, or trusted list criterion.",
+          "title": "Microsoft Defender AV must audit executable files from running unless they meet a prevalence, age, or trusted list criterion.",
           "description": "<VulnDiscussion>This policy setting blocks executable files, such as .exe, .dll, or .scr, from launching. Thus, launching untrusted or unknown executable files can be risky, as it might not be initially clear if the files are malicious.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
@@ -4791,11 +4791,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"01443614-cd74-433a-b99e-2ecdc07bfc25\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83092r1144044_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"01443614-cd74-433a-b99e-2ecdc07bfc25\" in the \"Value Name\" column.\n\nEnter \"2\" in the \"Value\" column.",
+            "+@fixref": "F-83092r1190737_fix"
           },
           "fix": {
-            "+@id": "F-83092r1144044_fix"
+            "+@id": "F-83092r1190737_fix"
           },
           "check": {
             "+@system": "C-83187r1144043_chk",
@@ -4812,7 +4812,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278654r1144047_rule",
+          "+@id": "SV-278654r1190740_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000050",
@@ -4830,11 +4830,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"26190899-1602-49e8-8b27-eb1d0a1ce869\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83093r1134287_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"26190899-1602-49e8-8b27-eb1d0a1ce869\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83093r1190739_fix"
           },
           "fix": {
-            "+@id": "F-83093r1134287_fix"
+            "+@id": "F-83093r1190739_fix"
           },
           "check": {
             "+@system": "C-83188r1144046_chk",
@@ -4851,7 +4851,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278655r1144049_rule",
+          "+@id": "SV-278655r1190742_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000051",
@@ -4869,11 +4869,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"56a863a9-875e-4185-98a7-b882c64b5ce5\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83094r1134290_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Attack Surface Reduction >> Configure Attack Surface Reduction rules to \"Enabled\".\n\nUnder the policy option \"Set the state for each ASR rule:\", then click \"Show\".\n\nEnter GUID \"56a863a9-875e-4185-98a7-b882c64b5ce5\" in the \"Value Name\" column.\n\nEnter \"1\" in the \"Value\" column.",
+            "+@fixref": "F-83094r1190741_fix"
           },
           "fix": {
-            "+@id": "F-83094r1134290_fix"
+            "+@id": "F-83094r1190741_fix"
           },
           "check": {
             "+@system": "C-83189r1144048_chk",
@@ -4890,7 +4890,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278656r1144051_rule",
+          "+@id": "SV-278656r1190744_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000052",
@@ -4908,11 +4908,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus  >> Configure local administrator merge behavior for lists to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83095r1133659_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Configure local administrator merge behavior for lists to \"Enabled\".",
+            "+@fixref": "F-83095r1190743_fix"
           },
           "fix": {
-            "+@id": "F-83095r1133659_fix"
+            "+@id": "F-83095r1190743_fix"
           },
           "check": {
             "+@system": "C-83190r1144050_chk",
@@ -4929,7 +4929,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278658r1156519_rule",
+          "+@id": "SV-278658r1190746_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000054",
@@ -4947,11 +4947,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Control whether or not exclusions are visible to Local Admins to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83097r1133665_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Control whether exclusions are visible to Local Admins to \"Enabled\".",
+            "+@fixref": "F-83097r1190745_fix"
           },
           "fix": {
-            "+@id": "F-83097r1133665_fix"
+            "+@id": "F-83097r1190745_fix"
           },
           "check": {
             "+@system": "C-83192r1156518_chk",
@@ -4968,7 +4968,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278659r1144055_rule",
+          "+@id": "SV-278659r1190748_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000055",
@@ -4982,15 +4982,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Randomize scheduled task times to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83098r1133668_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Randomize scheduled task times to \"Enabled\".",
+            "+@fixref": "F-83098r1190747_fix"
           },
           "fix": {
-            "+@id": "F-83098r1133668_fix"
+            "+@id": "F-83098r1190747_fix"
           },
           "check": {
             "+@system": "C-83193r1144054_chk",
@@ -5007,7 +5007,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278660r1144057_rule",
+          "+@id": "SV-278660r1190750_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000056",
@@ -5025,11 +5025,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Windows Security >> Family Options >> Hide the Family options area to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83099r1133671_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Windows Security >> Family Options >> Hide the Family options area to \"Enabled\".",
+            "+@fixref": "F-83099r1190749_fix"
           },
           "fix": {
-            "+@id": "F-83099r1133671_fix"
+            "+@id": "F-83099r1190749_fix"
           },
           "check": {
             "+@system": "C-83194r1144056_chk",
@@ -5046,7 +5046,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278661r1144059_rule",
+          "+@id": "SV-278661r1190752_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000057",
@@ -5064,11 +5064,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >>Enable file hash computation feature to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83100r1133674_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >>Enable file hash computation feature to \"Enabled\".",
+            "+@fixref": "F-83100r1190751_fix"
           },
           "fix": {
-            "+@id": "F-83100r1133674_fix"
+            "+@id": "F-83100r1190751_fix"
           },
           "check": {
             "+@system": "C-83195r1144058_chk",
@@ -5085,7 +5085,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278662r1144061_rule",
+          "+@id": "SV-278662r1190754_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000058",
@@ -5103,11 +5103,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Configure extended cloud check to \"Enabled\" with a Policy Option value of \"50\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83101r1133677_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Configure extended cloud check to \"Enabled\" with a Policy Option value of \"50\".",
+            "+@fixref": "F-83101r1190753_fix"
           },
           "fix": {
-            "+@id": "F-83101r1133677_fix"
+            "+@id": "F-83101r1190753_fix"
           },
           "check": {
             "+@system": "C-83196r1144060_chk",
@@ -5124,7 +5124,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278668r1144063_rule",
+          "+@id": "SV-278668r1190756_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000064",
@@ -5138,15 +5138,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> Turn on script scanning to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83107r1133695_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> Turn on script scanning to \"Enabled\".",
+            "+@fixref": "F-83107r1190755_fix"
           },
           "fix": {
-            "+@id": "F-83107r1133695_fix"
+            "+@id": "F-83107r1190755_fix"
           },
           "check": {
             "+@system": "C-83202r1144062_chk",
@@ -5163,7 +5163,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278669r1144065_rule",
+          "+@id": "SV-278669r1190758_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000065",
@@ -5177,15 +5177,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> Configure real-time protection and Security Intelligence Updates during OOBE to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83108r1133698_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> Configure real-time protection and Security Intelligence Updates during OOBE to \"Enabled\".",
+            "+@fixref": "F-83108r1190757_fix"
           },
           "fix": {
-            "+@id": "F-83108r1133698_fix"
+            "+@id": "F-83108r1190757_fix"
           },
           "check": {
             "+@system": "C-83203r1144064_chk",
@@ -5202,7 +5202,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278672r1144067_rule",
+          "+@id": "SV-278672r1190761_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000068",
@@ -5220,19 +5220,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83111r1133707_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server to \"Enabled\".",
+            "+@fixref": "F-83111r1190760_fix"
           },
           "fix": {
-            "+@id": "F-83111r1133707_fix"
+            "+@id": "F-83111r1190760_fix"
           },
           "check": {
-            "+@system": "C-83206r1144066_chk",
+            "+@system": "C-83206r1190759_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server is set to \"Enabled\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection\n\nCriteria: If the value \"AllowNetworkProtectionOnWinServer\" is REG_DWORD = 1, this is not a finding.\n\nIf the value is 0, this is a finding."
+            "check-content": "Note: This requirement is not applicable to desktops.\n\nVerify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server is set to \"Enabled\".\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection\n\nCriteria: If the value \"AllowNetworkProtectionOnWinServer\" is REG_DWORD = 1, this is not a finding.\n\nIf the value is 0, this is a finding."
           }
         }
       },
@@ -5241,7 +5241,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278674r1144071_rule",
+          "+@id": "SV-278674r1190763_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000070",
@@ -5259,11 +5259,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Features >> Enable EDR in block mode to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83113r1133713_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Features >> Enable EDR in block mode to \"Enabled\".",
+            "+@fixref": "F-83113r1190762_fix"
           },
           "fix": {
-            "+@id": "F-83113r1133713_fix"
+            "+@id": "F-83113r1190762_fix"
           },
           "check": {
             "+@system": "C-83208r1144070_chk",
@@ -5280,7 +5280,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278675r1144073_rule",
+          "+@id": "SV-278675r1190765_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000071",
@@ -5298,11 +5298,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Reporting >> Configure whether to report Dynamic Signature dropped events to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83114r1133716_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Reporting >> Configure whether to report Dynamic Signature dropped events to \"Enabled\".",
+            "+@fixref": "F-83114r1190764_fix"
           },
           "fix": {
-            "+@id": "F-83114r1133716_fix"
+            "+@id": "F-83114r1190764_fix"
           },
           "check": {
             "+@system": "C-83209r1144072_chk",
@@ -5319,7 +5319,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278676r1144075_rule",
+          "+@id": "SV-278676r1190767_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000072",
@@ -5333,15 +5333,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Scan excluded files and directories during quick scans to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83115r1133719_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Scan excluded files and directories during quick scans to \"Enabled\".",
+            "+@fixref": "F-83115r1190766_fix"
           },
           "fix": {
-            "+@id": "F-83115r1133719_fix"
+            "+@id": "F-83115r1190766_fix"
           },
           "check": {
             "+@system": "C-83210r1144074_chk",
@@ -5358,7 +5358,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278677r1144077_rule",
+          "+@id": "SV-278677r1190769_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000074",
@@ -5376,11 +5376,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Convert warn verdict to block to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83116r1134122_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Network Inspection System >> Convert warn verdict to block to \"Enabled\".",
+            "+@fixref": "F-83116r1190768_fix"
           },
           "fix": {
-            "+@id": "F-83116r1134122_fix"
+            "+@id": "F-83116r1190768_fix"
           },
           "check": {
             "+@system": "C-83211r1144076_chk",
@@ -5397,7 +5397,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278678r1144079_rule",
+          "+@id": "SV-278678r1190771_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000075",
@@ -5415,11 +5415,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Turn on asynchronous inspection to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83117r1133725_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Network Inspection System >> Turn on asynchronous inspection to \"Enabled\".",
+            "+@fixref": "F-83117r1190770_fix"
           },
           "fix": {
-            "+@id": "F-83117r1133725_fix"
+            "+@id": "F-83117r1190770_fix"
           },
           "check": {
             "+@system": "C-83212r1144078_chk",
@@ -5436,7 +5436,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278679r1144081_rule",
+          "+@id": "SV-278679r1190773_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000076",
@@ -5450,15 +5450,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Scan packed executables to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83118r1133728_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Scan packed executables to \"Enabled\".",
+            "+@fixref": "F-83118r1190772_fix"
           },
           "fix": {
-            "+@id": "F-83118r1133728_fix"
+            "+@id": "F-83118r1190772_fix"
           },
           "check": {
             "+@system": "C-83213r1144080_chk",
@@ -5475,7 +5475,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278680r1144083_rule",
+          "+@id": "SV-278680r1190775_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000077",
@@ -5489,15 +5489,15 @@
             "dc:identifier": "3985"
           },
           "ident": {
-            "+content": "CCI-001242",
+            "+content": "CCI-002624",
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Turn on heuristics to \"Enabled\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83119r1133731_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> Turn on heuristics to \"Enabled\".",
+            "+@fixref": "F-83119r1190774_fix"
           },
           "fix": {
-            "+@id": "F-83119r1133731_fix"
+            "+@id": "F-83119r1190774_fix"
           },
           "check": {
             "+@system": "C-83214r1144082_chk",
@@ -5514,7 +5514,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278863r1144086_rule",
+          "+@id": "SV-278863r1190777_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000073",
@@ -5532,11 +5532,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Select cloud protection level to \"Enabled\".\n\nSet policy value \"Select cloud blocking level\" to \"High blocking level\".\n\nClick \"OK\".\n\nClick \"Apply\".",
-            "+@fixref": "F-83302r1144085_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> MpEngine >> Select cloud protection level to \"Enabled\".\n\nSet policy value \"Select cloud blocking level\" to \"High blocking level\".",
+            "+@fixref": "F-83302r1190776_fix"
           },
           "fix": {
-            "+@id": "F-83302r1144085_fix"
+            "+@id": "F-83302r1190776_fix"
           },
           "check": {
             "+@system": "C-83397r1144084_chk",
