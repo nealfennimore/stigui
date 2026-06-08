@@ -1,6 +1,7 @@
 import * as Framework from "@/api/entities/Manifest";
 import Stig, { Classification } from "@/api/entities/Stig";
 import { Footer } from "@/app/components/footer";
+import { JsonLd } from "@/app/components/json_ld";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import { StigView } from "@/app/components/stig";
@@ -64,10 +65,54 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: Props) {
     const { stig_id, classification } = await params;
+    const stig = await Stig.read(`${stig_id}.json`);
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "TechArticle",
+                headline: `${stig.metaTitle} (${classification})`,
+                description: stig.description,
+                datePublished: new Date(stig.date).toISOString(),
+                version: stig.version,
+                url: `${URL}/stigs/${stig_id}/${classification}`,
+                keywords: [...stig.tags, classification],
+                publisher: {
+                    "@type": "Organization",
+                    name: stig.publisher ?? "DISA",
+                },
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "STIGs",
+                        item: `${URL}/stigs`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: stig.title,
+                        item: `${URL}/stigs/${stig_id}`,
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 3,
+                        name: classification,
+                        item: `${URL}/stigs/${stig_id}/${classification}`,
+                    },
+                ],
+            },
+        ],
+    };
 
     return (
         <ManifestComponent>
             <StigComponent stigId={stig_id}>
+                <JsonLd data={jsonLd} />
                 <Navigation />
                 <Main>
                     <StigView
