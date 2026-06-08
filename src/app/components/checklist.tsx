@@ -149,7 +149,7 @@ const StigTable = ({
     }, [viewableRules, onSelectRule, removeRule]);
 
     return (
-        <div className="mb-6 rounded-lg border border-border overflow-hidden">
+        <div className="w-full mb-2 rounded-lg border border-border overflow-hidden">
             <h2>
                 <button
                     type="button"
@@ -192,8 +192,11 @@ const StigTable = ({
             <div className={isOpen ? "" : "hidden"}>
                 <div className="border-t border-border bg-surface">
                     {stig.release_info && (
-                        <div className="px-5 pt-4 text-muted text-xs">
-                            {stig.release_info}
+                        <div className="px-5 py-3 border-b border-border bg-surface-muted text-muted text-xs">
+                            {stig.release_info.replace(
+                                /\s*Benchmark Date:/,
+                                " · Benchmark Date:",
+                            )}
                         </div>
                     )}
                     <section className="w-full flex flex-col">
@@ -290,7 +293,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     }, [currentRules]);
 
     const rule = useMemo(
-        () => (selectedUuid ? currentRules[selectedUuid] ?? null : null),
+        () => (selectedUuid ? (currentRules[selectedUuid] ?? null) : null),
         [selectedUuid, currentRules],
     );
 
@@ -455,6 +458,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 ref={formRef}
                 onSubmit={(e) => e.preventDefault()}
                 onChange={debouncedHandleChange}
+                className="w-full"
             >
                 <Sidebar
                     isOpen={rule !== null}
@@ -523,7 +527,9 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 selected={severities.has(severity as Severity)}
                                 onClick={() => {
                                     const newSeverities = new Set(severities);
-                                    if (newSeverities.has(severity as Severity)) {
+                                    if (
+                                        newSeverities.has(severity as Severity)
+                                    ) {
                                         newSeverities.delete(
                                             severity as Severity,
                                         );

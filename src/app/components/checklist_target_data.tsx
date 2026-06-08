@@ -14,7 +14,7 @@ export const ChecklistTargetData = ({
 }) => {
     const [isOpen, setOpen] = useState(false);
     const [isWebDatabase, setIsWebDatabase] = useState(
-        checklist.target_data.is_web_database
+        checklist.target_data.is_web_database,
     );
 
     return (
@@ -58,9 +58,7 @@ export const ChecklistTargetData = ({
                         <Field label="Target Type">
                             <Select
                                 name={`target_data.${checklist.id}.target_type`}
-                                defaultValue={
-                                    checklist.target_data.target_type
-                                }
+                                defaultValue={checklist.target_data.target_type}
                             >
                                 {Object.values(TargetType).map((_type) => (
                                     <option key={_type} value={_type}>
@@ -87,9 +85,7 @@ export const ChecklistTargetData = ({
                             <Input
                                 type="text"
                                 name={`target_data.${checklist.id}.mac_address`}
-                                defaultValue={
-                                    checklist.target_data.mac_address
-                                }
+                                defaultValue={checklist.target_data.mac_address}
                             />
                         </Field>
                         <Field label="FQDN">
