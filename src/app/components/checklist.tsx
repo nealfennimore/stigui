@@ -81,12 +81,14 @@ const StigTable = ({
     statuses,
     onSelectRule,
     removeRule,
+    onRemoveStig,
 }: {
     stig: Stig;
     severities: Set<Severity>;
     statuses: Set<Status>;
     onSelectRule: (rule: Rule) => void;
     removeRule: (rule: Rule) => void;
+    onRemoveStig: (stig: Stig) => void;
 }) => {
     const formRef = useRef<HTMLFormElement>(null);
     const [isOpen, setOpen] = useState(true);
@@ -151,10 +153,10 @@ const StigTable = ({
 
     return (
         <div className="w-full mb-2 rounded-lg border border-border overflow-hidden">
-            <h2>
+            <h2 className="flex items-center bg-surface-muted">
                 <button
                     type="button"
-                    className="flex items-center justify-between w-full p-5 bg-surface-muted hover:bg-surface transition-colors gap-3"
+                    className="flex items-center justify-between flex-1 p-5 hover:bg-surface transition-colors gap-3"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(!isOpen)}
                 >
@@ -188,6 +190,15 @@ const StigTable = ({
                             d="M9 5 5 1 1 5"
                         ></path>
                     </svg>
+                </button>
+                <button
+                    type="button"
+                    aria-label="Remove STIG from checklist"
+                    title="Remove STIG from checklist"
+                    onClick={() => onRemoveStig(stig)}
+                    className="shrink-0 self-stretch px-5 text-subtle hover:text-red-800 dark:hover:text-red-300 hover:bg-surface transition-colors"
+                >
+                    🗑️
                 </button>
             </h2>
             <div className={isOpen ? "" : "hidden"}>
@@ -440,6 +451,24 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [checklistId],
     );
 
+    const removeStig = useMemo(
+        () => (stig: Stig) => {
+            if (
+                window.confirm(
+                    `Remove the STIG "${stig.display_name}" and all ${stig.size} of its rules from this checklist? This cannot be undone.`,
+                )
+            ) {
+                (async () => {
+                    await IDB.removeStig(checklistId, stig.uuid);
+                    const checklist = await IDB.exportChecklist(checklistId);
+                    setChecklist(checklist);
+                    setSelectedUuid(null);
+                })();
+            }
+        },
+        [checklistId],
+    );
+
     const removeRule = useMemo(
         () => (rule: Rule) => {
             if (
@@ -595,6 +624,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     statuses={statuses}
                     onSelectRule={onSelectRule}
                     removeRule={removeRule}
+                    onRemoveStig={removeStig}
                 />
             ))}
         </Suspense>
