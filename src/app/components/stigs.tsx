@@ -66,7 +66,12 @@ export const Stigs = () => {
                     Security Technical Implementation Guides
                 </h1>
                 <p className="text-sm text-muted mt-1">
-                    Browse and search available STIGs.
+                    Browse the catalog of Security Technical Implementation
+                    Guides (STIGs) — the configuration standards used to harden
+                    systems against security risks. Search and sort the list
+                    below, then open a guide to review its requirements by
+                    severity and classification, or export it as XML, JSON, or
+                    CSV to build a checklist.
                 </p>
             </div>
             <TableCard>
