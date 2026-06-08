@@ -20,8 +20,8 @@ import { SeverityBadge, bySeverity } from "./severity";
 import { StatusBadge, byStatus } from "./status";
 import { Order, Table, defaultFilter, defaultSort } from "./table";
 
-const sorters = [defaultSort, bySeverity, byStatus, null];
-const filters = [null, null, defaultFilter, null];
+const sorters = [defaultSort, bySeverity, byStatus, null, null];
+const filters = [null, null, defaultFilter, null, null];
 
 const compare = (a: { [key: string]: any }, b: { [key: string]: any }) => {
     const aKeys = Object.keys(a);
@@ -70,6 +70,7 @@ const tableHeaders = [
     { text: "Severity" },
     { text: "Title" },
     { text: "Description", className: "max-lg:hidden" },
+    { text: "", className: "max-md:hidden" },
 ];
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const [checklist, setChecklist] = useState<Checklist | null>(null);
@@ -91,10 +92,13 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         }
         return checklist.stigs
             .flatMap((stig) => stig.rules)
-            .reduce((acc, rule) => {
-                acc[rule.uuid] = rule;
-                return acc;
-            }, {} as Record<string, Rule>);
+            .reduce(
+                (acc, rule) => {
+                    acc[rule.uuid] = rule;
+                    return acc;
+                },
+                {} as Record<string, Rule>,
+            );
     }, [checklist]);
 
     const viewableRules = useMemo(() => {
@@ -142,10 +146,10 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
 
         return {
             severity: Object.entries(counts.severity).sort(([a], [b]) =>
-                bySeverity(b as Severity, a as Severity)
+                bySeverity(b as Severity, a as Severity),
             ),
             status: Object.entries(counts.status).sort(([a], [b]) =>
-                byStatus(b as Status, a as Status)
+                byStatus(b as Status, a as Status),
             ),
         };
     }, [currentRules]);
@@ -155,7 +159,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             selectedIdx !== null && selectedIdx > -1
                 ? viewableRules?.[selectedIdx]
                 : null,
-        [selectedIdx]
+        [selectedIdx],
     );
 
     const handleChange = useMemo(
@@ -258,12 +262,35 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 setChecklist(checklist);
             });
         },
-        [viewableRules, currentRules, rule]
+        [viewableRules, currentRules, rule],
     );
 
     const debouncedHandleChange = useMemo(
         () => debounce(handleChange, 500),
-        [handleChange]
+        [handleChange],
+    );
+
+    const handleRemoveRule = useMemo(
+        () => async (uuid: string) => {
+            await IDB.rules.del(uuid);
+            const checklist = await IDB.exportChecklist(checklistId);
+            setChecklist(checklist);
+            setRowIdx(null);
+        },
+        [checklistId],
+    );
+
+    const removeRule = useMemo(
+        () => (rule: Rule) => {
+            if (
+                window.confirm(
+                    `Remove "${rule.rule_title}" from this checklist? This cannot be undone.`,
+                )
+            ) {
+                handleRemoveRule(rule.uuid);
+            }
+        },
+        [handleRemoveRule],
     );
 
     const tableBody = useMemo(() => {
@@ -274,6 +301,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 rule.overrides?.severity?.severity ?? rule.severity,
                 rule.rule_title,
                 rule.discussion,
+                "",
             ],
             columns: [
                 <StatusBadge status={rule.status} />,
@@ -284,10 +312,28 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 />,
                 rule.rule_title,
                 rule.discussion,
+                <button
+                    type="button"
+                    aria-label="Remove from checklist"
+                    title="Remove from checklist"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        removeRule(rule);
+                    }}
+                    className="text-subtle hover:text-red-800 dark:hover:text-red-300 transition-colors"
+                >
+                    🗑️
+                </button>,
             ],
-            classNames: [null, null, null, "max-lg:hidden"],
+            classNames: [
+                null,
+                null,
+                null,
+                "max-lg:hidden",
+                "text-right w-px max-md:hidden",
+            ],
         }));
-    }, [viewableRules]);
+    }, [viewableRules, removeRule]);
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
@@ -302,7 +348,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     onClick={() => setRowIdx(null)}
                     headerText={rule?.rule_title ?? "Rule Details"}
                 >
-                    <RuleEdit rule={rule} />
+                    <RuleEdit rule={rule} onRemove={removeRule} />
                 </Sidebar>
 
                 {checklist?.stigs.map((stig) => (
@@ -344,23 +390,23 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                         count={count}
                                         Element="button"
                                         selected={severities.has(
-                                            severity as Severity
+                                            severity as Severity,
                                         )}
                                         onClick={() => {
                                             const newSeverities = new Set(
-                                                severities
+                                                severities,
                                             );
                                             if (
                                                 newSeverities.has(
-                                                    severity as Severity
+                                                    severity as Severity,
                                                 )
                                             ) {
                                                 newSeverities.delete(
-                                                    severity as Severity
+                                                    severity as Severity,
                                                 );
                                             } else {
                                                 newSeverities.add(
-                                                    severity as Severity
+                                                    severity as Severity,
                                                 );
                                             }
                                             setSeverities(newSeverities);
@@ -376,23 +422,23 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                         count={count}
                                         Element="button"
                                         selected={statuses.has(
-                                            status as Status
+                                            status as Status,
                                         )}
                                         onClick={() => {
                                             const newStatuses = new Set(
-                                                statuses
+                                                statuses,
                                             );
                                             if (
                                                 newStatuses.has(
-                                                    status as Status
+                                                    status as Status,
                                                 )
                                             ) {
                                                 newStatuses.delete(
-                                                    status as Status
+                                                    status as Status,
                                                 );
                                             } else {
                                                 newStatuses.add(
-                                                    status as Status
+                                                    status as Status,
                                                 );
                                             }
                                             setStatuses(newStatuses);
@@ -412,6 +458,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                     initialOrders={[
                                         Order.NONE,
                                         Order.DESC,
+                                        Order.NONE,
                                         Order.NONE,
                                         Order.NONE,
                                     ]}

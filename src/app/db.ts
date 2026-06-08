@@ -162,6 +162,21 @@ export const put =
         });
     };
 
+export const del =
+    (table: string) =>
+    async (key: IDBValidKey): Promise<boolean> => {
+        const store = await getStore(table, Permission.READWRITE);
+        return new Promise<boolean>((resolve, reject) => {
+            const request = store.delete(key);
+            request.onsuccess = () => {
+                resolve(true);
+            };
+            request.onerror = () => {
+                reject(false);
+            };
+        });
+    };
+
 export const clear = (table: string) => async (): Promise<boolean> => {
     const store = await getStore(table, Permission.READWRITE);
     return new Promise<boolean>((resolve, reject) => {
@@ -196,6 +211,7 @@ class StoreWrapper<T> {
     ) => Promise<T[]>;
     get: (query: IDBKeyRange | IDBValidKey) => Promise<T>;
     put: (data: T) => Promise<T[]>;
+    del: (key: IDBValidKey) => Promise<boolean>;
     clear: () => Promise<boolean>;
     store: (permission: Permission) => Promise<IDBObjectStore>;
 
@@ -204,6 +220,7 @@ class StoreWrapper<T> {
         this.getAll = getAll<T>(table);
         this.get = get<T>(table);
         this.put = put<T>(table);
+        this.del = del(table);
         this.clear = clear(table);
         this.store = (permission: Permission = Permission.READONLY) =>
             getStore(table, permission);

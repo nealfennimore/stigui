@@ -1,14 +1,16 @@
 "use client";
 import type { Rule as IRule } from "@/api/generated/Checklist";
 import { Severity } from "@/api/generated/Checklist";
+import { buttonClasses } from "@/app/components/ui/button";
 import { Field, Input, Select, Textarea } from "@/app/components/ui/field";
 import { useState } from "react";
 
 type Props = {
     rule: IRule | null;
+    onRemove?: (rule: IRule) => void;
 };
 
-export const RuleEdit = ({ rule }: Props) => {
+export const RuleEdit = ({ rule, onRemove }: Props) => {
     if (!rule) {
         return null;
     }
@@ -98,6 +100,22 @@ export const RuleEdit = ({ rule }: Props) => {
                     />
                 </Field>
             </div>
+            {onRemove && (
+                <div className="flex justify-end border-t border-border pt-4">
+                    <button
+                        type="button"
+                        onClick={() => onRemove(rule)}
+                        className={buttonClasses({
+                            variant: "secondary",
+                            size: "sm",
+                            className:
+                                "text-red-800 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900",
+                        })}
+                    >
+                        🗑️ Remove from checklist
+                    </button>
+                </div>
+            )}
         </section>
     );
 };
