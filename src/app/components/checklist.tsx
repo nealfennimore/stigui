@@ -55,6 +55,7 @@ type FormRuleProperties = Pick<
 interface FormChecklistChanges {
     rule: Record<string, FormRuleProperties>;
     target_data: Record<string, TargetData>;
+    checklist: { title?: string };
 }
 
 const toCKLB = (checklist: Checklist) => {
@@ -311,12 +312,20 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 return;
             }
             const formData = new FormData(formRef.current);
-            let data = { rule: {}, target_data: {} } as FormChecklistChanges;
+            let data = {
+                rule: {},
+                target_data: {},
+                checklist: {},
+            } as FormChecklistChanges;
             let updates = [];
 
             for (const [key, value] of formData.entries()) {
                 const [type, uuid, ...paths] = key.split(".");
-                if (type !== "target_data" && type !== "rule") {
+                if (
+                    type !== "target_data" &&
+                    type !== "rule" &&
+                    type !== "checklist"
+                ) {
                     continue;
                 }
 
@@ -364,6 +373,10 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     } else {
                         data.target_data[uuid][path] = value;
                     }
+                } else if (type === "checklist") {
+                    if (paths[0] === "title") {
+                        data.checklist.title = value as string;
+                    }
                 }
             }
             for (const [uuid, value] of Object.entries(data.rule)) {
@@ -384,17 +397,21 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 updates.push(IDB.rules.put(rule));
             }
 
-            for (const [uuid, value] of Object.entries(data.target_data)) {
-                // Skip if only target_data is changed
-                // and the target_data is the same as the current target_data
-                if (compare(value, checklist?.target_data as TargetData)) {
-                    continue;
-                }
+            const targetDataChange = data.target_data[checklistId];
+            const targetChanged =
+                !!targetDataChange &&
+                !compare(targetDataChange, checklist?.target_data as TargetData);
+            const titleChanged =
+                data.checklist.title !== undefined &&
+                data.checklist.title !== checklist?.title;
+
+            if (titleChanged || targetChanged) {
                 const nextChecklist = {
                     ...checklist,
+                    ...(titleChanged ? { title: data.checklist.title } : {}),
                     target_data: {
                         ...checklist?.target_data,
-                        ...value,
+                        ...(targetChanged ? targetDataChange : {}),
                     },
                 } as IDBChecklist;
                 updates.push(IDB.checklists.put(nextChecklist));
@@ -470,9 +487,15 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
 
                 {checklist && (
                     <section className="my-4 w-full flex flex-col">
-                        <h1 className="text-3xl font-semibold tracking-tight mb-6 text-foreground">
-                            {checklist.title}
-                        </h1>
+                        <input
+                            key={checklist.id}
+                            type="text"
+                            name={`checklist.${checklist.id}.title`}
+                            defaultValue={checklist.title}
+                            aria-label="Checklist title"
+                            placeholder="Untitled checklist"
+                            className="text-3xl font-semibold tracking-tight mb-6 text-foreground bg-transparent w-full rounded-md border border-transparent px-1 -mx-1 hover:border-border focus:border-accent focus-visible:outline-none focus:ring-2 focus:ring-ring/40 transition-colors"
+                        />
                         <ChecklistTargetData checklist={checklist} />
                         <div className="text-xs flex justify-end gap-2 mt-1">
                             <button
