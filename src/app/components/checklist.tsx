@@ -5,8 +5,10 @@ import {
     Rule,
     Severity,
     Status,
+    Stig,
     TargetData,
 } from "@/api/generated/Checklist";
+import { AddStig } from "@/app/components/client/editor/add_stig";
 import { RuleEdit } from "@/app/components/client/editor/rule";
 import { Sidebar } from "@/app/components/sidebar";
 import { buttonClasses } from "@/app/components/ui/button";
@@ -72,40 +74,22 @@ const tableHeaders = [
     { text: "Description", className: "max-lg:hidden" },
     { text: "", className: "max-md:hidden" },
 ];
-export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
-    const [checklist, setChecklist] = useState<Checklist | null>(null);
+
+const StigTable = ({
+    stig,
+    onSelectRule,
+    removeRule,
+}: {
+    stig: Stig;
+    onSelectRule: (rule: Rule) => void;
+    removeRule: (rule: Rule) => void;
+}) => {
     const formRef = useRef<HTMLFormElement>(null);
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [statuses, setStatuses] = useState<Set<Status>>(new Set());
-    const [selectedIdx, setRowIdx] = useState<number | null>(null);
-
-    useEffect(() => {
-        (async () => {
-            const checklist = await IDB.exportChecklist(checklistId);
-            setChecklist(checklist);
-        })();
-    }, [checklistId]);
-
-    const currentRules = useMemo(() => {
-        if (!checklist) {
-            return {};
-        }
-        return checklist.stigs
-            .flatMap((stig) => stig.rules)
-            .reduce(
-                (acc, rule) => {
-                    acc[rule.uuid] = rule;
-                    return acc;
-                },
-                {} as Record<string, Rule>,
-            );
-    }, [checklist]);
 
     const viewableRules = useMemo(() => {
-        if (!currentRules) {
-            return [];
-        }
-        return Object.values(currentRules).filter((rule) => {
+        return stig.rules.filter((rule) => {
             const severity =
                 rule.overrides?.severity?.severity ?? rule.severity;
             const status = rule.status;
@@ -118,7 +102,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             }
             return true;
         });
-    }, [currentRules, severities, statuses]);
+    }, [stig.rules, severities, statuses]);
 
     const counts = useMemo(() => {
         const counts: {
@@ -128,7 +112,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             severity: {} as Record<Severity, number>,
             status: {} as Record<Status, number>,
         };
-        Object.values(currentRules).forEach((rule) => {
+        stig.rules.forEach((rule) => {
             const severity =
                 rule.overrides?.severity?.severity ?? rule.severity;
             const status = rule.status;
@@ -152,14 +136,171 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 byStatus(b as Status, a as Status),
             ),
         };
-    }, [currentRules]);
+    }, [stig.rules]);
+
+    const tableBody = useMemo(() => {
+        return viewableRules.map((rule) => ({
+            onClick: () => onSelectRule(rule),
+            values: [
+                rule.status,
+                rule.overrides?.severity?.severity ?? rule.severity,
+                rule.rule_title,
+                rule.discussion,
+                "",
+            ],
+            columns: [
+                <StatusBadge status={rule.status} />,
+                <SeverityBadge
+                    severity={
+                        rule.overrides?.severity?.severity ?? rule.severity
+                    }
+                />,
+                rule.rule_title,
+                rule.discussion,
+                <button
+                    type="button"
+                    aria-label="Remove from checklist"
+                    title="Remove from checklist"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        removeRule(rule);
+                    }}
+                    className="text-subtle hover:text-red-800 dark:hover:text-red-300 transition-colors"
+                >
+                    🗑️
+                </button>,
+            ],
+            classNames: [
+                null,
+                null,
+                null,
+                "max-lg:hidden",
+                "text-right w-px max-md:hidden",
+            ],
+        }));
+    }, [viewableRules, onSelectRule, removeRule]);
+
+    return (
+        <div className="w-full flex flex-col mb-8">
+            <div className="w-full flex flex-col gap-1 border border-border rounded-md p-3 mb-4">
+                <div className="text-foreground text-sm font-medium">
+                    {stig.display_name}
+                </div>
+                <div className="text-muted text-xs flex justify-between">
+                    <span>{stig.size} rules</span>
+                    <span>Version {stig.version}</span>
+                </div>
+                <div className="text-muted text-xs flex justify-between">
+                    <span>{stig.release_info}</span>
+                </div>
+            </div>
+
+            <aside className="w-full flex justify-between items-center mb-4 flex-wrap gap-2">
+                <div>
+                    {counts.severity.map(([severity, count]) => (
+                        <SeverityBadge
+                            key={severity}
+                            severity={severity as Severity}
+                            count={count}
+                            Element="button"
+                            selected={severities.has(severity as Severity)}
+                            onClick={() => {
+                                const newSeverities = new Set(severities);
+                                if (newSeverities.has(severity as Severity)) {
+                                    newSeverities.delete(severity as Severity);
+                                } else {
+                                    newSeverities.add(severity as Severity);
+                                }
+                                setSeverities(newSeverities);
+                            }}
+                        />
+                    ))}
+                </div>
+                <div>
+                    {counts.status.map(([status, count]) => (
+                        <StatusBadge
+                            key={status}
+                            status={status as Status}
+                            count={count}
+                            Element="button"
+                            selected={statuses.has(status as Status)}
+                            onClick={() => {
+                                const newStatuses = new Set(statuses);
+                                if (newStatuses.has(status as Status)) {
+                                    newStatuses.delete(status as Status);
+                                } else {
+                                    newStatuses.add(status as Status);
+                                }
+                                setStatuses(newStatuses);
+                            }}
+                        />
+                    ))}
+                </div>
+            </aside>
+
+            <section className="w-full flex flex-col">
+                <TableCard>
+                    <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
+                        <Table
+                            formRef={formRef}
+                            filters={filters}
+                            sorters={sorters}
+                            tableHeaders={tableHeaders}
+                            tableBody={tableBody}
+                            initialOrders={[
+                                Order.NONE,
+                                Order.DESC,
+                                Order.NONE,
+                                Order.NONE,
+                                Order.NONE,
+                            ]}
+                        />
+                    </form>
+                </TableCard>
+            </section>
+        </div>
+    );
+};
+
+export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
+    const [checklist, setChecklist] = useState<Checklist | null>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+    const [selectedUuid, setSelectedUuid] = useState<string | null>(null);
+    const [addStigOpen, setAddStigOpen] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            const checklist = await IDB.exportChecklist(checklistId);
+            setChecklist(checklist);
+        })();
+    }, [checklistId]);
+
+    const currentRules = useMemo(() => {
+        if (!checklist) {
+            return {};
+        }
+        return checklist.stigs
+            .flatMap((stig) => stig.rules)
+            .reduce(
+                (acc, rule) => {
+                    acc[rule.uuid] = rule;
+                    return acc;
+                },
+                {} as Record<string, Rule>,
+            );
+    }, [checklist]);
 
     const rule = useMemo(
-        () =>
-            selectedIdx !== null && selectedIdx > -1
-                ? viewableRules?.[selectedIdx]
-                : null,
-        [selectedIdx],
+        () => (selectedUuid ? currentRules[selectedUuid] ?? null : null),
+        [selectedUuid, currentRules],
+    );
+
+    const onSelectRule = useMemo(
+        () => (rule: Rule) => {
+            setAddStigOpen(false);
+            setSelectedUuid(rule.uuid);
+        },
+        [],
     );
 
     const handleChange = useMemo(
@@ -262,7 +403,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 setChecklist(checklist);
             });
         },
-        [viewableRules, currentRules, rule],
+        [currentRules, checklist, checklistId],
     );
 
     const debouncedHandleChange = useMemo(
@@ -275,7 +416,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             await IDB.rules.del(uuid);
             const checklist = await IDB.exportChecklist(checklistId);
             setChecklist(checklist);
-            setRowIdx(null);
+            setSelectedUuid(null);
         },
         [checklistId],
     );
@@ -293,181 +434,92 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [handleRemoveRule],
     );
 
-    const tableBody = useMemo(() => {
-        return viewableRules.map((rule, idx) => ({
-            onClick: () => setRowIdx(idx),
-            values: [
-                rule.status,
-                rule.overrides?.severity?.severity ?? rule.severity,
-                rule.rule_title,
-                rule.discussion,
-                "",
-            ],
-            columns: [
-                <StatusBadge status={rule.status} />,
-                <SeverityBadge
-                    severity={
-                        rule.overrides?.severity?.severity ?? rule.severity
-                    }
-                />,
-                rule.rule_title,
-                rule.discussion,
-                <button
-                    type="button"
-                    aria-label="Remove from checklist"
-                    title="Remove from checklist"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        removeRule(rule);
-                    }}
-                    className="text-subtle hover:text-red-800 dark:hover:text-red-300 transition-colors"
-                >
-                    🗑️
-                </button>,
-            ],
-            classNames: [
-                null,
-                null,
-                null,
-                "max-lg:hidden",
-                "text-right w-px max-md:hidden",
-            ],
-        }));
-    }, [viewableRules, removeRule]);
+    const handleAddStig = useMemo(
+        () => async (stig: Stig) => {
+            await IDB.addStig(checklistId, stig);
+            const checklist = await IDB.exportChecklist(checklistId);
+            setChecklist(checklist);
+            setAddStigOpen(false);
+        },
+        [checklistId],
+    );
+
+    const existingStigNames = useMemo(
+        () => new Set(checklist?.stigs.map((stig) => stig.stig_name) ?? []),
+        [checklist],
+    );
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
+            <Breadcrumbs editor />
             <form
                 ref={formRef}
                 onSubmit={(e) => e.preventDefault()}
                 onChange={debouncedHandleChange}
             >
-                <Breadcrumbs editor />
                 <Sidebar
                     isOpen={rule !== null}
-                    onClick={() => setRowIdx(null)}
+                    onClick={() => setSelectedUuid(null)}
                     headerText={rule?.rule_title ?? "Rule Details"}
                 >
                     <RuleEdit rule={rule} onRemove={removeRule} />
                 </Sidebar>
 
-                {checklist?.stigs.map((stig) => (
-                    <div key={stig.uuid}>
-                        <section className="my-4 w-full flex flex-col">
-                            <h1 className="text-3xl font-semibold tracking-tight mb-6 text-foreground">
-                                {checklist?.title}
-                            </h1>
-                            <ChecklistTargetData checklist={checklist} />
-                            <div className="w-full flex flex-col gap-1">
-                                <div className="text-muted text-xs flex justify-between">
-                                    <span>{stig.display_name}</span>
-                                    <span>Version {stig.version}</span>
-                                </div>
-                                <div className="text-muted text-xs flex justify-between">
-                                    <span>{stig.size} rules</span>
-                                    <span>{stig.release_info}</span>
-                                </div>
-                                <div className="text-xs flex justify-end mt-1">
-                                    <button
-                                        onClick={() => toCKLB(checklist)}
-                                        className={buttonClasses({
-                                            variant: "secondary",
-                                            size: "sm",
-                                        })}
-                                    >
-                                        CKLB ⬇️
-                                    </button>
-                                </div>
-                            </div>
-                        </section>
-
-                        <aside className="w-full flex justify-between items-center my-6">
-                            <div>
-                                {counts.severity.map(([severity, count]) => (
-                                    <SeverityBadge
-                                        key={severity}
-                                        severity={severity as Severity}
-                                        count={count}
-                                        Element="button"
-                                        selected={severities.has(
-                                            severity as Severity,
-                                        )}
-                                        onClick={() => {
-                                            const newSeverities = new Set(
-                                                severities,
-                                            );
-                                            if (
-                                                newSeverities.has(
-                                                    severity as Severity,
-                                                )
-                                            ) {
-                                                newSeverities.delete(
-                                                    severity as Severity,
-                                                );
-                                            } else {
-                                                newSeverities.add(
-                                                    severity as Severity,
-                                                );
-                                            }
-                                            setSeverities(newSeverities);
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                            <div>
-                                {counts.status.map(([status, count]) => (
-                                    <StatusBadge
-                                        key={status}
-                                        status={status as Status}
-                                        count={count}
-                                        Element="button"
-                                        selected={statuses.has(
-                                            status as Status,
-                                        )}
-                                        onClick={() => {
-                                            const newStatuses = new Set(
-                                                statuses,
-                                            );
-                                            if (
-                                                newStatuses.has(
-                                                    status as Status,
-                                                )
-                                            ) {
-                                                newStatuses.delete(
-                                                    status as Status,
-                                                );
-                                            } else {
-                                                newStatuses.add(
-                                                    status as Status,
-                                                );
-                                            }
-                                            setStatuses(newStatuses);
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                        </aside>
-                        <section className="w-full flex flex-col">
-                            <TableCard>
-                                <Table
-                                    formRef={formRef}
-                                    filters={filters}
-                                    sorters={sorters}
-                                    tableHeaders={tableHeaders}
-                                    tableBody={tableBody}
-                                    initialOrders={[
-                                        Order.NONE,
-                                        Order.DESC,
-                                        Order.NONE,
-                                        Order.NONE,
-                                        Order.NONE,
-                                    ]}
-                                />
-                            </TableCard>
-                        </section>
-                    </div>
-                ))}
+                {checklist && (
+                    <section className="my-4 w-full flex flex-col">
+                        <h1 className="text-3xl font-semibold tracking-tight mb-6 text-foreground">
+                            {checklist.title}
+                        </h1>
+                        <ChecklistTargetData checklist={checklist} />
+                        <div className="text-xs flex justify-end gap-2 mt-1">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setSelectedUuid(null);
+                                    setAddStigOpen(true);
+                                }}
+                                className={buttonClasses({
+                                    variant: "secondary",
+                                    size: "sm",
+                                })}
+                            >
+                                Add STIG ➕
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => toCKLB(checklist)}
+                                className={buttonClasses({
+                                    variant: "secondary",
+                                    size: "sm",
+                                })}
+                            >
+                                CKLB ⬇️
+                            </button>
+                        </div>
+                    </section>
+                )}
             </form>
+
+            <Sidebar
+                isOpen={addStigOpen}
+                onClick={() => setAddStigOpen(false)}
+                headerText="Add STIG"
+            >
+                <AddStig
+                    isOpen={addStigOpen}
+                    existingStigNames={existingStigNames}
+                    onAdd={handleAddStig}
+                />
+            </Sidebar>
+
+            {checklist?.stigs.map((stig) => (
+                <StigTable
+                    key={stig.uuid}
+                    stig={stig}
+                    onSelectRule={onSelectRule}
+                    removeRule={removeRule}
+                />
+            ))}
         </Suspense>
     );
 };

@@ -303,6 +303,30 @@ export class IDB {
         }
     }
 
+    static async addStig(
+        checklistId: string,
+        stigData: Stig
+    ): Promise<boolean> {
+        try {
+            const { rules: rulesData, ...stig } = stigData;
+            await IDB.stigs.put(stig);
+            await IDB.checklistStigs.put({
+                checklist_id: checklistId,
+                stig_uuid: stig.uuid,
+            });
+            for (const rule of rulesData) {
+                if (rule.uuid) {
+                    await IDB.rules.put(rule);
+                }
+            }
+
+            return true;
+        } catch (error) {
+            console.error("Error adding stig to checklist:", error);
+            return false;
+        }
+    }
+
     static async importChecklist(checklistData: Checklist): Promise<boolean> {
         try {
             const { stigs: stigsData, ...checklist } = checklistData;
