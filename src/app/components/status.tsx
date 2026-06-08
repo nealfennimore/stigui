@@ -17,11 +17,11 @@ export const byStatus = (a: Status, b: Status) => {
 const StatusColor = {
     [Status.Open]: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
     [Status.NotReviewed]:
-        "bg-zinc-100 text-zinc-800 dark:bg-zinc-900 dark:text-zinc-300",
+        "bg-zinc-100 text-zinc-800 dark:bg-zinc-200 dark:text-zinc-900",
     [Status.NotAFinding]:
         "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
     [Status.NotApplicable]:
-        "bg-stone-100 text-stone-800 dark:bg-stone-900 dark:text-stone-300",
+        "bg-black text-white dark:border dark:border-white/40",
 };
 const StatusColorSelected = {
     [Status.Open]: "ring-2 ring-red-400 dark:ring-red-500",
