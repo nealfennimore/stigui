@@ -1,21 +1,23 @@
 "use client";
-import { Checklist } from "@/api/generated/Checklist";
+import { Checklist, Convert } from "@/api/generated/Checklist";
 import {
     defaultFilter,
     defaultSort,
     Order,
     Table,
 } from "@/app/components/table";
+import { buttonClasses } from "@/app/components/ui/button";
 import { TableCard } from "@/app/components/ui/card";
 import { IDB } from "@/app/db";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const sorters = [defaultSort, defaultSort, defaultSort, null];
 const filters = [null, defaultFilter, null, null];
 
 export const ChecklistsView = () => {
     const [checklists, setChecklists] = useState<Checklist[] | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         (async () => {
@@ -30,6 +32,30 @@ export const ChecklistsView = () => {
             setChecklists(checklists);
         })();
     }, []);
+
+    const onImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        e.target.value = ""; // allow re-importing the same file
+        if (!file) {
+            return;
+        }
+        try {
+            const checklist = Convert.toChecklist(await file.text());
+            await IDB.importChecklist(checklist);
+            const imported = (await IDB.exportChecklist(
+                checklist.id
+            )) as Checklist;
+            setChecklists((prev) => [
+                ...(prev ?? []).filter((c) => c.id !== imported.id),
+                imported,
+            ]);
+        } catch (err) {
+            console.error(err);
+            window.alert(
+                "Could not import that file. Make sure it is a valid .cklb checklist."
+            );
+        }
+    };
 
     const removeChecklist = (checklist: Checklist) => {
         if (
@@ -106,13 +132,32 @@ export const ChecklistsView = () => {
 
     return (
         <section className="w-full flex flex-col gap-4">
-            <div>
-                <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-                    Checklists
-                </h1>
-                <p className="text-sm text-muted mt-1">
-                    Saved checklists stored in your browser.
-                </p>
+            <div className="flex justify-between items-start gap-4">
+                <div>
+                    <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+                        Checklists
+                    </h1>
+                    <p className="text-sm text-muted mt-1">
+                        Saved checklists stored in your browser.
+                    </p>
+                </div>
+                <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".cklb,application/json"
+                    className="hidden"
+                    onChange={onImport}
+                />
+                <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className={buttonClasses({
+                        variant: "secondary",
+                        size: "sm",
+                    })}
+                >
+                    Import CKLB ⬆️
+                </button>
             </div>
             <TableCard>
                 <Table
