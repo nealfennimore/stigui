@@ -12,7 +12,6 @@ import { AddStig } from "@/app/components/client/editor/add_stig";
 import { RuleEdit } from "@/app/components/client/editor/rule";
 import { Sidebar } from "@/app/components/sidebar";
 import { buttonClasses } from "@/app/components/ui/button";
-import { TableCard } from "@/app/components/ui/card";
 import { IDB, IDBChecklist } from "@/app/db";
 import { debounce, download } from "@/app/utils";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
@@ -77,16 +76,19 @@ const tableHeaders = [
 
 const StigTable = ({
     stig,
+    severities,
+    statuses,
     onSelectRule,
     removeRule,
 }: {
     stig: Stig;
+    severities: Set<Severity>;
+    statuses: Set<Status>;
     onSelectRule: (rule: Rule) => void;
     removeRule: (rule: Rule) => void;
 }) => {
     const formRef = useRef<HTMLFormElement>(null);
-    const [severities, setSeverities] = useState<Set<Severity>>(new Set());
-    const [statuses, setStatuses] = useState<Set<Status>>(new Set());
+    const [isOpen, setOpen] = useState(true);
 
     const viewableRules = useMemo(() => {
         return stig.rules.filter((rule) => {
@@ -103,40 +105,6 @@ const StigTable = ({
             return true;
         });
     }, [stig.rules, severities, statuses]);
-
-    const counts = useMemo(() => {
-        const counts: {
-            severity: Record<Severity, number>;
-            status: Record<Status, number>;
-        } = {
-            severity: {} as Record<Severity, number>,
-            status: {} as Record<Status, number>,
-        };
-        stig.rules.forEach((rule) => {
-            const severity =
-                rule.overrides?.severity?.severity ?? rule.severity;
-            const status = rule.status;
-
-            if (!counts.severity[severity]) {
-                counts.severity[severity] = 0;
-            }
-            counts.severity[severity]++;
-
-            if (!counts.status[status]) {
-                counts.status[status] = 0;
-            }
-            counts.status[status]++;
-        });
-
-        return {
-            severity: Object.entries(counts.severity).sort(([a], [b]) =>
-                bySeverity(b as Severity, a as Severity),
-            ),
-            status: Object.entries(counts.status).sort(([a], [b]) =>
-                byStatus(b as Status, a as Status),
-            ),
-        };
-    }, [stig.rules]);
 
     const tableBody = useMemo(() => {
         return viewableRules.map((rule) => ({
@@ -181,83 +149,78 @@ const StigTable = ({
     }, [viewableRules, onSelectRule, removeRule]);
 
     return (
-        <div className="w-full flex flex-col mb-8">
-            <div className="w-full flex flex-col gap-1 border border-border rounded-md p-3 mb-4">
-                <div className="text-foreground text-sm font-medium">
-                    {stig.display_name}
-                </div>
-                <div className="text-muted text-xs flex justify-between">
-                    <span>{stig.size} rules</span>
-                    <span>Version {stig.version}</span>
-                </div>
-                <div className="text-muted text-xs flex justify-between">
-                    <span>{stig.release_info}</span>
+        <div className="mb-6 rounded-lg border border-border overflow-hidden">
+            <h2>
+                <button
+                    type="button"
+                    className="flex items-center justify-between w-full p-5 bg-surface-muted hover:bg-surface transition-colors gap-3"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(!isOpen)}
+                >
+                    <span className="flex flex-col items-start gap-0.5 text-left">
+                        <span className="text-foreground text-sm font-medium">
+                            {stig.display_name}
+                        </span>
+                        <span className="text-muted text-xs">
+                            {viewableRules.length === stig.size
+                                ? `${stig.size} rules`
+                                : `${viewableRules.length} of ${stig.size} rules`}
+                            {" · "}
+                            Version {stig.version}
+                        </span>
+                    </span>
+                    <svg
+                        className={
+                            `w-4 h-4 shrink-0 text-muted transition-transform` +
+                            (isOpen ? " rotate-180" : "")
+                        }
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                    >
+                        <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5 5 1 1 5"
+                        ></path>
+                    </svg>
+                </button>
+            </h2>
+            <div className={isOpen ? "" : "hidden"}>
+                <div className="border-t border-border bg-surface">
+                    {stig.release_info && (
+                        <div className="px-5 pt-4 text-muted text-xs">
+                            {stig.release_info}
+                        </div>
+                    )}
+                    <section className="w-full flex flex-col">
+                        <div className="relative overflow-x-auto">
+                            <form
+                                ref={formRef}
+                                onSubmit={(e) => e.preventDefault()}
+                            >
+                                <Table
+                                    formRef={formRef}
+                                    filters={filters}
+                                    sorters={sorters}
+                                    tableHeaders={tableHeaders}
+                                    tableBody={tableBody}
+                                    initialOrders={[
+                                        Order.NONE,
+                                        Order.DESC,
+                                        Order.NONE,
+                                        Order.NONE,
+                                        Order.NONE,
+                                    ]}
+                                />
+                            </form>
+                        </div>
+                    </section>
                 </div>
             </div>
-
-            <aside className="w-full flex justify-between items-center mb-4 flex-wrap gap-2">
-                <div>
-                    {counts.severity.map(([severity, count]) => (
-                        <SeverityBadge
-                            key={severity}
-                            severity={severity as Severity}
-                            count={count}
-                            Element="button"
-                            selected={severities.has(severity as Severity)}
-                            onClick={() => {
-                                const newSeverities = new Set(severities);
-                                if (newSeverities.has(severity as Severity)) {
-                                    newSeverities.delete(severity as Severity);
-                                } else {
-                                    newSeverities.add(severity as Severity);
-                                }
-                                setSeverities(newSeverities);
-                            }}
-                        />
-                    ))}
-                </div>
-                <div>
-                    {counts.status.map(([status, count]) => (
-                        <StatusBadge
-                            key={status}
-                            status={status as Status}
-                            count={count}
-                            Element="button"
-                            selected={statuses.has(status as Status)}
-                            onClick={() => {
-                                const newStatuses = new Set(statuses);
-                                if (newStatuses.has(status as Status)) {
-                                    newStatuses.delete(status as Status);
-                                } else {
-                                    newStatuses.add(status as Status);
-                                }
-                                setStatuses(newStatuses);
-                            }}
-                        />
-                    ))}
-                </div>
-            </aside>
-
-            <section className="w-full flex flex-col">
-                <TableCard>
-                    <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
-                        <Table
-                            formRef={formRef}
-                            filters={filters}
-                            sorters={sorters}
-                            tableHeaders={tableHeaders}
-                            tableBody={tableBody}
-                            initialOrders={[
-                                Order.NONE,
-                                Order.DESC,
-                                Order.NONE,
-                                Order.NONE,
-                                Order.NONE,
-                            ]}
-                        />
-                    </form>
-                </TableCard>
-            </section>
         </div>
     );
 };
@@ -267,6 +230,8 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const formRef = useRef<HTMLFormElement>(null);
     const [selectedUuid, setSelectedUuid] = useState<string | null>(null);
     const [addStigOpen, setAddStigOpen] = useState(false);
+    const [severities, setSeverities] = useState<Set<Severity>>(new Set());
+    const [statuses, setStatuses] = useState<Set<Status>>(new Set());
 
     useEffect(() => {
         (async () => {
@@ -289,6 +254,40 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 {} as Record<string, Rule>,
             );
     }, [checklist]);
+
+    const counts = useMemo(() => {
+        const counts: {
+            severity: Record<Severity, number>;
+            status: Record<Status, number>;
+        } = {
+            severity: {} as Record<Severity, number>,
+            status: {} as Record<Status, number>,
+        };
+        Object.values(currentRules).forEach((rule) => {
+            const severity =
+                rule.overrides?.severity?.severity ?? rule.severity;
+            const status = rule.status;
+
+            if (!counts.severity[severity]) {
+                counts.severity[severity] = 0;
+            }
+            counts.severity[severity]++;
+
+            if (!counts.status[status]) {
+                counts.status[status] = 0;
+            }
+            counts.status[status]++;
+        });
+
+        return {
+            severity: Object.entries(counts.severity).sort(([a], [b]) =>
+                bySeverity(b as Severity, a as Severity),
+            ),
+            status: Object.entries(counts.status).sort(([a], [b]) =>
+                byStatus(b as Status, a as Status),
+            ),
+        };
+    }, [currentRules]);
 
     const rule = useMemo(
         () => (selectedUuid ? currentRules[selectedUuid] ?? null : null),
@@ -512,10 +511,59 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 />
             </Sidebar>
 
+            {checklist && (
+                <aside className="w-full flex justify-between items-center my-6 flex-wrap gap-2">
+                    <div>
+                        {counts.severity.map(([severity, count]) => (
+                            <SeverityBadge
+                                key={severity}
+                                severity={severity as Severity}
+                                count={count}
+                                Element="button"
+                                selected={severities.has(severity as Severity)}
+                                onClick={() => {
+                                    const newSeverities = new Set(severities);
+                                    if (newSeverities.has(severity as Severity)) {
+                                        newSeverities.delete(
+                                            severity as Severity,
+                                        );
+                                    } else {
+                                        newSeverities.add(severity as Severity);
+                                    }
+                                    setSeverities(newSeverities);
+                                }}
+                            />
+                        ))}
+                    </div>
+                    <div>
+                        {counts.status.map(([status, count]) => (
+                            <StatusBadge
+                                key={status}
+                                status={status as Status}
+                                count={count}
+                                Element="button"
+                                selected={statuses.has(status as Status)}
+                                onClick={() => {
+                                    const newStatuses = new Set(statuses);
+                                    if (newStatuses.has(status as Status)) {
+                                        newStatuses.delete(status as Status);
+                                    } else {
+                                        newStatuses.add(status as Status);
+                                    }
+                                    setStatuses(newStatuses);
+                                }}
+                            />
+                        ))}
+                    </div>
+                </aside>
+            )}
+
             {checklist?.stigs.map((stig) => (
                 <StigTable
                     key={stig.uuid}
                     stig={stig}
+                    severities={severities}
+                    statuses={statuses}
                     onSelectRule={onSelectRule}
                     removeRule={removeRule}
                 />
