@@ -11,8 +11,8 @@ import { IDB } from "@/app/db";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 
-const sorters = [defaultSort, defaultSort, defaultSort];
-const filters = [null, defaultFilter, null];
+const sorters = [defaultSort, defaultSort, defaultSort, null];
+const filters = [null, defaultFilter, null, null];
 
 export const ChecklistsView = () => {
     const [checklists, setChecklists] = useState<Checklist[] | null>(null);
@@ -31,6 +31,22 @@ export const ChecklistsView = () => {
         })();
     }, []);
 
+    const removeChecklist = (checklist: Checklist) => {
+        if (
+            window.confirm(
+                `Delete the checklist "${checklist.title}"? This cannot be undone.`
+            )
+        ) {
+            (async () => {
+                await IDB.removeChecklist(checklist.id);
+                setChecklists(
+                    (prev) =>
+                        prev?.filter((c) => c.id !== checklist.id) ?? null
+                );
+            })();
+        }
+    };
+
     const tableHeaders = useMemo(
         () => [
             {
@@ -47,6 +63,10 @@ export const ChecklistsView = () => {
                 filterable: false,
                 className: "max-md:hidden",
             },
+            {
+                text: "",
+                filterable: false,
+            },
         ],
         []
     );
@@ -54,7 +74,12 @@ export const ChecklistsView = () => {
     const tableBody = useMemo(
         () =>
             checklists?.map((checklist) => ({
-                values: [checklist.id, checklist.title, checklist.cklb_version],
+                values: [
+                    checklist.id,
+                    checklist.title,
+                    checklist.cklb_version,
+                    "",
+                ],
                 columns: [
                     <Link
                         className="flex flex-col font-medium text-accent hover:underline"
@@ -64,8 +89,17 @@ export const ChecklistsView = () => {
                     </Link>,
                     checklist.title,
                     checklist.cklb_version,
+                    <button
+                        type="button"
+                        aria-label="Delete checklist"
+                        title="Delete checklist"
+                        onClick={() => removeChecklist(checklist)}
+                        className="text-subtle hover:text-red-800 dark:hover:text-red-300 transition-colors"
+                    >
+                        🗑️
+                    </button>,
                 ],
-                classNames: [null, null, null],
+                classNames: [null, null, null, "text-right w-px"],
             })) ?? [],
         [checklists]
     );
@@ -86,7 +120,12 @@ export const ChecklistsView = () => {
                     filters={filters}
                     tableHeaders={tableHeaders}
                     tableBody={tableBody}
-                    initialOrders={[Order.NONE, Order.NONE, Order.NONE]}
+                    initialOrders={[
+                        Order.NONE,
+                        Order.NONE,
+                        Order.NONE,
+                        Order.NONE,
+                    ]}
                     formRef={null}
                 />
             </TableCard>

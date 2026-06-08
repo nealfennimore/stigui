@@ -362,6 +362,27 @@ export class IDB {
         }
     }
 
+    static async removeChecklist(checklistId: string): Promise<boolean> {
+        try {
+            // Remove every STIG (and its rules/links) belonging to the checklist.
+            const links = await new IndexWrapper<IDBChecklistStig>(
+                IDB.checklistStigs.table,
+                "checklist_id"
+            ).getAll(checklistId);
+            for (const link of links) {
+                await IDB.removeStig(checklistId, link.stig_uuid);
+            }
+
+            // Delete the checklist record itself.
+            await IDB.checklists.del(checklistId);
+
+            return true;
+        } catch (error) {
+            console.error("Error removing checklist:", error);
+            return false;
+        }
+    }
+
     static async importChecklist(checklistData: Checklist): Promise<boolean> {
         try {
             const { stigs: stigsData, ...checklist } = checklistData;

@@ -14,6 +14,7 @@ import { Sidebar } from "@/app/components/sidebar";
 import { buttonClasses } from "@/app/components/ui/button";
 import { IDB, IDBChecklist } from "@/app/db";
 import { debounce, download } from "@/app/utils";
+import { useRouter } from "next/navigation";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { ChecklistTargetData } from "./checklist_target_data";
@@ -247,6 +248,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const [addStigOpen, setAddStigOpen] = useState(false);
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [statuses, setStatuses] = useState<Set<Status>>(new Set());
+    const router = useRouter();
 
     useEffect(() => {
         (async () => {
@@ -451,6 +453,22 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [checklistId],
     );
 
+    const deleteChecklist = useMemo(
+        () => () => {
+            if (
+                window.confirm(
+                    `Delete the checklist "${checklist?.title}"? This cannot be undone.`,
+                )
+            ) {
+                (async () => {
+                    await IDB.removeChecklist(checklistId);
+                    router.push("/editor");
+                })();
+            }
+        },
+        [checklistId, checklist?.title, router],
+    );
+
     const removeStig = useMemo(
         () => (stig: Stig) => {
             if (
@@ -549,6 +567,18 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                                 })}
                             >
                                 CKLB ⬇️
+                            </button>
+                            <button
+                                type="button"
+                                onClick={deleteChecklist}
+                                className={buttonClasses({
+                                    variant: "secondary",
+                                    size: "sm",
+                                    className:
+                                        "text-red-800 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900",
+                                })}
+                            >
+                                Delete Checklist 🗑️
                             </button>
                         </div>
                     </section>
