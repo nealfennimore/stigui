@@ -27,6 +27,9 @@ export async function generateMetadata(
         publisher: stig.publisher,
         keywords: stig.tags,
         applicationName: APPNAME,
+        alternates: {
+            canonical: `${URL}/stigs/${stig_id}`,
+        },
         openGraph: {
             type: "article",
             title: `STIGs | ${stig.metaTitle}`,
@@ -36,6 +39,13 @@ export async function generateMetadata(
             siteName: APPNAME,
             authors: [stig.publisher ?? "DISA"],
             publishedTime: new Date(stig.date).toISOString(),
+            images: ["/stigui-border.png"],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `STIGs | ${stig.metaTitle}`,
+            description: stig.description,
+            images: ["/stigui-border.png"],
         },
     };
 }

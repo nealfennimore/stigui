@@ -27,15 +27,25 @@ export async function generateMetadata(
         publisher: stig.publisher,
         keywords: [...stig.tags, classification],
         applicationName: APPNAME,
+        alternates: {
+            canonical: `${URL}/stigs/${stig_id}/${classification}`,
+        },
         openGraph: {
             type: "article",
             title: `STIGs | ${stig.metaTitle} | ${classification}`,
             description: stig.description,
             tags: [...stig.tags, classification],
-            url: `${URL}/stigs/${stig_id}`,
+            url: `${URL}/stigs/${stig_id}/${classification}`,
             siteName: APPNAME,
             authors: [stig.publisher ?? "DISA"],
             publishedTime: new Date(stig.date).toISOString(),
+            images: ["/stigui-border.png"],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `STIGs | ${stig.metaTitle} | ${classification}`,
+            description: stig.description,
+            images: ["/stigui-border.png"],
         },
     };
 }

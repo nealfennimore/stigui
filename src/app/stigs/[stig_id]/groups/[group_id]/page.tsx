@@ -36,6 +36,9 @@ export async function generateMetadata(
             group.rule.version,
         ],
         applicationName: APPNAME,
+        alternates: {
+            canonical: `${URL}/stigs/${stig_id}/groups/${group_id}`,
+        },
         openGraph: {
             type: "article",
             title: `STIGs | ${stig.metaTitle} | ${group.rule.title}`,
@@ -51,6 +54,13 @@ export async function generateMetadata(
                 group.rule.version,
             ],
             publishedTime: new Date(stig.date).toISOString(),
+            images: ["/stigui-border.png"],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `STIGs | ${stig.metaTitle} | ${group.rule.title}`,
+            description: group.rule.description,
+            images: ["/stigui-border.png"],
         },
     };
 }
