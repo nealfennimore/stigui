@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props = {
     isOpen: boolean;
@@ -16,6 +16,21 @@ export const Sidebar = ({
     headerText = "",
 }: Props) => {
     const className = isOpen ? "transform-none" : "translate-x-full";
+
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                onClick?.();
+            }
+        };
+
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    }, [isOpen, onClick]);
 
     return (
         <aside
