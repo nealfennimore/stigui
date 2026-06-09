@@ -1,6 +1,7 @@
 import { APPNAME, URL as SITE_URL } from "@/app/constants";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -66,7 +67,7 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <script src="/theme.js" />
-                <script src="/service-worker.js" />
+                <Script id="service-worker">{`"serviceWorker" in navigator && navigator.serviceWorker.register("/sw.js", { scope: "/" });`}</Script>
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-zinc-900 dark:text-zinc-100`}
