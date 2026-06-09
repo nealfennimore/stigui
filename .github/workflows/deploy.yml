@@ -14,10 +14,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
 
             - name: Setup Node.js
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@7c12f8017d5436eb855f1ed4399f037a36fbd9e8 # v2.5.2
               with:
                   node-version: '22'
 
@@ -26,7 +26,7 @@ jobs:
                   echo NEXT_PUBLIC_MANIFEST_VERSION=$(sha1sum public/data/stigs/manifest.json | awk '{print $1}') >> .env
 
             - name: Retrieve the cached "node_modules" directory (if present)
-              uses: actions/cache@v4
+              uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
               id: node-cache
               with:
                   path: ./node_modules
@@ -56,7 +56,7 @@ jobs:
                   kill $PID
 
             - name: Deploy to GitHub Pages
-              uses: peaceiris/actions-gh-pages@v3
+              uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
               with:
                   cname: stigui.com
                   github_token: ${{ secrets.GITHUB_TOKEN }}

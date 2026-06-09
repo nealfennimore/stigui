@@ -12,7 +12,7 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
 
             - name: STIG URL
               run: |
@@ -20,7 +20,7 @@ jobs:
                   echo "URL=$URL" >> "$GITHUB_ENV"
 
             - name: Retrieve the cached "data" directory (if present)
-              uses: actions/cache@v4
+              uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
               id: data-cache
               with:
                   path: ./data
@@ -43,11 +43,11 @@ jobs:
                   echo "::set-output name=tag::$TAG"
               shell: bash
 
-            - uses: stefanzweifel/git-auto-commit-action@v5
+            - uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
               if: steps.data-cache.outputs.cache-hit != 'true'
 
             - name: Create Release
               if: steps.data-cache.outputs.cache-hit != 'true'
-              uses: softprops/action-gh-release@v1
+              uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
               with:
                   tag_name: ${{ steps.versions.outputs.tag }}
