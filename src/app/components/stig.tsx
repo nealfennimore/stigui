@@ -195,6 +195,7 @@ export const StigView = ({
                         <Link
                             className="flex flex-col whitespace-nowrap font-medium text-accent hover:underline"
                             href={`/stigs/${stigId}/groups/${group.id}`}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             {group.id}
                         </Link>,
