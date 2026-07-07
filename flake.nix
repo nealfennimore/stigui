@@ -19,24 +19,19 @@
           inherit system;
           config.allowUnfree = true;
         };
-        packages = [
+        packages = with pkgs; [
+          nodejs_22
+          curl
+          parallel
+          unzip
+          yq-go
+          jq
+          ripgrep
+          (import ./stig-viewer.nix { inherit pkgs; })
         ];
         box = agentbox.lib.${system};
         claude = box.mkClaudeSandbox {
-          extraPackages =
-            with pkgs;
-            [
-
-              nodejs_22
-              curl
-              parallel
-              unzip
-              yq-go
-              jq
-              ripgrep
-              (import ./stig-viewer.nix { inherit pkgs; })
-            ]
-            ++ packages;
+          extraPackages = packages;
           allowedDomains = box.agentDomains // {
             "crates.io" = "*";
             "index.crates.io" = "*";
