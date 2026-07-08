@@ -1,8 +1,29 @@
 export const Footer = () => (
     <footer className="bg-surface border-t border-border">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8 flex flex-col items-center gap-2">
-            <span className="flex flex-row items-center justify-center text-sm text-muted">
-                Not affiliated with DISA.
+            <span className="text-sm text-muted text-center">
+                Need a hand?{" "}
+                <a
+                    href="https://getcmmc.consulting"
+                    className="text-foreground hover:underline transition-colors"
+                    tabIndex={80}
+                >
+                    GetCMMC
+                </a>{" "}
+                offers senior-led CMMC 2.0 readiness &amp; NIST 800-171
+                consulting — mock assessments, gap analysis, and SSP/POA&amp;M
+                development.
+            </span>
+            <span className="flex flex-row items-center justify-center text-sm text-subtle">
+                © 2026{" "}
+                <a
+                    href="https://neal.codes"
+                    className="hover:text-foreground hover:underline mx-1 transition-colors"
+                    tabIndex={70}
+                >
+                    neal.codes
+                </a>
+                All Rights Reserved.
                 <a
                     href="https://github.com/nealfennimore/stig"
                     className="ml-3 text-muted hover:text-foreground transition-colors"
@@ -23,17 +44,6 @@ export const Footer = () => (
                         ></path>
                     </svg>
                 </a>
-            </span>
-            <span className="flex flex-row items-center justify-center text-sm text-subtle">
-                © 2025{" "}
-                <a
-                    href="https://neal.codes"
-                    className="hover:text-foreground hover:underline mx-1 transition-colors"
-                    tabIndex={70}
-                >
-                    neal.codes
-                </a>
-                All Rights Reserved.
             </span>
         </div>
     </footer>
