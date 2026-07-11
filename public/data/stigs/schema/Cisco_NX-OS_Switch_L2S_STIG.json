@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-22"
+      "+@date": "2026-06-08"
     },
     "title": "Cisco NX OS Switch L2S Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 4 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -959,7 +959,7 @@
         "title": "SRG-NET-000168-L2S-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220676r539671_rule",
+          "+@id": "SV-220676r1188386_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000030",
@@ -1008,7 +1008,7 @@
         "title": "SRG-NET-000331-L2S-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220677r1015266_rule",
+          "+@id": "SV-220677r1082341_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000060",
@@ -1057,7 +1057,7 @@
         "title": "SRG-NET-000332-L2S-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220678r856487_rule",
+          "+@id": "SV-220678r1082342_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000070",
@@ -1400,12 +1400,12 @@
         "title": "SRG-NET-000362-L2S-000026",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220685r856494_rule",
+          "+@id": "SV-220685r1156799_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000140",
           "title": "The Cisco switch must have IP Source Guard enabled on all user-facing or untrusted access switch ports.",
-          "description": "<VulnDiscussion>IP Source Guard provides source IP address filtering on a Layer 2 port to prevent a malicious host from impersonating a legitimate host by assuming the legitimate host's IP address. The feature uses dynamic DHCP snooping and static IP source binding to match IP addresses to hosts on untrusted Layer 2 access ports. Initially, all IP traffic on the protected port is blocked except for DHCP packets. After a client receives an IP address from the DHCP server, or after static IP source binding is configured by the administrator, all traffic with that IP source address is permitted from that client. Traffic from other hosts is denied. This filtering limits a host's ability to attack the network by claiming a neighbor host's IP address.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>IP Source Guard provides source IP address filtering on a layer 2 port to prevent a malicious host from impersonating a legitimate host by assuming the legitimate host's IP address. The feature uses dynamic DHCP snooping and static IP source binding to match IP addresses to hosts on untrusted layer 2 access ports. Initially, all IP traffic on the protected port is blocked except for DHCP packets. After a client receives an IP address from the DHCP server, or after static IP source binding is configured by the administrator, all traffic with that IP source address is permitted from that client. Traffic from other hosts is denied. This filtering limits a host's ability to attack the network by claiming a neighbor host's IP address.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco NX-OS Switch L2S",
             "dc:publisher": "DISA",
@@ -1435,12 +1435,12 @@
             "+@id": "F-22389r539107_fix"
           },
           "check": {
-            "+@system": "C-22400r539106_chk",
+            "+@system": "C-22400r1156798_chk",
             "check-content-ref": {
               "+@href": "Cisco_NX-OS_Switch_L2S_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that IP Source Guard is enabled on all user-facing or untrusted access switch ports as shown in the example below:\n\ninterface Ethernet1/1\n ip verify source dhcp-snooping-vlan\n\ninterface Ethernet1/2\n ip verify source dhcp-snooping-vlan\n…\n…\n…\ninterface Ethernet1/32\n ip verify source dhcp-snooping-vlan\n\nNote: the IP Source Guard feature depends on the entries in the DHCP snooping database or static IP-MAC-VLAN configuration commands to verify IP-to-MAC address bindings.\n\nIf the switch does not have IP Source Guard enabled on all untrusted access switch ports, this is a finding."
+            "check-content": "Review the switch configuration to verify IP Source Guard is enabled on all user-facing or untrusted access switch ports as shown in the example below:\n\ninterface Ethernet1/1\n ip verify source dhcp-snooping-vlan\n\ninterface Ethernet1/2\n ip verify source dhcp-snooping-vlan\n…\n…\n…\ninterface Ethernet1/32\n ip verify source dhcp-snooping-vlan\n\nNote: The IP Source Guard feature depends on the entries in the DHCP snooping database or static IP-MAC-VLAN configuration commands to verify IP-to-MAC address bindings.\n\nNote: This requirement is not applicable for switch ports configured for 802.1x or Mac Address Bypass.\n\nIf the switch does not have IP Source Guard enabled on all untrusted access switch ports, this is a finding."
           }
         }
       },
@@ -1498,12 +1498,12 @@
         "title": "SRG-NET-000512-L2S-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220687r539671_rule",
+          "+@id": "SV-220687r1205858_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-L2-000160",
           "title": "The Cisco switch must have Storm Control configured on all host-facing switchports.",
-          "description": "<VulnDiscussion>A traffic storm occurs when packets flood a LAN, creating excessive traffic and degrading network performance. Traffic storm control prevents network disruption by suppressing ingress traffic when the number of packets reaches a configured threshold levels. Traffic storm control monitors ingress traffic levels on a port and drops traffic when the number of packets reaches the configured threshold level during any one-second interval.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A traffic storm occurs when packets flood a LAN, creating excessive traffic and degrading network performance. Traffic storm control prevents network disruption by suppressing ingress traffic when the number of packets reaches a configured threshold level.\n \nTraffic storm control monitors ingress traffic levels on a port and drops traffic when the number of packets reaches the configured threshold level during any one-second interval.\n \nThe primary intent of this control is to mitigate the risk of denial-of-service (DoS) attacks, not to arbitrarily restrict bandwidth needed for operations. Consequently, some ports may be configured to operate at full line-rate speed if deemed necessary by the engineer to meet mission requirements. The ultimate responsibility for managing bandwidth to prevent a DoS while ensuring service availability rests with the network engineer.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco NX-OS Switch L2S",
             "dc:publisher": "DISA",
@@ -1533,12 +1533,12 @@
             "+@id": "F-22391r539113_fix"
           },
           "check": {
-            "+@system": "C-22402r539112_chk",
+            "+@system": "C-22402r1205857_chk",
             "check-content-ref": {
               "+@href": "Cisco_NX-OS_Switch_L2S_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that storm control is enabled on all host-facing interfaces as shown in the example below:\n\ninterface GigabitEthernet0/3\n switchport access vlan 12\n storm-control unicast unicast level 50.00\n storm-control broadcast broadcast level 40\n\nIf storm control is not enabled at a minimum for broadcast traffic, this is a finding."
+            "check-content": "Review the switch configuration to verify that storm control is enabled on all host-facing interfaces as shown in the example below:\n\ninterface GigabitEthernet0/3\n switchport access vlan 12\n storm-control unicast unicast level 50.00\n storm-control broadcast broadcast level 40\n\nNote: Bandwidth percentage thresholds (via level parameter) can be used in lieu of PPS rate. The storm control values in the STIG's example configuration are for illustrative purposes and do not constitute a mandatory value for this setting. Network engineers are responsible for determining and applying appropriate storm control levels based on the specific operational and mission-based bandwidth requirements of each port. A setting must be determined and intentionally configured.\n\nIf storm control is not enabled at a minimum for broadcast traffic, this is a finding."
           }
         }
       },
@@ -1596,7 +1596,7 @@
         "title": "SRG-NET-000512-L2S-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220689r917685_rule",
+          "+@id": "SV-220689r1188389_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000190",

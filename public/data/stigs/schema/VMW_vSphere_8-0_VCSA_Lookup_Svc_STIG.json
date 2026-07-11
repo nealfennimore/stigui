@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-07-11"
+      "+@date": "2026-05-23"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance Lookup Service Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1387,7 +1387,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259038r960792_rule",
+          "+@id": "SV-259038r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000005",
@@ -1681,7 +1681,7 @@
         "title": "SRG-APP-000142-AS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259044r960966_rule",
+          "+@id": "SV-259044r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000037",
@@ -1720,7 +1720,7 @@
         "title": "SRG-APP-000223-AS-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259045r961116_rule",
+          "+@id": "SV-259045r1043180_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000057",
@@ -1876,7 +1876,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259049r1003620_rule",
+          "+@id": "SV-259049r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000070",
@@ -1896,6 +1896,10 @@
             },
             {
               "+content": "CCI-002361",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -1921,12 +1925,12 @@
         "title": "SRG-APP-000358-AS-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259050r961395_rule",
+          "+@id": "SV-259050r1210406_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000081",
-          "title": "The vCenter Lookup service must offload log records onto a different system or media from the system being logged.",
-          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOffloading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to offload log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The vCenter Lookup service must off-load log records onto a different system or media from the system being logged.",
+          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOff-loading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to off-load log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 VCSA Lookup Service",
             "dc:publisher": "DISA",
@@ -1939,19 +1943,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-lookupsvc.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/catalina.*.log\"\n      Tag=\"lookupsvc-tc-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost.*.log\"\n      Tag=\"lookupsvc-tc-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#localhost_access_log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost_access.log\"\n      Tag=\"lookupsvc-localhost_access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupsvc-init\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-init.log\"\n      Tag=\"lookupsvc-init\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#prestart\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-prestart.log\"\n      Tag=\"lookupsvc-prestart\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#health\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-health.log\"\n      Tag=\"lookupsvc-health\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupserver-default\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupserver-default.log\"\n      Tag=\"lookupsvc-lookupserver-default\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupsvc_stream.log.std\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc_stream.log.std*\"\n      Tag=\"lookupsvc-std\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#ls-gc\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/vmware-lookupsvc-gc.log.*.current\"\n      Tag=\"lookupsvc-gc\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62699r934807_fix"
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-lookupsvc.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/catalina.*.log\"\n      Tag=\"lookupsvc-tc-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost.*.log\"\n      Tag=\"lookupsvc-tc-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#localhost_access_log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost_access.log\"\n      Tag=\"lookupsvc-localhost_access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupsvc-init\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-init.log\"\n      Tag=\"lookupsvc-init\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#prestart\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-prestart.log\"\n      Tag=\"lookupsvc-prestart\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#health\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-health.log\"\n      Tag=\"lookupsvc-health\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupserver-default\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupserver-default.log\"\n      Tag=\"lookupsvc-lookupserver-default\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupsvc_stream.log.std\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc_stream.log.std*\"\n      Tag=\"lookupsvc-std\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#ls-gc\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/vmware-lookupsvc-gc.log.*.current\"\n      Tag=\"lookupsvc-gc\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62699r1210405_fix"
           },
           "fix": {
-            "+@id": "F-62699r934807_fix"
+            "+@id": "F-62699r1210405_fix"
           },
           "check": {
-            "+@system": "C-62790r934806_chk",
+            "+@system": "C-62790r1210404_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Lookup_Service_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default, a vmware-services-lookupsvc.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-lookupsvc.conf\n\nExpected result:\n\n#catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/catalina.*.log\"\n      Tag=\"lookupsvc-tc-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost.*.log\"\n      Tag=\"lookupsvc-tc-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#localhost_access_log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost_access.log\"\n      Tag=\"lookupsvc-localhost_access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupsvc-init\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-init.log\"\n      Tag=\"lookupsvc-init\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#prestart\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-prestart.log\"\n      Tag=\"lookupsvc-prestart\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#health\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-health.log\"\n      Tag=\"lookupsvc-health\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupserver-default\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupserver-default.log\"\n      Tag=\"lookupsvc-lookupserver-default\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#lookupsvc_stream.log.std\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc_stream.log.std*\"\n      Tag=\"lookupsvc-std\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#ls-gc\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/vmware-lookupsvc-gc.log.*.current\"\n      Tag=\"lookupsvc-gc\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, a vmware-services-lookupsvc.conf rsyslog configuration file includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-lookupsvc.conf\n\nExpected result:\n\n#catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/catalina.*.log\"\n      Tag=\"lookupsvc-tc-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost.*.log\"\n      Tag=\"lookupsvc-tc-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#localhost_access_log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/tomcat/localhost_access.log\"\n      Tag=\"lookupsvc-localhost_access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupsvc-init\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-init.log\"\n      Tag=\"lookupsvc-init\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#prestart\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-prestart.log\"\n      Tag=\"lookupsvc-prestart\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#health\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc-health.log\"\n      Tag=\"lookupsvc-health\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupserver-default\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupserver-default.log\"\n      Tag=\"lookupsvc-lookupserver-default\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#lookupsvc_stream.log.std\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/lookupsvc_stream.log.std*\"\n      Tag=\"lookupsvc-std\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#ls-gc\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/lookupsvc/vmware-lookupsvc-gc.log.*.current\"\n      Tag=\"lookupsvc-gc\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" or \"reopenOnTruncate\" are not present, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2077,7 +2081,7 @@
         "title": "SRG-APP-000251-AS-000165",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259054r961158_rule",
+          "+@id": "SV-259054r1210408_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000127",
@@ -2102,12 +2106,12 @@
             "+@id": "F-62703r934819_fix"
           },
           "check": {
-            "+@system": "C-62794r934818_chk",
+            "+@system": "C-62794r1210407_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Lookup_Service_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-lookupsvc/conf/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output is does not match the expected result, this is a finding."
+            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-lookupsvc/conf/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2116,7 +2120,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259055r960792_rule",
+          "+@id": "SV-259055r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000129",
@@ -2155,7 +2159,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259056r960792_rule",
+          "+@id": "SV-259056r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCLU-80-000130",

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-07-11"
+      "+@date": "2026-05-23"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance User Interface (UI) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1351,7 +1351,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259105r960792_rule",
+          "+@id": "SV-259105r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000005",
@@ -1645,7 +1645,7 @@
         "title": "SRG-APP-000142-AS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259111r960966_rule",
+          "+@id": "SV-259111r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000037",
@@ -1684,7 +1684,7 @@
         "title": "SRG-APP-000223-AS-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259112r961116_rule",
+          "+@id": "SV-259112r1043180_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000057",
@@ -1840,7 +1840,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259116r1003678_rule",
+          "+@id": "SV-259116r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000070",
@@ -1860,6 +1860,10 @@
             },
             {
               "+content": "CCI-002361",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -1885,12 +1889,12 @@
         "title": "SRG-APP-000358-AS-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259117r961395_rule",
+          "+@id": "SV-259117r1210442_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000081",
-          "title": "The vCenter UI service must offload log records onto a different system or media from the system being logged.",
-          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOffloading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to offload log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The vCenter UI service must off-load log records onto a different system or media from the system being logged.",
+          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOff-loading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to off-load log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 VCSA User Interface (UI)",
             "dc:publisher": "DISA",
@@ -1903,19 +1907,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\nvmware-services-vsphere-ui.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#vsphere-ui main log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log\"\n      Tag=\"ui-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui change log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/changelog.log\"\n      Tag=\"ui-changelog\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui dataservice log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/dataservice.log\"\n      Tag=\"ui-dataservice\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui apigw log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/apigw.log\"\n      Tag=\"ui-apigw\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui equinox log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/equinox.log\"\n      Tag=\"ui-equinox\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui event log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/eventlog.log\"\n      Tag=\"ui-eventlog\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui op id log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/opId.log\"\n      Tag=\"ui-opid\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui performance audit log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/performanceAudit.log\"\n      Tag=\"ui-performanceAudit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui plugin-medic log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/plugin-medic.log\"\n      Tag=\"ui-plugin-medic\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui threadmonitor log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadmonitor.log\"\n      Tag=\"ui-threadmonitor\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui threadpools log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadpools.log\"\n      Tag=\"ui-threadpools\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui vspheremessaging log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vspheremessaging.log\"\n      Tag=\"ui-vspheremessaging\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui rpm log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-rpm.log\"\n      Tag=\"ui-rpm\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui runtime log stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log*\"\n      Tag=\"ui-runtime-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui runtime log stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log*\"\n      Tag=\"ui-runtime-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/access/localhost_access_log.txt\"\n      Tag=\"ui-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui gc log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/vsphere-ui-gc*\"\n      Tag=\"ui-gc\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui firstboot log\ninput(type=\"imfile\"\n      File=\"/var/log/firstboot/vsphere_ui_firstboot*\"\n      Tag=\"ui-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/catalina.*.log\"\n      Tag=\"ui-runtime-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui endpoint\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/endpoint.log\"\n      Tag=\"ui-runtime-endpoint\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/localhost.*.log\"\n      Tag=\"ui-runtime-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui vsan\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsan-plugin.log\"\n      Tag=\"ui-runtime-vsan\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62766r935254_fix"
+            "+content": "Navigate to and open:\n\nvmware-services-vsphere-ui.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#vsphere-ui main log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log\"\n      Tag=\"ui-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui change log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/changelog.log\"\n      Tag=\"ui-changelog\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui dataservice log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/dataservice.log\"\n      Tag=\"ui-dataservice\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui apigw log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/apigw.log\"\n      Tag=\"ui-apigw\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui equinox log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/equinox.log\"\n      Tag=\"ui-equinox\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui event log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/eventlog.log\"\n      Tag=\"ui-eventlog\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui op id log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/opId.log\"\n      Tag=\"ui-opid\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui performance audit log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/performanceAudit.log\"\n      Tag=\"ui-performanceAudit\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui plugin-medic log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/plugin-medic.log\"\n      Tag=\"ui-plugin-medic\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui threadmonitor log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadmonitor.log\"\n      Tag=\"ui-threadmonitor\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui threadpools log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadpools.log\"\n      Tag=\"ui-threadpools\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui vspheremessaging log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vspheremessaging.log\"\n      Tag=\"ui-vspheremessaging\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui rpm log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-rpm.log\"\n      Tag=\"ui-rpm\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui runtime log stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log.stdout\"\n      Tag=\"ui-runtime-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui runtime log stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log.stderr\"\n      Tag=\"ui-runtime-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/access/localhost_access_log.txt\"\n      Tag=\"ui-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui gc log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/vsphere-ui-gc.log\"\n      Tag=\"ui-gc\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui firstboot log\ninput(type=\"imfile\"\n      File=\"/var/log/firstboot/vsphere_ui_firstboot*\"\n      Tag=\"ui-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/catalina.*.log\"\n      Tag=\"ui-runtime-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui endpoint\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/endpoint.log\"\n      Tag=\"ui-runtime-endpoint\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/localhost.*.log\"\n      Tag=\"ui-runtime-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui vsan\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsan-plugin.log\"\n      Tag=\"ui-runtime-vsan\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62766r1210441_fix"
           },
           "fix": {
-            "+@id": "F-62766r935254_fix"
+            "+@id": "F-62766r1210441_fix"
           },
           "check": {
-            "+@system": "C-62857r935253_chk",
+            "+@system": "C-62857r1210440_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_User_Interface_(UI)_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default, a vmware-services-vsphere-ui.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vsphere-ui.conf\n\nExpected result:\n\n#vsphere-ui main log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log\"\n      Tag=\"ui-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui change log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/changelog.log\"\n      Tag=\"ui-changelog\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui dataservice log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/dataservice.log\"\n      Tag=\"ui-dataservice\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui apigw log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/apigw.log\"\n      Tag=\"ui-apigw\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui equinox log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/equinox.log\"\n      Tag=\"ui-equinox\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui event log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/eventlog.log\"\n      Tag=\"ui-eventlog\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui op id log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/opId.log\"\n      Tag=\"ui-opid\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui performance audit log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/performanceAudit.log\"\n      Tag=\"ui-performanceAudit\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui plugin-medic log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/plugin-medic.log\"\n      Tag=\"ui-plugin-medic\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui threadmonitor log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadmonitor.log\"\n      Tag=\"ui-threadmonitor\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui threadpools log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadpools.log\"\n      Tag=\"ui-threadpools\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui vspheremessaging log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vspheremessaging.log\"\n      Tag=\"ui-vspheremessaging\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui rpm log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-rpm.log\"\n      Tag=\"ui-rpm\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui runtime log stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log*\"\n      Tag=\"ui-runtime-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui runtime log stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log*\"\n      Tag=\"ui-runtime-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/access/localhost_access_log.txt\"\n      Tag=\"ui-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui gc log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/vsphere-ui-gc*\"\n      Tag=\"ui-gc\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui firstboot log\ninput(type=\"imfile\"\n      File=\"/var/log/firstboot/vsphere_ui_firstboot*\"\n      Tag=\"ui-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/catalina.*.log\"\n      Tag=\"ui-runtime-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui endpoint\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/endpoint.log\"\n      Tag=\"ui-runtime-endpoint\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/localhost.*.log\"\n      Tag=\"ui-runtime-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#vsphere-ui vsan\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsan-plugin.log\"\n      Tag=\"ui-runtime-vsan\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, a vmware-services-vsphere-ui.conf rsyslog configuration file includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vsphere-ui.conf\n\nExpected result:\n\n#vsphere-ui main log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere_client_virgo.log\"\n      Tag=\"ui-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui change log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/changelog.log\"\n      Tag=\"ui-changelog\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui dataservice log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/dataservice.log\"\n      Tag=\"ui-dataservice\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui apigw log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/apigw.log\"\n      Tag=\"ui-apigw\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui equinox log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/equinox.log\"\n      Tag=\"ui-equinox\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui event log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/eventlog.log\"\n      Tag=\"ui-eventlog\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui op id log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/opId.log\"\n      Tag=\"ui-opid\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui performance audit log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/performanceAudit.log\"\n      Tag=\"ui-performanceAudit\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui plugin-medic log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/plugin-medic.log\"\n      Tag=\"ui-plugin-medic\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui threadmonitor log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadmonitor.log\"\n      Tag=\"ui-threadmonitor\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui threadpools log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/threadpools.log\"\n      Tag=\"ui-threadpools\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui vspheremessaging log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vspheremessaging.log\"\n      Tag=\"ui-vspheremessaging\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui rpm log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-rpm.log\"\n      Tag=\"ui-rpm\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui runtime log stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log.stdout\"\n      Tag=\"ui-runtime-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui runtime log stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsphere-ui-runtime.log.stderr\"\n      Tag=\"ui-runtime-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/access/localhost_access_log.txt\"\n      Tag=\"ui-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui gc log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/vsphere-ui-gc.log\"\n      Tag=\"ui-gc\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui firstboot log\ninput(type=\"imfile\"\n      File=\"/var/log/firstboot/vsphere_ui_firstboot*\"\n      Tag=\"ui-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui catalina\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/catalina.*.log\"\n      Tag=\"ui-runtime-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui endpoint\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/endpoint.log\"\n      Tag=\"ui-runtime-endpoint\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui localhost\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/localhost.*.log\"\n      Tag=\"ui-runtime-localhost\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#vsphere-ui vsan\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vsphere-ui/logs/vsan-plugin.log\"\n      Tag=\"ui-runtime-vsan\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" or \"reopenOnTruncate\" are not present, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2041,7 +2045,7 @@
         "title": "SRG-APP-000251-AS-000165",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259121r961158_rule",
+          "+@id": "SV-259121r1210444_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000127",
@@ -2066,12 +2070,12 @@
             "+@id": "F-62770r935266_fix"
           },
           "check": {
-            "+@system": "C-62861r935265_chk",
+            "+@system": "C-62861r1210443_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_User_Interface_(UI)_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-vsphere-ui/server/conf/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output is does not match the expected result, this is a finding."
+            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-vsphere-ui/server/conf/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2080,7 +2084,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259122r960792_rule",
+          "+@id": "SV-259122r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000129",
@@ -2119,7 +2123,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259123r960792_rule",
+          "+@id": "SV-259123r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000130",
@@ -2158,7 +2162,7 @@
         "title": "SRG-APP-000141-AS-000095",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259124r960963_rule",
+          "+@id": "SV-259124r1210446_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCUI-80-000134",
@@ -2183,12 +2187,12 @@
             "+@id": "F-62773r935275_fix"
           },
           "check": {
-            "+@system": "C-62864r935274_chk",
+            "+@system": "C-62864r1210445_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_User_Interface_(UI)_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following commands:\n\n# xmllint --xpath \"//Server/@port\" /usr/lib/vmware-vsphere-ui/server/conf/server.xml\n# grep shutdown.port /etc/vmware/vmware-vmon/svcCfgfiles/vsphere-ui.json\n\nExample results:\n\nport=\"${shutdown.port}\"\n\"-Dshutdown.port=-1\",\n\nIf \"port\" does not equal \"${shutdown.port}\", this is a finding.\n\nIf \"shutdown.port\" does not equal \"-1\", this is a finding."
+            "check-content": "At the command prompt, run the following commands:\n\n# xmllint --xpath \"//Server/@port\" /usr/lib/vmware-vsphere-ui/server/conf/server.xml\n# grep shutdown.port /etc/vmware/vmware-vmon/svcCfgfiles/vsphere-ui.json\n\nExample results:\n\nport=\"${shutdown.port}\"\n\"-Dshutdown.port=-1\",\n\nIf \"port\" does not equal \"shutdown.port=-1\", this is a finding.\n\nIf \"shutdown.port\" does not equal \"-1\", this is a finding."
           }
         }
       },

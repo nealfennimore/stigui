@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-10"
+      "+@date": "2026-06-03"
     },
     "title": "Cisco ISE NAC Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 4 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -2056,7 +2056,7 @@
         "title": "SRG-NET-000512-NAC-002310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-242599r812780_rule",
+          "+@id": "SV-242599r1212025_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CSCO-NC-000250",
@@ -2074,19 +2074,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If required by the NAC SSP, configure the posture settings to enable Continuous Monitoring Interval.\n\nFrom the Web Admin portal:\n1. Choose Work Centers >> Posture >> Settings >> Posture General Settings.\n2. Check \"Continuous Monitoring Interval\" and define an interval to enable continuous monitoring.\n3. Choose \"Save\".",
-            "+@fixref": "F-45831r803562_fix"
+            "+content": "If required by the NAC SSP, configure the posture settings to enable the Continuous Monitoring Interval.\n\nFrom the Web Admin portal:\n1. Choose Work Centers >> Posture >> Settings >> Posture General Settings.\n2. Check \"Continuous Monitoring Interval\" and define an interval to enable continuous monitoring.\n3. Choose \"Save\".\n\nNote: For versions after version 3.1, it may be necessary to navigate to Administration >> System >> Settings >> Posture >> General Settings to access this setting.",
+            "+@fixref": "F-45831r1212024_fix"
           },
           "fix": {
-            "+@id": "F-45831r803562_fix"
+            "+@id": "F-45831r1212024_fix"
           },
           "check": {
-            "+@system": "C-45874r812779_chk",
+            "+@system": "C-45874r1212023_chk",
             "check-content-ref": {
               "+@href": "Cisco_ISE_NAC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If DoD is not at C2C Step 1 or higher, this is not a finding.\n\nIf not required by the NAC SSP, this is not a finding.\n\nReview the posture settings to ensure Continuous Monitoring Interval is enabled and a value configured. \n\nFrom the Web Admin portal:\n1. Choose Work Centers >> Posture >> Settings >> Posture General Settings.\n2. Verify that \"Continuous Monitoring Interval\" is enabled and an interval configured. \n\nIf \"Continuous Monitoring Interval\" is not enabled with an interval defined, this is a finding."
+            "check-content": "If DOD is not at C2C Step 1 or higher, this is not a finding.\n\nIf not required by the NAC SSP, this is not a finding.\n\nReview the posture settings to verify the Continuous Monitoring Interval is enabled and a value is configured. \n\nFrom the Web Admin portal:\n1. Choose Work Centers >> Posture >> Settings >> Posture General Settings.\n2. Verify that \"Continuous Monitoring Interval\" is enabled and an interval is configured. \n\nNote: For versions after version 3.1, it may be necessary to navigate to Administration >> System >> Settings >> Posture >> General Settings to access this setting.\n\nIf \"Continuous Monitoring Interval\" is not enabled with an interval defined, this is a finding."
           }
         }
       },

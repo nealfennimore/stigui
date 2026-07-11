@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-08"
+      "+@date": "2026-05-23"
     },
     "title": "NetApp ONTAP DSC 9.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 4 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -1201,7 +1201,7 @@
         "title": "SRG-APP-000003-NDM-000202",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-246923r960741_rule",
+          "+@id": "SV-246923r1207671_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NAOT-AC-000002",
@@ -1691,7 +1691,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-246940r1137887_rule",
+          "+@id": "SV-246940r1211037_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "NAOT-CM-000002",
@@ -1731,19 +1731,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure ONTAP to make use of Active Directory to authenticate users and prohibit the use of cached authenticators with \"security login create -user-or-group-name <user or group name> -authentication-method domain -application ssh\".",
-            "+@fixref": "F-50326r769151_fix"
+            "+content": "Configure ONTAP to use Active Directory to authenticate users and prohibit the use of cached authenticators with \"security login create -user-or-group-name <user or group name> -authentication-method domain -application ssh\".\n\nNote: The authentication method \"domain\" is one example. Other authentication methods such as \"publickey\" and \"saml\" are also acceptable.",
+            "+@fixref": "F-50326r1211036_fix"
           },
           "fix": {
-            "+@id": "F-50326r769151_fix"
+            "+@id": "F-50326r1211036_fix"
           },
           "check": {
-            "+@system": "C-50372r835235_chk",
+            "+@system": "C-50372r1211035_chk",
             "check-content-ref": {
               "+@href": "NetApp_ONTAP_DSC_9.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use \"security login show -authentication-method domain\" to see users configured to authenticate with Active Directory.\n\nIf ONTAP is not configured to use an authentication server, this is a finding."
+            "check-content": "Use \"security login show -authentication-method domain\" to see users configured to authenticate with Active Directory.\n\nIf ONTAP is not configured to use an authentication server, this is a finding.\n\nNote: The authentication method \"domain\" is one example. Other authentication methods such as \"publickey\" and \"saml\" are also acceptable."
           }
         }
       },
@@ -1920,11 +1920,11 @@
         "title": "SRG-APP-000156-NDM-000250",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-246948r960993_rule",
+          "+@id": "SV-246948r1211039_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NAOT-IA-000002",
-          "title": "ONTAP must implement replay-resistant authentication mechanisms for network access to privileges accounts.",
+          "title": "ONTAP must implement replay-resistant authentication mechanisms for network access to privileged accounts.",
           "description": "<VulnDiscussion>A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target NetApp ONTAP DSC 9.x",
@@ -1945,12 +1945,12 @@
             "+@id": "F-50334r769175_fix"
           },
           "check": {
-            "+@system": "C-50380r860686_chk",
+            "+@system": "C-50380r1211038_chk",
             "check-content-ref": {
               "+@href": "NetApp_ONTAP_DSC_9.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use \"security login show -role admin\" to see all configured admin users and groups. \n\nIf any account, other than the admin account used as the account of last resort, has an authentication method other than domain, this is a finding."
+            "check-content": "Use \"security login show -role admin\" to see all configured admin users and groups. \n\nIf any account, other than the admin account used as the account of last resort, has an authentication method password, this is a finding."
           }
         }
       },

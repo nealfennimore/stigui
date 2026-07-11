@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-04"
+      "+@date": "2026-05-13"
     },
     "title": "Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 6 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -3535,7 +3535,7 @@
         "title": "SRG-APP-000038-CTR-000105",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257514r1156722_rule",
+          "+@id": "SV-257514r1208195_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000100",
@@ -3553,19 +3553,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Add a network policy to an existing project namespace by performing the following steps:\n \n1. Create &lt;YOURFILE&gt;.yaml and insert the desired resource network policy content. The following is an example resource quota definition:\n  apiVersion: networking.k8s.io/v1\n kind: NetworkPolicy\n metadata:\n  name: allow-from-same-namespace\n  namespace: &lt;NAMESPACE&gt;\n spec:\n  podSelector: {}\n  ingress:\n  - from:\n  - podSelector: {}\n \n2. Apply the network policy definition to the project namespace by executing the following:\noc apply -f &lt;YOURFILE&gt;.yaml -n &lt;NAMESPACE&gt;\n \nDetails regarding the configuration of resource network policy can be reviewed at https://docs.openshift.com/container-platform/4.12/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\nEnable MAC-spoof filtering per the deployed networking provider instructions.\n\nInstructions for Bridge CNI and SR-IOV CNI:\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#nw-sriov-network-attachment_virt-connecting-vm-to-sriov",
-            "+@fixref": "F-61173r1156721_fix"
+            "+content": "Add a network policy to an existing project namespace by performing the following steps:\n \n1. Create <YOURFILE>.yaml and insert the desired resource network policy content. The following is an example resource quota definition:\n  apiVersion: networking.k8s.io/v1\n kind: NetworkPolicy\n metadata:\n  name: allow-from-same-namespace\n  namespace: <NAMESPACE>\n spec:\n  podSelector: {}\n  ingress:\n  - from:\n  - podSelector: {}\n \n2. Apply the network policy definition to the project namespace by executing the following:\noc apply -f <YOURFILE>.yaml -n <NAMESPACE>\n \nDetails regarding the configuration of resource network policy can be reviewed at https://docs.openshift.com/container-platform/4.12/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\nEnable MAC-spoof filtering per the deployed networking provider instructions.\n\nInstructions for Bridge CNI and SR-IOV CNI:\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-creating-linux-bridge-nad-cli_virt-connecting-vm-to-linux-bridge\nhttps://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#nw-sriov-network-attachment_virt-connecting-vm-to-sriov",
+            "+@fixref": "F-61173r1208194_fix"
           },
           "fix": {
-            "+@id": "F-61173r1156721_fix"
+            "+@id": "F-61173r1208194_fix"
           },
           "check": {
-            "+@system": "C-61249r1156720_chk",
+            "+@system": "C-61249r1208193_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify each user namespace has a network policy by executing the following:\n \n for ns in $(oc get namespaces -ojson | jq -r &#039;.items[] | select((.metadata.name | startswith(&#039;openshift&#039;) | not) and (.metadata.name | startswith(&#039;kube-&#039;) | not) and .metadata.name != &#039;default&#039;) | .metadata.name &#039;); do oc get networkpolicy -n$ns; done\n \nIf the above returns any lines saying &#039;No resources found in &lt;PROJECT&gt; namespace.&#039;, this is a finding. Empty output is not a finding.\n\nWhere OpenShift Virtualization is enabled:\n\nFor SR-IOV, use the following command:\n$ oc get sriovnetwork -o json | jq \".items[].spec.spoofChk\"\n\nIf these results show the setting is off for any network, this is a finding.\n\nFor Bridge CNI, use the following command:\n$ oc get networkattachmentdefinition -o json | jq\n\".items[].spec.config.macspoofchk\"\n\nIf these results show the setting is false for any network, this is a finding."
+            "check-content": "Verify each user namespace has a network policy by executing the following:\n \n for ns in $(oc get namespaces -ojson | jq -r '.items[] | select((.metadata.name | startswith('openshift') | not) and (.metadata.name | startswith('kube-') | not) and .metadata.name != 'default') | .metadata.name '); do oc get networkpolicy -n$ns; done\n \nIf the above returns any lines saying \"No resources found in <PROJECT> namespace.\", this is a finding. Empty output is not a finding.\n\nWhere OpenShift Virtualization is enabled:\n\nFor SR-IOV, use the following command:\n$ oc get sriovnetwork -o json | jq \".items[].spec.spoofChk\"\n\nIf these results show the setting is off for any network, this is a finding.\n\nFor Bridge CNI, use the following command:\n$ oc get networkattachmentdefinition -o json | jq\n\".items[].spec.config.macspoofchk\"\n\nIf these results show the setting is false for any network, this is a finding."
           }
         }
       },
@@ -3574,7 +3574,7 @@
         "title": "SRG-APP-000039-CTR-000110",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257515r1156725_rule",
+          "+@id": "SV-257515r1208198_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000110",
@@ -3592,19 +3592,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure a default network policy as necessary to protect the flow of information by performing the following steps:\n \n1. Create a bootstrap project template (if not already created) by executing the following:\n oc adm create-bootstrap-project-template -o yaml &gt; template.yaml\n \n2. Edit the template and add network policy object definitions before the parameters section. For example, the following section defines two policies: one to allow requests from the same namespace and one to allow from the OpenShift ingress routing service. \n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-same-namespace\n  spec:\n  podSelector:\n  ingress:\n  - from:\n  - podSelector: {}\n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-openshift-ingress\n  spec:\n  ingress:\n  - from:\n  - namespaceSelector:\n  matchLabels:\n  network.openshift.io/policy-group: ingress\n  podSelector: {}\n  policyTypes:\n  - Ingress\n parameters:\n \n 3. Apply the project template to the cluster by executing the following: \n oc create -f template.yaml -n openshift-config\n \n 4. Set the default cluster project request template by executing the following:  \n oc patch project.config.openshift.io/cluster --type=merge -p &#039;{&#039;spec&#039;:{&#039;projectRequestTemplate&#039;:{&#039;name&#039;: &#039;&lt;PROJECT_REQUEST_TEMPLATE&gt;&#039;}}}&#039;\n \nFor additional information regarding network policies, refer to https://docs.openshift.com/container-platform/4.8/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"replace\", \"path\": \"/spec/featureGates/downwardMetrics\",\n\"value\": false },\n]'",
-            "+@fixref": "F-61174r1156724_fix"
+            "+content": "Configure a default network policy as necessary to protect the flow of information by performing the following steps:\n \n1. Create a bootstrap project template (if not already created) by executing the following:\n oc adm create-bootstrap-project-template -o yaml > template.yaml\n \n2. Edit the template and add network policy object definitions before the parameters section. For example, the following section defines two policies: one to allow requests from the same namespace and one to allow from the OpenShift ingress routing service. \n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-same-namespace\n  spec:\n  podSelector:\n  ingress:\n  - from:\n  - podSelector: {}\n - apiVersion: networking.k8s.io/v1\n  kind: NetworkPolicy\n  metadata:\n  name: allow-from-openshift-ingress\n  spec:\n  ingress:\n  - from:\n  - namespaceSelector:\n  matchLabels:\n  network.openshift.io/policy-group: ingress\n  podSelector: {}\n  policyTypes:\n  - Ingress\n parameters:\n \n 3. Apply the project template to the cluster by executing the following: \n oc create -f template.yaml -n openshift-config\n \n 4. Set the default cluster project request template by executing the following:  \n oc patch project.config.openshift.io/cluster --type=merge -p '{'spec':{'projectRequestTemplate':{'name': '<PROJECT_REQUEST_TEMPLATE>'}}}'\n \nFor additional information regarding network policies, refer to https://docs.openshift.com/container-platform/4.8/networking/network_policy/about-network-policy.html.\n\nWhere OpenShift Virtualization is enabled:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"replace\", \"path\": \"/spec/featureGates/downwardMetrics\",\n\"value\": false },\n]'",
+            "+@fixref": "F-61174r1208197_fix"
           },
           "fix": {
-            "+@id": "F-61174r1156724_fix"
+            "+@id": "F-61174r1208197_fix"
           },
           "check": {
-            "+@system": "C-61250r1156723_chk",
+            "+@system": "C-61250r1208196_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check for network policy. Verify a default project template is defined by executing the following:\noc get project.config.openshift.io/cluster -o jsonpath=&#039;{.spec.projectRequestTemplate.name}&#039;\n \nIf no project request template is in use by the project config, this is a finding.\n \nVerify the project request template creates a network policy: \noc get templates/&lt;PROJECT-REQUEST-TEMPLATE&gt; -n openshift-config -o jsonpath=&#039;{.objects[?(.kind==&#039;NetworkPolicy&#039;)]}{&#039;\\n&#039;}&#039;\n \nReplace &lt;PROJECT-REQUEST-TEMPLATE&gt; with the name of the project request template returned from the earlier query. If the project template is not defined, or there are no network policy definitions in it, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.featureGates.downwardMetrics}'\n\nIf this is set to anything other than \"false\", this is a finding."
+            "check-content": "Check for network policy. Verify a default project template is defined by executing the following:\noc get project.config.openshift.io/cluster -o jsonpath='{.spec.projectRequestTemplate.name}'\n \nIf no project request template is in use by the project config, this is a finding.\n \nVerify the project request template creates a network policy: \noc get templates/<PROJECT-REQUEST-TEMPLATE> -n openshift-config -o jsonpath='{.objects[?(.kind=='NetworkPolicy')]}{'\\n'}'\n \nReplace <PROJECT-REQUEST-TEMPLATE> with the name of the project request template returned from the earlier query. If the project template is not defined, or there are no network policy definitions in it, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.featureGates.downwardMetrics}'\n\nIf this is set to anything other than \"false\", this is a finding."
           }
         }
       },
@@ -3652,7 +3652,7 @@
         "title": "SRG-APP-000089-CTR-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257517r1156728_rule",
+          "+@id": "SV-257517r1208201_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000150",
@@ -3688,19 +3688,19 @@
             }
           ],
           "fixtext": {
-            "+content": "As the cluster administrator, update the APIServer.config.openshift.io/cluster object to set the profile to the defined level of detail. For example, to configure the profile to WriteRequestBodies, meaning that all write requests to any API server object are logged in their entirety, execute the following:\noc patch apiserver.config.openshift.io/cluster --type=merge -p &#039;{&#039;spec&#039;: {&#039;audit&#039;: {&#039;profile&#039;: &#039;WriteRequestBodies&#039;}}}&#039;\n\nWhere OpenShift Virtualization is enabled:\n\nTo remove the errorPolicy flag on the first disk (index 0) of a given VM, use this command:\n$ oc patch vm <vm-name> --type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/template/spec/domain/devices/disks/0/errorPolicy\"},\n]'",
-            "+@fixref": "F-61176r1156727_fix"
+            "+content": "As the cluster administrator, update the APIServer.config.openshift.io/cluster object to set the profile to the defined level of detail. For example, to configure the profile to WriteRequestBodies, meaning that all write requests to any API server object are logged in their entirety, execute the following:\noc patch apiserver.config.openshift.io/cluster --type=merge -p '{'spec': {'audit': {'profile': 'WriteRequestBodies'}}}'\n\nWhere OpenShift Virtualization is enabled:\n\nTo remove the errorPolicy flag on the first disk (index 0) of a given VM, use this command:\n$ oc patch vm <vm-name> --type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/template/spec/domain/devices/disks/0/errorPolicy\"},\n]'",
+            "+@fixref": "F-61176r1208200_fix"
           },
           "fix": {
-            "+@id": "F-61176r1156727_fix"
+            "+@id": "F-61176r1208200_fix"
           },
           "check": {
-            "+@system": "C-61252r1156726_chk",
+            "+@system": "C-61252r1208199_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To determine at what level the OpenShift audit policy logging verbosity is configured, as a cluster-administrator execute the following command: \noc get apiserver.config.openshift.io/cluster -ojsonpath=&#039;{.spec.audit.profile}&#039;\n \nIf the output from the options does not return WriteRequestBodies or AllRequestBodies, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get vm -ojson -A | jq '.items[] |\nselect(.spec.template.spec.domain.devices.disks[].errorPolicy ==\n\"ignore\")| .metadata.namespace + \"/\" + .metadata.name'\n\nIf the results show errorPolicy is set to \"ignore\", this is a finding."
+            "check-content": "To determine at what level the OpenShift audit policy logging verbosity is configured, as a cluster-administrator execute the following command: \noc get apiserver.config.openshift.io/cluster -ojsonpath='{.spec.audit.profile}'\n \nIf the output from the options does not return WriteRequestBodies or AllRequestBodies, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get vm -ojson -A | jq '.items[] |\nselect(.spec.template.spec.domain.devices.disks[].errorPolicy ==\n\"ignore\")| .metadata.namespace + \"/\" + .metadata.name'\n\nIf the results show errorPolicy is set to \"ignore\", this is a finding."
           }
         }
       },
@@ -4982,7 +4982,7 @@
         "title": "SRG-APP-000211-CTR-000530",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257545r1156734_rule",
+          "+@id": "SV-257545r1208204_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000500",
@@ -5000,19 +5000,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Disable and remove passwords from root and core accounts by executing the following:\n\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;usermod -p &#039;*&#039; root; usermod -p &#039;*&#039; core&#039; 2&gt;/dev/null; done\n \nRemove any additional user accounts from the nodes by executing the following:\noc debug node/&lt;node&gt; -- chroot /host /bin/bash -c &#039;userdel &lt;user&gt;&#039;\n\nWhere OpenShift Virtualization is enabled:\noc get rolebinding -ojson | jq -r '.items[] | select(.roleRef.name | contains(\"token.kubevirt.io:generate\")) | .metadata.name' | xargs oc delete rolebinding",
-            "+@fixref": "F-61204r1156733_fix"
+            "+content": "Disable and remove passwords from root and core accounts by executing the following:\n\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'usermod -p '*' root; usermod -p '*' core' 2>/dev/null; done\n \nRemove any additional user accounts from the nodes by executing the following:\noc debug node/<node> -- chroot /host /bin/bash -c 'userdel <user>'\n\nWhere OpenShift Virtualization is enabled:\noc get rolebinding -ojson | jq -r '.items[] | select(.roleRef.name | contains(\"token.kubevirt.io:generate\")) | .metadata.name' | xargs oc delete rolebinding",
+            "+@fixref": "F-61204r1208203_fix"
           },
           "fix": {
-            "+@id": "F-61204r1156733_fix"
+            "+@id": "F-61204r1208203_fix"
           },
           "check": {
-            "+@system": "C-61280r1156732_chk",
+            "+@system": "C-61280r1208202_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify root and core are the only user accounts on the nodes by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; cat /etc/passwd&#039; 2&gt;/dev/null; done\n \nThe output will look similar to:\n&lt;node_name&gt; root:x:0:0:root:/root:/bin/bash\ncore:x:1000:1000:CoreOS Admin:/var/home/core:/bin/bash\ncontainers:x:993:995:User for housing the sub ID range for containers:/var/home/containers:/sbin/nologin\n \nIf there are any user accounts in addition to root, containers, and core, this is a finding.\n \nVerify the root and core users are set to disable password logon by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; grep -e &#039;^root&#039; -e &#039;^core&#039; /etc/shadow&#039; 2&gt;/dev/null; done\n\nThe output will look similar to:\n&lt;node_name&gt;\nroot:*:18367:0:99999:7:::\ncore:*:18939:0:99999:7:::\n \nIf the password entry has anything other than &#039;*&#039;, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get rolebinding -ojson | jq -c '.items[] | select(.roleRef.name\n| contains(\"token.kubevirt.io:generate\"))'\n\nIf these results show users with this rolebinding, this is a finding."
+            "check-content": "Verify root and core are the only user accounts on the nodes by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n '$HOSTNAME '; cat /etc/passwd' 2>/dev/null; done\n \nThe output will look similar to:\n<node_name> root:x:0:0:root:/root:/bin/bash\ncore:x:1000:1000:CoreOS Admin:/var/home/core:/bin/bash\ncontainers:x:993:995:User for housing the sub ID range for containers:/var/home/containers:/sbin/nologin\n \nIf there are any user accounts in addition to root, containers, and core, this is a finding.\n \nVerify the root and core users are set to disable password logon by executing the following:\n for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n '$HOSTNAME '; grep -e '^root' -e '^core' /etc/shadow' 2>/dev/null; done\n\nThe output will look similar to:\n<node_name>\nroot:*:18367:0:99999:7:::\ncore:*:18939:0:99999:7:::\n \nIf the password entry has anything other than '*', this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get rolebinding -ojson | jq -c '.items[] | select(.roleRef.name\n| contains(\"token.kubevirt.io:generate\"))'\n\nIf these results show users with this rolebinding, this is a finding."
           }
         }
       },
@@ -5390,7 +5390,7 @@
         "title": "SRG-APP-000246-CTR-000605",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257555r1132416_rule",
+          "+@id": "SV-257555r1208206_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000630",
@@ -5408,11 +5408,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Add the \"haproxy.router.openshift.io/rate-limit-connections= true\" annotation to any routes outside the kube-* or openshift-* namespaces.\n\noc annotate route <route_name> -n <namespace> --overwrite=true \"haproxy.router.openshift.io/timeout=2s\"\n\nhttps://docs.openshift.com/container-platform/4.9/networking/routes/route-configuration.html",
-            "+@fixref": "F-61214r1130601_fix"
+            "+content": "Add the \"haproxy.router.openshift.io/rate-limit-connections= true\" annotation to any routes outside the kube-* or openshift-* namespaces.\n\noc annotate route <route_name> -n <namespace> --overwrite=true \" haproxy.router.openshift.io/rate-limit-connections= true \"\n\nhttps://docs.openshift.com/container-platform/4.9/networking/routes/route-configuration.html",
+            "+@fixref": "F-61214r1208205_fix"
           },
           "fix": {
-            "+@id": "F-61214r1130601_fix"
+            "+@id": "F-61214r1208205_fix"
           },
           "check": {
             "+@system": "C-61290r921606_chk",
@@ -6563,7 +6563,7 @@
         "title": "SRG-APP-000141-CTR-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257584r1156743_rule",
+          "+@id": "SV-257584r1208209_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-001020",
@@ -6581,19 +6581,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Apply the machine config to disable USB Storage to load USB Storage kernel module by executing the following:\n \n  for mcpool in $(oc get mcp -oname | sed &#039;s:.*/::&#039; ); do\n echo &#039;apiVersion: machineconfiguration.openshift.io/v1\n kind: MachineConfig\n metadata:\n  name: 80-kernmod-usb-storage-disable-$mcpool\n  labels:\n  machineconfiguration.openshift.io/role: $mcpool\n spec:\n  config:\n  ignition:\n  version: 3.1.0\n  storage:\n  files:\n  - contents:\n  source: data:,install%20usb-storage%20/bin/true%0A\n  mode: 0644\n  path: /etc/modprobe.d/75-kernel_module_usb-storage_disabled.conf\n  overwrite: true\n &#039; | oc apply -f -\n done\n\nWhere OpenShift Virtualization is enabled:\n\nRemove individual devices (e.g. DEVICE_A at index 0):\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/permittedHostDevices/pciHostDevices/0\"},\n\n]'\n\nRemove all devices:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\": \"/spec/permittedHostDevices\"},\n]'",
-            "+@fixref": "F-61243r1156742_fix"
+            "+content": "Apply the machine config to disable USB Storage to load USB Storage kernel module by executing the following:\n \n  for mcpool in $(oc get mcp -oname | sed 's:.*/::' ); do\n echo 'apiVersion: machineconfiguration.openshift.io/v1\n kind: MachineConfig\n metadata:\n  name: 80-kernmod-usb-storage-disable-$mcpool\n  labels:\n  machineconfiguration.openshift.io/role: $mcpool\n spec:\n  config:\n  ignition:\n  version: 3.1.0\n  storage:\n  files:\n  - contents:\n  source: data:,install%20usb-storage%20/bin/true%0A\n  mode: 0644\n  path: /etc/modprobe.d/75-kernel_module_usb-storage_disabled.conf\n  overwrite: true\n ' | oc apply -f -\n done\n\nWhere OpenShift Virtualization is enabled:\n\nRemove individual devices (e.g. DEVICE_A at index 0):\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\":\n\"/spec/permittedHostDevices/pciHostDevices/0\"},\n\n]'\n\nRemove all devices:\n$ oc patch hyperconverged kubevirt-hyperconverged -n openshift-cnv\n--type='json' -p='[\n{\"op\": \"remove\", \"path\": \"/spec/permittedHostDevices\"},\n]'",
+            "+@fixref": "F-61243r1208208_fix"
           },
           "fix": {
-            "+@id": "F-61243r1156742_fix"
+            "+@id": "F-61243r1208208_fix"
           },
           "check": {
-            "+@system": "C-61319r1156741_chk",
+            "+@system": "C-61319r1208207_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system disables the ability to load the USB Storage kernel module by executing the following:\n  for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c &#039;echo -n &#039;$HOSTNAME &#039;; grep -r usb-storage /etc/modprobe.d/* | grep -i &#039;/bin/true&#039;&#039; 2&gt;/dev/null; done\n \n install usb-storage /bin/true\n \nIf the command does not return any output, or the line is commented out, and use of USB Storage is not documented with the information system security officer (ISSO) as an operational requirement, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.permittedHostDevices}'\n\nIf unapproved devices are listed, this is a finding."
+            "check-content": "Verify the operating system disables the ability to load the USB Storage kernel module by executing the following:\n  for node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n '$HOSTNAME '; grep -r usb-storage /etc/modprobe.d/* | grep -i '/bin/true'' 2>/dev/null; done\n \n install usb-storage /bin/true\n \nIf the command does not return any output, or the line is commented out, and use of USB Storage is not documented with the information system security officer (ISSO) as an operational requirement, this is a finding.\n\nWhere OpenShift Virtualization is enabled:\n$ oc get hyperconverged kubevirt-hyperconverged -n openshift-cnv\n-ojsonpath='{.spec.permittedHostDevices}'\n\nIf unapproved devices are listed, this is a finding."
           }
         }
       },

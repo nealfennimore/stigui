@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-06"
+      "+@date": "2026-05-14"
     },
     "title": "Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 9 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -9191,7 +9191,7 @@
         "title": "SRG-OS-000480-GPOS-00229",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260526r991591_rule",
+          "+@id": "SV-260526r1208678_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-22-255025",
@@ -9209,11 +9209,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to not allow unattended or automatic login to the system.  \n  \nAdd or modify the following lines in the \"/etc/ssh/sshd_config\" file:  \n  \nPermitEmptyPasswords no \nPermitUserEnvironment no \n  \nRestart the SSH daemon for the changes to take effect: \n  \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64163r953390_fix"
+            "+content": "Configure the SSH server to not allow unattended or automatic login to the system.  \n  \nAdd or modify the following lines in the \"/etc/ssh/sshd_config\" file:  \n  \nPermitEmptyPasswords no \nPermitUserEnvironment no \n\nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64163r1208677_fix"
           },
           "fix": {
-            "+@id": "F-64163r953390_fix"
+            "+@id": "F-64163r1208677_fix"
           },
           "check": {
             "+@system": "C-64255r953389_chk",
@@ -9230,7 +9230,7 @@
         "title": "SRG-OS-000126-GPOS-00066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260527r986275_rule",
+          "+@id": "SV-260527r1208681_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255030",
@@ -9248,19 +9248,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to terminate a user session automatically after the SSH client has become unresponsive. \n \nNote: This setting must be applied in conjunction with UBTU-22-255040 to function correctly. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n  \nClientAliveCountMax 1 \n  \nRestart the SSH daemon for the changes to take effect:  \n  \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64164r953393_fix"
+            "+content": "Configure the SSH server to terminate a user session automatically after the SSH client has become unresponsive. \n \nNote: This setting must be applied in conjunction with UBTU-22-255040 to function correctly. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n\nClientAliveCountMax 1 \n  \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64164r1208680_fix"
           },
           "fix": {
-            "+@id": "F-64164r953393_fix"
+            "+@id": "F-64164r1208680_fix"
           },
           "check": {
-            "+@system": "C-64256r953392_chk",
+            "+@system": "C-64256r1208679_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH server automatically terminates a user session after the SSH client has become unresponsive by using the following command:  \n \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'clientalivecountmax' \n     /etc/ssh/sshd_config:ClientAliveCountMax 1 \n \nIf \"ClientAliveCountMax\" is not to \"1\", if conflicting results are returned, is commented out, or is missing, this is a finding."
+            "check-content": "Verify the SSH server automatically terminates a user session after the SSH client has become unresponsive by using the following command:  \n \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'clientalivecountmax' \n     /etc/ssh/sshd_config:ClientAliveCountMax 1 \n \nIf \"ClientAliveCountMax\" is not set to \"1\", conflicting results are returned, or it is commented out or missing, this is a finding."
           }
         }
       },
@@ -9269,7 +9269,7 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260528r970703_rule",
+          "+@id": "SV-260528r1208803_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255035",
@@ -9287,19 +9287,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to terminate a user session automatically after the SSH client has been unresponsive for 10 minutes. \n \nNote: This setting must be applied in conjunction with UBTU-22-255040 to function correctly. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nClientAliveInterval 600 \n \nRestart the SSH daemon for the changes to take effect: \n \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64165r953396_fix"
+            "+content": "Configure the SSH server to terminate a user session automatically after the SSH client has been unresponsive for 10 minutes. \n \nNote: This setting must be applied in conjunction with UBTU-22-255040 to function correctly. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nClientAliveInterval 600 \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64165r1208280_fix"
           },
           "fix": {
-            "+@id": "F-64165r953396_fix"
+            "+@id": "F-64165r1208280_fix"
           },
           "check": {
-            "+@system": "C-64257r953395_chk",
+            "+@system": "C-64257r1208803_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH server automatically terminates a user session after the SSH client has been unresponsive for 10 minutes by using the following command: \n \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'clientaliveinterval' \n     /etc/ssh/sshd_config:ClientAliveInterval 600 \n \nIf \"ClientAliveInterval\" does not exist, is not set to a value of \"600\" or less, if conflicting results are returned, is commented out, or is missing, this is a finding."
+            "check-content": "Verify the SSH server automatically terminates a user session after the SSH client has been unresponsive for 10 minutes by using the following command: \n \n     $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\\r' | tr '\\n' ' ' | xargs sudo grep -iH 'clientaliveinterval' \n     /etc/ssh/sshd_config:ClientAliveInterval 600 \n \nIf \"ClientAliveInterval\" does not exist or is not set to a value of \"600\" or less, conflicting results are returned, or it is commented out or missing, this is a finding."
           }
         }
       },
@@ -9308,12 +9308,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260529r991589_rule",
+          "+@id": "SV-260529r1208685_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-22-255040",
           "title": "Ubuntu 22.04 LTS must be configured so that remote X connections are disabled, unless to fulfill documented and validated mission requirements.",
-          "description": "<VulnDiscussion>The security risk of using X11 forwarding is that the client's X11 display server may be exposed to attack when the SSH client requests forwarding.  A system administrator may have a stance in which they want to protect clients that may expose themselves to attack by unwittingly requesting X11 forwarding, which can warrant a ''no'' setting.  \n  \nX11 forwarding should be enabled with caution. Users with the ability to bypass file permissions on the remote host (for the user's X11 authorization database) can access the local X11 display through the forwarded connection. An attacker may then be able to perform activities such as keystroke monitoring if the ForwardX11Trusted option is also enabled.  \n  \nIf X11 services are not required for the system's intended function, they should be disabled or restricted as appropriate to the system's needs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The security risk of using X11 forwarding is that the client's X11 display server may be exposed to attack when the SSH client requests forwarding. A system administrator may have a stance in which they want to protect clients that may expose themselves to attack by unwittingly requesting X11 forwarding, which can warrant a ''no'' setting.  \n  \nX11 forwarding should be enabled with caution. Users with the ability to bypass file permissions on the remote host (for the user's X11 authorization database) can access the local X11 display through the forwarded connection. An attacker may then be able to perform activities such as keystroke monitoring if the ForwardX11Trusted option is also enabled.  \n  \nIf X11 services are not required for the system's intended function, they should be disabled or restricted as appropriate to the system's needs.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 22.04 LTS",
             "dc:publisher": "DISA",
@@ -9326,11 +9326,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to disable X11 forwarding.  \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nX11Forwarding no  \n  \nRestart the SSH daemon for the changes to take effect:  \n  \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64166r953399_fix"
+            "+content": "Configure the SSH server to disable X11 forwarding.  \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n\nX11Forwarding no\n  \nRestart SSH for the changes to take effect:\n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64166r1208684_fix"
           },
           "fix": {
-            "+@id": "F-64166r953399_fix"
+            "+@id": "F-64166r1208684_fix"
           },
           "check": {
             "+@system": "C-64258r953398_chk",
@@ -9347,7 +9347,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260530r991589_rule",
+          "+@id": "SV-260530r1208687_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255045",
@@ -9365,11 +9365,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to prevent remote hosts from connecting to the proxy display.  \n  \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nX11UseLocalhost yes \n \nRestart the SSH daemon for the changes to take effect:  \n \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64167r953402_fix"
+            "+content": "Configure the SSH server to prevent remote hosts from connecting to the proxy display.\n  \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n\nX11UseLocalhost yes \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64167r1208686_fix"
           },
           "fix": {
-            "+@id": "F-64167r953402_fix"
+            "+@id": "F-64167r1208686_fix"
           },
           "check": {
             "+@system": "C-64259r953401_chk",
@@ -9386,12 +9386,12 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260531r1155212_rule",
+          "+@id": "SV-260531r1208689_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255050",
           "title": "Ubuntu 22.04 LTS must configure the SSH daemon to use FIPS 140-3-approved ciphers to prevent the unauthorized disclosure of information and/or detect changes to information during transmission.",
-          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.   \n  \nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.   \n  \nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network.   \n  \nLocal maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection.   \n  \nEncrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions, which have common application in digital signatures, checksums, and message authentication codes.  \n  \nBy specifying a cipher list with the order of ciphers being in a \"strongest to weakest\" orientation, the system will automatically attempt to use the strongest cipher for securing SSH connections.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000394-GPOS-00174, SRG-OS-000424-GPOS-00188</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without cryptographic integrity protections, information can be altered by unauthorized users without detection.   \n  \nRemote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.   \n  \nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network.   \n  \nLocal maintenance and diagnostic activities are carried out by individuals physically present at the information system or information system component and not communicating across a network connection.   \n  \nEncrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions, which have common application in digital signatures, checksums, and message authentication codes.  \n  \nBy specifying a cipher list with the order of ciphers being in a \"strongest to weakest\" orientation, the system will automatically attempt to use the strongest cipher for securing SSH connections.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000394-GPOS-00174, SRG-OS-000424-GPOS-00188</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 22.04 LTS",
             "dc:publisher": "DISA",
@@ -9414,11 +9414,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the SSH server to only implement FIPS-approved ciphers.  \n  \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n  \nCiphers aes256-ctr,aes256-gcm@openssh.com,aes128-ctr,aes128-gcm@openssh.com \n  \nRestart the SSH server for the changes to take effect:  \n  \n$ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64168r1155191_fix"
+            "+content": "Configure the SSH server to only implement FIPS-approved ciphers.  \n\nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n\nCiphers aes256-ctr,aes256-gcm@openssh.com,aes128-ctr,aes128-gcm@openssh.com \n\nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64168r1208688_fix"
           },
           "fix": {
-            "+@id": "F-64168r1155191_fix"
+            "+@id": "F-64168r1208688_fix"
           },
           "check": {
             "+@system": "C-64260r1155190_chk",
@@ -9484,7 +9484,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260533r958408_rule",
+          "+@id": "SV-260533r1208690_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255060",
@@ -9502,11 +9502,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH server to use only FIPS-validated key exchange algorithms. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nKexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256 \n \nRestart the SSH server for changes to take effect: \n \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64170r953411_fix"
+            "+content": "Configure the SSH server to use only FIPS-validated key exchange algorithms. \n \nAdd or modify the following line in the \"/etc/ssh/sshd_config\" file: \n \nKexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256 \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64170r1208288_fix"
           },
           "fix": {
-            "+@id": "F-64170r953411_fix"
+            "+@id": "F-64170r1208288_fix"
           },
           "check": {
             "+@system": "C-64262r953410_chk",
@@ -9523,12 +9523,12 @@
         "title": "SRG-OS-000125-GPOS-00065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260534r958510_rule",
+          "+@id": "SV-260534r1208804_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-255065",
           "title": "Ubuntu 22.04 LTS must use strong authenticators in establishing nonlocal maintenance and diagnostic sessions.",
-          "description": "<VulnDiscussion>Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the internet) or an internal network. Local maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection. Typically, strong authentication requires authenticators that are resistant to replay attacks and employ multifactor authentication. Strong authenticators include, for example, PKI where certificates are stored on a token protected by a password, passphrase, or biometric.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Nonlocal maintenance and diagnostic activities are conducted by individuals communicating through either an external network (e.g., the internet) or an internal network. Local maintenance and diagnostic activities are carried out by individuals physically present at the information system or information system component and not communicating across a network connection. Typically, strong authentication requires authenticators that are resistant to replay attacks and employ multifactor authentication. Strong authenticators include, for example, PKI where certificates are stored on a token protected by a password, passphrase, or biometric.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 22.04 LTS",
             "dc:publisher": "DISA",
@@ -9541,11 +9541,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to use strong authentication when establishing nonlocal maintenance and diagnostic sessions.   \n  \nAdd or modify the following line to /etc/ssh/sshd_config:  \n  \nUsePAM yes \n \nRestart the SSH server for changes to take effect: \n \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-64171r953414_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to use strong authentication when establishing nonlocal maintenance and diagnostic sessions.   \n\nAdd or modify the following line to /etc/ssh/sshd_config:  \n\nUsePAM yes \n\nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-64171r1208691_fix"
           },
           "fix": {
-            "+@id": "F-64171r953414_fix"
+            "+@id": "F-64171r1208691_fix"
           },
           "check": {
             "+@system": "C-64263r953413_chk",
@@ -9679,11 +9679,11 @@
         "title": "SRG-OS-000029-GPOS-00010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260538r1069119_rule",
+          "+@id": "SV-260538r1208695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-271025",
-          "title": "Ubuntu 22.04 LTS must initiate a graphical session lock after 15 minutes of inactivity.",
+          "title": "Ubuntu 22.04 LTS must initiate a graphical session lock after 10 minutes of inactivity.",
           "description": "<VulnDiscussion>A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.  \n  \nThe session lock is implemented at the point where session activity can be determined.  \n  \nRegardless of where the session lock is determined and implemented, once invoked, a session lock of Ubuntu 22.04 LTS must remain in place until the user reauthenticates. No other activity aside from reauthentication must unlock the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 22.04 LTS",
@@ -9697,19 +9697,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 22.04 LTS to lock the current graphical user interface session after 15 minutes of inactivity.  \n\nCreate or edit a file named /etc/dconf/db/local.d/00-screensaver with the following contents:\n\n[org/gnome/desktop/screensaver]\nlock-enabled=true\nlock-delay=0\n\n[org/gnome/desktop/session]\nidle-delay=600",
-            "+@fixref": "F-64175r1069118_fix"
+            "+content": "Configure Ubuntu 22.04 LTS to lock the current graphical user interface session after 10 minutes of inactivity.  \n\nCreate or edit a file named \"/etc/dconf/db/local.d/00-screensaver\" with the following contents:\n\n[org/gnome/desktop/screensaver]\nlock-enabled=true\nlock-delay=0\n\n[org/gnome/desktop/session]\nidle-delay=600",
+            "+@fixref": "F-64175r1208694_fix"
           },
           "fix": {
-            "+@id": "F-64175r1069118_fix"
+            "+@id": "F-64175r1208694_fix"
           },
           "check": {
-            "+@system": "C-64267r953425_chk",
+            "+@system": "C-64267r1208693_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Ubuntu 22.04 LTS has a graphical user interface session lock configured to activate after 15 minutes of inactivity by using the following commands:   \n  \nNote: If no graphical user interface is installed, this requirement is not applicable. \n \nGet the following settings to verify the graphical user interface session is configured to lock the graphical user session after 15 minutes of inactivity:  \n   \n     $ gsettings get org.gnome.desktop.screensaver lock-enabled \n     true \n \n     $ gsettings get org.gnome.desktop.screensaver lock-delay \n     uint32 0 \n \n     $ gsettings get org.gnome.desktop.session idle-delay \n     uint32 900 \n \nIf \"lock-enabled\" is not set to \"true\", is commented out, or is missing, this is a finding. \n \nIf \"lock-delay\" is set to a value greater than \"0\", or if \"idle-delay\" is set to a value greater than \"900\", is commented out, or is missing, this is a finding."
+            "check-content": "Note: If no graphical user interface is installed, this requirement is not applicable. \n\nVerify Ubuntu 22.04 LTS has a graphical user interface session lock configured to activate after 10 minutes of inactivity by using the following commands:   \n \nGet the following settings to verify the graphical user interface session is configured to lock the graphical user session after 10 minutes of inactivity:  \n   \n     $ gsettings get org.gnome.desktop.screensaver lock-enabled \n     true \n \n     $ gsettings get org.gnome.desktop.screensaver lock-delay \n     uint32 0 \n \n     $ gsettings get org.gnome.desktop.session idle-delay \n     uint32 600 \n \nIf \"lock-enabled\" is not set to \"true\", is commented out, or is missing, this is a finding. \n \nIf \"lock-delay\" is set to a value greater than \"0\", or if \"idle-delay\" is set to a value greater than \"600\", is commented out, or is missing, this is a finding."
           }
         }
       },
@@ -10463,7 +10463,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-260558r1155216_rule",
+          "+@id": "SV-260558r1208696_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-22-432010",
@@ -10494,12 +10494,12 @@
             "+@id": "F-64195r1155200_fix"
           },
           "check": {
-            "+@system": "C-64287r1155199_chk",
+            "+@system": "C-64287r1208274_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the \"/etc/sudoers\" file has no occurrences of \"NOPASSWD\" or \"!authenticate\" by using the following command:\n  \n$ sudo egrep -iR '!authenticate' /etc/sudoers /etc/sudoers.d/\n  \nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
+            "check-content": "Verify the \"/etc/sudoers\" file has no occurrences of \"!authenticate\" with the following command: \n \n$ sudo egrep -iR '!authenticate' /etc/sudoers /etc/sudoers.d/\n \nIf any occurrences of \"!authenticate\" return from the command, this is a finding."
           }
         }
       },
@@ -14835,12 +14835,12 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279937r1156364_rule",
+          "+@id": "SV-279937r1208676_rule",
           "+@weight": "10.0",
-          "+@severity": "high",
+          "+@severity": "medium",
           "version": "UBTU-22-215040",
           "title": "Ubuntu 22.04 LTS must not have the nfs-kernel-server package installed.",
-          "description": "<VulnDiscussion>It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore, may remain unsecured. They increase the risk to the platform by providing additional attack vectors. \n \nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n \nExamples of nonessential capabilities include, but are not limited to, games, software packages, tools, and demonstration software, not related to requirements or providing a wide array of functionality not required for every mission, but which cannot be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors. \n \nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n \nExamples of nonessential capabilities include, but are not limited to, games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 22.04 LTS",
             "dc:publisher": "DISA",
@@ -14853,19 +14853,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Ubuntu operating system to disable nonessential capabilities by removing the nfs-common and nfs-kernel-server packages from the system with the following commands:\n\nRemove packages if present:\n$ sudo apt purge --yes nfs-common nfs-kernel-server\n\nRemove any unneeded dependencies:\n$ sudo apt autoremove --yes\n\nVerify that NFS services are gone:\n$ sudo systemctl list-units --type=service | grep nfs",
-            "+@fixref": "F-84402r1156363_fix"
+            "+content": "Configure the Ubuntu operating system to disable nonessential capabilities by removing the nfs-kernel-server package from the system with the following commands:\n\nRemove packages if present:\n$ sudo apt purge --yes nfs-kernel-server\n\nRemove any unneeded dependencies:\n$ sudo apt autoremove --yes\n\nVerify that NFS services are gone:\n$ sudo systemctl list-units --type=service | grep nfs",
+            "+@fixref": "F-84402r1208272_fix"
           },
           "fix": {
-            "+@id": "F-84402r1156363_fix"
+            "+@id": "F-84402r1208272_fix"
           },
           "check": {
-            "+@system": "C-84497r1156362_chk",
+            "+@system": "C-84497r1208675_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_22.04_LTS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that Ubuntu does not have nfs packages installed.\n\nCheck if packages are installed:\n$ sudo dpkg -l | grep -E 'nfs-common | nfs-kernel-server'\n\nIf the nfs-common or nfs-kernel-server packages are installed, this is a finding."
+            "check-content": "Note: If NFS mounts are authorized and in use on the system, this control is not applicable.\n\nVerify that Ubuntu does not have the nfs-kernel-server package installed.\n\nDetermine if packages are installed:\n$ sudo dpkg -l | grep -E 'nfs-kernel-server'\n\nIf the nfs-kernel-server package is installed, this is a finding."
           }
         }
       }

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-13"
+      "+@date": "2026-05-14"
     },
     "title": "Oracle Linux 8 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 9 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -1552,6 +1552,10 @@
           {
             "+@idref": "V-283459",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
+            "+@selected": "true"
           }
         ]
       },
@@ -3058,6 +3062,10 @@
           },
           {
             "+@idref": "V-283459",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
             "+@selected": "true"
           }
         ]
@@ -4566,6 +4574,10 @@
           {
             "+@idref": "V-283459",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
+            "+@selected": "true"
           }
         ]
       },
@@ -6072,6 +6084,10 @@
           },
           {
             "+@idref": "V-283459",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
             "+@selected": "true"
           }
         ]
@@ -7580,6 +7596,10 @@
           {
             "+@idref": "V-283459",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
+            "+@selected": "true"
           }
         ]
       },
@@ -9086,6 +9106,10 @@
           },
           {
             "+@idref": "V-283459",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
             "+@selected": "true"
           }
         ]
@@ -10594,6 +10618,10 @@
           {
             "+@idref": "V-283459",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
+            "+@selected": "true"
           }
         ]
       },
@@ -12100,6 +12128,10 @@
           },
           {
             "+@idref": "V-283459",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
             "+@selected": "true"
           }
         ]
@@ -13608,6 +13640,10 @@
           {
             "+@idref": "V-283459",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-284945",
+            "+@selected": "true"
           }
         ]
       }
@@ -14500,11 +14536,11 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248534r1015029_rule",
+          "+@id": "SV-248534r1208703_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010120",
-          "title": "OL 8 must employ FIPS 140-2 approved cryptographic hashing algorithms for all stored passwords.",
+          "title": "OL 8 must employ FIPS 140-3-approved cryptographic hashing algorithms for all stored passwords.",
           "description": "<VulnDiscussion>The system must use a strong hashing algorithm to store the password. \n \nPasswords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Linux 8",
@@ -14531,12 +14567,12 @@
             "+@id": "F-51922r779167_fix"
           },
           "check": {
-            "+@system": "C-51968r779166_chk",
+            "+@system": "C-51968r1208337_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Confirm that the interactive user account passwords are using a strong password hash with the following command: \n \n$ sudo cut -d: -f2 /etc/shadow \n \n$6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/ \n \nPassword hashes \"!\" or \"*\" indicate inactive accounts not available for logon and are not evaluated.  \n \nIf any interactive user password hash does not begin with \"$6$\", this is a finding."
+            "check-content": "Confirm that the interactive user account passwords are using a strong password hash with the following command: \n \n$ sudo cut -d: -f1,2 /etc/shadow\n \nnsauser:$6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/ \n \nPassword hashes \"!\" or \"*\" indicate inactive accounts not available for logon and are not evaluated.  \n \nIf any interactive user password hash does not begin with \"$6$\", this is a finding."
           }
         }
       },
@@ -15827,12 +15863,12 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248575r1015032_rule",
+          "+@id": "SV-248575r1208705_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "OL08-00-010371",
           "title": "OL 8 must prevent the installation of software, patches, service packs, device drivers, or operating system components of local packages without verification they have been digitally signed using a certificate that is issued by a Certificate Authority (CA) that is recognized and approved by the organization.",
-          "description": "<VulnDiscussion>Changes to any software components can have significant effects on the overall security of the operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.\n\nAccordingly, patches, service packs, device drivers, or operating system components must be signed with a certificate recognized and approved by the organization.\n\nVerifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This verifies the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. The operating system should not have to verify the software again. This requirement does not mandate DOD certificates for this purpose; however, the certificate used to verify the software must be from an approved Certificate Authority (CA).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Changes to any software components can have significant effects on the overall security of the operating system. \n\nAccordingly, patches, service packs, device drivers, or operating system components must be signed with a certificate recognized and approved by the organization.\n\nVerifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This verifies the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. The operating system should not have to verify the software again. This requirement does not mandate DOD certificates for this purpose; however, the certificate used to verify the software must be from an approved CA.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Linux 8",
             "dc:publisher": "DISA",
@@ -15851,19 +15887,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the operating system to remove all software components after updated versions have been installed.\n\nSet the \"localpkg_gpgcheck\" option to \"True\" in the \"/etc/dnf/dnf.conf\" file:\n\nlocalpkg_gpgcheck=True",
-            "+@fixref": "F-51963r779290_fix"
+            "+content": "Configure the operating system to remove all software components after updated versions have been installed.\n\nSet the \"localpkg_gpgcheck\" option to \"True\" in the \"/etc/dnf/dnf.conf\" file:\n\nlocalpkg_gpgcheck=1",
+            "+@fixref": "F-51963r1208323_fix"
           },
           "fix": {
-            "+@id": "F-51963r779290_fix"
+            "+@id": "F-51963r1208323_fix"
           },
           "check": {
-            "+@system": "C-52009r779289_chk",
+            "+@system": "C-52009r1208704_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the operating system prevents the installation of patches, service packs, device drivers, or operating system components from a repository without verification that they have been digitally signed using a certificate that is recognized and approved by the organization.\n\nCheck if YUM is configured to perform a signature check on local packages with the following command:\n\n$ sudo grep -i localpkg_gpgcheck /etc/dnf/dnf.conf\n\nlocalpkg_gpgcheck =True\n\nIf \"localpkg_gpgcheck\" is not set to either \"1\", \"True\", or \"yes\", commented out, or is missing from \"/etc/dnf/dnf.conf\", this is a finding."
+            "check-content": "Verify the operating system prevents the installation of patches, service packs, device drivers, or operating system components from a repository without verification that they have been digitally signed using a certificate that is recognized and approved by the organization.\n\nDetermine if YUM is configured to perform a signature check on local packages with the following command:\n\n$ sudo grep -i localpkg_gpgcheck /etc/dnf/dnf.conf\n\nlocalpkg_gpgcheck=1\n\nIf \"localpkg_gpgcheck\" is not set to \"1\", \"True\", or \"yes\", is commented out, or is missing from \"/etc/dnf/dnf.conf\", this is a finding."
           }
         }
       },
@@ -16622,12 +16658,12 @@
         "title": "SRG-OS-000433-GPOS-00193",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248594r1156624_rule",
+          "+@id": "SV-248594r1208708_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010430",
           "title": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
-          "description": "<VulnDiscussion>Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can be either hardware-enforced or software-enforced, with hardware providing the greater strength of mechanism. \n \nExamples of attacks are buffer overflow attacks.\n\nThe sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.\n/etc/sysctl.d/*.conf\n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can be either hardware-enforced or software-enforced, with hardware providing the greater strength of mechanism. \n \nExamples of attacks are buffer overflow attacks.\n\nThe sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.\n\n/etc/sysctl.d/*.conf\n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Linux 8",
             "dc:publisher": "DISA",
@@ -16640,19 +16676,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure OL 8 to implement ASLR to protect its memory from unauthorized code execution.\n\nAdd or edit the following line in a system configuration file in the \"/etc/sysctl.d/\" directory:\n\nkernel.randomize_va_space = 2\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-51982r1155452_fix"
+            "+content": "Configure the system to enable ASLR with the following command:\n\n$ echo 'kernel.randomize_va_space = 2' | sudo tee /etc/sysctl.d/99-kernel_randomize_va_space.conf\n\nRemove any configurations that conflict with the above from the following locations: \n\n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-51982r1208707_fix"
           },
           "fix": {
-            "+@id": "F-51982r1155452_fix"
+            "+@id": "F-51982r1208707_fix"
           },
           "check": {
-            "+@system": "C-52028r1155451_chk",
+            "+@system": "C-52028r1208706_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify OL 8 is implementing ASLR with the following command:\n\n$ sysctl kernel.randomize_va_space\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\" or is missing, this is a finding."
+            "check-content": "Verify Oracle Linux is implementing ASLR with the following command:\n\n$ sysctl kernel.randomize_va_space\n\nkernel.randomize_va_space = 2\n\nCheck that the configuration files are present to enable this kernel parameter:\n\n$ sudo grep -rs kernel.randomize_va_space /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n\n/etc/sysctl.d/99-kernel_randomize_va_space.conf:kernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", or is missing, this is a finding.\n\nIf conflicting results are returned, this is a finding."
           }
         }
       },
@@ -16934,11 +16970,11 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248602r991589_rule",
+          "+@id": "SV-248602r1208711_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-010490",
-          "title": "The OL 8 SSH private host key files must have mode \"0640\" or less permissive.",
+          "title": "The OL 8 SSH private host key files must have mode \"0600\" or less permissive.",
           "description": "<VulnDiscussion>If an unauthorized user obtains the private SSH host key file, the host could be impersonated.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Linux 8",
@@ -16952,19 +16988,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the mode of SSH private host key files under \"/etc/ssh\" to \"0640\" with the following command: \n \n     $ sudo chmod 0640 /etc/ssh/ssh_host*key \n \nThe SSH daemon must be restarted for the changes to take effect. To restart the SSH daemon, run the following command: \n \n     $ sudo systemctl restart sshd.service",
-            "+@fixref": "F-51990r880540_fix"
+            "+content": "Configure the mode of SSH private host key files under \"/etc/ssh\" to \"0600\" with the following command: \n \n     $ sudo chmod 0600 /etc/ssh/ssh_host*key \n \nThe SSH daemon must be restarted for the changes to take effect. To restart the SSH daemon, run the following command: \n \n     $ sudo systemctl restart sshd.service",
+            "+@fixref": "F-51990r1208326_fix"
           },
           "fix": {
-            "+@id": "F-51990r880540_fix"
+            "+@id": "F-51990r1208326_fix"
           },
           "check": {
-            "+@system": "C-52036r880539_chk",
+            "+@system": "C-52036r1208325_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH private host key files have mode \"0640\" or less permissive with the following command: \n \n     $ sudo ls -alL /etc/ssh/ssh_host*key \n \n     -rw-r----- 1 root wheel 668 Nov 28 06:43 ssh_host_dsa_key \n     -rw-r----- 1 root wheel 582 Nov 28 06:43 ssh_host_key \n     -rw-r----- 1 root wheel 887 Nov 28 06:43 ssh_host_rsa_key \n \nIf any private host key file has a mode more permissive than \"0640\", this is a finding."
+            "check-content": "Verify the SSH private host key files have mode \"0600\" or less permissive with the following command: \n \n     $ sudo ls -alL /etc/ssh/ssh_host*key \n \n     -rw------- 1 root wheel 668 Nov 28 06:43 ssh_host_dsa_key \n     -rw------- 1 root wheel 582 Nov 28 06:43 ssh_host_key \n     -rw------- 1 root wheel 887 Nov 28 06:43 ssh_host_rsa_key \n \nIf any private host key file has a mode more permissive than \"0600\", this is a finding."
           }
         }
       },
@@ -19853,12 +19889,12 @@
         "title": "SRG-OS-000029-GPOS-00010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248680r1156673_rule",
+          "+@id": "SV-248680r1208712_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-020060",
-          "title": "OL 8 must automatically lock graphical user sessions after 15 minutes of inactivity.",
-          "description": "<VulnDiscussion>A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems must be able to identify when a user's session has idled and take action to initiate the session lock. \n \nThe session lock is implemented at the point where session activity can be determined and/or controlled.\n\nSatisfies: SRG-OS-000029-GPOS-00010, SRG-OS-000031-GPOS-00012</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "OL 8 must automatically lock graphical user sessions after 10 minutes of inactivity.",
+          "description": "<VulnDiscussion>A session timeout lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems must be able to identify when a user's session has idled and take action to initiate the session lock. \n \nThe session lock is implemented at the point where session activity can be determined and/or controlled.\n\nSatisfies: SRG-OS-000029-GPOS-00010, SRG-OS-000031-GPOS-00012</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Linux 8",
             "dc:publisher": "DISA",
@@ -21450,7 +21486,7 @@
         "title": "SRG-OS-000326-GPOS-00126",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248722r1156669_rule",
+          "+@id": "SV-248722r1208714_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-030000",
@@ -21474,19 +21510,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure OL 8 to audit the execution of the \"execve\" system call. \n \nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\": \n \n-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 key=execpriv \n \n-a always,exit -F arch=b32 -S execve -C gid!=egid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C gid!=egid -F euid=0 key=execpriv\n \nThe audit daemon must be restarted for the changes to take effect. To restart the audit daemon, run the following command: \n \n$ sudo service auditd restart",
-            "+@fixref": "F-52110r1155549_fix"
+            "+content": "Configure OL 8 to audit the execution of the \"execve\" system call. \n \nAdd or update the following file system rules to \"/etc/audit/rules.d/audit.rules\": \n \n-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 key=execpriv \n \n-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 key=execpriv\n \nThe audit daemon must be restarted for the changes to take effect. To restart the audit daemon, run the following command: \n \n$ sudo service auditd restart",
+            "+@fixref": "F-52110r1208332_fix"
           },
           "fix": {
-            "+@id": "F-52110r1155549_fix"
+            "+@id": "F-52110r1208332_fix"
           },
           "check": {
-            "+@system": "C-52156r1155548_chk",
+            "+@system": "C-52156r1208713_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify OL 8 audits the execution of privileged functions. \n \nCheck if OL 8 is configured to audit the execution of the \"execve\" system call, by running the following command: \n \n$ sudo grep execve /etc/audit/audit.rules \n \n-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 key=execpriv \n \n-a always,exit -F arch=b32 -S execve -C gid!=egid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C gid!=egid -F euid=0 key=execpriv\n \nIf the command does not return all lines or the lines are commented out, this is a finding."
+            "check-content": "Verify OL 8 audits the execution of privileged functions. \n \nCheck if OL 8 is configured to audit the execution of the \"execve\" system call by running the following command: \n \n$ sudo grep execve /etc/audit/audit.rules \n \n-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 key=execpriv \n \n-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 key=execpriv \n-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 key=execpriv\n \nIf the command does not return all lines or the lines are commented out, this is a finding."
           }
         }
       },
@@ -25778,7 +25814,7 @@
         "title": "SRG-OS-000095-GPOS-00049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248827r1134850_rule",
+          "+@id": "SV-248827r1208716_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "OL08-00-040010",
@@ -25796,11 +25832,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "The repo package can be manually removed with the following command:\n\n$ sudo dnf remove epel-release\n\nConfigure OL 8 to disable use of the EPEL repository with the following command:\n\n$ sudo dnf config-manager --set-disabled epel",
-            "+@fixref": "F-52215r1134849_fix"
+            "+content": "Configure OL 8 to not be able to install packages from the EPEL.\n\nSearch for and remove any/all packages that came from the EPEL repo:\n\n$ dnf repository-packages ol8_developer_EPEL remove\n\nRemove the package that installs access to the EPEL repo:\n\n$ dnf remove oracle-epel-release-el8",
+            "+@fixref": "F-52215r1208715_fix"
           },
           "fix": {
-            "+@id": "F-52215r1134849_fix"
+            "+@id": "F-52215r1208715_fix"
           },
           "check": {
             "+@system": "C-52261r1134848_chk",
@@ -28251,7 +28287,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-248889r1184137_rule",
+          "+@id": "SV-248889r1208719_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OL08-00-040281",
@@ -28269,19 +28305,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure OL 8 to prevent privilege escalation thru the kernel by disabling access to the bpf syscall by adding the following line to a file, in the \"/etc/sysctl.d\" directory:\n\nkernel.nonprivileged_bpf_disabled = 1\n\nThe system configuration files must be reloaded for the changes to take effect. To reload the contents of the files, run the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-52277r1156643_fix"
+            "+content": "Configure OL 8 to prevent privilege escalation through the kernel by disabling access to the bpf syscall by adding the following line to a file in the \"/etc/sysctl.d\" directory:\n\nkernel.unprivileged_bpf_disabled = 1\n\nThe system configuration files must be reloaded for the changes to take effect. To reload the contents of the files, run the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-52277r1208718_fix"
           },
           "fix": {
-            "+@id": "F-52277r1156643_fix"
+            "+@id": "F-52277r1208718_fix"
           },
           "check": {
-            "+@system": "C-52323r1184136_chk",
+            "+@system": "C-52323r1208717_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify OL 8 prevents privilege escalation thru the kernel by disabling access to the bpf system call with the following commands:\n\n$ sysctl kernel.unprivileged_bpf_disabled\nkernel.unprivileged_bpf_disabled = 1\n\nIf the returned line does not have a value of \"1\" or a line is not returned, this is a finding."
+            "check-content": "Verify that OL 8 prevents privilege escalation through the kernel by disabling access to the bpf system call with the following commands:\n\n$ sysctl kernel.unprivileged_bpf_disabled\nkernel.unprivileged_bpf_disabled = 1\n\nIf the returned line does not have a value of \"1\", or a line is not returned, this is a finding."
           }
         }
       },
@@ -29745,7 +29781,7 @@
         "title": "SRG-OS-000396-GPOS-00176",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-283445r1188529_rule",
+          "+@id": "SV-283445r1190782_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "OL08-00-010181",
@@ -29770,12 +29806,12 @@
             "+@id": "F-87915r1188412_fix"
           },
           "check": {
-            "+@system": "C-88010r1188411_chk",
+            "+@system": "C-88010r1190781_chk",
             "check-content-ref": {
               "+@href": "Oracle_Linux_8_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify OL 8 is set to use a FIPS 140-3-compliant systemwide cryptographic policy with the following command:\n\n$ update-crypto-policies --show\n\nFIPS\n\nIf the systemwide crypto policy is not set to \"FIPS\", this is a finding.\n\nNote: If subpolicies have been configured, they could be listed in a colon-separated list starting with \"FIPS\" as follows FIPS:<SUBPOLICY-NAME>. This is not a finding.\n\nNote: Subpolicies like AD-SUPPORT must be configured according to the latest guidance from the operating system vendor.\n\nVerify the current minimum crypto-policy configuration with the following commands:\n\n$ grep -E 'rsa_size|hash' /etc/crypto-policies/state/CURRENT.pol\n\nhash = SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256\nmin_rsa_size = 2048\n\nIf the \"hash\" values do not include at least the following FIPS 140-3-compliant algorithms \"SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256\", this is a finding.\n\nIf there are algorithms that include \"SHA1\" or a hash value less than \"224\" this is a finding.\n\nIf the \"min_rsa_size\" is not set to a value of at least \"2048\", this is a finding.\n\nIf these commands do not return any output, this is a finding."
+            "check-content": "Verify OL 8 is set to use a FIPS 140-3-compliant systemwide cryptographic policy with the following command:\n\n$ update-crypto-policies --show\n\nFIPS\n\nIf the systemwide crypto policy is not set to \"FIPS\", this is a finding.\n\nNote: If subpolicies have been configured, they could be listed in a colon-separated list starting with \"FIPS\" as follows FIPS:<SUBPOLICY-NAME>. This is not a finding.\n\nNote: Subpolicies like AD-SUPPORT must be configured according to the latest guidance from the operating system vendor.\n\nVerify the current minimum crypto-policy configuration with the following commands:\n\n$ grep -E 'rsa_size|hash' /etc/crypto-policies/state/CURRENT.pol\n\nhash = SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256\nmin_rsa_size = 2048\n\nIf the \"hash\" values do not include at least the following FIPS 140-3-compliant algorithms \"SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512 SHAKE-256\", this is a finding.\n\nIf there are algorithms that include \"SHA1\" or a hash value less than \"224\", this is a finding.\n\nIf the \"min_rsa_size\" is not set to a value of at least \"2048\", this is a finding.\n\nIf these commands do not return any output, this is a finding."
           }
         }
       },
@@ -30169,6 +30205,45 @@
               "+@name": "M"
             },
             "check-content": "Verify the \"lastlog\" command has a mode of \"0750\" or less permissive with the following command: \n \n$ sudo stat -c \"%a %n\" /usr/bin/lastlog\n\n750  /usr/bin/lastlog\n\nIf the \"lastlog\" command has a mode more permissive than \"0750\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-284945",
+        "title": "SRG-OS-000324-GPOS-00125",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-284945r1208710_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "OL08-00-010451",
+          "title": "Oracle Linux must elevate the SELinux context when an administrator calls the sudo command.",
+          "description": "<VulnDiscussion>Without verification of the security functions, they may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. \n\nSecurity functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.\n\nThis requirement applies to operating systems performing security function verification/testing and/or systems and environments that require this functionality.\n\nPreventing nonprivileged users from executing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges.\n\nPrivileged functions include, for example, establishing accounts, performing system integrity checks, or administering cryptographic key management activities. Nonprivileged users are individuals who do not possess appropriate authorizations. Circumventing intrusion detection and prevention mechanisms or malicious code protection mechanisms are examples of privileged functions that require protection from nonprivileged users.\n\nSudo reads from \"/etc/sudoers\", then form files inside \"/etc/sudoers.d/\", and within that directory reads in lexicographical order from low to high using a \"last match wins\" principle. Any options in the last matching rule will override options from earlier matching rules.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Oracle Linux 8",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Oracle Linux 8",
+            "dc:identifier": "5416"
+          },
+          "ident": {
+            "+content": "CCI-002235",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure Oracle Linux to elevate the SELinux context when an administrator calls the sudo command.\n\nEdit a file in the \"/etc/sudoers.d\" directory with the following command:\n\n# sudo visudo -f /etc/sudoers.d/ \n\nUse the following example to build the file in the \"/etc/sudoers.d\" directory to allow any administrator belonging to a designated sudoers admin group to elevate their SELinux context with the use of the sudo command:\n\n{%designated_group} or {user_name} ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r {commands}\n\nThe following are valid examples of context configurations and can be used as a guide:\n\n%designated_group ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL -- Allowing group to run ALL commands\n%designated_group ALL=(ALL) ROLE=sysadm_r TYPE=sysadm_t ALL -- Allowing group to run ALL commands, but order of SELinux entries is changed.\n%designated_group ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL, !/bin/su -- Allowing ALL command except /bin/su.\nuser_name ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL -- Allowing user to run ALL commands\nuser_name ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r /usr/bin/lsblk, /usr/sbin/alternatives -- Allowing user to only run /usr/bin/lsblk and /usr/sbin/alternatives\n\nRemove any configurations that conflict with the above from the following locations:\n\n/etc/sudoers\n/etc/sudoers.d/",
+            "+@fixref": "F-89419r1208709_fix"
+          },
+          "fix": {
+            "+@id": "F-89419r1208709_fix"
+          },
+          "check": {
+            "+@system": "C-89514r1208339_chk",
+            "check-content-ref": {
+              "+@href": "Oracle_Linux_8_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify Oracle Linux elevates the SELinux context when an administrator calls the sudo command with the following command:\n\nThis command must be run as root:\n\n# sudo grep -r sysadm_r /etc/sudoers /etc/sudoers.d\n{%designated_group} or {user_name} ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r {commands}\n\nIf a designated sudoers administrator group or account(s) is not configured to elevate the SELinux type and role to \"sysadm_t\" and \"sysadm_r\" with the use of the sudo command, this is a finding."
           }
         }
       }

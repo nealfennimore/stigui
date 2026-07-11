@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-13"
+      "+@date": "2026-05-13"
     },
     "title": "Rancher Government Solutions RKE2 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 7 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -1376,12 +1376,12 @@
         "title": "SRG-APP-000141-CTR-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254565r960963_rule",
+          "+@id": "SV-254565r1208189_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-R2-000550",
           "title": "Rancher RKE2 must be configured with only essential configurations.",
-          "description": "<VulnDiscussion>It is important to disable any unnecessary components to reduce any potential attack surfaces. \n\nRKE2 allows disabling the following components:\n- rke2-canal\n- rke2-coredns\n- rke2-ingress-nginx\n- rke2-kube-proxy\n- rke2-metrics-server\n\nIf utilizing any of these components presents a security risk, or if any of the components are not required then they can be disabled by using the \"disable\" flag.\n\nIf any of the components are not required, they can be disabled by using the \"disable\" flag.\n\nSatisfies: SRG-APP-000141-CTR-000315, SRG-APP-000384-CTR-000915</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>It is important to disable any unnecessary components to reduce any potential attack surfaces. \n\nRKE2 allows disabling the following components:\n- rke2-canal\n- rke2-coredns\n- rke2-ingress-nginx\n- rke2-kube-proxy\n- rke2-metrics-server\n\nIf using any of these components presents a security risk, or if any of the components are not required, they can be disabled by using the \"disable\" flag.\n\nSatisfies: SRG-APP-000141-CTR-000315, SRG-APP-000384-CTR-000915</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Rancher Government Solutions RKE2",
             "dc:publisher": "DISA",
@@ -1400,11 +1400,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Disable unnecessary RKE2 components.\n\nEdit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, so that it contains a \"disable\" flag if any default RKE2 components are unnecessary. \n\nExample:\ndisable: rke2-canal\ndisable: rke2-coredns\ndisable: rke2-ingress-nginx\ndisable: rke2-kube-proxy\ndisable: rke2-metrics-server\n\nOnce the configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server",
-            "+@fixref": "F-57998r918243_fix"
+            "+content": "Disable unnecessary RKE2 components.\n\nEdit the RKE2 Server configuration file on all RKE2 Server hosts, located at /etc/rancher/rke2/config.yaml, so that it contains a \"disable\" flag if any default RKE2 components are unnecessary. \n\nExample:\ndisable:\n- rke2-canal\n- rke2-ingress-nginx\n- rke2-kube-proxy\n- rke2-metrics-server\n- rke2-coredns\n\nOnce the configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server",
+            "+@fixref": "F-57998r1208188_fix"
           },
           "fix": {
-            "+@id": "F-57998r918243_fix"
+            "+@id": "F-57998r1208188_fix"
           },
           "check": {
             "+@system": "C-58049r918242_chk",
@@ -1683,12 +1683,12 @@
         "title": "SRG-APP-000378-CTR-000880",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254572r1016560_rule",
+          "+@id": "SV-254572r1208192_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-R2-001270",
           "title": "Rancher RKE2 must prohibit the installation of patches, updates, and instantiation of container images without explicit privileged status.",
-          "description": "<VulnDiscussion>Controlling access to those users and roles responsible for patching and updating RKE2 reduces the risk of untested or potentially malicious software from being installed within the platform. This access may be separate from the access required to install container images into the registry and those access requirements required to instantiate an image into a service. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.\n\nKubernetes uses the API Server to control communication to the other services that makeup Kubernetes. The use of authorizations and not the default of \"AlwaysAllow\" enables the Kubernetes functions control to only the groups that need them.\n\nTo control access, the API server must have one of the following options set for the authorization mode:\n    --authorization-mode=ABAC Attribute-Based Access Control (ABAC) mode allows a user to configure policies using local files.\n    --authorization-mode=RBAC Role-based access control (RBAC) mode allows a user to create and store policies using the Kubernetes API.\n    --authorization-mode=Webhook\nWebHook is an HTTP callback mode that allows a user to manage authorization using a remote REST endpoint.\n    --authorization-mode=Node \nNode authorization is a special-purpose authorization mode that specifically authorizes API requests made by kubelets.\n    --authorization-mode=AlwaysDeny \nThis flag blocks all requests. Use this flag only for testing.\n\nSatisfies: SRG-APP-000378-CTR-000880, SRG-APP-000378-CTR-000885</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Controlling access to users and roles responsible for patching and updating RKE2 reduces the risk of untested or potentially malicious software from being installed within the platform. This access may be separate from the access required to install container images into the registry and access requirements required to instantiate an image into a service. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.\n\nKubernetes uses the API Server to control communication to the other services that make up Kubernetes. The use of authorizations and not the default of \"AlwaysAllow\" enables the Kubernetes functions control to only the groups that need them.\n\nTo control access, the API server can be configured with the following flags for authorization-mode:\n(Note: For this STIG, the setting must be \"RBAC\" or \"Node\".)\n--authorization-mode=ABAC (Attribute-Based Access Control [ABAC] mode allows a user to configure policies using local files.)\n--authorization-mode=RBAC (Role-based access control [RBAC] mode allows a user to create and store policies using the Kubernetes API.)\n--authorization-mode=Webhook (WebHook is an HTTP callback mode that allows a user to manage authorization using a remote REST endpoint.)\n--authorization-mode=Node (Node authorization is a special-purpose authorization mode that specifically authorizes API requests made by kubelets.)\n--authorization-mode=AlwaysDeny (This flag blocks all requests. Use this flag only for testing.)\n\nSatisfies: SRG-APP-000378-CTR-000880, SRG-APP-000378-CTR-000885</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Rancher Government Solutions RKE2",
             "dc:publisher": "DISA",
@@ -1707,19 +1707,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Edit the RKE2 Server configuration file on all RKE2 Control Plane hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\n kube-apiserver-arg:\n--authorization-mode=RBAC,Node\n\nOnce configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server",
-            "+@fixref": "F-58005r1016541_fix"
+            "+content": "Edit the RKE2 Server configuration file on all RKE2 Control Plane hosts, located at /etc/rancher/rke2/config.yaml, to contain the following:\n\n kube-apiserver-arg:\n--authorization-mode=RBAC,Node\n\nOnce the configuration file is updated, restart the RKE2 Server. Run the command:\nsystemctl restart rke2-server",
+            "+@fixref": "F-58005r1208191_fix"
           },
           "fix": {
-            "+@id": "F-58005r1016541_fix"
+            "+@id": "F-58005r1208191_fix"
           },
           "check": {
-            "+@system": "C-58056r1016540_chk",
+            "+@system": "C-58056r1208190_chk",
             "check-content-ref": {
               "+@href": "Rancher_Government_Solutions_RKE2_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ensure authorization-mode is set correctly in the apiserver.\n\nRun this command on all RKE2 Control Plane hosts:\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\nIf  --authorization-mode is not set to \"RBAC,Node\" or is not configured, this is a finding.\n(By default, RKE2 sets Node,RBAC as the parameter to the --authorization-mode argument.)"
+            "check-content": "Ensure authorization-mode is set correctly in the apiserver.\n\nRun this command on all RKE2 Control Plane hosts:\n/bin/ps -ef | grep kube-apiserver | grep -v grep\n\nIf --authorization-mode is not set to \"RBAC,Node\" or is not configured, this is a finding.\n(By default, RKE2 sets Node,RBAC as the parameter to the --authorization-mode argument.)"
           }
         }
       },

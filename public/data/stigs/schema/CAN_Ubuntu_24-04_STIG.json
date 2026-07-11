@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-06"
+      "+@date": "2026-05-14"
     },
     "title": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 6 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -9975,7 +9975,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270708r1066613_rule",
+          "+@id": "SV-270708r1208697_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-24-300022",
@@ -9993,11 +9993,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Edit the \"/etc/ssh/sshd_config\" file to uncomment or add the line for the \"X11Forwarding\" keyword and set its value to \"no\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): \n \nX11Forwarding no \n \nRestart the SSH daemon for the changes to take effect: \n \n$ sudo systemctl restart sshd.service",
-            "+@fixref": "F-74642r1066612_fix"
+            "+content": "Edit the \"/etc/ssh/sshd_config\" file to uncomment or add the line for the \"X11Forwarding\" keyword and set its value to \"no\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): \n \nX11Forwarding no \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-74642r1208292_fix"
           },
           "fix": {
-            "+@id": "F-74642r1066612_fix"
+            "+@id": "F-74642r1208292_fix"
           },
           "check": {
             "+@system": "C-74741r1066611_chk",
@@ -10014,7 +10014,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270709r1066616_rule",
+          "+@id": "SV-270709r1208698_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-300023",
@@ -10032,11 +10032,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the SSH daemon to prevent remote hosts from connecting to the proxy display. \n \nEdit the \"/etc/ssh/sshd_config\" file to uncomment or add the line for the \"X11UseLocalhost\" keyword and set its value to \"yes\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): \n \nX11UseLocalhost yes \n \nRestart the SSH daemon for the changes to take effect: \n \n$ sudo systemctl restart sshd.service",
-            "+@fixref": "F-74643r1066615_fix"
+            "+content": "Configure the SSH daemon to prevent remote hosts from connecting to the proxy display. \n \nEdit the \"/etc/ssh/sshd_config\" file to uncomment or add the line for the \"X11UseLocalhost\" keyword and set its value to \"yes\" (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor): \n \nX11UseLocalhost yes \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-74643r1208294_fix"
           },
           "fix": {
-            "+@id": "F-74643r1066615_fix"
+            "+@id": "F-74643r1208294_fix"
           },
           "check": {
             "+@system": "C-74742r1066614_chk",
@@ -10170,7 +10170,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270714r1134808_rule",
+          "+@id": "SV-270714r1208699_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-24-300028",
@@ -10188,11 +10188,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If an account is configured for password authentication but does not have an assigned password, it is possible to log on to the account without authenticating.\n\nRemove any instances of the \"nullok\" option in \"/etc/pam.d/common-password\" to prevent logons with empty passwords.",
-            "+@fixref": "F-74648r1066630_fix"
+            "+content": "If an account is configured for password authentication but does not have an assigned password, it is possible to log on to the account without authenticating.\n\nRemove any instances of the \"nullok\" option in \"/etc/pam.d/common-password\" and \"/etc/pam.d/common-auth\" to prevent logons with empty passwords.",
+            "+@fixref": "F-74648r1208301_fix"
           },
           "fix": {
-            "+@id": "F-74648r1066630_fix"
+            "+@id": "F-74648r1208301_fix"
           },
           "check": {
             "+@system": "C-74747r1134807_chk",
@@ -10287,7 +10287,7 @@
         "title": "SRG-OS-000480-GPOS-00229",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270717r1067177_rule",
+          "+@id": "SV-270717r1208700_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "UBTU-24-300031",
@@ -10305,14 +10305,14 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 24.04 LTS to allow the SSH daemon to not allow unattended or automatic login to the system. \n \nAdd or edit the following lines in the \"/etc/ssh/sshd_config\" file: \n \nPermitEmptyPasswords no \nPermitUserEnvironment no \n \nRestart the SSH daemon for the changes to take effect: \n \n$ sudo systemctl restart sshd.service",
-            "+@fixref": "F-74651r1066639_fix"
+            "+content": "Configure Ubuntu 24.04 LTS to allow the SSH daemon to not allow unattended or automatic login to the system. \n \nAdd or edit the following lines in the \"/etc/ssh/sshd_config\" file: \n \nPermitEmptyPasswords no \nPermitUserEnvironment no \n \nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-74651r1208297_fix"
           },
           "fix": {
-            "+@id": "F-74651r1066639_fix"
+            "+@id": "F-74651r1208297_fix"
           },
           "check": {
-            "+@system": "C-74750r1067177_chk",
+            "+@system": "C-74750r1208296_chk",
             "check-content-ref": {
               "+@href": "Canonical_Ubuntu_24.04_LTS_STIG.xml",
               "+@name": "M"
@@ -11391,12 +11391,12 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270743r1066718_rule",
+          "+@id": "SV-270743r1208702_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "UBTU-24-600010",
           "title": "Ubuntu 24.04 LTS must immediately terminate all network connections associated with SSH traffic at the end of the session or after 10 minutes of inactivity.",
-          "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element.  \n \nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at Ubuntu 24.04 LTS level, and de-allocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean that Ubuntu 24.04 LTS terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element.  \n \nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the Ubuntu 24.04 LTS level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean that Ubuntu 24.04 LTS terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Canonical Ubuntu 24.04 LTS",
             "dc:publisher": "DISA",
@@ -11409,11 +11409,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Ubuntu 24.04 LTS to automatically terminate all network connections associated with SSH traffic at the end of a session or after a 10-minute period of inactivity.\n\nIn the file /etc/ssh/sshd_config set ClientAliveInterval to a value of \"600\" or less: \n\nClientAliveInterval 600\n\nRestart the SSH daemon for the changes to take effect:\n\n$ sudo systemctl restart sshd.service",
-            "+@fixref": "F-74677r1066717_fix"
+            "+content": "Configure Ubuntu 24.04 LTS to automatically terminate all network connections associated with SSH traffic at the end of a session or after a 10-minute period of inactivity.\n\nIn the file \"/etc/ssh/sshd_config\", set \"ClientAliveInterval\" to a value of \"600\" or less: \n\nClientAliveInterval 600\n\nRestart SSH for the changes to take effect: \n\n$ sudo systemctl restart ssh",
+            "+@fixref": "F-74677r1208701_fix"
           },
           "fix": {
-            "+@id": "F-74677r1066717_fix"
+            "+@id": "F-74677r1208701_fix"
           },
           "check": {
             "+@system": "C-74776r1066716_chk",

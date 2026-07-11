@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-19"
+      "+@date": "2026-05-13"
     },
     "title": "Adobe ColdFusion Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 25 Nov 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -4392,7 +4392,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279058r1171531_rule",
+          "+@id": "SV-279058r1207648_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-000345",
@@ -4431,7 +4431,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279059r1171533_rule",
+          "+@id": "SV-279059r1207648_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-000350",
@@ -4470,7 +4470,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279060r1171535_rule",
+          "+@id": "SV-279060r1207648_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-000355",
@@ -4519,7 +4519,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279061r1171537_rule",
+          "+@id": "SV-279061r1207648_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-000360",
@@ -4558,7 +4558,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279062r1171539_rule",
+          "+@id": "SV-279062r1207648_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-000375",
@@ -6433,7 +6433,7 @@
         "title": "SRG-APP-000516-AS-000237",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279107r1171430_rule",
+          "+@id": "SV-279107r1208176_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APAS-CF-001055",
@@ -6457,19 +6457,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure Mobile Services settings.\n\n1. From the Admin Console Landing Screen, navigate to Server Settings >> Settings.\n\n2. Uncheck \"Enable mobile's server workflow\" if it is checked.\n\n3. Enable CORS to address this finding if it is not already enabled.\n\n4. Update the mobile server context to a value other than \"cfmobile\" if it is currently set to \"cfmobile\".\n\n5. Select \"Submit Changes\".",
-            "+@fixref": "F-83560r1171094_fix"
+            "+content": "Configure Mobile Services settings.\n\nIf hosted applications are not using the service, this is not a finding.\n\n1. From the Admin Console Landing Screen, navigate to Server Settings >> Settings.\n\n2. Uncheck \"Enable mobile's server workflow\" if it is checked.\n\n3. Enable CORS to address this finding if it is not already enabled.\n\n4. Update the mobile server context to a value other than \"cfmobile\" if it is currently set to \"cfmobile\".\n\n5. Select \"Submit Changes\".",
+            "+@fixref": "F-83560r1208175_fix"
           },
           "fix": {
-            "+@id": "F-83560r1171094_fix"
+            "+@id": "F-83560r1208175_fix"
           },
           "check": {
-            "+@system": "C-83655r1171429_chk",
+            "+@system": "C-83655r1208174_chk",
             "check-content-ref": {
               "+@href": "Adobe_ColdFusion_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Validate Mobile Services settings.\n\n1. Ask the administrator if ColdFusion Mobile services are being used by any hosted applications.\n\nIf hosted applications are using the service, this is not a finding.\n\n2. From the Admin Console Landing Screen, navigate to Server Settings >> Settings.\n\nIf \"Enable mobile's server workflow\" is checked, this is a finding.\n\n3. Review the \"Enable CORS\" setting.\n\nIf CORS is not enabled, this is a finding.\n\n4. Review the \"Mobile server context\" setting.\n\nIf the mobile server context is set to \"cfmobile\", this is a finding."
+            "check-content": "Validate Mobile Services settings.\n\nIf hosted applications are not using the service, this is not a finding.\n\n1. Ask the administrator if ColdFusion Mobile services are being used by any hosted applications.\n\nIf hosted applications are using the service, this is not a finding.\n\n2. From the Admin Console Landing Screen, navigate to Server Settings >> Settings.\n\nIf \"Enable mobile's server workflow\" is checked, this is a finding.\n\n3. Review the \"Enable CORS\" setting.\n\nIf CORS is not enabled, this is a finding.\n\n4. Review the \"Mobile server context\" setting.\n\nIf the mobile server context is set to \"cfmobile\", this is a finding."
           }
         }
       },

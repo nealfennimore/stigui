@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-10"
+      "+@date": "2026-06-29"
     },
     "title": "Application Server Security Requirements Guide",
     "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 28 Oct 2025",
+        "+content": "Release: 5 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -7108,9 +7108,9 @@
         "title": "SRG-APP-000172",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-204752r961029_rule",
+          "+@id": "SV-204752r1207648_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "SRG-APP-000172-AS-000120",
           "title": "The application server must transmit only encrypted representations of passwords.",
           "description": "<VulnDiscussion>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.  If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nApplication servers have the capability to utilize either certificates (tokens) or user IDs and passwords in order to authenticate. When the application server transmits or receives passwords, the passwords must be encrypted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -7157,9 +7157,9 @@
         "title": "SRG-APP-000172",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-204753r961029_rule",
+          "+@id": "SV-204753r1207649_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "SRG-APP-000172-AS-000121",
           "title": "The application server must utilize encryption when using LDAP for authentication.",
           "description": "<VulnDiscussion>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. \n\nApplication servers have the capability to utilize LDAP directories for authentication. If LDAP connections are not protected during transmission, sensitive authentication credentials can be stolen. When the application server utilizes LDAP, the LDAP traffic must be encrypted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -11332,7 +11332,7 @@
         "title": "SRG-APP-001040",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278961r1137594_rule",
+          "+@id": "SV-278961r1227257_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-001040-AS-000324",
@@ -11345,10 +11345,16 @@
             "dc:subject": "Application Server",
             "dc:identifier": "2900"
           },
-          "ident": {
-            "+content": "CCI-003652",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003652",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the application server to enforce attribute-based control access over defined subjects and objects based upon organization-defined attributes to assume access permissions.",
             "+@fixref": "F-83414r1137593_fix"
@@ -11371,7 +11377,7 @@
         "title": "SRG-APP-001045",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278962r1137597_rule",
+          "+@id": "SV-278962r1227258_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-001045-AS-000325",
@@ -11384,10 +11390,16 @@
             "dc:subject": "Application Server",
             "dc:identifier": "2900"
           },
-          "ident": {
-            "+content": "CCI-004544",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004544",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the application server to attach data tags containing organization-defined authorized processing to organization-defined elements of personally identifiable information.",
             "+@fixref": "F-83415r1137596_fix"
@@ -11410,7 +11422,7 @@
         "title": "SRG-APP-001050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278963r1137600_rule",
+          "+@id": "SV-278963r1227259_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-001050-AS-000326",
@@ -11423,10 +11435,16 @@
             "dc:subject": "Application Server",
             "dc:identifier": "2900"
           },
-          "ident": {
-            "+content": "CCI-004558",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004558",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the application server to attach data tags containing organization-defined processing purposes to organization-defined elements of personally identifiable information.",
             "+@fixref": "F-83416r1137599_fix"
@@ -11449,7 +11467,7 @@
         "title": "SRG-APP-001055",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-278964r1137603_rule",
+          "+@id": "SV-278964r1227260_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-001055-AS-000327",
@@ -11462,10 +11480,16 @@
             "dc:subject": "Application Server",
             "dc:identifier": "2900"
           },
-          "ident": {
-            "+content": "CCI-004969",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004969",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the application server to employ automated mechanisms to integrate intrusion detection mechanisms into access control mechanisms.",
             "+@fixref": "F-83417r1137602_fix"

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2026-05-23"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance ESX Agent Manager (EAM) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1387,7 +1387,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259004r960792_rule",
+          "+@id": "SV-259004r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCEM-80-000005",
@@ -1925,12 +1925,12 @@
         "title": "SRG-APP-000358-AS-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259016r961395_rule",
+          "+@id": "SV-259016r1210396_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCEM-80-000081",
-          "title": "The vCenter ESX Agent Manager service must offload log records onto a different system or media from the system being logged.",
-          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOffloading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to offload log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The vCenter ESX Agent Manager service must off-load log records onto a different system or media from the system being logged.",
+          "description": "<VulnDiscussion>Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nOff-loading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to off-load log records onto a different system or media than the system being logged.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 VCSA EAM",
             "dc:publisher": "DISA",
@@ -1943,19 +1943,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-eam.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#eam.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam.log\"\n      Tag=\"eam-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam_api.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam_api.log\"\n      Tag=\"eam-api\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam web access logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost_access.log\"\n      Tag=\"eam-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam jvm logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stdout\"\n      Tag=\"eam-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stderr\"\n      Tag=\"eam-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam catalina logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/catalina.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam catalina localhost logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam firstboot logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/firstboot/eam_firstboot.py*.log\"\n      Tag=\"eam-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62665r934705_fix"
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-eam.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#eam.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam.log\"\n      Tag=\"eam-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam_api.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam_api.log\"\n      Tag=\"eam-api\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam web access logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost_access.log\"\n      Tag=\"eam-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam jvm logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stdout\"\n      Tag=\"eam-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stderr\"\n      Tag=\"eam-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam catalina logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/catalina.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam catalina localhost logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam firstboot logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/firstboot/eam_firstboot.py*.log\"\n      Tag=\"eam-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62665r1210392_fix"
           },
           "fix": {
-            "+@id": "F-62665r934705_fix"
+            "+@id": "F-62665r1210392_fix"
           },
           "check": {
-            "+@system": "C-62756r934704_chk",
+            "+@system": "C-62756r1210391_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_EAM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default, a vmware-services-eam.conf rsyslog configuration file includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-eam.conf\n\nExpected result:\n\n#eam.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam.log\"\n      Tag=\"eam-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam_api.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam_api.log\"\n      Tag=\"eam-api\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam web access logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost_access.log\"\n      Tag=\"eam-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam jvm logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stdout\"\n      Tag=\"eam-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stderr\"\n      Tag=\"eam-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam catalina logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/catalina.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam catalina localhost logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#eam firstboot logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/firstboot/eam_firstboot.py*.log\"\n      Tag=\"eam-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, a vmware-services-eam.conf rsyslog configuration file includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-eam.conf\n\nExpected result:\n\n#eam.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam.log\"\n      Tag=\"eam-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam_api.log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/eam_api.log\"\n      Tag=\"eam-api\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam web access logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost_access.log\"\n      Tag=\"eam-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam jvm logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stdout\"\n      Tag=\"eam-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/jvm.log.stderr\"\n      Tag=\"eam-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam catalina logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/catalina.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam catalina localhost logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/eam/web/localhost.log\"\n      Tag=\"eam-catalina\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#eam firstboot logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/firstboot/eam_firstboot.py*.log\"\n      Tag=\"eam-firstboot\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" or \"reopenOnTruncate\" are not present, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2081,7 +2081,7 @@
         "title": "SRG-APP-000251-AS-000165",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259020r961158_rule",
+          "+@id": "SV-259020r1210397_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCEM-80-000127",
@@ -2106,12 +2106,12 @@
             "+@id": "F-62669r934717_fix"
           },
           "check": {
-            "+@system": "C-62760r934716_chk",
+            "+@system": "C-62760r1210394_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_EAM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-eam/web/webapps/eam/WEB-INF/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output is does not match the expected result, this is a finding."
+            "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath \"//*[contains(text(), 'setCharacterEncodingFilter')]/parent::*\" /usr/lib/vmware-eam/web/webapps/eam/WEB-INF/web.xml\n\nExpected result:\n\n<filter-mapping>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <url-pattern>/*</url-pattern>\n</filter-mapping>\n<filter>\n  <filter-name>setCharacterEncodingFilter</filter-name>\n  <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>\n  <async-supported>true</async-supported>\n  <init-param>\n    <param-name>encoding</param-name>\n    <param-value>UTF-8</param-value>\n  </init-param>\n  <init-param>\n    <param-name>ignore</param-name>\n    <param-value>true</param-value>\n  </init-param>\n</filter>\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -2120,7 +2120,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259021r960792_rule",
+          "+@id": "SV-259021r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCEM-80-000129",
@@ -2159,7 +2159,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259022r960792_rule",
+          "+@id": "SV-259022r1137578_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCEM-80-000130",

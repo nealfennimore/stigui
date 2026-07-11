@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-12"
+      "+@date": "2026-06-02"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance PostgreSQL Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -901,7 +901,7 @@
         "title": "SRG-APP-000091-DB-000066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259169r1067578_rule",
+          "+@id": "SV-259169r1210428_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000007",
@@ -919,11 +919,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nNote: If this has already been run previously it does not need to be run again.\n\nNavigate to and edit the /storage/db/vpostgres/stig.conf file.\n\nAdd or update the following settings:\n\npgaudit.log = 'all, -misc, -read'\npgaudit.log_catalog = off\npgaudit.log_parameter = off\npgaudit.log_relation = off\npgaudit.log_statement = off\n\nRemove the following settings:\n\npgaudit.log_level = log\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
-            "+@fixref": "F-62818r1067577_fix"
+            "+content": "A script is included with vCenter to generate a PostgreSQL STIG configuration.\n\nAt the command prompt, run the following commands:\n\n# chmod +x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n# /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py --action stig_enable --pg-data-dir /storage/db/vpostgres\n# chmod -x /opt/vmware/vpostgres/current/bin/vmw_vpg_config/vmw_vpg_config.py\n\nNote: If this has already been run previously, it does not need to be run again.\n\nNavigate to and edit the /storage/db/vpostgres/stig.conf file.\n\nAdd or update the following settings:\n\npgaudit.log = 'all, -misc, -read'\npgaudit.log_catalog = off\npgaudit.log_parameter = off\npgaudit.log_relation = off\npgaudit.log_statement = off\n\nRemove the following settings:\n\npgaudit.log_level = log\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
+            "+@fixref": "F-62818r1210427_fix"
           },
           "fix": {
-            "+@id": "F-62818r1067577_fix"
+            "+@id": "F-62818r1210427_fix"
           },
           "check": {
             "+@system": "C-62909r1067576_chk",
@@ -1181,12 +1181,12 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259175r1051115_rule",
+          "+@id": "SV-259175r1210434_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000036",
           "title": "The vCenter PostgreSQL service must require authentication on all connections.",
-          "description": "<VulnDiscussion>To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals using shared accounts, for detailed accountability of individual activity.\n\nSatisfies: SRG-APP-000148-DB-000103, SRG-APP-000172-DB-000075</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To ensure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals using shared accounts, for detailed accountability of individual activity.\n\nSatisfies: SRG-APP-000148-DB-000103, SRG-APP-000172-DB-000075</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 VCSA PostgreSQL",
             "dc:publisher": "DISA",
@@ -1205,19 +1205,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/storage/db/vpostgres/pg_hba.conf\n\nFind and update any line that has a method of \"trust\" or \"password\" in the far-right column.\n\nA correct, typical line will look like the below:\n\n# TYPE  DATABASE        USER            ADDRESS                 METHOD\nlocal       VCDB               vpxd                                            peer map=vcdb\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
-            "+@fixref": "F-62824r935428_fix"
+            "+content": "Navigate to and open:\n\n/storage/db/vpostgres/pg_hba.conf\n\nFind and update any line that has a method of \"trust\" or \"password\" in the far-right column.\n\nA correct, typical line will look like the following:\n\n# TYPE  DATABASE        USER            ADDRESS                 METHOD\nlocal       VCDB               vpxd                                            peer map=vcdb\n\nRestart the PostgreSQL service by running the following command:\n\n# vmon-cli --restart vmware-vpostgres",
+            "+@fixref": "F-62824r1210433_fix"
           },
           "fix": {
-            "+@id": "F-62824r935428_fix"
+            "+@id": "F-62824r1210433_fix"
           },
           "check": {
-            "+@system": "C-62915r935427_chk",
+            "+@system": "C-62915r1210432_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command prompt, run the following command:\n\n# grep -v \"^#\" /storage/db/vpostgres/pg_hba.conf |grep '\\S'\n\nIf any lines are returned contain \"trust\" or \"password\" as an auth-method, this is a finding."
+            "check-content": "At the command prompt, run the following command:\n\n# grep -v \"^#\" /storage/db/vpostgres/pg_hba.conf |grep '\\S'\n\nIf any lines returned contain \"trust\" or \"password\" as an auth-method, this is a finding."
           }
         }
       },
@@ -1517,7 +1517,7 @@
         "title": "SRG-APP-000515-DB-000318",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259185r961860_rule",
+          "+@id": "SV-259185r1210431_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-80-000122",
@@ -1535,19 +1535,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-vmware-vpostgres.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n# vmware-vpostgres first logs stdout, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stdout\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-vpostgres first logs stderr, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stderr\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-vpostgres logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/postgresql-*.log\"\n      Tag=\"vpostgres\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nNavigate to and open:\n\n/etc/vmware-syslog/vmware-services-vmware-postgres-archiver.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n# vmware-postgres-archiver stdout log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stdout\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-postgres-archiver stderr log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stderr\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62834r935458_fix"
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-vmware-vpostgres.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n# vmware-vpostgres first logs stdout, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stdout\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-vpostgres first logs stderr, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stderr\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-vpostgres logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/postgresql-*.log\"\n      Tag=\"vpostgres\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNavigate to and open:\n\n/etc/vmware-syslog/vmware-services-vmware-postgres-archiver.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n# vmware-postgres-archiver stdout log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stdout\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-postgres-archiver stderr log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stderr\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62834r1210430_fix"
           },
           "fix": {
-            "+@id": "F-62834r935458_fix"
+            "+@id": "F-62834r1210430_fix"
           },
           "check": {
-            "+@system": "C-62925r935457_chk",
+            "+@system": "C-62925r1210429_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default there is a vmware-services-vmware-vpostgres.conf rsyslog and vmware-services-vmware-postgres-archiver.conf configuration file that includes the service logs when syslog is configured on vCenter but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vmware-vpostgres.conf\n\nExpected result:\n\n# vmware-vpostgres first logs stdout, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stdout\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-vpostgres first logs stderr, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stderr\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-vpostgres logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/postgresql-*.log\"\n      Tag=\"vpostgres\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vmware-postgres-archiver.conf\n\nExpected result:\n\n# vmware-postgres-archiver stdout log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stdout\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\")\n# vmware-postgres-archiver stderr log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stderr\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, a vmware-services-vmware-vpostgres.conf rsyslog and vmware-services-vmware-postgres-archiver.conf configuration file include the service logs when syslog is configured on vCenter, but they must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vmware-vpostgres.conf\n\nExpected result:\n\n# vmware-vpostgres first logs stdout, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stdout\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-vpostgres first logs stderr, before loading configuration\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/serverlog.stderr\"\n      Tag=\"vpostgres-first\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-vpostgres logs\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/postgresql-*.log\"\n      Tag=\"vpostgres\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" and \"reopenOnTruncate\" do not exist, this is not a finding.\n\nIf the output does not match the expected result, this is a finding.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-vmware-postgres-archiver.conf\n\nExpected result:\n\n# vmware-postgres-archiver stdout log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stdout\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n# vmware-postgres-archiver stderr log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/vpostgres/pg_archiver.log.stderr\"\n      Tag=\"postgres-archiver\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" and \"reopenOnTruncate\" do not exist, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       }

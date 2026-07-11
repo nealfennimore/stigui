@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-06"
+      "+@date": "2026-06-15"
     },
     "title": "IBM AIX 7.x Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -15973,12 +15973,12 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-215283r991589_rule",
+          "+@id": "SV-215283r1207664_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "AIX7-00-002096",
           "title": "AIX must encrypt user data at rest using AIX Encrypted File System (EFS) if it is required.",
-          "description": "<VulnDiscussion>The AIX Encrypted File System (EFS) is a J2 filesystem-level encryption through individual key stores. This allows for file encryption in order to protect confidential data from attackers with physical access to the computer. User authentication and access control lists can protect files from unauthorized access (even from root user) while the operating system is running. \n\nOperating systems handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nSatisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000405-GPOS-00184, SRG-OS-000404-GPOS-00183</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The AIX Encrypted File System (EFS) is a J2 filesystem-level encryption through individual key stores. This allows for file encryption in order to protect confidential data from attackers with physical access to the computer. User authentication and access control lists can protect files from unauthorized access (even from root user) while the operating system is running. \n\nOperating systems handling data requiring \"data-at-rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nSatisfies: SRG-OS-000480-GPOS-00227, SRG-OS-000405-GPOS-00184, SRG-OS-000404-GPOS-00183</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM AIX 7.x",
             "dc:publisher": "DISA",
@@ -16009,11 +16009,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Install \"clic.rte\" filesets from AIX DVD Volume 1 using the following commands (assuming that the DVD device is /dev/cd0):\n# installp -aXYgd /dev/cd0 -e /tmp/install.log clic.rte.lib\n# installp -aXYgd /dev/cd0 -e /tmp/install.log clic.rte.kernext\n\nRun the follow command to initialize and enable EFS on the system:\n# efsenable -a\n\nTo create a new EFS-enabled JFS2 file system and mount the file system, using the following commands:\n# crfs -v jfs2 -g rootvg -m /fs2 -a size=100M -a efs=yes\n# mount /fs2\n\nTo enable EFS on a JFS2 file system (like, /fs3), run the following command:\nchfs -a efs=yes /fs3",
-            "+@fixref": "F-16479r294301_fix"
+            "+content": "Install \"clic.rte\" filesets from AIX DVD Volume 1 using the following commands (assuming that the DVD device is /dev/cd0):\n# installp -aXYgd /dev/cd0 -e /tmp/install.log clic.rte.lib\n# installp -aXYgd /dev/cd0 -e /tmp/install.log clic.rte.kernext\n\nRun the following command to initialize and enable EFS on the system:\n# efsenable -a\n\nTo create a new EFS-enabled JFS2 file system and mount the file system, using the following commands:\n# crfs -v jfs2 -g rootvg -m /fs2 -a size=100M -a efs=yes\n# mount /fs2\n\nTo enable EFS on a JFS2 file system (like, /fs3), run the following command:\nchfs -a efs=yes /fs3",
+            "+@fixref": "F-16479r1207663_fix"
           },
           "fix": {
-            "+@id": "F-16479r294301_fix"
+            "+@id": "F-16479r1207663_fix"
           },
           "check": {
             "+@system": "C-16481r294300_chk",

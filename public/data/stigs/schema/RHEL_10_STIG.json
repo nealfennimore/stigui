@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-11"
+      "+@date": "2026-05-14"
     },
     "title": "Red Hat Enterprise Linux 10 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Feb 2026",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -16733,7 +16733,7 @@
         "title": "SRG-OS-000096-GPOS-00050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-280955r1197220_rule",
+          "+@id": "SV-280955r1208792_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-200530",
@@ -16746,20 +16746,10 @@
             "dc:subject": "Red Hat Enterprise Linux 10",
             "dc:identifier": "5733"
           },
-          "ident": [
-            {
-              "+content": "CCI-000382",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002314",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002322",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
+          "ident": {
+            "+content": "CCI-000382",
+            "+@system": "http://cyber.mil/cci"
+          },
           "fixtext": {
             "+content": "Configure RHEL 10 to have the \"firewalld\" package installed with the following command:\n\n$ sudo dnf -y install firewalld",
             "+@fixref": "F-85421r1165219_fix"
@@ -16768,12 +16758,12 @@
             "+@id": "F-85421r1165219_fix"
           },
           "check": {
-            "+@system": "C-85516r1197219_chk",
+            "+@system": "C-85516r1208791_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 has the \"firewalld\" package installed.\n\nRun the following command to determine if the \"firewalld\" package is installed:\n\nInstalled Packages\nfirewalld.noarch                             2.3.1-1.el10_0                              @rhel-10-for-x86_64-baseos-rpms\n\nIf the \"firewall\" package is not installed, this is a finding."
+            "check-content": "Verify RHEL 10 has the \"firewalld\" package installed.\n\nRun the following command to determine if the \"firewalld\" package is installed:\n\n$ dnf list --installed firewalld\nInstalled Packages\nfirewalld.noarch                             2.3.1-1.el10_0                              @rhel-10-for-x86_64-baseos-rpms\n\nIf the \"firewall\" package is not installed, this is a finding."
           }
         }
       },
@@ -17493,12 +17483,12 @@
         "title": "SRG-OS-000375-GPOS-00160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-280973r1165274_rule",
+          "+@id": "SV-280973r1208793_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-200611",
-          "title": "RHEL 10 must have the \"pcscd\" service set to active.",
-          "description": "<VulnDiscussion>The information system ensures that even if it is compromised, that compromise will not affect credentials stored on the authentication device.\n\nThe daemon program for \"pcsc-lite\" and the MuscleCard framework is \"pcscd\". It is a resource manager that coordinates communications with smart card readers, smart cards, and cryptographic tokens that are connected to the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "RHEL 10 must have the \"pcscd\" socket set to active.",
+          "description": "<VulnDiscussion>The information system ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.\n\nThe daemon program for pcsc-lite and the MuscleCard framework is pcscd. It is a resource manager that coordinates communications with smart card readers and smart cards and cryptographic tokens that are connected to the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat Enterprise Linux 10",
             "dc:publisher": "DISA",
@@ -18692,7 +18682,7 @@
         "title": "SRG-OS-000046-GPOS-00022",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-280998r1165349_rule",
+          "+@id": "SV-280998r1208794_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-200691",
@@ -18717,12 +18707,12 @@
             "+@id": "F-85464r1165348_fix"
           },
           "check": {
-            "+@system": "C-85559r1165347_chk",
+            "+@system": "C-85559r1208387_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 is configured to notify the appropriate interactive users of an audit processing failure.\n\nFind the alias maps that are being used with the following command:\n\n$ postconf alias_maps\nalias_maps = hash:/etc/aliases\n\nQuery the Postfix alias maps for an alias for the root user with the following command:\n\n$ postmap -q root hash:/etc/aliases\nisso\n\nIf an alias is not set, this is a finding."
+            "check-content": "Verify RHEL 10 is configured to notify the appropriate interactive users of an audit processing failure.\n\nFind the alias maps that are being used with the following command:\n\n$ postconf alias_maps\nalias_maps = lmdb:/etc/aliases\n\nQuery the Postfix alias maps for an alias for the root user with the following command:\n\n$ postmap -q root lmdb:/etc/aliases\nISSO\n\nIf an alias is not set, this is a finding."
           }
         }
       },
@@ -23073,7 +23063,7 @@
         "title": "SRG-OS-000343-GPOS-00134",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281104r1166264_rule",
+          "+@id": "SV-281104r1208795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-500040",
@@ -23098,12 +23088,12 @@
             "+@id": "F-85570r1166263_fix"
           },
           "check": {
-            "+@system": "C-85665r1166262_chk",
+            "+@system": "C-85665r1208381_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following command:\n\n$ sudo grep -w space_left /etc/audit/auditd.conf\nspace_left = 25%\n\nIf the value of the \"admin_space_left\" keyword is not set to 25 percent of the storage volume allocated to audit logs, or if the line is commented out, ask the system administrator to indicate how the system is taking action if the allocated storage is about to reach capacity. \n\nIf the \"space_left\" value is not configured to the correct value, this is a finding."
+            "check-content": "Verify RHEL 10 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following command:\n\n$ sudo grep -w space_left /etc/audit/auditd.conf\nspace_left = 25%\n\nIf the value of the \"space_left\" keyword is not set to 25 percent of the storage volume allocated to audit logs, or if the line is commented out, ask the system administrator to indicate how the system is taking action if the allocated storage is about to reach capacity. \n\nIf the \"space_left\" value is not configured to the correct value, this is a finding."
           }
         }
       },
@@ -24139,7 +24129,7 @@
         "title": "SRG-OS-000037-GPOS-00015",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281127r1166333_rule",
+          "+@id": "SV-281127r1208796_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-500410",
@@ -24182,12 +24172,12 @@
             "+@id": "F-85593r1166332_fix"
           },
           "check": {
-            "+@system": "C-85688r1166331_chk",
+            "+@system": "C-85688r1208385_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 is configured to audit the execution of the \"init_module\" and \"finit_module\" syscalls with the following command:\n\n$ sudo auditctl -l | grep init_module\n-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=unset -k module_chng\n-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=unset -k module_chng\n\nIf both the \"b32\" and \"b64\" audit rules are not defined for the \"delete_module\" syscall, or any of the lines returned are commented out, this is a finding."
+            "check-content": "Verify RHEL 10 is configured to audit the execution of the \"init_module\" and \"finit_module\" syscalls with the following command:\n\n$ sudo auditctl -l | grep init_module\n-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=unset -k module_chng\n-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=unset -k module_chng\n\nIf both the \"b32\" and \"b64\" audit rules are not defined for the \"init_module\" and \"finit_module\" system calls, or any of the lines returned are commented out, this is a finding."
           }
         }
       },
@@ -28679,7 +28669,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281221r1166615_rule",
+          "+@id": "SV-281221r1208797_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "RHEL-10-600730",
@@ -28710,12 +28700,12 @@
             "+@id": "F-85687r1166614_fix"
           },
           "check": {
-            "+@system": "C-85782r1166613_chk",
+            "+@system": "C-85782r1208379_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 employs FIPS 140-3-approved cryptographic hashing algorithms for all stored passwords for interactive user accounts with the following command:\n\n$ sudo cut -d: -f2 /etc/shadow\n$6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/\n\nPassword hashes \"!\" or \"*\" indicate inactive accounts not available for login and are not evaluated.\n\nIf any interactive user password hash does not begin with \"$6\", this is a finding."
+            "check-content": "Verify RHEL 10 employs FIPS 140-3-approved cryptographic hashing algorithms for all stored passwords for interactive user accounts with the following command:\n\n$ sudo cut -d: -f1,2 /etc/shadow\nnsauser:$6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/\n\nPassword hashes \"!\" or \"*\" indicate inactive accounts not available for login and are not evaluated.\n\nIf any interactive user password hash does not begin with \"$6\", this is a finding."
           }
         }
       },
@@ -28763,7 +28753,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281223r1166621_rule",
+          "+@id": "SV-281223r1208798_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "RHEL-10-600750",
@@ -28788,12 +28778,12 @@
             "+@id": "F-85689r1166620_fix"
           },
           "check": {
-            "+@system": "C-85784r1166619_chk",
+            "+@system": "C-85784r1208383_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 user and group account administration utilities are configured to store only encrypted representations of passwords with the following command:\n\n$ sudo grep crypt /etc/libuser.conf\ncrypt_style = sha512\n\nIf the \"crypt_style\" variable is not set to \"yescrypt\", is not in the defaults section, is commented out, or does not exist, this is a finding."
+            "check-content": "Verify RHEL 10 user and group account administration utilities are configured to store only encrypted representations of passwords with the following command:\n\n$ sudo grep crypt /etc/libuser.conf\ncrypt_style = sha512\n\nIf the \"crypt_style\" variable is not set to \"sha512\", is not in the defaults section, is commented out, or does not exist, this is a finding."
           }
         }
       },
@@ -31026,11 +31016,11 @@
         "title": "SRG-OS-000029-GPOS-00010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281278r1166786_rule",
+          "+@id": "SV-281278r1208799_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-700750",
-          "title": "RHEL 10 must automatically lock graphical user sessions after 15 minutes of inactivity.",
+          "title": "RHEL 10 must automatically lock graphical user sessions after 10 minutes of inactivity.",
           "description": "<VulnDiscussion>A session timeout lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, the GNOME desktop can be configured to identify when a user's session has idled and take action to initiate a session lock.\n\nSatisfies: SRG-OS-000029-GPOS-00010, SRG-OS-000031-GPOS-00012</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat Enterprise Linux 10",
@@ -31050,19 +31040,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure RHEL 10 to initiate a screensaver after a 15-minute period of inactivity for graphical user interfaces.\n\nNote: The example below is using the database \"local\" for the system. If the system is using another database in \"/etc/dconf/profile/user\", the file should be created under the appropriate subdirectory.\n\nUpdate the \"/etc/dconf/db/local.d/00-screensaver\" file to prevent nonprivileged users from modifying the screensaver idle-delay setting:\n\n$ sudo vi /etc/dconf/db/local.d/00-screensaver\n\n[org/gnome/desktop/session]\n# Set the lock time out to 900 seconds before the session is considered idle\nidle-delay=uint32 900\n\nUpdate the system databases:\n\n$ sudo dconf update",
-            "+@fixref": "F-85744r1166785_fix"
+            "+content": "Configure RHEL 10 to initiate a screensaver after a 10-minute period of inactivity for graphical user interfaces.\n\nNote: The example below is using the database \"local\" for the system. If the system is using another database in \"/etc/dconf/profile/user\", the file should be created under the appropriate subdirectory.\n\nUpdate the \"/etc/dconf/db/local.d/00-screensaver\" file to prevent nonprivileged users from modifying the screensaver idle-delay setting:\n\n$ sudo vi /etc/dconf/db/local.d/00-screensaver\n\n[org/gnome/desktop/session]\n# Set the lock time out to 900 seconds before the session is considered idle\nidle-delay=uint32 600\n\nUpdate the system databases:\n\n$ sudo dconf update",
+            "+@fixref": "F-85744r1208373_fix"
           },
           "fix": {
-            "+@id": "F-85744r1166785_fix"
+            "+@id": "F-85744r1208373_fix"
           },
           "check": {
-            "+@system": "C-85839r1166784_chk",
+            "+@system": "C-85839r1208372_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: This requirement assumes the use of the RHEL 10 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is not applicable.\n\nVerify RHEL 10 initiates a session lock after a 15-minute period of inactivity for graphical user interfaces with the following command:\n\n$ sudo gsettings get org.gnome.desktop.session idle-delay\nuint32 900\n\nIf \"idle-delay\" is set to \"0\" or a value greater than \"900\", this is a finding."
+            "check-content": "Note: This requirement assumes the use of the RHEL 10 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is not applicable.\n\nVerify RHEL 10 initiates a session lock after a 10-minute period of inactivity for graphical user interfaces with the following command:\n\n$ sudo gsettings get org.gnome.desktop.session idle-delay\nuint32 600\n\nIf \"idle-delay\" is set to \"0\" or a value greater than \"600\", this is a finding."
           }
         }
       },
@@ -31712,7 +31702,7 @@
         "title": "SRG-OS-000163-GPOS-00072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281295r1166837_rule",
+          "+@id": "SV-281295r1208800_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-700920",
@@ -31725,22 +31715,16 @@
             "dc:subject": "Red Hat Enterprise Linux 10",
             "dc:identifier": "5733"
           },
-          "ident": [
-            {
-              "+content": "CCI-001133",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-000057",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
+          "ident": {
+            "+content": "CCI-001133",
+            "+@system": "http://cyber.mil/cci"
+          },
           "fixtext": {
-            "+content": "Configure RHEL 10 to exit interactive command shell user sessions after 15 minutes of inactivity.\n\nAdd or edit the following line in \"/etc/profile.d/tmout.sh\":\n\n#!/bin/bash\n\ndeclare -xr TMOUT=600",
-            "+@fixref": "F-85761r1166836_fix"
+            "+content": "Configure RHEL 10 to exit interactive command shell user sessions after 10 minutes of inactivity.\n\nAdd or edit the following line in \"/etc/profile.d/tmout.sh\":\n\n#!/bin/bash\n\ndeclare -xr TMOUT=600",
+            "+@fixref": "F-85761r1208391_fix"
           },
           "fix": {
-            "+@id": "F-85761r1166836_fix"
+            "+@id": "F-85761r1208391_fix"
           },
           "check": {
             "+@system": "C-85856r1166835_chk",
@@ -32544,7 +32528,7 @@
         "title": "SRG-OS-000433-GPOS-00193",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281315r1167095_rule",
+          "+@id": "SV-281315r1208802_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "RHEL-10-701130",
@@ -32562,19 +32546,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure RHEL 10 to implement ASLR.\n\nCreate the drop-in if it does not already exist:\n\n$ sudo vi /etc/sysctl.d/99-kernel_randomize_va_space.conf\n\nAdd the following line to the file:\n\nkernel.randomize_va_space = 2\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
-            "+@fixref": "F-85781r1167094_fix"
+            "+content": "Configure RHEL 10 to implement ASLR.\n\n$ echo 'kernel.randomize_va_space = 2' | sudo tee /etc/sysctl.d/99-kernel_randomize_va_space.conf\n\nRemove any configurations that conflict with the above from the following locations: \n\n/run/sysctl.d/*.conf\n/usr/local/lib/sysctl.d/*.conf\n/usr/lib/sysctl.d/*.conf\n/lib/sysctl.d/*.conf\n/etc/sysctl.conf\n/etc/sysctl.d/*.conf\n\nIssue the following command to make the changes take effect:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-85781r1208801_fix"
           },
           "fix": {
-            "+@id": "F-85781r1167094_fix"
+            "+@id": "F-85781r1208801_fix"
           },
           "check": {
-            "+@system": "C-85876r1167093_chk",
+            "+@system": "C-85876r1208376_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_Enterprise_Linux_10_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify RHEL 10 is implementing ASLR.\n\nCheck the status of the \"kernel.randomize_va_space\" kernel parameter with the following command:\n\n$ sudo sysctl kernel.randomize_va_space\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\" or is missing, this is a finding."
+            "check-content": "Verify RHEL 10 is implementing ASLR.\n\nCheck the status of the \"kernel.randomize_va_space\" kernel parameter with the following command:\n\n$ sudo sysctl kernel.randomize_va_space\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter.\n\n$ sudo grep -rs kernel.randomize_va_space /run/sysctl.d/*.conf /usr/local/lib/sysctl.d/*.conf /usr/lib/sysctl.d/*.conf /lib/sysctl.d/*.conf /etc/sysctl.conf /etc/sysctl.d/*.conf\n/etc/sysctl.d/99-kernel_randomize_va_space.conf:kernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", is missing or commented out, this is a finding.\n\nIf conflicting results are returned, this is a finding."
           }
         }
       },

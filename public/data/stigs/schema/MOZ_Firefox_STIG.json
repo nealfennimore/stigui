@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-25"
+      "+@date": "2026-05-08"
     },
     "title": "Mozilla Firefox Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 8 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -182,10 +182,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-252908",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-252909",
             "+@selected": "true"
           }
@@ -322,10 +318,6 @@
           },
           {
             "+@idref": "V-252881",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-252908",
             "+@selected": "true"
           },
           {
@@ -468,10 +460,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-252908",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-252909",
             "+@selected": "true"
           }
@@ -608,10 +596,6 @@
           },
           {
             "+@idref": "V-252881",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-252908",
             "+@selected": "true"
           },
           {
@@ -754,10 +738,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-252908",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-252909",
             "+@selected": "true"
           }
@@ -894,10 +874,6 @@
           },
           {
             "+@idref": "V-252881",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-252908",
             "+@selected": "true"
           },
           {
@@ -1040,10 +1016,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-252908",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-252909",
             "+@selected": "true"
           }
@@ -1180,10 +1152,6 @@
           },
           {
             "+@idref": "V-252881",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-252908",
             "+@selected": "true"
           },
           {
@@ -1326,10 +1294,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-252908",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-252909",
             "+@selected": "true"
           }
@@ -1381,7 +1345,7 @@
         "title": "SRG-APP-000560",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251546r961869_rule",
+          "+@id": "SV-251546r1201983_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "FFOX-00-000002",
@@ -2582,45 +2546,6 @@
               "+@name": "M"
             },
             "check-content": "Type \"about:policies\" in the browser address bar. \n\nIf \"SanitizeOnShutdown\" is not displayed under Policy Name or the Policy Value does not have {\"Cache\":false,\"Cookies\":false,\"Downloads\":false,\"FormData\":false,\"Sessions\":false,\"History\":false,\"OfflineApps\":false,\"SiteSettings\":false,\"Locked\":true}, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-252908",
-        "title": "SRG-APP-000141",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-252908r960963_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "FFOX-00-000038",
-          "title": "Pocket must be disabled.",
-          "description": "<VulnDiscussion>Pocket, previously known as Read It Later, is a social bookmarking service for storing, sharing, and discovering web bookmarks. Data gathering cloud services such as this are generally disabled in the DoD.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Mozilla Firefox 2021 VERSION",
-            "dc:identifier": "5446"
-          },
-          "ident": {
-            "+content": "CCI-000381",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Windows group policy:\n1. Open the group policy editor tool with \"gpedit.msc\".\n2. Navigate to Policy Path: Computer Configuration\\Administrative Templates\\Mozilla\\Firefox\nPolicy Name: Disable Pocket\nPolicy State: Enabled\n\nmacOS \"plist\" file:\n<key>DisablePocket</key>\n <true/>\n\nLinux \"policies.json\" file:\nAdd the following in the policies section:\n\"DisablePocket\": true",
-            "+@fixref": "F-56311r832309_fix"
-          },
-          "fix": {
-            "+@id": "F-56311r832309_fix"
-          },
-          "check": {
-            "+@system": "C-56361r836394_chk",
-            "check-content-ref": {
-              "+@href": "Mozilla_Firefox_2021_VERSION_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Type \"about:policies\" in the browser address bar. \n\nIf \"DisablePocket\" is not displayed under Policy Name or the Policy Value does not have a value of \"true\", this is a finding."
           }
         }
       },

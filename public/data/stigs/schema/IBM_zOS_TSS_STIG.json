@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-09"
+      "+@date": "2026-06-15"
     },
     "title": "IBM z/OS TSS Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 8 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 9 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -972,6 +972,10 @@
           {
             "+@idref": "V-275962",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
+            "+@selected": "true"
           }
         ]
       },
@@ -1898,6 +1902,10 @@
           },
           {
             "+@idref": "V-275962",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
             "+@selected": "true"
           }
         ]
@@ -2826,6 +2834,10 @@
           {
             "+@idref": "V-275962",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
+            "+@selected": "true"
           }
         ]
       },
@@ -3752,6 +3764,10 @@
           },
           {
             "+@idref": "V-275962",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
             "+@selected": "true"
           }
         ]
@@ -4680,6 +4696,10 @@
           {
             "+@idref": "V-275962",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
+            "+@selected": "true"
           }
         ]
       },
@@ -5606,6 +5626,10 @@
           },
           {
             "+@idref": "V-275962",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
             "+@selected": "true"
           }
         ]
@@ -6534,6 +6558,10 @@
           {
             "+@idref": "V-275962",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
+            "+@selected": "true"
           }
         ]
       },
@@ -7461,6 +7489,10 @@
           {
             "+@idref": "V-275962",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
+            "+@selected": "true"
           }
         ]
       },
@@ -8387,6 +8419,10 @@
           },
           {
             "+@idref": "V-275962",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285330",
             "+@selected": "true"
           }
         ]
@@ -16633,11 +16669,11 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224044r1083018_rule",
+          "+@id": "SV-224044r1212331_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TSS0-SH-000020",
-          "title": "The SSH daemon must be configured to use a FIPS 140-2 compliant cryptographic algorithm.",
+          "title": "The SSH daemon must be configured to use a FIPS 140-3-compliant cryptographic algorithm.",
           "description": "<VulnDiscussion>Audit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000120-GPOS-00061, SRG-OS-000250-GPOS-00093</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM zOS TSS",
@@ -16669,19 +16705,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Edit the SSH daemon configuration and remove any ciphers not starting with \"aes\". If necessary, add a \"Ciphers\" line using FIPS 140-2 compliant algorithms.\n\nConfigure for message authentication to MACs \"hmac-sha1\" or greater.\n\nEdit the z/OS-specific sshd server systemwide configuration file configuration as follows:\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF",
-            "+@fixref": "F-25705r1082856_fix"
+            "+content": "Edit the SSH daemon configuration and remove any ciphers not starting with \"aes\". If necessary, add a \"Ciphers\" line using FIPS 140-3-compliant algorithms.\n\nConfigure for message authentication to MACs \"hmac-sha1\" or greater.\n\nEdit the z/OS-specific sshd server systemwide configuration file configuration as follows:\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF",
+            "+@fixref": "F-25705r1212330_fix"
           },
           "fix": {
-            "+@id": "F-25705r1082856_fix"
+            "+@id": "F-25705r1212330_fix"
           },
           "check": {
-            "+@system": "C-25717r1083017_chk",
+            "+@system": "C-25717r1212329_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Locate the SSH daemon configuration file found in /etc/ssh/ directory.\n\nAlternately:\nFrom the Unix System Services ISPF Shell, navigate to ribbon select tools.\nSelect option 1 - Work with Processes.\n\nIf SSH Daemon is not active, this is not a finding.\n\nExamine SSH daemon configuration file. \nsshd_config\n\nIf there are no Ciphers lines, or the ciphers list contains any cipher not starting with \"aes\", this is a finding.\n\nIf the MACs line is not configured to \"hmac-sha1\" or greater, this is a finding.\n\nExamine the z/OS-specific sshd server systemwide configuration: \nzos_sshd_config\n\nIf any of the following is untrue, this is a finding.\n\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF"
+            "check-content": "Locate the SSH daemon configuration file found in /etc/ssh/ directory.\n\nAlternately:\nFrom the UNIX System Services ISPF Shell, navigate to ribbon select tools.\nSelect option 1 - Work with Processes.\n\nIf SSH Daemon is not active, this is not a finding.\n\nExamine the SSH daemon configuration file: \nsshd_config\n\nIf there are no Ciphers lines, or the ciphers list contains any cipher not starting with \"aes\", this is a finding.\n\nIf the MACs line is not configured to \"hmac-sha1\" or greater, this is a finding.\n\nExamine the z/OS-specific sshd server systemwide configuration: \nzos_sshd_config\n\nIf any of the following is untrue, this is a finding:\n\nFIPSMODE=YES\nCiphersSource=ICSF\nMACsSource=ICSF"
           }
         }
       },
@@ -17661,11 +17697,11 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224067r1050770_rule",
+          "+@id": "SV-224067r1212334_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TSS0-TN-000030",
-          "title": "IBM z/OS SSL encryption options for the TN3270 Telnet server must be specified properly for each statement that defines a SECUREPORT or within the TELNETGLOBALS.",
+          "title": "IBM z/OS SSL encryption options for the TN3270 Telnet Server must be specified properly.",
           "description": "<VulnDiscussion>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nEncryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection (e.g., RDP), thereby providing a degree of confidentiality. The encryption strength of a mechanism is selected based on the security categorization of the information.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000120-GPOS-00061, SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174, SRG-OS-000396-GPOS-00176, SRG-OS-000478-GPOS-00223, SRG-OS-000423-GPOS-00187, SRG-OS-000424-GPOS-00188, SRG-OS-000425-GPOS-00189, SRG-OS-000426-GPOS-00190, SRG-OS-000478-GPOS-00223</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM zOS TSS",
@@ -17725,19 +17761,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the SECUREPORT and TELNETPARMS ENCRYPTION statements and/or the TELNETGLOBALS statement in the PROFILE.TCPIP file to conform to the requirements specified below.\n\nThe TELNETGLOBALS block may specify an ENCRYPTION statement that specifies one or more of the below cipher specifications.\n\nEach TELNETPARMS block that specifies the SECUREPORT statement, an ENCRYPTION statement is coded with one or more of the below cipher specifications. And the TELNETGLOBALS block does or does not specify an ENCRYPTION statement.\n\nTo prevent the use of non FIPS 140-2 encryption, the TELNETGLOBALS block and/or each TELNETPARMS block that specifies an ENCRYPTION statement will specify one or more of the following cipher specifications:\n\nCipher Specifications\nSSL_3DES_SHA\nSSL_AES_256_SHA\nSSL_AES_128_SHA\n\nNote: Always check for the minimum allowed in FIPS 140-2.",
-            "+@fixref": "F-25728r516601_fix"
+            "+content": "Configure AT-TLS policy to define security parameters. The policy must include the FIPS 140-3 cipher suites specified below.\n\nCipher Specifications\n\nThe following suites are allowed for the TLS 1.3 protocol:\nTLS_AES_128_GCM_SHA256\nTLS_AES_256_GCM_SHA384\n\nThe following suites are allowed for the TLS 1.2 protocol:\nTLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_DHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_DHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\nTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_256_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDH_RSA_WITH_AES_128_GCM_SHA256\n\nNote: Always check for the minimum allowed in FIPS 140-3.",
+            "+@fixref": "F-25728r1212333_fix"
           },
           "fix": {
-            "+@id": "F-25728r516601_fix"
+            "+@id": "F-25728r1212333_fix"
           },
           "check": {
-            "+@system": "C-25740r1050769_chk",
+            "+@system": "C-25740r1212332_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Refer to the Profile configuration file specified on the PROFILE DD statement in the TCPIP started task JCL.\n\nIf the following items are in effect for the configuration specified in the TCP/IP Profile configuration file, this is not a finding.\n\nNOTE: If an INCLUDE statement is coded in the TCP/IP Profile configuration file, the data set specified on this statement must be checked for the following items as well.\n\nNOTE: FIPS 140-2 minimum encryption is the accepted level of encryption and will override this requirement if greater.\n\n-The TELNETGLOBALS block that specifies an ENCRYPTION statement states one or more of the below cipher specifications.\n-Each TELNETPARMS block that specifies the SECUREPORT statement, specifies an ENCRYPTION statement states one or more of the below cipher specifications. And the TELNETGLOBALS block does or does not specify an ENCRYPTION statement.\n\nCipher Specifications\nSSL_3DES_SHA\nSSL_AES_256_SHA\nSSL_AES_128_SHA"
+            "check-content": "From the ISPF Command Shell, enter:\nOMVS\nEnter:\t\npasearch -t\t\nto display all Application Transparent Transport Layer Security (AT-TLS) policy entries.\n\nIf the TTLS cipher suites entries do not contain the following cipher suites, this is a finding.\n\nNote: FIPS 140-3 minimum encryption is the accepted level of encryption and will override this requirement if greater.\n\nCipher Specifications\n\nThe following suites are allowed for the TLS 1.3 protocol:\nTLS_AES_128_GCM_SHA256\nTLS_AES_256_GCM_SHA384\n\nThe following suites are allowed for the TLS 1.2 protocol:\nTLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_DHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_DHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\nTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_256_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDH_RSA_WITH_AES_128_GCM_SHA256"
           }
         }
       },
@@ -19684,7 +19720,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252554r1137691_rule",
+          "+@id": "SV-252554r1212337_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TSS0-TC-000100",
@@ -19702,19 +19738,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Develop a plan of action to implement the required changes. Ensure the following items are in effect for TCP/IP resources.\n\nDevelop AT-TLS policy. Install in the policy agent.\n\nEnsure the statements specify a FIPS 140-2 compliant value of the following values.\n\nECDHE_ECDSA_AES_128_CBC_SHA256\nECDHE_ECDSA_AES_256_CBC_SHA384\nECDHE_RSA_AES_128_CBC_SHA256\nECDHE_RSA_AES_256_CBC_SHA384\nTLS_RSA_WITH_3DES_EDE_CBC_SHA\nTLS_RSA_WITH_AES_128_CBC_SHA\nTLS_RSA_WITH_AES_128_CBC_SHA256\nTLS_RSA_WITH_AES_256_CBC_SHA\nTLS_RSA_WITH_AES_256_CBC_SHA256",
-            "+@fixref": "F-55960r816961_fix"
+            "+content": "Develop a plan of action to implement the required changes. Ensure the following items are in effect for TCP/IP resources.\n\nDevelop AT-TLS policy. Install in the policy agent.\n\nEnsure the statements specify a FIPS 140-3-compliant value from the following values.\n\nThe following suites are allowed for the TLS 1.3 protocol:\nTLS_AES_128_GCM_SHA256\nTLS_AES_256_GCM_SHA384\n\nThe following suites are allowed for the TLS 1.2 protocol:\nTLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_DHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_DHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\nTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_256_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDH_RSA_WITH_AES_128_GCM_SHA256",
+            "+@fixref": "F-55960r1212336_fix"
           },
           "fix": {
-            "+@id": "F-55960r816961_fix"
+            "+@id": "F-55960r1212336_fix"
           },
           "check": {
-            "+@system": "C-56010r816960_chk",
+            "+@system": "C-56010r1212335_chk",
             "check-content-ref": {
               "+@href": "IBM_zOS_TSS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use the z/OS UNIX pasearch -t command to query information from the z/OS UNIX Policy Agent. \n\nThe command is issued from the UNIX System Services shell.\n\nExamine the results for AT-TLS initiation and control statements.\n\nIf there are no AT-TLS initiation and controls statements, this is a finding.\n\nVerify the statements specify a FIPS 140-2 compliant value. If none of the following values are present, this is a finding\n\nECDHE_ECDSA_AES_128_CBC_SHA256\nECDHE_ECDSA_AES_256_CBC_SHA384\nECDHE_RSA_AES_128_CBC_SHA256\nECDHE_RSA_AES_256_CBC_SHA384\nTLS_RSA_WITH_3DES_EDE_CBC_SHA\nTLS_RSA_WITH_AES_128_CBC_SHA\nTLS_RSA_WITH_AES_128_CBC_SHA256\nTLS_RSA_WITH_AES_256_CBC_SHA\nTLS_RSA_WITH_AES_256_CBC_SHA256"
+            "check-content": "Use the z/OS UNIX pasearch -t command to query information from the z/OS UNIX Policy Agent. \n\nThe command is issued from the UNIX System Services shell.\n\nExamine the results for AT-TLS initiation and control statements.\n\nIf there are no AT-TLS initiation and controls statements, this is a finding.\n\nVerify the statements specify a FIPS 140-3-compliant value. If none of the following values are present, this is a finding.\n\nThe following suites are allowed for the TLS 1.3 protocol:\nTLS_AES_128_GCM_SHA256\nTLS_AES_256_GCM_SHA384\n\nThe following suites are allowed for the TLS 1.2 protocol:\nTLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_DHE_RSA_WITH_AES_256_GCM_SHA384\nTLS_DHE_RSA_WITH_AES_128_GCM_SHA256\nTLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\nTLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\nTLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_256_CBC_SHA256\nTLS_DHE_RSA_WITH_AES_128_CBC_SHA256\nTLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_RSA_WITH_AES_256_GCM_SHA384\nTLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256\nTLS_ECDH_RSA_WITH_AES_128_GCM_SHA256"
           }
         }
       },
@@ -20214,6 +20250,45 @@
               "+@name": "M"
             },
             "check-content": "From the ISPF command shell, enter WHOOWNS for the following resources:\nCRYPTOZ  \nCSFKEYS  \nCSFSERV  \nGCSFKEYS    \nXCSFKEY  \n\nConsult with the ICSF administrator, security administrator, and site security plan for appropriate access members.\nFor each resource defined, enter:\nTSS <resource name> (*)\n\nIf TSS access rules for each resource are restricted to appropriate users, this is not a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-285330",
+        "title": "SRG-OS-000480-GPOS-00227",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-285330r1212315_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "TSS0-TN-000025",
+          "title": "IBM z/OS SSL options for the TN3270 Telnet Server must specify a secure port.",
+          "description": "<VulnDiscussion>Configuring the operating system to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements.\n\nConfiguration settings are the set of parameters that can be changed in hardware, software, or firmware components of the system that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the system, including the parameters required to satisfy other security control requirements. Security-related parameters include, for example: registry settings; account, file, directory permission settings; and settings for functions, ports, protocols, services, and remote connections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target IBM zOS TSS",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "IBM zOS TSS",
+            "dc:identifier": "4102"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure the TELNETPARMS block to specify TTLSPORT.\n\nIf CONNTYPE is included in the TELNETPARMS block, it specifies SECURE.",
+            "+@fixref": "F-89807r1212314_fix"
+          },
+          "fix": {
+            "+@id": "F-89807r1212314_fix"
+          },
+          "check": {
+            "+@system": "C-89902r1212313_chk",
+            "check-content-ref": {
+              "+@href": "IBM_zOS_TSS_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Refer to the Profile configuration file specified on the PROFILE DD statement in the TCPIP started task JCL.\n\nIf the following items are in effect for the configuration specified in the TCP/IP Profile configuration file, this is not a finding.\n\nNote: If an INCLUDE statement is coded in the TCP/IP Profile configuration file, the data set specified on this statement must be checked for the following items as well.\n\nEach TELNETPARMS block specifies TTLSPORT statement. \n\nIf the CONNTYPE statement is present, it specifies SECURE."
           }
         }
       }

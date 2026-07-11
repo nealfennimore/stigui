@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-10"
+      "+@date": "2026-06-15"
     },
     "title": "Juniper EX Series Switches Network Device Management Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -203,10 +203,6 @@
           },
           {
             "+@idref": "V-253926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253927",
             "+@selected": "true"
           },
           {
@@ -437,10 +433,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253928",
             "+@selected": "true"
           },
@@ -665,10 +657,6 @@
           },
           {
             "+@idref": "V-253926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253927",
             "+@selected": "true"
           },
           {
@@ -899,10 +887,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253928",
             "+@selected": "true"
           },
@@ -1127,10 +1111,6 @@
           },
           {
             "+@idref": "V-253926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253927",
             "+@selected": "true"
           },
           {
@@ -1361,10 +1341,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253928",
             "+@selected": "true"
           },
@@ -1589,10 +1565,6 @@
           },
           {
             "+@idref": "V-253926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-253927",
             "+@selected": "true"
           },
           {
@@ -1823,10 +1795,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253928",
             "+@selected": "true"
           },
@@ -2054,10 +2022,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-253927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-253928",
             "+@selected": "true"
           },
@@ -2134,11 +2098,11 @@
         "title": "SRG-APP-000001-NDM-000200",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253878r1028864_rule",
+          "+@id": "SV-253878r1212002_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000010",
-          "title": "The Juniper EX switch must be configured to limit the number of concurrent management sessions to 10 or an organization-defined value.",
+          "title": "The Juniper EX switch must be configured to limit the number of concurrent management sessions to 1 or an organization-defined value.",
           "description": "<VulnDiscussion>Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator based on account type, role, or access type is helpful in limiting risks related to denial-of-service (DoS) attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions must be defined based upon mission needs and the operational environment for each system. At a minimum, limits must be set for SSH, HTTPS, account of last resort, and root account sessions.\n\nJuniper switches apply session limits per access method (e.g., web management, SSH), which means the limit is applicable to local, remote, and root account sessions. \n\nUnconfigured management access methods are disabled. For instance, if there is no [edit system services ssh] stanza, that service is unavailable and a connection-limit should not be configured because that will enable the service.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Switches NDM",
@@ -2152,19 +2116,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Enter the CLI configuration mode and enter the following commands to set the connection-limit to 1 or an organization defined number. If, based on operational needs, an organization defined number other than 1 is used, document the value in the SSP.\n\nSSH example limiting connections to 1:\nuser@host> configure\nuser@host# set system services ssh connection-limit 1\nuser@host# commit",
-            "+@fixref": "F-57281r1028863_fix"
+            "+content": "Configure the switch to limit connection limits for all enabled administrative access methods to \"1\" or an organization-defined value documented in the SSP.\n\n1. Enter configuration mode.\n2. Configure enabled administrative access methods to \"1\" or an organizationally defined value documented in the SSP.\n3. Commit the configuration.\n\nSSH example limiting connections to 1:\nuser@host> configure\nEntering configuration mode\n\nuser@host# set system services ssh connection-limit 1\nor\nuser@host# set system services ssh connection-limit <documented organizationally defined value>\n\nuser@host# commit\ncommit complete",
+            "+@fixref": "F-57281r1212001_fix"
           },
           "fix": {
-            "+@id": "F-57281r1028863_fix"
+            "+@id": "F-57281r1212001_fix"
           },
           "check": {
-            "+@system": "C-57330r1028862_chk",
+            "+@system": "C-57330r1212000_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If, based on operational needs, an organization defined number other than 1 is used, document the value in the SSP. View the SSH service configuration using the \"show configuration system services ssh\" command.\n\nSSH example.\nuser@host> show configuration system services ssh\n\nconnection-limit 1;\nrate-limit 1\n\nIf the device does not limit the number of concurrent management sessions to 1 or an organization-defined number, this is a finding."
+            "check-content": "If, based on operational needs, an organization-defined number other than \"1\" is used, document the value in the System Security Plan (SSP). Verify the connection limit for all enabled administrative access methods is \"1\" or an organizationally defined value documented in the SSP.\n\nSSH example:\nuser@host> show configuration system services ssh\n\nconnection-limit 1;\n\nIf the device does not limit the number of concurrent management sessions to \"1\" or an organization-defined number, this is a finding."
           }
         }
       },
@@ -3680,45 +3644,6 @@
         }
       },
       {
-        "+@id": "V-253927",
-        "title": "SRG-APP-000400-NDM-000313",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-253927r961521_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "JUEX-NM-000500",
-          "title": "The Juniper EX switch must be configured to prohibit the use of cached authenticators after an organization-defined time period.",
-          "description": "<VulnDiscussion>Some authentication implementations can be configured to use cached authenticators.\n\nIf cached authentication information is out-of-date, the validity of the authentication information may be questionable.\n\nThe organization-defined time period should be established for each device depending on the nature of the device; for example, a device with just a few administrators in a facility with spotty network connectivity may merit a longer caching time period than a device with many administrators.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Juniper EX Series Switches NDM",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Juniper EX Series Switches NDM",
-            "dc:identifier": "5477"
-          },
-          "ident": {
-            "+content": "CCI-002007",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure the network device or its associated authentication server to prohibit the use of cached authenticators after an organization-defined time period.\n\nset system login idle-timeout 10\n\nset system services ssh protocol-version v2\nset system services ssh client-alive-count-max (0..255)\nset system services ssh client-alive-interval (0..65535 seconds)\nset system services ssh rekey data-limit (51200..4294967295 bytes)\nset system services ssh rekey time-limit (1..1440 minutes)",
-            "+@fixref": "F-57330r843813_fix"
-          },
-          "fix": {
-            "+@id": "F-57330r843813_fix"
-          },
-          "check": {
-            "+@system": "C-57379r843812_chk",
-            "check-content-ref": {
-              "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Review the network device configuration to determine if the network device or its associated authentication server prohibits the use of cached authenticators after an organization-defined time period.\n\nVerify idle-timeouts, SSH keepalive messages, and SSH rekey are configured to meet the requirements of the target network.\n[edit system]\nlogin {\n    idle-timeout 10;\n}\nsystem {\n    services {\n        ssh {\n            protocol-version v2;\n            client-alive-count-max (0..255);\n            client-alive-interval (0..65535 seconds);\n            rekey {\n                data-limit (51200..4294967295 bytes);\n                time-limit (1..1440 minutes);\n            }\n        }\n    }\n}\n\nFor externally authenticated accounts, verify the external authentication server enforces appropriate authenticator timeouts.\n\nIf cached authenticators are used after an organization-defined time period, this is a finding."
-          }
-        }
-      },
-      {
         "+@id": "V-253928",
         "title": "SRG-APP-000411-NDM-000330",
         "description": "<GroupDescription></GroupDescription>",
@@ -3996,12 +3921,12 @@
         "title": "SRG-APP-000515-NDM-000325",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253937r961860_rule",
+          "+@id": "SV-253937r1212008_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000600",
-          "title": "The Juniper EX switch must be configured to offload audit records onto a different system or media than the system being audited.",
-          "description": "<VulnDiscussion>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOffloading is a common process in information systems with limited audit storage capacity. Archiving is not required unless space is limited in the audit server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to off-load audit records onto a different system than the system being audited.",
+          "description": "<VulnDiscussion>Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity. Archiving is not required unless space is limited in the audit server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Switches NDM",
             "dc:publisher": "DISA",
@@ -4014,19 +3939,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Archiving is not required unless space is limited in the audit server. Configure the network device to offload audit records onto a different system or media than the system being audited.\n\nset file <file name> any info\nset system syslog file <file name> any info\nset system syslog file <file name> archive size <65536..1073741824 bytes>\nset system syslog file <file name> archive files <1..1000>\nset system syslog file <file name> archive transfer-interval <5..2880 minutes>\nset system syslog file <file name> archive start-time \"<yyyy-mm-dd.hh:mm>\"\nset system syslog file <file name> archive archive-sites \"<scp|sftp>://<username>@<repository address>/<path without trailing slash (/)>\" password \"<PSK>\"\nset system syslog host <external syslog address> any info",
-            "+@fixref": "F-57340r944356_fix"
+            "+content": "Configure syslog host\n\nset system syslog host <external syslog host IPv4 or IPv6 address> any info",
+            "+@fixref": "F-57340r1212007_fix"
           },
           "fix": {
-            "+@id": "F-57340r944356_fix"
+            "+@id": "F-57340r1212007_fix"
           },
           "check": {
-            "+@system": "C-57389r944355_chk",
+            "+@system": "C-57389r1212006_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Switches_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Mark as not a finding if the site has a solution in place to prevent the device from running out of audit storage.\n\nVerify the device is configured to send system events to external syslog. If the organization has a centralized repository (or repositories) for secure transfer of audit log files, verify each log file is configured to transfer files to the appropriate repository. Each log file must be configured separately.\n\n[edit system syslog]\nfile <file name> {\n    any info;\n    archive size <65536..1073741824 bytes> files <1..1000> transfer-interval <5..2880 minutes> start-time \"<yyyy-mm-dd.hh:mm>\" archive-sites {\n\"URL\" password \"hashed PSK\" } ## SECRET-DATA\n}\nNote: The  URL format is: <scp|sftp>://<username>@<address>/<path>. The trailing slash is omitted because Junos automatically adds that when it appends the filename.\nhost <external syslog address> {\n    any info;\n}\nNote: If using secure file transfer to offload log files, the Juniper device will immediately attempt to connect with the configured protocol, address, and credentials. If successful, Junos will prompt to accept an untrusted public key. If the administrator accepts that key, Junos adds it to [edit security ssh-known-hosts]. Alternately, configure the trusted public key at [edit security ssh-known-hosts] before configuring automatic file offload.\n\nIf the device does not offload audit records onto a different system or media, this is a finding."
+            "check-content": "Verify an external syslog server is configured. The lowest severity level, \"any\", is debug and will generate a significant number of messages.\n\n[edit system syslog]\nhost <external syslog address> {\n    any info;\n    structured-format; << Only if structured formatting is required, otherwise events are recorded in standard format.\n}\ntime-format year;\n\n\nIf the device does not offload audit records to an external syslog server, this is a finding."
           }
         }
       },
@@ -4035,7 +3960,7 @@
         "title": "SRG-APP-000516-NDM-000334",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253939r961863_rule",
+          "+@id": "SV-253939r1207743_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-NM-000620",
@@ -4357,7 +4282,7 @@
         "title": "SRG-APP-000516-NDM-000351",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253945r961863_rule",
+          "+@id": "SV-253945r1207744_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "JUEX-NM-000680",
