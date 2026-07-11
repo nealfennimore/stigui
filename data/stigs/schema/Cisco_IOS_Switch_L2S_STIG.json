@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-06-06"
+      "+@date": "2026-05-01"
     },
     "title": "Cisco IOS Switch L2S Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -963,7 +963,7 @@
         "title": "SRG-NET-000168-L2S-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220624r539671_rule",
+          "+@id": "SV-220624r1188386_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000030",
@@ -1408,12 +1408,12 @@
         "title": "SRG-NET-000512-L2S-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220636r648763_rule",
+          "+@id": "SV-220636r1205856_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-L2-000160",
           "title": "The Cisco switch must have Storm Control configured on all host-facing switchports.",
-          "description": "<VulnDiscussion>A traffic storm occurs when packets flood a LAN, creating excessive traffic and degrading network performance. Traffic storm control prevents network disruption by suppressing ingress traffic when the number of packets reaches a configured threshold levels. \n\nTraffic storm control monitors ingress traffic levels on a port and drops traffic when the number of packets reaches the configured threshold level during any one-second interval.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A traffic storm occurs when packets flood a LAN, creating excessive traffic and degrading network performance. Traffic storm control prevents network disruption by suppressing ingress traffic when the number of packets reaches a configured threshold level.\n \nTraffic storm control monitors ingress traffic levels on a port and drops traffic when the number of packets reaches the configured threshold level during any one-second interval.\n \nThe primary intent of this control is to mitigate the risk of denial-of-service (DoS) attacks, not to arbitrarily restrict bandwidth needed for operations. Consequently, some ports may be configured to operate at full line-rate speed if deemed necessary by the engineer to meet mission requirements. The ultimate responsibility for managing bandwidth to prevent a DoS while ensuring service availability rests with the network engineer.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Switch L2S",
             "dc:publisher": "DISA",
@@ -1436,19 +1436,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure storm control for each host-facing interface as shown in the example below:\n\nSW1(config)#int range g0/2 - 8 \nSW1(config-if-range)#storm-control unicast bps 62000000 \nSW1(config-if-range)#storm-control broadcast level bps 20000000 \n\n\nNote: The acceptable range is 10000000 -1000000000 for a gigabit Ethernet interface, and 100000000-10000000000 for a 10-gigabit interface. Storm control is not supported on most FastEthernet interfaces.",
-            "+@fixref": "F-22340r648762_fix"
+            "+content": "Configure storm control for each host-facing interface as shown in the example below:\n\nSW1(config)#int range g0/2 - 8 \nSW1(config-if-range)#storm-control unicast bps 62000000 \nSW1(config-if-range)#storm-control broadcast level bps 20000000 \n\nNote: The acceptable range is 10000000-1000000000 (10Mb-1Gb) for a gigabit Ethernet interface, and 100000000-10000000000 (100Mb-10Gb) for a 10-gigabit interface. Storm control is not supported on most FastEthernet interfaces.",
+            "+@fixref": "F-22340r1205855_fix"
           },
           "fix": {
-            "+@id": "F-22340r648762_fix"
+            "+@id": "F-22340r1205855_fix"
           },
           "check": {
-            "+@system": "C-22351r648761_chk",
+            "+@system": "C-22351r1205854_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_L2S_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that storm control is enabled on all host-facing interfaces as shown in the example below:\n\ninterface GigabitEthernet0/3\nswitchport access vlan 12\nstorm-control unicast level bps 62000000\nstorm-control broadcast level bps 20000000\n\nNote: Bandwidth percentage thresholds (via level parameter) can be used in lieu of PPS rate.\n\nIf storm control is not enabled at a minimum for broadcast traffic, this is a finding."
+            "check-content": "Review the switch configuration to verify that storm control is enabled on all host-facing interfaces as shown in the example below:\n\ninterface GigabitEthernet0/3\nswitchport access vlan 12\nstorm-control unicast level bps 62000000\nstorm-control broadcast level bps 20000000\n\nNote: Bandwidth percentage thresholds (via level parameter) can be used in lieu of PPS rate. The storm control values in the STIG's example configuration are for illustrative purposes and do not constitute a mandatory value for this setting. Network engineers are responsible for determining and applying appropriate storm control levels based on the specific operational and mission-based bandwidth requirements of each port. A setting must be determined and intentionally configured.\n\nIf storm control is not enabled at a minimum for broadcast traffic, this is a finding."
           }
         }
       },
@@ -1555,7 +1555,7 @@
         "title": "SRG-NET-000512-L2S-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220639r539671_rule",
+          "+@id": "SV-220639r1188389_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000190",
@@ -1604,7 +1604,7 @@
         "title": "SRG-NET-000512-L2S-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220640r539671_rule",
+          "+@id": "SV-220640r1188390_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-L2-000200",

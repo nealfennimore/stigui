@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-27"
+      "+@date": "2026-05-22"
     },
     "title": "Cloud Linux AlmaLinux OS 9 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 7 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -663,10 +663,6 @@
           },
           {
             "+@idref": "V-269259",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-269260",
             "+@selected": "true"
           },
           {
@@ -2429,10 +2425,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-269260",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-269261",
             "+@selected": "true"
           },
@@ -4189,10 +4181,6 @@
           },
           {
             "+@idref": "V-269259",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-269260",
             "+@selected": "true"
           },
           {
@@ -5955,10 +5943,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-269260",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-269261",
             "+@selected": "true"
           },
@@ -7715,10 +7699,6 @@
           },
           {
             "+@idref": "V-269259",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-269260",
             "+@selected": "true"
           },
           {
@@ -9481,10 +9461,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-269260",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-269261",
             "+@selected": "true"
           },
@@ -11241,10 +11217,6 @@
           },
           {
             "+@idref": "V-269259",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-269260",
             "+@selected": "true"
           },
           {
@@ -13007,10 +12979,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-269260",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-269261",
             "+@selected": "true"
           },
@@ -14770,10 +14738,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-269260",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-269261",
             "+@selected": "true"
           },
@@ -15961,11 +15925,11 @@
         "title": "SRG-OS-000031-GPOS-00012",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269103r1101811_rule",
+          "+@id": "SV-269103r1208304_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-001120",
-          "title": "AlmaLinux OS 9 must automatically lock graphical user sessions after 15 minutes of inactivity.",
+          "title": "AlmaLinux OS 9 must automatically lock graphical user sessions after 10 minutes of inactivity.",
           "description": "<VulnDiscussion>A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. The operating system session lock event must include an obfuscation of the display screen so as to prevent other users from reading what was previously displayed.\n\nPublicly viewable images can include static or dynamic images, for example, patterns used with screen savers, photographic images, solid colors, a clock, a battery life indicator, or a blank screen, with the additional caveat that none of the images convey sensitive information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cloud Linux AlmaLinux OS 9",
@@ -18784,7 +18748,7 @@
         "title": "SRG-OS-000259-GPOS-00100",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269169r1050051_rule",
+          "+@id": "SV-269169r1208309_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-010250",
@@ -18809,12 +18773,12 @@
             "+@id": "F-73101r1047884_fix"
           },
           "check": {
-            "+@system": "C-73200r1047883_chk",
+            "+@system": "C-73200r1208308_chk",
             "check-content-ref": {
               "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the system commands contained in the following directories are group-owned by \"root\", or a required system account, with the following command:\n\n$ find -L /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ! -group root -exec ls -l {} \\;\n\nIf any system commands are returned and is not group-owned by a required system account, this is a finding."
+            "check-content": "Verify the system commands contained in the following directories are group-owned by \"root\", or a required system account, with the following command:\n\n$ sudo find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -group root -exec ls -l {} \\;\n\nIf any system commands are returned and is not group-owned by a required system account, this is a finding."
           }
         }
       },
@@ -22339,45 +22303,6 @@
         }
       },
       {
-        "+@id": "V-269260",
-        "title": "SRG-OS-000480-GPOS-00227",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-269260r1050142_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "ALMA-09-020370",
-          "title": "AlmaLinux OS 9 SSH daemon must not allow compression or must only allow compression after successful authentication.",
-          "description": "<VulnDiscussion>If compression is allowed in an SSH connection prior to authentication, vulnerabilities in the compression software could result in compromise of the system from an unauthenticated connection, potentially with root privileges.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Cloud Linux AlmaLinux OS 9",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Cloud Linux AlmaLinux OS 9",
-            "dc:identifier": "5664"
-          },
-          "ident": {
-            "+content": "CCI-000366",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure the SSH daemon to not allow compression.\n\nAdd the following line to \"/etc/ssh/sshd_config\", or uncomment the line and set the value to \"delayed\" or preferably \"no\":\n\nCompression no\n\nAlternatively, add the setting to an include file if the line \"Include /etc/ssh/sshd_config.d/*.conf\" is found at the top of the \"/etc/ssh/sshd_config\" file:\n\n$ echo 'Compression no' > /etc/ssh/sshd_config.d/40-compression.conf\n\nRestart the SSH daemon for the settings to take effect:\n\n$ systemctl restart sshd.service",
-            "+@fixref": "F-73192r1048157_fix"
-          },
-          "fix": {
-            "+@id": "F-73192r1048157_fix"
-          },
-          "check": {
-            "+@system": "C-73291r1048156_chk",
-            "check-content-ref": {
-              "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Verify the SSH daemon performs compression after a user successfully authenticates with the following command:\n\n$ sshd -T | grep compression\n\nCompression no\n\nIf the \"Compression\" keyword is set to \"yes\", this is a finding."
-          }
-        }
-      },
-      {
         "+@id": "V-269261",
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
@@ -22538,11 +22463,11 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269265r1050147_rule",
+          "+@id": "SV-269265r1208312_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-020920",
-          "title": "AlmaLinux OS 9 SSH private host key files must have mode 0640 or less permissive.",
+          "title": "AlmaLinux OS 9 SSH private host key files must have mode 0600 or less permissive.",
           "description": "<VulnDiscussion>If an unauthorized user obtains the private SSH host key file, the host could be impersonated.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cloud Linux AlmaLinux OS 9",
@@ -22556,19 +22481,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the mode of SSH private host key files under \"/etc/ssh\" to \"0640\" with the following command:\n\n$ chmod 0640 /etc/ssh/ssh_host*key\n\nRestart the SSH daemon for the changes to take effect:\n\n$ systemctl restart sshd.service",
-            "+@fixref": "F-73197r1048172_fix"
+            "+content": "Configure the mode of SSH private host key files under \"/etc/ssh\" to \"0600\" with the following command:\n\n$ chmod 0600 /etc/ssh/ssh_host*key\n\nRestart the SSH daemon for the changes to take effect:\n\n$ systemctl restart sshd.service",
+            "+@fixref": "F-73197r1208311_fix"
           },
           "fix": {
-            "+@id": "F-73197r1048172_fix"
+            "+@id": "F-73197r1208311_fix"
           },
           "check": {
-            "+@system": "C-73296r1048171_chk",
+            "+@system": "C-73296r1208310_chk",
             "check-content-ref": {
               "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the SSH private host key files have a mode of \"0640\" or less permissive with the following command:\n\n$ stat -c \"%#a %n\" /etc/ssh/ssh_host*key\n\n0640 /etc/ssh/ssh_host_ecdsa_key\n0640 /etc/ssh/ssh_host_rsa_key\n\nIf any private host key file has a mode more permissive than \"0640\", this is a finding."
+            "check-content": "Verify the SSH private host key files have a mode of \"0600\" or less permissive with the following command:\n\n$ stat -c \"%#a %n\" /etc/ssh/ssh_host*key\n\n0600 /etc/ssh/ssh_host_ecdsa_key\n0600 /etc/ssh/ssh_host_rsa_key\n\nIf any private host key file has a mode more permissive than \"0600\", this is a finding."
           }
         }
       },
@@ -26519,12 +26444,12 @@
         "title": "SRG-OS-000375-GPOS-00160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269369r1050615_rule",
+          "+@id": "SV-269369r1208307_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-033460",
           "title": "The pcscd socket on AlmaLinux OS 9 must be active.",
-          "description": "<VulnDiscussion>Using an authentication device, such as a CAC or token that is separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.\n\nMultifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification card and the DOD Common Access Card.\n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., VPN, proxy capability). This does not apply to authentication for the purpose of configuring the device itself (management).\n\nThis requires further clarification from NIST.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The information system ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.\n\nThe daemon program for pcsc-lite and the MuscleCard framework is pcscd. It is a resource manager that coordinates communications with smart card readers and smart cards and cryptographic tokens that are connected to the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cloud Linux AlmaLinux OS 9",
             "dc:publisher": "DISA",
@@ -26537,19 +26462,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "To enable pcscd run the following command:\n\n$ systemctl enable --now pcscd.socket\n$ systemctl enable --now pcscd.service\n\nThe pcscd service will be enabled when software tries to access the socket.",
-            "+@fixref": "F-73301r1048484_fix"
+            "+content": "To enable the pcscd socket, run the following command:\n\n$ sudo systemctl enable --now pcscd.socket",
+            "+@fixref": "F-73301r1208306_fix"
           },
           "fix": {
-            "+@id": "F-73301r1048484_fix"
+            "+@id": "F-73301r1208306_fix"
           },
           "check": {
-            "+@system": "C-73400r1048483_chk",
+            "+@system": "C-73400r1208305_chk",
             "check-content-ref": {
               "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the \"pcscd\" socket is active with the following command:\n\n$ systemctl status pcscd.socket\n\npcscd.socket - PC/SC Smart Card Daemon Activation Socket\n     Loaded: loaded (/usr/lib/systemd/system/pcscd.socket; enabled; preset: enabled)\n     Active: active (listening) since Thu 2024-04-11 16:03:24 BST; 2 weeks 3 days ago\n   Triggers: pcscd.service\n     Listen: /run/pcscd/pcscd.comm (Stream)\n     CGroup: /system.slice/pcscd.socket\n\nIf the pcscd.socket is not active, this is a finding."
+            "check-content": "Verify that the \"pcscd\" socket is active with the following command:\n\n$ systemctl is-active pcscd.socket\n\nactive\n\nIf the pcscd socket is not active, this is a finding."
           }
         }
       },
@@ -28473,7 +28398,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269422r1117266_rule",
+          "+@id": "SV-269422r1198253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-040720",
@@ -28512,7 +28437,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269423r1117266_rule",
+          "+@id": "SV-269423r1198253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-040830",
@@ -28551,7 +28476,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269424r1117266_rule",
+          "+@id": "SV-269424r1198253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-040940",
@@ -28590,7 +28515,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269425r1117266_rule",
+          "+@id": "SV-269425r1198253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-041050",
@@ -28635,7 +28560,7 @@
         "title": "SRG-OS-000132-GPOS-00067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269426r1117266_rule",
+          "+@id": "SV-269426r1198253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-041160",
@@ -29047,11 +28972,11 @@
         "title": "SRG-OS-000423-GPOS-00187",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269436r1050319_rule",
+          "+@id": "SV-269436r1208315_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ALMA-09-042700",
-          "title": "All AlmaLinux OS 9 networked systems must have the OpenSSH client installed.",
+          "title": "All AlmaLinux OS 9 networked systems must have the OpenSSH client package installed.",
           "description": "<VulnDiscussion>Without protection of the transmitted information, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read or altered. \n\nThis requirement applies to both internal and external networks and all types of information system components from which information can be transmitted (e.g., servers, mobile devices, notebook computers, printers, copiers, scanners, and facsimile machines). Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. \n\nProtecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cloud Linux AlmaLinux OS 9",
@@ -29065,19 +28990,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "The openssh client package can be installed with the following command:\n \n$ dnf install openssh",
-            "+@fixref": "F-73368r1048685_fix"
+            "+content": "The openssh client package can be installed with the following command:\n \n$ dnf install openssh-clients",
+            "+@fixref": "F-73368r1208314_fix"
           },
           "fix": {
-            "+@id": "F-73368r1048685_fix"
+            "+@id": "F-73368r1208314_fix"
           },
           "check": {
-            "+@system": "C-73467r1049709_chk",
+            "+@system": "C-73467r1208313_chk",
             "check-content-ref": {
               "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that AlmaLinux OS 9 has the openssh client package installed with the following command:\n\n$ dnf list --installed openssh\n\nInstalled Packages\nopenssh.x86_64     8.7p1-28.el9       @anaconda\n\nIf the \"openssh\" client package is not installed, this is a finding."
+            "check-content": "Verify that AlmaLinux OS 9 has the openssh client package installed with the following command:\n\n$ dnf list --installed openssh-clients\n\nInstalled Packages\nopenssh=clients.x86_64     8.7p1-28.el9       @anaconda\n\nIf the openssh client package is not installed, this is a finding."
           }
         }
       },
@@ -29654,7 +29579,7 @@
         "title": "SRG-OS-000433-GPOS-00193",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-269452r1050335_rule",
+          "+@id": "SV-269452r1208318_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ALMA-09-044900",
@@ -29672,19 +29597,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the system to enable ASLR with the following command:\n\n$ echo 'kernel.randomize_va_space = 2' > /etc/sysctl.d/60-aslr.conf\n\nReload settings from all system configuration files with the following command:\n\n$ sysctl --system",
-            "+@fixref": "F-73384r1048733_fix"
+            "+content": "Configure the system to enable ASLR with the following command:\n\n$ echo 'kernel.randomize_va_space = 2' | sudo tee /etc/sysctl.d/60-aslr.conf\n\nReload settings from all system configuration files with the following command:\n\n$ sudo sysctl --system",
+            "+@fixref": "F-73384r1208317_fix"
           },
           "fix": {
-            "+@id": "F-73384r1048733_fix"
+            "+@id": "F-73384r1208317_fix"
           },
           "check": {
-            "+@system": "C-73483r1049732_chk",
+            "+@system": "C-73483r1208316_chk",
             "check-content-ref": {
               "+@href": "Cloud_Linux_AlmaLinux_OS_9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify AlmaLinux OS 9 is implementing ASLR with the following command:\n\n$ sysctl kernel.randomize_va_space\n\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", or is missing, this is a finding."
+            "check-content": "Verify AlmaLinux OS 9 is implementing ASLR with the following command:\n\n$ sysctl kernel.randomize_va_space\n\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", this is a finding.\n\nCheck that the configuration files are present to enable this kernel parameter:\n\n$ /usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' |  grep -F kernel.randomize_va_space | tail -1\n\nkernel.randomize_va_space = 2\n\nIf \"kernel.randomize_va_space\" is not set to \"2\", or is missing, this is a finding."
           }
         }
       },

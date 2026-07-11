@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-10"
+      "+@date": "2026-06-03"
     },
     "title": "Juniper EX Series Switches Layer 2 Switch Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -1060,7 +1060,7 @@
         "title": "SRG-NET-000168-L2S-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253950r843883_rule",
+          "+@id": "SV-253950r1188386_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000030",
@@ -1378,12 +1378,12 @@
         "title": "SRG-NET-000362-L2S-000025",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253959r1168040_rule",
+          "+@id": "SV-253959r1212011_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000120",
-          "title": "The Juniper EX switch must be configured to enable DHCP snooping for all user VLANs to validate DHCP messages from untrusted sources.",
-          "description": "<VulnDiscussion>In an enterprise network, devices under administrative control are trusted sources. These devices include the switches, routers, and servers in the network. Host interfaces and unknown DHCP servers are considered untrusted sources. An unknown DHCP server on the network on an untrusted interface is called a spurious DHCP server, any device (PC, Wireless Access Point) that is loaded with DHCP server enabled. The DHCP snooping feature determines whether traffic sources are trusted or untrusted. The potential exists for a spurious DHCP server to respond to DHCPDISCOVER messages before the real server has time to respond. DHCP snooping allows switches on the network to trust the interface a DHCP server is connected to and not trust the other interfaces.\n\nThe DHCP snooping feature validates DHCP messages received from untrusted sources and filters out invalid messages as well as rate-limits DHCP traffic from trusted and untrusted sources. The DHCP snooping feature builds and maintains a binding database, which contains information about untrusted hosts with leased IP addresses, and it utilizes the database to validate subsequent requests from untrusted hosts. Other security features, such as IP Source Guard and Dynamic Address Resolution Protocol (ARP) Inspection (DAI), also use information stored in the DHCP snooping binding database. Therefore, the DHCP snooping feature must be enabled on all user-facing or untrusted VLANs.\n\nThis requirement is applicable to VLANs with active access interfaces assigned, but not to switches that only trunk the VLANs between switches. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to enable DHCP snooping for all user VLANs with active access interfaces to validate DHCP messages from untrusted sources.",
+          "description": "<VulnDiscussion>In an enterprise network, devices under administrative control are trusted sources. These devices include the switches, routers, and servers in the network. Host (i.e., access) interfaces and unknown DHCP servers are considered untrusted sources. An unknown DHCP server on the network on an untrusted interface is called a spurious DHCP server, any device (PC, Wireless Access Point) that is loaded with DHCP server enabled. The DHCP snooping feature determines whether traffic sources are trusted or untrusted. The potential exists for a spurious DHCP server to respond to DHCPDISCOVER messages before the real server has time to respond. DHCP snooping allows switches on the network to trust the interface a DHCP server is connected to and not trust the other interfaces.\n\nThe DHCP snooping feature validates DHCP messages received from untrusted sources, filters out invalid messages, and rate-limits DHCP traffic from trusted and untrusted sources. The DHCP snooping feature builds and maintains a binding database, which contains information about untrusted hosts with leased IP addresses, and it uses the database to validate subsequent requests from untrusted hosts. Other security features, such as IP Source Guard and Dynamic Address Resolution Protocol (ARP) Inspection (DAI), also use information stored in the DHCP snooping binding database. Hence, it is imperative that the DHCP snooping feature is enabled on all user-facing or untrusted VLANs with active access interfaces.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "dc:publisher": "DISA",
@@ -1396,19 +1396,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to have DHCP snooping for all user-facing or untrusted VLANs to validate DHCP messages from untrusted sources. This requirement is applicable to VLANs with active access interfaces assigned, but not to switches that only trunk the VLANs between switches. \n\nset vlans <untrusted VLAN name> vlan-id <untrusted VLAN ID>\nset vlans <untrusted VLAN name> forwarding-options dhcp-security",
-            "+@fixref": "F-57362r1168039_fix"
+            "+content": "Configure the switch with DHCP snooping for all user-facing or untrusted VLANs with active access interfaces to validate DHCP messages from untrusted sources.\n\n1. Enter configuration mode.\n2. Configure user-facing or untrusted VLANs with active access interfaces with DHCP snooping.\n3. Commit the configuration.\n\nuser@host> configure\nEntering configuration mode\n\nuser@host# set vlans <untrusted VLAN name> vlan-id <untrusted VLAN ID>\n\nuser@host# set vlans <untrusted VLAN name> forwarding-options dhcp-security\n\nuser@host# commit\ncommit complete",
+            "+@fixref": "F-57362r1212010_fix"
           },
           "fix": {
-            "+@id": "F-57362r1168039_fix"
+            "+@id": "F-57362r1212010_fix"
           },
           "check": {
-            "+@system": "C-57411r1168038_chk",
+            "+@system": "C-57411r1212009_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration and verify DHCP snooping is enabled on all user-facing or untrusted VLANs. \n\nDHCP snooping is enabled if dhcp-security is configured for any VLAN, and is automatically enabled when any other VLAN port security feature is configured (e.g., IP Source Guard or Dynamic ARP Inspection). \n\nDevices like printers, servers, and VoIP phones are under administrative control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in non-user-facing VLANs.\n\nVerify DHCP snooping on user-facing or untrusted VLANs.\n\n[edit vlans]\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security;\n    }\n}\n\nIf the switch does not have DHCP snooping enabled for all user-facing or untrusted VLANs to validate DHCP messages from untrusted sources, this is a finding."
+            "check-content": "Review the switch configuration and verify that DHCP snooping is enabled on all user-facing or untrusted VLANs with active access interfaces. \n\nDHCP snooping is enabled if dhcp-security is configured for any VLAN, and is automatically enabled whenever any other VLAN port security feature is configured (e.g., IP Source Guard or Dynamic ARP Inspection). \n\nDevices such as printers, servers, and VoIP phones are under administrative control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in nonuser-facing VLANs. Trunked interfaces are trusted sources.\n\nVerify DHCP snooping on user-facing or untrusted VLANs is configured with active access interfaces.\n\n[edit vlans]\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security;\n    }\n}\n\nThis check is not applicable to switches configured with user-facing or untrusted VLANs merely for inclusion in trunks (e.g., core or distribution switch without access interfaces assigned to user-facing or untrusted VLANs).\n\nIf the switch does not have DHCP snooping enabled for all user-facing or untrusted VLANs with active access interfaces to validate DHCP messages from untrusted sources, this is a finding."
           }
         }
       },
@@ -1417,12 +1417,12 @@
         "title": "SRG-NET-000362-L2S-000026",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253960r1168042_rule",
+          "+@id": "SV-253960r1212014_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000130",
-          "title": "The Juniper EX switch must be configured to enable IP Source Guard on all user-facing or untrusted access VLANs.",
-          "description": "<VulnDiscussion>IP Source Guard provides source IP address filtering on an untrusted layer 2 interface to prevent a malicious host from impersonating a legitimate host by assuming the legitimate host's IP address. The feature uses dynamic DHCP snooping and static IP source binding to match IP addresses to hosts on untrusted layer 2 access interfaces. Initially, all IP traffic on the protected interface is blocked except for DHCP packets. After a client receives an IP address from the DHCP server, or after static IP source binding is configured by the administrator, all traffic with that IP source address is permitted from that client. Traffic from other hosts is denied. This filtering limits a host's ability to attack the network by claiming a neighbor host's IP address.\n\nThis requirement is applicable to VLANs with active access interfaces assigned but not to switches that only trunk the VLANs between switches. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to enable IP Source Guard on all user-facing or untrusted access VLANs with active access interfaces.",
+          "description": "<VulnDiscussion>IP Source Guard provides source IP address filtering on an untrusted layer 2 interface to prevent a malicious host from impersonating a legitimate host by assuming the legitimate host's IP address. The feature uses dynamic DHCP snooping and static IP source binding to match IP addresses to hosts on untrusted layer 2 access interfaces. Initially, all IP traffic on the protected access interface is blocked except for DHCP packets. After a client receives an IP address from the DHCP server, or after static IP source binding is configured by the administrator, all traffic with that IP source address is permitted from that client. Traffic from other hosts is denied. This filtering limits a host's ability to attack the network by claiming a neighbor host's IP address.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "dc:publisher": "DISA",
@@ -1435,19 +1435,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to have IP Source Guard enabled on all user-facing or untrusted VLANs. This requirement is applicable to VLANs with active access interfaces assigned but not to switches that only trunk the VLANs between switches. \n\nset vlans <untrusted VLAN name> vlan-id <VLAN ID>\nset vlans <untrusted VLAN name> forwarding-options dhcp-security ip-source-guard",
-            "+@fixref": "F-57363r1168041_fix"
+            "+content": "Configure the switch to have IP Source Guard enabled on all user-facing or untrusted VLANs with active access interfaces.\n\n1. Enter configuration mode.\n2. Configure user-facing or untrusted VLANs with active access interfaces with IP source guard.\n3. Commit the configuration.\n\nuser@host> configure\nEntering configuration mode\n\nuser@host# set vlans <untrusted VLAN name> vlan-id <untrusted VLAN ID>\n\nuser@host# set vlans <untrusted VLAN name> forwarding-options dhcp-security ip-source-guard\n\nuser@host# commit\ncommit complete",
+            "+@fixref": "F-57363r1212013_fix"
           },
           "fix": {
-            "+@id": "F-57363r1168041_fix"
+            "+@id": "F-57363r1212013_fix"
           },
           "check": {
-            "+@system": "C-57412r843911_chk",
+            "+@system": "C-57412r1212012_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that IP Source Guard is enabled on all user-facing or untrusted VLANs. Configuring IP Source Guard automatically enables DHCP snooping.\n\nDevices like printers, servers, and VoIP phones are under enterprise control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in non-user-facing VLANs.\n\nVerify IP Source Guard on user-facing or untrusted VLANs.\n[edit vlans]\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security {\n            ip-source-guard;\n        }\n    }\n}\nNote: IP Source Guard depends upon DHCP snooping or static MAC address bindings.\n\nIf the switch does not have IP Source Guard enabled on all user-facing or untrusted VLANs, this is a finding."
+            "check-content": "Review the switch configuration to verify that IP Source Guard is enabled on all user-facing or untrusted VLANs with active access interfaces. Configuring IP Source Guard automatically enables DHCP snooping.\n\nDevices such as printers, servers, and VoIP phones are under enterprise control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in nonuser-facing VLANs.\n\nVerify IP Source Guard on user-facing or untrusted VLANs with active access interfaces.\n\nuser@host> show configuration vlans\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security {\n            ip-source-guard;\n        }\n    }\n}\nNote: IP Source Guard depends on DHCP snooping or static MAC address bindings.\n\nThis check is not applicable to switches configured with user-facing or untrusted VLANs merely for inclusion in trunks (e.g., core or distribution switch without access interfaces assigned to user-facing or untrusted VLANs).\n\nIf the switch does not have IP Source Guard enabled on all user-facing or untrusted VLANs with active access interfaces, this is a finding."
           }
         }
       },
@@ -1456,12 +1456,12 @@
         "title": "SRG-NET-000362-L2S-000027",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253961r1168045_rule",
+          "+@id": "SV-253961r1212017_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000140",
-          "title": "The Juniper EX switch must be configured to enable Dynamic Address Resolution Protocol (ARP) Inspection (DAI) on all user VLANs.",
-          "description": "<VulnDiscussion>DAI intercepts ARP requests and verifies that each of these packets has a valid IP-to-MAC address binding before updating the local ARP cache and before forwarding the packet to the appropriate destination. Invalid ARP packets are dropped and logged. DAI determines the validity of an ARP packet based on valid IP-to-MAC address bindings stored in the DHCP snooping binding database. If the ARP packet is received on a trusted interface, the switch forwards the packet without any checks. On untrusted interfaces, the switch forwards the packet only if it is valid.\n\nThis requirement is applicable to VLANs with active access interfaces assigned but not to switches that only trunk the VLANs between switches. </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Juniper EX switch must be configured to enable Dynamic Address Resolution Protocol (ARP) Inspection (DAI) on all user VLANs with active access interfaces.",
+          "description": "<VulnDiscussion>DAI intercepts ARP requests and verifies that each of these packets has a valid IP-to-MAC address binding before updating the local ARP cache and before forwarding the packet to the appropriate destination. Invalid ARP packets are dropped and logged. DAI determines the validity of an ARP packet based on valid IP-to-MAC address bindings stored in the DHCP snooping binding database. If the ARP packet is received on a trusted interface (e.g., access interface with a valid binding or a trunked interface), the switch forwards the packet without any checks. On untrusted interfaces, the switch forwards the packet only if it is valid.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Juniper EX Series Layer 2 Switch",
             "dc:publisher": "DISA",
@@ -1474,19 +1474,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the switch to have ARP DAI enabled on all user VLANs. This requirement is applicable to VLANs with active access interfaces assigned but not to switches that only trunk the VLANs between switches. \n\nset vlans <untrusted VLAN name> vlan-id <VLAN ID>\nset vlans <untrusted VLAN name> forwarding-options dhcp-security arp-inspection",
-            "+@fixref": "F-57364r1168044_fix"
+            "+content": "Configure the switch to have DAI enabled on all user VLANs with active access interfaces.\n\n1. Enter configuration mode.\n2. Configure user-facing or untrusted VLANs with active access interfaces with DAI.\n3. Commit the configuration.\n\nuser@host> configure\nEntering configuration mode\n\nuser@host# set vlans <untrusted VLAN name> vlan-id <untrusted VLAN ID>\n\nuser@host# set vlans <untrusted VLAN name> forwarding-options dhcp-security arp-inspection\n\nuser@host# commit\ncommit complete",
+            "+@fixref": "F-57364r1212016_fix"
           },
           "fix": {
-            "+@id": "F-57364r1168044_fix"
+            "+@id": "F-57364r1212016_fix"
           },
           "check": {
-            "+@system": "C-57413r1168043_chk",
+            "+@system": "C-57413r1212015_chk",
             "check-content-ref": {
               "+@href": "Juniper_EX_Series_Layer_2_Switch_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that Dynamic ARP DAI feature is enabled on all user VLANs. Configuring DAI automatically enables DHCP snooping.\n\nDevices like printers, servers, and VoIP phones are under enterprise control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in non-user-facing VLANs.\n\nVerify DAI on user-facing or untrusted VLANs.\n[edit vlans]\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security {\n            arp-inspection;\n        }\n    }\n}\nNote: DAI depends upon DHCP snooping or static MAC address bindings.\n\nIf DAI is not enabled on all user VLANs, this is a finding."
+            "check-content": "Review the switch configuration to verify that DAI is enabled on all user VLANs with active access interfaces. Configuring DAI automatically enables DHCP snooping.\n\nDevices such as printers, servers, and VoIP phones are under enterprise control and connected to controlled access interfaces (802.1x, Static MAC Bypass, or MAC RADIUS), making them trusted sources in nonuser-facing VLANs.\n\nVerify DAI on user-facing or untrusted VLANs with active access interfaces.\n\nuser@host> show configuration vlans\n<untrusted VLAN name> {\n    vlan-id <VLAN ID>;\n    forwarding-options {\n        dhcp-security {\n            arp-inspection;\n        }\n    }\n}\nNote: DAI depends on DHCP snooping or static MAC address bindings.\n\nThis check is not applicable to switches configured with user-facing or untrusted VLANs merely for inclusion in trunks (e.g., core or distribution switch without access interfaces assigned to user-facing or untrusted VLANs).\n\nIf DAI is not enabled on all user VLANs with active access interfaces, this is a finding."
           }
         }
       },
@@ -1612,7 +1612,7 @@
         "title": "SRG-NET-000512-L2S-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253965r843928_rule",
+          "+@id": "SV-253965r1188389_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JUEX-L2-000180",

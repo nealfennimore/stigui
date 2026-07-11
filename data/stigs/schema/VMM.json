@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-09-10"
+      "+@date": "2026-06-29"
     },
     "title": "Virtual Machine Manager Security Requirements Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 28 Oct 2025",
+        "+content": "Release: 4 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -9108,9 +9108,9 @@
         "title": "SRG-OS-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-207377r987796_rule",
+          "+@id": "SV-207377r1207724_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "SRG-OS-000074-VMM-000410",
           "title": "The VMM must transmit only encrypted representations of passwords.",
           "description": "<VulnDiscussion>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -14355,12 +14355,12 @@
         "title": "SRG-OS-000404",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-207494r958870_rule",
+          "+@id": "SV-207494r1207725_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "SRG-OS-000404-VMM-001650",
           "title": "The VMM must implement cryptographic mechanisms to prevent unauthorized modification of all information at rest on all VMM components.",
-          "description": "<VulnDiscussion>VMMs handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>VMMs handling data requiring \"data-at-rest\" protections must employ cryptographic mechanisms to prevent unauthorized modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Virtual Machine Manager",
             "dc:publisher": "DISA",
@@ -16587,7 +16587,7 @@
         "title": "SRG-OS-000313",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279013r1138007_rule",
+          "+@id": "SV-279013r1227261_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-OS-000313-VMM-001145",
@@ -16600,10 +16600,16 @@
             "dc:subject": "Virtual Machine Manager",
             "dc:identifier": "2924"
           },
-          "ident": {
-            "+content": "CCI-002169",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-002169",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the VMM to enforce an RBAC policy over defined subjects and objects.",
             "+@fixref": "F-83466r1138006_fix"
@@ -16665,7 +16671,7 @@
         "title": "SRG-OS-000835",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279015r1138016_rule",
+          "+@id": "SV-279015r1227262_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-OS-000835-VMM-000280",
@@ -16678,10 +16684,16 @@
             "dc:subject": "Virtual Machine Manager",
             "dc:identifier": "2924"
           },
-          "ident": {
-            "+content": "CCI-003650",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003650",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000366",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Configure the VMM to enforce attribute-based access control policy over defined subjects and objects based upon organization-defined attributes to assume access permissions.",
             "+@fixref": "F-83468r1138015_fix"

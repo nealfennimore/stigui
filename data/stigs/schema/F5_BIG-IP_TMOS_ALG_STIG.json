@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-06-09"
+      "+@date": "2026-06-03"
     },
     "title": "F5 BIG-IP TMOS ALG Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Jul 2025",
+        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1450,12 +1450,12 @@
         "title": "SRG-NET-000053-ALG-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266137r1024833_rule",
+          "+@id": "SV-266137r1212026_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-AP-300001",
-          "title": "The F5 BIG-IP appliance providing user access control intermediary services must limit the number of concurrent sessions to one or an organization-defined number for each access profile.",
-          "description": "<VulnDiscussion>The \"Max In Progress Sessions Per Client IP\" setting in an APM Access Profile is a security configuration that limits the number of simultaneous sessions that can be initiated from a single IP address. This is particularly helpful in preventing a session flood, where a hacker might attempt to overwhelm the system by initiating many sessions from a single source. By capping the number of sessions per IP, this setting can help maintain the system's stability and integrity while also providing a layer of protection against such potential attacks.\n\nFalse positives may result from this setting in networks where users are behind a shared proxy. Sites must conduct operational testing to determine if there are adverse operational impacts. View Log reports to identify recurring IP sources within the user community.\n\nMax In Progress Sessions per Client IP represents the maximum number of sessions that can be in progress for a client IP address. When setting this value, take into account whether users will come from a NAT-ed or proxied client address and, if so, increase the value accordingly.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The F5 BIG-IP appliance providing user access control intermediary services must limit the \"Max Sessions Per User\" to one or an organization-defined number for each access profile.",
+          "description": "<VulnDiscussion>The \"Max Sessions Per User\" setting is crucial for maintaining session limits per individual user, preventing issues such as VDI applications disconnecting multiple users and becoming unusable for concurrent access. The default value for \"Max Sessions Per User\" is \"0\" (unlimited), so this setting must be set to implement a limit.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target F5 BIG-IP TMOS ALG",
             "dc:publisher": "DISA",
@@ -1716,7 +1716,7 @@
         "title": "SRG-NET-000015-ALG-000016",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266143r1024370_rule",
+          "+@id": "SV-266143r1137544_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "F5BI-AP-300012",
@@ -1755,7 +1755,7 @@
         "title": "SRG-NET-000018-ALG-000017",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266144r1024371_rule",
+          "+@id": "SV-266144r1137545_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "F5BI-AP-300013",
@@ -1800,7 +1800,7 @@
         "title": "SRG-NET-000041-ALG-000022",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266145r1024372_rule",
+          "+@id": "SV-266145r1173942_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-AP-300015",
@@ -1995,7 +1995,7 @@
         "title": "SRG-NET-000512-ALG-000065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266148r1024375_rule",
+          "+@id": "SV-266148r1138544_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-AP-300042",
@@ -2821,7 +2821,7 @@
         "title": "SRG-NET-000510-ALG-000111",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266170r1029558_rule",
+          "+@id": "SV-266170r1137561_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "F5BI-AP-300159",

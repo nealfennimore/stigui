@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-26"
+      "+@date": "2026-05-23"
     },
     "title": "Microsoft IIS 10.0 Site Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 15 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 16 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -2196,12 +2196,12 @@
         "title": "SRG-APP-000142-WSR-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218748r1043177_rule",
+          "+@id": "SV-218748r1210384_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000219",
           "title": "Each IIS 10.0 website must be assigned a default host header.",
-          "description": "<VulnDiscussion>The web server must be configured to listen on a specified IP address and port. Without specifying an IP address and port for the web server to use, the web server will listen on all IP addresses available to the hosting server. If the web server has multiple IP addresses, i.e., a management IP address, the web server will also accept connections on the management IP address.\n\nAccessing the hosted application through an IP address normally used for non-application functions opens the possibility of user access to resources, utilities, files, ports, and protocols that are protected on the desired application IP address.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The web server must be configured to listen on a specified IP address and port. Without specifying an IP address and port for the web server to use, the web server will listen on all IP addresses available to the hosting server. If the web server has multiple IP addresses, i.e., a management IP address, the web server will also accept connections on the management IP address.\n\nAccessing the hosted application through an IP address normally used for nonapplication functions opens the possibility of user access to resources, utilities, files, ports, and protocols that are protected on the desired application IP address.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft IIS 10.0 Site",
             "dc:publisher": "DISA",
@@ -2231,12 +2231,12 @@
             "+@id": "F-20219r802888_fix"
           },
           "check": {
-            "+@system": "C-20221r802887_chk",
+            "+@system": "C-20221r1210383_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the server being reviewed is hosting SharePoint, this is Not Applicable.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\nRight-click on the site name under review.\nSelect \"Edit Bindings\".\n\nVerify there are hostname entries and unique IP addresses assigned to port 80 for HTTP and port 443 for HTTPS. Other approved and documented ports may be used.\n\nIf both hostname entries and unique IP addresses are not configured to port 80 for HTTP and port 443 for HTTPS (or other approved and documented port), this is a finding.\n\nNote: If certificate handling is performed at the Proxy/Load Balancer, this is not a finding.\n\nNote: If HTTP/Port 80 is not being used, and is not configured as above, this is not a finding.\n\nNote: If this IIS 10.0 installation is supporting Microsoft Exchange, and not otherwise hosting any content, this requirement is Not Applicable."
+            "check-content": "Note: If any of the following is true, this requirement is Not Applicable:\n- The server being reviewed is hosting SharePoint.\n- The server being reviewed is hosting WSUS.\n- This IIS 10.0 installation is supporting Microsoft Exchange and not otherwise hosting any content.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nRight-click on the site name under review.\n\nSelect \"Edit Bindings\".\n\nVerify there are hostname entries and unique IP addresses assigned to port 80 for HTTP and port 443 for HTTPS. Other approved and documented ports may be used.\n\nIf both hostname entries and unique IP addresses are not configured to port 80 for HTTP and port 443 for HTTPS (or other approved and documented port), this is a finding.\n\nNote: If certificate handling is performed at the Proxy/Load Balancer, this is not a finding.\n\nNote: If HTTP/Port 80 is not being used, and is not configured as above, this is not a finding."
           }
         }
       },
@@ -2245,12 +2245,12 @@
         "title": "SRG-APP-000172-WSR-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218749r1111805_rule",
+          "+@id": "SV-218749r1210386_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000220",
           "title": "A private IIS 10.0 website authentication mechanism must use client certificates to transmit session identifier to assure integrity.",
-          "description": "<VulnDiscussion>A DoD private website must use PKI as an authentication mechanism for web users. Information systems residing behind web servers requiring authorization based on individual identity must use the identity provided by certificate-based authentication to support access control decisions. Not using client certificates allows an attacker unauthenticated access to private websites.\n\nSatisfies: SRG-APP-000172-WSR-000104, SRG-APP-000224-WSR-000135, SRG-APP-000427-WSR-000186</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A DOD private website must use PKI as an authentication mechanism for web users. Information systems residing behind web servers requiring authorization based on individual identity must use the identity provided by certificate-based authentication to support access control decisions. Not using client certificates allows an attacker unauthenticated access to private websites.\n\nSatisfies: SRG-APP-000172-WSR-000104, SRG-APP-000224-WSR-000135, SRG-APP-000427-WSR-000186</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft IIS 10.0 Site",
             "dc:publisher": "DISA",
@@ -2288,12 +2288,12 @@
             "+@id": "F-20220r1111804_fix"
           },
           "check": {
-            "+@system": "C-20222r1111803_chk",
+            "+@system": "C-20222r1210385_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the server being reviewed is a public IIS 10.0 web server, this is not applicable.\nNote: If the server being reviewed is hosting SharePoint, this is not applicable.\nNote: If the server being reviewed is hosting WSUS, this is not applicable.\nNote: If certificate handling is performed at the Proxy/Load Balancer, this is not applicable.\nNote: If the server being reviewed is hosting Simple Certificate Enrollment Services (SCEP), this is not applicable.\nNote: If the server being reviewed is hosting Network Device Enrollment Services (NDES), this is not applicable.\nNote: If the server is providing OCSP, and not otherwise hosting any content, this requirement is not applicable.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nDouble-click the \"SSL Settings\" icon.\n\nVerify the \"Clients Certificate Required\" check box is selected.\n\nIf the \"Clients Certificate Required\" check box is not selected, this is a finding."
+            "check-content": "Note: If any of the following is true, this requirement is Not Applicable:\n- Authentication is offloaded to an external enterprise authentication mechanism that is performing certificate handling.\n- The server being reviewed is a public IIS 10.0 web server.\n- The server being reviewed is hosting SharePoint.\n- The server being reviewed is hosting WSUS.\n- Certificate handling is performed at the Proxy/Load Balancer.\n- The server being reviewed is hosting Simple Certificate Enrollment Services (SCEP).\n- The server being reviewed is hosting Network Device Enrollment Services (NDES).\n- The server is providing OCSP and not otherwise hosting any content.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nDouble-click the \"SSL Settings\" icon.\n\nVerify the \"Clients Certificate Required\" check box is selected.\n\nIf the \"Clients Certificate Required\" check box is not selected, this is a finding."
           }
         }
       },
@@ -2596,7 +2596,7 @@
         "title": "SRG-APP-000246-WSR-000149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-218756r961152_rule",
+          "+@id": "SV-218756r1210388_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IIST-SI-000228",
@@ -2631,12 +2631,12 @@
             "+@id": "F-20227r311167_fix"
           },
           "check": {
-            "+@system": "C-20229r311166_chk",
+            "+@system": "C-20229r1210387_chk",
             "check-content-ref": {
               "+@href": "Microsoft_IIS_10.0_Site_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Follow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nClick the site name.\n\nDouble-click the \"Request Filtering\" icon.\n\nClick \"Edit Feature Settings\" in the \"Actions\" pane.\n\nIf the \"Allow high-bit characters\" check box is checked, this is a finding.\n\nNote: If this IIS 10.0 installation is supporting Microsoft Exchange, and not otherwise hosting any content, this requirement is Not Applicable."
+            "check-content": "Note: If either of the following is true, this requirement is Not Applicable:\n- The server being reviewed is hosting SharePoint.\n- This IIS 10.0 installation is supporting Microsoft Exchange and not otherwise hosting any content.\n\nFollow the procedures below for each site hosted on the IIS 10.0 web server:\n\nOpen the IIS 10.0 Manager.\n\nClick the site name.\n\nDouble-click the \"Request Filtering\" icon.\n\nClick \"Edit Feature Settings\" in the \"Actions\" pane.\n\nIf the \"Allow high-bit characters\" check box is checked, this is a finding."
           }
         }
       },

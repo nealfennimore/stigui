@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-04"
+      "+@date": "2026-05-23"
     },
     "title": "HYCU Protege Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -2998,7 +2998,7 @@
         "title": "SRG-APP-000516-NDM-000334",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268244r1038775_rule",
+          "+@id": "SV-268244r1211034_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "HYCU-ND-000280",
@@ -3029,12 +3029,12 @@
             "+@id": "F-72168r1038774_fix"
           },
           "check": {
-            "+@system": "C-72265r1038773_chk",
+            "+@system": "C-72265r1211033_chk",
             "check-content-ref": {
               "+@href": "HYCU_Protege_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Log in to the HYCU VM console. \n\nReview the /etc/audit/auditd.conf file and verify the settings are in accordance with a locally developed list of auditable events.\n\nIf it is not configured in accordance with organizational policies, this is a finding.\n\nCheck for the value of the \"max_log_file_action\" option in \"/etc/audit/auditd.conf\" with the following command:\nsudo grep max_log_file_action /etc/audit/auditd.conf\n\nIf the \"max_log_file_action\" value is not set to \"ROTATION\", this is a finding."
+            "check-content": "Log in to the HYCU VM console. \n\nReview the \"/etc/audit/auditd.conf\" file and verify the settings are in accordance with a locally developed list of auditable events.\n\nIf it is not configured in accordance with organizational policies, this is a finding.\n\nCheck for the value of the \"max_log_file_action\" option in \"/etc/audit/auditd.conf\" with the following command:\nsudo grep max_log_file_action /etc/audit/auditd.conf\n\nIf the \"max_log_file_action\" value is not set to \"ROTATE\", this is a finding."
           }
         }
       },
@@ -3561,7 +3561,7 @@
         "title": "SRG-APP-000516-NDM-000351",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-268257r1038710_rule",
+          "+@id": "SV-268257r1207744_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "HYCU-ND-000490",

@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-05-08"
+      "+@date": "2026-05-27"
     },
     "title": "Microsoft Intune MDM Service Desktop & Mobile Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 22 Apr 2025",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -60,6 +60,10 @@
           {
             "+@idref": "V-273868",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
+            "+@selected": "true"
           }
         ]
       },
@@ -74,6 +78,10 @@
           },
           {
             "+@idref": "V-273868",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
             "+@selected": "true"
           }
         ]
@@ -90,6 +98,10 @@
           {
             "+@idref": "V-273868",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
+            "+@selected": "true"
           }
         ]
       },
@@ -104,6 +116,10 @@
           },
           {
             "+@idref": "V-273868",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
             "+@selected": "true"
           }
         ]
@@ -120,6 +136,10 @@
           {
             "+@idref": "V-273868",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
+            "+@selected": "true"
           }
         ]
       },
@@ -134,6 +154,10 @@
           },
           {
             "+@idref": "V-273868",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
             "+@selected": "true"
           }
         ]
@@ -150,6 +174,10 @@
           {
             "+@idref": "V-273868",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
+            "+@selected": "true"
           }
         ]
       },
@@ -164,6 +192,10 @@
           },
           {
             "+@idref": "V-273868",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
             "+@selected": "true"
           }
         ]
@@ -180,6 +212,10 @@
           {
             "+@idref": "V-273868",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285327",
+            "+@selected": "true"
           }
         ]
       }
@@ -190,7 +226,7 @@
         "title": "SRG-APP-000003-UEM-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-273867r1101448_rule",
+          "+@id": "SV-273867r1207980_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MSIN-25-000030",
@@ -235,7 +271,7 @@
         "title": "SRG-APP-000125-UEM-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-273868r1101588_rule",
+          "+@id": "SV-273868r1208024_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MSIN-25-000370",
@@ -276,6 +312,45 @@
               "+@name": "M"
             },
             "check-content": "Verify the site has configured Intune to off-load Intune logs to a third-party log management server or to an Azure log storage and monitoring service like Azure monitor. Verification procedures are determined by the method used at the site. Ask the site Intune Administrator how logs are managed by the site and demonstrate that Intune logs are being off-loaded.\n\nIf site is off-loading Intune logs to the Azure monitor, do the following (refer to https://learn.microsoft.com/en-us/mem/intune-service/fundamentals/review-logs-using-azure-monitor):\n\n1. Sign in to the Microsoft Intune admin center.\n2. Select Reports >> Diagnostics settings.\n3. Verify logs are being sent to the Azure monitor:\na. A storage account has been configured.\nb. A Stream has been configured to stream logs to the Azure Event Hubs.\nc. Intune logs have been configured to be sent to Log Analytics.\n\nIf the site is not transferring Intune audit logs to a third-party audit log management server or to an Azure audit log storage and monitoring service, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-285327",
+        "title": "SRG-APP-000516-UEM-000391",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-285327r1211999_rule",
+          "+@weight": "10.0",
+          "+@severity": "high",
+          "version": "MSIN-25-002000",
+          "title": "The Intune service must be configured to implement Multi-Admin Approval (MAA) for wiping managed devices.",
+          "description": "<VulnDiscussion>High-risk administrative actions, such as managed device wipe, should be configured to require dual authentication to mitigate the risk of an attacker that has bypassed malware protections and obtained legitimate Intune access. \n\nSatisfies: SRG-APP-000516-UEM-000391</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Microsoft Intune MDM Service Desktop & Mobile",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Microsoft Intune MDM Service Desktop & Mobile",
+            "dc:identifier": "5699"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Note: All device-wipe processes and procedures must be compliant with DOD data retention policies for mobile devices.\n\nNote: This procedure requires two separate groups: one group of Administrators that request a managed device be wiped (requestor group) and one Administrator group that approves the request (approver group).\n\nNote: Two administrators are needed to set up MAA for managed device-wipe: one to set up the required approver group and the MAA device-wipe policy and one to approve the new policy.\n\nImplementing dual authorization in Intune for device wipes is achieved using MAA, which enforces a \"four-eyes\" policy, requiring a second admin to approve wipe requests. This process, found under Tenant Administration >> Multi Admin Approval, requires creating an access policy, assigning an approver group, and justifying the action. \n\nSteps to Implement Multi-Admin Approval for Wipes:\n\n1. Prepare Groups: Create a Microsoft 365 security group containing the administrators allowed to approve requests, excluding the user who initiates the wipe.\n\n2. Create Access Policy:\n   - Sign in to the Microsoft Intune admin center.\n   - Navigate to Tenant administration >> Multi Admin Approval >> Access policies.\n   - Click \"Create\" and select \"Device wipe\" as the profile type.\n   - Assign the approver group and complete the wizard.\n\n3. Approve Policy: A second administrator must approve the newly created Access Policy before it becomes active.\n\n4. Execute Wipe: When a device is wiped, the initiating admin provides a justification, and an approver approves it under Tenant administration >> Multi Admin Approval >> All requests. \n\nKey Considerations:\n\n- Approval Workflow: The requester must return to the Multi Admin Approval portal to \"Complete request\" after the second admin approves it.\n- License: Requires Microsoft Intune Plan 1.\n- Notifications: There is no built-in notification system; reviewers must check the console manually. A workflow should be created for the \"requestor\" Admin to notify the \"approver\" Admin that a device wipe request is ready for approval.\n- Limitation: The policy covers managed device wipes and is a best practice for preventing accidental data loss.",
+            "+@fixref": "F-89802r1211998_fix"
+          },
+          "fix": {
+            "+@id": "F-89802r1211998_fix"
+          },
+          "check": {
+            "+@system": "C-89897r1211997_chk",
+            "check-content-ref": {
+              "+@href": "Microsoft_Intune_MDM_Service_Desktop_&_Mobile__STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Use the following procedure to verify MAA has been set up for managed device wipe on the Intune service.\n\n1. Verify a Microsoft 365 security group has been set up for device-wipe approval Administrators. \n     - Sign in to Intune Admin Center: Navigate to Tenant administration >> Multi Admin Approval.\n     - Verify the assigned \"Approval Group\" is in the access policy.\n\n2. Verify an Access Policy has been created for \"Device Wipe\".\n     - Verify Access Policies: Click on \"Access policies\" to view the policies created.\n     - Check Policy Details: Select the policy created for device wipes to verify:\n          - Policy Type: Must be set to Device Wipe.\n          - Approver Group: Verify the correct Microsoft Entra security group is selected as the approver group.\n     - Confirm Active Status: Verify the policy is active and not pending further approval of the policy itself.\n\nIf the Intune service is not configured with a Microsoft 365 security group for device-wipe approval Administrators or is not configured with a device-wipe Access Policy, this is a finding."
           }
         }
       }

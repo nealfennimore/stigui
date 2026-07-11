@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-07-11"
+      "+@date": "2026-06-02"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance Envoy Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -386,7 +386,7 @@
         "title": "SRG-APP-000358-WSR-000063",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259163r961395_rule",
+          "+@id": "SV-259163r1210400_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCRP-80-000073",
@@ -410,19 +410,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-rhttpproxy.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#rhttpproxy log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rhttpproxy.log\"\n      Tag=\"rhttpproxy-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#rhttpproxy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stdout\"\n      Tag=\"rhttpproxy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#rhttpproxy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stderr\"\n      Tag=\"rhttpproxy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62812r935392_fix"
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-rhttpproxy.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#rhttpproxy log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rhttpproxy.log\"\n      Tag=\"rhttpproxy-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#rhttpproxy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stdout\"\n      Tag=\"rhttpproxy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#rhttpproxy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stderr\"\n      Tag=\"rhttpproxy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62812r1210399_fix"
           },
           "fix": {
-            "+@id": "F-62812r935392_fix"
+            "+@id": "F-62812r1210399_fix"
           },
           "check": {
-            "+@system": "C-62903r935391_chk",
+            "+@system": "C-62903r1210398_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Envoy_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default, there is a vmware-services-rhttpproxy.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-rhttpproxy.conf\n\nExpected result:\n\n#rhttpproxy log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rhttpproxy.log\"\n      Tag=\"rhttpproxy-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#rhttpproxy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stdout\"\n      Tag=\"rhttpproxy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#rhttpproxy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stderr\"\n      Tag=\"rhttpproxy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, there is a vmware-services-rhttpproxy.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-rhttpproxy.conf\n\nExpected result:\n\n#rhttpproxy log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rhttpproxy.log\"\n      Tag=\"rhttpproxy-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#rhttpproxy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stdout\"\n      Tag=\"rhttpproxy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#rhttpproxy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/rhttpproxy/rproxy_init.log.stderr\"\n      Tag=\"rhttpproxy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" and \"reopenOnTruncate\" do not exist, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },
@@ -431,7 +431,7 @@
         "title": "SRG-APP-000358-WSR-000063",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259164r961395_rule",
+          "+@id": "SV-259164r1212220_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCRP-80-000097",
@@ -449,19 +449,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-envoy.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#envoy service log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy.log\"\n      Tag=\"envoy-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy-access.log\"\n      Tag=\"envoy-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stdout\"\n      Tag=\"envoy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stderr\"\n      Tag=\"envoy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")",
-            "+@fixref": "F-62813r935395_fix"
+            "+content": "Navigate to and open:\n\n/etc/vmware-syslog/vmware-services-envoy.conf\n\nCreate the file if it does not exist.\n\nSet the contents of the file as follows:\n\n#envoy service log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy.log\"\n      Tag=\"envoy-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy-access.log\"\n      Tag=\"envoy-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stdout\"\n      Tag=\"envoy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stderr\"\n      Tag=\"envoy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")",
+            "+@fixref": "F-62813r1210402_fix"
           },
           "fix": {
-            "+@id": "F-62813r935395_fix"
+            "+@id": "F-62813r1210402_fix"
           },
           "check": {
-            "+@system": "C-62904r935394_chk",
+            "+@system": "C-62904r1212220_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Envoy_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "By default, there is a vmware-services-envoy.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-envoy.conf\n\nExpected result:\n\n#envoy service log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy.log\"\n      Tag=\"envoy-main\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy-access.log\"\n      Tag=\"envoy-access\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stdout\"\n      Tag=\"envoy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\")\n#envoy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stderr\"\n      Tag=\"envoy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\")\n\nIf the output does not match the expected result, this is a finding."
+            "check-content": "By default, there is a vmware-services-envoy.conf rsyslog configuration file that includes the service logs when syslog is configured on vCenter, but it must be verified.\n\nAt the command prompt, run the following command:\n\n# cat /etc/vmware-syslog/vmware-services-envoy.conf\n\nExpected result:\n\n#envoy service log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy.log\"\n      Tag=\"envoy-main\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy access log\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy-access.log\"\n      Tag=\"envoy-access\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy init stdout\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stdout\"\n      Tag=\"envoy-stdout\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n#envoy init stderr\ninput(type=\"imfile\"\n      File=\"/var/log/vmware/envoy/envoy_init.log.stderr\"\n      Tag=\"envoy-stderr\"\n      Severity=\"info\"\n      Facility=\"local0\"\n      deleteStateOnFileDelete=\"on\"\n      reopenOnTruncate=\"on\")\n\nNote: If the entries for \"deleteStateOnFileDelete\" and \"reopenOnTruncate\" do not exist, this is not a finding.\n\nIf the output does not match the expected result, this is a finding."
           }
         }
       },

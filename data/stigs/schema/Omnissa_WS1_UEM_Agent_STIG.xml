@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type='text/xsl' href='STIG_unclass.xsl'?><Benchmark xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cpe="http://cpe.mitre.org/language/2.0" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.1 http://nvd.nist.gov/schema/xccdf-1.1.4.xsd http://cpe.mitre.org/dictionary/2.0 http://cpe.mitre.org/files/cpe-dictionary_2.1.xsd" id="Omnissa_WS1_UEM_Agent_STIG" xml:lang="en" xmlns="http://checklists.nist.gov/xccdf/1.1"><status date="2026-06-15">accepted</status><title>Omnissa WS1 UEM Agent Security Technical Implementation Guide</title><description>This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.</description><notice id="terms-of-use" xml:lang="en"></notice><front-matter xml:lang="en"></front-matter><rear-matter xml:lang="en"></rear-matter><reference href="https://cyber.mil"><dc:publisher>DISA</dc:publisher><dc:source>STIG.DOD.MIL</dc:source></reference><plain-text id="release-info">Release: 1 Benchmark Date: 26 May 2026</plain-text><plain-text id="generator">3.5.2</plain-text><plain-text id="conventionsVersion">1.10.0</plain-text><version>1</version><Profile id="MAC-1_Classified"><title>I - Mission Critical Classified</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-1_Public"><title>I - Mission Critical Public</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-1_Sensitive"><title>I - Mission Critical Sensitive</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-2_Classified"><title>II - Mission Support Classified</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-2_Public"><title>II - Mission Support Public</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-2_Sensitive"><title>II - Mission Support Sensitive</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-3_Classified"><title>III - Administrative Classified</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-3_Public"><title>III - Administrative Public</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Profile id="MAC-3_Sensitive"><title>III - Administrative Sensitive</title><description>&lt;ProfileDescription&gt;&lt;/ProfileDescription&gt;</description><select idref="V-284237" selected="true" /><select idref="V-284246" selected="true" /></Profile><Group id="V-284237"><title>SRG-APP-000089-UEM-100012</title><description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description><Rule id="SV-284237r1223978_rule" weight="10.0" severity="medium"><version>OMW1-00-100350</version><title>The Omnissa WS1 UEM Agent must be configured to enable the following function: 
+
+Read audit logs of the managed endpoint device: Android.</title><description>&lt;VulnDiscussion&gt;Audit logs and alerts enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify when the security posture of the device is not as expected. This enables the UEM administrator to take an appropriate remedial action.
+
+Satisfies: FMT_SMF_EXT.4.1
+Reference: PP-UEM-401005
+
+Satisfies: SRG-APP-000089-UEM-100012, SRG-APP-000358-UEM-100013&lt;/VulnDiscussion&gt;&lt;FalsePositives&gt;&lt;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;false&lt;/Documentable&gt;&lt;Mitigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&gt;&lt;PotentialImpacts&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationControl&gt;&lt;/MitigationControl&gt;&lt;Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IAControls&gt;</description><reference><dc:title>DPMS Target Omnissa WS1 UEM Agent</dc:title><dc:publisher>DISA</dc:publisher><dc:type>DPMS Target</dc:type><dc:subject>Omnissa WS1 UEM Agent</dc:subject><dc:identifier>5750</dc:identifier></reference><ident system="http://cyber.mil/cci">CCI-000169</ident><ident system="http://cyber.mil/cci">CCI-001851</ident><fixtext fixref="F-88706r1211875_fix">Configure the MDM Agent to enable the following function: 
+
+Read audit logs of the MD.
+
+On the MDM console, do the following:
+
+1. Authenticate to the Workspace ONE UEM console as the administrator.
+2. Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; General &gt;&gt; Privacy. Enable "Request Device Log" in the privacy settings.
+3. Select "Save".</fixtext><fix id="F-88706r1211875_fix" /><check system="C-88801r1211874_chk"><check-content-ref href="Omnissa_WS1_UEM_Agent_STIG.xml" name="M" /><check-content>Review the MDM Agent documentation and configuration settings to determine if the following function is enabled: 
+
+Read audit logs of the MD.
+
+This validation procedure is performed on the MDM Administration Console.
+
+On the MDM console, do the following:
+
+1. Authenticate to the Workspace ONE UEM console as the administrator.
+2. Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; General &gt;&gt; Privacy. Enable "Request Device Log" in the privacy settings.
+
+If "Request Device Log" is present, then no device log is being requested from the MD, and this is a finding.</check-content></check></Rule></Group><Group id="V-284246"><title>SRG-APP-000516-UEM-100011</title><description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description><Rule id="SV-284246r1223987_rule" weight="10.0" severity="medium"><version>OMW1-00-101300</version><title>The Omnissa WS1 UEM Agent must be configured to perform one of the following actions upon an attempt to unenroll the mobile device from management:  
+
+- Prevent the unenrollment from occurring.
+- Wipe the device to factory default settings.
+- Wipe the work profile with all associated applications and data.</title><description>&lt;VulnDiscussion&gt;Access control of mobile devices to DoW sensitive information or access to DoW networks must be controlled so that DoW data will not be compromised. The primary method of access control of mobile devices is via enrollment of authorized mobile devices on the UEM server. Therefore, the UEM server must have the capability to enforce a policy for this control.
+
+Satisfies: FMT_UNR_EXT.1.1&lt;/VulnDiscussion&gt;&lt;FalsePositives&gt;&lt;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;false&lt;/Documentable&gt;&lt;Mitigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&gt;&lt;PotentialImpacts&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationControl&gt;&lt;/MitigationControl&gt;&lt;Responsibility&gt;&lt;/Responsibility&gt;&lt;IAControls&gt;&lt;/IAControls&gt;</description><reference><dc:title>DPMS Target Omnissa WS1 UEM Agent</dc:title><dc:publisher>DISA</dc:publisher><dc:type>DPMS Target</dc:type><dc:subject>Omnissa WS1 UEM Agent</dc:subject><dc:identifier>5750</dc:identifier></reference><ident system="http://cyber.mil/cci">CCI-000366</ident><fixtext fixref="F-88715r1211878_fix">Authenticate to the Workspace ONE UEM console as an administrator.
+
+Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; Android &gt;&gt; Intelligent Hub Settings.
+
+Find "Block User Unenrollment" and choose "Enabled". Click "Save".
+
+Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; Apple &gt;&gt; Automated Device Enrollment.
+
+Edit the DEP profile and navigate to "MDM features". Choose "Enabled" for "Lock MDM Profile". Click "Save".</fixtext><fix id="F-88715r1211878_fix" /><check system="C-88810r1211877_chk"><check-content-ref href="Omnissa_WS1_UEM_Agent_STIG.xml" name="M" /><check-content>Authenticate to the Workspace ONE UEM console as an administrator.
+
+Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; Android &gt;&gt; Intelligent Hub Settings.
+
+If "Block User Unenrollment" is not "Enabled", this is a finding.
+
+Navigate to Groups &amp; Settings &gt;&gt; All Settings &gt;&gt; Devices &amp; Users &gt;&gt; Apple &gt;&gt; Automated Device Enrollment.
+
+Edit the DEP profile and navigate to "MDM features". If "Lock MDM Profile" is not "Enabled", this is a finding.</check-content></check></Rule></Group></Benchmark>

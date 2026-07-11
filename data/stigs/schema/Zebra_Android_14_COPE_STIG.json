@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-22"
+      "+@date": "2026-05-13"
     },
     "title": "Zebra Technologies Android 14 COPE Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Jan 2026",
+        "+content": "Release: 2 Benchmark Date: 13 May 2026",
         "+@id": "release-info"
       },
       {
@@ -220,10 +220,6 @@
           {
             "+@idref": "V-283664",
             "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
-            "+@selected": "true"
           }
         ]
       },
@@ -398,10 +394,6 @@
           },
           {
             "+@idref": "V-283664",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
             "+@selected": "true"
           }
         ]
@@ -578,10 +570,6 @@
           {
             "+@idref": "V-283664",
             "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
-            "+@selected": "true"
           }
         ]
       },
@@ -756,10 +744,6 @@
           },
           {
             "+@idref": "V-283664",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
             "+@selected": "true"
           }
         ]
@@ -936,10 +920,6 @@
           {
             "+@idref": "V-283664",
             "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
-            "+@selected": "true"
           }
         ]
       },
@@ -1114,10 +1094,6 @@
           },
           {
             "+@idref": "V-283664",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
             "+@selected": "true"
           }
         ]
@@ -1294,10 +1270,6 @@
           {
             "+@idref": "V-283664",
             "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
-            "+@selected": "true"
           }
         ]
       },
@@ -1473,10 +1445,6 @@
           {
             "+@idref": "V-283664",
             "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
-            "+@selected": "true"
           }
         ]
       },
@@ -1651,10 +1619,6 @@
           },
           {
             "+@idref": "V-283664",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-283666",
             "+@selected": "true"
           }
         ]
@@ -3332,45 +3296,6 @@
               "+@name": "M"
             },
             "check-content": "Determine if the site AO has approved the use of device cameras. Look for a document showing approval for a specific user or group of users. If not approved, review configuration settings to confirm \"Allow Camera\" is disabled. If approved, this requirement is not applicable. Review configuration settings to confirm the device camera has been disabled.\n\nThis check procedure is performed on the device management tool and the Zebra Android 14 device.\n\nOn the MDM console:\n\nCOBO and COPE:\n\n1. Open Camera.\n2. Verify that the \"Disable camera\" setting is disabled.\n\nOn the managed Zebra Android 14 device: \n\nCOBO and COPE:\n\nVerify that the camera cannot be used on the mobile device.\n\nIf the device camera has not been disabled, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-283666",
-        "title": "PP-MDF-993300",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-283666r1190409_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "ZEBR-14-013700",
-          "title": "Zebra Android must implement the management setting: disable the Bluetooth radio.",
-          "description": "<VulnDiscussion>Authorizing official (AO) approval is required before the Zebra device Bluetooth radio can be enabled. All AO approvals must be documented and based on critical mission need. Use of Bluetooth may lead to the exposure of sensitive DOD information in some operational environments.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Zebra Android 14 COPE",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Zebra Android 14 COPE",
-            "dc:identifier": "5732"
-          },
-          "ident": {
-            "+content": "CCI-000366",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "If the AO has not approved the use of the Zebra device Bluetooth radio, install a configuration profile to disable Bluetooth use. \n\nOn the MDM console: \n\nIn the configuration profile for the device, disable Bluetooth (enable \"DISALLOW_BLUETOOTH\").",
-            "+@fixref": "F-88136r1190408_fix"
-          },
-          "fix": {
-            "+@id": "F-88136r1190408_fix"
-          },
-          "check": {
-            "+@system": "C-88231r1190407_chk",
-            "check-content-ref": {
-              "+@href": "Zebra_Android_14_COPE_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Determine if the site AO has approved the use of Zebra device Bluetooth radios. Look for a document showing AO approval. All AO approvals must be documented and based on critical mission need. \n\nIf not approved, review configuration settings on the MDM server to confirm Bluetooth has been disabled, and on the Zebra device, verify Bluetooth cannot be enabled. If approved, this requirement is not applicable.\n\nThis check procedure is performed on both the device management tool and managed Zebra device.\n\nIn the Android management tool, verify Bluetooth is disabled (\"DISALLOW_BLUETOOTH\" enabled) in the configuration profile.\n\nOn the managed Zebra device, verify the Bluetooth radio is disabled and cannot be enabled:\n\nSettings >> Connected devices >> Connection preferences >> Bluetooth\n\nIf Bluetooth has not been disabled in the device's MDM configuration profile or if Bluetooth can be enabled on the Zebra device, this is a finding."
           }
         }
       }

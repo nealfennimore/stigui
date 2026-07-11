@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-23"
+      "+@date": "2026-06-03"
     },
     "title": "Microsoft Windows Server Domain Name System (DNS) Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 5 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
@@ -4300,7 +4300,7 @@
         "title": "SRG-APP-000176-DNS-000017",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259367r1192655_rule",
+          "+@id": "SV-259367r1212357_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000039",
@@ -4318,19 +4318,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\n\nModify permissions on the keys folder, subfolders, and files to be limited to SYSTEM and Administrators FULL CONTROL, and to limit all other users/groups to READ. If additional permissions are needed, it must be documented and approved by the information system security officer (ISSO) or information system security manager (ISSM).",
-            "+@fixref": "F-63014r1192654_fix"
+            "+content": "Navigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\n\nModify permissions on the keys folder, subfolders, and files to be limited to SYSTEM and Administrators FULL CONTROL, and to limit all other users/groups to READ. If additional permissions are needed, they must be documented and approved by the information system security officer (ISSO) or information system security manager (ISSM).",
+            "+@fixref": "F-63014r1212356_fix"
           },
           "fix": {
-            "+@id": "F-63014r1192654_fix"
+            "+@id": "F-63014r1212356_fix"
           },
           "check": {
-            "+@system": "C-63106r1192653_chk",
+            "+@system": "C-63106r1212355_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Navigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\n\nNote: If the folder above does not exist, this is not applicable.\n\nVerify the permissions on the folder, subfolders, and files are limited to SYSTEM and Administrators FULL CONTROL.\n\nIn File Explorer:\n\nFor each folder, subfolder, and file, view the Properties.\n\nSelect the \"Security\" tab, and then click \"Advanced\".\n\nDefault permissions:\nC:\\ProgramData\\Microsoft\\Crypto\\Keys\nType - \"Allow\" for all\nInherited from - \"None\" for all\n\nPrincipal - Access - Applies to\n\nSYSTEM - Full control - This folder, subfolders and files\nAdministrators - Full control - This folder, subfolders and files\nEveryone - Read  - This folder, subfolders, and files\n\nAlternately, use icacls:\n\nOpen a command prompt and enter \"icacls\" followed by the directory. \nFor each folder, subfolder, and file, view the Properties.\n\n\"icacls %ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\"\n\nC:\\ProgramData\\microsoft\\crypto\\keys\nNT AUTHORITY\\SYSTEM:(OI)(CI)(F)\nBUILTIN\\Administrators:(OI)(CI)(F)\nEveryone:(OI)(CI)(R)\nSuccessfully processed 1 files; Failed processing 0 files\n\nIf any other user or group has greater than READ privileges to the %ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys folder, subfolders, and files, this is a finding."
+            "check-content": "Note: This check is not applicable for Windows DNS Servers that host only Active Directory (AD)-integrated zones or for Windows DNS Servers on a classified network.\n\nNavigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\n\nNote: If the folder above does not exist, this is not applicable.\n\nVerify the permissions on the folder, subfolders, and files are limited to SYSTEM and Administrators FULL CONTROL.\n\nIn File Explorer:\n\nFor each folder, subfolder, and file, view the Properties.\n\nSelect the \"Security\" tab and then click \"Advanced\".\n\nDefault permissions:\nC:\\ProgramData\\Microsoft\\Crypto\\Keys\nType - \"Allow\" for all\nInherited from - \"None\" for all\n\nPrincipal - Access - Applies to\n\nSYSTEM - Full control - This folder, subfolders and files\nAdministrators - Full control - This folder, subfolders and files\nEveryone - Read  - This folder, subfolders, and files\n\nAlternately, use icacls:\n\nOpen a command prompt and enter \"icacls\" followed by the directory.\n\nFor each folder, subfolder, and file, view the Properties.\n\n\"icacls %ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys\"\n\nC:\\ProgramData\\microsoft\\crypto\\keys\nNT AUTHORITY\\SYSTEM:(OI)(CI)(F)\nBUILTIN\\Administrators:(OI)(CI)(F)\nEveryone:(OI)(CI)(R)\nSuccessfully processed 1 files; Failed processing 0 files\n\nIf any other user or group has greater than READ privileges to the %ALLUSERSPROFILE%\\Microsoft\\Crypto\\Keys folder, subfolders, and files, this is a finding."
           }
         }
       },
@@ -4339,7 +4339,7 @@
         "title": "SRG-APP-000176-DNS-000018",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259368r961041_rule",
+          "+@id": "SV-259368r1212359_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000040",
@@ -4364,12 +4364,12 @@
             "+@id": "F-63015r939808_fix"
           },
           "check": {
-            "+@system": "C-63107r939807_chk",
+            "+@system": "C-63107r1212358_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Access Services on the Windows DNS Server and locate the DNS Server Service.\n\nDetermine the account under which the DNS Server Service is running. \n\nAccess Windows Explorer.\n\nNavigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nNote: If the folder above does not exist, this check is not applicable.\n\nRight-click on each subfolder, choose \"Properties\", click the \"Security\" tab, and click the \"Advanced\" button.\n\nVerify the Owner on the folder, subfolders, and files is the account under which the DNS Server Service is running.\n\nIf any other user or group is listed as OWNER of the %ALLUSERSPROFILE%\\Microsoft\\Crypto folder, subfolders, and files, this is a finding."
+            "check-content": "Note: This check is not applicable for Windows DNS Servers that host only Active Directory (AD)-integrated zones or for Windows DNS Servers on a classified network.\n\nAccess Services on the Windows DNS Server and locate the DNS Server Service.\n\nDetermine the account under which the DNS Server Service is running. \n\nAccess Windows Explorer.\n\nNavigate to the following location:\n\n%ALLUSERSPROFILE%\\Microsoft\\Crypto\n\nNote: If the folder above does not exist, this check is not applicable.\n\nRight-click on each subfolder, choose \"Properties\", click the \"Security\" tab, and click the \"Advanced\" button.\n\nVerify the Owner on the folder, subfolders, and files is the account under which the DNS Server Service is running.\n\nIf any other user or group is listed as OWNER of the %ALLUSERSPROFILE%\\Microsoft\\Crypto folder, subfolders, and files, this is a finding."
           }
         }
       },
@@ -4417,7 +4417,7 @@
         "title": "SRG-APP-000401-DNS-000051",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259371r1015766_rule",
+          "+@id": "SV-259371r1212361_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000043",
@@ -4448,12 +4448,12 @@
             "+@id": "F-63018r939817_fix"
           },
           "check": {
-            "+@system": "C-63110r939816_chk",
+            "+@system": "C-63110r1212360_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Consult with the system administrator to determine if a third-party CRL server is being used for certificate revocation lookup.\n\nIf there is, determine if a documented procedure is in place to store a copy of the CRL locally (local to the site, as an alternative to querying the actual Certificate Authorities). An example would be an OCSP responder installed at the local site.\n\nIf there is no local cache of revocation data, this is a finding."
+            "check-content": "Note: This check is not applicable for Windows DNS Servers that host only Active Directory (AD)-integrated zones or for Windows DNS Servers on a classified network.\n\nConsult with the system administrator to determine if a third-party CRL server is being used for certificate revocation lookup.\n\nIf there is, determine if a documented procedure is in place to store a copy of the CRL locally (local to the site, as an alternative to querying the actual Certificate Authorities). An example would be an OCSP responder installed at the local site.\n\nIf there is no local cache of revocation data, this is a finding."
           }
         }
       },

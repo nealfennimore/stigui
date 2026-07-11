@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-07-11"
+      "+@date": "2026-06-02"
     },
     "title": "VMware vSphere 8.0 vCenter Appliance Photon OS 4.0 Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 01 Aug 2024",
+        "+content": "Release: 2 Benchmark Date: 01 Jul 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -476,6 +476,10 @@
           {
             "+@idref": "V-266063",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
+            "+@selected": "true"
           }
         ]
       },
@@ -906,6 +910,10 @@
           },
           {
             "+@idref": "V-266063",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
             "+@selected": "true"
           }
         ]
@@ -1338,6 +1346,10 @@
           {
             "+@idref": "V-266063",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
+            "+@selected": "true"
           }
         ]
       },
@@ -1768,6 +1780,10 @@
           },
           {
             "+@idref": "V-266063",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
             "+@selected": "true"
           }
         ]
@@ -2200,6 +2216,10 @@
           {
             "+@idref": "V-266063",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
+            "+@selected": "true"
           }
         ]
       },
@@ -2630,6 +2650,10 @@
           },
           {
             "+@idref": "V-266063",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
             "+@selected": "true"
           }
         ]
@@ -3062,6 +3086,10 @@
           {
             "+@idref": "V-266063",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
+            "+@selected": "true"
           }
         ]
       },
@@ -3492,6 +3520,10 @@
           },
           {
             "+@idref": "V-266063",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
             "+@selected": "true"
           }
         ]
@@ -3924,6 +3956,10 @@
           {
             "+@idref": "V-266063",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-285222",
+            "+@selected": "true"
           }
         ]
       }
@@ -4241,7 +4277,7 @@
         "title": "SRG-OS-000039-GPOS-00017",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258808r1003628_rule",
+          "+@id": "SV-258808r1015938_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000016",
@@ -4289,6 +4325,10 @@
             },
             {
               "+content": "CCI-002699",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001814",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -4531,7 +4571,7 @@
         "title": "SRG-OS-000069-GPOS-00037",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258814r1003629_rule",
+          "+@id": "SV-258814r1015939_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000035",
@@ -4544,10 +4584,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000192",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"ucredit\" option set to \"-1\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62463r933502_fix"
@@ -4570,7 +4616,7 @@
         "title": "SRG-OS-000070-GPOS-00038",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258815r1003630_rule",
+          "+@id": "SV-258815r1015940_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000036",
@@ -4583,10 +4629,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000193",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"lcredit\" option set to \"-1\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62464r933505_fix"
@@ -4609,7 +4661,7 @@
         "title": "SRG-OS-000071-GPOS-00039",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258816r1003631_rule",
+          "+@id": "SV-258816r1015941_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000037",
@@ -4622,10 +4674,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000194",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"dcredit\" option set to \"-1\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62465r933508_fix"
@@ -4648,7 +4706,7 @@
         "title": "SRG-OS-000072-GPOS-00040",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258817r1003632_rule",
+          "+@id": "SV-258817r1015942_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000038",
@@ -4661,10 +4719,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000195",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"difok\" option set to \"8\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62466r933511_fix"
@@ -4687,7 +4751,7 @@
         "title": "SRG-OS-000073-GPOS-00041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258818r1003633_rule",
+          "+@id": "SV-258818r1015943_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "PHTN-40-000039",
@@ -4700,10 +4764,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004062",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004062",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000196",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/login.defs\n\nAdd or update the following line:\n\nENCRYPT_METHOD SHA512",
             "+@fixref": "F-62467r933514_fix"
@@ -4765,7 +4835,7 @@
         "title": "SRG-OS-000075-GPOS-00043",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258820r1003634_rule",
+          "+@id": "SV-258820r1015944_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000041",
@@ -4778,10 +4848,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000198",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/login.defs\n\nAdd or update the following line: \n\nPASS_MIN_DAYS 1",
             "+@fixref": "F-62469r933520_fix"
@@ -4804,7 +4880,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258821r1003636_rule",
+          "+@id": "SV-258821r1038967_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000042",
@@ -4817,10 +4893,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000199",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/login.defs\n\nAdd or update the following line: \n\nPASS_MAX_DAYS 90",
             "+@fixref": "F-62470r933523_fix"
@@ -4882,7 +4964,7 @@
         "title": "SRG-OS-000078-GPOS-00046",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258823r1003638_rule",
+          "+@id": "SV-258823r1015946_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000044",
@@ -4895,10 +4977,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000205",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"minlen\" option set to \"15\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62472r933529_fix"
@@ -4921,7 +5009,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258824r958472_rule",
+          "+@id": "SV-258824r1137691_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000046",
@@ -5083,7 +5171,7 @@
         "title": "SRG-OS-000138-GPOS-00069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258828r958524_rule",
+          "+@id": "SV-258828r1137695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000067",
@@ -5495,7 +5583,7 @@
         "title": "SRG-OS-000266-GPOS-00101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258838r1003642_rule",
+          "+@id": "SV-258838r1015947_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000086",
@@ -5508,10 +5596,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001619",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nConfigure the pam_pwquality.so line to have the \"ocredit\" option set to \"-1\" as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62487r933574_fix"
@@ -5817,7 +5911,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258846r1003646_rule",
+          "+@id": "SV-258846r1015948_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "PHTN-40-000130",
@@ -5830,10 +5924,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-003992",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003992",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001749",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/tdnf/tdnf.conf\n\nAdd or update the following line:\n\ngpgcheck=1",
             "+@fixref": "F-62495r933598_fix"
@@ -5856,7 +5956,7 @@
         "title": "SRG-OS-000373-GPOS-00156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258847r1003647_rule",
+          "+@id": "SV-258847r1050789_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000133",
@@ -5869,10 +5969,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004895",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004895",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-002038",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Check the configuration of the \"/etc/sudoers\" and \"/etc/sudoers.d/*\" files with the following command:\n\n# visudo\n\nOR\n\n# visudo -f /etc/sudoers.d/<file name>\n\nRemove any occurrences of \"NOPASSWD\" tags associated with user accounts with a password hash.",
             "+@fixref": "F-62496r933601_fix"
@@ -6051,7 +6157,7 @@
         "title": "SRG-OS-000478-GPOS-00223",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258852r959006_rule",
+          "+@id": "SV-258852r1137699_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "PHTN-40-000182",
@@ -6285,7 +6391,7 @@
         "title": "SRG-OS-000021-GPOS-00005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258858r958388_rule",
+          "+@id": "SV-258858r1210418_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000192",
@@ -6310,12 +6416,12 @@
             "+@id": "F-62507r933634_fix"
           },
           "check": {
-            "+@system": "C-62598r933633_chk",
+            "+@system": "C-62598r1210417_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Photon_OS_4.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command line, run the following commands to verify the pam_faillock.so module is used:\n\n# grep '^auth' /etc/pam.d/system-auth\n\nExample result:\n\nauth required pam_faillock.so preauth\nauth required pam_unix.so\nauth required pam_faillock.so authfail\n\nIf the pam_faillock.so module is not present with the \"preauth\" line listed before pam_unix.so, this is a finding.\nIf the pam_faillock.so module is not present with the \"authfail\" line listed after pam_unix.so, this is a finding.\n\n# grep '^account' /etc/pam.d/system-account\n\nExample result:\n\naccount required pam_faillock.so\naccount required pam_unix.so\n\nIf the pam_faillock.so module is not present and listed before pam_unix.so, this is a finding."
+            "check-content": "At the command line, run the following commands to verify the pam_faillock.so module is used:\n\n# grep '^auth' /etc/pam.d/system-auth\n\nExample result:\n\nauth required pam_faillock.so preauth\nauth sufficient pam_unix.so\nauth required pam_faillock.so authfail\nauth optional pam_faildelay.so delay=4000000\nauth required pam_deny.so\n\nIf the pam_faillock.so module is not present with the \"preauth\" line listed before pam_unix.so, this is a finding.\n\nIf the pam_faillock.so module is not present with the \"authfail\" line listed after pam_unix.so, this is a finding.\n\n# grep '^account' /etc/pam.d/system-account\n\nExample result:\n\naccount required pam_faillock.so\naccount required pam_unix.so\n\nIf the pam_faillock.so module is not present and listed before pam_unix.so, this is a finding."
           }
         }
       },
@@ -6480,7 +6586,7 @@
         "title": "SRG-OS-000069-GPOS-00037",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258863r1003650_rule",
+          "+@id": "SV-258863r1015950_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000197",
@@ -6493,10 +6599,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-004066",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-004066",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-000192",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Navigate to and open:\n\n/etc/pam.d/system-password\n\nAdd or update the pam_pwquality.so module line as follows:\n\npassword  requisite   pam_pwquality.so  dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1 minlen=15 difok=8 enforce_for_root dictcheck=1\n\nNote: The line must be configured before pam_pwhistory.so.\n\nNote: On vCenter appliances, the equivalent file must be edited under \"/etc/applmgmt/appliance\", if one exists, for the changes to persist after a reboot.",
             "+@fixref": "F-62512r933649_fix"
@@ -6519,7 +6631,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258864r1003651_rule",
+          "+@id": "SV-258864r1015951_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "PHTN-40-000199",
@@ -6532,10 +6644,16 @@
             "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
             "dc:identifier": "5569"
           },
-          "ident": {
-            "+content": "CCI-003992",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-003992",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001749",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
             "+content": "Open the file where \"gpgcheck\" is not set to 1 with a text editor.\n\nAdd or update the following line:\n\ngpgcheck=1",
             "+@fixref": "F-62513r933652_fix"
@@ -6724,7 +6842,7 @@
         "title": "SRG-OS-000480-GPOS-00226",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258869r1003654_rule",
+          "+@id": "SV-258869r1210420_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000206",
@@ -6749,12 +6867,12 @@
             "+@id": "F-62518r933667_fix"
           },
           "check": {
-            "+@system": "C-62609r1003653_chk",
+            "+@system": "C-62609r1210419_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Photon_OS_4.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command line, run the following command to verify the pam_faildelay.so module is used:\n\n# grep '^auth' /etc/pam.d/system-auth\n\nExample result:\n\nauth required pam_faillock.so preauth\nauth required pam_unix.so\nauth required pam_faillock.so authfail\nauth optional pam_faildelay.so delay=4000000\n\nIf the pam_faildelay.so module is not present with the delay set to at least four seconds, this is a finding.\n\nNote: The delay is configured in microseconds."
+            "check-content": "At the command line, run the following command to verify the pam_faildelay.so module is used:\n\n# grep '^auth' /etc/pam.d/system-auth\n\nExample result:\n\nauth    required      pam_faillock.so preauth\nauth    sufficient    pam_unix.so\nauth    required      pam_faillock.so authfail\nauth    optional      pam_faildelay.so delay=4000000\nauth    required      pam_deny.so\n\nIf the pam_faildelay.so module is not present with the delay set to at least four seconds, this is a finding.\n\nNote: The delay is configured in microseconds."
           }
         }
       },
@@ -8089,7 +8207,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258904r991589_rule",
+          "+@id": "SV-258904r1210423_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-40-000246",
@@ -8107,19 +8225,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/sysctl.d/zz-stig-hardening.conf\n\nAdd or update the following line:\n\nfs.suid_dumpable = 0\n\nAt the command line, run the following command to load the new configuration:\n\n# /sbin/sysctl --load /etc/sysctl.d/zz-stig-hardening.conf\n\nNote: If the file zz-stig-hardening.conf does not exist, it must be created.",
-            "+@fixref": "F-62553r933772_fix"
+            "+content": "Navigate to and open:\n\n/etc/sysctl.d/zz-stig-hardening.conf\n\nAdd or update the following line:\n\nfs.suid_dumpable = 0\n\nNote: \"0\" is recommended for normal operation. If core dumps need to be captured for troubleshooting purposes, then \"2\" is also an acceptable value.\n\nAt the command line, run the following command to load the new configuration:\n\n# /sbin/sysctl --load /etc/sysctl.d/zz-stig-hardening.conf\n\nNote: If the file zz-stig-hardening.conf does not exist, it must be created.",
+            "+@fixref": "F-62553r1210422_fix"
           },
           "fix": {
-            "+@id": "F-62553r933772_fix"
+            "+@id": "F-62553r1210422_fix"
           },
           "check": {
-            "+@system": "C-62644r933771_chk",
+            "+@system": "C-62644r1210421_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_VCSA_Photon_OS_4.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command line, run the following command to verify core dumps are restricted:\n\n# /sbin/sysctl fs.suid_dumpable\n\nExample result:\n\nfs.suid_dumpable = 0\n\nIf the \"fs.suid_dumpable\" kernel parameter is not set to \"0\", this is a finding."
+            "check-content": "At the command line, run the following command to verify core dumps are restricted:\n\n# /sbin/sysctl fs.suid_dumpable\n\nExample result:\n\nfs.suid_dumpable = 0\n\nIf the \"fs.suid_dumpable\" kernel parameter is set to \"1\", this is a finding."
           }
         }
       },
@@ -8198,6 +8316,45 @@
               "+@name": "M"
             },
             "check-content": "At the command line, run the following command to verify empty passwords are not allowed:\n\n# grep nullok /etc/pam.d/system-password /etc/pam.d/system-auth\n\nIf any results are returned indicating \"nullok\" is configured on the \"pam_unix.so\" module, this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-285222",
+        "title": "SRG-OS-000480-GPOS-00228",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-285222r1210426_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "PHTN-40-000267",
+          "title": "The Photon operating system must be configured to use the pam_deny.so module.",
+          "description": "<VulnDiscussion>Configuring the operating system to implement organizationwide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DOD that reflects the most restrictive security posture consistent with operational requirements. \n\nConfiguration settings are the set of parameters that can be changed in hardware, software, or firmware components of the system that affect the security posture and/or functionality of the system. Security-related parameters impact the security state of the system and include the parameters required to satisfy other security control requirements. Security-related parameters include, for example, registry settings; account, file, and directory permission settings; and settings for functions, ports, protocols, services, and remote connections.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target VMware vSphere 8.0 VCSA Photon OS 4.0",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "VMware vSphere 8.0 VCSA Photon OS 4.0",
+            "dc:identifier": "5569"
+          },
+          "ident": {
+            "+content": "CCI-000366",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Navigate to and open:\n\n/etc/sysctl.d/zz-stig-hardening.conf\n\nAdd or update the following line:\n\nfs.suid_dumpable = 0\n\nNote: \"0\" is recommended for normal operation. If core dumps need to be captured for troubleshooting purposes, then \"2\" is also an acceptable value.\n\nAt the command line, run the following command to load the new configuration:\n\n# /sbin/sysctl --load /etc/sysctl.d/zz-stig-hardening.conf\n\nNote: If the file zz-stig-hardening.conf does not exist, it must be created.",
+            "+@fixref": "F-89696r1210425_fix"
+          },
+          "fix": {
+            "+@id": "F-89696r1210425_fix"
+          },
+          "check": {
+            "+@system": "C-89791r1210424_chk",
+            "check-content-ref": {
+              "+@href": "VMware_vSphere_8.0_VCSA_Photon_OS_4.0_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "At the command line, run the following commands to verify the pam_deny.so module is used:\n\n# grep '^auth' /etc/pam.d/system-auth\n\nExample result:\n\nauth required pam_faillock.so preauth\nauth sufficient pam_unix.so\nauth required pam_faillock.so authfail\nauth optional pam_faildelay.so delay=4000000\nauth required pam_deny.so\n\nIf the pam_deny.so module is not present, or is not configured as the last auth entry, this is a finding."
           }
         }
       }
