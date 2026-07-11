@@ -20,24 +20,37 @@ jobs:
                   . scripts/get-stig-url.sh
                   echo "URL=$URL" >> "$GITHUB_ENV"
 
+            # DISA publishes the quarterly library on its own timetable, so a
+            # missing URL is expected — skip the run instead of failing it
+            - name: Check STIG library availability
+              id: available
+              run: |
+                  if curl -o /dev/null -fsL --retry 3 -r 0-0 "$URL"; then
+                      echo "available=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "available=false" >> "$GITHUB_OUTPUT"
+                      echo "::notice::STIG library not published yet: $URL"
+                  fi
+
             - name: Retrieve the cached "data" directory (if present)
               uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
               id: data-cache
+              if: steps.available.outputs.available == 'true'
               with:
                   path: ./data
                   key: ${{ env.URL }}
 
             - name: Download STIG data
               run: . scripts/fetch-stigs.sh
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
 
             - name: Create JSON STIG data
               run: . scripts/create-json-stigs.sh
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
 
             - name: Set version tag
               id: versions
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
               run: |
                   TAG="${URL##*/}"
                   TAG="stig-release-${TAG%.zip}"
@@ -45,10 +58,10 @@ jobs:
               shell: bash
 
             - uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
 
             - name: Create Release
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
               uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
               with:
                   tag_name: ${{ steps.versions.outputs.tag }}
@@ -56,7 +69,7 @@ jobs:
             # Tags created with the default GITHUB_TOKEN don't trigger the
             # deploy workflow's push event, so dispatch it explicitly
             - name: Trigger GitHub Pages deploy
-              if: steps.data-cache.outputs.cache-hit != 'true'
+              if: steps.available.outputs.available == 'true' && steps.data-cache.outputs.cache-hit != 'true'
               env:
                   GH_TOKEN: ${{ github.token }}
               run: gh workflow run deploy.yml --ref main

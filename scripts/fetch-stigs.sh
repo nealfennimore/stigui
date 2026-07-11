@@ -5,7 +5,7 @@ shopt -s globstar nullglob
 
 if [[ ! -f "data/stigs.zip" ]]; then
     echo "Downloading STIGs from $URL"
-    curl -L "$URL" -o data/stigs.zip
+    curl -fL "$URL" -o data/stigs.zip
 
     unzip -o data/stigs.zip -d data/stigs
 
