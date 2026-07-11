@@ -9,6 +9,7 @@ jobs:
 
         permissions:
             contents: write
+            actions: write
 
         steps:
             - name: Checkout code
@@ -40,7 +41,7 @@ jobs:
               run: |
                   TAG="${URL##*/}"
                   TAG="stig-release-${TAG%.zip}"
-                  echo "::set-output name=tag::$TAG"
+                  echo "tag=$TAG" >> "$GITHUB_OUTPUT"
               shell: bash
 
             - uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5.2.0
@@ -51,3 +52,11 @@ jobs:
               uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
               with:
                   tag_name: ${{ steps.versions.outputs.tag }}
+
+            # Tags created with the default GITHUB_TOKEN don't trigger the
+            # deploy workflow's push event, so dispatch it explicitly
+            - name: Trigger GitHub Pages deploy
+              if: steps.data-cache.outputs.cache-hit != 'true'
+              env:
+                  GH_TOKEN: ${{ github.token }}
+              run: gh workflow run deploy.yml --ref main
