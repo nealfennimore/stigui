@@ -1,8 +1,8 @@
 "use client";
+import { Icon } from "@/app/components/client/editor/icons";
 import { defaultSort, Order, Table } from "@/app/components/table";
 import { TableCard } from "@/app/components/ui/card";
 import { EmptyState } from "@/app/components/ui/empty_state";
-import { Input } from "@/app/components/ui/field";
 import { useManifestContext } from "@/app/context/manifest";
 import { getRecent, RecentStig } from "@/app/recently_viewed";
 import Link from "next/link";
@@ -17,15 +17,15 @@ const RecentlyViewed = ({ recents }: { recents: RecentStig[] }) => {
     }
     return (
         <section aria-label="Recently viewed" className="flex flex-col gap-2">
-            <h2 className="text-xs font-medium uppercase tracking-wide text-muted">
+            <h2 className="text-[11px] font-bold uppercase tracking-[.07em] text-subtle">
                 Recently viewed
             </h2>
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-1.5">
                 {recents.map((recent) => (
                     <li key={recent.id}>
                         <Link
                             href={`/stigs/${recent.id}`}
-                            className="inline-flex max-w-xs items-center rounded-md border border-border bg-surface px-3 py-1.5 text-sm text-muted shadow-card hover:bg-surface-muted hover:text-foreground transition-colors"
+                            className="inline-flex max-w-xs items-center rounded-[20px] border border-border bg-surface px-[11px] py-1 text-[11.5px] font-medium text-muted shadow-wb-card transition-colors hover:border-border-strong hover:text-foreground dark:shadow-none"
                         >
                             <span className="truncate">{recent.title}</span>
                         </Link>
@@ -36,6 +36,7 @@ const RecentlyViewed = ({ recents }: { recents: RecentStig[] }) => {
     );
 };
 
+/** STIG catalog: search, recents and the sortable table. */
 export const Stigs = () => {
     const manifest = useManifestContext();
     const router = useRouter();
@@ -111,6 +112,7 @@ export const Stigs = () => {
         return (
             <section className="w-full flex flex-col gap-4">
                 <EmptyState
+                    className="bg-surface"
                     title="No STIGs available"
                     description="The STIG catalog could not be loaded. Try reloading the page."
                 />
@@ -121,10 +123,10 @@ export const Stigs = () => {
     return (
         <section className="w-full flex flex-col gap-4">
             <div>
-                <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+                <h1 className="text-[19px] font-bold tracking-[-0.015em] text-foreground">
                     Security Technical Implementation Guides
                 </h1>
-                <p className="text-sm text-muted mt-1">
+                <p className="mt-1 max-w-[72ch] text-[12.5px] leading-[1.6] text-muted [text-wrap:pretty]">
                     Browse the catalog of Security Technical Implementation
                     Guides (STIGs) — the configuration standards used to harden
                     systems against security risks. Open a guide to review its
@@ -134,34 +136,21 @@ export const Stigs = () => {
             </div>
 
             <div className="flex flex-col gap-1.5">
-                <div className="relative">
-                    <svg
-                        aria-hidden="true"
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-subtle"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <circle cx="11" cy="11" r="7" />
-                        <path d="m21 21-4.35-4.35" />
-                    </svg>
-                    <Input
+                <label className="flex items-center gap-2 rounded-[10px] border border-border bg-surface px-3 py-[9px] text-subtle shadow-wb-card transition-colors focus-within:border-accent focus-within:ring-2 focus-within:ring-ring/40 dark:shadow-none">
+                    <Icon.search className="h-4 w-4 shrink-0" />
+                    <input
                         type="search"
                         aria-label="Search STIGs"
                         placeholder="Search STIGs by title or id…"
                         value={query}
                         onChange={(event) => setQuery(event.target.value)}
-                        className="pl-9 pr-16 py-2.5"
+                        className="min-w-0 flex-1 bg-transparent text-[12.5px] text-foreground placeholder:text-subtle focus:outline-none"
                     />
-                    <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden md:inline-flex items-center gap-1 rounded border border-border-strong px-1.5 py-0.5 text-[10px] font-medium text-subtle">
+                    <kbd className="hidden items-center rounded border border-border px-1.5 py-0.5 font-plex-mono text-[10px] font-medium text-subtle md:inline-flex">
                         Ctrl K
                     </kbd>
-                </div>
-                <p className="text-xs text-subtle" role="status">
+                </label>
+                <p className="text-[11px] text-subtle" role="status">
                     {elements.length} of {manifest.elements.length} STIGs
                 </p>
             </div>
@@ -170,6 +159,7 @@ export const Stigs = () => {
 
             {elements.length === 0 ? (
                 <EmptyState
+                    className="bg-surface"
                     title={`No STIGs match "${query}"`}
                     description="Check the spelling or search for a shorter term."
                     action={
@@ -183,7 +173,7 @@ export const Stigs = () => {
                     }
                 />
             ) : (
-                <TableCard>
+                <TableCard className="rounded-[14px] shadow-wb-card dark:shadow-none">
                     <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
                         <Table
                             sorters={sorters}

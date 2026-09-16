@@ -1,7 +1,8 @@
-import { Footer } from "@/app/components/footer";
+import {
+    WorkbenchContent,
+    WorkbenchShell,
+} from "@/app/components/client/editor/shell";
 import { JsonLd } from "@/app/components/json_ld";
-import { Main } from "@/app/components/main";
-import { Navigation } from "@/app/components/navigation";
 import { Stigs } from "@/app/components/stigs";
 import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { APPNAME, URL } from "@/app/constants";
@@ -33,13 +34,13 @@ export default async function Page() {
     return (
         <ManifestComponent>
             <JsonLd data={jsonLd} />
-            <Navigation />
-            <Main>
-                <Suspense fallback={<SkeletonTable rows={8} />}>
-                    <Stigs />
-                </Suspense>
-            </Main>
-            <Footer />
+            <WorkbenchShell active="stigs">
+                <WorkbenchContent>
+                    <Suspense fallback={<SkeletonTable rows={8} />}>
+                        <Stigs />
+                    </Suspense>
+                </WorkbenchContent>
+            </WorkbenchShell>
         </ManifestComponent>
     );
 }

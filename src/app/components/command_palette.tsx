@@ -41,7 +41,15 @@ const score = (element: { id: string; title: string }, needle: string) => {
 
 const LIMIT = 15;
 
-export const CommandPalette = () => {
+export const CommandPalette = ({
+    className = "inline-flex items-center gap-2 rounded-md p-2 md:px-3 md:py-1.5 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors md:border md:border-border-strong",
+    slashShortcut = true,
+}: {
+    /** Trigger button classes; the default matches the site header. */
+    className?: string;
+    /** Whether a bare "/" opens the palette (off where a page owns "/"). */
+    slashShortcut?: boolean;
+}) => {
     const manifestPromise = useContext(ManifestContext);
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +88,7 @@ export const CommandPalette = () => {
                 setIsOpen((open) => !open);
                 return;
             }
-            if (event.key === "/" && !isOpen) {
+            if (event.key === "/" && slashShortcut && !isOpen) {
                 const target = event.target as HTMLElement | null;
                 if (
                     target?.isContentEditable ||
@@ -96,7 +104,7 @@ export const CommandPalette = () => {
         };
         document.addEventListener("keydown", onKeyDown);
         return () => document.removeEventListener("keydown", onKeyDown);
-    }, [isOpen]);
+    }, [isOpen, slashShortcut]);
 
     const results: Result[] = useMemo(() => {
         const needle = query.trim().toLocaleLowerCase();
@@ -164,7 +172,7 @@ export const CommandPalette = () => {
                 type="button"
                 aria-label="Search STIGs"
                 onClick={() => setIsOpen(true)}
-                className="inline-flex items-center gap-2 rounded-md p-2 md:px-3 md:py-1.5 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors md:border md:border-border-strong"
+                className={className}
             >
                 <svg
                     aria-hidden="true"

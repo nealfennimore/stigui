@@ -97,7 +97,42 @@ export const getIndex = async (
     return store.index(index);
 };
 
-type StoreGenerator = Promise<IDBObjectStore | IDBIndex>;
+/**
+ * Run `work` inside one readwrite transaction that spans `tables`.
+ * Requests issued from `work` (and from their success callbacks) all
+ * commit or abort together, so a multi-hundred-rule STIG is one write.
+ */
+const runTransaction = async (
+    tables: Table[],
+    work: (tx: IDBTransaction) => void
+): Promise<void> => {
+    const db = await getDB();
+    return new Promise<void>((resolve, reject) => {
+        const tx = db.transaction(tables, Permission.READWRITE);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(tx.error);
+        work(tx);
+    });
+};
+
+/** Delete every record an index maps to `query`, within `tx`. */
+const deleteByIndex = (
+    tx: IDBTransaction,
+    table: Table,
+    index: string,
+    query: IDBValidKey | IDBKeyRange,
+    onDone?: () => void
+) => {
+    const store = tx.objectStore(table);
+    const request = store.index(index).getAllKeys(query);
+    request.onsuccess = () => {
+        for (const key of request.result) {
+            store.delete(key);
+        }
+        onDone?.();
+    };
+};
 
 export const getAll =
     <T>(table: string, index?: string) =>
@@ -110,7 +145,6 @@ export const getAll =
             Permission.READONLY
         );
         if (index) {
-            // debugger;
             store = store.index(index) as IDBIndex;
         }
         const request = store.getAll(query, count);
@@ -132,7 +166,6 @@ export const get =
             Permission.READONLY
         );
         if (index) {
-            // debugger;
             store = store.index(index) as IDBIndex;
         }
         const request = store.get(query);
@@ -195,6 +228,23 @@ export const del =
         });
     };
 
+export const delMany =
+    (table: string) =>
+    async (keys: IDBValidKey[]): Promise<void> => {
+        if (!keys.length) {
+            return;
+        }
+        const store = await getStore(table, Permission.READWRITE);
+        return new Promise<void>((resolve, reject) => {
+            for (const key of keys) {
+                store.delete(key);
+            }
+            store.transaction.oncomplete = () => resolve();
+            store.transaction.onerror = () => reject();
+            store.transaction.onabort = () => reject();
+        });
+    };
+
 export const clear = (table: string) => async (): Promise<boolean> => {
     const store = await getStore(table, Permission.READWRITE);
     return new Promise<boolean>((resolve, reject) => {
@@ -231,6 +281,7 @@ class StoreWrapper<T> {
     put: (data: T) => Promise<T[]>;
     putMany: (data: T[]) => Promise<void>;
     del: (key: IDBValidKey) => Promise<boolean>;
+    delMany: (keys: IDBValidKey[]) => Promise<void>;
     clear: () => Promise<boolean>;
     store: (permission: Permission) => Promise<IDBObjectStore>;
 
@@ -241,6 +292,7 @@ class StoreWrapper<T> {
         this.put = put<T>(table);
         this.putMany = putMany<T>(table);
         this.del = del(table);
+        this.delMany = delMany(table);
         this.clear = clear(table);
         this.store = (permission: Permission = Permission.READONLY) =>
             getStore(table, permission);
@@ -257,6 +309,32 @@ export interface IDBChecklistStig {
 export type IDBChecklist = Omit<Checklist, "stigs">;
 export type IDBStig = Omit<Stig, "rules">;
 export type IDBRule = Rule;
+
+/** Queue one STIG's records (metadata, link, rules) on an open transaction. */
+const writeStig = (tx: IDBTransaction, checklistId: string, stigData: Stig) => {
+    const { rules, ...stig } = stigData;
+    tx.objectStore(Table.STIGS).put(stig);
+    tx.objectStore(Table.CHECKLIST_STIGS).put({
+        checklist_id: checklistId,
+        stig_uuid: stig.uuid,
+    });
+    const ruleStore = tx.objectStore(Table.RULES);
+    for (const rule of rules) {
+        if (rule.uuid) {
+            ruleStore.put(rule);
+        }
+    }
+};
+
+/** Queue removal of one STIG's rules, links and metadata on `tx`. */
+const eraseStig = (tx: IDBTransaction, checklistId: string, stigUuid: string) => {
+    deleteByIndex(tx, Table.RULES, "stig_uuid", stigUuid);
+    deleteByIndex(tx, Table.CHECKLIST_STIGS, "checklist_stig", [
+        checklistId,
+        stigUuid,
+    ]);
+    tx.objectStore(Table.STIGS).delete(stigUuid);
+};
 
 export class IDB {
     static checklists = new StoreWrapper<IDBChecklist>(Table.CHECKLISTS);
@@ -281,38 +359,29 @@ export class IDB {
                 throw new Error("Checklist not found");
             }
 
-            const stigChecklistsIdx = await new IndexWrapper<IDBChecklistStig>(
+            const links = await new IndexWrapper<IDBChecklistStig>(
                 IDB.checklistStigs.table,
                 "checklist_id"
             ).getAll(checklistId);
 
-            const stidUuids = stigChecklistsIdx.map((link) => link.stig_uuid);
-
-            const stigs = await Promise.all(
-                stidUuids.map((uuid) => IDB.stigs.get(uuid))
-            );
-
+            const stigUuids = links.map((link) => link.stig_uuid);
             const rulesIdx = new IndexWrapper<IDBRule>(
                 IDB.rules.table,
                 "stig_uuid"
             );
 
-            const rulesByStigUuid = await stidUuids.reduce(
-                async (accPromise, uuid) => {
-                    const acc = await accPromise;
-                    const rules = await rulesIdx.getAll(uuid);
-                    acc[uuid] = rules;
-                    return acc;
-                },
-                Promise.resolve({} as Record<string, Rule[]>)
-            );
+            // Fetch every STIG and its rules concurrently.
+            const [stigs, rulesPerStig] = await Promise.all([
+                Promise.all(stigUuids.map((uuid) => IDB.stigs.get(uuid))),
+                Promise.all(stigUuids.map((uuid) => rulesIdx.getAll(uuid))),
+            ]);
 
             const result: Checklist = {
                 ...checklist,
-                stigs: stigs.map((stig) => ({
+                stigs: stigs.map((stig, index) => ({
                     ...stig,
-                    rules: rulesByStigUuid[stig.uuid],
-                    size: rulesByStigUuid[stig.uuid].length,
+                    rules: rulesPerStig[index],
+                    size: rulesPerStig[index].length,
                 })),
             };
 
@@ -328,18 +397,10 @@ export class IDB {
         stigData: Stig
     ): Promise<boolean> {
         try {
-            const { rules: rulesData, ...stig } = stigData;
-            await IDB.stigs.put(stig);
-            await IDB.checklistStigs.put({
-                checklist_id: checklistId,
-                stig_uuid: stig.uuid,
-            });
-            for (const rule of rulesData) {
-                if (rule.uuid) {
-                    await IDB.rules.put(rule);
-                }
-            }
-
+            await runTransaction(
+                [Table.STIGS, Table.CHECKLIST_STIGS, Table.RULES],
+                (tx) => writeStig(tx, checklistId, stigData)
+            );
             return true;
         } catch (error) {
             console.error("Error adding stig to checklist:", error);
@@ -352,29 +413,10 @@ export class IDB {
         stigUuid: string
     ): Promise<boolean> {
         try {
-            // Delete every rule belonging to this STIG.
-            const rules = await new IndexWrapper<IDBRule>(
-                IDB.rules.table,
-                "stig_uuid"
-            ).getAll(stigUuid);
-            for (const rule of rules) {
-                await IDB.rules.del(rule.uuid);
-            }
-
-            // Delete the checklist <-> STIG link(s).
-            const links = await new IndexWrapper<IDBChecklistStig>(
-                IDB.checklistStigs.table,
-                "checklist_stig"
-            ).getAll([checklistId, stigUuid]);
-            for (const link of links) {
-                if (link.id !== undefined) {
-                    await IDB.checklistStigs.del(link.id);
-                }
-            }
-
-            // Delete the STIG metadata (its uuid is owned by this checklist).
-            await IDB.stigs.del(stigUuid);
-
+            await runTransaction(
+                [Table.STIGS, Table.CHECKLIST_STIGS, Table.RULES],
+                (tx) => eraseStig(tx, checklistId, stigUuid)
+            );
             return true;
         } catch (error) {
             console.error("Error removing stig from checklist:", error);
@@ -384,18 +426,26 @@ export class IDB {
 
     static async removeChecklist(checklistId: string): Promise<boolean> {
         try {
-            // Remove every STIG (and its rules/links) belonging to the checklist.
-            const links = await new IndexWrapper<IDBChecklistStig>(
-                IDB.checklistStigs.table,
-                "checklist_id"
-            ).getAll(checklistId);
-            for (const link of links) {
-                await IDB.removeStig(checklistId, link.stig_uuid);
-            }
-
-            // Delete the checklist record itself.
-            await IDB.checklists.del(checklistId);
-
+            await runTransaction(
+                [
+                    Table.CHECKLISTS,
+                    Table.STIGS,
+                    Table.CHECKLIST_STIGS,
+                    Table.RULES,
+                ],
+                (tx) => {
+                    const links = tx
+                        .objectStore(Table.CHECKLIST_STIGS)
+                        .index("checklist_id")
+                        .getAll(checklistId);
+                    links.onsuccess = () => {
+                        for (const link of links.result as IDBChecklistStig[]) {
+                            eraseStig(tx, checklistId, link.stig_uuid);
+                        }
+                        tx.objectStore(Table.CHECKLISTS).delete(checklistId);
+                    };
+                }
+            );
             return true;
         } catch (error) {
             console.error("Error removing checklist:", error);
@@ -405,24 +455,21 @@ export class IDB {
 
     static async importChecklist(checklistData: Checklist): Promise<boolean> {
         try {
-            const { stigs: stigsData, ...checklist } = checklistData;
-            await IDB.checklists.put(checklist);
-
-            // Store STIGs and create relations
-            for (const stigData of stigsData) {
-                const { rules: rulesData, ...stig } = stigData;
-                await IDB.stigs.put(stig);
-                await IDB.checklistStigs.put({
-                    checklist_id: checklist.id,
-                    stig_uuid: stig.uuid,
-                });
-                for (const rule of rulesData) {
-                    if (rule.uuid) {
-                        await IDB.rules.put(rule);
+            const { stigs, ...checklist } = checklistData;
+            await runTransaction(
+                [
+                    Table.CHECKLISTS,
+                    Table.STIGS,
+                    Table.CHECKLIST_STIGS,
+                    Table.RULES,
+                ],
+                (tx) => {
+                    tx.objectStore(Table.CHECKLISTS).put(checklist);
+                    for (const stig of stigs) {
+                        writeStig(tx, checklist.id, stig);
                     }
                 }
-            }
-
+            );
             return true;
         } catch (error) {
             console.error("Error importing checklist:", error);

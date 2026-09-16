@@ -2,6 +2,13 @@
 import Checklist from "@/api/entities/Checklist";
 import { Classification, StigWrapper } from "@/api/entities/Stig";
 import { Severity } from "@/api/generated/Checklist";
+import { Icon } from "@/app/components/client/editor/icons";
+import {
+    FilterPill,
+    Pill,
+    SEVERITY_LABEL,
+    severityTone,
+} from "@/app/components/client/editor/rule_meta";
 import { ExportMenu } from "@/app/components/export_menu";
 import { GroupInfo } from "@/app/components/rule_panel";
 import { Sidebar } from "@/app/components/sidebar";
@@ -26,8 +33,7 @@ import {
     useState,
 } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
-import { bySeverity, SeverityBadge } from "./severity";
-import { Badge } from "./ui/badge";
+import { bySeverity } from "./severity";
 import { defaultFilter, defaultSort, Order, Table } from "./table";
 
 const sorters = [defaultSort, bySeverity, defaultSort, null];
@@ -101,52 +107,36 @@ const toEditor = async (
 const ClassificationLink = ({
     classification,
     selectedClassification,
-    index,
-    lastIndex,
     stigId,
 }: {
     classification: Classification;
     selectedClassification: Classification;
-    index: number;
-    lastIndex: number;
     stigId: string;
 }) => {
     const isSelected = classification === selectedClassification;
-    const selectedClassName = isSelected
-        ? "bg-accent text-accent-foreground border-accent z-10"
-        : "bg-surface text-muted hover:bg-surface-muted hover:text-foreground";
-
-    const idxClassName = index === 0 ? "rounded-s-md" : "-ml-px";
-    const idxClassName2 = index === lastIndex ? "rounded-e-md" : "";
-
     return (
         <Link
             href={`/stigs/${stigId}/${classification}`}
             aria-current={isSelected ? "page" : undefined}
-            className={`px-3 py-1.5 text-sm font-medium border border-border-strong focus:z-10 transition-colors ${selectedClassName} ${idxClassName} ${idxClassName2}`}
+            className={`inline-flex items-center whitespace-nowrap rounded-[20px] border px-[11px] py-1 text-[11.5px] font-medium transition-colors ${
+                isSelected
+                    ? "border-transparent bg-contrast-surface text-contrast-foreground"
+                    : "border-border bg-surface text-muted hover:border-border-strong hover:text-foreground"
+            }`}
         >
             {classification}
         </Link>
     );
 };
 
-const chevron = (direction: "prev" | "next") => (
-    <svg
-        aria-hidden="true"
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d={direction === "prev" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
-        />
-    </svg>
+const SeverityLabel = ({ severity }: { severity: Severity }) => (
+    <Pill tone={severityTone[severity]}>
+        {SEVERITY_LABEL[severity].cat} · {SEVERITY_LABEL[severity].name}
+    </Pill>
 );
+
+const navButtonClasses =
+    "rounded-[9px] border border-border bg-surface p-1.5 text-muted transition-colors hover:border-border-strong hover:bg-surface-muted hover:text-foreground";
 
 export const StigView = ({
     stigId,
@@ -224,13 +214,13 @@ export const StigView = ({
                     ],
                     columns: [
                         <Link
-                            className="flex flex-col whitespace-nowrap font-medium text-accent hover:underline"
+                            className="flex flex-col whitespace-nowrap font-plex-mono text-[11.5px] font-semibold text-muted hover:text-accent hover:underline"
                             href={`/stigs/${stigId}/groups/${group.id}`}
                             onClick={(e) => e.stopPropagation()}
                         >
                             {group.id}
                         </Link>,
-                        <SeverityBadge severity={group.rule.severity} />,
+                        <SeverityLabel severity={group.rule.severity} />,
                         group.rule.title,
                         group.rule.description,
                     ],
@@ -300,7 +290,10 @@ export const StigView = ({
                 onClick={() => setSelectedGroupId(null)}
                 headerText={
                     group && (
-                        <Link href={`/stigs/${stigId}/groups/${group.id}`}>
+                        <Link
+                            className="font-plex-mono hover:underline"
+                            href={`/stigs/${stigId}/groups/${group.id}`}
+                        >
                             {group.id}
                         </Link>
                     )
@@ -312,32 +305,32 @@ export const StigView = ({
                                 type="button"
                                 aria-label="Previous rule"
                                 onClick={() => moveSelection(-1)}
-                                className="p-1.5 rounded-md text-subtle hover:bg-surface-muted hover:text-foreground transition-colors"
+                                className={navButtonClasses}
                             >
-                                {chevron("prev")}
+                                <Icon.chevronLeft className="h-3.5 w-3.5" />
                             </button>
                             <button
                                 type="button"
                                 aria-label="Next rule"
                                 onClick={() => moveSelection(1)}
-                                className="p-1.5 rounded-md text-subtle hover:bg-surface-muted hover:text-foreground transition-colors"
+                                className={navButtonClasses}
                             >
-                                {chevron("next")}
+                                <Icon.chevronRight className="h-3.5 w-3.5" />
                             </button>
                         </>
                     )
                 }
             >
                 {group && (
-                    <>
-                        <div className="flex items-center gap-1 flex-wrap">
-                            <SeverityBadge severity={group.rule.severity} />
-                            <span className="text-sm font-medium text-foreground">
+                    <div className="flex w-[min(90vw,40rem)] flex-col gap-3.5">
+                        <div className="flex flex-col gap-2">
+                            <SeverityLabel severity={group.rule.severity} />
+                            <h2 className="text-[15px] font-bold leading-[1.3] tracking-[-0.01em] text-foreground">
                                 {group.rule.title}
-                            </span>
+                            </h2>
                         </div>
                         <GroupInfo group={group} compact />
-                        <div className="flex flex-row justify-start items-center">
+                        <div className="flex flex-row items-center justify-start">
                             <Link
                                 className={buttonClasses({
                                     variant: "primary",
@@ -348,21 +341,21 @@ export const StigView = ({
                                 Open {group.id}
                             </Link>
                         </div>
-                    </>
+                    </div>
                 )}
             </Sidebar>
 
-            <header className="w-full flex flex-col gap-2 mt-6">
-                <h1 className="text-3xl max-sm:text-2xl font-semibold tracking-tight text-foreground">
+            <header className="flex w-full flex-col gap-2">
+                <h1 className="text-[19px] font-bold leading-[1.3] tracking-[-0.015em] text-foreground">
                     {stig.title}
                 </h1>
-                <p className="text-xs text-subtle">
+                <p className="text-[11px] text-subtle">
                     Version {stig.version} · Released {stig.date} ·{" "}
                     {totalCount} rules
                 </p>
                 <div>
                     <p
-                        className={`text-sm discussion ${
+                        className={`max-w-[80ch] text-[12.5px] leading-[1.6] text-muted [text-wrap:pretty] ${
                             showFullDescription ? "" : "line-clamp-3"
                         }`}
                     >
@@ -373,26 +366,24 @@ export const StigView = ({
                         onClick={() =>
                             setShowFullDescription(!showFullDescription)
                         }
-                        className="text-xs font-medium text-accent hover:underline mt-1"
+                        className="mt-1 text-[11.5px] font-semibold text-wb-nav-active-foreground hover:underline"
                     >
                         {showFullDescription ? "Show less" : "Show more"}
                     </button>
                 </div>
             </header>
 
-            <section className="w-full flex justify-between items-center gap-4 flex-wrap">
+            <section className="flex w-full flex-wrap items-center justify-between gap-4">
                 <nav
                     aria-label="Classification profile"
-                    className="inline-flex"
+                    className="flex flex-wrap items-center gap-1.5"
                 >
-                    {classifications.map((item, index) => (
+                    {classifications.map((item) => (
                         <ClassificationLink
                             key={item}
                             stigId={stigId}
                             classification={item}
                             selectedClassification={classificationLevel}
-                            index={index}
-                            lastIndex={classifications.length - 1}
                         />
                     ))}
                 </nav>
@@ -435,27 +426,27 @@ export const StigView = ({
                 </div>
             </section>
 
-            <section className="w-full flex flex-col">
+            <section className="flex w-full flex-col">
                 <TableCard>
-                    <div className="flex items-center gap-1 flex-wrap px-4 py-3 border-b border-border bg-surface">
-                        <Badge
-                            tone="neutral"
+                    <div className="flex flex-wrap items-center gap-1.5 border-b border-border bg-surface px-4 py-3">
+                        <FilterPill
+                            active={severities.size === 0}
                             count={totalCount}
-                            selected={severities.size === 0}
                             onClick={() => setSeverities(new Set())}
                         >
                             All
-                        </Badge>
+                        </FilterPill>
                         {counts.map(([severity, count]) => (
-                            <SeverityBadge
+                            <FilterPill
                                 key={severity}
-                                severity={severity as Severity}
+                                active={severities.has(severity as Severity)}
                                 count={count}
-                                selected={severities.has(severity as Severity)}
                                 onClick={() =>
                                     toggleSeverity(severity as Severity)
                                 }
-                            />
+                            >
+                                {SEVERITY_LABEL[severity as Severity].cat}
+                            </FilterPill>
                         ))}
                     </div>
                     {tableBody.length === 0 ? (

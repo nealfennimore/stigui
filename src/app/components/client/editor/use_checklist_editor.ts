@@ -29,6 +29,8 @@ const toChecklistRecord = (checklist: Checklist): IDBChecklist => {
  */
 export const useChecklistEditor = (checklistId: string) => {
     const [checklist, setChecklist] = useState<Checklist | null>(null);
+    /** True once the load settled without finding the checklist. */
+    const [missing, setMissing] = useState(false);
     const [saveState, setSaveState] = useState<SaveState>("idle");
     const checklistRef = useRef<Checklist | null>(null);
     checklistRef.current = checklist;
@@ -40,8 +42,15 @@ export const useChecklistEditor = (checklistId: string) => {
     const inflight = useRef(0);
 
     const refresh = useCallback(async () => {
-        const next = await IDB.exportChecklist(checklistId);
-        setChecklist(next);
+        try {
+            const next = await IDB.exportChecklist(checklistId);
+            setChecklist(next);
+            setMissing(next === null);
+        } catch {
+            // exportChecklist logs the cause; an unknown id is the usual one.
+            setChecklist(null);
+            setMissing(true);
+        }
     }, [checklistId]);
 
     useEffect(() => {
@@ -316,6 +325,7 @@ export const useChecklistEditor = (checklistId: string) => {
 
     return {
         checklist,
+        missing,
         rules,
         saveState,
         refresh,

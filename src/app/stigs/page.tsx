@@ -1,6 +1,7 @@
-import { Footer } from "@/app/components/footer";
-import { Main } from "@/app/components/main";
-import { Navigation } from "@/app/components/navigation";
+import {
+    WorkbenchContent,
+    WorkbenchShell,
+} from "@/app/components/client/editor/shell";
 import { Stigs } from "@/app/components/stigs";
 import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { URL } from "@/app/constants";
@@ -20,13 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page() {
     return (
         <ManifestComponent>
-            <Navigation />
-            <Main>
-                <Suspense fallback={<SkeletonTable rows={8} />}>
-                    <Stigs />
-                </Suspense>
-            </Main>
-            <Footer />
+            <WorkbenchShell active="stigs">
+                <WorkbenchContent>
+                    <Suspense fallback={<SkeletonTable rows={8} />}>
+                        <Stigs />
+                    </Suspense>
+                </WorkbenchContent>
+            </WorkbenchShell>
         </ManifestComponent>
     );
 }

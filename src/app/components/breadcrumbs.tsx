@@ -47,25 +47,26 @@ export const Breadcrumbs = ({ stigId, group, editor }: BreadcrumbsProps) => {
     }
 
     return (
-        <aside className="flex flex-row flex-wrap items-center justify-start w-full">
+        <nav
+            aria-label="Breadcrumb"
+            className="flex w-full flex-row flex-wrap items-center justify-start text-[11.5px] font-medium"
+        >
             {links.map((link, index) => (
-                <span key={index}>
+                <span key={index} className="flex items-center">
                     <Link
-                        className="text-sm text-muted hover:text-accent transition-colors"
+                        className="text-subtle transition-colors hover:text-foreground hover:underline"
                         href={link.href}
                         aria-disabled={link.disabled}
-
                     >
                         {link.text}
                     </Link>
                     {index < links.length - 1 && (
-                        <span className="text-sm mx-2 text-subtle">
-                            {" "}
-                            &gt;{" "}
+                        <span aria-hidden="true" className="mx-2 text-wb-faint">
+                            /
                         </span>
                     )}
                 </span>
             ))}
-        </aside>
+        </nav>
     );
 };

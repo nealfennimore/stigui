@@ -29,7 +29,7 @@ export const RuleText = ({ text }: { text: string }) => {
                 isCommandParagraph(paragraph) ? (
                     <pre
                         key={index}
-                        className="font-[family-name:var(--font-geist-mono)] text-xs bg-surface-muted text-foreground rounded-md p-3 overflow-x-auto whitespace-pre"
+                        className="overflow-x-auto whitespace-pre rounded-[9px] bg-wb-inset px-3.5 py-3 font-plex-mono text-xs leading-[1.65] text-wb-body"
                     >
                         {paragraph}
                     </pre>

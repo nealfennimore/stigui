@@ -8,39 +8,36 @@ import {
     Stig,
 } from "@/api/generated/Checklist";
 import { AddStig } from "@/app/components/client/editor/add_stig";
-import {
-    computeStatusCounts,
-    ProgressSummary,
-} from "@/app/components/client/editor/progress";
+import { computeStatusCounts } from "@/app/components/client/editor/progress";
 import {
     RuleDetail,
     RuleDetailHandlers,
 } from "@/app/components/client/editor/rule_detail";
+import { RuleList } from "@/app/components/client/editor/rule_list";
 import {
+    effectiveSeverity,
     filterRules,
-    StigRuleGroup,
-} from "@/app/components/client/editor/rule_list";
+    STATUS_NAME,
+    STATUS_ORDER,
+} from "@/app/components/client/editor/rule_meta";
+import { ShellAction, WorkbenchShell } from "@/app/components/client/editor/shell";
 import { useChecklistEditor } from "@/app/components/client/editor/use_checklist_editor";
+import {
+    getLastChecklistId,
+    setLastChecklistId,
+} from "@/app/components/client/editor/workbench_state";
 import { Sidebar } from "@/app/components/sidebar";
-import { Button, buttonClasses } from "@/app/components/ui/button";
+import { buttonClasses } from "@/app/components/ui/button";
 import { useConfirm } from "@/app/components/ui/confirm_dialog";
 import { EmptyState } from "@/app/components/ui/empty_state";
-import { SkeletonTable } from "@/app/components/ui/skeleton";
+import { Skeleton } from "@/app/components/ui/skeleton";
 import { useToast } from "@/app/components/ui/toast";
 import { isEditingTarget } from "@/app/hooks/use_keyboard_nav";
 import { download } from "@/app/utils";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-    Suspense,
-    useCallback,
-    useEffect,
-    useMemo,
-    useState,
-} from "react";
-import { Breadcrumbs } from "./breadcrumbs";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ChecklistTargetData } from "./checklist_target_data";
-import { SeverityBadge, bySeverity } from "./severity";
-import { StatusBadge, byStatus } from "./status";
 
 const toCKLB = (checklist: Checklist) => {
     const blob = new Blob([Convert.checklistToJson(checklist)], {
@@ -51,45 +48,58 @@ const toCKLB = (checklist: Checklist) => {
     URL.revokeObjectURL(url);
 };
 
-const STATUS_KEYS: Status[] = [
-    Status.Open,
-    Status.NotReviewed,
-    Status.NotAFinding,
-    Status.NotApplicable,
-];
+type Drawer = "add-stig" | "metadata" | null;
 
-const SaveIndicator = ({ state }: { state: string }) => {
-    if (state === "idle") {
-        return null;
+const toggleIn = <T,>(set: Set<T>, value: T) => {
+    const next = new Set(set);
+    if (next.has(value)) {
+        next.delete(value);
+    } else {
+        next.add(value);
     }
-    const text = {
-        saving: "Saving…",
-        saved: "Saved ✓",
-        error: "Save failed",
-    }[state];
-    return (
-        <span
-            role="status"
-            className={`text-xs whitespace-nowrap ${
-                state === "error" ? "text-danger-foreground" : "text-subtle"
-            }`}
-        >
-            {text}
-        </span>
-    );
+    return next;
 };
+
+const LoadingColumns = () => (
+    <>
+        <div className="flex w-full shrink-0 flex-col gap-2 border-wb-divider p-4 lg:w-[368px] lg:border-r">
+            <Skeleton className="h-5 w-2/3" />
+            <Skeleton className="h-9 w-full" />
+            {Array.from({ length: 6 }, (_, index) => (
+                <Skeleton key={index} className="h-16 w-full rounded-xl" />
+            ))}
+        </div>
+        <div className="hidden flex-1 flex-col gap-3 p-[26px] lg:flex">
+            <Skeleton className="h-4 w-1/3" />
+            <Skeleton className="h-7 w-2/3" />
+            <Skeleton className="h-10 w-1/2" />
+            <Skeleton className="h-40 w-full rounded-[14px]" />
+        </div>
+    </>
+);
 
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const editor = useChecklistEditor(checklistId);
-    const { checklist, rules, saveState, flush } = editor;
+    const { checklist, missing, rules, saveState, flush } = editor;
     const [selectedUuid, setSelectedUuid] = useState<string | null>(null);
     const [selection, setSelection] = useState<Set<string>>(new Set());
-    const [addStigOpen, setAddStigOpen] = useState(false);
+    const [drawer, setDrawer] = useState<Drawer>(null);
+    const [query, setQuery] = useState("");
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [statuses, setStatuses] = useState<Set<Status>>(new Set());
+    const searchRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
     const confirm = useConfirm();
     const { toast } = useToast();
+
+    // The Workbench nav item reopens the last checklist that loaded.
+    useEffect(() => {
+        if (checklist) {
+            setLastChecklistId(checklist.id);
+        } else if (missing && getLastChecklistId() === checklistId) {
+            setLastChecklistId(null);
+        }
+    }, [checklist, missing, checklistId]);
 
     const ruleByUuid = useMemo(() => {
         const map = new Map<string, Rule>();
@@ -100,39 +110,34 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const progress = useMemo(() => computeStatusCounts(rules), [rules]);
 
     const counts = useMemo(() => {
-        const counts: {
-            severity: Record<Severity, number>;
-            status: Record<Status, number>;
-        } = {
-            severity: {} as Record<Severity, number>,
-            status: {} as Record<Status, number>,
-        };
+        const status = {} as Record<Status, number>;
+        const severity = {} as Record<Severity, number>;
         rules.forEach((rule) => {
-            const severity =
-                rule.overrides?.severity?.severity ?? rule.severity;
-            counts.severity[severity] = (counts.severity[severity] ?? 0) + 1;
-            counts.status[rule.status] =
-                (counts.status[rule.status] ?? 0) + 1;
+            status[rule.status] = (status[rule.status] ?? 0) + 1;
+            const level = effectiveSeverity(rule);
+            severity[level] = (severity[level] ?? 0) + 1;
         });
-        return {
-            severity: Object.entries(counts.severity).sort(([a], [b]) =>
-                bySeverity(b as Severity, a as Severity)
-            ),
-            status: Object.entries(counts.status).sort(([a], [b]) =>
-                byStatus(b as Status, a as Status)
-            ),
-        };
+        return { status, severity, total: rules.length };
     }, [rules]);
+
+    const visibleByStig = useMemo(() => {
+        const map = new Map<string, Rule[]>();
+        (checklist?.stigs ?? []).forEach((stig) =>
+            map.set(
+                stig.uuid,
+                filterRules(stig.rules, query, statuses, severities)
+            )
+        );
+        return map;
+    }, [checklist, query, statuses, severities]);
 
     // Navigation order: document order of the filtered rules.
     const visibleUuids = useMemo(
         () =>
-            (checklist?.stigs ?? []).flatMap((stig) =>
-                filterRules(stig.rules, severities, statuses).map(
-                    (rule) => rule.uuid
-                )
+            [...visibleByStig.values()].flatMap((list) =>
+                list.map((rule) => rule.uuid)
             ),
-        [checklist, severities, statuses]
+        [visibleByStig]
     );
 
     const selectedRule = selectedUuid
@@ -149,10 +154,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             }
             flush();
             setSelectedUuid((previous) => {
-                if (!previous) {
-                    return visibleUuids[0];
-                }
-                const index = visibleUuids.indexOf(previous);
+                const index = previous ? visibleUuids.indexOf(previous) : -1;
                 if (index === -1) {
                     return visibleUuids[0];
                 }
@@ -166,25 +168,62 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [visibleUuids, flush]
     );
 
+    /** Next Not Reviewed rule after the current one, wrapping around. */
+    const jumpToUnreviewed = useCallback(() => {
+        if (!visibleUuids.length) {
+            return false;
+        }
+        flush();
+        const start = selectedUuid ? visibleUuids.indexOf(selectedUuid) : -1;
+        for (let step = 1; step <= visibleUuids.length; step++) {
+            const uuid = visibleUuids[(start + step) % visibleUuids.length];
+            if (
+                uuid !== selectedUuid &&
+                ruleByUuid.get(uuid)?.status === Status.NotReviewed
+            ) {
+                setSelectedUuid(uuid);
+                return true;
+            }
+        }
+        return false;
+    }, [visibleUuids, selectedUuid, ruleByUuid, flush]);
+
+    const saveAndNext = useCallback(() => {
+        flush();
+        if (!jumpToUnreviewed()) {
+            if (
+                selectedPosition > -1 &&
+                selectedPosition < visibleUuids.length - 1
+            ) {
+                moveSelection(1);
+            } else {
+                toast({
+                    tone: "success",
+                    title: "Saved",
+                    description: "No rules are left to review in this view.",
+                });
+            }
+        }
+    }, [
+        flush,
+        jumpToUnreviewed,
+        selectedPosition,
+        visibleUuids.length,
+        moveSelection,
+        toast,
+    ]);
+
     const onSelectRule = useCallback(
         (rule: Rule) => {
             flush();
-            setAddStigOpen(false);
+            setDrawer(null);
             setSelectedUuid(rule.uuid);
         },
         [flush]
     );
 
     const onToggleSelection = useCallback((uuid: string) => {
-        setSelection((previous) => {
-            const next = new Set(previous);
-            if (next.has(uuid)) {
-                next.delete(uuid);
-            } else {
-                next.add(uuid);
-            }
-            return next;
-        });
+        setSelection((previous) => toggleIn(previous, uuid));
     }, []);
 
     const onSelectAll = useCallback((uuids: string[], selected: boolean) => {
@@ -197,10 +236,14 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         });
     }, []);
 
-    // Keyboard shortcuts: j/k navigate, 1–4 set status, x select, Esc close.
+    // Shortcuts: j/k move, 1–4 status, x select, / search, Esc close.
     useEffect(() => {
         const onKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
+                if (document.activeElement === searchRef.current) {
+                    searchRef.current?.blur();
+                    return;
+                }
                 setSelectedUuid(null);
                 setSelection(new Set());
                 return;
@@ -226,7 +269,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     if (selectedUuid) {
                         editor.setStatus(
                             [selectedUuid],
-                            STATUS_KEYS[parseInt(event.key) - 1]
+                            STATUS_ORDER[parseInt(event.key) - 1]
                         );
                     }
                     break;
@@ -234,6 +277,10 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     if (selectedUuid) {
                         onToggleSelection(selectedUuid);
                     }
+                    break;
+                case "/":
+                    event.preventDefault();
+                    searchRef.current?.focus();
                     break;
             }
         };
@@ -288,6 +335,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         });
         if (confirmed) {
             await editor.deleteChecklist();
+            setLastChecklistId(null);
             router.push("/editor");
         }
     }, [confirm, checklist?.title, editor, router]);
@@ -295,7 +343,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
     const handleAddStig = useCallback(
         async (stig: Stig) => {
             await editor.addStig(stig);
-            setAddStigOpen(false);
+            setDrawer(null);
             toast({
                 tone: "success",
                 title: "STIG added",
@@ -304,6 +352,19 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         },
         [editor, toast]
     );
+
+    const exportChecklist = useCallback(() => {
+        if (!checklist) {
+            return;
+        }
+        flush();
+        toCKLB(checklist);
+        toast({
+            tone: "success",
+            title: "Checklist exported",
+            description: "The .cklb file is compatible with DISA STIG Viewer 3.",
+        });
+    }, [checklist, flush, toast]);
 
     const bulkSetStatus = useCallback(
         (status: Status) => {
@@ -315,7 +376,7 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 title: `Updated ${uuids.length} rule${
                     uuids.length === 1 ? "" : "s"
                 }`,
-                description: `Status set to "${status.replaceAll("_", " ")}".`,
+                description: `Status set to "${STATUS_NAME[status]}".`,
             });
         },
         [selection, editor, toast]
@@ -328,8 +389,9 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             setSeverity: editor.setSeverity,
             setOverrideReason: editor.setOverrideReason,
             onRemove: removeRule,
+            flush,
         }),
-        [editor, removeRule]
+        [editor, removeRule, flush]
     );
 
     const existingStigNames = useMemo(
@@ -337,28 +399,80 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
         [checklist]
     );
 
-    const toggleFilter = <T,>(
-        set: Set<T>,
-        setter: (next: Set<T>) => void,
-        value: T
-    ) => {
-        const next = new Set(set);
-        if (next.has(value)) {
-            next.delete(value);
-        } else {
-            next.add(value);
-        }
-        setter(next);
-    };
+    const clearFilters = useCallback(() => {
+        setStatuses(new Set());
+        setSeverities(new Set());
+    }, []);
+
+    const actions: ShellAction[] = useMemo(
+        () => [
+            {
+                label: "Target metadata",
+                icon: "metadata",
+                onClick: () => {
+                    setSelectedUuid(null);
+                    setDrawer("metadata");
+                },
+            },
+            {
+                label: "Add STIG",
+                icon: "plus",
+                onClick: () => {
+                    setSelectedUuid(null);
+                    setDrawer("add-stig");
+                },
+            },
+            {
+                label: "Delete checklist",
+                icon: "trash",
+                tone: "danger",
+                onClick: deleteChecklist,
+            },
+        ],
+        [deleteChecklist]
+    );
+
+    if (missing) {
+        return (
+            <WorkbenchShell active="workbench">
+                <div className="flex flex-1 items-center justify-center p-8">
+                    <EmptyState
+                        className="max-w-md bg-surface"
+                        title="Checklist not found"
+                        description="It was deleted, or it lives in another browser. Checklists are stored locally."
+                        action={
+                            <Link
+                                href="/editor"
+                                className={buttonClasses({
+                                    variant: "primary",
+                                    size: "sm",
+                                })}
+                            >
+                                Back to checklists
+                            </Link>
+                        }
+                    />
+                </div>
+            </WorkbenchShell>
+        );
+    }
 
     if (!checklist) {
-        return <SkeletonTable rows={8} className="my-4" />;
+        return (
+            <WorkbenchShell active="workbench" checklistId={checklistId}>
+                <LoadingColumns />
+            </WorkbenchShell>
+        );
     }
+
+    const remaining = progress.counts[Status.NotReviewed];
+    const hostName = checklist.target_data.host_name?.trim();
 
     const detail = selectedRule ? (
         <RuleDetail
             rule={selectedRule}
             handlers={detailHandlers}
+            saveState={saveState}
             onPrevious={
                 selectedPosition > 0 ? () => moveSelection(-1) : undefined
             }
@@ -368,214 +482,173 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                     ? () => moveSelection(1)
                     : undefined
             }
+            onSaveAndNext={saveAndNext}
+            onJumpToUnreviewed={jumpToUnreviewed}
+            remaining={remaining}
             position={
                 selectedPosition > -1
-                    ? {
-                          index: selectedPosition,
-                          total: visibleUuids.length,
-                      }
+                    ? { index: selectedPosition, total: visibleUuids.length }
                     : undefined
             }
         />
     ) : null;
 
     return (
-        <Suspense fallback={<SkeletonTable rows={8} className="my-4" />}>
-            <Breadcrumbs editor />
+        <WorkbenchShell
+            active="workbench"
+            checklistId={checklist.id}
+            progress={{
+                label: hostName || checklist.title || "Untitled checklist",
+                counts: progress,
+            }}
+            onExport={exportChecklist}
+            actions={actions}
+        >
+            {checklist.stigs.length === 0 ? (
+                <div className="flex flex-1 items-center justify-center p-8">
+                    <EmptyState
+                        className="max-w-md bg-surface"
+                        title="This checklist has no STIGs yet"
+                        description="Add a STIG to start assessing rules."
+                        action={
+                            <button
+                                type="button"
+                                onClick={() => setDrawer("add-stig")}
+                                className={buttonClasses({
+                                    variant: "primary",
+                                    size: "sm",
+                                })}
+                            >
+                                Add STIG
+                            </button>
+                        }
+                    />
+                </div>
+            ) : (
+                <>
+                    <RuleList
+                        title={checklist.title}
+                        onTitleChange={editor.updateTitle}
+                        query={query}
+                        onQueryChange={setQuery}
+                        searchRef={searchRef}
+                        statuses={statuses}
+                        severities={severities}
+                        onToggleStatus={(status) =>
+                            setStatuses((previous) => toggleIn(previous, status))
+                        }
+                        onToggleSeverity={(severity) =>
+                            setSeverities((previous) =>
+                                toggleIn(previous, severity)
+                            )
+                        }
+                        onClearFilters={clearFilters}
+                        counts={counts}
+                        stigs={checklist.stigs}
+                        visibleByStig={visibleByStig}
+                        selectedUuid={selectedUuid}
+                        selection={selection}
+                        onSelectRule={onSelectRule}
+                        onToggleSelection={onToggleSelection}
+                        onSelectAll={onSelectAll}
+                        onRemoveStig={removeStig}
+                    />
+                    <div className="hidden min-h-0 min-w-0 flex-1 flex-col lg:flex">
+                        {detail ?? (
+                            <div className="flex flex-1 items-center justify-center p-8">
+                                <EmptyState
+                                    className="max-w-md border-0"
+                                    title="Select a rule to begin"
+                                    description="Pick a rule on the left, or press j/k to move through the list and 1–4 to set its status."
+                                    action={
+                                        remaining > 0 ? (
+                                            <button
+                                                type="button"
+                                                onClick={jumpToUnreviewed}
+                                                className={buttonClasses({
+                                                    variant: "primary",
+                                                    size: "sm",
+                                                })}
+                                            >
+                                                Start with the next unreviewed
+                                                rule
+                                            </button>
+                                        ) : undefined
+                                    }
+                                />
+                            </div>
+                        )}
+                    </div>
+                </>
+            )}
 
-            {/* Mobile rule editor drawer; desktop uses the right pane. */}
+            {/* Below lg the detail pane opens as a drawer. */}
             <div className="lg:hidden">
                 <Sidebar
                     isOpen={selectedRule !== null}
                     onClick={() => setSelectedUuid(null)}
-                    headerText={selectedRule?.rule_title ?? "Rule Details"}
+                    headerText={selectedRule?.group_id ?? "Rule"}
                 >
                     {detail}
                 </Sidebar>
             </div>
 
             <Sidebar
-                isOpen={addStigOpen}
-                onClick={() => setAddStigOpen(false)}
+                isOpen={drawer === "add-stig"}
+                onClick={() => setDrawer(null)}
                 headerText="Add STIG"
             >
                 <AddStig
-                    isOpen={addStigOpen}
+                    isOpen={drawer === "add-stig"}
                     existingStigNames={existingStigNames}
                     onAdd={handleAddStig}
                 />
             </Sidebar>
 
-            <section className="my-4 w-full flex flex-col gap-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                    <input
-                        key={checklist.id}
-                        type="text"
-                        value={checklist.title}
-                        onChange={(event) =>
-                            editor.updateTitle(event.target.value)
-                        }
-                        aria-label="Checklist title"
-                        placeholder="Untitled checklist"
-                        className="flex-1 min-w-[16rem] text-3xl max-sm:text-2xl font-semibold tracking-tight text-foreground bg-transparent rounded-md border border-transparent px-1 -mx-1 hover:border-border focus:border-accent focus-visible:outline-none focus:ring-2 focus:ring-ring/40 transition-colors"
-                    />
-                    <div className="flex items-center gap-2">
-                        <SaveIndicator state={saveState} />
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={() => {
-                                setSelectedUuid(null);
-                                setAddStigOpen(true);
-                            }}
-                        >
-                            Add STIG
-                        </Button>
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={() => {
-                                flush();
-                                toCKLB(checklist);
-                                toast({
-                                    tone: "success",
-                                    title: "Checklist exported",
-                                    description:
-                                        "The .cklb file is compatible with DISA STIG Viewer 3.",
-                                });
-                            }}
-                        >
-                            Export CKLB
-                        </Button>
-                        <Button
-                            variant="danger"
-                            size="sm"
-                            onClick={deleteChecklist}
-                        >
-                            Delete
-                        </Button>
+            <Sidebar
+                isOpen={drawer === "metadata"}
+                onClick={() => setDrawer(null)}
+                headerText="Target metadata"
+            >
+                {drawer === "metadata" && (
+                    <div className="w-[min(90vw,36rem)]">
+                        <ChecklistTargetData
+                            checklist={checklist}
+                            onChange={editor.updateTargetData}
+                        />
                     </div>
-                </div>
-
-                <ProgressSummary progress={progress} />
-
-                <div className="flex justify-between items-start gap-2 flex-wrap">
-                    <div className="flex flex-wrap items-center">
-                        {counts.status.map(([status, count]) => (
-                            <StatusBadge
-                                key={status}
-                                status={status as Status}
-                                count={count}
-                                selected={statuses.has(status as Status)}
-                                onClick={() =>
-                                    toggleFilter(
-                                        statuses,
-                                        setStatuses,
-                                        status as Status
-                                    )
-                                }
-                            />
-                        ))}
-                    </div>
-                    <div className="flex flex-wrap items-center">
-                        {counts.severity.map(([severity, count]) => (
-                            <SeverityBadge
-                                key={severity}
-                                severity={severity as Severity}
-                                count={count}
-                                selected={severities.has(severity as Severity)}
-                                onClick={() =>
-                                    toggleFilter(
-                                        severities,
-                                        setSeverities,
-                                        severity as Severity
-                                    )
-                                }
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                <ChecklistTargetData
-                    checklist={checklist}
-                    onChange={editor.updateTargetData}
-                />
-            </section>
-
-            {checklist.stigs.length === 0 ? (
-                <EmptyState
-                    className="w-full"
-                    title="This checklist has no STIGs yet"
-                    description="Add a STIG to start assessing rules."
-                    action={
-                        <button
-                            type="button"
-                            onClick={() => setAddStigOpen(true)}
-                            className={buttonClasses({
-                                variant: "primary",
-                                size: "sm",
-                            })}
-                        >
-                            Add STIG
-                        </button>
-                    }
-                />
-            ) : (
-                <div className="w-full grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
-                    <div className="flex flex-col gap-3 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1">
-                        {checklist.stigs.map((stig) => (
-                            <StigRuleGroup
-                                key={stig.uuid}
-                                stig={stig}
-                                severities={severities}
-                                statuses={statuses}
-                                selectedUuid={selectedUuid}
-                                selection={selection}
-                                onSelectRule={onSelectRule}
-                                onToggleSelection={onToggleSelection}
-                                onSelectAll={onSelectAll}
-                                onRemoveStig={removeStig}
-                            />
-                        ))}
-                    </div>
-                    <div className="max-lg:hidden lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto rounded-lg border border-border bg-surface shadow-card p-5">
-                        {detail ?? (
-                            <EmptyState
-                                className="border-0"
-                                title="Select a rule to begin"
-                                description="Click a rule on the left, or use j/k to move and 1–4 to set its status."
-                            />
-                        )}
-                    </div>
-                </div>
-            )}
+                )}
+            </Sidebar>
 
             {selection.size > 0 && (
-                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 rounded-lg border border-border bg-surface shadow-overlay px-4 py-2.5 flex-wrap max-sm:w-[calc(100%-2rem)]">
-                    <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                <div className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 flex-wrap items-center gap-3 rounded-xl border border-border bg-surface px-4 py-2.5 shadow-overlay max-sm:w-[calc(100%-2rem)]">
+                    <span className="whitespace-nowrap text-[12.5px] font-semibold text-foreground">
                         {selection.size} selected
                     </span>
-                    <span className="text-xs text-subtle max-sm:hidden">
+                    <span className="text-[11px] text-subtle max-sm:hidden">
                         Set status:
                     </span>
-                    <div className="flex items-center gap-1 flex-wrap">
-                        {STATUS_KEYS.map((status) => (
-                            <StatusBadge
+                    <div className="flex flex-wrap items-center gap-1.5">
+                        {STATUS_ORDER.map((status) => (
+                            <button
                                 key={status}
-                                status={status}
+                                type="button"
                                 onClick={() => bulkSetStatus(status)}
-                            />
+                                className="rounded-[9px] border border-border bg-surface px-3 py-1.5 text-xs font-medium text-wb-body transition-colors hover:border-border-strong hover:bg-surface-muted"
+                            >
+                                {STATUS_NAME[status]}
+                            </button>
                         ))}
                     </div>
                     <button
                         type="button"
                         onClick={() => setSelection(new Set())}
-                        className="text-xs font-medium text-accent hover:underline"
+                        className="text-xs font-semibold text-accent hover:underline"
                     >
                         Clear
                     </button>
                 </div>
             )}
-        </Suspense>
+        </WorkbenchShell>
     );
 };

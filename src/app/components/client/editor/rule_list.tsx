@@ -1,220 +1,354 @@
 "use client";
 import { Rule, Severity, Status, Stig } from "@/api/generated/Checklist";
+import { Icon } from "@/app/components/client/editor/icons";
+import { computeStatusCounts } from "@/app/components/client/editor/progress";
 import {
-    computeStatusCounts,
-    ProgressBar,
-} from "@/app/components/client/editor/progress";
-import { bySeverity, SeverityBadge } from "@/app/components/severity";
-import { byStatus, StatusBadge } from "@/app/components/status";
-import {
-    defaultFilter,
-    defaultSort,
-    Order,
-    Table,
-} from "@/app/components/table";
-import { useCallback, useMemo, useState } from "react";
+    FilterPill,
+    RuleStatusPill,
+    SEVERITY_LABEL,
+    STATUS_LABEL,
+} from "@/app/components/client/editor/rule_meta";
+import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 
-const sorters = [null, byStatus, bySeverity, defaultSort];
-const filters = [null, null, null, defaultFilter];
-const tableHeaders = [
-    { text: "", className: "w-px !px-3" },
-    { text: "Status" },
-    { text: "Severity", className: "max-md:hidden" },
-    { text: "Title" },
-];
+type FilterCounts = {
+    status: Record<Status, number>;
+    severity: Record<Severity, number>;
+    total: number;
+};
 
-export const filterRules = (
-    rules: Rule[],
-    severities: Set<Severity>,
-    statuses: Set<Status>
-) =>
-    rules.filter((rule) => {
-        const severity = rule.overrides?.severity?.severity ?? rule.severity;
-        if (severities.size > 0 && !severities.has(severity)) {
-            return false;
-        }
-        if (statuses.size > 0 && !statuses.has(rule.status)) {
-            return false;
-        }
-        return true;
-    });
-
-export const StigRuleGroup = ({
-    stig,
-    severities,
-    statuses,
-    selectedUuid,
-    selection,
-    onSelectRule,
-    onToggleSelection,
-    onSelectAll,
-    onRemoveStig,
-}: {
-    stig: Stig;
-    severities: Set<Severity>;
+type Props = {
+    title: string;
+    onTitleChange: (title: string) => void;
+    query: string;
+    onQueryChange: (query: string) => void;
+    searchRef?: React.RefObject<HTMLInputElement>;
     statuses: Set<Status>;
+    severities: Set<Severity>;
+    onToggleStatus: (status: Status) => void;
+    onToggleSeverity: (severity: Severity) => void;
+    onClearFilters: () => void;
+    counts: FilterCounts;
+    stigs: Stig[];
+    /** Filtered rules per STIG uuid, in display order. */
+    visibleByStig: Map<string, Rule[]>;
     selectedUuid: string | null;
     selection: Set<string>;
     onSelectRule: (rule: Rule) => void;
     onToggleSelection: (uuid: string) => void;
     onSelectAll: (uuids: string[], selected: boolean) => void;
     onRemoveStig: (stig: Stig) => void;
-}) => {
-    const [isOpen, setOpen] = useState(true);
+};
 
-    const viewableRules = useMemo(
-        () => filterRules(stig.rules, severities, statuses),
-        [stig.rules, severities, statuses]
+const PRIMARY_STATUSES: Status[] = [Status.Open, Status.NotReviewed];
+const EXTRA_STATUSES: Status[] = [Status.NotAFinding, Status.NotApplicable];
+const PRIMARY_SEVERITIES: Severity[] = [Severity.High];
+const EXTRA_SEVERITIES: Severity[] = [
+    Severity.Medium,
+    Severity.Low,
+    Severity.Info,
+];
+
+const checkboxClasses =
+    "h-3.5 w-3.5 shrink-0 rounded border-border-strong accent-accent";
+
+const RuleCard = memo(function RuleCard({
+    rule,
+    selected,
+    checked,
+    onSelect,
+    onToggle,
+}: {
+    rule: Rule;
+    selected: boolean;
+    checked: boolean;
+    onSelect: (rule: Rule) => void;
+    onToggle: (uuid: string) => void;
+}) {
+    const ref = useRef<HTMLLIElement>(null);
+
+    useEffect(() => {
+        if (selected) {
+            ref.current?.scrollIntoView({ block: "nearest" });
+        }
+    }, [selected]);
+
+    return (
+        <li
+            ref={ref}
+            aria-current={selected ? "true" : undefined}
+            onClick={() => onSelect(rule)}
+            className={`group cursor-pointer rounded-xl border px-3.5 py-3 transition-colors ${
+                selected
+                    ? "border-accent bg-wb-selected shadow-[0_0_0_0.5px_rgb(var(--accent)),0_2px_8px_rgba(40,80,160,.09)] dark:shadow-[0_0_0_0.5px_rgb(var(--accent))]"
+                    : "border-border bg-surface shadow-wb-card hover:border-border-strong dark:shadow-none"
+            }`}
+        >
+            <div className="flex items-center justify-between gap-2">
+                <span className="flex min-w-0 items-center gap-2">
+                    <input
+                        type="checkbox"
+                        aria-label={`Select ${rule.group_id}`}
+                        checked={checked}
+                        onChange={() => onToggle(rule.uuid)}
+                        onClick={(event) => event.stopPropagation()}
+                        className={`${checkboxClasses} transition-opacity ${
+                            checked
+                                ? "opacity-100"
+                                : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+                        }`}
+                    />
+                    <span
+                        className={`truncate font-plex-mono text-[11.5px] font-semibold ${
+                            selected ? "text-muted dark:text-wb-body" : "text-muted"
+                        }`}
+                    >
+                        {rule.group_id}
+                    </span>
+                </span>
+                <RuleStatusPill rule={rule} />
+            </div>
+            <button
+                type="button"
+                tabIndex={-1}
+                onClick={(event) => {
+                    event.stopPropagation();
+                    onSelect(rule);
+                }}
+                className={`mt-[5px] block w-full text-left text-[12.5px] leading-[1.4] ${
+                    selected
+                        ? "font-medium text-foreground"
+                        : "text-wb-body"
+                }`}
+            >
+                {rule.rule_title}
+            </button>
+        </li>
     );
+});
 
+const StigGroup = ({
+    stig,
+    rules,
+    selectedUuid,
+    selection,
+    onSelectRule,
+    onToggleSelection,
+    onSelectAll,
+    onRemoveStig,
+    showHeader,
+}: {
+    stig: Stig;
+    rules: Rule[];
+    selectedUuid: string | null;
+    selection: Set<string>;
+    onSelectRule: (rule: Rule) => void;
+    onToggleSelection: (uuid: string) => void;
+    onSelectAll: (uuids: string[], selected: boolean) => void;
+    onRemoveStig: (stig: Stig) => void;
+    showHeader: boolean;
+}) => {
+    const [open, setOpen] = useState(true);
     const progress = useMemo(
         () => computeStatusCounts(stig.rules),
         [stig.rules]
     );
-
-    const visibleUuids = useMemo(
-        () => viewableRules.map((rule) => rule.uuid),
-        [viewableRules]
-    );
-    const allVisibleSelected =
-        visibleUuids.length > 0 &&
-        visibleUuids.every((uuid) => selection.has(uuid));
-
-    const tableBody = useMemo(
-        () =>
-            viewableRules.map((rule) => ({
-                onClick: () => onSelectRule(rule),
-                values: [
-                    rule.uuid,
-                    rule.status,
-                    rule.overrides?.severity?.severity ?? rule.severity,
-                    rule.rule_title,
-                ],
-                columns: [
-                    <input
-                        type="checkbox"
-                        aria-label={`Select ${rule.rule_title}`}
-                        checked={selection.has(rule.uuid)}
-                        onChange={() => onToggleSelection(rule.uuid)}
-                        onClick={(e) => e.stopPropagation()}
-                        className="h-4 w-4 rounded border-border-strong text-accent focus:ring-ring/40"
-                    />,
-                    <StatusBadge status={rule.status} />,
-                    <SeverityBadge
-                        severity={
-                            rule.overrides?.severity?.severity ?? rule.severity
-                        }
-                    />,
-                    <span className="line-clamp-2">{rule.rule_title}</span>,
-                ],
-                classNames: [
-                    "w-px !px-3",
-                    "whitespace-nowrap",
-                    "max-md:hidden",
-                    null,
-                ],
-            })),
-        [viewableRules, selection, onSelectRule, onToggleSelection]
-    );
-
-    const rowKey = useCallback(
-        (row: { values: string[] }) => row.values[0],
-        []
-    );
+    const uuids = useMemo(() => rules.map((rule) => rule.uuid), [rules]);
+    const allSelected =
+        uuids.length > 0 && uuids.every((uuid) => selection.has(uuid));
 
     return (
-        <div className="w-full rounded-lg border border-border overflow-hidden">
-            <h2 className="flex items-center bg-surface-muted">
-                <span className="flex items-center pl-4">
+        <section aria-label={stig.display_name} className="flex flex-col gap-2">
+            {showHeader && (
+                <header className="sticky top-0 z-[1] -mx-1 flex items-center gap-2 bg-canvas px-1 pb-1 pt-2">
+                    <button
+                        type="button"
+                        aria-expanded={open}
+                        onClick={() => setOpen((value) => !value)}
+                        className="flex min-w-0 flex-1 items-center gap-1.5 text-left text-[11px] font-bold uppercase tracking-[.07em] text-subtle transition-colors hover:text-foreground"
+                    >
+                        <Icon.chevronDown
+                            className={`h-3.5 w-3.5 shrink-0 transition-transform ${
+                                open ? "" : "-rotate-90"
+                            }`}
+                        />
+                        <span className="truncate" title={stig.display_name}>
+                            {stig.display_name}
+                        </span>
+                    </button>
+                    <span className="whitespace-nowrap text-[11px] text-subtle">
+                        {progress.assessed}/{progress.total}
+                        {rules.length !== stig.rules.length &&
+                            ` · ${rules.length} shown`}
+                    </span>
                     <input
                         type="checkbox"
                         aria-label={`Select all visible rules in ${stig.display_name}`}
-                        checked={allVisibleSelected}
-                        onChange={() =>
-                            onSelectAll(visibleUuids, !allVisibleSelected)
-                        }
-                        className="h-4 w-4 rounded border-border-strong text-accent focus:ring-ring/40"
+                        checked={allSelected}
+                        disabled={uuids.length === 0}
+                        onChange={() => onSelectAll(uuids, !allSelected)}
+                        className={checkboxClasses}
                     />
-                </span>
-                <button
-                    type="button"
-                    className="flex items-center justify-between flex-1 p-4 hover:bg-surface transition-colors gap-3 min-w-0"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(!isOpen)}
-                >
-                    <span className="flex flex-col items-start gap-1.5 text-left min-w-0 flex-1">
-                        <span className="text-foreground text-sm font-medium truncate w-full">
-                            {stig.display_name}
-                        </span>
-                        <ProgressBar progress={progress} size="sm" />
-                        <span className="text-muted text-xs">
-                            {progress.assessed}/{progress.total} assessed
-                            {viewableRules.length !== stig.rules.length &&
-                                ` · showing ${viewableRules.length}`}
-                            {" · "}v{stig.version}
-                        </span>
-                    </span>
-                    <svg
-                        className={
-                            `w-4 h-4 shrink-0 text-muted transition-transform` +
-                            (isOpen ? " rotate-180" : "")
-                        }
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6"
+                    <button
+                        type="button"
+                        aria-label={`Remove ${stig.display_name} from checklist`}
+                        title="Remove STIG from checklist"
+                        onClick={() => onRemoveStig(stig)}
+                        className="rounded-md p-1 text-subtle transition-colors hover:bg-danger-surface hover:text-danger-foreground"
                     >
-                        <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 5 5 1 1 5"
-                        ></path>
-                    </svg>
-                </button>
-                <button
-                    type="button"
-                    aria-label="Remove STIG from checklist"
-                    title="Remove STIG from checklist"
-                    onClick={() => onRemoveStig(stig)}
-                    className="shrink-0 self-stretch px-4 text-subtle hover:text-danger-foreground hover:bg-danger-surface/40 transition-colors"
-                >
-                    <svg
-                        aria-hidden="true"
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
-                    </svg>
-                </button>
-            </h2>
-            <div className={isOpen ? "" : "hidden"}>
-                <div className="border-t border-border bg-surface">
-                    <div className="relative overflow-x-auto">
-                        <Table
-                            filters={filters}
-                            sorters={sorters}
-                            tableHeaders={tableHeaders}
-                            tableBody={tableBody}
-                            initialOrders={[
-                                Order.NONE,
-                                Order.NONE,
-                                Order.NONE,
-                                Order.NONE,
-                            ]}
-                            caption={`Rules in ${stig.display_name}`}
-                            rowKey={rowKey}
-                            selectedKey={selectedUuid}
+                        <Icon.trash className="h-3.5 w-3.5" />
+                    </button>
+                </header>
+            )}
+            {open && rules.length === 0 && (
+                <p className="px-1 py-2 text-xs text-subtle">
+                    No rules match the current filters.
+                </p>
+            )}
+            {open && rules.length > 0 && (
+                <ul className="flex flex-col gap-2">
+                    {rules.map((rule) => (
+                        <RuleCard
+                            key={rule.uuid}
+                            rule={rule}
+                            selected={rule.uuid === selectedUuid}
+                            checked={selection.has(rule.uuid)}
+                            onSelect={onSelectRule}
+                            onToggle={onToggleSelection}
                         />
-                    </div>
+                    ))}
+                </ul>
+            )}
+        </section>
+    );
+};
+
+/** Middle column: checklist title, search, filter pills and rule cards. */
+export const RuleList = ({
+    title,
+    onTitleChange,
+    query,
+    onQueryChange,
+    searchRef,
+    statuses,
+    severities,
+    onToggleStatus,
+    onToggleSeverity,
+    onClearFilters,
+    counts,
+    stigs,
+    visibleByStig,
+    selectedUuid,
+    selection,
+    onSelectRule,
+    onToggleSelection,
+    onSelectAll,
+    onRemoveStig,
+}: Props) => {
+    const [showAllFilters, setShowAllFilters] = useState(false);
+    const nothingActive = statuses.size === 0 && severities.size === 0;
+    const extraActive =
+        EXTRA_STATUSES.some((status) => statuses.has(status)) ||
+        EXTRA_SEVERITIES.some((severity) => severities.has(severity));
+    const expanded = showAllFilters || extraActive;
+    const shown = [...visibleByStig.values()].reduce(
+        (sum, rules) => sum + rules.length,
+        0
+    );
+
+    const statusPill = (status: Status) => (
+        <FilterPill
+            key={status}
+            active={statuses.has(status)}
+            count={counts.status[status] ?? 0}
+            onClick={() => onToggleStatus(status)}
+        >
+            {STATUS_LABEL[status]}
+        </FilterPill>
+    );
+    const severityPill = (severity: Severity) => (
+        <FilterPill
+            key={severity}
+            active={severities.has(severity)}
+            count={counts.severity[severity] ?? 0}
+            onClick={() => onToggleSeverity(severity)}
+        >
+            {SEVERITY_LABEL[severity].cat}
+        </FilterPill>
+    );
+
+    return (
+        <div className="flex w-full shrink-0 flex-col border-b border-wb-divider bg-canvas lg:h-full lg:w-[368px] lg:min-h-0 lg:border-b-0 lg:border-r">
+            <div className="flex flex-col gap-2.5 px-4 pb-3 pt-[18px]">
+                <div className="flex items-center justify-between gap-2">
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(event) => onTitleChange(event.target.value)}
+                        aria-label="Checklist title"
+                        placeholder="Untitled checklist"
+                        className="-mx-1 min-w-0 flex-1 rounded-md border border-transparent bg-transparent px-1 text-[15px] font-bold tracking-[-0.01em] text-foreground transition-colors hover:border-border focus:border-accent focus:ring-2 focus:ring-ring/40 focus-visible:outline-none"
+                    />
+                    <button
+                        type="button"
+                        aria-expanded={expanded}
+                        onClick={() => setShowAllFilters((value) => !value)}
+                        className="shrink-0 text-[11.5px] font-semibold text-wb-nav-active-foreground hover:underline"
+                    >
+                        Filters
+                    </button>
                 </div>
+                <label className="flex items-center gap-2 rounded-[10px] border border-border bg-surface px-3 py-[9px] text-subtle shadow-wb-card transition-colors focus-within:border-accent focus-within:ring-2 focus-within:ring-ring/40 dark:shadow-none">
+                    <Icon.search className="h-4 w-4 shrink-0" />
+                    <input
+                        ref={searchRef}
+                        type="search"
+                        value={query}
+                        onChange={(event) => onQueryChange(event.target.value)}
+                        placeholder={`Search ${counts.total} rules…`}
+                        aria-label="Search rules"
+                        className="min-w-0 flex-1 bg-transparent text-[12.5px] text-foreground placeholder:text-subtle focus:outline-none"
+                    />
+                    {query && (
+                        <button
+                            type="button"
+                            onClick={() => onQueryChange("")}
+                            aria-label="Clear search"
+                            className="text-subtle hover:text-foreground"
+                        >
+                            ×
+                        </button>
+                    )}
+                </label>
+                <div className="flex flex-wrap gap-1.5">
+                    <FilterPill active={nothingActive} onClick={onClearFilters}>
+                        All
+                    </FilterPill>
+                    {PRIMARY_STATUSES.map(statusPill)}
+                    {PRIMARY_SEVERITIES.map(severityPill)}
+                    {expanded && EXTRA_STATUSES.map(statusPill)}
+                    {expanded && EXTRA_SEVERITIES.map(severityPill)}
+                </div>
+                {(query || !nothingActive) && (
+                    <p className="text-[11px] text-subtle" role="status">
+                        {shown} of {counts.total} rules shown
+                    </p>
+                )}
+            </div>
+            <div className="wb-scroll flex flex-col gap-3 px-3 pb-3 pt-0.5 lg:min-h-0 lg:flex-1 lg:overflow-y-auto">
+                {stigs.map((stig) => (
+                    <StigGroup
+                        key={stig.uuid}
+                        stig={stig}
+                        rules={visibleByStig.get(stig.uuid) ?? []}
+                        selectedUuid={selectedUuid}
+                        selection={selection}
+                        onSelectRule={onSelectRule}
+                        onToggleSelection={onToggleSelection}
+                        onSelectAll={onSelectAll}
+                        onRemoveStig={onRemoveStig}
+                        showHeader
+                    />
+                ))}
             </div>
         </div>
     );

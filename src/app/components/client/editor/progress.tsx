@@ -26,6 +26,11 @@ export const computeStatusCounts = (rules: Rule[]): StatusCounts => {
     };
 };
 
+export const percentAssessed = (progress: StatusCounts) =>
+    progress.total === 0
+        ? 0
+        : Math.round((progress.assessed / progress.total) * 100);
+
 const SEGMENTS: { status: Status; className: string; label: string }[] = [
     { status: Status.Open, className: "bg-danger", label: "open" },
     {
@@ -82,26 +87,6 @@ export const ProgressBar = ({
                         />
                     ) : null
                 )}
-        </div>
-    );
-};
-
-export const ProgressSummary = ({ progress }: { progress: StatusCounts }) => {
-    const percent =
-        progress.total === 0
-            ? 0
-            : Math.round((progress.assessed / progress.total) * 100);
-    return (
-        <div className="w-full flex flex-col gap-1.5">
-            <div className="flex items-center justify-between text-xs text-muted">
-                <span>
-                    {percent}% assessed · {progress.total} rules
-                </span>
-                <span>
-                    {progress.assessed} of {progress.total} reviewed
-                </span>
-            </div>
-            <ProgressBar progress={progress} />
         </div>
     );
 };

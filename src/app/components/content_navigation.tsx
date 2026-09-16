@@ -50,11 +50,11 @@ export const ContentNavigation = ({
     }, [withKeyboard, previous, next, stigId, router]);
 
     const linkClasses =
-        "flex flex-row items-center gap-2 py-2 px-4 text-sm font-medium text-foreground bg-surface border border-border-strong rounded-md hover:bg-surface-muted hover:text-accent transition-colors max-w-[45%]";
+        "flex max-w-[45%] flex-row items-center gap-2 rounded-[9px] border border-border bg-surface px-3.5 py-2 text-xs font-medium text-wb-body shadow-wb-card transition-colors hover:border-border-strong hover:bg-surface-muted dark:shadow-none";
 
     const position =
         index !== undefined && total !== undefined ? (
-            <span className="self-center text-xs text-subtle whitespace-nowrap">
+            <span className="self-center text-[11px] text-subtle whitespace-nowrap">
                 Rule {index + 1} of {total}
             </span>
         ) : (
@@ -64,12 +64,12 @@ export const ContentNavigation = ({
     return (
         <aside
             aria-label="Rule navigation"
-            className="w-full flex flex-row justify-between items-stretch gap-3 mb-4"
+            className="flex w-full flex-row items-stretch justify-between gap-3"
         >
             {previous ? (
                 <Link href={makeUrl(stigId, previous)} className={linkClasses}>
                     <svg
-                        className="w-5 h-5 shrink-0 text-subtle"
+                        className="w-4 h-4 shrink-0 text-subtle"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -83,9 +83,11 @@ export const ContentNavigation = ({
                         ></path>
                     </svg>
                     <span className="flex flex-col items-start overflow-hidden">
-                        <span>{previous.id}</span>
+                        <span className="font-plex-mono text-[11.5px] font-semibold text-muted">
+                            {previous.id}
+                        </span>
                         {!slim && (
-                            <span className="text-xs text-subtle font-normal truncate w-full">
+                            <span className="w-full truncate text-[11px] font-normal text-subtle">
                                 {previous.rule.title}
                             </span>
                         )}
@@ -101,15 +103,17 @@ export const ContentNavigation = ({
                     className={`${linkClasses} text-right`}
                 >
                     <span className="flex flex-col items-end overflow-hidden">
-                        <span>{next.id}</span>
+                        <span className="font-plex-mono text-[11.5px] font-semibold text-muted">
+                            {next.id}
+                        </span>
                         {!slim && (
-                            <span className="text-xs text-subtle font-normal truncate w-full">
+                            <span className="w-full truncate text-[11px] font-normal text-subtle">
                                 {next.rule.title}
                             </span>
                         )}
                     </span>
                     <svg
-                        className="w-5 h-5 shrink-0 text-subtle"
+                        className="w-4 h-4 shrink-0 text-subtle"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

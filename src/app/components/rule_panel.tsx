@@ -54,7 +54,13 @@ const icons = {
     ),
 };
 
-const CopyButton = ({ text, label }: { text: string; label: string }) => {
+export const CopyButton = ({
+    text,
+    label,
+}: {
+    text: string;
+    label: string;
+}) => {
     const [copied, setCopied] = useState(false);
 
     useEffect(() => {
@@ -127,26 +133,20 @@ export const RulePanel = ({
     copyable?: boolean;
     compact?: boolean;
 }) => (
-    <section className="w-full flex flex-col">
-        <div className="rounded-lg border border-border bg-surface shadow-card overflow-hidden">
-            <h3
-                className={`flex items-center justify-between gap-3 text-xs font-semibold tracking-wide uppercase text-muted bg-surface-muted border-b border-border ${
-                    compact ? "px-4 py-2.5" : "px-6 py-3.5"
-                }`}
-            >
-                <span className="inline-flex items-center gap-2">
-                    {icons[icon]}
-                    {title}
-                </span>
-                {copyable && <CopyButton text={text} label={`${title} text`} />}
-            </h3>
-            <div
-                className={`text-sm text-foreground leading-relaxed flex flex-col gap-3 ${
-                    compact ? "px-4 py-3" : "px-6 py-4"
-                }`}
-            >
-                <RuleText text={text} />
-            </div>
+    <section
+        className={`w-full rounded-[14px] border border-border bg-surface shadow-wb-card dark:shadow-none ${
+            compact ? "px-4 py-3" : "px-[18px] py-4"
+        }`}
+    >
+        <h3 className="mb-2 flex items-center justify-between gap-3 text-[11px] font-bold uppercase tracking-[.07em] text-subtle">
+            <span className="inline-flex items-center gap-2">
+                {icons[icon]}
+                {title}
+            </span>
+            {copyable && <CopyButton text={text} label={`${title} text`} />}
+        </h3>
+        <div className="flex flex-col gap-3 text-[12.5px] leading-[1.6] text-wb-body">
+            <RuleText text={text} />
         </div>
     </section>
 );

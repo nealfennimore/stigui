@@ -2,7 +2,7 @@ import React from "react";
 
 /** Rounded, bordered surface used to wrap tables and panels. */
 export const cardClasses =
-    "rounded-lg border border-border bg-surface shadow-card overflow-hidden";
+    "rounded-[14px] border border-border bg-surface shadow-wb-card dark:shadow-none overflow-hidden";
 
 export const Card = ({
     className = "",
@@ -26,7 +26,7 @@ export const TableCard = ({
     children: React.ReactNode;
 }) => (
     <div
-        className={`relative overflow-x-auto rounded-lg border border-border bg-surface shadow-card ${className}`.trim()}
+        className={`relative overflow-x-auto rounded-[14px] border border-border bg-surface shadow-wb-card dark:shadow-none ${className}`.trim()}
     >
         {children}
     </div>

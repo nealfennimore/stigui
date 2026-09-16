@@ -45,6 +45,9 @@
             "index.crates.io" = "*";
             "static.crates.io" = "*";
           };
+          extraEnv = {
+            "NO_PROXY" = "localhost,127.0.0.1,::1";
+          };
         };
       in
       {

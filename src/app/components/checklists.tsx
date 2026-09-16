@@ -1,9 +1,14 @@
 "use client";
-import { Checklist, Convert } from "@/api/generated/Checklist";
+import { Checklist } from "@/api/generated/Checklist";
+import { useImportChecklist } from "@/app/components/client/editor/import_cklb";
 import {
     computeStatusCounts,
     ProgressBar,
 } from "@/app/components/client/editor/progress";
+import {
+    WorkbenchContent,
+    WorkbenchShell,
+} from "@/app/components/client/editor/shell";
 import {
     defaultFilter,
     defaultSort,
@@ -15,7 +20,6 @@ import { TableCard } from "@/app/components/ui/card";
 import { useConfirm } from "@/app/components/ui/confirm_dialog";
 import { EmptyState } from "@/app/components/ui/empty_state";
 import { SkeletonTable } from "@/app/components/ui/skeleton";
-import { useToast } from "@/app/components/ui/toast";
 import { IDB } from "@/app/db";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -58,7 +62,7 @@ export const ChecklistsView = () => {
     const [checklists, setChecklists] = useState<Checklist[] | null>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const confirm = useConfirm();
-    const { toast } = useToast();
+    const importChecklist = useImportChecklist();
     const router = useRouter();
 
     useEffect(() => {
@@ -78,26 +82,8 @@ export const ChecklistsView = () => {
     const onImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         e.target.value = ""; // allow re-importing the same file
-        if (!file) {
-            return;
-        }
-        try {
-            const checklist = Convert.toChecklist(await file.text());
-            await IDB.importChecklist(checklist);
-            toast({
-                tone: "success",
-                title: "Checklist imported",
-                description: `Opening "${checklist.title}"…`,
-            });
-            router.push(`/editor?id=${checklist.id}`);
-        } catch (err) {
-            console.error(err);
-            toast({
-                tone: "danger",
-                title: "Import failed",
-                description:
-                    "Could not import that file. Make sure it is a valid .cklb checklist.",
-            });
+        if (file) {
+            await importChecklist(file);
         }
     };
 
@@ -209,69 +195,75 @@ export const ChecklistsView = () => {
     );
 
     return (
-        <section className="w-full flex flex-col gap-4">
-            <div className="flex justify-between items-start gap-4">
-                <div>
-                    <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-                        Checklists
-                    </h1>
-                    <p className="text-sm text-muted mt-1">
-                        Saved checklists stored in your browser.
-                    </p>
-                </div>
-                {checklists && checklists.length > 0 && (
-                    <ImportButton
-                        fileInputRef={fileInputRef}
-                        onImport={onImport}
-                    />
-                )}
-            </div>
-
-            {checklists === null && <SkeletonTable rows={3} />}
-
-            {checklists?.length === 0 && (
-                <EmptyState
-                    title="No checklists yet"
-                    description="Build a checklist from any STIG with its Edit checklist button, or import an existing CKLB file from DISA STIG Viewer."
-                    action={
-                        <>
-                            <Link
-                                href="/stigs"
-                                className={buttonClasses({
-                                    variant: "primary",
-                                    size: "sm",
-                                })}
-                            >
-                                Browse STIGs
-                            </Link>
+        <WorkbenchShell active="checklists">
+            <WorkbenchContent>
+                <section className="flex w-full flex-col gap-4">
+                    <div className="flex justify-between items-start gap-4">
+                        <div>
+                            <h1 className="text-[19px] font-bold tracking-[-0.015em] text-foreground">
+                                Checklists
+                            </h1>
+                            <p className="mt-1 text-[12.5px] text-muted">
+                                Saved checklists stored in your browser. Open
+                                one to review it in the workbench.
+                            </p>
+                        </div>
+                        {checklists && checklists.length > 0 && (
                             <ImportButton
                                 fileInputRef={fileInputRef}
                                 onImport={onImport}
                             />
-                        </>
-                    }
-                />
-            )}
+                        )}
+                    </div>
 
-            {!!checklists?.length && (
-                <TableCard>
-                    <Table
-                        sorters={sorters}
-                        filters={filters}
-                        tableHeaders={tableHeaders}
-                        tableBody={tableBody}
-                        initialOrders={[
-                            Order.ASC,
-                            Order.NONE,
-                            Order.NONE,
-                            Order.NONE,
-                        ]}
-                        formRef={null}
-                        caption="Saved checklists"
-                        mobile={{ primaryColumn: 0 }}
-                    />
-                </TableCard>
-            )}
-        </section>
+                    {checklists === null && <SkeletonTable rows={3} />}
+
+                    {checklists?.length === 0 && (
+                        <EmptyState
+                            className="bg-surface"
+                            title="No checklists yet"
+                            description="Build a checklist from any STIG with its Edit checklist button, or import an existing CKLB file from DISA STIG Viewer."
+                            action={
+                                <>
+                                    <Link
+                                        href="/stigs"
+                                        className={buttonClasses({
+                                            variant: "primary",
+                                            size: "sm",
+                                        })}
+                                    >
+                                        Browse STIGs
+                                    </Link>
+                                    <ImportButton
+                                        fileInputRef={fileInputRef}
+                                        onImport={onImport}
+                                    />
+                                </>
+                            }
+                        />
+                    )}
+
+                    {!!checklists?.length && (
+                        <TableCard>
+                            <Table
+                                sorters={sorters}
+                                filters={filters}
+                                tableHeaders={tableHeaders}
+                                tableBody={tableBody}
+                                initialOrders={[
+                                    Order.ASC,
+                                    Order.NONE,
+                                    Order.NONE,
+                                    Order.NONE,
+                                ]}
+                                formRef={null}
+                                caption="Saved checklists"
+                                mobile={{ primaryColumn: 0 }}
+                            />
+                        </TableCard>
+                    )}
+                </section>
+            </WorkbenchContent>
+        </WorkbenchShell>
     );
 };

@@ -1,9 +1,10 @@
 import * as Framework from "@/api/entities/Manifest";
 import Stig, { Classification } from "@/api/entities/Stig";
-import { Footer } from "@/app/components/footer";
+import {
+    WorkbenchContent,
+    WorkbenchShell,
+} from "@/app/components/client/editor/shell";
 import { JsonLd } from "@/app/components/json_ld";
-import { Main } from "@/app/components/main";
-import { Navigation } from "@/app/components/navigation";
 import { StigView } from "@/app/components/stig";
 import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { Suspense } from "react";
@@ -115,16 +116,16 @@ export default async function Page({ params }: Props) {
         <ManifestComponent>
             <StigComponent stigId={stig_id}>
                 <JsonLd data={jsonLd} />
-                <Navigation />
-                <Main>
-                    <Suspense fallback={<SkeletonTable rows={8} />}>
-                        <StigView
-                            stigId={stig_id}
-                            classification={classification}
-                        />
-                    </Suspense>
-                </Main>
-                <Footer />
+                <WorkbenchShell active="stigs">
+                    <WorkbenchContent wide>
+                        <Suspense fallback={<SkeletonTable rows={8} />}>
+                            <StigView
+                                stigId={stig_id}
+                                classification={classification}
+                            />
+                        </Suspense>
+                    </WorkbenchContent>
+                </WorkbenchShell>
             </StigComponent>
         </ManifestComponent>
     );

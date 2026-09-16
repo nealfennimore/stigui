@@ -1,12 +1,13 @@
 import * as Framework from "@/api/entities/Manifest";
 import Stig, { GroupWrapper } from "@/api/entities/Stig";
-import { Footer } from "@/app/components/footer";
 import { GroupView } from "@/app/components/group";
 import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { Suspense } from "react";
+import {
+    WorkbenchContent,
+    WorkbenchShell,
+} from "@/app/components/client/editor/shell";
 import { JsonLd } from "@/app/components/json_ld";
-import { Main } from "@/app/components/main";
-import { Navigation } from "@/app/components/navigation";
 import { APPNAME, URL } from "@/app/constants";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
@@ -148,13 +149,13 @@ export default async function Page({
         <ManifestComponent>
             <StigComponent stigId={stig_id}>
                 <JsonLd data={jsonLd} />
-                <Navigation />
-                <Main>
-                    <Suspense fallback={<SkeletonTable rows={4} />}>
-                        <GroupView stigId={stig_id} groupId={group_id} />
-                    </Suspense>
-                </Main>
-                <Footer />
+                <WorkbenchShell active="stigs">
+                    <WorkbenchContent wide>
+                        <Suspense fallback={<SkeletonTable rows={4} />}>
+                            <GroupView stigId={stig_id} groupId={group_id} />
+                        </Suspense>
+                    </WorkbenchContent>
+                </WorkbenchShell>
             </StigComponent>
         </ManifestComponent>
     );
