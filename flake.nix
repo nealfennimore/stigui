@@ -15,9 +15,16 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
+        # Vendored claude-code (./overlay.nix) tracks releases ahead of the
+        # nixpkgs pin. Note: the sandbox from agentbox.mkClaudeSandbox uses
+        # agentbox's own nixpkgs claude-code and is not affected by this.
+        claudeCodeOverlay = final: prev: {
+          claude-code = final.callPackage ./overlays/claude/overlay.nix { };
+        };
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [ claudeCodeOverlay ];
         };
         packages = with pkgs; [
           nodejs_22
@@ -40,6 +47,8 @@
         };
       in
       {
+        packages.claude-code = pkgs.claude-code;
+
         devShells.default = pkgs.mkShell {
           packages = [
             claude
