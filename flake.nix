@@ -38,6 +38,7 @@
         ];
         box = agentbox.lib.${system};
         claude = box.mkClaudeSandbox {
+          pkg = pkgs.claude-code;
           extraPackages = packages;
           allowedDomains = box.agentDomains // {
             "crates.io" = "*";

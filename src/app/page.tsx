@@ -3,9 +3,11 @@ import { JsonLd } from "@/app/components/json_ld";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import { Stigs } from "@/app/components/stigs";
+import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { APPNAME, URL } from "@/app/constants";
 import ManifestComponent from "@/app/context/manifest";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "./db";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -33,7 +35,9 @@ export default async function Page() {
             <JsonLd data={jsonLd} />
             <Navigation />
             <Main>
-                <Stigs />
+                <Suspense fallback={<SkeletonTable rows={8} />}>
+                    <Stigs />
+                </Suspense>
             </Main>
             <Footer />
         </ManifestComponent>

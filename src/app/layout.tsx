@@ -1,3 +1,4 @@
+import { Providers } from "@/app/components/client/providers";
 import { APPNAME, URL as SITE_URL } from "@/app/constants";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -70,9 +71,9 @@ export default function RootLayout({
                 <Script id="service-worker">{`"serviceWorker" in navigator && navigator.serviceWorker.register("/sw.js", { scope: "/" });`}</Script>
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-zinc-900 dark:text-zinc-100`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {children}
+                <Providers>{children}</Providers>
             </body>
         </html>
     );

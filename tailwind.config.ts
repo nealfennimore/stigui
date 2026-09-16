@@ -31,12 +31,35 @@ export default {
                     subtle: withAlpha('--accent-subtle'),
                 },
                 ring: withAlpha('--ring'),
+                ...Object.fromEntries(
+                    [
+                        'danger',
+                        'warning',
+                        'caution',
+                        'info',
+                        'success',
+                        'neutral',
+                        'contrast',
+                    ].map((tone) => [
+                        tone,
+                        {
+                            DEFAULT: withAlpha(`--${tone}-solid`),
+                            surface: withAlpha(`--${tone}-surface`),
+                            foreground: withAlpha(`--${tone}-foreground`),
+                            ring: withAlpha(`--${tone}-ring`),
+                            'solid-foreground': withAlpha(
+                                `--${tone}-solid-foreground`
+                            ),
+                        },
+                    ])
+                ),
             },
             borderColor: {
                 DEFAULT: withAlpha('--border'),
             },
             boxShadow: {
                 card: '0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.06)',
+                overlay: 'var(--shadow-overlay)',
             },
         },
     },

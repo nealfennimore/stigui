@@ -5,10 +5,12 @@ import { JsonLd } from "@/app/components/json_ld";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
 import { StigView } from "@/app/components/stig";
+import { SkeletonTable } from "@/app/components/ui/skeleton";
 import { APPNAME, URL } from "@/app/constants";
 import ManifestComponent from "@/app/context/manifest";
 import StigComponent from "@/app/context/stig";
 import type { Metadata, ResolvingMetadata } from "next";
+import { Suspense } from "react";
 
 type Props = {
     params: Promise<{ stig_id: string }>;
@@ -105,7 +107,9 @@ export default async function Page({ params }: Props) {
                 <JsonLd data={jsonLd} />
                 <Navigation />
                 <Main>
-                    <StigView stigId={stig_id} />
+                    <Suspense fallback={<SkeletonTable rows={8} />}>
+                        <StigView stigId={stig_id} />
+                    </Suspense>
                 </Main>
                 <Footer />
             </StigComponent>

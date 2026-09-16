@@ -1,4 +1,5 @@
 "use client";
+import { CommandPalette } from "@/app/components/command_palette";
 import { ThemeToggle } from "@/app/components/ui/theme";
 import { APPNAME } from "@/app/constants";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -44,7 +45,7 @@ export const Navigation = () => {
                 <a
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
-                    tabIndex={100}
+
                 >
                     <span className="self-center text-xl font-semibold tracking-tight whitespace-nowrap text-foreground flex items-center">
                         <svg
@@ -66,6 +67,7 @@ export const Navigation = () => {
                     </span>
                 </a>
                 <div className="flex items-center md:order-2 gap-1">
+                    <CommandPalette />
                     <ThemeToggle />
                     <div className="relative inline-block text-left">
                         <div>
@@ -107,7 +109,7 @@ export const Navigation = () => {
                                     <a
                                         href="/editor"
                                         className="flex flex-row items-center px-4 py-2 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
-                                        tabIndex={100}
+
                                     >
                                         Editor
                                     </a>
@@ -116,7 +118,7 @@ export const Navigation = () => {
                                     <a
                                         href="https://github.com/nealfennimore/stig"
                                         className="flex flex-row items-center gap-2 px-4 py-2 text-sm text-muted hover:bg-surface-muted hover:text-foreground transition-colors"
-                                        tabIndex={100}
+
                                     >
                                         <svg
                                             className="w-5 h-5"

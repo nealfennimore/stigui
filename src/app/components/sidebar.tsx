@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 type Props = {
     isOpen: boolean;
     children: React.ReactNode;
     onClick?: () => void;
     headerText: React.ReactNode;
+    /** Extra controls rendered beside the close button. */
+    headerActions?: React.ReactNode;
 };
 
 export const Sidebar = ({
@@ -14,13 +16,19 @@ export const Sidebar = ({
     children,
     onClick,
     headerText = "",
+    headerActions,
 }: Props) => {
     const className = isOpen ? "transform-none" : "translate-x-full";
+    const drawerRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         if (!isOpen) {
             return;
         }
+
+        // Move focus into the drawer; restore it when the drawer closes.
+        const previousFocus = document.activeElement as HTMLElement | null;
+        drawerRef.current?.focus();
 
         const onKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -29,25 +37,43 @@ export const Sidebar = ({
         };
 
         document.addEventListener("keydown", onKeyDown);
-        return () => document.removeEventListener("keydown", onKeyDown);
+        return () => {
+            document.removeEventListener("keydown", onKeyDown);
+            previousFocus?.focus?.();
+        };
     }, [isOpen, onClick]);
 
     return (
+        <>
+            {isOpen && (
+                <div
+                    aria-hidden="true"
+                    onClick={onClick}
+                    className="fixed inset-0 z-30 bg-black/30 min-h-screen"
+                />
+            )}
         <aside
+            ref={drawerRef}
             id="drawer-navigation"
-            className={`fixed top-0 right-0 z-40 w-fit max-w-5xl h-screen p-5 overflow-y-auto transition-transform bg-surface sm:max-w-screen border-l border-border shadow-xl ${className}`}
+            className={`fixed top-0 right-0 z-40 w-fit max-sm:w-full max-w-5xl h-screen p-5 overflow-y-auto transition-transform bg-surface sm:max-w-screen border-l border-border shadow-xl ${className}`}
             tabIndex={-1}
             aria-labelledby="drawer-navigation-label"
         >
-            <h5
-                id="drawer-navigation-label"
-                className="text-sm font-semibold tracking-wide text-muted uppercase pr-8"
-            >
-                {headerText}
-            </h5>
+            <div className="flex items-center justify-between gap-3 pr-10">
+                <h5
+                    id="drawer-navigation-label"
+                    className="text-sm font-semibold tracking-wide text-muted uppercase"
+                >
+                    {headerText}
+                </h5>
+                {headerActions && (
+                    <div className="flex items-center gap-1">
+                        {headerActions}
+                    </div>
+                )}
+            </div>
             <button
                 type="button"
-                data-drawer-hide="drawer-navigation"
                 aria-controls="drawer-navigation"
                 className="text-subtle bg-transparent hover:bg-surface-muted hover:text-foreground rounded-md text-sm p-1.5 absolute top-3.5 end-3.5 inline-flex items-center transition-colors"
                 onClick={onClick}
@@ -71,5 +97,6 @@ export const Sidebar = ({
                 {children}
             </div>
         </aside>
+        </>
     );
 };

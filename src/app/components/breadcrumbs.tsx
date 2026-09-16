@@ -54,7 +54,7 @@ export const Breadcrumbs = ({ stigId, group, editor }: BreadcrumbsProps) => {
                         className="text-sm text-muted hover:text-accent transition-colors"
                         href={link.href}
                         aria-disabled={link.disabled}
-                        tabIndex={60}
+
                     >
                         {link.text}
                     </Link>

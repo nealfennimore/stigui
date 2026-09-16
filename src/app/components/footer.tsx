@@ -6,7 +6,7 @@ export const Footer = () => (
                 <a
                     href="https://getcmmc.consulting"
                     className="text-foreground hover:underline transition-colors"
-                    tabIndex={80}
+
                 >
                     GetCMMC
                 </a>{" "}
@@ -19,7 +19,7 @@ export const Footer = () => (
                 <a
                     href="https://neal.codes"
                     className="hover:text-foreground hover:underline mx-1 transition-colors"
-                    tabIndex={70}
+
                 >
                     neal.codes
                 </a>
@@ -28,7 +28,7 @@ export const Footer = () => (
                     href="https://github.com/nealfennimore/stig"
                     className="ml-3 text-muted hover:text-foreground transition-colors"
                     aria-label="GitHub repository"
-                    tabIndex={100}
+
                 >
                     <svg
                         className="w-5 h-5"

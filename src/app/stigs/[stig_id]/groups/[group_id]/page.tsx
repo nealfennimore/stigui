@@ -2,6 +2,8 @@ import * as Framework from "@/api/entities/Manifest";
 import Stig, { GroupWrapper } from "@/api/entities/Stig";
 import { Footer } from "@/app/components/footer";
 import { GroupView } from "@/app/components/group";
+import { SkeletonTable } from "@/app/components/ui/skeleton";
+import { Suspense } from "react";
 import { JsonLd } from "@/app/components/json_ld";
 import { Main } from "@/app/components/main";
 import { Navigation } from "@/app/components/navigation";
@@ -148,7 +150,9 @@ export default async function Page({
                 <JsonLd data={jsonLd} />
                 <Navigation />
                 <Main>
-                    <GroupView stigId={stig_id} groupId={group_id} />
+                    <Suspense fallback={<SkeletonTable rows={4} />}>
+                        <GroupView stigId={stig_id} groupId={group_id} />
+                    </Suspense>
                 </Main>
                 <Footer />
             </StigComponent>

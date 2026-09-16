@@ -27,7 +27,7 @@ function Boundary() {
     return (
         <ManifestComponent>
             <Navigation />
-            <Main>
+            <Main wide>
                 <ChecklistComponent checklistId={checklistId}>
                     <ChecklistView checklistId={checklistId} />
                 </ChecklistComponent>

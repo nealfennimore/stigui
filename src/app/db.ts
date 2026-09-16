@@ -162,6 +162,24 @@ export const put =
         });
     };
 
+export const putMany =
+    <T>(table: string) =>
+    async (data: T[]): Promise<void> => {
+        if (!data.length) {
+            return;
+        }
+        // One readwrite transaction so bulk updates are atomic and fast.
+        const store = await getStore(table, Permission.READWRITE);
+        return new Promise<void>((resolve, reject) => {
+            for (const record of data) {
+                store.put(record);
+            }
+            store.transaction.oncomplete = () => resolve();
+            store.transaction.onerror = () => reject();
+            store.transaction.onabort = () => reject();
+        });
+    };
+
 export const del =
     (table: string) =>
     async (key: IDBValidKey): Promise<boolean> => {
@@ -211,6 +229,7 @@ class StoreWrapper<T> {
     ) => Promise<T[]>;
     get: (query: IDBKeyRange | IDBValidKey) => Promise<T>;
     put: (data: T) => Promise<T[]>;
+    putMany: (data: T[]) => Promise<void>;
     del: (key: IDBValidKey) => Promise<boolean>;
     clear: () => Promise<boolean>;
     store: (permission: Permission) => Promise<IDBObjectStore>;
@@ -220,6 +239,7 @@ class StoreWrapper<T> {
         this.getAll = getAll<T>(table);
         this.get = get<T>(table);
         this.put = put<T>(table);
+        this.putMany = putMany<T>(table);
         this.del = del(table);
         this.clear = clear(table);
         this.store = (permission: Permission = Permission.READONLY) =>

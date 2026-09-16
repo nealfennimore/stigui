@@ -6,58 +6,41 @@ import {
     Severity,
     Status,
     Stig,
-    TargetData,
 } from "@/api/generated/Checklist";
 import { AddStig } from "@/app/components/client/editor/add_stig";
-import { RuleEdit } from "@/app/components/client/editor/rule";
+import {
+    computeStatusCounts,
+    ProgressSummary,
+} from "@/app/components/client/editor/progress";
+import {
+    RuleDetail,
+    RuleDetailHandlers,
+} from "@/app/components/client/editor/rule_detail";
+import {
+    filterRules,
+    StigRuleGroup,
+} from "@/app/components/client/editor/rule_list";
+import { useChecklistEditor } from "@/app/components/client/editor/use_checklist_editor";
 import { Sidebar } from "@/app/components/sidebar";
-import { buttonClasses } from "@/app/components/ui/button";
-import { IDB, IDBChecklist } from "@/app/db";
-import { debounce, download } from "@/app/utils";
+import { Button, buttonClasses } from "@/app/components/ui/button";
+import { useConfirm } from "@/app/components/ui/confirm_dialog";
+import { EmptyState } from "@/app/components/ui/empty_state";
+import { SkeletonTable } from "@/app/components/ui/skeleton";
+import { useToast } from "@/app/components/ui/toast";
+import { isEditingTarget } from "@/app/hooks/use_keyboard_nav";
+import { download } from "@/app/utils";
 import { useRouter } from "next/navigation";
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import {
+    Suspense,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 import { Breadcrumbs } from "./breadcrumbs";
 import { ChecklistTargetData } from "./checklist_target_data";
 import { SeverityBadge, bySeverity } from "./severity";
 import { StatusBadge, byStatus } from "./status";
-import { Order, Table, defaultFilter, defaultSort } from "./table";
-
-const sorters = [defaultSort, bySeverity, byStatus, null, null];
-const filters = [null, null, defaultFilter, null, null];
-
-const compare = (a: { [key: string]: any }, b: { [key: string]: any }) => {
-    const aKeys = Object.keys(a);
-    const bKeys = Object.keys(b);
-    if (aKeys.length !== bKeys.length) {
-        return false;
-    }
-    for (const key of aKeys) {
-        const aValue = a?.[key] as object | string | number | boolean;
-        const bValue = b?.[key] as object | string | number | boolean;
-
-        if (typeof aValue === "object" && typeof bValue === "object") {
-            if (!compare(aValue, bValue)) {
-                return false;
-            }
-        } else {
-            if (aValue !== bValue) {
-                return false;
-            }
-        }
-    }
-    return true;
-};
-
-type FormRuleProperties = Pick<
-    Rule,
-    "overrides" | "status" | "comments" | "finding_details"
->;
-
-interface FormChecklistChanges {
-    rule: Record<string, FormRuleProperties>;
-    target_data: Record<string, TargetData>;
-    checklist: { title?: string };
-}
 
 const toCKLB = (checklist: Checklist) => {
     const blob = new Blob([Convert.checklistToJson(checklist)], {
@@ -68,209 +51,53 @@ const toCKLB = (checklist: Checklist) => {
     URL.revokeObjectURL(url);
 };
 
-const tableHeaders = [
-    { text: "Status" },
-    { text: "Severity" },
-    { text: "Title" },
-    { text: "Description", className: "max-lg:hidden" },
-    { text: "", className: "max-md:hidden" },
+const STATUS_KEYS: Status[] = [
+    Status.Open,
+    Status.NotReviewed,
+    Status.NotAFinding,
+    Status.NotApplicable,
 ];
 
-const StigTable = ({
-    stig,
-    severities,
-    statuses,
-    onSelectRule,
-    removeRule,
-    onRemoveStig,
-}: {
-    stig: Stig;
-    severities: Set<Severity>;
-    statuses: Set<Status>;
-    onSelectRule: (rule: Rule) => void;
-    removeRule: (rule: Rule) => void;
-    onRemoveStig: (stig: Stig) => void;
-}) => {
-    const formRef = useRef<HTMLFormElement>(null);
-    const [isOpen, setOpen] = useState(true);
-
-    const viewableRules = useMemo(() => {
-        return stig.rules.filter((rule) => {
-            const severity =
-                rule.overrides?.severity?.severity ?? rule.severity;
-            const status = rule.status;
-
-            if (severities.size > 0 && !severities.has(severity)) {
-                return false;
-            }
-            if (statuses.size > 0 && !statuses.has(status)) {
-                return false;
-            }
-            return true;
-        });
-    }, [stig.rules, severities, statuses]);
-
-    const tableBody = useMemo(() => {
-        return viewableRules.map((rule) => ({
-            onClick: () => onSelectRule(rule),
-            values: [
-                rule.status,
-                rule.overrides?.severity?.severity ?? rule.severity,
-                rule.rule_title,
-                rule.discussion,
-                "",
-            ],
-            columns: [
-                <StatusBadge status={rule.status} />,
-                <SeverityBadge
-                    severity={
-                        rule.overrides?.severity?.severity ?? rule.severity
-                    }
-                />,
-                rule.rule_title,
-                rule.discussion,
-                <button
-                    type="button"
-                    aria-label="Remove from checklist"
-                    title="Remove from checklist"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        removeRule(rule);
-                    }}
-                    className="text-subtle hover:text-red-800 dark:hover:text-red-300 transition-colors"
-                >
-                    🗑️
-                </button>,
-            ],
-            classNames: [
-                null,
-                null,
-                null,
-                "max-lg:hidden",
-                "text-right w-px max-md:hidden",
-            ],
-        }));
-    }, [viewableRules, onSelectRule, removeRule]);
-
+const SaveIndicator = ({ state }: { state: string }) => {
+    if (state === "idle") {
+        return null;
+    }
+    const text = {
+        saving: "Saving…",
+        saved: "Saved ✓",
+        error: "Save failed",
+    }[state];
     return (
-        <div className="w-full mb-2 rounded-lg border border-border overflow-hidden">
-            <h2 className="flex items-center bg-surface-muted">
-                <button
-                    type="button"
-                    className="flex items-center justify-between flex-1 p-5 hover:bg-surface transition-colors gap-3"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(!isOpen)}
-                >
-                    <span className="flex flex-col items-start gap-0.5 text-left">
-                        <span className="text-foreground text-sm font-medium">
-                            {stig.display_name}
-                        </span>
-                        <span className="text-muted text-xs">
-                            {viewableRules.length === stig.size
-                                ? `${stig.size} rules`
-                                : `${viewableRules.length} of ${stig.size} rules`}
-                            {" · "}
-                            Version {stig.version}
-                        </span>
-                    </span>
-                    <svg
-                        className={
-                            `w-4 h-4 shrink-0 text-muted transition-transform` +
-                            (isOpen ? " rotate-180" : "")
-                        }
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6"
-                    >
-                        <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 5 5 1 1 5"
-                        ></path>
-                    </svg>
-                </button>
-                <button
-                    type="button"
-                    aria-label="Remove STIG from checklist"
-                    title="Remove STIG from checklist"
-                    onClick={() => onRemoveStig(stig)}
-                    className="shrink-0 self-stretch px-5 text-subtle hover:text-red-800 dark:hover:text-red-300 hover:bg-surface transition-colors"
-                >
-                    🗑️
-                </button>
-            </h2>
-            <div className={isOpen ? "" : "hidden"}>
-                <div className="border-t border-border bg-surface">
-                    {stig.release_info && (
-                        <div className="px-5 py-3 border-b border-border bg-surface-muted text-muted text-xs">
-                            {stig.release_info.replace(
-                                /\s*Benchmark Date:/,
-                                " · Benchmark Date:",
-                            )}
-                        </div>
-                    )}
-                    <section className="w-full flex flex-col">
-                        <div className="relative overflow-x-auto">
-                            <form
-                                ref={formRef}
-                                onSubmit={(e) => e.preventDefault()}
-                            >
-                                <Table
-                                    formRef={formRef}
-                                    filters={filters}
-                                    sorters={sorters}
-                                    tableHeaders={tableHeaders}
-                                    tableBody={tableBody}
-                                    initialOrders={[
-                                        Order.NONE,
-                                        Order.DESC,
-                                        Order.NONE,
-                                        Order.NONE,
-                                        Order.NONE,
-                                    ]}
-                                />
-                            </form>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
+        <span
+            role="status"
+            className={`text-xs whitespace-nowrap ${
+                state === "error" ? "text-danger-foreground" : "text-subtle"
+            }`}
+        >
+            {text}
+        </span>
     );
 };
 
 export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
-    const [checklist, setChecklist] = useState<Checklist | null>(null);
-    const formRef = useRef<HTMLFormElement>(null);
+    const editor = useChecklistEditor(checklistId);
+    const { checklist, rules, saveState, flush } = editor;
     const [selectedUuid, setSelectedUuid] = useState<string | null>(null);
+    const [selection, setSelection] = useState<Set<string>>(new Set());
     const [addStigOpen, setAddStigOpen] = useState(false);
     const [severities, setSeverities] = useState<Set<Severity>>(new Set());
     const [statuses, setStatuses] = useState<Set<Status>>(new Set());
     const router = useRouter();
+    const confirm = useConfirm();
+    const { toast } = useToast();
 
-    useEffect(() => {
-        (async () => {
-            const checklist = await IDB.exportChecklist(checklistId);
-            setChecklist(checklist);
-        })();
-    }, [checklistId]);
+    const ruleByUuid = useMemo(() => {
+        const map = new Map<string, Rule>();
+        rules.forEach((rule) => map.set(rule.uuid, rule));
+        return map;
+    }, [rules]);
 
-    const currentRules = useMemo(() => {
-        if (!checklist) {
-            return {};
-        }
-        return checklist.stigs
-            .flatMap((stig) => stig.rules)
-            .reduce(
-                (acc, rule) => {
-                    acc[rule.uuid] = rule;
-                    return acc;
-                },
-                {} as Record<string, Rule>,
-            );
-    }, [checklist]);
+    const progress = useMemo(() => computeStatusCounts(rules), [rules]);
 
     const counts = useMemo(() => {
         const counts: {
@@ -280,310 +107,292 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
             severity: {} as Record<Severity, number>,
             status: {} as Record<Status, number>,
         };
-        Object.values(currentRules).forEach((rule) => {
+        rules.forEach((rule) => {
             const severity =
                 rule.overrides?.severity?.severity ?? rule.severity;
-            const status = rule.status;
-
-            if (!counts.severity[severity]) {
-                counts.severity[severity] = 0;
-            }
-            counts.severity[severity]++;
-
-            if (!counts.status[status]) {
-                counts.status[status] = 0;
-            }
-            counts.status[status]++;
+            counts.severity[severity] = (counts.severity[severity] ?? 0) + 1;
+            counts.status[rule.status] =
+                (counts.status[rule.status] ?? 0) + 1;
         });
-
         return {
             severity: Object.entries(counts.severity).sort(([a], [b]) =>
-                bySeverity(b as Severity, a as Severity),
+                bySeverity(b as Severity, a as Severity)
             ),
             status: Object.entries(counts.status).sort(([a], [b]) =>
-                byStatus(b as Status, a as Status),
+                byStatus(b as Status, a as Status)
             ),
         };
-    }, [currentRules]);
+    }, [rules]);
 
-    const rule = useMemo(
-        () => (selectedUuid ? (currentRules[selectedUuid] ?? null) : null),
-        [selectedUuid, currentRules],
+    // Navigation order: document order of the filtered rules.
+    const visibleUuids = useMemo(
+        () =>
+            (checklist?.stigs ?? []).flatMap((stig) =>
+                filterRules(stig.rules, severities, statuses).map(
+                    (rule) => rule.uuid
+                )
+            ),
+        [checklist, severities, statuses]
     );
 
-    const onSelectRule = useMemo(
-        () => (rule: Rule) => {
+    const selectedRule = selectedUuid
+        ? (ruleByUuid.get(selectedUuid) ?? null)
+        : null;
+    const selectedPosition = selectedUuid
+        ? visibleUuids.indexOf(selectedUuid)
+        : -1;
+
+    const moveSelection = useCallback(
+        (delta: -1 | 1) => {
+            if (!visibleUuids.length) {
+                return;
+            }
+            flush();
+            setSelectedUuid((previous) => {
+                if (!previous) {
+                    return visibleUuids[0];
+                }
+                const index = visibleUuids.indexOf(previous);
+                if (index === -1) {
+                    return visibleUuids[0];
+                }
+                const next = Math.min(
+                    Math.max(index + delta, 0),
+                    visibleUuids.length - 1
+                );
+                return visibleUuids[next];
+            });
+        },
+        [visibleUuids, flush]
+    );
+
+    const onSelectRule = useCallback(
+        (rule: Rule) => {
+            flush();
             setAddStigOpen(false);
             setSelectedUuid(rule.uuid);
         },
-        [],
+        [flush]
     );
 
-    const handleChange = useMemo(
-        () => (e: Event) => {
-            if (!formRef.current) {
+    const onToggleSelection = useCallback((uuid: string) => {
+        setSelection((previous) => {
+            const next = new Set(previous);
+            if (next.has(uuid)) {
+                next.delete(uuid);
+            } else {
+                next.add(uuid);
+            }
+            return next;
+        });
+    }, []);
+
+    const onSelectAll = useCallback((uuids: string[], selected: boolean) => {
+        setSelection((previous) => {
+            const next = new Set(previous);
+            uuids.forEach((uuid) =>
+                selected ? next.add(uuid) : next.delete(uuid)
+            );
+            return next;
+        });
+    }, []);
+
+    // Keyboard shortcuts: j/k navigate, 1–4 set status, x select, Esc close.
+    useEffect(() => {
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setSelectedUuid(null);
+                setSelection(new Set());
                 return;
             }
-            const formData = new FormData(formRef.current);
-            let data = {
-                rule: {},
-                target_data: {},
-                checklist: {},
-            } as FormChecklistChanges;
-            let updates = [];
-
-            for (const [key, value] of formData.entries()) {
-                const [type, uuid, ...paths] = key.split(".");
-                if (
-                    type !== "target_data" &&
-                    type !== "rule" &&
-                    type !== "checklist"
-                ) {
-                    continue;
-                }
-
-                let length = paths.length;
-                let currentRule = currentRules[uuid];
-
-                if (type === "rule") {
-                    // @ts-ignore
-                    if (
-                        length === 1 &&
-                        // @ts-ignore
-                        currentRule?.[paths[0]] === value
-                    ) {
-                        continue;
-                    }
-
-                    if (!data.rule[uuid]) {
-                        data.rule[uuid] = {} as FormRuleProperties;
-                    }
-                    let nextRuleData = data.rule[uuid];
-                    for (const [idx, path] of paths.entries()) {
-                        // @ts-ignore
-                        if (nextRuleData[path] === undefined && length > 1) {
-                            // @ts-ignore
-                            nextRuleData[path] = {};
-                        }
-                        if (idx === length - 1) {
-                            // @ts-ignore
-                            nextRuleData[path] = value;
-                        } else {
-                            // @ts-ignore
-                            nextRuleData = nextRuleData[path];
-                        }
-                    }
-                } else if (type === "target_data") {
-                    if (!data.target_data[uuid]) {
-                        data.target_data[uuid] = {
-                            is_web_database: false,
-                        } as TargetData;
-                    }
-                    const path = paths[0];
-                    if (path === "is_web_database") {
-                        data.target_data[uuid][path] =
-                            value === "true" || value === "on";
-                    } else {
-                        data.target_data[uuid][path] = value;
-                    }
-                } else if (type === "checklist") {
-                    if (paths[0] === "title") {
-                        data.checklist.title = value as string;
-                    }
-                }
+            if (isEditingTarget(event)) {
+                return;
             }
-            for (const [uuid, value] of Object.entries(data.rule)) {
-                // Skip if only overrides are changed
-                // and the overrides are the same as the current overrides
-                if (
-                    Object.keys(value).length === 1 &&
-                    value.overrides &&
-                    compare(value.overrides, currentRules[uuid].overrides)
-                ) {
-                    continue;
-                }
-                let rule = {
-                    ...currentRules[uuid],
-                    ...value,
-                    uuid,
-                } as Rule;
-                updates.push(IDB.rules.put(rule));
+            switch (event.key) {
+                case "j":
+                case "ArrowDown":
+                    event.preventDefault();
+                    moveSelection(1);
+                    break;
+                case "k":
+                case "ArrowUp":
+                    event.preventDefault();
+                    moveSelection(-1);
+                    break;
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                    if (selectedUuid) {
+                        editor.setStatus(
+                            [selectedUuid],
+                            STATUS_KEYS[parseInt(event.key) - 1]
+                        );
+                    }
+                    break;
+                case "x":
+                    if (selectedUuid) {
+                        onToggleSelection(selectedUuid);
+                    }
+                    break;
             }
+        };
+        document.addEventListener("keydown", onKeyDown);
+        return () => document.removeEventListener("keydown", onKeyDown);
+    }, [moveSelection, selectedUuid, editor, onToggleSelection]);
 
-            const targetDataChange = data.target_data[checklistId];
-            const targetChanged =
-                !!targetDataChange &&
-                !compare(targetDataChange, checklist?.target_data as TargetData);
-            const titleChanged =
-                data.checklist.title !== undefined &&
-                data.checklist.title !== checklist?.title;
-
-            if (titleChanged || targetChanged) {
-                const nextChecklist = {
-                    ...checklist,
-                    ...(titleChanged ? { title: data.checklist.title } : {}),
-                    target_data: {
-                        ...checklist?.target_data,
-                        ...(targetChanged ? targetDataChange : {}),
-                    },
-                } as IDBChecklist;
-                updates.push(IDB.checklists.put(nextChecklist));
+    const removeRule = useCallback(
+        async (rule: Rule) => {
+            const confirmed = await confirm({
+                title: "Remove rule?",
+                description: `"${rule.rule_title}" will be removed from this checklist. This cannot be undone.`,
+                tone: "danger",
+                confirmLabel: "Remove",
+            });
+            if (confirmed) {
+                await editor.removeRule(rule.uuid);
+                setSelectedUuid(null);
+                setSelection((previous) => {
+                    const next = new Set(previous);
+                    next.delete(rule.uuid);
+                    return next;
+                });
             }
+        },
+        [confirm, editor]
+    );
 
-            Promise.all(updates).then(async () => {
-                const checklist = await IDB.exportChecklist(checklistId);
-                setChecklist(checklist);
+    const removeStig = useCallback(
+        async (stig: Stig) => {
+            const confirmed = await confirm({
+                title: "Remove STIG?",
+                description: `"${stig.display_name}" and all ${stig.size} of its rules will be removed from this checklist. This cannot be undone.`,
+                tone: "danger",
+                confirmLabel: "Remove",
+            });
+            if (confirmed) {
+                await editor.removeStig(stig);
+                setSelectedUuid(null);
+                setSelection(new Set());
+            }
+        },
+        [confirm, editor]
+    );
+
+    const deleteChecklist = useCallback(async () => {
+        const confirmed = await confirm({
+            title: "Delete checklist?",
+            description: `"${checklist?.title}" will be deleted from this browser. This cannot be undone.`,
+            tone: "danger",
+            confirmLabel: "Delete",
+        });
+        if (confirmed) {
+            await editor.deleteChecklist();
+            router.push("/editor");
+        }
+    }, [confirm, checklist?.title, editor, router]);
+
+    const handleAddStig = useCallback(
+        async (stig: Stig) => {
+            await editor.addStig(stig);
+            setAddStigOpen(false);
+            toast({
+                tone: "success",
+                title: "STIG added",
+                description: `"${stig.display_name}" was added to the checklist.`,
             });
         },
-        [currentRules, checklist, checklistId],
+        [editor, toast]
     );
 
-    const debouncedHandleChange = useMemo(
-        () => debounce(handleChange, 500),
-        [handleChange],
-    );
-
-    const handleRemoveRule = useMemo(
-        () => async (uuid: string) => {
-            await IDB.rules.del(uuid);
-            const checklist = await IDB.exportChecklist(checklistId);
-            setChecklist(checklist);
-            setSelectedUuid(null);
+    const bulkSetStatus = useCallback(
+        (status: Status) => {
+            const uuids = [...selection];
+            editor.setStatus(uuids, status);
+            setSelection(new Set());
+            toast({
+                tone: "success",
+                title: `Updated ${uuids.length} rule${
+                    uuids.length === 1 ? "" : "s"
+                }`,
+                description: `Status set to "${status.replaceAll("_", " ")}".`,
+            });
         },
-        [checklistId],
+        [selection, editor, toast]
     );
 
-    const deleteChecklist = useMemo(
-        () => () => {
-            if (
-                window.confirm(
-                    `Delete the checklist "${checklist?.title}"? This cannot be undone.`,
-                )
-            ) {
-                (async () => {
-                    await IDB.removeChecklist(checklistId);
-                    router.push("/editor");
-                })();
-            }
-        },
-        [checklistId, checklist?.title, router],
-    );
-
-    const removeStig = useMemo(
-        () => (stig: Stig) => {
-            if (
-                window.confirm(
-                    `Remove the STIG "${stig.display_name}" and all ${stig.size} of its rules from this checklist? This cannot be undone.`,
-                )
-            ) {
-                (async () => {
-                    await IDB.removeStig(checklistId, stig.uuid);
-                    const checklist = await IDB.exportChecklist(checklistId);
-                    setChecklist(checklist);
-                    setSelectedUuid(null);
-                })();
-            }
-        },
-        [checklistId],
-    );
-
-    const removeRule = useMemo(
-        () => (rule: Rule) => {
-            if (
-                window.confirm(
-                    `Remove "${rule.rule_title}" from this checklist? This cannot be undone.`,
-                )
-            ) {
-                handleRemoveRule(rule.uuid);
-            }
-        },
-        [handleRemoveRule],
-    );
-
-    const handleAddStig = useMemo(
-        () => async (stig: Stig) => {
-            await IDB.addStig(checklistId, stig);
-            const checklist = await IDB.exportChecklist(checklistId);
-            setChecklist(checklist);
-            setAddStigOpen(false);
-        },
-        [checklistId],
+    const detailHandlers: RuleDetailHandlers = useMemo(
+        () => ({
+            updateRuleText: editor.updateRuleText,
+            setStatus: editor.setStatus,
+            setSeverity: editor.setSeverity,
+            setOverrideReason: editor.setOverrideReason,
+            onRemove: removeRule,
+        }),
+        [editor, removeRule]
     );
 
     const existingStigNames = useMemo(
         () => new Set(checklist?.stigs.map((stig) => stig.stig_name) ?? []),
-        [checklist],
+        [checklist]
     );
 
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <Breadcrumbs editor />
-            <form
-                ref={formRef}
-                onSubmit={(e) => e.preventDefault()}
-                onChange={debouncedHandleChange}
-                className="w-full"
-            >
-                <Sidebar
-                    isOpen={rule !== null}
-                    onClick={() => setSelectedUuid(null)}
-                    headerText={rule?.rule_title ?? "Rule Details"}
-                >
-                    <RuleEdit rule={rule} onRemove={removeRule} />
-                </Sidebar>
+    const toggleFilter = <T,>(
+        set: Set<T>,
+        setter: (next: Set<T>) => void,
+        value: T
+    ) => {
+        const next = new Set(set);
+        if (next.has(value)) {
+            next.delete(value);
+        } else {
+            next.add(value);
+        }
+        setter(next);
+    };
 
-                {checklist && (
-                    <section className="my-4 w-full flex flex-col">
-                        <input
-                            key={checklist.id}
-                            type="text"
-                            name={`checklist.${checklist.id}.title`}
-                            defaultValue={checklist.title}
-                            aria-label="Checklist title"
-                            placeholder="Untitled checklist"
-                            className="text-3xl font-semibold tracking-tight mb-6 text-foreground bg-transparent w-full rounded-md border border-transparent px-1 -mx-1 hover:border-border focus:border-accent focus-visible:outline-none focus:ring-2 focus:ring-ring/40 transition-colors"
-                        />
-                        <ChecklistTargetData checklist={checklist} />
-                        <div className="text-xs flex justify-end gap-2 mt-1">
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setSelectedUuid(null);
-                                    setAddStigOpen(true);
-                                }}
-                                className={buttonClasses({
-                                    variant: "secondary",
-                                    size: "sm",
-                                })}
-                            >
-                                Add STIG ➕
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => toCKLB(checklist)}
-                                className={buttonClasses({
-                                    variant: "secondary",
-                                    size: "sm",
-                                })}
-                            >
-                                CKLB ⬇️
-                            </button>
-                            <button
-                                type="button"
-                                onClick={deleteChecklist}
-                                className={buttonClasses({
-                                    variant: "secondary",
-                                    size: "sm",
-                                    className:
-                                        "text-red-800 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-900",
-                                })}
-                            >
-                                Delete Checklist 🗑️
-                            </button>
-                        </div>
-                    </section>
-                )}
-            </form>
+    if (!checklist) {
+        return <SkeletonTable rows={8} className="my-4" />;
+    }
+
+    const detail = selectedRule ? (
+        <RuleDetail
+            rule={selectedRule}
+            handlers={detailHandlers}
+            onPrevious={
+                selectedPosition > 0 ? () => moveSelection(-1) : undefined
+            }
+            onNext={
+                selectedPosition > -1 &&
+                selectedPosition < visibleUuids.length - 1
+                    ? () => moveSelection(1)
+                    : undefined
+            }
+            position={
+                selectedPosition > -1
+                    ? {
+                          index: selectedPosition,
+                          total: visibleUuids.length,
+                      }
+                    : undefined
+            }
+        />
+    ) : null;
+
+    return (
+        <Suspense fallback={<SkeletonTable rows={8} className="my-4" />}>
+            <Breadcrumbs editor />
+
+            {/* Mobile rule editor drawer; desktop uses the right pane. */}
+            <div className="lg:hidden">
+                <Sidebar
+                    isOpen={selectedRule !== null}
+                    onClick={() => setSelectedUuid(null)}
+                    headerText={selectedRule?.rule_title ?? "Rule Details"}
+                >
+                    {detail}
+                </Sidebar>
+            </div>
 
             <Sidebar
                 isOpen={addStigOpen}
@@ -597,66 +406,176 @@ export const ChecklistView = ({ checklistId }: { checklistId: string }) => {
                 />
             </Sidebar>
 
-            {checklist && (
-                <aside className="w-full flex justify-between items-center my-6 flex-wrap gap-2">
-                    <div>
-                        {counts.severity.map(([severity, count]) => (
-                            <SeverityBadge
-                                key={severity}
-                                severity={severity as Severity}
-                                count={count}
-                                Element="button"
-                                selected={severities.has(severity as Severity)}
-                                onClick={() => {
-                                    const newSeverities = new Set(severities);
-                                    if (
-                                        newSeverities.has(severity as Severity)
-                                    ) {
-                                        newSeverities.delete(
-                                            severity as Severity,
-                                        );
-                                    } else {
-                                        newSeverities.add(severity as Severity);
-                                    }
-                                    setSeverities(newSeverities);
-                                }}
-                            />
-                        ))}
+            <section className="my-4 w-full flex flex-col gap-4">
+                <div className="flex items-center gap-3 flex-wrap">
+                    <input
+                        key={checklist.id}
+                        type="text"
+                        value={checklist.title}
+                        onChange={(event) =>
+                            editor.updateTitle(event.target.value)
+                        }
+                        aria-label="Checklist title"
+                        placeholder="Untitled checklist"
+                        className="flex-1 min-w-[16rem] text-3xl max-sm:text-2xl font-semibold tracking-tight text-foreground bg-transparent rounded-md border border-transparent px-1 -mx-1 hover:border-border focus:border-accent focus-visible:outline-none focus:ring-2 focus:ring-ring/40 transition-colors"
+                    />
+                    <div className="flex items-center gap-2">
+                        <SaveIndicator state={saveState} />
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => {
+                                setSelectedUuid(null);
+                                setAddStigOpen(true);
+                            }}
+                        >
+                            Add STIG
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={() => {
+                                flush();
+                                toCKLB(checklist);
+                                toast({
+                                    tone: "success",
+                                    title: "Checklist exported",
+                                    description:
+                                        "The .cklb file is compatible with DISA STIG Viewer 3.",
+                                });
+                            }}
+                        >
+                            Export CKLB
+                        </Button>
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={deleteChecklist}
+                        >
+                            Delete
+                        </Button>
                     </div>
-                    <div>
+                </div>
+
+                <ProgressSummary progress={progress} />
+
+                <div className="flex justify-between items-start gap-2 flex-wrap">
+                    <div className="flex flex-wrap items-center">
                         {counts.status.map(([status, count]) => (
                             <StatusBadge
                                 key={status}
                                 status={status as Status}
                                 count={count}
-                                Element="button"
                                 selected={statuses.has(status as Status)}
-                                onClick={() => {
-                                    const newStatuses = new Set(statuses);
-                                    if (newStatuses.has(status as Status)) {
-                                        newStatuses.delete(status as Status);
-                                    } else {
-                                        newStatuses.add(status as Status);
-                                    }
-                                    setStatuses(newStatuses);
-                                }}
+                                onClick={() =>
+                                    toggleFilter(
+                                        statuses,
+                                        setStatuses,
+                                        status as Status
+                                    )
+                                }
                             />
                         ))}
                     </div>
-                </aside>
+                    <div className="flex flex-wrap items-center">
+                        {counts.severity.map(([severity, count]) => (
+                            <SeverityBadge
+                                key={severity}
+                                severity={severity as Severity}
+                                count={count}
+                                selected={severities.has(severity as Severity)}
+                                onClick={() =>
+                                    toggleFilter(
+                                        severities,
+                                        setSeverities,
+                                        severity as Severity
+                                    )
+                                }
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <ChecklistTargetData
+                    checklist={checklist}
+                    onChange={editor.updateTargetData}
+                />
+            </section>
+
+            {checklist.stigs.length === 0 ? (
+                <EmptyState
+                    className="w-full"
+                    title="This checklist has no STIGs yet"
+                    description="Add a STIG to start assessing rules."
+                    action={
+                        <button
+                            type="button"
+                            onClick={() => setAddStigOpen(true)}
+                            className={buttonClasses({
+                                variant: "primary",
+                                size: "sm",
+                            })}
+                        >
+                            Add STIG
+                        </button>
+                    }
+                />
+            ) : (
+                <div className="w-full grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] items-start">
+                    <div className="flex flex-col gap-3 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1">
+                        {checklist.stigs.map((stig) => (
+                            <StigRuleGroup
+                                key={stig.uuid}
+                                stig={stig}
+                                severities={severities}
+                                statuses={statuses}
+                                selectedUuid={selectedUuid}
+                                selection={selection}
+                                onSelectRule={onSelectRule}
+                                onToggleSelection={onToggleSelection}
+                                onSelectAll={onSelectAll}
+                                onRemoveStig={removeStig}
+                            />
+                        ))}
+                    </div>
+                    <div className="max-lg:hidden lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto rounded-lg border border-border bg-surface shadow-card p-5">
+                        {detail ?? (
+                            <EmptyState
+                                className="border-0"
+                                title="Select a rule to begin"
+                                description="Click a rule on the left, or use j/k to move and 1–4 to set its status."
+                            />
+                        )}
+                    </div>
+                </div>
             )}
 
-            {checklist?.stigs.map((stig) => (
-                <StigTable
-                    key={stig.uuid}
-                    stig={stig}
-                    severities={severities}
-                    statuses={statuses}
-                    onSelectRule={onSelectRule}
-                    removeRule={removeRule}
-                    onRemoveStig={removeStig}
-                />
-            ))}
+            {selection.size > 0 && (
+                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 rounded-lg border border-border bg-surface shadow-overlay px-4 py-2.5 flex-wrap max-sm:w-[calc(100%-2rem)]">
+                    <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                        {selection.size} selected
+                    </span>
+                    <span className="text-xs text-subtle max-sm:hidden">
+                        Set status:
+                    </span>
+                    <div className="flex items-center gap-1 flex-wrap">
+                        {STATUS_KEYS.map((status) => (
+                            <StatusBadge
+                                key={status}
+                                status={status}
+                                onClick={() => bulkSetStatus(status)}
+                            />
+                        ))}
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => setSelection(new Set())}
+                        className="text-xs font-medium text-accent hover:underline"
+                    >
+                        Clear
+                    </button>
+                </div>
+            )}
         </Suspense>
     );
 };

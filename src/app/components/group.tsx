@@ -1,38 +1,30 @@
 "use client";
-import { GroupWrapper } from "@/api/entities/Stig";
 import { ContentNavigation } from "@/app/components/content_navigation";
+import { GroupInfo } from "@/app/components/rule_panel";
 import { SeverityBadge } from "@/app/components/severity";
-import { TableCard } from "@/app/components/ui/card";
+import { Disclosure } from "@/app/components/ui/disclosure";
+import { EmptyState } from "@/app/components/ui/empty_state";
 import { useStigContext } from "@/app/context/stig";
 import { Suspense } from "react";
 import { Breadcrumbs } from "./breadcrumbs";
-import { Table } from "./table";
 
-const InfoPanel = ({
-    title,
-    children,
+export { GroupInfo } from "@/app/components/rule_panel";
+
+const Identifier = ({
+    label,
+    value,
 }: {
-    title: React.ReactNode;
-    children: React.ReactNode;
+    label: string;
+    value: React.ReactNode;
 }) => (
-    <section className="w-full flex flex-col">
-        <div className="rounded-lg border border-border bg-surface shadow-card overflow-hidden">
-            <h3 className="px-6 py-3.5 text-xs font-semibold tracking-wide uppercase text-muted bg-surface-muted border-b border-border">
-                {title}
-            </h3>
-            <div className="px-6 py-4 text-sm text-foreground whitespace-pre-line">
-                {children}
-            </div>
-        </div>
-    </section>
-);
-
-export const GroupInfo = ({ group }: { group: GroupWrapper }) => (
-    <>
-        <InfoPanel title="Description">{group.rule.description}</InfoPanel>
-        <InfoPanel title="ℹ️ Check">{group.rule.check}</InfoPanel>
-        <InfoPanel title="✔️ Fix">{group.rule.fixText}</InfoPanel>
-    </>
+    <div className="flex items-center gap-2">
+        <dt className="text-xs font-medium uppercase tracking-wide text-subtle">
+            {label}
+        </dt>
+        <dd className="text-sm text-foreground font-[family-name:var(--font-geist-mono)]">
+            {value}
+        </dd>
+    </div>
 );
 
 export const GroupView = ({
@@ -49,88 +41,72 @@ export const GroupView = ({
     const group = stig.groups[idx];
 
     if (!group) {
-        return null;
+        return (
+            <section className="w-full flex flex-col gap-4 my-6">
+                <EmptyState
+                    title="Rule not found"
+                    description={`"${groupId}" is not part of this STIG${
+                        classification ? ` (${classification})` : ""
+                    }.`}
+                />
+            </section>
+        );
     }
 
     return (
         <Suspense>
             <Breadcrumbs stigId={stigId} group={group} />
 
-            <section className="w-full flex flex-col">
-                <h1 className="text-3xl font-semibold tracking-tight my-6 text-foreground">
+            <header className="w-full flex flex-col gap-2 my-6">
+                <div className="flex items-center gap-1 flex-wrap">
+                    <SeverityBadge severity={group.rule.severity} />
+                    <span className="text-sm text-muted font-[family-name:var(--font-geist-mono)]">
+                        {group.id}
+                    </span>
+                </div>
+                <h1 className="text-3xl max-sm:text-2xl font-semibold tracking-tight text-foreground">
                     {group.rule.title}
                 </h1>
-                <TableCard>
-                    <Table
-                        tableHeaders={[
-                            {
-                                text: "Severity",
-                            },
-                            {
-                                text: "Group ID",
-                            },
-                            {
-                                text: "Group Title",
-                                className: "max-md:hidden",
-                            },
-                            {
-                                text: "Version",
-                            },
-                            {
-                                text: "Rule ID",
-                                className: "max-md:hidden",
-                            },
-                            {
-                                text: "Date",
-                                className: "max-lg:hidden",
-                            },
-                            {
-                                text: "STIG Version",
-                                className: "max-lg:hidden",
-                            },
-                        ]}
-                        tableBody={[
-                            {
-                                classNames: [
-                                    null,
-                                    null,
-                                    "max-md:hidden",
-                                    null,
-                                    "max-md:hidden",
-                                    "max-lg:hidden",
-                                    "max-lg:hidden",
-                                ],
-                                values: [
-                                    group.rule.severity,
-                                    group.id,
-                                    group.title,
-                                    group.rule.version,
-                                    group.rule.id,
-                                    stig.date,
-                                    stig.version,
-                                ],
-                                columns: [
-                                    <SeverityBadge
-                                        severity={group.rule.severity}
-                                    />,
-                                    group.id,
-                                    group.title,
-                                    group.rule.version,
-                                    group.rule.id,
-                                    stig.date,
-                                    stig.version,
-                                ],
-                            },
-                        ]}
-                    />
-                </TableCard>
-            </section>
+                <p className="text-xs text-subtle">
+                    {group.rule.id} · Version {group.rule.version} · STIG v
+                    {stig.version} · {stig.date}
+                </p>
+            </header>
+
             <ContentNavigation
                 stigId={stigId}
                 previous={stig.groups[idx - 1]}
                 next={stig.groups[idx + 1]}
+                index={idx}
+                total={stig.groups.length}
+                withKeyboard
             />
-            <GroupInfo group={group} />
+
+            <div className="w-full flex flex-col gap-6">
+                <GroupInfo group={group} />
+
+                <Disclosure summary="Identifiers">
+                    <dl className="p-5 flex flex-col gap-2">
+                        <Identifier label="Group ID" value={group.id} />
+                        <Identifier label="Group Title" value={group.title} />
+                        <Identifier label="Rule ID" value={group.rule.id} />
+                        <Identifier
+                            label="Check ID"
+                            value={group.rule.checkId}
+                        />
+                        <Identifier label="Fix ID" value={group.rule.fix} />
+                    </dl>
+                </Disclosure>
+
+                <ContentNavigation
+                    stigId={stigId}
+                    previous={stig.groups[idx - 1]}
+                    next={stig.groups[idx + 1]}
+                    index={idx}
+                    total={stig.groups.length}
+                    slim
+                />
+            </div>
         </Suspense>
     );
 };
