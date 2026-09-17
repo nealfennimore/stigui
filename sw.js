@@ -1,27 +1,36 @@
-const cacheName = 'v2';
-
-const deleteCache = async (key) => {
-    await caches.delete(key);
-};
+// Registered as /sw.js?v=<build id> (see src/app/layout.tsx). A new build
+// changes the URL, so the browser installs a new worker whose cache name
+// differs from the previous build's; activation deletes the old caches.
+const buildId = new URL(self.location.href).searchParams.get('v') || 'dev';
+const cacheName = `stigui-${buildId}`;
 
 const deleteOldCaches = async () => {
-    const cacheKeepList = [cacheName];
     const keyList = await caches.keys();
-    const cachesToDelete = keyList.filter(
-        (key) => !cacheKeepList.includes(key),
+    await Promise.all(
+        keyList
+            .filter((key) => key !== cacheName)
+            .map((key) => caches.delete(key)),
     );
-    await Promise.all(cachesToDelete.map(deleteCache));
 };
 
+self.addEventListener('install', () => {
+    // Take over from the previous build without waiting for tabs to close.
+    self.skipWaiting();
+});
+
 self.addEventListener('activate', (event) => {
-    event.waitUntil(deleteOldCaches());
+    event.waitUntil(deleteOldCaches().then(() => self.clients.claim()));
 });
 
 const putInCache = async (request, response) => {
+    if (!response.ok) {
+        return;
+    }
     const cache = await caches.open(cacheName);
     await cache.put(request, response);
 };
 
+/** Hashed assets and STIG data: serve from this build's cache first. */
 const cacheFirst = async (request, event) => {
     const responseFromCache = await caches.match(request);
     if (responseFromCache) {
@@ -32,8 +41,29 @@ const cacheFirst = async (request, event) => {
     return responseFromNetwork;
 };
 
-self.addEventListener('fetch', (event) => {
-    if (event.request.url.startsWith('https:')) {
-        event.respondWith(cacheFirst(event.request, event));
+/** Pages: prefer the network so a deploy shows up on the next navigation. */
+const networkFirst = async (request, event) => {
+    try {
+        const responseFromNetwork = await fetch(request);
+        event.waitUntil(putInCache(request, responseFromNetwork.clone()));
+        return responseFromNetwork;
+    } catch (error) {
+        const responseFromCache = await caches.match(request);
+        if (responseFromCache) {
+            return responseFromCache;
+        }
+        throw error;
     }
+};
+
+self.addEventListener('fetch', (event) => {
+    const { request } = event;
+    if (request.method !== 'GET' || !request.url.startsWith('https:')) {
+        return;
+    }
+    if (request.mode === 'navigate') {
+        event.respondWith(networkFirst(request, event));
+        return;
+    }
+    event.respondWith(cacheFirst(request, event));
 });
