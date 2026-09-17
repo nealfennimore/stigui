@@ -68,7 +68,11 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <script src="/theme.js" />
-                <Script id="service-worker">{`"serviceWorker" in navigator && navigator.serviceWorker.register("/sw.js", { scope: "/" });`}</Script>
+                {/* The build id in the URL makes each deploy a new worker
+                    with its own cache; see public/sw.js. */}
+                <Script id="service-worker">{`"serviceWorker" in navigator && navigator.serviceWorker.register("/sw.js?v=${encodeURIComponent(
+                    process.env.NEXT_PUBLIC_BUILD_ID ?? "dev"
+                )}", { scope: "/" });`}</Script>
             </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
