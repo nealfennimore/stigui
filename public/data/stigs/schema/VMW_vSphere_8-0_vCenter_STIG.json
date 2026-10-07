@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-23"
+      "+@date": "2026-09-10"
     },
     "title": "VMware vSphere 8.0 vCenter Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -2569,12 +2569,12 @@
         "title": "SRG-APP-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258906r960843_rule",
+          "+@id": "SV-258906r1273681_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCSA-80-000024",
-          "title": "The vCenter Server must display the Standard Mandatory DOD Notice and Consent Banner before logon.",
-          "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read (literal ampersand) consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000068, SRG-APP-000069, SRG-APP-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The vCenter Server must display the Standard Mandatory DoW Notice and Consent Banner before logon.",
+          "description": "<VulnDiscussion>Display of the DoW-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read (literal ampersand) consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000068, SRG-APP-000069, SRG-APP-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 vCenter",
             "dc:publisher": "DISA",
@@ -2597,19 +2597,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Login Message.\n\nClick \"Edit\".\n\nClick the \"Show login message\" slider to enable.\n\nConfigure the \"Login message\" to \"DOD User Agreement\".\n\nClick the \"Consent checkbox\" slider to enable.\n\nSet the \"Details of login message\" to the Standard Mandatory DOD Notice and Consent Banner text.\n\nClick \"Save\".",
-            "+@fixref": "F-62555r934375_fix"
+            "+content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Login Message.\n\nClick \"Edit\".\n\nClick the \"Show login message\" slider to enable.\n\nConfigure the \"Login message\" to \"DoW User Agreement\".\n\nClick the \"Consent checkbox\" slider to enable.\n\nSet the \"Details of login message\" to the Standard Mandatory DoW Notice and Consent Banner text.\n\nClick \"Save\".",
+            "+@fixref": "F-62555r1273680_fix"
           },
           "fix": {
-            "+@id": "F-62555r934375_fix"
+            "+@id": "F-62555r1273680_fix"
           },
           "check": {
-            "+@system": "C-62646r934374_chk",
+            "+@system": "C-62646r1264139_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_vCenter_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Login Message.\n\nIf the selection box next to \"Show login message\" is disabled, \"Details of login message\" is not configured to the standard DOD User Agreement, or the \"Consent checkbox\" is disabled, this is a finding.\n\nNote: Refer to vulnerability discussion for user agreement language."
+            "check-content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Login Message.\n\nIf the selection box next to \"Show login message\" is disabled, \"Details of login message\" is not configured to the standard DoW User Agreement, or the \"Consent checkbox\" is disabled, this is a finding.\n\nNote: Refer to vulnerability discussion for user agreement language."
           }
         }
       },
@@ -3082,12 +3082,12 @@
         "title": "SRG-APP-000172",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258917r961029_rule",
+          "+@id": "SV-258917r1264142_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "VCSA-80-000077",
           "title": "The vCenter Server must enable FIPS-validated cryptography.",
-          "description": "<VulnDiscussion>FIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules use authentication that meets DOD requirements.\n\nIn vSphere 6.7 and later, ESXi and vCenter Server use FIPS-validated cryptography to protect management interfaces and the VMware Certificate Authority (VMCA).\n\nvSphere 7.0 Update 2 and later adds additional FIPS-validated cryptography to vCenter Server Appliance. By default, this FIPS validation option is disabled and must be enabled.\n\nSatisfies: SRG-APP-000172, SRG-APP-000179, SRG-APP-000224, SRG-APP-000231, SRG-APP-000412, SRG-APP-000514, SRG-APP-000555, SRG-APP-000600, SRG-APP-000610, SRG-APP-000620, SRG-APP-000630, SRG-APP-000635</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>FIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules use authentication that meets DoW requirements.\n\nIn vSphere 6.7 and later, ESXi and vCenter Server use FIPS-validated cryptography to protect management interfaces and the VMware Certificate Authority (VMCA).\n\nvSphere 7.0 Update 2 and later adds additional FIPS-validated cryptography to vCenter Server Appliance. By default, this FIPS validation option is disabled and must be enabled.\n\nSatisfies: SRG-APP-000172, SRG-APP-000179, SRG-APP-000224, SRG-APP-000231, SRG-APP-000412, SRG-APP-000514, SRG-APP-000555, SRG-APP-000600, SRG-APP-000610, SRG-APP-000620, SRG-APP-000630, SRG-APP-000635</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 vCenter",
             "dc:publisher": "DISA",
@@ -3147,7 +3147,7 @@
         "title": "SRG-APP-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258918r1043190_rule",
+          "+@id": "SV-258918r1264137_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCSA-80-000079",
@@ -3171,19 +3171,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Local Accounts >> Password Policy.\n\nClick \"Edit\".\n\nSet \"Maximum lifetime\" to \"90\" and click \"Save\".",
-            "+@fixref": "F-62567r934411_fix"
+            "+content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Local Accounts >> Password Policy.\n\nClick \"Edit\".\n\nSet \"Maximum lifetime\" to \"180\" and click \"Save\".",
+            "+@fixref": "F-62567r1264136_fix"
           },
           "fix": {
-            "+@id": "F-62567r934411_fix"
+            "+@id": "F-62567r1264136_fix"
           },
           "check": {
-            "+@system": "C-62658r934410_chk",
+            "+@system": "C-62658r1264135_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_vCenter_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Local Accounts >> Password Policy.\n\nView the value of the \"Maximum lifetime\" setting.\n\nMaximum lifetime: Password must be changed every 90 days\n\nIf the password policy is not configured with \"Maximum lifetime\" policy of \"90\" or less, this is a finding."
+            "check-content": "From the vSphere Client, go to Administration >> Single Sign On >> Configuration >> Local Accounts >> Password Policy.\n\nView the value of the \"Maximum lifetime\" setting.\n\nMaximum lifetime: Password must be changed every 180 days\n\nIf the password policy is not configured with \"Maximum lifetime\" policy of \"180\" or less, this is a finding."
           }
         }
       },
@@ -3623,12 +3623,12 @@
         "title": "SRG-APP-000427",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258928r961596_rule",
+          "+@id": "SV-258928r1264145_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCSA-80-000195",
-          "title": "The vCenter Server Machine Secure Sockets Layer (SSL) certificate must be issued by a DOD certificate authority.",
-          "description": "<VulnDiscussion>Untrusted certificate authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DOD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DOD-approved CA, trust of this CA has not been established.\n\nThe DOD will only accept public key infrastructure (PKI) certificates obtained from a DOD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of Transport Layer Security (TLS) certificates.\n\nThe default self-signed, VMware Certificate Authority (VMCA)-issued vCenter reverse proxy certificate must be replaced with a DOD-approved certificate. The use of a DOD certificate on the vCenter reverse proxy and other services assures clients that the service they are connecting to is legitimate and trusted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The vCenter Server Machine Secure Sockets Layer (SSL) certificate must be issued by a DoW certificate authority.",
+          "description": "<VulnDiscussion>Untrusted certificate authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoW systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoW-approved CA, trust of this CA has not been established.\n\nThe DoW will only accept public key infrastructure (PKI) certificates obtained from a DoW-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of Transport Layer Security (TLS) certificates.\n\nThe default self-signed, VMware Certificate Authority (VMCA)-issued vCenter reverse proxy certificate must be replaced with a DoW-approved certificate. The use of a DoW certificate on the vCenter reverse proxy and other services assures clients that the service they are connecting to is legitimate and trusted.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 vCenter",
             "dc:publisher": "DISA",
@@ -3641,19 +3641,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Obtain a DOD-issued certificate and private key for each vCenter in the system following the requirements below:\n\nKey size: 2048 bits or more (PEM encoded)\nCRT format (Base-64)\nx509 version 3\nSubjectAltName must contain DNS Name=<machine_FQDN>\nContains the following Key Usages: Digital Signature, Non Repudiation, Key Encipherment\n\nExport the entire certificate issuing chain up to the root in Base-64 format. Concatenate the individual certificates into one file with the \".cer\" extension.\n\nFrom the vSphere Client, go to Administration >> Certificates >> Certificate Management >> Machine SSL Certificate.\n\nClick Actions >> Import and Replace Certificate.\n\nSelect the \"Replace with external CA certificate\" radio button and click \"Next\".\n\nSupply the CA-issued certificate , the exported roots file, and the private key.\n\nClick \"Replace\".",
-            "+@fixref": "F-62577r934441_fix"
+            "+content": "Obtain a DoW-issued certificate and private key for each vCenter in the system following the requirements below:\n\nKey size: 2048 bits or more (PEM encoded)\nCRT format (Base-64)\nx509 version 3\nSubjectAltName must contain DNS Name=<machine_FQDN>\nContains the following Key Usages: Digital Signature, Non Repudiation, Key Encipherment\n\nExport the entire certificate issuing chain up to the root in Base-64 format. Concatenate the individual certificates into one file with the \".cer\" extension.\n\nFrom the vSphere Client, go to Administration >> Certificates >> Certificate Management >> Machine SSL Certificate.\n\nClick Actions >> Import and Replace Certificate.\n\nSelect the \"Replace with external CA certificate\" radio button and click \"Next\".\n\nSupply the CA-issued certificate , the exported roots file, and the private key.\n\nClick \"Replace\".",
+            "+@fixref": "F-62577r1264144_fix"
           },
           "fix": {
-            "+@id": "F-62577r934441_fix"
+            "+@id": "F-62577r1264144_fix"
           },
           "check": {
-            "+@system": "C-62668r934440_chk",
+            "+@system": "C-62668r1264143_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_8.0_vCenter_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Administration >> Certificates >> Certificate Management >> Machine SSL Certificate.\n\nClick \"View Details\" and examine the \"Issuer Information\" block.\n\nIf the issuer specified is not a DOD approved certificate authority, this is a finding."
+            "check-content": "From the vSphere Client, go to Administration >> Certificates >> Certificate Management >> Machine SSL Certificate.\n\nClick \"View Details\" and examine the \"Issuer Information\" block.\n\nIf the issuer specified is not a DoW approved certificate authority, this is a finding."
           }
         }
       },
@@ -3662,9 +3662,9 @@
         "title": "SRG-APP-000428",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-258929r961599_rule",
+          "+@id": "SV-258929r1264138_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "VCSA-80-000196",
           "title": "The vCenter Server must enable data at rest encryption for vSAN.",
           "description": "<VulnDiscussion>Applications handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nData encryption is a common technique used in environments that require additional levels of security. It consists of a process to ensure that data can only be consumed by systems that have appropriate levels of access. Approved systems must have and use the appropriate cryptographic keys to encrypt and decrypt the data. Systems that do not have the keys will not be able to consume the data in any meaningful way, as it will remain encrypted in accordance with the commonly used Advanced Encryption Standard (AES) from the National Institute of Standards and Technology, or NIST.\n\nvSAN supports Data-At-Rest Encryption and Data-in-Transit Encryption and uses an AES 256 cipher. Data is encrypted after all other processing, such as deduplication, is performed. Data at rest encryption protects data on storage devices in case a device is removed from the cluster.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -5261,11 +5261,11 @@
         "title": "SRG-APP-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265978r1003613_rule",
+          "+@id": "SV-265978r1264146_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCSA-80-000009",
-          "title": "The vCenter Server must use DOD-approved encryption to protect the confidentiality of network sessions.",
+          "title": "The vCenter Server must use DoW-approved encryption to protect the confidentiality of network sessions.",
           "description": "<VulnDiscussion>Using older unauthorized versions or incorrectly configuring protocol negotiation makes the gateway vulnerable to known and unknown attacks that exploit vulnerabilities in this protocol.\n\nIn vCenter 8 Update 3, Transport Layer Security (TLS) Profiles were introduced that allow users to manage and configure TLS parameters for the vCenter server. Several TLS profiles are available by default but not all may be suitable for high security environments.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 8.0 vCenter",

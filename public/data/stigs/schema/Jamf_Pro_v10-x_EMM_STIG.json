@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-08-27"
+      "+@date": "2026-09-02"
     },
     "title": "Jamf Pro v10.x EMM Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1162,12 +1162,12 @@
         "title": "PP-MDM-412003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241790r961038_rule",
+          "+@id": "SV-241790r1268351_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-000040",
           "title": "When the Jamf Pro EMM server cannot establish a connection to determine the validity of a certificate, the server must not have the option to accept the certificate.",
-          "description": "<VulnDiscussion>When a Jamf Pro EMM server accepts an unverified certificate, it may be trusting a malicious actor. For example, messages signed with an invalid certificate may contain links to malware, which could lead to the installation or distribution of that malware on DoD information systems, leading to compromise of DoD sensitive information and other attacks.\n\nSFR ID: FIA_X509_EXT.2.2</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>When a Jamf Pro EMM server accepts an unverified certificate, it may be trusting a malicious actor. For example, messages signed with an invalid certificate may contain links to malware, which could lead to the installation or distribution of that malware on DoW information systems, leading to compromise of DoW sensitive information and other attacks.\n\nSFR ID: FIA_X509_EXT.2.2</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -1202,19 +1202,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Jamf Pro EMM server to not accept a certificate if the certificate cannot be validated.\n\n1. Open the Jamf Pro EMM console.\n2. Open \"Settings\".\n3. Select \"User-Initiated Enrollment\".\n4. Under the General tab, select \"Use a third-party signing certificate\".\n5. Drag and drop the DoD p12 certificate.\n6. Click \"Save\".",
-            "+@fixref": "F-45025r685123_fix"
+            "+content": "Configure the Jamf Pro EMM server to not accept a certificate if the certificate cannot be validated.\n\n1. Open the Jamf Pro EMM console.\n2. Open \"Settings\".\n3. Select \"User-Initiated Enrollment\".\n4. Under the General tab, select \"Use a third-party signing certificate\".\n5. Drag and drop the DoW p12 certificate.\n6. Click \"Save\".",
+            "+@fixref": "F-45025r1268350_fix"
           },
           "fix": {
-            "+@id": "F-45025r685123_fix"
+            "+@id": "F-45025r1268350_fix"
           },
           "check": {
-            "+@system": "C-45066r685122_chk",
+            "+@system": "C-45066r1268349_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Validate the Jamf Pro EMM server has been configured to not accept a certificate if the certificate cannot be validated.\n\n1. Open the Jamf Pro EMM console.\n2. Open \"Settings\".\n3. Select \"User-Initiated Enrollment\".\n4. Under the General tab, verify \"Use a third-party signing certificate\" is selected.\n5. Verify the name and certificate extension of the DoD p12 certificate is listed.\n\nIf the Jamf Pro EMM server has been not been configured to not accept a certificate if the certificate cannot be validated, this is a finding."
+            "check-content": "Validate the Jamf Pro EMM server has been configured to not accept a certificate if the certificate cannot be validated.\n\n1. Open the Jamf Pro EMM console.\n2. Open \"Settings\".\n3. Select \"User-Initiated Enrollment\".\n4. Under the General tab, verify \"Use a third-party signing certificate\" is selected.\n5. Verify the name and certificate extension of the DoW p12 certificate is listed.\n\nIf the Jamf Pro EMM server has been not been configured to not accept a certificate if the certificate cannot be validated, this is a finding."
           }
         }
       },
@@ -1272,12 +1272,12 @@
         "title": "PP-MDM-411051",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241792r971322_rule",
+          "+@id": "SV-241792r1268353_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-000480",
           "title": "The Jamf Pro EMM server must be configured with an enterprise certificate for signing policies (if function is not automatically implemented during Jamf Pro EMM server install).",
-          "description": "<VulnDiscussion>It is critical that only authorized certificates are used for key activities such as code signing for system software updates, code signing for integrity verification, and policy signing. Otherwise, there is no assurance that a malicious actor has not inserted itself in the process of packaging the code or policy. For example, messages signed with an invalid certificate may contain links to malware, which could lead to the installation or distribution of that malware on DoD information systems, leading to compromise of DoD sensitive information and other attacks. Therefore, the Jamf Pro EMM server must have the capability to configure the enterprise certificate.\n\nSFR ID: FMT_SMF.1.1(2) i, FMT_POL_EXT.1.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>It is critical that only authorized certificates are used for key activities such as code signing for system software updates, code signing for integrity verification, and policy signing. Otherwise, there is no assurance that a malicious actor has not inserted itself in the process of packaging the code or policy. For example, messages signed with an invalid certificate may contain links to malware, which could lead to the installation or distribution of that malware on DoW information systems, leading to compromise of DoW sensitive information and other attacks. Therefore, the Jamf Pro EMM server must have the capability to configure the enterprise certificate.\n\nSFR ID: FMT_SMF.1.1(2) i, FMT_POL_EXT.1.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -1300,11 +1300,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the following settings within the Jamf Pro EMM server for ensuring an authorized DoD certificate is used for signing enrollment and configuration profiles:\n\n1. Open Jamf Pro server.\n2. Open \"Settings\".\n3. Open \"PKI Certificates\".\n4. Select \"Management Certificate Template\" tab.\n5. Select \"External CA\" tab.\n6. Select \"Edit\".\n7. Select to use SCEP-enabled external CA for computer and mobile device enrollment.\n8. Enter all the applicable settings to connect this server to SCEP/Entrust enabled CA.\n9. Select \"Save\".\n10. At the bottom of the External CA screen, select \"Change Signing and CA Certificates\".\n11. Follow onscreen instructions to upload the signing and CA certificates for Jamf Pro to use.\n\nJamf Pro is now set to use an External CA for signing all communication to mobile devices.",
-            "+@fixref": "F-45027r685129_fix"
+            "+content": "Configure the following settings within the Jamf Pro EMM server for ensuring an authorized DoW certificate is used for signing enrollment and configuration profiles:\n\n1. Open Jamf Pro server.\n2. Open \"Settings\".\n3. Open \"PKI Certificates\".\n4. Select \"Management Certificate Template\" tab.\n5. Select \"External CA\" tab.\n6. Select \"Edit\".\n7. Select to use SCEP-enabled external CA for computer and mobile device enrollment.\n8. Enter all the applicable settings to connect this server to SCEP/Entrust enabled CA.\n9. Select \"Save\".\n10. At the bottom of the External CA screen, select \"Change Signing and CA Certificates\".\n11. Follow onscreen instructions to upload the signing and CA certificates for Jamf Pro to use.\n\nJamf Pro is now set to use an External CA for signing all communication to mobile devices.",
+            "+@fixref": "F-45027r1268352_fix"
           },
           "fix": {
-            "+@id": "F-45027r685129_fix"
+            "+@id": "F-45027r1268352_fix"
           },
           "check": {
             "+@system": "C-45068r685128_chk",
@@ -1370,12 +1370,12 @@
         "title": "PP-MDM-411056",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241794r960843_rule",
+          "+@id": "SV-241794r1268356_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "JAMF-10-000550",
-          "title": "The Jamf Pro EMM server must be configured to display the required DoD warning banner upon administrator logon.\n\nNote: This requirement is not applicable if the TOE platform is selected in FTA_TAB.1.1 in the Security Target (ST).",
-          "description": "<VulnDiscussion>Note: The advisory notice and consent warning message is not required if the general purpose OS or network device displays an advisory notice and consent warning message when the administrator logs on to the general purpose OS or network device prior to accessing the Jamf Pro EMM server or Jamf Pro EMM server platform.\n\nBefore granting access to the system, the Jamf Pro EMM server/server platform is required to display the DoD-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met.\n\nThe approved DoD text must be used as specified in the KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner. \n \n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nSFR ID: FMT_SMF.1.1(2) d</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Jamf Pro EMM server must be configured to display the required DoW warning banner upon administrator logon.\n\nNote: This requirement is not applicable if the TOE platform is selected in FTA_TAB.1.1 in the Security Target (ST).",
+          "description": "<VulnDiscussion>Note: The advisory notice and consent warning message is not required if the general purpose OS or network device displays an advisory notice and consent warning message when the administrator logs on to the general purpose OS or network device prior to accessing the Jamf Pro EMM server or Jamf Pro EMM server platform.\n\nBefore granting access to the system, the Jamf Pro EMM server/server platform is required to display the DoW-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met.\n\nThe approved DoW text must be used as specified in the KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner. \n \n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nSFR ID: FMT_SMF.1.1(2) d</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -1398,19 +1398,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Jamf Pro EMM server for customized login page:\n\nGo to  /path/to/JSS/Tomcat/webapps/ROOT/WEB-INF/frontend>>Open the login.jsp with a text editor application.\n\nScroll to the bottom of the page by the line \"<input type=\"submit\" class=\"button\" value=\"log in\" />\"\nUnder the </div> create a new line and paste the following:\n\nNOTE: Anything under \"style\" and \"body\" can be customized to fit your environments needs.<head>\n        <style>\n                p {margin-top:1em}\n                p {margin-bottom:0em}\n                p {color:red}\n                p {text-align:center}\n                p {font-family:courier}\n                p {font-size:100%}\n        </style>\n</head>\n<body>\n        <p>\"\"Place DoD warning banner first line here\"\"</p>\n        <p>\"\"place second (or next) line here\"\"</p>\n</body>\n\nRestart Tomcat for changes to take effect.",
-            "+@fixref": "F-45029r685135_fix"
+            "+content": "Configure the Jamf Pro EMM server for customized login page:\n\nGo to /path/to/JSS/Tomcat/webapps/ROOT/WEB-INF/frontend>>Open the login.jsp with a text editor application.\n\nScroll to the bottom of the page by the line \"<input type=\"submit\" class=\"button\" value=\"log in\" />\"\nUnder the </div> create a new line and paste the following:\n\nNOTE: Anything under \"style\" and \"body\" can be customized to fit your environments needs.<head>\n        <style>\n                p {margin-top:1em}\n                p {margin-bottom:0em}\n                p {color:red}\n                p {text-align:center}\n                p {font-family:courier}\n                p {font-size:100%}\n        </style>\n</head>\n<body>\n        <p>\"\"Place DoW warning banner first line here\"\"</p>\n        <p>\"\"place second (or next) line here\"\"</p>\n</body>\n\nRestart Tomcat for changes to take effect.",
+            "+@fixref": "F-45029r1268355_fix"
           },
           "fix": {
-            "+@id": "F-45029r685135_fix"
+            "+@id": "F-45029r1268355_fix"
           },
           "check": {
-            "+@system": "C-45070r685134_chk",
+            "+@system": "C-45070r1268354_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Jamf Pro EMM server for customized login page:\n\nGo to /path/to/JSS/Tomcat/webapps/ROOT/WEB-INF/frontend folder.\n\nFind the login.jsp.\n\nLocate new <body> content related to customized text for DoD classification.\n\nVerify the DoD warning banner text is correct.\n\nIf the Jamf Pro EMM server is not configured to display DoD warning banner when the system administrator logs on to the server, this is a finding."
+            "check-content": "Verify the Jamf Pro EMM server for customized login page:\n\nGo to /path/to/JSS/Tomcat/webapps/ROOT/WEB-INF/frontend folder.\n\nFind the login.jsp.\n\nLocate new <body> content related to customized text for DoW classification.\n\nVerify the DoW warning banner text is correct.\n\nIf the Jamf Pro EMM server is not configured to display DoW warning banner when the system administrator logs on to the server, this is a finding."
           }
         }
       },
@@ -1476,7 +1476,7 @@
         "title": "PP-MDM-414002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241796r960768_rule",
+          "+@id": "SV-241796r1268359_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-000670",
@@ -1504,19 +1504,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement one of the following options:\n\nOption #1. Connect Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoD Identity Access Management (IdAM) environment that uses CAC authentication. Note: Jamf requires AGS to support SAML.\n\n- Set up AGS / IdAM environment.\n- Connect the Jamf pro EMM to the AGS:\n1. Open \"Settings\".\n2. Select \"SSO\" (Single Sign-on).\n3. Select \"Edit\".\n4. Enable Single Sign-on Authentication.\n5. Complete the appropriate settings to connect Jamf Pro EMM to the AGS using SAML-based protocol.\n6. Click \"Save\".\n\nNote: If Option #1 is used, requirements JAMF-10-100700 to JAMF-10-10820 are Not Applicable and requirement JAMF-10-200040 is Applicable - Configurable.\n\nOption #2. Implement strong password policy for admin local accounts. Configure the server password policy (JAMF-10-100700 to JAMF-10-10820).\n\nNote: If Option #2 is used, requirement JAMF-10-200040 is Not Applicable.",
-            "+@fixref": "F-45031r685141_fix"
+            "+content": "Implement one of the following options:\n\nOption #1. Connect Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoW Identity Access Management (IdAM) environment that uses CAC authentication. Note: Jamf requires AGS to support SAML.\n\n- Set up AGS / IdAM environment.\n- Connect the Jamf pro EMM to the AGS:\n1. Open \"Settings\".\n2. Select \"SSO\" (Single Sign-on).\n3. Select \"Edit\".\n4. Enable Single Sign-on Authentication.\n5. Complete the appropriate settings to connect Jamf Pro EMM to the AGS using SAML-based protocol.\n6. Click \"Save\".\n\nNote: If Option #1 is used, requirements JAMF-10-100700 to JAMF-10-10820 are Not Applicable and requirement JAMF-10-200040 is Applicable - Configurable.\n\nOption #2. Implement strong password policy for admin local accounts. Configure the server password policy (JAMF-10-100700 to JAMF-10-10820).\n\nNote: If Option #2 is used, requirement JAMF-10-200040 is Not Applicable.",
+            "+@fixref": "F-45031r1268358_fix"
           },
           "fix": {
-            "+@id": "F-45031r685141_fix"
+            "+@id": "F-45031r1268358_fix"
           },
           "check": {
-            "+@system": "C-45072r685140_chk",
+            "+@system": "C-45072r1268357_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Interview the site ISSM. \n\nDetermine if the site has connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoD Identity Access Management (IdAM) environment that uses CAC authentication. \n\n- If YES, verify the AGS implementation has been reviewed using the Application Layer Gateway SRG. Verify the Jamf Pro EMM server is configured to connect to the AGS:\n1. Go to the server console.\n2. Open \"Settings\".\n3. Select \"SSO\" (Single Sign-on).\n4. Verify Single Sign-on Authentication is enabled and connection to the AGS using SAML-based protocol is set up.\n\n- If NO, verify strong password controls for the administrator local accounts are in place. (Verified by JAMF-10-100700 to JAMF-10-100820.)\n\nIf Jamf Pro EMM is not connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to your DoD Identity Access Management (IdAM) environment that utilizes CAC authentication or has not been configured to use strong password controls for the administrator local accounts, this is a finding."
+            "check-content": "Interview the site ISSM. \n\nDetermine if the site has connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoW Identity Access Management (IdAM) environment that uses CAC authentication. \n\n- If YES, verify the AGS implementation has been reviewed using the Application Layer Gateway SRG. Verify the Jamf Pro EMM server is configured to connect to the AGS:\n1. Go to the server console.\n2. Open \"Settings\".\n3. Select \"SSO\" (Single Sign-on).\n4. Verify Single Sign-on Authentication is enabled and connection to the AGS using SAML-based protocol is set up.\n\n- If NO, verify strong password controls for the administrator local accounts are in place. (Verified by JAMF-10-100700 to JAMF-10-100820.)\n\nIf Jamf Pro EMM is not connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to your DoW Identity Access Management (IdAM) environment that utilizes CAC authentication or has not been configured to use strong password controls for the administrator local accounts, this is a finding."
           }
         }
       },
@@ -1525,11 +1525,11 @@
         "title": "PP-MDM-991000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241797r971326_rule",
+          "+@id": "SV-241797r1268362_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-000685",
-          "title": "Authentication of Jamf Pro EMM server accounts must be configured so they are implemented either via an Authentication Gateway Service (AGS) which connects to the site DoD Identity Access Management (IdAM) environment that utilizes CAC authentication or via strong password controls for the administrator local accounts.",
+          "title": "Authentication of Jamf Pro EMM server accounts must be configured so they are implemented either via an Authentication Gateway Service (AGS) which connects to the site DoW Identity Access Management (IdAM) environment that utilizes CAC authentication or via strong password controls for the administrator local accounts.",
           "description": "<VulnDiscussion>A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire Jamf Pro EMM server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the Jamf Pro EMM server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos).\n\nSFR ID: FIA</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
@@ -1553,19 +1553,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement one of the following options:\n\nOption #1. Connect Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoD Identity Access Management (IdAM) environment that uses CAC authentication. Note: Jamf requires AGS to support SAML.\n\n- Set up AGS/IdAM environment.\n- Connect the Jamf pro EMM to the AGS:\n1. Open \"Settings\".\n2. Select \"SSO\" (Single Sign-on).\n3. Select \"Edit\".\n4. Enable Single Sign-on Authentication.\n5. Complete the appropriate settings to connect Jamf Pro EMM to the AGS using SAML-based protocol.\n6. Click \"Save\".\n\nNote: If Option #1 is used, requirements JAMF-10-100700 to JAMF-10-10820 are Not Applicable and requirement JAMF-10-200040 is Applicable - Configurable.\n\nOption #2. Implement strong password policy for admin local accounts. Configure the server password policy (JAMF-10-100700 to JAMF-10-10820).\n\nNote: If Option #2 is used, requirement JAMF-10-200040 is Not Applicable.",
-            "+@fixref": "F-45032r685144_fix"
+            "+content": "Implement one of the following options:\n\nOption #1. Connect Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoW Identity Access Management (IdAM) environment that uses CAC authentication. Note: Jamf requires AGS to support SAML.\n\n- Set up AGS/IdAM environment.\n- Connect the Jamf pro EMM to the AGS:\n1. Open \"Settings\".\n2. Select \"SSO\" (Single Sign-on).\n3. Select \"Edit\".\n4. Enable Single Sign-on Authentication.\n5. Complete the appropriate settings to connect Jamf Pro EMM to the AGS using SAML-based protocol.\n6. Click \"Save\".\n\nNote: If Option #1 is used, requirements JAMF-10-100700 to JAMF-10-10820 are Not Applicable and requirement JAMF-10-200040 is Applicable - Configurable.\n\nOption #2. Implement strong password policy for admin local accounts. Configure the server password policy (JAMF-10-100700 to JAMF-10-10820).\n\nNote: If Option #2 is used, requirement JAMF-10-200040 is Not Applicable.",
+            "+@fixref": "F-45032r1268361_fix"
           },
           "fix": {
-            "+@id": "F-45032r685144_fix"
+            "+@id": "F-45032r1268361_fix"
           },
           "check": {
-            "+@system": "C-45073r685143_chk",
+            "+@system": "C-45073r1268360_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Interview the site ISSM. \n\nDetermine if the site has connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoD Identity Access Management (IdAM) environment that uses CAC authentication. \n\n- If YES, verify the AGS implementation has been reviewed using the Application Layer Gateway SRG. Verify the Jamf Pro EMM server is configured to connect to the AGS:\n1. Go to the server console.\n2. Open \"Settings\".\n3. Select \"SSO\" (Single Sign-on).\n4. Verify Single Sign-on Authentication is enabled and connection to the AGS using SAML-based protocol is set up.\n\n- If NO, verify strong password controls for the administrator local accounts are in place. (Verified by JAMF-10-100700 to JAMF-10-100820.)\n\nIf Jamf Pro EMM is not connected to an Authentication Gateway Service (AGS) which connects to the DoD Identity Access Management (IdAM) environment that uses CAC authentication or has not been configured to use strong password controls for the administrator local accounts, this is a finding."
+            "check-content": "Interview the site ISSM. \n\nDetermine if the site has connected Jamf Pro EMM to an Authentication Gateway Service (AGS) which connects to the DoW Identity Access Management (IdAM) environment that uses CAC authentication. \n\n- If YES, verify the AGS implementation has been reviewed using the Application Layer Gateway SRG. Verify the Jamf Pro EMM server is configured to connect to the AGS:\n1. Go to the server console.\n2. Open \"Settings\".\n3. Select \"SSO\" (Single Sign-on).\n4. Verify Single Sign-on Authentication is enabled and connection to the AGS using SAML-based protocol is set up.\n\n- If NO, verify strong password controls for the administrator local accounts are in place. (Verified by JAMF-10-100700 to JAMF-10-100820.)\n\nIf Jamf Pro EMM is not connected to an Authentication Gateway Service (AGS) which connects to the DoW Identity Access Management (IdAM) environment that uses CAC authentication or has not been configured to use strong password controls for the administrator local accounts, this is a finding."
           }
         }
       },
@@ -1672,12 +1672,12 @@
         "title": "PP-MDM-991000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241800r1015735_rule",
+          "+@id": "SV-241800r1268363_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-100080",
           "title": "A unique database name and a unique MySQL user with a secure password must be created for use in Jamf Pro EMM.",
-          "description": "<VulnDiscussion>If the default MySQL database name and password are not changed an adversary could gain unauthorized access to the application which could lead to the compromise of sensitive DOD data.\n\nSFR ID: FMT_SMF.1(2)b. / IA-5(1)(c)\n\nSatisfies: SRG-APP-000171</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If the default MySQL database name and password are not changed an adversary could gain unauthorized access to the application which could lead to the compromise of sensitive DoW data.\n\nSFR ID: FMT_SMF.1(2)b. / IA-5(1)(c)\n\nSatisfies: SRG-APP-000171</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -1725,12 +1725,12 @@
         "title": "PP-MDM-991000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241801r971326_rule",
+          "+@id": "SV-241801r1268364_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-100100",
           "title": "Separate MySQL user accounts with limited privileges must be created within Jamf Pro EMM.",
-          "description": "<VulnDiscussion>If separate MySQL accounts with limited privileges are not created an adversary could gain unauthorized access to the application or gain access unauthorized features which could lead to the compromise of sensitive DoD data.\n\nSFR ID: FMT_SMF.1(2)b. / CM-6 b\n\nSatisfies: SRG-APP-000516</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If separate MySQL accounts with limited privileges are not created an adversary could gain unauthorized access to the application or gain access unauthorized features which could lead to the compromise of sensitive DoW data.\n\nSFR ID: FMT_SMF.1(2)b. / CM-6 b\n\nSatisfies: SRG-APP-000516</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -2190,11 +2190,11 @@
         "title": "PP-MDM-991000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241810r971326_rule",
+          "+@id": "SV-241810r1268348_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-100770",
-          "title": "The Jamf Pro EMM local accounts must be configured with password maximum lifetime of 3 months.",
+          "title": "The Jamf Pro EMM local accounts must be configured with password maximum lifetime of 6 months.",
           "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised. \n\nThis requirement does not include emergency administration accounts which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.\n\nSFR ID: FMT_SMF.1(2)b. / IA-5 (1) (d)\n\nSatisfies: SRG-APP-000174</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
@@ -2218,19 +2218,19 @@
             }
           ],
           "fixtext": {
-            "+content": "To configure the \"password maximum lifetime\" of \"3\" months for the local account's password, do the following:\n\n1. Open the Jamf Pro EMM console.\n2. Click \"Settings\".\n3. Click \"System Settings\".\n4. Click \"Jamf Pro System User Accounts & Groups\".\n5. Click \"Password Policy\".\n6. Click \"Edit\".\n7. Set the \"password maximum lifetime\" of \"3\" months.",
-            "+@fixref": "F-45045r685183_fix"
+            "+content": "To configure the \"password maximum lifetime\" of \"6\" months for the local account's password, do the following:\n\n1. Open the Jamf Pro EMM console.\n2. Click \"Settings\".\n3. Click \"System Settings\".\n4. Click \"Jamf Pro System User Accounts & Groups\".\n5. Click \"Password Policy\".\n6. Click \"Edit\".\n7. Set the \"password maximum lifetime\" of \"6\" months.",
+            "+@fixref": "F-45045r1268347_fix"
           },
           "fix": {
-            "+@id": "F-45045r685183_fix"
+            "+@id": "F-45045r1268347_fix"
           },
           "check": {
-            "+@system": "C-45086r685182_chk",
+            "+@system": "C-45086r1268346_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify the \"password maximum lifetime\" of \"3\" months for the local account's password is set, do the following:\n\n1. Open the Jamf Pro EMM console.\n2. Click \"Settings\".\n3. Click \"System Settings\".\n4. Click \"Jamf Pro System User Accounts & Groups\".\n5. Click \"Password Policy\".\n6. Verify \"password maximum lifetime\" of \"3\" months.\n\nIf the \"password maximum lifetime\" for local account's password is not set to \"3\" months, this is a finding."
+            "check-content": "To verify the \"password maximum lifetime\" of \"6\" months for the local account's password is set, do the following:\n\n1. Open the Jamf Pro EMM console.\n2. Click \"Settings\".\n3. Click \"System Settings\".\n4. Click \"Jamf Pro System User Accounts & Groups\".\n5. Click \"Password Policy\".\n6. Verify \"password maximum lifetime\" of \"6\" months.\n\nIf the \"password maximum lifetime\" for local account's password is not set to \"6\" months, this is a finding."
           }
         }
       },
@@ -2386,12 +2386,12 @@
         "title": "PP-MDM-431004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241814r960966_rule",
+          "+@id": "SV-241814r1268367_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-200010",
-          "title": "The Jamf Pro EMM server platform must be protected by a DoD-approved firewall.",
-          "description": "<VulnDiscussion>Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The MDM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality. All others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the MDM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the MDM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(2) b / CM-7b\n\nSatisfies: SRG-APP-000142</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Jamf Pro EMM server platform must be protected by a DoW-approved firewall.",
+          "description": "<VulnDiscussion>Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The MDM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality. All others must be expressly disabled or removed. A DoW-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the MDM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the MDM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(2) b / CM-7b\n\nSatisfies: SRG-APP-000142</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -2414,19 +2414,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Install a DoD-approved firewall on the Jamf Pro EMM server.",
-            "+@fixref": "F-45049r685195_fix"
+            "+content": "Install a DoW-approved firewall on the Jamf Pro EMM server.",
+            "+@fixref": "F-45049r1268366_fix"
           },
           "fix": {
-            "+@id": "F-45049r685195_fix"
+            "+@id": "F-45049r1268366_fix"
           },
           "check": {
-            "+@system": "C-45090r685194_chk",
+            "+@system": "C-45090r1268365_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Jamf Pro EMM server platform configuration to determine whether a DoD-approved firewall is installed or if the platform operating system provides a firewall service that can restrict both inbound and outbound traffic by TCP/UDP port and IP address.\n\nIf there is not a host-based firewall present on the Jamf Pro EMM server platform, this is a finding."
+            "check-content": "Review the Jamf Pro EMM server platform configuration to determine whether a DoW-approved firewall is installed or if the platform operating system provides a firewall service that can restrict both inbound and outbound traffic by TCP/UDP port and IP address.\n\nIf there is not a host-based firewall present on the Jamf Pro EMM server platform, this is a finding."
           }
         }
       },
@@ -2435,7 +2435,7 @@
         "title": "PP-MDM-431005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241815r960966_rule",
+          "+@id": "SV-241815r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-200020",
@@ -2484,12 +2484,12 @@
         "title": "PP-MDM-431006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241816r960966_rule",
+          "+@id": "SV-241816r1268370_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-200030",
-          "title": "The firewall protecting the Jamf Pro EMM server platform must be configured so that only DoD-approved ports, protocols, and services are enabled. (See the DoD Ports, Protocols, Services Management [PPSM] Category Assurance Levels [CAL] list for DoD-approved ports, protocols, and services).",
-          "description": "<VulnDiscussion>All ports, protocols, and services used on DoD networks must be approved and registered via the DoD PPSM process. This is to ensure that a risk assessment has been completed before a new port, protocol, or service is configured on a DoD network and has been approved by proper DoD authorities. Otherwise, the new port, protocol, or service could cause a vulnerability to the DoD network, which could be exploited by an adversary.\n\nSFR ID: FMT_SMF.1.1(2) b / CM-7b\n\nSatisfies: SRG-APP-000142</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The firewall protecting the Jamf Pro EMM server platform must be configured so that only DoW-approved ports, protocols, and services are enabled. (See the DoW Ports, Protocols, Services Management [PPSM] Category Assurance Levels [CAL] list for DoW-approved ports, protocols, and services).",
+          "description": "<VulnDiscussion>All ports, protocols, and services used on DoW networks must be approved and registered via the DoW PPSM process. This is to ensure that a risk assessment has been completed before a new port, protocol, or service is configured on a DoW network and has been approved by proper DoW authorities. Otherwise, the new port, protocol, or service could cause a vulnerability to the DoW network, which could be exploited by an adversary.\n\nSFR ID: FMT_SMF.1.1(2) b / CM-7b\n\nSatisfies: SRG-APP-000142</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Jamf Pro v10-x EMM",
             "dc:publisher": "DISA",
@@ -2512,19 +2512,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Turn off any ports, protocols, and services on the Jamf Pro EMM server host-based firewall that are not on the DoD PPSM CAL list.",
-            "+@fixref": "F-45051r685201_fix"
+            "+content": "Turn off any ports, protocols, and services on the Jamf Pro EMM server host-based firewall that are not on the DoW PPSM CAL list.",
+            "+@fixref": "F-45051r1268369_fix"
           },
           "fix": {
-            "+@id": "F-45051r685201_fix"
+            "+@id": "F-45051r1268369_fix"
           },
           "check": {
-            "+@system": "C-45092r685200_chk",
+            "+@system": "C-45092r1268368_chk",
             "check-content-ref": {
               "+@href": "Jamf_Pro_v10-x_EMM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ask the Jamf Pro EMM server administrator for a list of ports, protocols, and services that have been configured on the host-based firewall of the Jamf Pro EMM server or generate the list by inspecting the firewall. Verify all allowed ports, protocols, and services are included on the DoD PPSM CAL list.\n\nIf any allowed ports, protocols, and services on the Jamf Pro EMM server host-based firewall are not included on the DoD PPSM CAL list, this is a finding."
+            "check-content": "Ask the Jamf Pro EMM server administrator for a list of ports, protocols, and services that have been configured on the host-based firewall of the Jamf Pro EMM server or generate the list by inspecting the firewall. Verify all allowed ports, protocols, and services are included on the DoW PPSM CAL list.\n\nIf any allowed ports, protocols, and services on the Jamf Pro EMM server host-based firewall are not included on the DoW PPSM CAL list, this is a finding."
           }
         }
       },
@@ -2533,7 +2533,7 @@
         "title": "PP-MDM-431007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-241817r960969_rule",
+          "+@id": "SV-241817r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "JAMF-10-200040",

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2023-06-15"
+      "+@date": "2026-08-31"
     },
     "title": "VMware vSphere 7.0 vCenter Appliance PostgreSQL Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 26 Jul 2023",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -838,7 +838,7 @@
         "title": "SRG-APP-000001-DB-000031",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256591r887559_rule",
+          "+@id": "SV-256591r960735_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000001",
@@ -865,7 +865,7 @@
           "check": {
             "+@system": "C-60266r887557_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW max_connections;\"\n\nIf the returned number is not greater than or equal to 100 and less than or equal to 1000, this is a finding."
@@ -877,7 +877,7 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256592r887562_rule",
+          "+@id": "SV-256592r1268163_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000002",
@@ -938,7 +938,7 @@
           "check": {
             "+@system": "C-60267r887560_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW log_line_prefix;\"\n\nExpected result:\n\n%m %c %x %d %u %r %p %l\n\nIf the output does not match the expected result, this is a finding."
@@ -950,7 +950,7 @@
         "title": "SRG-APP-000090-DB-000065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256593r887565_rule",
+          "+@id": "SV-256593r960882_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000003",
@@ -995,7 +995,7 @@
           "check": {
             "+@system": "C-60268r887563_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# find /storage/db/vpostgres/*conf* -xdev -type f -a '(' -not -perm 600 -o -not -user vpostgres -o -not -group vpgmongrp ')' -exec ls -ld {} \\;\n\nIf any files are returned, this is a finding."
@@ -1007,7 +1007,7 @@
         "title": "SRG-APP-000109-DB-000321",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256594r887568_rule",
+          "+@id": "SV-256594r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000004",
@@ -1034,7 +1034,7 @@
           "check": {
             "+@system": "C-60269r887566_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW log_truncate_on_rotation;\"\n\nExpected result:\n\non\n\nIf the output does not match the expected result, this is a finding."
@@ -1046,7 +1046,7 @@
         "title": "SRG-APP-000118-DB-000059",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256595r887571_rule",
+          "+@id": "SV-256595r960930_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000005",
@@ -1083,7 +1083,7 @@
           "check": {
             "+@system": "C-60270r887569_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# find /var/log/vmware/vpostgres/* -xdev -type f -a '(' -not -perm 600 -o -not -user vpostgres -o -not -group vpgmongrp ')' -exec ls -ld {} \\;\n\nIf any files are returned, this is a finding."
@@ -1095,7 +1095,7 @@
         "title": "SRG-APP-000133-DB-000200",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256596r918971_rule",
+          "+@id": "SV-256596r960960_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000006",
@@ -1122,7 +1122,7 @@
           "check": {
             "+@system": "C-60271r918969_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -d VCDB -U postgres -t -A -c \"\\dt;\" | grep -v 'table|vc'\n\nIf any tables are returned, this is a finding.\n\nNote: Upgrades may introduce new tables that are owned by the \"postgres\" user and can be updated to be owned by the \"vc\" user."
@@ -1134,7 +1134,7 @@
         "title": "SRG-APP-000133-DB-000362",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256597r887577_rule",
+          "+@id": "SV-256597r960960_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000007",
@@ -1161,7 +1161,7 @@
           "check": {
             "+@system": "C-60272r887575_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -c \"\\du;\"|grep \"Create\"\n\nExpected result:\n\n postgres   | Superuser, Create role, Create DB, Replication, Bypass RLS | {}\n vc         | Create DB                                                  | {}\n vlcmuser   | Create DB                                                  | {}\n\nIf accounts other than \"postgres\",\"vc\", and \"vlcmuser\" have any \"Create\" privileges, this is a finding."
@@ -1173,7 +1173,7 @@
         "title": "SRG-APP-000142-DB-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256598r887580_rule",
+          "+@id": "SV-256598r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000008",
@@ -1206,7 +1206,7 @@
           "check": {
             "+@system": "C-60273r887578_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW port;\"\n\nExpected result:\n\n5432\n\nIf the output does not match the expected result, this is a finding."
@@ -1218,7 +1218,7 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256599r887583_rule",
+          "+@id": "SV-256599r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "VCPG-70-000009",
@@ -1245,7 +1245,7 @@
           "check": {
             "+@system": "C-60274r887581_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep -v \"^#\" /storage/db/vpostgres/pg_hba.conf|grep -z --color=always \"trust\"\n\nIf any lines are returned, this is a finding."
@@ -1257,12 +1257,12 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256600r887586_rule",
+          "+@id": "SV-256600r1268850_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000010",
           "title": "The vPostgres database must use \"md5\" for authentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption or unsalted hashes, would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the database management system (DBMS).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption or unsalted hashes, would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the database management system (DBMS).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 vCA PostgreSQL",
             "dc:publisher": "DISA",
@@ -1284,7 +1284,7 @@
           "check": {
             "+@system": "C-60275r887584_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW password_encryption;\"\n\nExpected result:\n\nmd5\n\nIf the output does not match the expected result, this is a finding."
@@ -1296,12 +1296,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256601r887589_rule",
+          "+@id": "SV-256601r1268851_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "VCPG-70-000011",
           "title": "VMware Postgres must be configured to use Transport Layer Security (TLS).",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved public key infrastructure (PKI) certificates. Authentication based on user ID and password may be used only when it is not possible to employ a PKI certificate.\n\nIn such cases, passwords, must be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nVMware Postgres is configured out of the box to require TLS connections with remote clients. As an embedded database and available only on \"localhost\" for standalone vCenter Server Appliances (VCSAs), TLS connections are used only in high-availability deployments for connections between a primary and a standby. This configuration must be verified and maintained.\n\nSatisfies: SRG-APP-000172-DB-000075, SRG-APP-000442-DB-000379</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved public key infrastructure (PKI) certificates. Authentication based on user ID and password may be used only when it is not possible to employ a PKI certificate.\n\nIn such cases, passwords, must be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nVMware Postgres is configured out of the box to require TLS connections with remote clients. As an embedded database and available only on \"localhost\" for standalone vCenter Server Appliances (VCSAs), TLS connections are used only in high-availability deployments for connections between a primary and a standby. This configuration must be verified and maintained.\n\nSatisfies: SRG-APP-000172-DB-000075, SRG-APP-000442-DB-000379</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 vCA PostgreSQL",
             "dc:publisher": "DISA",
@@ -1329,7 +1329,7 @@
           "check": {
             "+@system": "C-60276r887587_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW ssl;\"\n\nExpected result:\n\non\n\nIf the output does not match the expected result, this is a finding."
@@ -1341,12 +1341,12 @@
         "title": "SRG-APP-000176-DB-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256602r887592_rule",
+          "+@id": "SV-256602r1268852_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "VCPG-70-000012",
           "title": "VMware Postgres must enforce authorized access to all public key infrastructure (PKI) private keys.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf a private key is stolen, an attacker can use it to impersonate the certificate holder. In cases where the database management system (DBMS)-stored private keys are used to authenticate the DBMS to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf a private key is stolen, an attacker can use it to impersonate the certificate holder. In cases where the database management system (DBMS)-stored private keys are used to authenticate the DBMS to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 vCA PostgreSQL",
             "dc:publisher": "DISA",
@@ -1368,7 +1368,7 @@
           "check": {
             "+@system": "C-60277r887590_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# stat -c \"%a:%U:%G\" /storage/db/vpostgres_ssl/server.key\n\nExpected result:\n\n600:vpostgres:vpgmongrp\n\nIf the output does not match the expected result, this is a finding."
@@ -1380,7 +1380,7 @@
         "title": "SRG-APP-000179-DB-000114",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256603r887595_rule",
+          "+@id": "SV-256603r961050_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "VCPG-70-000013",
@@ -1413,7 +1413,7 @@
           "check": {
             "+@system": "C-60278r887593_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW ssl_ciphers;\"\n\nExpected result:\n\n!aNULL:kECDH+AES:ECDH+AES:RSA+AES:@STRENGTH\n\nIf the output does not match the expected result, this is a finding."
@@ -1425,7 +1425,7 @@
         "title": "SRG-APP-000226-DB-000147",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256604r887598_rule",
+          "+@id": "SV-256604r961125_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000014",
@@ -1452,7 +1452,7 @@
           "check": {
             "+@system": "C-60279r887596_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SELECT name,setting FROM pg_settings WHERE name IN ('fsync','full_page_writes','synchronous_commit');\"\n\nExpected result:\n\nfsync              | on\nfull_page_writes   | on\nsynchronous_commit | on\n\nIf the output does not match the expected result, this is a finding."
@@ -1464,7 +1464,7 @@
         "title": "SRG-APP-000233-DB-000124",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256605r887601_rule",
+          "+@id": "SV-256605r961131_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000015",
@@ -1491,7 +1491,7 @@
           "check": {
             "+@system": "C-60280r887599_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -c \"\\dp .*.;\" |grep -E \"information_schema|pg_catalog\"|awk -F '|' '{print $4}'|awk -F '/' '{print $1}'|grep -v \"=r\" | grep -v \"^[[:space:]]*$\" | grep -v \"postgres\"\n\nIf any lines are returned, this is a finding."
@@ -1503,7 +1503,7 @@
         "title": "SRG-APP-000266-DB-000162",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256606r887604_rule",
+          "+@id": "SV-256606r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000016",
@@ -1536,7 +1536,7 @@
           "check": {
             "+@system": "C-60281r887602_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW client_min_messages;\"\n\nExpected result:\n\nnotice\n\nIf the output does not match the expected result, this is a finding."
@@ -1548,7 +1548,7 @@
         "title": "SRG-APP-000356-DB-000314",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256607r887607_rule",
+          "+@id": "SV-256607r981952_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000017",
@@ -1589,7 +1589,7 @@
           "check": {
             "+@system": "C-60282r887605_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW logging_collector;\"\n\nExpected result:\n\non\n\nIf the output does not match the expected result, this is a finding."
@@ -1601,7 +1601,7 @@
         "title": "SRG-APP-000359-DB-000319",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256608r887610_rule",
+          "+@id": "SV-256608r961398_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000018",
@@ -1628,7 +1628,7 @@
           "check": {
             "+@system": "C-60283r887608_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW log_destination;\"\n\nExpected result:\n\nstderr\n\nIf the output does not match the expected result, this is a finding."
@@ -1640,7 +1640,7 @@
         "title": "SRG-APP-000359-DB-000319",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256609r887613_rule",
+          "+@id": "SV-256609r961398_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000019",
@@ -1677,7 +1677,7 @@
           "check": {
             "+@system": "C-60284r887611_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# rpm -V VMware-Postgres-cis-visl-scripts|grep -E \"vmware-services-vmware-vpostgres.conf|vmware-services-vmware-postgres-archiver.conf\" | grep \"^..5......\"\n\nIf the command returns any output, this is a finding."
@@ -1689,7 +1689,7 @@
         "title": "SRG-APP-000374-DB-000322",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256610r887616_rule",
+          "+@id": "SV-256610r961443_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPG-70-000020",
@@ -1716,7 +1716,7 @@
           "check": {
             "+@system": "C-60285r887614_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_PostgreSQL_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_PostgreSQL_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# /opt/vmware/vpostgres/current/bin/psql -U postgres -A -t -c \"SHOW log_timezone;\"\n\nExpected result:\n\nEtc/UTC\n\nIf the output does not match the expected result, this is a finding."

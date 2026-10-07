@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-08"
+      "+@date": "2026-09-02"
     },
     "title": "Microsoft Defender Antivirus Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 9 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 10 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -2530,7 +2530,7 @@
         "title": "SRG-APP-000279",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213426r961197_rule",
+          "+@id": "SV-213426r1260200_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "WNDF-AV-000001",
@@ -2565,12 +2565,12 @@
             "+@id": "F-14649r823023_fix"
           },
           "check": {
-            "+@system": "C-14651r820126_chk",
+            "+@system": "C-14651r1260199_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> \"Configure detection for potentially unwanted applications\" is set to \"Enabled\" and \"Block\".\n\nUse the Windows Registry Editor to navigate to the following key: \n\nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\n\nIf the value \"PUAProtection\" does not exist, this is a finding.\n\nIf the value \"PUAProtection\" is REG_DWORD = 1, this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> \"Configure detection for potentially unwanted applications\" is set to \"Enabled\" and \"Block\".\n\nUse the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\n\nIf the value \"PUAProtection\" does not exist, this is a finding.\nIf the value \"PUAProtection\" is \"REG_DWORD = 1\", this is not a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"PUAProtection\" is \"REG_DWORD = 1\", this is not a finding."
           }
         }
       },
@@ -3314,7 +3314,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213442r1192801_rule",
+          "+@id": "SV-213442r1260202_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000018",
@@ -3349,12 +3349,12 @@
             "+@id": "F-14665r1144027_fix"
           },
           "check": {
-            "+@system": "C-14667r1144026_chk",
+            "+@system": "C-14667r1260201_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Configure monitoring for incoming and outgoing file and program activity\" is set to \"Enabled\" with a policy option value of \"bi-directional (full on-access)\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nCriteria: If the value \"RealtimeScanDirection\" is REG_DWORD = 0, this is not a finding.\n\nIf the value is 1 or 2, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Configure monitoring for incoming and outgoing file and program activity\" is set to \"Enabled\" with a policy option value of \"bi-directional (full on-access)\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key:\nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nIf the value \"RealtimeScanDirection\" is\"REG_DWORD = 0\", this is not a finding.\nIf the value is \"1\" or \"2\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"RealtimeScanDirection\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value is \"1\" or \"2\", this is a finding."
           }
         }
       },
@@ -3363,7 +3363,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213443r1192802_rule",
+          "+@id": "SV-213443r1260204_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000019",
@@ -3398,12 +3398,12 @@
             "+@id": "F-14666r823057_fix"
           },
           "check": {
-            "+@system": "C-14668r820176_chk",
+            "+@system": "C-14668r1260203_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Monitor file and program activity on your computer to be scanned\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nCriteria: If the value \"DisableOnAccessProtection\" is REG_DWORD = 0, this is not a finding.\n\nIf the value does not exist, this is not a finding.\n\nIf the value is 1, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Monitor file and program activity on your computer to be scanned\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key:\n\"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nIf the value \"DisableOnAccessProtection\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value does not exist, this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowOnAccessProtection\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3412,7 +3412,7 @@
         "title": "SRG-APP-000209",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213444r961089_rule",
+          "+@id": "SV-213444r1260206_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000020",
@@ -3447,12 +3447,12 @@
             "+@id": "F-14667r823059_fix"
           },
           "check": {
-            "+@system": "C-14669r820179_chk",
+            "+@system": "C-14669r1260205_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Scan all downloaded files and attachments\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nCriteria: If the value \"DisableIOAVProtection\" is REG_DWORD = 0, this is not a finding.\n\nIf the value does not exist, this is not a finding.\n\nIf the value is 1, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Scan all downloaded files and attachments\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nIf the value \"DisableIOAVProtection\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value does not exist, this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowIOAVProtection\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3461,7 +3461,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213445r1192803_rule",
+          "+@id": "SV-213445r1260208_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000021",
@@ -3496,12 +3496,12 @@
             "+@id": "F-14668r823061_fix"
           },
           "check": {
-            "+@system": "C-14670r820182_chk",
+            "+@system": "C-14670r1260207_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Turn off real-time protection\" is set to \"Disabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nCriteria: If the value \"DisableRealtimeMonitoring\" is REG_DWORD = 0, this is not a finding.\n\nIf the value does not exist, this is not a finding.\n\nIf the value is 1, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Turn off real-time protection\" is set to \"Disabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nIf the value \"DisableRealtimeMonitoring\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value does not exist, this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowRealtimeMonitoring\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"1\", this is a finding."
           }
         }
       },
@@ -3510,7 +3510,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213446r961092_rule",
+          "+@id": "SV-213446r1260210_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000022",
@@ -3545,12 +3545,12 @@
             "+@id": "F-14669r820186_fix"
           },
           "check": {
-            "+@system": "C-14671r820185_chk",
+            "+@system": "C-14671r1260209_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Turn on behavior monitoring\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nCriteria: If the value \"DisableBehaviorMonitoring\" is REG_DWORD = 0, this is not a finding.\n\nIf the value does not exist, this is not a finding.\n\nIf the value is 1, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Real-time Protection >> \"Turn on behavior monitoring\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection\n\nIf the value \"DisableBehaviorMonitoring\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value does not exist, this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowBehaviorMonitoring\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3608,7 +3608,7 @@
         "title": "SRG-APP-000278",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213448r1192805_rule",
+          "+@id": "SV-213448r1271016_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000024",
@@ -3643,12 +3643,12 @@
             "+@id": "F-14671r823066_fix"
           },
           "check": {
-            "+@system": "C-14673r820191_chk",
+            "+@system": "C-14673r1271015_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Scan archive files\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nCriteria: If the value \"DisableArchiveScanning\" is REG_DWORD = 0, this is not a finding.\n\nIf the value does not exist, this is not a finding.\n\nIf the value is 1, this is a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Scan archive files\" is set to \"Enabled\" or \"Not Configured\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nIf the value \"DisableArchiveScanning\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value does not exist, this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowArchiveScanning\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3657,7 +3657,7 @@
         "title": "SRG-APP-000073",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213449r960852_rule",
+          "+@id": "SV-213449r1260214_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000025",
@@ -3692,12 +3692,12 @@
             "+@id": "F-14672r820195_fix"
           },
           "check": {
-            "+@system": "C-14674r820194_chk",
+            "+@system": "C-14674r1260213_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Scan removable drives\" is set to \"Enabled\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nCriteria: If the value \"DisableRemovableDriveScanning\" is REG_DWORD = 0, this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Scan removable drives\" is set to \"Enabled\".\n \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nIf the value \"DisableRemovableDriveScanning\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowFullScanRemovableDriveScanning\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3706,7 +3706,7 @@
         "title": "SRG-APP-000277",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213450r961191_rule",
+          "+@id": "SV-213450r1260216_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000026",
@@ -3741,12 +3741,12 @@
             "+@id": "F-14673r823069_fix"
           },
           "check": {
-            "+@system": "C-14675r820197_chk",
+            "+@system": "C-14675r1260215_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Specify the day of the week to run a scheduled scan\" is set to \"Enabled\" and anything other than \"Never\" is selected in the drop-down box.\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nCriteria: If the value \"ScheduleDay\" is REG_DWORD = 0x8, this is a finding.\n\nValues of 0x0 through 0x7 are acceptable and not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Specify the day of the week to run a scheduled scan\" is set to \"Enabled\" and anything other than \"Never\" is selected in the drop-down box.\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nIf the value \"ScheduleDay\" is \"REG_DWORD = 0x8\", this is a finding.\nValues of \"0x0\" through \"0x7\" are acceptable and not a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"ScheduleScanDay\" is \"REG_DWORD = 0x8\", this is a finding.\nValues of \"0x0\" through \"0x7\" are acceptable and not a finding."
           }
         }
       },
@@ -3755,12 +3755,12 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213451r961092_rule",
+          "+@id": "SV-213451r1260219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000027",
-          "title": "Microsoft Defender AV must be configured to turn on e-mail scanning.",
-          "description": "<VulnDiscussion>This policy setting allows the configuration of e-mail scanning. When e-mail scanning is enabled, the engine will parse the mailbox and mail files according to their specific format in order to analyze the mail bodies and attachments. Several e-mail formats are currently supported, for example: pst (Outlook), dbx mbx mime (Outlook Express), binhex (Mac). If this setting is enabled, e-mail scanning will be enabled. If this setting is disabled or not configured, e-mail scanning will be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Microsoft Defender AV must be configured to turn on email scanning.",
+          "description": "<VulnDiscussion>This policy setting allows the configuration of email scanning. When email scanning is enabled, the engine will parse the mailbox and mail files according to their specific format in order to analyze the mail bodies and attachments. Several email formats are currently supported, for example: pst (Outlook), dbx mbx mime (Outlook Express), binhex (Mac). If this setting is enabled, email scanning will be enabled. If this setting is disabled or not configured, email scanning will be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Defender Antivirus",
             "dc:publisher": "DISA",
@@ -3783,19 +3783,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Turn on e-mail scanning\" to \"Enabled\".",
-            "+@fixref": "F-14674r823071_fix"
+            "+content": "Set the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Turn on email scanning\" to \"Enabled\".",
+            "+@fixref": "F-14674r1260218_fix"
           },
           "fix": {
-            "+@id": "F-14674r823071_fix"
+            "+@id": "F-14674r1260218_fix"
           },
           "check": {
-            "+@system": "C-14676r820200_chk",
+            "+@system": "C-14676r1260217_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Turn on e-mail scanning\" is set to \"Enabled\".\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nCriteria: If the value \"DisableEmailScanning\" is REG_DWORD = 0, this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Scan >> \"Turn on email scanning\" is set to \"Enabled\".\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Scan\n\nIf the value \"DisableEmailScanning\" is \"REG_DWORD = 0\", this is not a finding.\nIf the value is \"1\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"AllowEmailScanning\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -3951,7 +3951,7 @@
         "title": "SRG-APP-000207",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213455r961086_rule",
+          "+@id": "SV-213455r1271018_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000031",
@@ -3986,12 +3986,12 @@
             "+@id": "F-14678r823078_fix"
           },
           "check": {
-            "+@system": "C-14680r820212_chk",
+            "+@system": "C-14680r1271017_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Threats >> \"Specify threat alert levels at which default action should not be taken when detected\" is set to \"Enabled\".  \n\nClick the “Show…” box option and verify the \"Value name\" field contains a value of \"5\" and the \"Value\" field  contains \"2\".  A value of \"3\" in the \"Value\" field is more restrictive and also an acceptable value.\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Threats\\ThreatSeverityDefaultAction\n\nCriteria: If the value \"5\" is REG_SZ = 2 (or 3), this is not a finding."
+            "check-content": "Verify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Threats >> \"Specify threat alert levels at which default action should not be taken when detected\" is set to \"Enabled\".  \n\nClick the \"Show…\" box option and verify the \"Value name\" field contains a value of \"5\" and the \"Value\" field  contains \"2\".  A value of \"3\" in the \"Value\" field is more restrictive and also an acceptable value.\n  \nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Threats\\ThreatSeverityDefaultAction\n\nIf the value \"5\" is \"REG_SZ = 2 (or 3)\", this is not a finding.\nIf the value is \"6\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"ThreatSeverityDefaultAction\" is \"REG_DWORD = 1 (or 2)\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },
@@ -4343,7 +4343,7 @@
         "title": "SRG-APP-000210",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-213463r961092_rule",
+          "+@id": "SV-213463r1260221_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WNDF-AV-000039",
@@ -4378,12 +4378,12 @@
             "+@id": "F-14686r823094_fix"
           },
           "check": {
-            "+@system": "C-14688r820236_chk",
+            "+@system": "C-14688r1260220_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Defender_Antivirus_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This setting is applicable starting with v1709 of Windows 10, it is NA for prior versions.\n\nVerify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> \"Prevent users and apps from accessing dangerous websites\" is set to \"Enabled” and \"Block\" is selected in the drop-down box.\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection\n\nCriteria: If the value \"EnableNetworkProtection\" is REG_DWORD = 1, this is not a finding."
+            "check-content": "This setting is applicable starting with v1709 of Windows 10, it is NA for prior versions.\n\nVerify the policy value for Computer Configuration >> Administrative Templates >> Windows Components >> Microsoft Defender Antivirus >> Microsoft Defender Exploit Guard >> Network Protection >> \"Prevent users and apps from accessing dangerous websites\" is set to \"Enabled” and \"Block\" is selected in the drop-down box.\n\nProcedure: Use the Windows Registry Editor to navigate to the following key: \nHKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Windows Defender Exploit Guard\\Network Protection\n\nIf the value \"EnableNetworkProtection\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding.\n\nAlternate Check (if Microsoft Intune applied this setting):\n\nNavigate to \"HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Policy Manager\".\n\nIf the value \"EnableNetworkProtection\" is \"REG_DWORD = 1\", this is not a finding.\nIf the value is \"0\", this is a finding."
           }
         }
       },

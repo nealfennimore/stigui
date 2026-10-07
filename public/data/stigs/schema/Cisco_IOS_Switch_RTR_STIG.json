@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-04"
+      "+@date": "2026-09-01"
     },
     "title": "Cisco IOS Switch RTR Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 4 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -2075,7 +2075,7 @@
         "title": "SRG-NET-000168-RTR-000078",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220423r929046_rule",
+          "+@id": "SV-220423r1270917_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000050",
@@ -2114,12 +2114,12 @@
             "+@id": "F-22127r929045_fix"
           },
           "check": {
-            "+@system": "C-22138r929044_chk",
+            "+@system": "C-22138r1270916_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration using the configuration examples below for BGP and OSPF.\n\nEIGRP, RIP, and IS-IS only support MD5 and will incur a permanent finding for those protocols.\n\nNote: The 180-day key lifetime is Not Applicable for the DODIN Backbone. The remainder of the requirement still applies.\n\nVerify that neighbor router authentication is enabled for all routing protocols. If neighbor authentication is not enabled this is a finding.\n\nVerify that authentication is configured to use FIPS 198-1 message authentication algorithms. If the routing protocol authentication is not configured to use FIPS 198-1 algorithms this is a finding.\n\nVerify that the protocol key lifetime is configured to not exceed 180 days. If any protocol key lifetime is configured to exceed 180 days this is a finding.\n\nBGP Example:\n\nkey chain <KEY-CHAIN-NAME> tcp \nkey <KEY-ID>\nsend-id <ID>\nrecv-id <ID>\ncryptographic-algorithm hmac-sha256\nkey-string <KEY>\naccept-lifetime 00:00:00 Jan 1 2022 duration 180\nsend-lifetime 00:00:00 Jan 1 2022 duration 180 \n!\n!\nrouter bgp <ASN>\nno synchronization\nbgp log-neighbor-changes\nneighbor x.x.x.x remote-as <ASN>\nneighbor x.x.x.x ao <KEY-CHAIN-NAME>\n\nNote: TCP-AO is used to replace MD5 in BGP authentication. \n\nOSPF Example:\n\nkey chain OSPF_KEY_CHAIN\nkey 1\nkey-string xxxxxxx\nsend-lifetime 00:00:00 Jan 1 2018 23:59:59 Mar 31 2018\naccept-lifetime 00:00:00 Jan 1 2018 01:05:00 Apr 1 2018\ncryptographic-algorithm hmac-sha-256\nkey 2\nkey-string yyyyyyy\nsend-lifetime 00:00:00 Apr 1 2018 23:59:59 Jun 30 2018\naccept-lifetime 23:55:00 Mar 31 2018 01:05:00 Jul 1 2018\ncryptographic-algorithm hmac-sha-256\n…\n…\n…\ninterface GigabitEthernet0/1\nip address x.x.x.x 255.255.255.0\nip ospf authentication key-chain OSPF_KEY_CHAIN"
+            "check-content": "Review the switch configuration using the configuration examples below for BGP and OSPF.\n\nEIGRP, RIP, and IS-IS only support MD5 and will incur a permanent finding for those protocols.\n\nNote: The 180-day key lifetime is Not Applicable for the DOWIN Backbone. The remainder of the requirement still applies.\n\nVerify that neighbor router authentication is enabled for all routing protocols. If neighbor authentication is not enabled this is a finding.\n\nVerify that authentication is configured to use FIPS 198-1 message authentication algorithms. If the routing protocol authentication is not configured to use FIPS 198-1 algorithms this is a finding.\n\nVerify that the protocol key lifetime is configured to not exceed 180 days. If any protocol key lifetime is configured to exceed 180 days this is a finding.\n\nBGP Example:\n\nkey chain <KEY-CHAIN-NAME> tcp \nkey <KEY-ID>\nsend-id <ID>\nrecv-id <ID>\ncryptographic-algorithm hmac-sha256\nkey-string <KEY>\naccept-lifetime 00:00:00 Jan 1 2022 duration 180\nsend-lifetime 00:00:00 Jan 1 2022 duration 180 \n!\n!\nrouter bgp <ASN>\nno synchronization\nbgp log-neighbor-changes\nneighbor x.x.x.x remote-as <ASN>\nneighbor x.x.x.x ao <KEY-CHAIN-NAME>\n\nNote: TCP-AO is used to replace MD5 in BGP authentication. \n\nOSPF Example:\n\nkey chain OSPF_KEY_CHAIN\nkey 1\nkey-string xxxxxxx\nsend-lifetime 00:00:00 Jan 1 2018 23:59:59 Mar 31 2018\naccept-lifetime 00:00:00 Jan 1 2018 01:05:00 Apr 1 2018\ncryptographic-algorithm hmac-sha-256\nkey 2\nkey-string yyyyyyy\nsend-lifetime 00:00:00 Apr 1 2018 23:59:59 Jun 30 2018\naccept-lifetime 23:55:00 Mar 31 2018 01:05:00 Jul 1 2018\ncryptographic-algorithm hmac-sha-256\n…\n…\n…\ninterface GigabitEthernet0/1\nip address x.x.x.x 255.255.255.0\nip ospf authentication key-chain OSPF_KEY_CHAIN"
           }
         }
       },
@@ -2381,7 +2381,7 @@
         "title": "SRG-NET-000362-RTR-000113",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220433r856235_rule",
+          "+@id": "SV-220433r1270920_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000170",
@@ -2409,19 +2409,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Step 1: Disable ip unreachables on all external interfaces. \n\nSW1(config)#int g0/1 \nSW1(config-if)#no ip unreachables \n\nStep 2: Disable ip unreachables on the Null0 interface if it is used to backhole packets. \n\nSW1(config-if)#int null 0 \nSW1(config-if)#no ip unreachables \n\nAlternative - DODIN Backbone: \n\nConfigure the PE switch to rate limit ICMP unreachable messages as shown in the example below: \n\nSW1(config)#ip icmp rate-limit unreachable df 100 \nSW1(config)#ip icmp rate-limit unreachable 100000 \nSW1(config)#end \n\nAlternative - Non-DODIN Backbone: \n\nAn alternative for non-backbone networks (e.g., enclave, base, camp, etc.) is to filter messages generated by the switch and silently drop ICMP Administratively Prohibited and Host Unreachable messages using the following configuration steps: \n\nStep 1: Configure ACL to include ICMP Type 3 Code 1 (Host Unreachable) and Code 13 (Administratively Prohibited) as shown in the example below: \n\nSW1(config)#ip access-list ext ICMP_T3C1C13 \nSW1(config-ext-nacl)#permit icmp any any host-unreachable \nSW1(config-ext-nacl)#permit icmp any any administratively-prohibited \nSW1(config-ext-nacl)#exit \n\nStep 2: Create a route-map to forward these ICMP messages to the Null0 interface. \n\nSW1(config)#route-map LOCAL_POLICY \nSW1(config-route-map)#match ip address ICMP_T3C1C13 \nSW1(config-route-map)#set interface Null0 \nSW1(config-route-map)#exit \n\nStep 3: Configure no ip unreachables on the Null0 interface. \n\nSW1(config)#int null 0 \nSW1(config-if)#no ip unreachables \nSW1(config-if)#exit \n\nStep 4: Apply the policy to filter messages generated by the switch. \n\nSW1(config)#ip local policy route-map LOCAL_POLICY \nSW1(config)#end",
-            "+@fixref": "F-22137r508385_fix"
+            "+content": "Step 1: Disable ip unreachables on all external interfaces. \n\nSW1(config)#int g0/1 \nSW1(config-if)#no ip unreachables \n\nStep 2: Disable ip unreachables on the Null0 interface if it is used to backhole packets. \n\nSW1(config-if)#int null 0 \nSW1(config-if)#no ip unreachables \n\nAlternative - DOWIN Backbone: \n\nConfigure the PE switch to rate limit ICMP unreachable messages as shown in the example below: \n\nSW1(config)#ip icmp rate-limit unreachable df 100 \nSW1(config)#ip icmp rate-limit unreachable 100000 \nSW1(config)#end \n\nAlternative - Non-DOWIN Backbone: \n\nAn alternative for non-backbone networks (e.g., enclave, base, camp, etc.) is to filter messages generated by the switch and silently drop ICMP Administratively Prohibited and Host Unreachable messages using the following configuration steps: \n\nStep 1: Configure ACL to include ICMP Type 3 Code 1 (Host Unreachable) and Code 13 (Administratively Prohibited) as shown in the example below: \n\nSW1(config)#ip access-list ext ICMP_T3C1C13 \nSW1(config-ext-nacl)#permit icmp any any host-unreachable \nSW1(config-ext-nacl)#permit icmp any any administratively-prohibited \nSW1(config-ext-nacl)#exit \n\nStep 2: Create a route-map to forward these ICMP messages to the Null0 interface. \n\nSW1(config)#route-map LOCAL_POLICY \nSW1(config-route-map)#match ip address ICMP_T3C1C13 \nSW1(config-route-map)#set interface Null0 \nSW1(config-route-map)#exit \n\nStep 3: Configure no ip unreachables on the Null0 interface. \n\nSW1(config)#int null 0 \nSW1(config-if)#no ip unreachables \nSW1(config-if)#exit \n\nStep 4: Apply the policy to filter messages generated by the switch. \n\nSW1(config)#ip local policy route-map LOCAL_POLICY \nSW1(config)#end",
+            "+@fixref": "F-22137r1270919_fix"
           },
           "fix": {
-            "+@id": "F-22137r508385_fix"
+            "+@id": "F-22137r1270919_fix"
           },
           "check": {
-            "+@system": "C-22148r508384_chk",
+            "+@system": "C-22148r1270918_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the configuration to verify the no ip unreachables command has been configured on all external interfaces as shown in the configuration example below: \n\ninterface GigabitEthernet0/1 \n ip address x.x.x.x 255.255.255.0 \n no ip unreachables \n\nIf ICMP unreachable notifications are sent from any external or null0 interface, this is a finding. \n\nAlternative - DODIN Backbone: \n\nVerify that the PE switch is configured to rate limit ICMP unreachable messages as shown in the example below: \n\nip icmp rate-limit unreachable 60000 \nip icmp rate-limit unreachable DF 1000 \n\nNote: In the example above, packet-too-big message (ICMP Type 3 Code 4) can be sent once every second, while all other destination unreachable messages can be sent once every minute. This will avoid disrupting Path MTU Discovery for traffic traversing the backbone while mitigating the risk of an ICMP unreachable DoS attack. \n\nIf the PE switch is not configured to rate limit ICMP unreachable messages, this is a finding."
+            "check-content": "Review the configuration to verify the no ip unreachables command has been configured on all external interfaces as shown in the configuration example below: \n\ninterface GigabitEthernet0/1 \n ip address x.x.x.x 255.255.255.0 \n no ip unreachables \n\nIf ICMP unreachable notifications are sent from any external or null0 interface, this is a finding. \n\nAlternative - DOWIN Backbone: \n\nVerify that the PE switch is configured to rate limit ICMP unreachable messages as shown in the example below: \n\nip icmp rate-limit unreachable 60000 \nip icmp rate-limit unreachable DF 1000 \n\nNote: In the example above, packet-too-big message (ICMP Type 3 Code 4) can be sent once every second, while all other destination unreachable messages can be sent once every minute. This will avoid disrupting Path MTU Discovery for traffic traversing the backbone while mitigating the risk of an ICMP unreachable DoS attack. \n\nIf the PE switch is not configured to rate limit ICMP unreachable messages, this is a finding."
           }
         }
       },
@@ -2920,12 +2920,12 @@
         "title": "SRG-NET-000205-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220445r622190_rule",
+          "+@id": "SV-220445r1269415_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000320",
-          "title": "The Cisco perimeter switch must be configured to filter traffic destined to the enclave in accordance with the guidelines contained in DoD Instruction 8551.1.",
-          "description": "<VulnDiscussion>Vulnerability assessments must be reviewed by the System Administrator, and protocols must be approved by the Information Assurance (IA) staff before entering the enclave. \n\nAccess control lists (ACLs) are the first line of defense in a layered security approach. They permit authorized packets and deny unauthorized packets based on port or service type. They enhance the posture of the network by not allowing packets to reach a potential target within the security domain. The lists provided are highly susceptible ports and services that should be blocked or limited as much as possible without adversely affecting customer requirements. Auditing packets attempting to penetrate the network that are stopped by an ACL will allow network administrators to broaden their protective ring and more tightly define the scope of operation. \n\nIf the perimeter is in a Deny-by-Default posture and what is allowed through the filter is in accordance with DoD Instruction 8551.1, and if the permit rule is explicitly defined with explicit ports and protocols allowed, then all requirements related to PPS being blocked would be satisfied.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Cisco perimeter switch must be configured to filter traffic destined to the enclave in accordance with the guidelines contained in DoW Instruction 8551.1.",
+          "description": "<VulnDiscussion>Vulnerability assessments must be reviewed by the System Administrator, and protocols must be approved by the Information Assurance (IA) staff before entering the enclave. \n\nAccess control lists (ACLs) are the first line of defense in a layered security approach. They permit authorized packets and deny unauthorized packets based on port or service type. They enhance the posture of the network by not allowing packets to reach a potential target within the security domain. The lists provided are highly susceptible ports and services that should be blocked or limited as much as possible without adversely affecting customer requirements. Auditing packets attempting to penetrate the network that are stopped by an ACL will allow network administrators to broaden their protective ring and more tightly define the scope of operation. \n\nIf the perimeter is in a Deny-by-Default posture and what is allowed through the filter is in accordance with DoW Instruction 8551.1, and if the permit rule is explicitly defined with explicit ports and protocols allowed, then all requirements related to PPS being blocked would be satisfied.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Switch RTR",
             "dc:publisher": "DISA",
@@ -2948,19 +2948,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the switch to use an inbound ACL on all external interfaces as shown in the example below to restrict traffic in accordance with the guidelines contained in DoD Instruction 8551.1. \n\nSW1(config)#ip access-list extended EXTERNAL_ACL_INBOUND \nSW1(config-ext-nacl)#permit tcp any any established \nSW1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo \nSW1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo-reply \n… \n… < must be in accordance with DoD Instruction 8551.1> \n… \nSW1(config-ext-nacl)#deny ip any any log-input \nSW1(config-ext-nacl)#exit \nSW1(config)#int g0/2 \nSW1(config-if)#ip access-group EXTERNAL_ACL_INBOUND in",
-            "+@fixref": "F-22149r508418_fix"
+            "+content": "Configure the switch to use an inbound ACL on all external interfaces as shown in the example below to restrict traffic in accordance with the guidelines contained in DoW Instruction 8551.1. \n\nSW1(config)#ip access-list extended EXTERNAL_ACL_INBOUND \nSW1(config-ext-nacl)#permit tcp any any established \nSW1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo \nSW1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo-reply \n… \n… < must be in accordance with DoW Instruction 8551.1> \n… \nSW1(config-ext-nacl)#deny ip any any log-input \nSW1(config-ext-nacl)#exit \nSW1(config)#int g0/2 \nSW1(config-if)#ip access-group EXTERNAL_ACL_INBOUND in",
+            "+@fixref": "F-22149r1269414_fix"
           },
           "fix": {
-            "+@id": "F-22149r508418_fix"
+            "+@id": "F-22149r1269414_fix"
           },
           "check": {
-            "+@system": "C-22160r508417_chk",
+            "+@system": "C-22160r1269413_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration to verify that the ingress ACL is in accordance with DoD 8551.1. \n\nStep 1: Verify that an inbound ACL is configured on all external interfaces. \n\ninterface GigabitEthernet0/2 \n ip address x.11.1.2 255.255.255.254 \n ip access-group EXTERNAL_ACL_INBOUND in \n\nStep 2. Review the inbound ACL to verify that it is filtering traffic in accordance with DoD 8551.1. \n\nip access-list extended EXTERNAL_ACL_INBOUND \n permit tcp any any established \n permit icmp host x.11.1.1 host x.11.1.2 echo \n permit icmp host x.11.1.1 host x.11.1.2 echo-reply \n… \n … < must be in accordance with DoD Instruction 8551.1> \n… \ndeny ip any any log-input \n\nIf the switch does not filter traffic in accordance with the guidelines contained in DoD 8551.1, this is a finding."
+            "check-content": "Review the switch configuration to verify that the ingress ACL is in accordance with DoW 8551.1. \n\nStep 1: Verify that an inbound ACL is configured on all external interfaces. \n\ninterface GigabitEthernet0/2 \n ip address x.11.1.2 255.255.255.254 \n ip access-group EXTERNAL_ACL_INBOUND in \n\nStep 2. Review the inbound ACL to verify that it is filtering traffic in accordance with DoW 8551.1. \n\nip access-list extended EXTERNAL_ACL_INBOUND \n permit tcp any any established \n permit icmp host x.11.1.1 host x.11.1.2 echo \n permit icmp host x.11.1.1 host x.11.1.2 echo-reply \n… \n … < must be in accordance with DoW Instruction 8551.1> \n… \ndeny ip any any log-input \n\nIf the switch does not filter traffic in accordance with the guidelines contained in DoW 8551.1, this is a finding."
           }
         }
       },
@@ -3463,7 +3463,7 @@
         "title": "SRG-NET-000193-RTR-000113",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220458r917423_rule",
+          "+@id": "SV-220458r1270922_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000760",
@@ -3498,12 +3498,12 @@
             "+@id": "F-22162r917422_fix"
           },
           "check": {
-            "+@system": "C-22173r917421_chk",
+            "+@system": "C-22173r1270921_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the switch configuration and verify that a QoS policy has been configured to provide preferred treatment for mission-critical applications.\n\nStep 1: Verify that the class-maps are configured to match on DSCP values as shown in the configuration example below:\n\nclass-map match-all C2_VOICE\n match ip dscp af47\nclass-map match-all VOICE\n match ip dscp ef\nclass-map match-all VIDEO\n match ip dscp af41\nclass-map match-all CONTROL_PLANE\n match ip dscp cs6\nclass-map match-all PREFERRED_DATA\n match ip dscp af33\n\nStep 2: Verify that the policy map reserves the bandwidth for each traffic type as shown in the example below:\n\npolicy-map QOS_POLICY\nclass C2_VOICE\n priority percent 10\n class VOICE\n priority percent 15\n class VIDEO\n bandwidth percent 25\nclass CONTROL_PLANE\n priority percent 10\n class PREFERRED_DATA\n bandwidth percent 25\n class class-default\n bandwidth percent 15\n\nStep 3: Verify that an output service policy is bound to all interfaces as shown in the configuration example below:\n\ninterface GigabitEthernet1/1\n no switchport\n ip address 10.1.15.1 255.255.255.252\n service-policy output QOS_POLICY\n!\ninterface GigabitEthernet1/2\n no switchport\n ip address 10.1.15.4 255.255.255.252\n service-policy output QOS_POLICY\n\nNote: Enclaves must mark or re-mark their traffic to be consistent with the DODIN backbone admission criteria to gain the appropriate level of service. A general DiffServ principle is to mark or trust traffic as close to the source as administratively and technically possible. However, certain traffic types might need to be re-marked before handoff to the DODIN backbone to gain admission to the correct class. If such re-marking is required, it is recommended that the re-marking be performed at the CE egress edge.\n\nNote: The GTP QOS document (GTP-0009) can be downloaded via the following link: \nhttps://intellipedia.intelink.gov/wiki/Portal:GIG_Technical_Guidance/GTG_GTPs/GTP_Development_List\n\nIf the switch is not configured to enforce a QoS policy in accordance with the QoS GIG Technical Profile, this is a finding."
+            "check-content": "Review the switch configuration and verify that a QoS policy has been configured to provide preferred treatment for mission-critical applications.\n\nStep 1: Verify that the class-maps are configured to match on DSCP values as shown in the configuration example below:\n\nclass-map match-all C2_VOICE\n match ip dscp af47\nclass-map match-all VOICE\n match ip dscp ef\nclass-map match-all VIDEO\n match ip dscp af41\nclass-map match-all CONTROL_PLANE\n match ip dscp cs6\nclass-map match-all PREFERRED_DATA\n match ip dscp af33\n\nStep 2: Verify that the policy map reserves the bandwidth for each traffic type as shown in the example below:\n\npolicy-map QOS_POLICY\nclass C2_VOICE\n priority percent 10\n class VOICE\n priority percent 15\n class VIDEO\n bandwidth percent 25\nclass CONTROL_PLANE\n priority percent 10\n class PREFERRED_DATA\n bandwidth percent 25\n class class-default\n bandwidth percent 15\n\nStep 3: Verify that an output service policy is bound to all interfaces as shown in the configuration example below:\n\ninterface GigabitEthernet1/1\n no switchport\n ip address 10.1.15.1 255.255.255.252\n service-policy output QOS_POLICY\n!\ninterface GigabitEthernet1/2\n no switchport\n ip address 10.1.15.4 255.255.255.252\n service-policy output QOS_POLICY\n\nNote: Enclaves must mark or re-mark their traffic to be consistent with the DOWIN backbone admission criteria to gain the appropriate level of service. A general DiffServ principle is to mark or trust traffic as close to the source as administratively and technically possible. However, certain traffic types might need to be re-marked before handoff to the DOWIN backbone to gain admission to the correct class. If such re-marking is required, it is recommended that the re-marking be performed at the CE egress edge.\n\nNote: The GTP QOS document (GTP-0009) can be downloaded via the following link: \nhttps://intellipedia.intelink.gov/wiki/Portal:GIG_Technical_Guidance/GTG_GTPs/GTP_Development_List\n\nIf the switch is not configured to enforce a QoS policy in accordance with the QoS GIG Technical Profile, this is a finding."
           }
         }
       },
@@ -3610,12 +3610,12 @@
         "title": "SRG-NET-000019-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220461r1137908_rule",
+          "+@id": "SV-220461r1269416_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000790",
           "title": "The Cisco multicast switch must be configured to disable Protocol Independent Multicast (PIM) on all interfaces that are not required to support multicast routing.",
-          "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. Limiting where, within the network, a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap, while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DoD IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some switches and passing through some switches to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and know which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. Limiting where, within the network, a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap, while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DoW IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some switches and passing through some switches to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and know which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Switch RTR",
             "dc:publisher": "DISA",
@@ -4217,7 +4217,7 @@
         "title": "SRG-NET-000512-RTR-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237758r648791_rule",
+          "+@id": "SV-237758r1270925_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000391",
@@ -4236,18 +4236,18 @@
           },
           "fixtext": {
             "+content": "Configure the switch to suppress Router Advertisements on all external IPv6-enabled interfaces as shown in the example below.\n\nSW1(config)#int g1/0\nSW1(config-if)#ipv6 nd ra suppress\nSW1(config-if)#end",
-            "+@fixref": "F-40936r648790_fix"
+            "+@fixref": "F-40936r1270924_fix"
           },
           "fix": {
-            "+@id": "F-40936r648790_fix"
+            "+@id": "F-40936r1270924_fix"
           },
           "check": {
-            "+@system": "C-40974r648789_chk",
+            "+@system": "C-40974r1270923_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to verify that Router Advertisements are suppressed on all external IPv6-enabled interfaces as shown in the example below.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 nd ra suppress\n\nIf the switch is not configured to suppress Router Advertisements on all external IPv6-enabled interfaces, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to verify that Router Advertisements are suppressed on all external IPv6-enabled interfaces as shown in the example below.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 nd ra suppress\n\nIf the switch is not configured to suppress Router Advertisements on all external IPv6-enabled interfaces, this is a finding."
           }
         }
       },
@@ -4256,7 +4256,7 @@
         "title": "SRG-NET-000364-RTR-000200",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237761r950991_rule",
+          "+@id": "SV-237761r1270927_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000392",
@@ -4281,12 +4281,12 @@
             "+@id": "F-40938r856254_fix"
           },
           "check": {
-            "+@system": "C-40976r856253_chk",
+            "+@system": "C-40976r1270926_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is configured to drop IPv6 undetermined transport packets.\n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops undetermined transport packets as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny ipv6 any any log undetermined-transport\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nIf the switch is not configured to drop IPv6 undetermined transport packets, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is configured to drop IPv6 undetermined transport packets.\n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops undetermined transport packets as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny ipv6 any any log undetermined-transport\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nIf the switch is not configured to drop IPv6 undetermined transport packets, this is a finding."
           }
         }
       },
@@ -4295,7 +4295,7 @@
         "title": "SRG-NET-000364-RTR-000201",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237763r856665_rule",
+          "+@id": "SV-237763r1270929_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000393",
@@ -4320,12 +4320,12 @@
             "+@id": "F-40939r856257_fix"
           },
           "check": {
-            "+@system": "C-40977r856256_chk",
+            "+@system": "C-40977r1270928_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is configured to drop IPv6 packets containing a Routing Header of type 0, 1, or 3-255.\n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets with a Routing Header type 0, 1, or 3-255 \nas shown in the example below.\n\nipv6 access-list FILTER_IPV6\n permit ipv6 any host 2001:DB8::1:1:1234 routing-type 2\n deny ipv6 any any log routing\n permit ipv6 …\n …\n …\n …\ndeny ipv6 any any log\n\nNote: The example above allows routing-type 2 in the event Mobility IPv6 is deployed.\n\nIf the switch is not configured to drop IPv6 packets containing a Routing Header of type 0, 1, or 3-255, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is configured to drop IPv6 packets containing a Routing Header of type 0, 1, or 3-255.\n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets with a Routing Header type 0, 1, or 3-255 \nas shown in the example below.\n\nipv6 access-list FILTER_IPV6\n permit ipv6 any host 2001:DB8::1:1:1234 routing-type 2\n deny ipv6 any any log routing\n permit ipv6 …\n …\n …\n …\ndeny ipv6 any any log\n\nNote: The example above allows routing-type 2 in the event Mobility IPv6 is deployed.\n\nIf the switch is not configured to drop IPv6 packets containing a Routing Header of type 0, 1, or 3-255, this is a finding."
           }
         }
       },
@@ -4334,7 +4334,7 @@
         "title": "SRG-NET-000364-RTR-000202",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237765r1132544_rule",
+          "+@id": "SV-237765r1270931_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000394",
@@ -4359,12 +4359,12 @@
             "+@id": "F-40940r1132515_fix"
           },
           "check": {
-            "+@system": "C-40978r1132544_chk",
+            "+@system": "C-40978r1270930_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Hop-by-Hop header with option type values of 0x04 (Tunnel Encapsulation Limit), 0xC9 (Home Address Destination), or 0xC3 (NSAP Address) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within Hop-by-Hop header. Therefore, all packets with the Hop-by-Hop header option types must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Hop-by-Hop header with destination options, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Hop-by-Hop header with option type values of 0x04 (Tunnel Encapsulation Limit), 0xC9 (Home Address Destination), or 0xC3 (NSAP Address) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within Hop-by-Hop header. Therefore, all packets with the Hop-by-Hop header option types must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Hop-by-Hop header with destination options, this is a finding."
           }
         }
       },
@@ -4373,7 +4373,7 @@
         "title": "SRG-NET-000364-RTR-000203",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237771r1135076_rule",
+          "+@id": "SV-237771r1270933_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000395",
@@ -4398,12 +4398,12 @@
             "+@id": "F-40944r1135075_fix"
           },
           "check": {
-            "+@system": "C-40985r1135074_chk",
+            "+@system": "C-40985r1270932_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header with option type values of 0x05 (Switch Alert) or 0xC2 (Jumbo Payload) as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4412,7 +4412,7 @@
         "title": "SRG-NET-000364-RTR-000204",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237773r1135078_rule",
+          "+@id": "SV-237773r1270935_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000396",
@@ -4437,12 +4437,12 @@
             "+@id": "F-40945r1135077_fix"
           },
           "check": {
-            "+@system": "C-40986r1132520_chk",
+            "+@system": "C-40986r1270934_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4451,7 +4451,7 @@
         "title": "SRG-NET-000364-RTR-000205",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237775r1132548_rule",
+          "+@id": "SV-237775r1270937_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000397",
@@ -4476,12 +4476,12 @@
             "+@id": "F-40946r1132524_fix"
           },
           "check": {
-            "+@system": "C-40987r1132548_chk",
+            "+@system": "C-40987r1270936_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration and determine if filters are bound to the applicable interfaces to drop IPv6 packets containing a Destination Option header with option type value of 0xC3 (NSAP address). \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration and determine if filters are bound to the applicable interfaces to drop IPv6 packets containing a Destination Option header with option type value of 0xC3 (NSAP address). \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option header. Therefore, all packets with the Destination Option header must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       },
@@ -4490,7 +4490,7 @@
         "title": "SRG-NET-000364-RTR-000206",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-237777r1132528_rule",
+          "+@id": "SV-237777r1270939_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000398",
@@ -4515,12 +4515,12 @@
             "+@id": "F-40947r1132527_fix"
           },
           "check": {
-            "+@system": "C-40988r1132526_chk",
+            "+@system": "C-40988r1270938_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Switch_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option and Hop-by-Hop header. Therefore, all packets with the Destination Option header and Hop-by-Hop options must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone. \n\nReview the switch configuration to determine if it is compliant with this requirement.  \n\nStep 1: Verify that an inbound IPv6 ACL has been configured on the external interface.\n\ninterface gigabitethernet1/0\n ipv6 address 2001::1:0:22/64\n ipv6 traffic-filter FILTER_IPV6 in\n\nStep 2: Verify that the ACL drops IPv6 packets containing a Destination Option header as shown in the example below.\n\nipv6 access-list FILTER_IPV6\n deny 60 any any dest-option log\n deny hbh any any dest-option log\n permit ipv6 …\n …\n …\n …\n deny ipv6 any any log\n\nNote: Cisco has deprecated the dest-option-type command used to filter by option type within the Destination Option and Hop-by-Hop header. Therefore, all packets with the Destination Option header and Hop-by-Hop options must be dropped.\n\nIf the switch is not configured to drop IPv6 packets containing a Destination Option header, this is a finding."
           }
         }
       }

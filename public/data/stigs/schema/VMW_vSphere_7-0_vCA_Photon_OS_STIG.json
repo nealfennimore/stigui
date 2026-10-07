@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-12-16"
+      "+@date": "2026-08-31"
     },
     "title": "VMware vSphere 7.0 vCenter Appliance Photon OS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 30 Jan 2025",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -4270,11 +4270,11 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256480r958390_rule",
+          "+@id": "SV-256480r1268849_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000003",
-          "title": "The Photon operating system must display the Standard Mandatory DOD Notice and Consent Banner before granting Secure Shell (SSH) access.",
+          "title": "The Photon operating system must display the Standard Mandatory DoW Notice and Consent Banner before granting Secure Shell (SSH) access.",
           "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSatisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000228-GPOS-00088</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 vCA Photon OS",
@@ -4294,19 +4294,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Navigate to and open:\n\n/etc/ssh/sshd_config\n\nEnsure the \"Banner\" line is uncommented and set to the following:\n\nBanner /etc/issue\n\nNavigate to and open:\n\n/etc/issue\n\nEnsure the file contains the Standard Mandatory DOD Notice and Consent Banner.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nAt the command line, run the following command:\n\n# systemctl restart sshd.service",
-            "+@fixref": "F-60098r887113_fix"
+            "+content": "Navigate to and open:\n\n/etc/ssh/sshd_config\n\nEnsure the \"Banner\" line is uncommented and set to the following:\n\nBanner /etc/issue\n\nNavigate to and open:\n\n/etc/issue\n\nEnsure the file contains the Standard Mandatory DoW Notice and Consent Banner.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nAt the command line, run the following command:\n\n# systemctl restart sshd.service",
+            "+@fixref": "F-60098r1268848_fix"
           },
           "fix": {
-            "+@id": "F-60098r887113_fix"
+            "+@id": "F-60098r1268848_fix"
           },
           "check": {
-            "+@system": "C-60155r887112_chk",
+            "+@system": "C-60155r1268847_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_vCA_Photon_OS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "At the command line, run the following command:\n\n# sshd -T|&grep -i Banner\n\nExpected result:\n\nbanner /etc/issue\n\nIf the output does not match the expected result, this is a finding. \n\nOpen \"/etc/issue\" with a text editor.\n\nIf the file does not contain the Standard Mandatory DOD Notice and Consent Banner, this is a finding.\n\nStandard Mandatory DOD Notice and Consent Banner:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\""
+            "check-content": "At the command line, run the following command:\n\n# sshd -T|&grep -i Banner\n\nExpected result:\n\nbanner /etc/issue\n\nIf the output does not match the expected result, this is a finding. \n\nOpen \"/etc/issue\" with a text editor.\n\nIf the file does not contain the Standard Mandatory DoW Notice and Consent Banner, this is a finding.\n\nStandard Mandatory DoW Notice and Consent Banner:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\""
           }
         }
       },
@@ -4403,7 +4403,7 @@
         "title": "SRG-OS-000032-GPOS-00013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256483r958406_rule",
+          "+@id": "SV-256483r1268219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000006",
@@ -4442,7 +4442,7 @@
         "title": "SRG-OS-000032-GPOS-00013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256484r958406_rule",
+          "+@id": "SV-256484r1268219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000007",
@@ -4481,7 +4481,7 @@
         "title": "SRG-OS-000032-GPOS-00013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256485r958406_rule",
+          "+@id": "SV-256485r1268219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000008",
@@ -4520,7 +4520,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256486r958408_rule",
+          "+@id": "SV-256486r1268222_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "PHTN-30-000009",
@@ -5365,7 +5365,7 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256505r1038967_rule",
+          "+@id": "SV-256505r1268211_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000028",
@@ -5482,7 +5482,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256508r958472_rule",
+          "+@id": "SV-256508r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "PHTN-30-000031",
@@ -6370,7 +6370,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256530r982212_rule",
+          "+@id": "SV-256530r1268241_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000059",
@@ -6409,7 +6409,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256531r982212_rule",
+          "+@id": "SV-256531r1268241_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000060",
@@ -6448,7 +6448,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256532r982212_rule",
+          "+@id": "SV-256532r1268241_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000061",
@@ -6922,7 +6922,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256544r991589_rule",
+          "+@id": "SV-256544r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000074",
@@ -6961,7 +6961,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256545r991589_rule",
+          "+@id": "SV-256545r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000075",
@@ -7000,7 +7000,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256546r991589_rule",
+          "+@id": "SV-256546r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000076",
@@ -7039,7 +7039,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256547r991589_rule",
+          "+@id": "SV-256547r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000078",
@@ -7078,7 +7078,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256548r1051424_rule",
+          "+@id": "SV-256548r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000079",
@@ -7117,7 +7117,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256549r991589_rule",
+          "+@id": "SV-256549r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000080",
@@ -7156,7 +7156,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256550r991589_rule",
+          "+@id": "SV-256550r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000081",
@@ -7195,7 +7195,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256551r991589_rule",
+          "+@id": "SV-256551r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000082",
@@ -7234,7 +7234,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256552r991589_rule",
+          "+@id": "SV-256552r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000083",
@@ -7273,7 +7273,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256553r991589_rule",
+          "+@id": "SV-256553r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000084",
@@ -7312,7 +7312,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256554r991589_rule",
+          "+@id": "SV-256554r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000085",
@@ -7351,7 +7351,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256555r991589_rule",
+          "+@id": "SV-256555r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000086",
@@ -7390,7 +7390,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256556r991589_rule",
+          "+@id": "SV-256556r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000087",
@@ -7429,7 +7429,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256557r991589_rule",
+          "+@id": "SV-256557r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000088",
@@ -7468,7 +7468,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256558r991589_rule",
+          "+@id": "SV-256558r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000089",
@@ -7507,7 +7507,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256559r991589_rule",
+          "+@id": "SV-256559r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000090",
@@ -7546,7 +7546,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256560r991589_rule",
+          "+@id": "SV-256560r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000091",
@@ -7585,7 +7585,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256561r991589_rule",
+          "+@id": "SV-256561r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000092",
@@ -7624,7 +7624,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256562r991589_rule",
+          "+@id": "SV-256562r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000093",
@@ -7663,7 +7663,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256563r991589_rule",
+          "+@id": "SV-256563r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000094",
@@ -7702,7 +7702,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256564r991589_rule",
+          "+@id": "SV-256564r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000095",
@@ -7741,7 +7741,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256565r991589_rule",
+          "+@id": "SV-256565r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000096",
@@ -7780,7 +7780,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256566r991589_rule",
+          "+@id": "SV-256566r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000097",
@@ -7819,7 +7819,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256567r991589_rule",
+          "+@id": "SV-256567r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000098",
@@ -7858,7 +7858,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256568r991589_rule",
+          "+@id": "SV-256568r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000099",
@@ -7897,7 +7897,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256569r991589_rule",
+          "+@id": "SV-256569r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000100",
@@ -7936,7 +7936,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256570r991589_rule",
+          "+@id": "SV-256570r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000101",
@@ -7975,7 +7975,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256571r991589_rule",
+          "+@id": "SV-256571r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000102",
@@ -8014,7 +8014,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256572r991589_rule",
+          "+@id": "SV-256572r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000103",
@@ -8053,7 +8053,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256573r991589_rule",
+          "+@id": "SV-256573r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000104",
@@ -8092,7 +8092,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256574r991589_rule",
+          "+@id": "SV-256574r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000105",
@@ -8131,7 +8131,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256575r991589_rule",
+          "+@id": "SV-256575r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000106",
@@ -8170,7 +8170,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256576r991589_rule",
+          "+@id": "SV-256576r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000107",
@@ -8209,7 +8209,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256577r991589_rule",
+          "+@id": "SV-256577r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000108",
@@ -8248,7 +8248,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256578r991589_rule",
+          "+@id": "SV-256578r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000109",
@@ -8287,7 +8287,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256579r991589_rule",
+          "+@id": "SV-256579r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000110",
@@ -8326,7 +8326,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256580r991589_rule",
+          "+@id": "SV-256580r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000111",
@@ -8365,7 +8365,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256581r991589_rule",
+          "+@id": "SV-256581r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000112",
@@ -8404,7 +8404,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256582r991589_rule",
+          "+@id": "SV-256582r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000113",
@@ -8599,7 +8599,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256587r991589_rule",
+          "+@id": "SV-256587r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000119",
@@ -8638,7 +8638,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256588r991589_rule",
+          "+@id": "SV-256588r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000120",
@@ -8677,7 +8677,7 @@
         "title": "SRG-OS-000478-GPOS-00223",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256589r959006_rule",
+          "+@id": "SV-256589r1137699_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000240",
@@ -8716,7 +8716,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256590r991589_rule",
+          "+@id": "SV-256590r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "PHTN-30-000245",

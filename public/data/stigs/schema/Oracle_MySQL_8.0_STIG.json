@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-04"
+      "+@date": "2026-08-31"
     },
     "title": "Oracle MySQL 8.0 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3718,7 +3718,7 @@
         "title": "SRG-APP-000023-DB-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235095r960768_rule",
+          "+@id": "SV-235095r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-000100",
@@ -4030,12 +4030,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235103r960879_rule",
+          "+@id": "SV-235103r1268525_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-001600",
-          "title": "The MySQL Database Server 8.0 must be configured to provide audit record generation capability for DoD-defined auditable events within all database components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the Database Management System (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The MySQL Database Server 8.0 must be configured to provide audit record generation capability for DoW-defined auditable events within all database components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the Database Management System (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -4048,11 +4048,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Deploy a MySQL Database Server 8.0 that supports the DoD minimum set of auditable events.\n\nConfigure the MySQL Database Server 8.0 to generate audit records for at least the DoD minimum set of events.\n\nsudo vi /etc/my.cnf\n[mysqld]\naudit-log=FORCE_PLUS_PERMANENT\naudit-log-format=JSON\naudit-log-encryption=AES\n\nAfter changing the my.cnf, restart the server.\n\nSELECT audit_log_encryption_password_set(password);\n\nCreate auditing rules - for example:\nConnect to MySQL and Use functions to define audit rules and audited users  audit_log_filter_set,audit_log_filter_set_user\n\nTo log all auditable events:\nSELECT audit_log_filter_set_filter('log_all', '{ \"filter\": { \"log\": true } }');\n\nAnd to apply this log_all filter to all users:\nSELECT audit_log_filter_set_user('%', 'log_all');",
-            "+@fixref": "F-38285r623430_fix"
+            "+content": "Deploy a MySQL Database Server 8.0 that supports the DoW minimum set of auditable events.\n\nConfigure the MySQL Database Server 8.0 to generate audit records for at least the DoW minimum set of events.\n\nsudo vi /etc/my.cnf\n[mysqld]\naudit-log=FORCE_PLUS_PERMANENT\naudit-log-format=JSON\naudit-log-encryption=AES\n\nAfter changing the my.cnf, restart the server.\n\nSELECT audit_log_encryption_password_set(password);\n\nCreate auditing rules - for example:\nConnect to MySQL and Use functions to define audit rules and audited users  audit_log_filter_set,audit_log_filter_set_user\n\nTo log all auditable events:\nSELECT audit_log_filter_set_filter('log_all', '{ \"filter\": { \"log\": true } }');\n\nAnd to apply this log_all filter to all users:\nSELECT audit_log_filter_set_user('%', 'log_all');",
+            "+@fixref": "F-38285r1268524_fix"
           },
           "fix": {
-            "+@id": "F-38285r623430_fix"
+            "+@id": "F-38285r1268524_fix"
           },
           "check": {
             "+@system": "C-38322r623429_chk",
@@ -5239,12 +5239,12 @@
         "title": "SRG-APP-000175-DB-000067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235134r961038_rule",
+          "+@id": "SV-235134r1268528_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-004700",
           "title": "The MySQL Database Server 8.0, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity, and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity, and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5257,19 +5257,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the DBMS to validate certificates by constructing a certification path with status information to an accepted trust anchor.\n\nConfigure the database server to support Transport Layer Security (TLS) protocols.\nmysql> set persist require_secure_transport=ON;\n\nSet system variables on the server side specify DoD approved certificate and key files the server uses when permitting clients to establish encrypted connections:\n\nssl_ca: The path name of the Certificate Authority (CA) certificate file. (ssl_capath is similar but specifies the path name of a directory of CA certificate files.)\n\nssl_cert: The path name of the server public key certificate file. This certificate can be sent to the client and authenticated against the CA certificate that it has.\n\nssl_key: The path name of the server private key file.\n\nFor example, to enable the server for encrypted connections with certificates, start it with these lines in the my.cnf file, changing the file names as necessary:\n\n[mysqld]\nssl_ca=ca.pem\nssl_cert=server-cert.pem\nssl_key=server-key.pem\nAlter users to require X509 certificates\n\nBelow is an example to add X509 as a requirement.\n\nFor a new user\nCREATE USER 'jeffrey'@'localhost' REQUIRE X509;\nAND SUBJECT '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Johan Smith'\n  AND ISSUER '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Some CA';\n\nOr to add to an existing user\nALTER USER 'johansmith'@'%'\nREQUIRE X509\n  AND SUBJECT '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Johan Smith'\n  AND ISSUER '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Some CA';",
-            "+@fixref": "F-38316r623523_fix"
+            "+content": "Configure the DBMS to validate certificates by constructing a certification path with status information to an accepted trust anchor.\n\nConfigure the database server to support Transport Layer Security (TLS) protocols.\nmysql> set persist require_secure_transport=ON;\n\nSet system variables on the server side specify DoW approved certificate and key files the server uses when permitting clients to establish encrypted connections:\n\nssl_ca: The path name of the Certificate Authority (CA) certificate file. (ssl_capath is similar but specifies the path name of a directory of CA certificate files.)\n\nssl_cert: The path name of the server public key certificate file. This certificate can be sent to the client and authenticated against the CA certificate that it has.\n\nssl_key: The path name of the server private key file.\n\nFor example, to enable the server for encrypted connections with certificates, start it with these lines in the my.cnf file, changing the file names as necessary:\n\n[mysqld]\nssl_ca=ca.pem\nssl_cert=server-cert.pem\nssl_key=server-key.pem\nAlter users to require X509 certificates\n\nBelow is an example to add X509 as a requirement.\n\nFor a new user\nCREATE USER 'jeffrey'@'localhost' REQUIRE X509;\nAND SUBJECT '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Johan Smith'\n  AND ISSUER '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Some CA';\n\nOr to add to an existing user\nALTER USER 'johansmith'@'%'\nREQUIRE X509\n  AND SUBJECT '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Johan Smith'\n  AND ISSUER '/C=US/ST=Texas/L=Houston/O=SomeCompany/CN=Some CA';",
+            "+@fixref": "F-38316r1268527_fix"
           },
           "fix": {
-            "+@id": "F-38316r623523_fix"
+            "+@id": "F-38316r1268527_fix"
           },
           "check": {
-            "+@system": "C-38353r623522_chk",
+            "+@system": "C-38353r1268526_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The database supports PKI-based authentication by using digital certificates over TLS in addition to the native encryption and data integrity capabilities of these protocols.\n\nReview MySQL Database Server 8.0 configuration to verify DBMS user account certificates are valid by performing RFC 5280-compliant certification path validation.\n\nRun the following command to determine the certificate in use along with other details:\nselect @@ssl_ca, @@ssl_capath, @@ssl_cert, @@ssl_cipher, @@ssl_crl, @@ssl_crlpath, @@ssl_fips_mode, @@ssl_key;\n\nIf ssl_crl is not set to a CRL file, this is a finding. \n\nIf ssl_crlpath is empty then use the default, which is the datadir path. To get that path run select @@datadir.\n\nNext verify the existence of the CRL file.\n\nIf the CRL file does not exist, this is a finding.  \n\nNext, verify that require_secure_transport is ON by running:\nselect @@require_secure_transport;\n\nIf require_secure_transport is not 1 for ON, this is a finding.\n\nIf the certificate is not a DoD approved certificate, or if no certificate is listed, this is a finding.\n\nConfirm Issuer and Subject map to the username. Run the following script:\nSELECT `user`.`Host`,\n    `user`.`User`,\n    `user`.`ssl_type`,\n    CAST(`user`.`x509_issuer` as CHAR) as Issuer,\n    CAST(`user`.`x509_subject` as CHAR) as Subject\nFROM `mysql`.`user`;\n\nIf user accounts are not being mapped to authenticated identities, this is a finding."
+            "check-content": "The database supports PKI-based authentication by using digital certificates over TLS in addition to the native encryption and data integrity capabilities of these protocols.\n\nReview MySQL Database Server 8.0 configuration to verify DBMS user account certificates are valid by performing RFC 5280-compliant certification path validation.\n\nRun the following command to determine the certificate in use along with other details:\nselect @@ssl_ca, @@ssl_capath, @@ssl_cert, @@ssl_cipher, @@ssl_crl, @@ssl_crlpath, @@ssl_fips_mode, @@ssl_key;\n\nIf ssl_crl is not set to a CRL file, this is a finding. \n\nIf ssl_crlpath is empty then use the default, which is the datadir path. To get that path run select @@datadir.\n\nNext verify the existence of the CRL file.\n\nIf the CRL file does not exist, this is a finding.  \n\nNext, verify that require_secure_transport is ON by running:\nselect @@require_secure_transport;\n\nIf require_secure_transport is not 1 for ON, this is a finding.\n\nIf the certificate is not a DoW approved certificate, or if no certificate is listed, this is a finding.\n\nConfirm Issuer and Subject map to the username. Run the following script:\nSELECT `user`.`Host`,\n    `user`.`User`,\n    `user`.`ssl_type`,\n    CAST(`user`.`x509_issuer` as CHAR) as Issuer,\n    CAST(`user`.`x509_subject` as CHAR) as Subject\nFROM `mysql`.`user`;\n\nIf user accounts are not being mapped to authenticated identities, this is a finding."
           }
         }
       },
@@ -5278,12 +5278,12 @@
         "title": "SRG-APP-000176-DB-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235135r961041_rule",
+          "+@id": "SV-235135r1268529_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-004800",
           "title": "The MySQL Database Server 8.0 must enforce authorized access to all PKI private keys stored/utilized by the MySQL Database Server 8.0.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use it to impersonate the certificate holder. In cases where the Database Management System (DBMS)-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate, and the issuing authority, must take careful measures to protect the corresponding private key. Private keys must always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.  \n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use it to impersonate the certificate holder. In cases where the Database Management System (DBMS)-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate, and the issuing authority, must take careful measures to protect the corresponding private key. Private keys must always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.  \n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5317,12 +5317,12 @@
         "title": "SRG-APP-000177-DB-000069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235136r961044_rule",
+          "+@id": "SV-235136r1268530_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-004900",
           "title": "The MySQL Database Server 8.0 must map the PKI-authenticated identity to an associated user account.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a Database Management System (DBMS) user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a Database Management System (DBMS) user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5356,12 +5356,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235137r1018612_rule",
+          "+@id": "SV-235137r1268523_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-005000",
-          "title": "If Database Management System (DBMS) authentication using passwords is employed, the DBMS must enforce the DOD standards for password complexity and lifetime.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and Authorizing Official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If Database Management System (DBMS) authentication using passwords is employed, the DBMS must enforce the DoW standards for password complexity and lifetime.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and Authorizing Official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5380,19 +5380,19 @@
             }
           ],
           "fixtext": {
-            "+content": "If the use of passwords is not needed, configure the MySQL Database Server 8.0 to prevent their use if it is capable of this; if it is not, institute policies and procedures to prohibit their use.\n\nIf the MySQL Database Server 8.0 can inherit password complexity rules from the operating system or access control program, configure it to do so.\n\nOtherwise, use MySQL Database Server 8.0 configuration parameters and/or custom code to enforce the following rules for passwords:\n\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 60 days.\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\ne. Number of password changes before an old one may be reused: Minimum of five.\n\nAs the database admin:\n\nINSTALL COMPONENT 'file://component_validate_password';\n\n# Set Password Policies example:\nset persist validate_password.check_user_name='ON';\nset persist validate_password.dictionary_file='<FILENAME OF DICTIONARY FILE';\nset persist validate_password.length=15;\nset persist validate_password.mixed_case_count=1;\nset persist validate_password.special_char_count=2;\nset persist validate_password.number_count=2;\nset persist validate_password.policy='STRONG';\nset persist password_history = 5;\nset persist password_reuse_interval = 365;\nSET GLOBAL default_password_lifetime = 180;\n\nOptional\nset persist password_require_current=YES\n\nThis can also be set at the account level:\nALTER USER 'jeffrey'@'localhost'\n  PASSWORD HISTORY 5\n  PASSWORD REUSE INTERVAL 365 DAY;\nALTER USER 'jeffrey'@'localhost' PASSWORD EXPIRE INTERVAL 90 DAY;",
-            "+@fixref": "F-38319r998287_fix"
+            "+content": "If the use of passwords is not needed, configure the MySQL Database Server 8.0 to prevent their use if it is capable of this; if it is not, institute policies and procedures to prohibit their use.\n\nIf the MySQL Database Server 8.0 can inherit password complexity rules from the operating system or access control program, configure it to do so.\n\nOtherwise, use MySQL Database Server 8.0 configuration parameters and/or custom code to enforce the following rules for passwords:\n\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\ne. Number of password changes before an old one may be reused: Minimum of five.\n\nAs the database admin:\n\nINSTALL COMPONENT 'file://component_validate_password';\n\n# Set Password Policies example:\nset persist validate_password.check_user_name='ON';\nset persist validate_password.dictionary_file='<FILENAME OF DICTIONARY FILE';\nset persist validate_password.length=15;\nset persist validate_password.mixed_case_count=1;\nset persist validate_password.special_char_count=2;\nset persist validate_password.number_count=2;\nset persist validate_password.policy='STRONG';\nset persist password_history = 5;\nset persist password_reuse_interval = 365;\nSET GLOBAL default_password_lifetime = 180;\n\nOptional\nset persist password_require_current=YES\n\nThis can also be set at the account level:\nALTER USER 'jeffrey'@'localhost'\n  PASSWORD HISTORY 5\n  PASSWORD REUSE INTERVAL 365 DAY;\nALTER USER 'jeffrey'@'localhost' PASSWORD EXPIRE INTERVAL 90 DAY;",
+            "+@fixref": "F-38319r1268522_fix"
           },
           "fix": {
-            "+@id": "F-38319r998287_fix"
+            "+@id": "F-38319r1268522_fix"
           },
           "check": {
-            "+@system": "C-38356r998286_chk",
+            "+@system": "C-38356r1268521_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If DBMS authentication using passwords is not employed, this is not a finding.\n\nIf the DBMS is configured to inherit password complexity and lifetime rules from the operating system or access control program, this is not a finding.\n\nReview the MySQL Database Server 8.0 settings relating to password complexity. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\n\nReview the DBMS settings relating to password lifetime. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 60 days.\nb. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\nc. Number of password changes before an old one may be reused: Minimum of five.\n\nConnect as an admin. \n\nSELECT component_urn FROM mysql.component\nwhere component_urn='file://component_validate_password' group by component_urn;\n\nIf the \"validate password\" component is installed the result will be file://component_validate_password.\n\nIf \"validate password\" component is not installed, this is a finding.\n\nIf the \"component_validate_password\" is installed, review the password policies to ensure required password complexity is met. \n\nRun the following to review the password policy:\n\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables where VARIABLE_NAME like 'valid%password%' or VARIABLE_NAME like 'password_%'  ;\n\nFor example the results may look like the following:\n\n'validate_password.check_user_name',’ON’\n'validate_password.dictionary_file',''\n'validate_password.length','8'\n'validate_password.mixed_case_count','1'\n'validate_password.number_count','1'\n'validate_password.policy','MEDIUM'\n'validate_password.special_char_count','1'\n'password_reuse_interval','0'\n'password_require_current','OFF'\n'password_history','0'\n\nIf these results do not meet password complexity requirements listed above, this is a finding."
+            "check-content": "If DBMS authentication using passwords is not employed, this is not a finding.\n\nIf the DBMS is configured to inherit password complexity and lifetime rules from the operating system or access control program, this is not a finding.\n\nReview the MySQL Database Server 8.0 settings relating to password complexity. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\n\nReview the DBMS settings relating to password lifetime. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nb. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\nc. Number of password changes before an old one may be reused: Minimum of five.\n\nConnect as an admin. \n\nSELECT component_urn FROM mysql.component\nwhere component_urn='file://component_validate_password' group by component_urn;\n\nIf the \"validate password\" component is installed the result will be file://component_validate_password.\n\nIf \"validate password\" component is not installed, this is a finding.\n\nIf the \"component_validate_password\" is installed, review the password policies to ensure required password complexity is met. \n\nRun the following to review the password policy:\n\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables where VARIABLE_NAME like 'valid%password%' or VARIABLE_NAME like 'password_%'  ;\n\nFor example the results may look like the following:\n\n'validate_password.check_user_name',’ON’\n'validate_password.dictionary_file',''\n'validate_password.length','8'\n'validate_password.mixed_case_count','1'\n'validate_password.number_count','1'\n'validate_password.policy','MEDIUM'\n'validate_password.special_char_count','1'\n'password_reuse_interval','0'\n'password_require_current','OFF'\n'password_history','0'\n\nIf these results do not meet password complexity requirements listed above, this is a finding."
           }
         }
       },
@@ -5401,12 +5401,12 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235138r1018613_rule",
+          "+@id": "SV-235138r1268531_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-005100",
           "title": "If passwords are used for authentication, the MySQL Database Server 8.0 must store only hashed, salted representations of passwords.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires Authorizing Official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the Database Management System (DBMS).\n\nTo prevent the compromise of authentication information, such as passwords and PINs, during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism.\n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk.\n\nFor example, displaying asterisks when a user types in a password or PIN, is an example of obscuring feedback of authentication information.\n\nThe password requirement is applicable when caching_sha2_password, sha2_password, native_mysql, or LDAP user/password authentication is enabled. When this is the case, password-authenticated accounts can be created in, and authenticated by, the MySQL Server. Other STIG requirements prohibit the use of password-based authentication except when justified and approved. This deals with the exceptions.\n\nThe mysql, mysqlsh, and other command line tools are part of most MySQL installations. These tools can accept a plain-text password, but do offer alternative techniques. Since the typical user of these tools is a Database Administrator (DBA), the consequences of password compromise are particularly serious. Therefore, the use of plain-text passwords must be prohibited as a matter of practice and procedure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires Authorizing Official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the Database Management System (DBMS).\n\nTo prevent the compromise of authentication information, such as passwords and PINs, during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism.\n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk.\n\nFor example, displaying asterisks when a user types in a password or PIN, is an example of obscuring feedback of authentication information.\n\nThe password requirement is applicable when caching_sha2_password, sha2_password, native_mysql, or LDAP user/password authentication is enabled. When this is the case, password-authenticated accounts can be created in, and authenticated by, the MySQL Server. Other STIG requirements prohibit the use of password-based authentication except when justified and approved. This deals with the exceptions.\n\nThe mysql, mysqlsh, and other command line tools are part of most MySQL installations. These tools can accept a plain-text password, but do offer alternative techniques. Since the typical user of these tools is a Database Administrator (DBA), the consequences of password compromise are particularly serious. Therefore, the use of plain-text passwords must be prohibited as a matter of practice and procedure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5446,12 +5446,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235139r961029_rule",
+          "+@id": "SV-235139r1268534_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-005200",
           "title": "If passwords are used for authentication, the MySQL Database Server 8.0 must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires Authorizing Official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDatabase Management System (DBMS) passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires Authorizing Official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDatabase Management System (DBMS) passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5464,19 +5464,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure encryption for transmission of passwords across the network. If the database does not provide encryption for logon events natively, employ encryption at the OS or network level.\n\nEnsure passwords remain encrypted from source to destination.\n\nconnect to MySQL as admin (root)\nmysql> set persist require_secure_transport=ON;\n\nSet system variables on the server side specify  DoD approved certificate and key files the server uses when permitting clients to establish encrypted connections:\n\nssl_ca: The path name of the Certificate Authority (CA) certificate file. (ssl_capath is similar but specifies the path name of a directory of CA certificate files.)\n\nssl_cert: The path name of the server public key certificate file. This certificate can be sent to the client and authenticated against the CA certificate that it has.\n\nssl_key: The path name of the server private key file.\n\nFor example, to enable the server for encrypted connections with certificates, start it with these lines in the my.cnf file, changing the file names as necessary:\n\n[mysqld]\nssl_ca=ca.pem\nssl_cert=server-cert.pem\nssl_key=server-key.pem",
-            "+@fixref": "F-38321r623538_fix"
+            "+content": "Configure encryption for transmission of passwords across the network. If the database does not provide encryption for logon events natively, employ encryption at the OS or network level.\n\nEnsure passwords remain encrypted from source to destination.\n\nconnect to MySQL as admin (root)\nmysql> set persist require_secure_transport=ON;\n\nSet system variables on the server side specify  DoW approved certificate and key files the server uses when permitting clients to establish encrypted connections:\n\nssl_ca: The path name of the Certificate Authority (CA) certificate file. (ssl_capath is similar but specifies the path name of a directory of CA certificate files.)\n\nssl_cert: The path name of the server public key certificate file. This certificate can be sent to the client and authenticated against the CA certificate that it has.\n\nssl_key: The path name of the server private key file.\n\nFor example, to enable the server for encrypted connections with certificates, start it with these lines in the my.cnf file, changing the file names as necessary:\n\n[mysqld]\nssl_ca=ca.pem\nssl_cert=server-cert.pem\nssl_key=server-key.pem",
+            "+@fixref": "F-38321r1268533_fix"
           },
           "fix": {
-            "+@id": "F-38321r623538_fix"
+            "+@id": "F-38321r1268533_fix"
           },
           "check": {
-            "+@system": "C-38358r623537_chk",
+            "+@system": "C-38358r1268532_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review configuration settings for encrypting passwords in transit across the network. If passwords are not encrypted, this is a finding. \n\nIf it is determined that passwords are passed unencrypted at any point along the transmission path between the source and destination, this is a finding.\n\nTo check, run the following SQL:\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables\nWHERE VARIABLE_NAME IN ('require_secure_transport') ;\nIf the require_secure_transport VARIABLE_VALUE is not  'ON' (1), this is a finding.\n\n If 1 (On), then only SSL connections are permitted; next examine the certificate used.\n\nRun the following command to determine the certificate in use along with other details:\nselect @@ssl_ca, @@ssl_capath, @@ssl_cert, @@ssl_cipher, @@ssl_crl, @@ssl_crlpath, @@ssl_fips_mode, @@ssl_key;\n\nIf the certificate is not a DoD certificate, or if no certificate is listed, this is a finding."
+            "check-content": "Review configuration settings for encrypting passwords in transit across the network. If passwords are not encrypted, this is a finding. \n\nIf it is determined that passwords are passed unencrypted at any point along the transmission path between the source and destination, this is a finding.\n\nTo check, run the following SQL:\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables\nWHERE VARIABLE_NAME IN ('require_secure_transport') ;\nIf the require_secure_transport VARIABLE_VALUE is not  'ON' (1), this is a finding.\n\n If 1 (On), then only SSL connections are permitted; next examine the certificate used.\n\nRun the following command to determine the certificate in use along with other details:\nselect @@ssl_ca, @@ssl_capath, @@ssl_cert, @@ssl_cipher, @@ssl_crl, @@ssl_crlpath, @@ssl_fips_mode, @@ssl_key;\n\nIf the certificate is not a DoW certificate, or if no certificate is listed, this is a finding."
           }
         }
       },
@@ -5485,12 +5485,12 @@
         "title": "SRG-APP-000178-DB-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235140r961047_rule",
+          "+@id": "SV-235140r1268535_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-005300",
           "title": "The MySQL Database Server 8.0 must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the Database Management System (DBMS), such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nFor mysql tools, which can accept a plain-text password, and any other essential tool with the same limitation:\n1) Document the need for it, who uses it, and any relevant mitigations, and obtain Authorizing Official (AO) approval\n2) Train all users of the tool in the importance of not using the plain-text password option and in how to keep the password hidden by using the \"-p\" without the password option. The user will then be prompted and the password obfuscated.\n3) Make use of OS pluggable password manager integration to protect passwords using keyrings</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the Database Management System (DBMS), such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nFor mysql tools, which can accept a plain-text password, and any other essential tool with the same limitation:\n1) Document the need for it, who uses it, and any relevant mitigations, and obtain Authorizing Official (AO) approval\n2) Train all users of the tool in the importance of not using the plain-text password option and in how to keep the password hidden by using the \"-p\" without the password option. The user will then be prompted and the password obfuscated.\n3) Make use of OS pluggable password manager integration to protect passwords using keyrings</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5524,12 +5524,12 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235141r960792_rule",
+          "+@id": "SV-235141r1268536_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-005400",
           "title": "The MySQL Database Server 8.0 must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
-          "description": "<VulnDiscussion>Authentication with a DoD-approved PKI certificate does not necessarily imply authorization to access the Database Management System (DBMS). To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved PKI certificate does not necessarily imply authorization to access the Database Management System (DBMS). To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5563,12 +5563,12 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235142r961863_rule",
+          "+@id": "SV-235142r1268538_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-005500",
-          "title": "The MySQL Database Server 8.0 must be configured in accordance with the security configuration settings based on DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
-          "description": "<VulnDiscussion>Configuring the Database Management System (DBMS) to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The MySQL Database Server 8.0 must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
+          "description": "<VulnDiscussion>Configuring the Database Management System (DBMS) to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -5588,12 +5588,12 @@
             "+@id": "F-38324r623547_fix"
           },
           "check": {
-            "+@system": "C-38361r623546_chk",
+            "+@system": "C-38361r1268537_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the MySQL documentation and configuration to determine it is configured in accordance with DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.\n\nIf the MySQL is not configured in accordance with security configuration settings, this is a finding."
+            "check-content": "Review the MySQL documentation and configuration to determine it is configured in accordance with DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.\n\nIf the MySQL is not configured in accordance with security configuration settings, this is a finding."
           }
         }
       },
@@ -5719,7 +5719,7 @@
         "title": "SRG-APP-000142-DB-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235146r960966_rule",
+          "+@id": "SV-235146r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-006000",
@@ -5758,7 +5758,7 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235147r960969_rule",
+          "+@id": "SV-235147r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-006100",
@@ -5875,7 +5875,7 @@
         "title": "SRG-APP-000211-DB-000122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235150r961095_rule",
+          "+@id": "SV-235150r1137655_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-006400",
@@ -5953,7 +5953,7 @@
         "title": "SRG-APP-000243-DB-000128",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235152r961149_rule",
+          "+@id": "SV-235152r1137656_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-006600",
@@ -5992,7 +5992,7 @@
         "title": "SRG-APP-000243-DB-000374",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235153r961149_rule",
+          "+@id": "SV-235153r1137658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-006800",
@@ -6031,7 +6031,7 @@
         "title": "SRG-APP-000224-DB-000384",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235154r961119_rule",
+          "+@id": "SV-235154r1043181_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-007000",
@@ -6901,12 +6901,12 @@
         "title": "SRG-APP-000389-DB-000372",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235178r1018616_rule",
+          "+@id": "SV-235178r1268539_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-010400",
           "title": "The MySQL Database Server 8.0 must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication of an interactive user is the presentation of a Common Access Card (CAC) or other physical token bearing a valid, current, DOD-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DOD, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication of an interactive user is the presentation of a Common Access Card (CAC) or other physical token bearing a valid, current, DoW-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoW, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -7063,7 +7063,7 @@
         "title": "SRG-APP-000311-DB-000308",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235182r961269_rule",
+          "+@id": "SV-235182r1138540_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-010800",
@@ -7102,7 +7102,7 @@
         "title": "SRG-APP-000313-DB-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235183r961272_rule",
+          "+@id": "SV-235183r1138541_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-010900",
@@ -7141,7 +7141,7 @@
         "title": "SRG-APP-000314-DB-000310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235184r961275_rule",
+          "+@id": "SV-235184r1138542_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011000",
@@ -7180,7 +7180,7 @@
         "title": "SRG-APP-000295-DB-000305",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235185r961221_rule",
+          "+@id": "SV-235185r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011100",
@@ -7258,7 +7258,7 @@
         "title": "SRG-APP-000416-DB-000380",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235187r962034_rule",
+          "+@id": "SV-235187r1268542_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011500",
@@ -7276,19 +7276,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure cryptographic functions to use NSA-approved cryptography-compliant algorithms.\n\nTurn on MySQL FIPS mode.\nEdit my.cnf\n[mysqld]\nssl_fips_mode=ON\n\nor\n[mysqld]\nssl_fips_mode=STRICT\n\nTo restrict TLS versions:\n\n[mysqld]\ntls_version='TLSv1.2,TLSv1.3'\n\nExample to define ciphers for TLSv1.2:\n\n[mysqld]\nssl_ciphers='ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:DHE-DSS-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305'\n\nIf TLSv1.3 is enabled, the \"tls_ciphersuites\" setting must contain all or a subset of the following ciphers based on certificates being used by server and client. Enabling FIPS mode will limit the OpenSSL library to operate within the FIPS object module.\n\nExample to define TLS ciphers for TLSv1.3:\n\n[mysqld]\ntls_ciphersuites='TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_SHA256:TLS_AES_128_CCM_8_SHA256'\n\nAfter adding any entries to the my.cnf file, restart mysqld.\n\nCreate and use DOD-approved certificates for asymmetric keys used by the database.",
-            "+@fixref": "F-38369r917658_fix"
+            "+content": "Configure cryptographic functions to use NSA-approved cryptography-compliant algorithms.\n\nTurn on MySQL FIPS mode.\nEdit my.cnf\n[mysqld]\nssl_fips_mode=ON\n\nor\n[mysqld]\nssl_fips_mode=STRICT\n\nTo restrict TLS versions:\n\n[mysqld]\ntls_version='TLSv1.2,TLSv1.3'\n\nExample to define ciphers for TLSv1.2:\n\n[mysqld]\nssl_ciphers='ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:DHE-DSS-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305'\n\nIf TLSv1.3 is enabled, the \"tls_ciphersuites\" setting must contain all or a subset of the following ciphers based on certificates being used by server and client. Enabling FIPS mode will limit the OpenSSL library to operate within the FIPS object module.\n\nExample to define TLS ciphers for TLSv1.3:\n\n[mysqld]\ntls_ciphersuites='TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_CCM_SHA256:TLS_AES_128_CCM_8_SHA256'\n\nAfter adding any entries to the my.cnf file, restart mysqld.\n\nCreate and use DoW-approved certificates for asymmetric keys used by the database.",
+            "+@fixref": "F-38369r1268541_fix"
           },
           "fix": {
-            "+@id": "F-38369r917658_fix"
+            "+@id": "F-38369r1268541_fix"
           },
           "check": {
-            "+@system": "C-38406r863353_chk",
+            "+@system": "C-38406r1268540_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Detailed information on the NIST Cryptographic Module Validation Program (CMVP) is available at the following website: http://csrc.nist.gov/groups/STM/cmvp/index.html.\n\nReview system documentation to determine whether cryptography for classified or sensitive information is required by the information owner.\n\nIf the system documentation does not specify the type of information hosted on MySQL: classified, sensitive, and/or unclassified, this is a finding.\n\nIf classified or sensitive information does not exist within MySQL Server, this is not a finding.\n\nVerify that the operating system provides the OpenSSL FIPS Object Module, and is configured to require the use of OpenSSL of FIPS compliant algorithms, available at MySQL runtime.\n\nIf the Security Setting for FIPS mode option is \"Disabled\" on the server's OS, this is a finding.\n\nIf cryptography is being used by MySQL, verify that the cryptography is NIST FIPS certified by running the following SQL query:\nDetermine if MySQL is running in FIPS mode.\nselect @@ssl_fips_mode;\n\nIf ssl_fips_mode is not \"ON\" or \"STRICT\", this is a finding.\n\nView the versions of TLS, then review the cipher suites in use for the versions returned by statement:\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables WHERE VARIABLE_NAME = 'tls_version';\n\nIf the results include less than version TLS 1.2, for example TLS 1.0 or 1.1, this is a finding. \n\nIf the results include TLS 1.2 view the supported ciphers on the MySQL Server, run\nselect * from performance_schema.global_status where variable_name= 'Ssl_cipher_list';\n\nIf the results include TLS 1.3 view the supported ciphers on the MySQL Server, run\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables WHERE VARIABLE_NAME = 'tls_ciphersuites';\n\nIf any results list show an uncertified NIST FIPS 140-2 algorithm type, this is a finding.\n\nCheck MySQL certificate PEM file(s) for compliance with DoD requirements by running this command: \nopenssl x509 -in server-cert.pem -text -noout\n\nIf any PEM file is not in compliance, this is a finding."
+            "check-content": "Detailed information on the NIST Cryptographic Module Validation Program (CMVP) is available at the following website: http://csrc.nist.gov/groups/STM/cmvp/index.html.\n\nReview system documentation to determine whether cryptography for classified or sensitive information is required by the information owner.\n\nIf the system documentation does not specify the type of information hosted on MySQL: classified, sensitive, and/or unclassified, this is a finding.\n\nIf classified or sensitive information does not exist within MySQL Server, this is not a finding.\n\nVerify that the operating system provides the OpenSSL FIPS Object Module, and is configured to require the use of OpenSSL of FIPS compliant algorithms, available at MySQL runtime.\n\nIf the Security Setting for FIPS mode option is \"Disabled\" on the server's OS, this is a finding.\n\nIf cryptography is being used by MySQL, verify that the cryptography is NIST FIPS certified by running the following SQL query:\nDetermine if MySQL is running in FIPS mode.\nselect @@ssl_fips_mode;\n\nIf ssl_fips_mode is not \"ON\" or \"STRICT\", this is a finding.\n\nView the versions of TLS, then review the cipher suites in use for the versions returned by statement:\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables WHERE VARIABLE_NAME = 'tls_version';\n\nIf the results include less than version TLS 1.2, for example TLS 1.0 or 1.1, this is a finding. \n\nIf the results include TLS 1.2 view the supported ciphers on the MySQL Server, run\nselect * from performance_schema.global_status where variable_name= 'Ssl_cipher_list';\n\nIf the results include TLS 1.3 view the supported ciphers on the MySQL Server, run\nSELECT VARIABLE_NAME, VARIABLE_VALUE\nFROM performance_schema.global_variables WHERE VARIABLE_NAME = 'tls_ciphersuites';\n\nIf any results list show an uncertified NIST FIPS 140-2 algorithm type, this is a finding.\n\nCheck MySQL certificate PEM file(s) for compliance with DoW requirements by running this command: \nopenssl x509 -in server-cert.pem -text -noout\n\nIf any PEM file is not in compliance, this is a finding."
           }
         }
       },
@@ -7297,7 +7297,7 @@
         "title": "SRG-APP-000514-DB-000381",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235188r961857_rule",
+          "+@id": "SV-235188r1137660_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011600",
@@ -7336,7 +7336,7 @@
         "title": "SRG-APP-000514-DB-000382",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235189r961857_rule",
+          "+@id": "SV-235189r1137661_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-011700",
@@ -7375,7 +7375,7 @@
         "title": "SRG-APP-000514-DB-000383",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235190r961857_rule",
+          "+@id": "SV-235190r1137664_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011800",
@@ -7414,12 +7414,12 @@
         "title": "SRG-APP-000427-DB-000385",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235191r961596_rule",
+          "+@id": "SV-235191r1268545_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-011900",
-          "title": "The MySQL Database Server 8.0 must only accept end entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
-          "description": "<VulnDiscussion>Only DoD-approved external PKIs have been evaluated to ensure they have security controls and identity vetting procedures in place that are sufficient for DoD systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoD-approved PKIs is published at https://cyber.mil/pki-pke/interoperability.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The MySQL Database Server 8.0 must only accept end entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
+          "description": "<VulnDiscussion>Only DoW-approved external PKIs have been evaluated to ensure they have security controls and identity vetting procedures in place that are sufficient for DoW systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoW-approved PKIs is published at https://cyber.mil/pki-pke/interoperability.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle MySQL 8.0",
             "dc:publisher": "DISA",
@@ -7432,19 +7432,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Remove any certificate that was not issued by a valid DoD certificate authority.\n\nContact the organization's certificate issuer and request a new certificate that is issued by a valid DoD certificate authorities.",
-            "+@fixref": "F-38373r623694_fix"
+            "+content": "Remove any certificate that was not issued by a valid DoW certificate authority.\n\nContact the organization's certificate issuer and request a new certificate that is issued by a valid DoW certificate authorities.",
+            "+@fixref": "F-38373r1268544_fix"
           },
           "fix": {
-            "+@id": "F-38373r623694_fix"
+            "+@id": "F-38373r1268544_fix"
           },
           "check": {
-            "+@system": "C-38410r623693_chk",
+            "+@system": "C-38410r1268543_chk",
             "check-content-ref": {
               "+@href": "Oracle_MySQL_8.0_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To run MySQL in SSL mode, obtain a valid certificate signed by a single certificate authority. \n\nBefore starting the MySQL database in SSL mode, verify the certificate used is issued by a valid DoD certificate authority.\n\nRun this command:\nopenssl x509 -in <path_to_certificate_pem_file> -text | grep -i \"issuer\"\n\nIf there is any issuer present in the certificate that is not a DoD-approved certificate authority, this is a finding."
+            "check-content": "To run MySQL in SSL mode, obtain a valid certificate signed by a single certificate authority. \n\nBefore starting the MySQL database in SSL mode, verify the certificate used is issued by a valid DoW certificate authority.\n\nRun this command:\nopenssl x509 -in <path_to_certificate_pem_file> -text | grep -i \"issuer\"\n\nIf there is any issuer present in the certificate that is not a DoW-approved certificate authority, this is a finding."
           }
         }
       },
@@ -7531,7 +7531,7 @@
         "title": "SRG-APP-000456-DB-000390",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-235194r1001008_rule",
+          "+@id": "SV-235194r1137667_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MYS8-00-012300",
@@ -7609,7 +7609,7 @@
         "title": "SRG-APP-000456-DB-000400",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265876r999534_rule",
+          "+@id": "SV-265876r1138543_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MYS8-00-012600",

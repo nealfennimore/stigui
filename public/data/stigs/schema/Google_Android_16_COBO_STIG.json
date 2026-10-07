@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-13"
+      "+@date": "2026-08-24"
     },
     "title": "Google Android 16 COBO Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 13 May 2026",
+        "+content": "Release: 4 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1753,12 +1753,12 @@
         "title": "PP-MDF-333050",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276753r1140051_rule",
+          "+@id": "SV-276753r1262885_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-006500",
-          "title": "Google Android 16 must be configured to enforce an application installation policy by specifying one or more authorized application repositories, including [selection: DOD-approved commercial app repository, MDM server, mobile application store].",
-          "description": "<VulnDiscussion>Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DOD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Google Android 16 must be configured to enforce an application installation policy by specifying one or more authorized application repositories, including [selection: DoW-approved commercial app repository, MDM server, mobile application store].",
+          "description": "<VulnDiscussion>Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoW data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -1778,12 +1778,12 @@
             "+@id": "F-80813r1140050_fix"
           },
           "check": {
-            "+@system": "C-80908r1140049_chk",
+            "+@system": "C-80908r1262884_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has only approved application repositories (DOD-approved commercial app repository, EMM server, and/or mobile application store).\n\nThis validation procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n\nOn the EMM console:\n\nCOBO and COPE:\n\n1. Open \"Set user restrictions\".\n2. Verify that \"Disallow install unknown sources\" is toggled to \"ON\".\n3. Verify that \"Disallow installs from unknown sources globally\" is toggled to \"ON\".\n\nOn the Google Android 16 device:\n\nCOBO and COPE:\n\n1. Open Settings >> Apps >> Special app access.\n2. Open \"Install unknown apps\".\n3. Ensure the list of apps is blank, or if an app is on the list, \"Disabled by admin\" is listed under the app name.\n\nIf the EMM console device policy is not set to allow connections to only approved application repositories, or on the managed Google Android 16 device the device policy is not set to allow connections to only approved application repositories, this is a finding."
+            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has only approved application repositories (DoW-approved commercial app repository, EMM server, and/or mobile application store).\n\nThis validation procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n\nOn the EMM console:\n\nCOBO and COPE:\n\n1. Open \"Set user restrictions\".\n2. Verify that \"Disallow install unknown sources\" is toggled to \"ON\".\n3. Verify that \"Disallow installs from unknown sources globally\" is toggled to \"ON\".\n\nOn the Google Android 16 device:\n\nCOBO and COPE:\n\n1. Open Settings >> Apps >> Special app access.\n2. Open \"Install unknown apps\".\n3. Ensure the list of apps is blank, or if an app is on the list, \"Disabled by admin\" is listed under the app name.\n\nIf the EMM console device policy is not set to allow connections to only approved application repositories, or on the managed Google Android 16 device the device policy is not set to allow connections to only approved application repositories, this is a finding."
           }
         }
       },
@@ -1792,12 +1792,12 @@
         "title": "PP-MDF-333060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276754r1140054_rule",
+          "+@id": "SV-276754r1262886_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-006600",
           "title": "Google Android 16 must be configured to enforce an application installation policy by specifying an application allowlist that restricts applications by the following characteristics: [selection: list of digital signatures, cryptographic hash values, names, application version].",
-          "description": "<VulnDiscussion>The application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications, or the mobile device (MD) must provide an alternate method of restricting user access/execution to core and preinstalled applications. \n\nCore application: Any application integrated into the operating system (OS) by the OS or MD vendors.\n\nPreinstalled application: Additional noncore applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nRequiring all authorized applications to be in an application allowlist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the allowlist. Failure to configure an application allowlist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DOD data accessible by these applications.\n\nThe application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core applications (included in the OS by the OS vendor) and preinstalled applications (provided by the MD vendor and wireless carrier), or the MD must provide an alternate method of restricting user access/execution to core and preinstalled applications.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications, or the mobile device (MD) must provide an alternate method of restricting user access/execution to core and preinstalled applications. \n\nCore application: Any application integrated into the operating system (OS) by the OS or MD vendors.\n\nPreinstalled application: Additional noncore applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nRequiring all authorized applications to be in an application allowlist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the allowlist. Failure to configure an application allowlist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoW data accessible by these applications.\n\nThe application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core applications (included in the OS by the OS vendor) and preinstalled applications (provided by the MD vendor and wireless carrier), or the MD must provide an alternate method of restricting user access/execution to core and preinstalled applications.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -1831,12 +1831,12 @@
         "title": "PP-MDF-333070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276755r1140057_rule",
+          "+@id": "SV-276755r1262889_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-006700",
-          "title": "Google Android 16 allowlist must be configured to not include applications with the following characteristics: \n- Backs up mobile device (MD) data to non-DOD cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DOD servers;\n- Voice assistant application if available when MD is locked;\n- Voice dialing application if available when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing;\n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs or printers;\n- Backs up own data to a remote system;\n- Renders TV shows and movies.",
-          "description": "<VulnDiscussion>Requiring all authorized applications to be in an application allowlist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the allowlist. Failure to configure an application allowlist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DOD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DOD data or have features with no known application in the DOD environment.\n\nApplication note: The application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications, or the MD must provide an alternate method of restricting user access/execution to core and preinstalled applications.\n\nCore application: Any application integrated into the operating system (OS) by the OS or MD vendors.\n\nPreinstalled application: Additional noncore applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Google Android 16 allowlist must be configured to not include applications with the following characteristics: \n- Backs up mobile device (MD) data to non-DoW cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DoW servers;\n- Voice assistant application if available when MD is locked;\n- Voice dialing application if available when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing;\n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs or printers;\n- Backs up own data to a remote system;\n- Renders TV shows and movies.",
+          "description": "<VulnDiscussion>Requiring all authorized applications to be in an application allowlist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the allowlist. Failure to configure an application allowlist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoW data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoW data or have features with no known application in the DoW environment.\n\nApplication note: The application allowlist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications, or the MD must provide an alternate method of restricting user access/execution to core and preinstalled applications.\n\nCore application: Any application integrated into the operating system (OS) by the OS or MD vendors.\n\nPreinstalled application: Additional noncore applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -1849,19 +1849,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Google Android 16 device application allowlist to exclude applications with the following characteristics:\n- Backs up MD data to non-DOD cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DOD servers;\n- Voice assistant application (if available) when MD is locked;\n- Voice dialing application (if available) when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing; \n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs, display screens (screen mirroring), or printers;\n- Backs up own data to a remote system;\n- Renders TV shows and movies.\n\nOn the EMM console:\n\n1. Go to the Android app catalog for managed Google Play.\n2. Before selecting an app, review the app details and privacy policy to ensure the app does not include prohibited characteristics.\n\nManaged Google Play is always an allowlisted App Store.",
-            "+@fixref": "F-80815r1140056_fix"
+            "+content": "Configure the Google Android 16 device application allowlist to exclude applications with the following characteristics:\n- Backs up MD data to non-DoW cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DoW servers;\n- Voice assistant application (if available) when MD is locked;\n- Voice dialing application (if available) when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing; \n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs, display screens (screen mirroring), or printers;\n- Backs up own data to a remote system;\n- Renders TV shows and movies.\n\nOn the EMM console:\n\n1. Go to the Android app catalog for managed Google Play.\n2. Before selecting an app, review the app details and privacy policy to ensure the app does not include prohibited characteristics.\n\nManaged Google Play is always an allowlisted App Store.",
+            "+@fixref": "F-80815r1262888_fix"
           },
           "fix": {
-            "+@id": "F-80815r1140056_fix"
+            "+@id": "F-80815r1262888_fix"
           },
           "check": {
-            "+@system": "C-80910r1140055_chk",
+            "+@system": "C-80910r1262887_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has an application allowlist configured and that the application allowlist does not include applications with the following characteristics:\n- Backs up MD data to non-DOD cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DOD servers;\n- Voice assistant application (if available) when MD is locked;\n- Voice dialing application (if available) when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing; \n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs, display screens (screen mirroring), or printers; \n- Backs up own data to a remote system.\n- Renders TV shows and movies.\n\nThis validation procedure is performed only on the EMM Administration Console.\n\nOn the EMM console:\n\n1. Review the list of selected Managed Google Play apps.\n2. Review the details and privacy policy of each selected app to ensure the app does not include prohibited characteristics.\n\nIf the EMM console device policy includes applications with unauthorized characteristics, this is a finding."
+            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has an application allowlist configured and that the application allowlist does not include applications with the following characteristics:\n- Backs up MD data to non-DoW cloud servers (including user and application access to cloud backup services);\n- Transmits MD diagnostic data to non-DoW servers;\n- Voice assistant application (if available) when MD is locked;\n- Voice dialing application (if available) when MD is locked;\n- Allows synchronization of data or applications between devices associated with user;\n- Payment processing; \n- Allows unencrypted (or encrypted but not FIPS 140-2/140-3 validated) data sharing with other MDs, display screens (screen mirroring), or printers; \n- Backs up own data to a remote system.\n- Renders TV shows and movies.\n\nThis validation procedure is performed only on the EMM Administration Console.\n\nOn the EMM console:\n\n1. Review the list of selected Managed Google Play apps.\n2. Review the details and privacy policy of each selected app to ensure the app does not include prohibited characteristics.\n\nIf the EMM console device policy includes applications with unauthorized characteristics, this is a finding."
           }
         }
       },
@@ -1870,12 +1870,12 @@
         "title": "PP-MDF-333070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276756r1140662_rule",
+          "+@id": "SV-276756r1262890_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-006750",
           "title": "Google Android 16 allowlist must be configured to not include artificial intelligence (AI) applications that process device data in the cloud, including Google Gemini.",
-          "description": "<VulnDiscussion>Sensitive DOD data could be exposed when an AI app processes device data in the cloud.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Sensitive DoW data could be exposed when an AI app processes device data in the cloud.\n\nSFR ID: FMT_SMF.1.1 #8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -1948,12 +1948,12 @@
         "title": "PP-MDF-333110",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276758r1140066_rule",
+          "+@id": "SV-276758r1262891_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-007200",
           "title": "Google Android 16 must be configured to disable trust agents.",
-          "description": "<VulnDiscussion>Trust agents allow a user to unlock a mobile device without entering a passcode when the mobile device is, for example, connected to a user-selected Bluetooth device or in a user-selected location. This technology would allow unauthorized users to have access to DOD sensitive data if compromised. By not permitting the use of nonpassword authentication mechanisms, users are forced to use passcodes that meet DOD passcode requirements.\n\nSFR ID: FMT_SMF.1.1 #22, FIA_UAU.5.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Trust agents allow a user to unlock a mobile device without entering a passcode when the mobile device is, for example, connected to a user-selected Bluetooth device or in a user-selected location. This technology would allow unauthorized users to have access to DoW sensitive data if compromised. By not permitting the use of nonpassword authentication mechanisms, users are forced to use passcodes that meet DoW passcode requirements.\n\nSFR ID: FMT_SMF.1.1 #22, FIA_UAU.5.1</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -1987,12 +1987,12 @@
         "title": "PP-MDF-333130",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276759r1140069_rule",
+          "+@id": "SV-276759r1262892_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-007400",
           "title": "Google Android 16 must be configured to disable developer modes.",
-          "description": "<VulnDiscussion>Developer modes expose features of the mobile operating system that are not available during standard operation. An adversary may leverage a vulnerability inherent in a developer mode to compromise the confidentiality, integrity, and availability of DOD sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #26</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Developer modes expose features of the mobile operating system that are not available during standard operation. An adversary may leverage a vulnerability inherent in a developer mode to compromise the confidentiality, integrity, and availability of DoW sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #26</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2026,12 +2026,12 @@
         "title": "PP-MDF-333160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276760r1140072_rule",
+          "+@id": "SV-276760r1262895_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "GOOG-16-007700",
-          "title": "Google Android 16 must be configured to display the DOD advisory warning message at startup or each time the user unlocks the device.",
-          "description": "<VulnDiscussion>Before granting access to the system, the mobile operating system is required to display the DOD-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DOD can audit and monitor the activities of mobile device users without legal restriction.\n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner must be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click-through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK.\"\n\nThe approved DOD text must be used exactly as required in the Knowledge Service referenced in DODI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nFor devices with severe character limitations, the banner text is:\n\nI've read & consent to terms in IS user agreem't.\n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF.1.1 #36</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Google Android 16 must be configured to display the DoW advisory warning message at startup or each time the user unlocks the device.",
+          "description": "<VulnDiscussion>Before granting access to the system, the mobile operating system is required to display the DoW-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DoW can audit and monitor the activities of mobile device users without legal restriction.\n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner must be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click-through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK.\"\n\nThe approved DoW text must be used exactly as required in the Knowledge Service referenced in DODI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nFor devices with severe character limitations, the banner text is:\n\nI've read & consent to terms in IS user agreem't.\n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF.1.1 #36</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2044,19 +2044,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the DOD warning banner by either of the following methods (required text is found in the Discussion):\n\n1. By placing the DOD warning banner text in the user agreement signed by each Google Android 16 device user (preferred method).\n2. By configuring the warning banner text on the EMM console and installing the banner on each Google Android 16 mobile device.\n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Lock screen message\".\n3. Enter the message.\n\nCOPE:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Personal Profile\".\n3. Select \"Lock screen message\".\n4. Enter the message.\n\nConfiguration API: setDeviceOwnerLockScreenInfo",
-            "+@fixref": "F-80820r1140071_fix"
+            "+content": "Configure the DoW warning banner by either of the following methods (required text is found in the Discussion):\n\n1. By placing the DoW warning banner text in the user agreement signed by each Google Android 16 device user (preferred method).\n2. By configuring the warning banner text on the EMM console and installing the banner on each Google Android 16 mobile device.\n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Lock screen message\".\n3. Enter the message.\n\nCOPE:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Personal Profile\".\n3. Select \"Lock screen message\".\n4. Enter the message.\n\nConfiguration API: setDeviceOwnerLockScreenInfo",
+            "+@fixref": "F-80820r1262894_fix"
           },
           "fix": {
-            "+@id": "F-80820r1140071_fix"
+            "+@id": "F-80820r1262894_fix"
           },
           "check": {
-            "+@system": "C-80915r1140070_chk",
+            "+@system": "C-80915r1262893_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The DOD warning banner can be displayed by either of the following methods (required text is found in the Discussion):\n\n1. By placing the DOD warning banner text in the user agreement signed by each managed Android 16 device user (preferred method).\n2. By configuring the warning banner text on the EMM console and installing the banner on each managed Android 16 mobile device.\n\nDetermine which method is used at the Google Android 16 device site and follow the appropriate validation procedure below.\n\nValidation Procedure for Method #1:\nReview the signed user agreements for several Google Android 16 device users and verify that the agreement includes the required DOD warning banner text.\n\nValidation Procedure for Method #2:\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Lock screen message\".\n3. Verify the message.\n\nCOPE:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Personal Profile\".\n3. Select \"Lock screen message\".\n4. Verify the message.\n\nIf, for Method #1, the required warning banner text is not on all signed user agreements reviewed; or for Method #2, the EMM console device policy is not set to display a warning banner with the appropriate designated wording; or on the managed Google Android 16 device, the device policy is not set to display a warning banner with the appropriate designated wording, this is a finding."
+            "check-content": "The DoW warning banner can be displayed by either of the following methods (required text is found in the Discussion):\n\n1. By placing the DoW warning banner text in the user agreement signed by each managed Android 16 device user (preferred method).\n2. By configuring the warning banner text on the EMM console and installing the banner on each managed Android 16 mobile device.\n\nDetermine which method is used at the Google Android 16 device site and follow the appropriate validation procedure below.\n\nValidation Procedure for Method #1:\nReview the signed user agreements for several Google Android 16 device users and verify that the agreement includes the required DoW warning banner text.\n\nValidation Procedure for Method #2:\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Lock screen message\".\n3. Verify the message.\n\nCOPE:\n\n1. Open \"Lock screen restrictions\".\n2. Select \"Personal Profile\".\n3. Select \"Lock screen message\".\n4. Verify the message.\n\nIf, for Method #1, the required warning banner text is not on all signed user agreements reviewed; or for Method #2, the EMM console device policy is not set to display a warning banner with the appropriate designated wording; or on the managed Google Android 16 device, the device policy is not set to display a warning banner with the appropriate designated wording, this is a finding."
           }
         }
       },
@@ -2104,7 +2104,7 @@
         "title": "PP-MDF-333230",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276762r1140078_rule",
+          "+@id": "SV-276762r1262897_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-008400",
@@ -2129,12 +2129,12 @@
             "+@id": "F-80822r1140077_fix"
           },
           "check": {
-            "+@system": "C-80917r1140076_chk",
+            "+@system": "C-80917r1262896_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has a USB mass storage mode and whether it has been disabled. \n\nThis validation procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"User restrictions\".\n2. Open \"Set user restrictions\".\n3. Verify that \"Disallow USB file transfer\" is toggled to \"ON\".\n\nCOPE:\n\n1. Open \"User restrictions\".\n2. Open \"Set user restrictions on parent\".\n3. Verify that \"Disallow USB file transfer\" is toggled to \"ON\".\n______________________________\n\nOn the managed Google Android 16 device:\n\n1. Plug a USB cable into the managed Google Android 16 device and connect to a non-DOD network-managed PC.\n2. Go to Settings >> Connected devices >> USB.\n3. Verify that \"No data transfer\" is selected.\n\nIf the EMM console device policy is not set to disable USB mass storage mode, or on the managed Google Android 16 device the device policy is not set to disable USB mass storage mode, this is a finding."
+            "check-content": "Review managed Google Android 16 device configuration settings to determine if the mobile device has a USB mass storage mode and whether it has been disabled. \n\nThis validation procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"User restrictions\".\n2. Open \"Set user restrictions\".\n3. Verify that \"Disallow USB file transfer\" is toggled to \"ON\".\n\nCOPE:\n\n1. Open \"User restrictions\".\n2. Open \"Set user restrictions on parent\".\n3. Verify that \"Disallow USB file transfer\" is toggled to \"ON\".\n______________________________\n\nOn the managed Google Android 16 device:\n\n1. Plug a USB cable into the managed Google Android 16 device and connect to a non-DoW network-managed PC.\n2. Go to Settings >> Connected devices >> USB.\n3. Verify that \"No data transfer\" is selected.\n\nIf the EMM console device policy is not set to disable USB mass storage mode, or on the managed Google Android 16 device the device policy is not set to disable USB mass storage mode, this is a finding."
           }
         }
       },
@@ -2182,12 +2182,12 @@
         "title": "PP-MDF-333250",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276764r1140084_rule",
+          "+@id": "SV-276764r1262898_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-008600",
           "title": "Google Android 16 must be configured to not allow backup of [all applications, configuration data] to remote systems.",
-          "description": "<VulnDiscussion>Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the mobile operating system. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DOD devices may synchronize DOD sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #40</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the mobile operating system. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DoW devices may synchronize DoW sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #40</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2221,7 +2221,7 @@
         "title": "PP-MDF-333260",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276765r1140087_rule",
+          "+@id": "SV-276765r1262901_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-008700",
@@ -2245,19 +2245,19 @@
             }
           ],
           "fixtext": {
-            "+content": "This is a UBE control.\n\nTrain users to not change the default Wi-Fi hotspot security setting: 15-character complex Wi-Fi hotspot preshared key (password) (\"WPA2/WPA3-Personal\" or WPA3-Personal\"). (GOOG-16-009800)\n\nIf the required preshared key is not set up, train users to use the following procedure to configure the required setting:\n\n1. Go to Settings >> Network & Internet >> Hotspot & tethering.\n2. Enable \"Wi-Fi hotspot\".\n3. On the left of the slide, tap on \"Wi-Fi Hotspot\" to bring up the configuration options.\n4. Click on the \"Security\" link and select either \"WPA2/WPA3-Personal\" or \"WPA3-Personal\".",
-            "+@fixref": "F-80825r1140086_fix"
+            "+content": "This is a UBE control.\n\nTrain users to not change the default Wi-Fi hotspot security setting: 15-character complex Wi-Fi hotspot preshared key (password) (\"WPA3-Personal\"). (GOOG-16-009800)\n\nIf the required preshared key is not set up, train users to use the following procedure to configure the required setting:\n\n1. Go to Settings >> Network & Internet >> Hotspot & tethering.\n2. Enable \"Wi-Fi hotspot\".\n3. Tap \"Wi-Fi Hotspot\" on the left of the slide to show the configuration options.\n4. Click the \"Security\" link and select \"WPA3-Personal\".",
+            "+@fixref": "F-80825r1262900_fix"
           },
           "fix": {
-            "+@id": "F-80825r1140086_fix"
+            "+@id": "F-80825r1262900_fix"
           },
           "check": {
-            "+@system": "C-80920r1140085_chk",
+            "+@system": "C-80920r1262899_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This is a User-Based Enforcement (UBE) control.\n\nCheck a sample of Pixel phones at the site and verify that the Wi-Fi hotspot preshared key (password) is set to \"WPA2/WPA3-Personal\" or \"WPA3-Personal\".\n\n1. Go to Settings >> Network & Internet >> Hotspot & tethering.\n2. Enable \"Wi-Fi hotspot\".\n3. On the left of the slide, tap on \"Wi-Fi Hotspot\" to bring up the configuration options.\n4. Click on the \"Security\" link and verify that either \"WPA2/WPA3-Personal\" or \"WPA3-Personal\" is selected.\n\nIf the Wi-Fi hotspot security is not set to \"WPA2/WPA3-Personal\" or \"WPA3-Personal\", this is a finding."
+            "check-content": "This is a User-Based Enforcement (UBE) control.\n\nCheck a sample of Pixel phones at the site and verify that the Wi-Fi hotspot preshared key (password) is set to \"WPA3-Personal\".\n\n1. Go to Settings >> Network & Internet >> Hotspot & tethering.\n2. Enable \"Wi-Fi hotspot\".\n3. Tap \"Wi-Fi Hotspot\" on the left of the slide to show the configuration options.\n4. Click the \"Security\" link and verify that \"WPA3-Personal\" is selected.\n\nIf the Wi-Fi hotspot security is not set to \"WPA3-Personal\", this is a finding."
           }
         }
       },
@@ -2266,12 +2266,12 @@
         "title": "PP-MDF-333290",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276766r1140090_rule",
+          "+@id": "SV-276766r1262902_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-009000",
           "title": "Google Android 16 must be configured to disable multiuser modes.",
-          "description": "<VulnDiscussion>Multiuser mode allows multiple users to share a mobile device by providing a degree of separation between user data. To date, no mobile device with multiuser mode features meets DOD requirements for access control, data separation, and nonrepudiation for user accounts. In addition, the MDFPP does not include design requirements for multiuser account services. Disabling multiuser mode mitigates the risk of not meeting DOD multiuser account security policies.\n\nSFR ID: FMT_SMF.1.1 #47a</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Multiuser mode allows multiple users to share a mobile device by providing a degree of separation between user data. To date, no mobile device with multiuser mode features meets DoW requirements for access control, data separation, and nonrepudiation for user accounts. In addition, the MDFPP does not include design requirements for multiuser account services. Disabling multiuser mode mitigates the risk of not meeting DoW multiuser account security policies.\n\nSFR ID: FMT_SMF.1.1 #47a</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2305,12 +2305,12 @@
         "title": "PP-MDF-333320",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276767r1140665_rule",
+          "+@id": "SV-276767r1262903_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "GOOG-16-009400",
           "title": "Google Android 16 must be configured to disable Bluetooth or configured via User Based Enforcement (UBE) to allow Bluetooth for only Headset Profile (HSP), Hands-Free Profile (HFP), and Serial Port Profile (SPP).",
-          "description": "<VulnDiscussion>Some Bluetooth profiles provide the capability for remote transfer of sensitive DOD data without encryption or otherwise do not meet DOD IT security policies and therefore must be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1/BLUETOOTH BT-8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Some Bluetooth profiles provide the capability for remote transfer of sensitive DoW data without encryption or otherwise do not meet DoW IT security policies and therefore must be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1/BLUETOOTH BT-8</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2350,12 +2350,12 @@
         "title": "PP-MDF-333330",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276768r1140096_rule",
+          "+@id": "SV-276768r1262904_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-009500",
           "title": "Google Android 16 must be configured to disable ad hoc wireless client-to-client connection capability.",
-          "description": "<VulnDiscussion>Ad hoc wireless client-to-client connections allow mobile devices to communicate with each other directly, circumventing network security policies and making the traffic invisible. This could allow the exposure of sensitive DOD data and increase the risk of downloading and installing malware on the DOD mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1/WLAN</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Ad hoc wireless client-to-client connections allow mobile devices to communicate with each other directly, circumventing network security policies and making the traffic invisible. This could allow the exposure of sensitive DoW data and increase the risk of downloading and installing malware on the DoW mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1/WLAN</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2389,12 +2389,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276769r1140099_rule",
+          "+@id": "SV-276769r1262906_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-009800",
           "title": "Google Android 16 users must complete required training.",
-          "description": "<VulnDiscussion>The security posture of Google devices requires the device user to configure several required policy rules on their device. User-Based Enforcement (UBE) is required for these controls. In addition, if the authorizing official (AO) has approved the use of an unmanaged personal space, the user must receive training on risks. If a user is not aware of their responsibilities and does not comply with UBE requirements, the security posture of the Google mobile device may become compromised, and DOD sensitive data may become compromised.\n\nSFR ID: NA</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The security posture of Google devices requires the device user to configure several required policy rules on their device. User-Based Enforcement (UBE) is required for these controls. In addition, if the authorizing official (AO) has approved the use of an unmanaged personal space, the user must receive training on risks. If a user is not aware of their responsibilities and does not comply with UBE requirements, the security posture of the Google mobile device may become compromised, and DoW sensitive data may become compromised.\n\nSFR ID: NA</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2407,11 +2407,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "All Google Android 16 device users must complete training on the following training topics (users must acknowledge that they have reviewed training via a signed User Agreement or similar written record): \n- Operational security concerns introduced by unmanaged applications/unmanaged personal space, including applications using global positioning system (GPS) tracking.\n- Need to ensure no DOD data is saved to the personal space or transmitted from a personal app (for example, from personal email). \n- If the Purebred key management app is used, users are responsible for maintaining positive control of their credentialed device at all times. The DOD PKI certificate policy requires subscribers to maintain positive control of the devices that contain private keys and report any loss of control so the credentials can be revoked. Upon device retirement, turn-in, or reassignment, ensure that a factory data reset is performed prior to device handoff. Follow mobility service provider decommissioning procedures as applicable.\n- How to configure the following UBE controls (users must configure the control) on the Google device: \n  **Secure use of Calendar Alarm.\n  **Local screen mirroring and mirroring procedures (authorized/not authorized for use). \n  **Do not upload DOD contacts via smart call and caller ID services.\n  **Do not configure a DOD network (work) VPN profile on any third-party VPN client installed in the personal space. \n  **If Bluetooth connections are approved for mobile device, types of allowed connections (for example, car hands-free but not Bluetooth wireless keyboard).\n  **How to perform a full device wipe.\n  **Use default Wi-Fi hotspot password: 15-character complex Wi-Fi hotspot preshared password enabled (\"WPA2/WPA3-personal\")\n- AO guidance on acceptable use and restrictions, if any, on downloading and installing personal apps and data (music, photos, etc.) in the Google device personal space.",
-            "+@fixref": "F-80829r1140098_fix"
+            "+content": "All Google Android 16 device users must complete training on the following training topics (users must acknowledge that they have reviewed training via a signed User Agreement or similar written record): \n- Operational security concerns introduced by unmanaged applications/unmanaged personal space, including applications using global positioning system (GPS) tracking.\n- Need to ensure no DoW data is saved to the personal space or transmitted from a personal app (for example, from personal email). \n- If the Purebred key management app is used, users are responsible for maintaining positive control of their credentialed device at all times. The DoW PKI certificate policy requires subscribers to maintain positive control of the devices that contain private keys and report any loss of control so the credentials can be revoked. Upon device retirement, turn-in, or reassignment, ensure that a factory data reset is performed prior to device handoff. Follow mobility service provider decommissioning procedures as applicable.\n- How to configure the following UBE controls (users must configure the control) on the Google device: \n  **Secure use of Calendar Alarm.\n  **Local screen mirroring and mirroring procedures (authorized/not authorized for use). \n  **Do not upload DoW contacts via smart call and caller ID services.\n  **Do not configure a DoW network (work) VPN profile on any third-party VPN client installed in the personal space. \n  **If Bluetooth connections are approved for mobile device, types of allowed connections (for example, car hands-free but not Bluetooth wireless keyboard).\n  **How to perform a full device wipe.\n  **Use default Wi-Fi hotspot password: 15-character complex Wi-Fi hotspot preshared password enabled (\"WPA3-personal\")\n- AO guidance on acceptable use and restrictions, if any, on downloading and installing personal apps and data (music, photos, etc.) in the Google device personal space.",
+            "+@fixref": "F-80829r1262905_fix"
           },
           "fix": {
-            "+@id": "F-80829r1140098_fix"
+            "+@id": "F-80829r1262905_fix"
           },
           "check": {
             "+@system": "C-80924r1140097_chk",
@@ -2467,12 +2467,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276771r1140105_rule",
+          "+@id": "SV-276771r1262908_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-009950",
           "title": "Google Android 16 must be configured to enforce a password for Wi-Fi and Bluetooth hotspot if approved for use by the authorizing official (AO). If not approved for use, Wi-Fi and Bluetooth hotspot must be disabled.",
-          "description": "<VulnDiscussion>Wi-Fi and Bluetooth hotspot use may increase the risk for exposing sensitive DOD data for some use cases; therefore, it should be disabled unless approved by the AO. When a DOD mobile phone is used as a Wi-Fi or Bluetooth hotspot, a hotspot password must be enabled; otherwise, unauthorized devices could connect to the DOD hotspot, which may increase the risk of exposure of sensitive DOD data and/or a performance degradation of the DOD mobile phone.\n\nSFR ID: FMT_SMF_EXT.1.1 / WLAN #3</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Wi-Fi and Bluetooth hotspot use may increase the risk for exposing sensitive DoW data for some use cases; therefore, it should be disabled unless approved by the AO. When a DoW mobile phone is used as a Wi-Fi or Bluetooth hotspot, a hotspot password must be enabled; otherwise, unauthorized devices could connect to the DoW hotspot, which may increase the risk of exposure of sensitive DoW data and/or a performance degradation of the DoW mobile phone.\n\nSFR ID: FMT_SMF_EXT.1.1 / WLAN #3</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2485,11 +2485,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Disable hotspot functions on the DOD phone if not approved by the AO. \n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Set user restrictions\".\n2. Toggle \"Disallow config tethering\" to \"ON\".\n\nCOPE:\n\n1. Open \"Set user restrictions on parent\".\n2. Toggle \"Disallow config tethering\" to \"ON\".\n\nIf the AO has approved the use of Wi-Fi and Bluetooth hotspots, train the user to not change the default hotspot password (refer to GOOG-16-009800). By default, when Wi-Fi Hotspot is enabled, a 15-character complex password is automatically configured for the hotspot.\n\nConfiguration API: DISALLOW_CONFIG_TETHERING",
-            "+@fixref": "F-80831r1140104_fix"
+            "+content": "Disable hotspot functions on the DoW phone if not approved by the AO. \n\nOn the EMM console:\n\nCOBO:\n\n1. Open \"Set user restrictions\".\n2. Toggle \"Disallow config tethering\" to \"ON\".\n\nCOPE:\n\n1. Open \"Set user restrictions on parent\".\n2. Toggle \"Disallow config tethering\" to \"ON\".\n\nIf the AO has approved the use of Wi-Fi and Bluetooth hotspots, train the user to not change the default hotspot password (refer to GOOG-16-009800). By default, when Wi-Fi Hotspot is enabled, a 15-character complex password is automatically configured for the hotspot.\n\nConfiguration API: DISALLOW_CONFIG_TETHERING",
+            "+@fixref": "F-80831r1262907_fix"
           },
           "fix": {
-            "+@id": "F-80831r1140104_fix"
+            "+@id": "F-80831r1262907_fix"
           },
           "check": {
             "+@system": "C-80926r1140103_chk",
@@ -2506,12 +2506,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276772r1140108_rule",
+          "+@id": "SV-276772r1262911_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-010000",
-          "title": "Google Android 16 must have the DOD root and intermediate PKI certificates installed.",
-          "description": "<VulnDiscussion>DOD root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the root and intermediate certificates are not available, an adversary could falsely sign a certificate in such a way that it could not be detected. Providing access to the DOD root and intermediate PKI certificates greatly diminishes the risk of this attack.\n\nSFR ID: FMT_SMF.1.1 #11</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Google Android 16 must have the DoW root and intermediate PKI certificates installed.",
+          "description": "<VulnDiscussion>DoW root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the root and intermediate certificates are not available, an adversary could falsely sign a certificate in such a way that it could not be detected. Providing access to the DoW root and intermediate PKI certificates greatly diminishes the risk of this attack.\n\nSFR ID: FMT_SMF.1.1 #11</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2524,19 +2524,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the Google Android 16 device to install DOD root and intermediate certificates. \n \nOn the EMM console, upload DOD root and intermediate certificates as part of a device and/or work profile.\n \nThe current DOD root and intermediate PKI certificates may be obtained in self-extracting zip files at http://cyber.mil/pki-pke (for NIPRNet).\n\nConfiguration API: installCaCert()",
-            "+@fixref": "F-80832r1140107_fix"
+            "+content": "Configure the Google Android 16 device to install DoW root and intermediate certificates. \n \nOn the EMM console, upload DoW root and intermediate certificates as part of a device and/or work profile.\n \nThe current DoW root and intermediate PKI certificates may be obtained in self-extracting zip files at http://cyber.mil/pki-pke (for NIPRNet).\n\nConfiguration API: installCaCert()",
+            "+@fixref": "F-80832r1262910_fix"
           },
           "fix": {
-            "+@id": "F-80832r1140107_fix"
+            "+@id": "F-80832r1262910_fix"
           },
           "check": {
-            "+@system": "C-80927r1140106_chk",
+            "+@system": "C-80927r1262909_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review device configuration settings to confirm that the DOD root and intermediate PKI certificates are installed.\n \nThis procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n \nThe current DOD root and intermediate PKI certificates may be obtained in self-extracting zip files at http://cyber.mil/pki-pke (for NIPRNet). \n \nOn the EMM console, verify that the DOD root and intermediate certificates are part of a device and/or work profile that is being pushed down to the devices.\n \nOn the managed Google Android 16 device: \n\n1. Open Settings.\n2. Tap \"Security & privacy\".\n3. Tap \"Advanced\".\n4. Tap \"More security & privacy\".\n5. Tap \"Encryption & credentials\".\n6. Tap \"Trusted credentials\".\n7. Verify that DOD root and intermediate PKI certificates are listed under the User tab in the Work section.\n \nIf on the EMM console the DOD root and intermediate certificates are not listed in a profile, or the managed Android 16 device does not list the DOD root and intermediate certificates under the user tab, this is a finding."
+            "check-content": "Review device configuration settings to confirm that the DoW root and intermediate PKI certificates are installed.\n \nThis procedure is performed on both the EMM Administration Console and the managed Google Android 16 device. \n \nThe current DoW root and intermediate PKI certificates may be obtained in self-extracting zip files at http://cyber.mil/pki-pke (for NIPRNet). \n \nOn the EMM console, verify that the DoW root and intermediate certificates are part of a device and/or work profile that is being pushed down to the devices.\n \nOn the managed Google Android 16 device: \n\n1. Open Settings.\n2. Tap \"Security & privacy\".\n3. Tap \"Advanced\".\n4. Tap \"More security & privacy\".\n5. Tap \"Encryption & credentials\".\n6. Tap \"Trusted credentials\".\n7. Verify that DoW root and intermediate PKI certificates are listed under the User tab in the Work section.\n \nIf on the EMM console the DoW root and intermediate certificates are not listed in a profile, or the managed Android 16 device does not list the DoW root and intermediate certificates under the user tab, this is a finding."
           }
         }
       },
@@ -2545,12 +2545,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276773r1140111_rule",
+          "+@id": "SV-276773r1262912_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-010200",
           "title": "The Google Android 16 work profile must be configured to enforce the system application disable list.",
-          "description": "<VulnDiscussion>The system application disable list controls user access to/execution of all core and preinstalled applications. \n \nCore application: Any application integrated into Google Android 16 by Google. \n \nPreinstalled application: Additional noncore applications included in the Google Android 16 build by Google or the wireless carrier. \n \nSome system applications can compromise DOD data or upload users' information to non-DOD-approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DOD data or DOD user information. \n \nThe site administrator must analyze all preinstalled applications on the device and disable all applications not approved for DOD use by configuring the system application disable list.\n\nSFR ID: FMT_SMF.1.1 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The system application disable list controls user access to/execution of all core and preinstalled applications. \n \nCore application: Any application integrated into Google Android 16 by Google. \n \nPreinstalled application: Additional noncore applications included in the Google Android 16 build by Google or the wireless carrier. \n \nSome system applications can compromise DoW data or upload users' information to non-DoW-approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DoW data or DoW user information. \n \nThe site administrator must analyze all preinstalled applications on the device and disable all applications not approved for DoW use by configuring the system application disable list.\n\nSFR ID: FMT_SMF.1.1 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2623,12 +2623,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276775r1140673_rule",
+          "+@id": "SV-276775r1262913_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "GOOG-16-010500",
           "title": "The Google Android device must be configured to disable Wi-Fi Aware for Work Profile apps.",
-          "description": "<VulnDiscussion>Wi-Fi Aware allows direct connections between nearby devices for fast data transfer, video streaming, and multiplayer gaming. It allows full peer-to-peer device discovery and communication where two or more devices are publishing and/or subscribing to the same known service name. There is risk that sensitive DOD information could be transferred from a DOD mobile device to a non-DOD device or from Work Profile apps on a DOD device to Personal Profile apps on a non-DOD device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Wi-Fi Aware allows direct connections between nearby devices for fast data transfer, video streaming, and multiplayer gaming. It allows full peer-to-peer device discovery and communication where two or more devices are publishing and/or subscribing to the same known service name. There is risk that sensitive DoW information could be transferred from a DoW mobile device to a non-DoW device or from Work Profile apps on a DoW device to Personal Profile apps on a non-DoW device.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2779,12 +2779,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276780r1140132_rule",
+          "+@id": "SV-276780r1262914_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-012200",
           "title": "Google Android 16 must be configured to disable all data signaling over [assignment: list of externally accessible hardware ports (for example, USB)].",
-          "description": "<VulnDiscussion>If a user is able to configure the security setting, the user could inadvertently or maliciously set it to a value that poses unacceptable risk to DOD information systems. An adversary could exploit vulnerabilities created by the weaker configuration to compromise DOD sensitive information.\n\nSFR ID: FMT_MOF_EXT.1.2 #24</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If a user is able to configure the security setting, the user could inadvertently or maliciously set it to a value that poses unacceptable risk to DoW information systems. An adversary could exploit vulnerabilities created by the weaker configuration to compromise DoW sensitive information.\n\nSFR ID: FMT_MOF_EXT.1.2 #24</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2818,12 +2818,12 @@
         "title": "PP-MDF-333350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276781r1140135_rule",
+          "+@id": "SV-276781r1262917_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-012300",
-          "title": "Google Android 16 must allow only the administrator (EMM) to install/remove DOD root and intermediate PKI certificates.",
-          "description": "<VulnDiscussion>DOD root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the user is allowed to remove root and intermediate certificates, the user could allow an adversary to falsely sign a certificate in such a way that it could not be detected. Restricting the ability to remove DOD root and intermediate PKI certificates to the administrator mitigates this risk.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Google Android 16 must allow only the administrator (EMM) to install/remove DoW root and intermediate PKI certificates.",
+          "description": "<VulnDiscussion>DoW root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the user is allowed to remove root and intermediate certificates, the user could allow an adversary to falsely sign a certificate in such a way that it could not be detected. Restricting the ability to remove DoW root and intermediate PKI certificates to the administrator mitigates this risk.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2836,19 +2836,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure Google Android 16 device to prevent a user from removing DOD root and intermediate PKI certificates.\n\nOn the EMM console:\n\n1. Open \"Set user restrictions\".\n2. Toggle \"Disallow config credentials\" to \"ON\".\n\nConfiguration API: DISALLOW_CONFIG_CREDENTIALS",
-            "+@fixref": "F-80841r1140134_fix"
+            "+content": "Configure Google Android 16 device to prevent a user from removing DoW root and intermediate PKI certificates.\n\nOn the EMM console:\n\n1. Open \"Set user restrictions\".\n2. Toggle \"Disallow config credentials\" to \"ON\".\n\nConfiguration API: DISALLOW_CONFIG_CREDENTIALS",
+            "+@fixref": "F-80841r1262916_fix"
           },
           "fix": {
-            "+@id": "F-80841r1140134_fix"
+            "+@id": "F-80841r1262916_fix"
           },
           "check": {
-            "+@system": "C-80936r1140133_chk",
+            "+@system": "C-80936r1262915_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the device configuration to confirm that the user is unable to remove DOD root and intermediate PKI certificates.\n\nOn the EMM console:\n\n1. Open \"Set user restrictions\".\n2. Verify that \"Disallow config credentials\" is toggled to \"ON\".\n\nOn the Google Android 16 device:\n\n1. Open Settings.\n2. Tap \"Security & privacy\".\n3. Tap \"More security & privacy\".\n4. Tap \"Encryption & credentials\".\n5. Tap \"Trusted credentials\".\n6. Verify that the user is unable to untrust or remove any work certificates.\n \nIf on the Google Android 16 device the user is able to remove certificates, this is a finding."
+            "check-content": "Review the device configuration to confirm that the user is unable to remove DoW root and intermediate PKI certificates.\n\nOn the EMM console:\n\n1. Open \"Set user restrictions\".\n2. Verify that \"Disallow config credentials\" is toggled to \"ON\".\n\nOn the Google Android 16 device:\n\n1. Open Settings.\n2. Tap \"Security & privacy\".\n3. Tap \"More security & privacy\".\n4. Tap \"Encryption & credentials\".\n5. Tap \"Trusted credentials\".\n6. Verify that the user is unable to untrust or remove any work certificates.\n \nIf on the Google Android 16 device the user is able to remove certificates, this is a finding."
           }
         }
       },
@@ -2857,12 +2857,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276782r1140138_rule",
+          "+@id": "SV-276782r1262919_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "GOOG-16-012400",
           "title": "Google Android 16 must allow only the administrator (MDM) to perform the following management function: Disable Phone Hub.",
-          "description": "<VulnDiscussion>It may be possible to transfer work profile data on a DOD Android device to an unauthorized Chromebook if the user has the same Google Account set up on the Chromebook and in the work profile on the Android device. This may result in the exposure of sensitive DOD data.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>It may be possible to transfer work profile data on a DoW Android device to an unauthorized Chromebook if the user has the same Google Account set up on the Chromebook and in the work profile on the Android device. This may result in the exposure of sensitive DoW data.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2882,12 +2882,12 @@
             "+@id": "F-80842r1140137_fix"
           },
           "check": {
-            "+@system": "C-80937r1140136_chk",
+            "+@system": "C-80937r1262918_chk",
             "check-content-ref": {
               "+@href": "Google_Android_16_COBO_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the EMM configuration to confirm phone hub has been disabled.\n\nOn the management tool:\n\n1. Open \"Nearby notification streaming policy\".\n2. Verify that \"Nearby notification streaming policy\" is set to \"Disabled\".\n3. Open \"Nearby app streaming policy\".\n4. Verify that \"Nearby app streaming policy\" is set to \"Disabled\".\n\nIf on the management tool the \"Nearby Streaming Policy\" is not set to \"Disabled\" and \"Nearby app streaming policy\" is not set to \"Disabled\", this is a finding.\n\nNote: From a Chromebook, if a device is connected to the Phone Hub, try to set up the Notifications. It will fail to connect to the device to complete the setup if Phone Hub has been disabled on the DOD Android device."
+            "check-content": "Review the EMM configuration to confirm phone hub has been disabled.\n\nOn the management tool:\n\n1. Open \"Nearby notification streaming policy\".\n2. Verify that \"Nearby notification streaming policy\" is set to \"Disabled\".\n3. Open \"Nearby app streaming policy\".\n4. Verify that \"Nearby app streaming policy\" is set to \"Disabled\".\n\nIf on the management tool the \"Nearby Streaming Policy\" is not set to \"Disabled\" and \"Nearby app streaming policy\" is not set to \"Disabled\", this is a finding.\n\nNote: From a Chromebook, if a device is connected to the Phone Hub, try to set up the Notifications. It will fail to connect to the device to complete the setup if Phone Hub has been disabled on the DoW Android device."
           }
         }
       },
@@ -2896,12 +2896,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276783r1140141_rule",
+          "+@id": "SV-276783r1262920_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "GOOG-16-012500",
           "title": "Google Android 16 must be configured to disable \"Private Space\" use.",
-          "description": "<VulnDiscussion>Private Space is an Android feature that provides a separate encrypted container on the mobile device. Apps in Private Space show up in a separate container in the launcher and are hidden from the \"Recents\" view, notifications, settings, and other apps when the private space is locked. In addition, an MDM server allowlist or blocklist cannot control the installation of apps into Private Space. Malware and other unauthorized apps could be installed on a DOD mobile device, which could lead to the compromise of DOD sensitive information or to an attack on the DOD network.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Private Space is an Android feature that provides a separate encrypted container on the mobile device. Apps in Private Space show up in a separate container in the launcher and are hidden from the \"Recents\" view, notifications, settings, and other apps when the private space is locked. In addition, an MDM server allowlist or blocklist cannot control the installation of apps into Private Space. Malware and other unauthorized apps could be installed on a DoW mobile device, which could lead to the compromise of DoW sensitive information or to an attack on the DoW network.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2935,12 +2935,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276784r1183777_rule",
+          "+@id": "SV-276784r1262921_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-013000",
           "title": "Google Android 16 must disable the user's ability to wipe the device.",
-          "description": "<VulnDiscussion>This feature must be disabled to comply with DOD electronic records retention requirements for mobile devices. Otherwise, mobile device users could wipe the device, which would violate DOD policy.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This feature must be disabled to comply with DoW electronic records retention requirements for mobile devices. Otherwise, mobile device users could wipe the device, which would violate DoW policy.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -2974,12 +2974,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276786r1140150_rule",
+          "+@id": "SV-276786r1262922_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "GOOG-16-013200",
           "title": "Google Android 16 must disable wireless printing.",
-          "description": "<VulnDiscussion>Wireless printing allows the printing of sensitive DOD documents to non-DOD controlled printers, which may lead to the exposure of sensitive DOD information.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Wireless printing allows the printing of sensitive DoW documents to non-DoW controlled printers, which may lead to the exposure of sensitive DoW information.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -3013,12 +3013,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276787r1140153_rule",
+          "+@id": "SV-276787r1262923_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "GOOG-16-013300",
           "title": "Google Android 16 must disable screen capture.",
-          "description": "<VulnDiscussion>The screen capture feature could lead to the exposure of sensitive DOD information.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The screen capture feature could lead to the exposure of sensitive DoW information.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -3052,12 +3052,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276788r1140156_rule",
+          "+@id": "SV-276788r1262924_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-013400",
           "title": "Google Android 16 devices must have a Mobile Threat Detection (MTD) app installed.",
-          "description": "<VulnDiscussion>DOD mobile devices are in constant risk of cyber threats. MTD apps mitigate these risks by providing real-time threat detection, malware prevention, and vulnerability analysis.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DoW mobile devices are in constant risk of cyber threats. MTD apps mitigate these risks by providing real-time threat detection, malware prevention, and vulnerability analysis.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",
@@ -3091,12 +3091,12 @@
         "title": "PP-MDF-993300",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-276789r1140159_rule",
+          "+@id": "SV-276789r1262925_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "GOOG-16-013500",
           "title": "Google Android 16 must implement the management setting: disable Camera.",
-          "description": "<VulnDiscussion>Authorizing official (AO) approval is required before the mobile device camera can be enabled for a specific user or group of users, based on a risk assessment of the operational environment. Camera use may lead to the exposure of sensitive DOD information in some operational environments.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authorizing official (AO) approval is required before the mobile device camera can be enabled for a specific user or group of users, based on a risk assessment of the operational environment. Camera use may lead to the exposure of sensitive DoW information in some operational environments.\n\nSFR ID: FMT_MOF_EXT.1.2 #47</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Google Android 16 COBO",
             "dc:publisher": "DISA",

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-24"
+      "+@date": "2026-08-27"
     },
     "title": "Nutanix Acropolis Application Server Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Jan 2026",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1234,7 +1234,7 @@
         "title": "SRG-APP-000001-AS-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279415r1191367_rule",
+          "+@id": "SV-279415r1265194_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000001",
@@ -1273,7 +1273,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279416r1191034_rule",
+          "+@id": "SV-279416r1265195_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000002",
@@ -1312,7 +1312,7 @@
         "title": "SRG-APP-000014-AS-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279418r1191040_rule",
+          "+@id": "SV-279418r1265198_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000004",
@@ -1336,19 +1336,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Import a DOD PKI-issued TLS certificate.\n\n1. Click the gear icon in the upper-right corner.\n2. Navigate to \"SSL Certificate\".\n3. Select the option to import certificate and follow the prompts.",
-            "+@fixref": "F-83876r1191039_fix"
+            "+content": "Import a DoW PKI-issued TLS certificate.\n\n1. Click the gear icon in the upper-right corner.\n2. Navigate to \"SSL Certificate\".\n3. Select the option to import certificate and follow the prompts.",
+            "+@fixref": "F-83876r1265197_fix"
           },
           "fix": {
-            "+@id": "F-83876r1191039_fix"
+            "+@id": "F-83876r1265197_fix"
           },
           "check": {
-            "+@system": "C-83971r1191038_chk",
+            "+@system": "C-83971r1265196_chk",
             "check-content-ref": {
               "+@href": "Nutanix_Acropolis_Application_Server__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Signing Algorithm of the current TLS certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to \"SSL Certificate\".\n\nIf there is no DOD TLS certificate loaded, this is a finding."
+            "check-content": "Verify the Signing Algorithm of the current TLS certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to \"SSL Certificate\".\n\nIf there is no DoW TLS certificate loaded, this is a finding."
           }
         }
       },
@@ -1357,7 +1357,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279421r1192347_rule",
+          "+@id": "SV-279421r1265199_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000009",
@@ -1402,12 +1402,12 @@
         "title": "SRG-APP-000068-AS-000035",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279422r1191052_rule",
+          "+@id": "SV-279422r1265202_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000011",
-          "title": "Nutanix AOS server management interface must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.",
-          "description": "<VulnDiscussion>Application servers are required to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system management interface, providing privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance that states that: \n\n(i) users are accessing a U.S. Government information system; \n(ii) system usage may be monitored, recorded, and subject to audit; \n(iii) unauthorized use of the system is prohibited and subject to criminal and civil penalties; and \n(iv) using the system indicates consent to monitoring and recording.\n\nSystem use notification messages can be implemented in the form of warning banners displayed when individuals log on to the information system. \n\nSystem use notification is intended only for information system access including an interactive logon interface with a human user and is not required when an interactive interface does not exist. \n\nUse this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner must be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nSatisfies: SRG-APP-000068-AS-000035, SRG-APP-000069-AS-000036</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Nutanix AOS server management interface must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system.",
+          "description": "<VulnDiscussion>Application servers are required to display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system management interface, providing privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance that states that: \n\n(i) users are accessing a U.S. Government information system; \n(ii) system usage may be monitored, recorded, and subject to audit; \n(iii) unauthorized use of the system is prohibited and subject to criminal and civil penalties; and \n(iv) using the system indicates consent to monitoring and recording.\n\nSystem use notification messages can be implemented in the form of warning banners displayed when individuals log on to the information system. \n\nSystem use notification is intended only for information system access including an interactive logon interface with a human user and is not required when an interactive interface does not exist. \n\nUse this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner must be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nSatisfies: SRG-APP-000068-AS-000035, SRG-APP-000069-AS-000036</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Nutanix Acropolis Application Server",
             "dc:publisher": "DISA",
@@ -1426,19 +1426,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Nutanix AOS Prism Element WebUI to display the Standard Mandatory DOD Notice and Consent Banner.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\".\n4. Set the Welcome Banner to use the DOD banner text below.\n5. Check \"Enable Banner\".\n6. Click \"Save\".\n\nStandard Mandatory DOD Notice and Consent Banner:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
-            "+@fixref": "F-83880r1191051_fix"
+            "+content": "Configure the Nutanix AOS Prism Element WebUI to display the Standard Mandatory DoW Notice and Consent Banner.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\".\n4. Set the Welcome Banner to use the DoW banner text below.\n5. Check \"Enable Banner\".\n6. Click \"Save\".\n\nStandard Mandatory DoW Notice and Consent Banner:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+            "+@fixref": "F-83880r1265201_fix"
           },
           "fix": {
-            "+@id": "F-83880r1191051_fix"
+            "+@id": "F-83880r1265201_fix"
           },
           "check": {
-            "+@system": "C-83975r1191050_chk",
+            "+@system": "C-83975r1265200_chk",
             "check-content-ref": {
               "+@href": "Nutanix_Acropolis_Application_Server__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Prism WebUI \"Welcome Banner\" is enabled.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\".\n4. Verify the \"Enable Banner\" box is selected.\n\nIf the \"Enable Banner\" box is not checked, this is a finding.\n\nConfirm the Nutanix AOS Prism WebUI is set to display the Standard Mandatory DOD Notice and Consent Banner.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\" and enter the following text exactly as presented below.\n \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nIf the Welcome Banner is not configured with the Standard Mandatory DOD Notice and Consent Banner, this is a finding."
+            "check-content": "Verify the Prism WebUI \"Welcome Banner\" is enabled.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\".\n4. Verify the \"Enable Banner\" box is selected.\n\nIf the \"Enable Banner\" box is not checked, this is a finding.\n\nConfirm the Nutanix AOS Prism WebUI is set to display the Standard Mandatory DoW Notice and Consent Banner.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the \"Welcome Banner\" and enter the following text exactly as presented below.\n \nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nIf the Welcome Banner is not configured with the Standard Mandatory DoW Notice and Consent Banner, this is a finding."
           }
         }
       },
@@ -1447,7 +1447,7 @@
         "title": "SRG-APP-000080-AS-000045",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279423r1191055_rule",
+          "+@id": "SV-279423r1265203_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000013",
@@ -1486,7 +1486,7 @@
         "title": "SRG-APP-000358-AS-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279424r1191058_rule",
+          "+@id": "SV-279424r1265204_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000014",
@@ -1525,7 +1525,7 @@
         "title": "SRG-APP-000359-AS-000065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279425r1192580_rule",
+          "+@id": "SV-279425r1265205_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000016",
@@ -1574,7 +1574,7 @@
         "title": "SRG-APP-000116-AS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279426r1191064_rule",
+          "+@id": "SV-279426r1265206_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000019",
@@ -1613,7 +1613,7 @@
         "title": "SRG-APP-000118-AS-000078",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279427r1191067_rule",
+          "+@id": "SV-279427r1265207_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000020",
@@ -1662,7 +1662,7 @@
         "title": "SRG-APP-000795-AS-000130",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279430r1191372_rule",
+          "+@id": "SV-279430r1265208_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000023",
@@ -1701,7 +1701,7 @@
         "title": "SRG-APP-000380-AS-000088",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279431r1191079_rule",
+          "+@id": "SV-279431r1265209_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000024",
@@ -1746,7 +1746,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279433r1191374_rule",
+          "+@id": "SV-279433r1265210_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000027",
@@ -1785,7 +1785,7 @@
         "title": "SRG-APP-000149-AS-000102",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279434r1192622_rule",
+          "+@id": "SV-279434r1265213_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "NXAC-AS-000028",
@@ -1825,19 +1825,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Nutanix AOS to use a centralized AAA server that uses DOD PKI to authenticate individual users.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the Authentication settings. \n4. Select the \"Configure Service Account\" check box and then complete the following in the indicated fields:\na. Select the authentication directory that contains the CAC users to be authenticated. This list includes the directories configured on the Directory List tab.\nb. Service Username: Enter the username in the username@domain.com format the web console will use to log in to the Active Directory.\nc. Service Password: Enter the password for the service username.\nd. Click \"Enable CAC\".",
-            "+@fixref": "F-83892r1191087_fix"
+            "+content": "Configure the Nutanix AOS to use a centralized AAA server that uses DoW PKI to authenticate individual users.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the Authentication settings. \n4. Select the \"Configure Service Account\" check box and then complete the following in the indicated fields:\na. Select the authentication directory that contains the CAC users to be authenticated. This list includes the directories configured on the Directory List tab.\nb. Service Username: Enter the username in the username@domain.com format the web console will use to log in to the Active Directory.\nc. Service Password: Enter the password for the service username.\nd. Click \"Enable CAC\".",
+            "+@fixref": "F-83892r1265212_fix"
           },
           "fix": {
-            "+@id": "F-83892r1191087_fix"
+            "+@id": "F-83892r1265212_fix"
           },
           "check": {
-            "+@system": "C-83987r1191086_chk",
+            "+@system": "C-83987r1265211_chk",
             "check-content-ref": {
               "+@href": "Nutanix_Acropolis_Application_Server__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Nutanix AOS uses a centralized AAA server that uses DOD PKI to authenticate individual users.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the Authentication settings.\n\nIf CAC authentication is not enabled, this is a finding."
+            "check-content": "Verify the Nutanix AOS uses a centralized AAA server that uses DoW PKI to authenticate individual users.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the Authentication settings.\n\nIf CAC authentication is not enabled, this is a finding."
           }
         }
       },
@@ -1846,7 +1846,7 @@
         "title": "SRG-APP-000151-AS-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279435r1191091_rule",
+          "+@id": "SV-279435r1265214_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "NXAC-AS-000029",
@@ -1885,7 +1885,7 @@
         "title": "SRG-APP-000153-AS-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279438r1191100_rule",
+          "+@id": "SV-279438r1265215_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000032",
@@ -1924,7 +1924,7 @@
         "title": "SRG-APP-000825-AS-000180",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279439r1191103_rule",
+          "+@id": "SV-279439r1265216_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000034",
@@ -1969,7 +1969,7 @@
         "title": "SRG-APP-000172-AS-000121",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279440r1191106_rule",
+          "+@id": "SV-279440r1265217_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000035",
@@ -2008,7 +2008,7 @@
         "title": "SRG-APP-000400-AS-000246",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279441r1191109_rule",
+          "+@id": "SV-279441r1265218_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000036",
@@ -2047,7 +2047,7 @@
         "title": "SRG-APP-000175-AS-000124",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279442r1192581_rule",
+          "+@id": "SV-279442r1265219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000038",
@@ -2086,7 +2086,7 @@
         "title": "SRG-APP-000404-AS-000249",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279443r1192354_rule",
+          "+@id": "SV-279443r1265220_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000042",
@@ -2125,7 +2125,7 @@
         "title": "SRG-APP-000405-AS-000250",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279444r1192356_rule",
+          "+@id": "SV-279444r1265221_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000043",
@@ -2164,12 +2164,12 @@
         "title": "SRG-APP-000427-AS-000264",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279445r1192540_rule",
+          "+@id": "SV-279445r1265224_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000045",
-          "title": "Nutanix AOS must be configured to use DOD PKI-issued certificates.",
-          "description": "<VulnDiscussion>Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DOD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DOD-approved CA, trust of this CA has not been established.\n\nThe DOD will only accept PKI certificates obtained from a DOD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes using SSL/TLS certificates. The application server must only allow using DOD PKI-established certificate authorities for verification.\n\nSatisfies: SRG-APP-000427-AS-000264, SRG-APP-000514-AS-000137</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Nutanix AOS must be configured to use DoW PKI-issued certificates.",
+          "description": "<VulnDiscussion>Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoW systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoW-approved CA, trust of this CA has not been established.\n\nThe DoW will only accept PKI certificates obtained from a DoW-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes using SSL/TLS certificates. The application server must only allow using DoW PKI-established certificate authorities for verification.\n\nSatisfies: SRG-APP-000427-AS-000264, SRG-APP-000514-AS-000137</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Nutanix Acropolis Application Server",
             "dc:publisher": "DISA",
@@ -2188,19 +2188,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the Nutanix VM application server to use a trusted DOD root CA-signed certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the SSL Certificate section.\n4. Click \"Relace Certificate\".\n5. Select \"Import Key and Certificate\".\n6. Select the Private Key Type and upload the private key, public certificate, and the CA certificate or chain.\n7. Select \"Import Files\".",
-            "+@fixref": "F-83903r1192539_fix"
+            "+content": "Configure the Nutanix VM application server to use a trusted DoW root CA-signed certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the SSL Certificate section.\n4. Click \"Relace Certificate\".\n5. Select \"Import Key and Certificate\".\n6. Select the Private Key Type and upload the private key, public certificate, and the CA certificate or chain.\n7. Select \"Import Files\".",
+            "+@fixref": "F-83903r1265223_fix"
           },
           "fix": {
-            "+@id": "F-83903r1192539_fix"
+            "+@id": "F-83903r1265223_fix"
           },
           "check": {
-            "+@system": "C-83998r1192538_chk",
+            "+@system": "C-83998r1265222_chk",
             "check-content-ref": {
               "+@href": "Nutanix_Acropolis_Application_Server__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Confirm the Nutanix VM application server is configured with a trusted DOD root CA-signed certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the SSL Certificate section.\n4. Ensure the approved CA signed certificate is installed.\n\nIf the certificate used is not from an approved DOD-approved CA, this is a finding."
+            "check-content": "Confirm the Nutanix VM application server is configured with a trusted DoW root CA-signed certificate.\n\n1. Log in to Prism Element.\n2. Click the gear icon in the upper-right corner.\n3. Navigate to the SSL Certificate section.\n4. Ensure the approved CA signed certificate is installed.\n\nIf the certificate used is not from an approved DoW-approved CA, this is a finding."
           }
         }
       },
@@ -2209,12 +2209,12 @@
         "title": "SRG-APP-000231-AS-000133",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279446r1192360_rule",
+          "+@id": "SV-279446r1265225_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000046",
           "title": "Nutanix AOS must protect the confidentiality and integrity of all information at rest.",
-          "description": "<VulnDiscussion>When data is written to digital media such as hard drives, mobile computers, external/removable hard drives, personal digital assistants, flash/thumb drives, etc., there is risk of data loss and data compromise.\n\nFewer protection measures are needed for media containing information determined by the organization to be in the public domain, to be publicly releasable, or to have limited or no adverse impact if accessed by unauthorized personnel. In these situations, it is assumed the physical access controls where the media resides provide adequate protection.\n\nAs part of a defense-in-depth strategy, data owners and DOD consider routinely encrypting information at rest on selected secondary storage devices. The employment of cryptography is at the discretion of the information owner/steward. The selection of the cryptographic mechanisms used is based upon maintaining the confidentiality and integrity of the information.\n\nThe strength of mechanisms is commensurate with the classification and sensitivity of the information.\n\nThe application server must directly provide, or provide access to, cryptographic libraries and functionality that allow applications to encrypt data when it is stored.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>When data is written to digital media such as hard drives, mobile computers, external/removable hard drives, personal digital assistants, flash/thumb drives, etc., there is risk of data loss and data compromise.\n\nFewer protection measures are needed for media containing information determined by the organization to be in the public domain, to be publicly releasable, or to have limited or no adverse impact if accessed by unauthorized personnel. In these situations, it is assumed the physical access controls where the media resides provide adequate protection.\n\nAs part of a defense-in-depth strategy, data owners and DoW consider routinely encrypting information at rest on selected secondary storage devices. The employment of cryptography is at the discretion of the information owner/steward. The selection of the cryptographic mechanisms used is based upon maintaining the confidentiality and integrity of the information.\n\nThe strength of mechanisms is commensurate with the classification and sensitivity of the information.\n\nThe application server must directly provide, or provide access to, cryptographic libraries and functionality that allow applications to encrypt data when it is stored.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Nutanix Acropolis Application Server",
             "dc:publisher": "DISA",
@@ -2248,7 +2248,7 @@
         "title": "SRG-APP-000231-AS-000156",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279447r1192582_rule",
+          "+@id": "SV-279447r1265226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000047",
@@ -2287,9 +2287,9 @@
         "title": "SRG-APP-000428-AS-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279448r1192364_rule",
+          "+@id": "SV-279448r1265227_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "NXAC-AS-000048",
           "title": "Nutanix AOS must implement cryptographic mechanisms to prevent unauthorized access to data at rest.",
           "description": "<VulnDiscussion>Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an application server. Alternative physical protection measures include protected distribution systems.\n\nIn order to prevent unauthorized disclosure or modification of the information, application servers must protect data at rest by using cryptographic mechanisms.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nSatisfies: SRG-APP-000428-AS-000265, SRG-APP-000429-AS-000157</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -2332,7 +2332,7 @@
         "title": "SRG-APP-000920-AS-000320",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279450r1192366_rule",
+          "+@id": "SV-279450r1265228_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000051",
@@ -2377,7 +2377,7 @@
         "title": "SRG-APP-000267-AS-000170",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279451r1192368_rule",
+          "+@id": "SV-279451r1265229_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000054",
@@ -2416,7 +2416,7 @@
         "title": "SRG-APP-000092-AS-000053",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279464r1192371_rule",
+          "+@id": "SV-279464r1265230_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000067",
@@ -2455,7 +2455,7 @@
         "title": "SRG-APP-000211-AS-000146",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279486r1192542_rule",
+          "+@id": "SV-279486r1265231_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-000089",
@@ -2494,7 +2494,7 @@
         "title": "SRG-APP-000211-AS-000146",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279526r1191364_rule",
+          "+@id": "SV-279526r1265232_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "NXAC-AS-00067",

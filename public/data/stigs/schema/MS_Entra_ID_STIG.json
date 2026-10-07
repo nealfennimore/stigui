@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-03-17"
+      "+@date": "2026-09-03"
     },
     "title": "Microsoft Entra ID Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 28 Feb 2025",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -511,7 +511,7 @@
           "check": {
             "+@system": "C-74233r1085608_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "To verify the inactivity timeout is configured for 15 minutes or less, follow the steps outlined below:\n\n1. Sign in to entra.microsoft.us.\n2. Navigate to the Gear icon (right) and select Settings >> Signing out + notifications.\n3. Check that the \"Enable directory level idle timeout\" is selected.\n4. Verify the Signing out value is 15 minutes or less.\n\nIf the directory level idle timeout is not set to 15 minutes or less, this is a finding."
@@ -523,12 +523,12 @@
         "title": "SRG-APP-000025",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270204r1085660_rule",
+          "+@id": "SV-270204r1271709_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ENTR-ID-000090",
           "title": "Microsoft Entra ID must automatically disable accounts after a 35-day period of account inactivity.",
-          "description": "<VulnDiscussion>Attackers that are able to exploit an inactive account can potentially obtain and maintain undetected access to an application. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained. Applications need to track periods of user inactivity and disable accounts after 35 days of inactivity. Such a process greatly reduces the risk that accounts will be hijacked, leading to a data compromise. \n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to offload those access control functions and focus on core application features and functionality. \n\nThis policy does not apply to either emergency accounts or infrequently used accounts. Infrequently used accounts are local login administrator accounts used by system administrators when network or normal logon/access is not available. Emergency accounts are administrator accounts created in response to crisis situations.\n\nReferences:\nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguser?view=graph-powershell-1.0\nhttps://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http\nhttps://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties\nhttps://learn.microsoft.com/en-us/graph/api/resources/signinactivity?view=graph-rest-1.0#properties\n\nFor any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DOD tenants (IL5), graph endpoints are dod-graph.microsoft.us.\n\nSatisfies: SRG-APP-000025, SRG-APP-000163</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Attackers that are able to exploit an inactive account can potentially obtain and maintain undetected access to an application. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained. Applications need to track periods of user inactivity and disable accounts after 35 days of inactivity. Such a process greatly reduces the risk that accounts will be hijacked, leading to a data compromise. \n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to offload those access control functions and focus on core application features and functionality. \n\nThis policy does not apply to either emergency accounts or infrequently used accounts. Infrequently used accounts are local login administrator accounts used by system administrators when network or normal logon/access is not available. Emergency accounts are administrator accounts created in response to crisis situations.\n\nReferences:\nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/get-mguser?view=graph-powershell-1.0\nhttps://learn.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http\nhttps://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties\nhttps://learn.microsoft.com/en-us/graph/api/resources/signinactivity?view=graph-rest-1.0#properties\n\nFor any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DoW tenants (IL5), graph endpoints are dod-graph.microsoft.us.\n\nSatisfies: SRG-APP-000025, SRG-APP-000163</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Entra ID",
             "dc:publisher": "DISA",
@@ -556,7 +556,7 @@
           "check": {
             "+@system": "C-74237r1085659_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify Entra ID disables accounts after 35 days of inactivity.\n\nUse the following procedure to discover inactive user accounts in Entra ID (35+ days) via the use of the Graph PowerShell SDK.\n\nInstallation instructions: \nhttps://learn.microsoft.com/en-us/powershell/microsoftgraph/installation?view=graph-powershell-1.0\n\nRequired roles:\nAt least Global Reader\n\nRequired tenant license:\nEntra ID Premium P1\n\nExample PowerShell commands:\nConnect-MgGraph -Scopes AuditLog.Read.All,User.Read.All -Environment USGov\n\n$inactiveDate = (Get-Date).AddDays(-35)\n\n$users = Get-MgUser -All:$true -Property Id, DisplayName, UserPrincipalName, UserType, createdDateTime, SignInActivity, AccountEnabled | Where-Object { $_.AccountEnabled -eq $true }\n\n$inactiveUsers =\n$users | Where-Object {\n    ($_.SignInActivity.LastSignInDateTime -lt $inactiveDate) -or ($_.SignInActivity.LastSignInDateTime -eq $null -and $_.CreatedDateTime -lt $inactiveDate)\n} | Select-Object DisplayName, UserPrincipalName, UserType, createdDateTime, @{Name = 'LastSignInDateTime'; Expression = {($_.SignInActivity).LastSignInDateTime}}, Id | Sort-Object LastSignInDateTime \n\n$inactiveUsers | Format-Table -AutoSize\n\nIf accounts are not disabled after a 35-day period of account inactivity, this is a finding."
@@ -601,7 +601,7 @@
           "check": {
             "+@system": "C-74241r1085614_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify Entra ID is configured to enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.\n\n1. Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.\n2. Browse to Identity >> Protection >> Authentication methods >> Password protection.\n3. Verify the Lockout Threshold has been set to \"3\" and Lockout duration is set to \"900\" or more.\n\nIf Entra ID is not configured to enforce the limit of three consecutive invalid logon attempts with a lockout period of 15 minutes, this is a finding."
@@ -613,12 +613,12 @@
         "title": "SRG-APP-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270209r1085618_rule",
+          "+@id": "SV-270209r1271710_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ENTR-ID-000150",
-          "title": "Microsoft Entra ID must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the application.",
-          "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000068, SRG-APP-000069, SRG-APP-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Microsoft Entra ID must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the application.",
+          "description": "<VulnDiscussion>Display of the DoW-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000068, SRG-APP-000069, SRG-APP-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Entra ID",
             "dc:publisher": "DISA",
@@ -657,19 +657,19 @@
             }
           ],
           "fixtext": {
-            "+content": "To create the standard DOD banner in Entra ID:\n\n1. Sign in to the Microsoft Entra admin center as a Global Administrator.\n2. Browse to or search \"Company Branding\".\n3. Select \"Customize\" under \"Default sign-in experience\".\n4. Browse to the \"Sign-in form\" tab and place the required DOD banner text in the \"Sign-in page text\". Note: This field is limited to 1024 characters.\n5. Populate all required fields.\n6. Click \"Review + Create\".",
-            "+@fixref": "F-74143r1085617_fix"
+            "+content": "To create the standard DoW banner in Entra ID:\n\n1. Sign in to the Microsoft Entra admin center as a Global Administrator.\n2. Browse to or search \"Company Branding\".\n3. Select \"Customize\" under \"Default sign-in experience\".\n4. Browse to the \"Sign-in form\" tab and place the required DoW banner text in the \"Sign-in page text\". Note: This field is limited to 1024 characters.\n5. Populate all required fields.\n6. Click \"Review + Create\".",
+            "+@fixref": "F-74143r1268397_fix"
           },
           "fix": {
-            "+@id": "F-74143r1085617_fix"
+            "+@id": "F-74143r1268397_fix"
           },
           "check": {
-            "+@system": "C-74242r1084667_chk",
+            "+@system": "C-74242r1268396_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify Entra ID has been configured to display the DOD logon banner when a user logs on.\n\n1. Sign in to the Microsoft Entra admin center as a Global Administrator.\n2. Browse to or search \"Company Branding\".\n3. Browse to the \"Sign-in form\" tab and review the required DOD banner text in the \"Sign-in page text\". Note: This field is limited to 1024 characters.\n\nIf the DOD logon banner text is not present in the \"Sign-in page text\" field, this is a finding."
+            "check-content": "Verify Entra ID has been configured to display the DoW logon banner when a user logs on.\n\n1. Sign in to the Microsoft Entra admin center as a Global Administrator.\n2. Browse to or search \"Company Branding\".\n3. Browse to the \"Sign-in form\" tab and review the required DoW banner text in the \"Sign-in page text\". Note: This field is limited to 1024 characters.\n\nIf the DoW logon banner text is not present in the \"Sign-in page text\" field, this is a finding."
           }
         }
       },
@@ -711,7 +711,7 @@
           "check": {
             "+@system": "C-74260r1085726_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify Microsoft Entra ID sign-in logs are updated in Microsoft Sentinel or equivalent SIEM. Verify the Connected Status is \"green\" with Last Log Received within the past hour. \n\n1. Sign in to the Microsoft Entra admin center as a Global Administrator.\n2. Browse to Identity >> Monitoring & health >> Diagnostic settings.\n3. Select \"Edit settings\" for the entry that has an established log analytics workspace.\n4. Review the selected log categories. The minimum required categories are:\n- SigninLogs.\n- AuditLogs.\n- ServicePrincipalSignInLogs.\n- ManagedIdentitySignInLogs.\n- UserRiskEvents.\n- RiskyUsers.\n- RiskyServicePrincipals.\n- ServicePrincipalRiskEvents.\n\nIf there is not an entry established to offload logs to a log analytic workspace and the minimum log categories are not selected, this is a finding."
@@ -760,7 +760,7 @@
           "check": {
             "+@system": "C-74266r1085622_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify user accounts require MFA.\n\n1. Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.\n2. Browse to Identity >> Protection >> Conditional Access.\n3. Select \"Policies\" and find the MFA policy.\n4. Confirm the policy state is set to \"On\".\n5. Select the policy and confirm \"All users included\" is specified under the Users option of the policy.\n6. Confirm any exclusions listed under the \"Exclude\" section of the Users option are documented with the authorizing official (AO).\n\nIf the MFA policy is not set to \"On\" with \"All users included\" selected and any exclusions are not documented with the AO, this is a finding."
@@ -772,11 +772,11 @@
         "title": "SRG-APP-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270239r1085663_rule",
+          "+@id": "SV-270239r1271708_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ENTR-ID-000610",
-          "title": "Microsoft Entra ID must enforce a 60-day maximum password lifetime restriction.",
+          "title": "Microsoft Entra ID must enforce a 180-day maximum password lifetime restriction.",
           "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.\n\nThis requirement does not include emergency administration accounts, which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Entra ID",
@@ -790,19 +790,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Change the default Entra ID password expiration time period to 60 days by using the Graph script located here: \nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/update-mguser \n\nUse the \"Get-MgDomain\" command, and update it to 60 days using the \"Update-MgDomain -DomainId <DomainName> \n-PasswordValidityPeriodInDays 60\" command.\n\nNote: For any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DOD tenants (IL5), graph endpoints are dod-graph.microsoft.us.",
-            "+@fixref": "F-74173r1085662_fix"
+            "+content": "Change the default Entra ID password expiration time period to 180 days by using the Graph script located here: \nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/update-mguser \n\nUse the \"Get-MgDomain\" command, and update it to 180 days using the \"Update-MgDomain -DomainId <DomainName> \n-PasswordValidityPeriodInDays 180\" command.\n\nNote: For any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DoW tenants (IL5), graph endpoints are dod-graph.microsoft.us.",
+            "+@fixref": "F-74173r1268393_fix"
           },
           "fix": {
-            "+@id": "F-74173r1085662_fix"
+            "+@id": "F-74173r1268393_fix"
           },
           "check": {
-            "+@system": "C-74272r1085661_chk",
+            "+@system": "C-74272r1268392_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the Entra ID password expiration time period has been changed to 60 days.\n\nInterview the site Entra ID system administrator and verify the script shown in the Fix has been run.\n\nIf the Entra ID password expiration time period is not 60 days or less, this is a finding.\n\nNote: It is not possible to view the current value for the password expiration time (the Entra ID default is 90). An administrator can check the maximum password age of their Entra ID tenant by using the Graph PowerShell SDK module and the \"Get-MgDomain\" command by using the script located here: \nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgdomain?view=graph-powershell-1.0\n\nNote: For any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DOD tenants (IL5), graph endpoints are dod-graph.microsoft.us."
+            "check-content": "Verify the Entra ID password expiration time period has been changed to 180 days.\n\nInterview the site Entra ID system administrator and verify the script shown in the Fix has been run.\n\nIf the Entra ID password expiration time period is not 180 days or less, this is a finding.\n\nNote: It is not possible to view the current value for the password expiration time (the Entra ID default is 90). An administrator can check the maximum password age of their Entra ID tenant by using the Graph PowerShell SDK module and the \"Get-MgDomain\" command by using the script located here: \nhttps://learn.microsoft.com/en-us/powershell/module/microsoft.graph.identity.directorymanagement/get-mgdomain?view=graph-powershell-1.0\n\nNote: For any PowerShell scripts that are Graph, note that Graph endpoints differ depending on where the tenant is located.\n- For commercial tenants, graph endpoints are graph.microsoft.com.\n- For GCC High tenants (IL4), graph endpoints are graph.microsoft.us.\n- For DoW tenants (IL5), graph endpoints are dod-graph.microsoft.us."
           }
         }
       },
@@ -838,7 +838,7 @@
           "check": {
             "+@system": "C-74288r1085578_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify PIM is in use with email notifications going to the SA and ISSO when privileges are requested.\n\n1. Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.\n2. Search for \"Microsoft Entra Privileged Identity Management\".\n3. Navigate to \"Management\" and select \"Microsoft Entra roles\".\n4. Expand the \"Manage\" menu and select roles.\n5. For each role that is either active or eligible perform the following:\na. Select the role.\nb. Navigate to role settings.\nc. Under \"Send notifications when eligible members activate this role:\" Verify the SA and ISSO email addresses are listed under \"Additional recipients\" for the type \"Role activation alert\".\n\nIf the SA and ISSO are not set up to receive email notification when privileges are requested through PIM, this is a finding."
@@ -877,7 +877,7 @@
           "check": {
             "+@system": "C-74368r1085045_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "Verify PIM is in use with just-in-time (JIT) access and employing the principle of least privilege access.\n\n1. Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.\n2. Search for \"Microsoft Entra Privileged Identity Management\".\n3. Navigate to \"Management\" and select \"Microsoft Entra roles\".\n4. Expand the \"Manage\" menu and select \"Assignments\".\n5. Select the \"Active assignments\" tab and for each privileged role, verify there are no roles with an end time of \"Permanent\". \n\nIf any privileged roles are present with an end time of \"Permanent\", this is a finding."
@@ -916,7 +916,7 @@
           "check": {
             "+@system": "C-74508r1085676_chk",
             "check-content-ref": {
-              "+@href": "U_MS_Entra_ID_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "Microsoft_Entra_ID_STIG.xml",
               "+@name": "M"
             },
             "check-content": "As an authorized administrator, browse to https://portal.azure.us/#view/Microsoft_AAD_ConditionalAccess/PasswordProtectionBlade.\n\nCheck the \"Custom banned passwords\" section. If \"Enforce custom list\" has not be configured to \"Yes\" and a custom banned password list has not been populated, this is a finding."

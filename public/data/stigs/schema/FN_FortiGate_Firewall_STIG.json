@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-11-19"
+      "+@date": "2026-08-24"
     },
     "title": "Fortinet FortiGate Firewall Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 05 Jan 2026",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1201,12 +1201,12 @@
         "title": "SRG-NET-000061-FW-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234134r611402_rule",
+          "+@id": "SV-234134r1259879_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FNFG-FW-000015",
           "title": "The FortiGate firewall must use organization-defined filtering rules that apply to the monitoring of remote access traffic for the traffic from the VPN access points.",
-          "description": "<VulnDiscussion>Remote access devices (such as those providing remote access to network devices and information systems) that lack automated capabilities increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoD non-public information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyberattacks and ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities from a variety of information system components (e.g., servers, workstations, notebook computers, smart phones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Remote access devices (such as those providing remote access to network devices and information systems) that lack automated capabilities increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoW non-public information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyberattacks and ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities from a variety of information system components (e.g., servers, workstations, notebook computers, smart phones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Fortinet FortiGate Firewall",
             "dc:publisher": "DISA",
@@ -1219,19 +1219,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "This fix can be performed on the FortiGate GUI or on the CLI. \nLog in to the FortiGate GUI with Super- or Firewall Policy-Admin privilege.\n\n1. Click Policy and Objects.\n2. Click IPv4 or IPv6 Policy.\n3. Click +Create New to configure new ingress and egress SSL-VPN- or IPSec-VPN-related policies that meet the organization-defined filtering rules.\n4. Configure Logging Options to log All Sessions (for most verbose logging).\n5. Confirm each created Policy is Enabled.\n6. Click OK.\n\nor\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # config firewall policy\n     #   edit 0\n     #        set srcintf {vpn_interface}\n     #        set dstintf {interface_1}\n     #        set srcaddr {address_a}\n     #        set dstaddr {address_b}\n     #        set schedule {always}\n     #        set service {services required by site policy}\n     #        set action {accept}\n     #        set logtraffic enable\n     #    next\n     # end\n3. Create opposite (ingress or egress) policy as required.\n\nThe {} indicate the object is defined by the organization policy.",
-            "+@fixref": "F-37284r611401_fix"
+            "+content": "This fix can be performed on the FortiGate GUI or on the CLI. \nLog in to the FortiGate GUI with Super- or Firewall Policy-Admin privilege.\n\n1. Click \"Policy and Objects\".\n2. Click \"IPv4 or IPv6 Policy\".\n3. Click \"+Create New\" to configure new ingress and egress SSL-VPN- or IPSec-VPN-related policies that meet the organization-defined filtering rules.\n4. Configure Logging Options to log All Sessions (for most verbose logging).\n5. Confirm each created Policy is Enabled.\n6. Click \"OK\".\n\nor\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # config firewall policy\n     #   edit 0\n     #        set srcintf {vpn_interface}\n     #        set dstintf {interface_1}\n     #        set srcaddr {address_a}\n     #        set dstaddr {address_b}\n     #        set schedule {always}\n     #        set service {services required by site policy}\n     #        set action {accept}\n     #        set logtraffic enable\n     #    next\n     # end\n3. Create opposite (ingress or egress) policy as required.\n\nThe {} indicate the object is defined by the organization policy.",
+            "+@fixref": "F-37284r1259878_fix"
           },
           "fix": {
-            "+@id": "F-37284r611401_fix"
+            "+@id": "F-37284r1259878_fix"
           },
           "check": {
-            "+@system": "C-37319r611400_chk",
+            "+@system": "C-37319r1259877_chk",
             "check-content-ref": {
               "+@href": "Fortinet_FortiGate_Firewall_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If FortiGate is not configured to support VPN access, this requirement is Not Applicable.\n\nLog in to the FortiGate GUI with Super- or Firewall Policy-Admin privilege.\n\n1. Click Policy and Objects.\n2. Click IPv4 or IPv6 Policy.\n3. Verify all VPN-related policies are configured with organization-defined filtering rules.\n4. For each VPN-related policy, verify the logging option is configured to log All Sessions (for most verbose logging).\n\nIf there are no VPN policies configured with organization-defined filtering rules, this is a finding."
+            "check-content": "If FortiGate is not configured to support VPN access, this requirement is Not Applicable.\n\nLog in to the FortiGate GUI with Super- or Firewall Policy-Admin privilege.\n\n1. Click \"Policy and Objects\".\n2. Click \"IPv4 or IPv6 Policy\".\n3. Verify all VPN-related policies are configured with organization-defined filtering rules.\n4. For each VPN-related policy, verify the logging option is configured to log All Sessions (for most verbose logging).\n\nIf there are no VPN policies configured with organization-defined filtering rules, this is a finding."
           }
         }
       },
@@ -1435,12 +1435,12 @@
         "title": "SRG-NET-000089-FW-000019",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234140r1038960_rule",
+          "+@id": "SV-234140r1259882_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FNFG-FW-000045",
           "title": "In the event that communication with the central audit server is lost, the FortiGate firewall must continue to queue traffic log records locally.",
-          "description": "<VulnDiscussion>It is critical that when the network element is at risk of failing to process traffic logs as required, it takes action to mitigate the failure. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Responses to audit failure depend on the nature of the failure mode.\n\nIn accordance with DoD policy, the traffic log must be sent to a central audit server. When logging functions are lost, system processing cannot be shut down because firewall availability is an overriding concern given the role of the firewall in the enterprise. The system should either be configured to log events to an alternative server or queue log records locally. Upon restoration of the connection to the central audit server, action should be taken to synchronize the local log data with the central audit server.\n\nIf the central audit server uses User Datagram Protocol (UDP) communications instead of a connection-oriented protocol such as TCP, a method for detecting a lost connection must be implemented.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>It is critical that when the network element is at risk of failing to process traffic logs as required, it takes action to mitigate the failure. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Responses to audit failure depend on the nature of the failure mode.\n\nIn accordance with DoW policy, the traffic log must be sent to a central audit server. When logging functions are lost, system processing cannot be shut down because firewall availability is an overriding concern given the role of the firewall in the enterprise. The system should either be configured to log events to an alternative server or queue log records locally. Upon restoration of the connection to the central audit server, action should be taken to synchronize the local log data with the central audit server.\n\nIf the central audit server uses User Datagram Protocol (UDP) communications instead of a connection-oriented protocol such as TCP, a method for detecting a lost connection must be implemented.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Fortinet FortiGate Firewall",
             "dc:publisher": "DISA",
@@ -1453,19 +1453,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "For audit log resilience, it is required to log to the local FortiGate disk and a central audit server, or two central audit servers. To do this, log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click Log and Report.\n2. Click Log Settings.\n3. For Local Log setting options, toggle the Disk setting to right.\n\nTo add a syslog server:\n5. For Remote Logging and Archiving, toggle the Send logs to syslog setting and enter the appropriate IP address.\n6. Click Apply to save the settings.\n\nor\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # config log disk setting\n     #    set status enable\n     #    set diskfull overwrite\n     # end\n     # config log syslogd setting\n     #    set status enable\n     #    set server {IP Address}\n     #    set mode reliable\n     # end",
-            "+@fixref": "F-37290r863250_fix"
+            "+content": "For audit log resilience, it is required to log to the local FortiGate disk and a central audit server, or two central audit servers. To do this, log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click \"Log and Report\".\n2. Click \"Log Settings\".\n3. For Local Log setting options, toggle the Disk setting to right.\n\nTo add a syslog server:\n1. For Remote Logging and Archiving, toggle the Send logs to syslog setting and enter the appropriate IP address.\n2. Click \"Apply\" to save the settings.\n\nor\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # config log disk setting\n     #    set status enable\n     #    set diskfull overwrite\n     # end\n     # config log syslogd setting\n     #    set status enable\n     #    set server {IP Address}\n     #    set mode reliable\n     # end",
+            "+@fixref": "F-37290r1259881_fix"
           },
           "fix": {
-            "+@id": "F-37290r863250_fix"
+            "+@id": "F-37290r1259881_fix"
           },
           "check": {
-            "+@system": "C-37325r863249_chk",
+            "+@system": "C-37325r1259880_chk",
             "check-content-ref": {
               "+@href": "Fortinet_FortiGate_Firewall_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify at least two logging options are configured. It can be any combination of local and/or remote logging.\n\nVia the GUI:\n\nLogin via the FortiGate GUI with super-admin privileges. \n\n- Navigate to Log and Report.\n- Navigate to Log Settings.\n- Verify the FortiGate Local Log disk settings.\n- Verify the Remote and Archiving settings.\n\nor\n\nVia the CLI:\n\nOpen a CLI console via SSH or from the \"CLI Console\" button in the GUI.\n\nRun the following commands to verify which logging settings are enabled:\n\n# show full-configuration log disk setting | grep -i 'status\\|diskfull'\n- The output should indicate enabled.\n\n# show full-configuration log fortianalyzer setting | grep -i 'status\\|server'\n# show full-configuration log fortianalyzer2 setting | grep -i 'status\\|server'\n# show full-configuration log fortianalyzer3 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd setting | grep -i 'status\\|server'\n# show full-configuration log syslogd2 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd3 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd4 setting | grep -i 'status\\|server'\n- The output should indicate enabled and an IP address.\n\nIf the FortiGate is not logging to at least two locations (local and remote OR remote(x2) only), this is a finding."
+            "check-content": "Verify at least two logging options are configured. It can be any combination of local and/or remote logging.\n\nVia the GUI:\n\nLog in via the FortiGate GUI with super-admin privileges. \n\n1. Navigate to \"Log and Report\".\n2. Navigate to \"Log Settings\".\n3. Verify the FortiGate Local Log disk settings.\n4. Verify the Remote and Archiving settings.\n\nor\n\nVia the CLI:\n\nOpen a CLI console via SSH or from the \"CLI Console\" button in the GUI.\n\nRun the following commands to verify which logging settings are enabled:\n\n# show full-configuration log disk setting | grep -i 'status\\|diskfull'\n- The output should indicate enabled.\n\n# show full-configuration log fortianalyzer setting | grep -i 'status\\|server'\n# show full-configuration log fortianalyzer2 setting | grep -i 'status\\|server'\n# show full-configuration log fortianalyzer3 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd setting | grep -i 'status\\|server'\n# show full-configuration log syslogd2 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd3 setting | grep -i 'status\\|server'\n# show full-configuration log syslogd4 setting | grep -i 'status\\|server'\n- The output should indicate enabled and an IP address.\n\nIf the FortiGate is not logging to at least two locations (local and remote OR remote(x2) only), this is a finding."
           }
         }
       },
@@ -1786,12 +1786,12 @@
         "title": "SRG-NET-000333-FW-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234149r953982_rule",
+          "+@id": "SV-234149r1259885_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FNFG-FW-000100",
           "title": "The FortiGate firewall must send traffic log entries to a central audit server for management and configuration of the traffic log entries.",
-          "description": "<VulnDiscussion>Without the ability to centrally manage the content captured in the traffic log entries, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe DoD requires centralized management of all network component audit record content. Network components requiring centralized traffic log management must have the ability to support centralized management. The content captured in traffic log entries must be managed from a central location (necessitating automation). Centralized management of traffic log records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. \n\nEnsure at least one syslog server is configured on the firewall.\n\nIf the product inherently has the ability to store log records locally, the local log must also be secured. However, this requirement is not met since it calls for a use of a central audit server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without the ability to centrally manage the content captured in the traffic log entries, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe DoW requires centralized management of all network component audit record content. Network components requiring centralized traffic log management must have the ability to support centralized management. The content captured in traffic log entries must be managed from a central location (necessitating automation). Centralized management of traffic log records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. \n\nEnsure at least one syslog server is configured on the firewall.\n\nIf the product inherently has the ability to store log records locally, the local log must also be secured. However, this requirement is not met since it calls for a use of a central audit server.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Fortinet FortiGate Firewall",
             "dc:publisher": "DISA",
@@ -1804,19 +1804,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click Log and Report.\n2. Click Log Settings.\n3. Go to Remote Logging and Archiving.\n\nIf using FortiAnalyzer:\n4. Toggle Send logs to FortiAnalyzer/FortiManager to the right.\n5. Configure FortiAnalyzer/FortiManager with designated IP address.\n6. Configure Upload Option, SSL encrypt log transmission and Allow access to FortiGate REST API per the organizational requirement.\n\nIf using a central syslog server:\n7. Toggle Send logs to syslog to the right.\n8. Configure syslog settings with designated IP Address/FQDN.\n9. Click Apply.\n\nor\n\nLog in to the FortiGate GUI with Super-Admin privilege.\n\nOpen a CLI console, via SSH or available from the GUI.\n\nIf using FortiAnalyzer, run the following command:\n     # config log fortianalyzer setting\n     #    set status enable\n     #    set server {IP address}\n     # end\n\nIf using central syslog Server, run the following command:\n     # config log syslogd setting\n     #    set status enable\n     #    set server {IP address}\n     # end",
-            "+@fixref": "F-37299r835166_fix"
+            "+content": "Log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click \"Log and Report\".\n2. Click \"Log Settings\".\n3. Go to Remote Logging and Archiving.\n\nIf using FortiAnalyzer:\n1. Toggle Send logs to FortiAnalyzer/FortiManager to the right.\n2. Configure FortiAnalyzer/FortiManager with designated IP address.\n3. Configure Upload Option, SSL encrypt log transmission and Allow access to FortiGate REST API per the organizational requirement.\n\nIf using a central syslog server:\n1. Toggle Send logs to syslog to the right.\n2. Configure syslog settings with designated IP Address/FQDN.\n3. Click \"Apply\".\n\nor\n\nLog in to the FortiGate GUI with Super-Admin privilege.\n\nOpen a CLI console, via SSH or available from the GUI.\n\nIf using FortiAnalyzer, run the following command:\n     # config log fortianalyzer setting\n     #    set status enable\n     #    set server {IP address}\n     # end\n\nIf using central syslog Server, run the following command:\n     # config log syslogd setting\n     #    set status enable\n     #    set server {IP address}\n     # end",
+            "+@fixref": "F-37299r1259884_fix"
           },
           "fix": {
-            "+@id": "F-37299r835166_fix"
+            "+@id": "F-37299r1259884_fix"
           },
           "check": {
-            "+@system": "C-37334r611445_chk",
+            "+@system": "C-37334r1259883_chk",
             "check-content-ref": {
               "+@href": "Fortinet_FortiGate_Firewall_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click Log and Report.\n2. Click Log Settings.\n3. Under Remote Logging and Archiving, verify FortiAnalyzer and/or syslog settings are enabled and configured with IP addresses of central FortiAnalyzer or Syslog server(s).\n\nor\n\nLog in to the FortiGate GUI with Super-Admin privilege.\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # show full-configuration log syslogd setting | grep -i status\n Check output for: \n          set status enable\n3. Run the following command:\n      # show full-configuration log fortianalyzer setting | grep -i status\n    check output for: \n          set status enable\n\nIf the FortiGate is not configured to send traffic logs to a central audit server, this is a finding."
+            "check-content": "Log in to the FortiGate GUI with Super-Admin privilege.\n\n1. Click \"Log and Report\".\n2. Click \"Log Settings\".\n3. Under Remote Logging and Archiving, verify FortiAnalyzer and/or syslog settings are enabled and configured with IP addresses of central FortiAnalyzer or Syslog server(s).\n\nor\n\nLog in to the FortiGate GUI with Super-Admin privilege.\n\n1. Open a CLI console, via SSH or available from the GUI.\n2. Run the following command:\n     # show full-configuration log syslogd setting | grep -i status\n Check output for: \n          set status enable\n3. Run the following command:\n      # show full-configuration log fortianalyzer setting | grep -i status\n    check output for: \n          set status enable\n\nIf the FortiGate is not configured to send traffic logs to a central audit server, this is a finding."
           }
         }
       },
@@ -1825,7 +1825,7 @@
         "title": "SRG-NET-000335-FW-000017",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234150r1153453_rule",
+          "+@id": "SV-234150r1211032_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FNFG-FW-000105",
@@ -2137,12 +2137,12 @@
         "title": "SRG-NET-000392-FW-000042",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-234158r971533_rule",
+          "+@id": "SV-234158r1259886_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "FNFG-FW-000150",
           "title": "The FortiGate firewall must generate an alert that can be forwarded to, at a minimum, the Information System Security Officer (ISSO) and Information System Security Manager (ISSM) when denial-of-service (DoS) incidents are detected.",
-          "description": "<VulnDiscussion>Without an alert, security personnel may be unaware of major detection incidents that require immediate action, and this delay may result in the loss or compromise of information.\n\nThe firewall generates an alert that notifies designated personnel of the Indicators of Compromise (IOCs), which require real-time alerts. These messages should include a severity-level indicator or code as an indicator of the criticality of the incident. These indicators reflect the occurrence of a compromise or a potential compromise.\n\nSince these incidents require immediate action, these messages are assigned a critical or level 1 priority/severity, depending on the system's priority schema.\n\nCJCSM 6510.01B, \"Cyber Incident Handling Program\", lists nine Cyber Incident and Reportable Event Categories. DoD has determined that categories identified by CJCSM 6510.01B Major Indicators (category 1, 2, 4, or 7 detection events) will require an alert when an event is detected.\n\nAlerts may be transmitted, for example, telephonically, by electronic mail messages, or by text messaging. The firewall must either send the alert to a management console that is actively monitored by authorized personnel or use a messaging capability to send the alert directly to designated personnel.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without an alert, security personnel may be unaware of major detection incidents that require immediate action, and this delay may result in the loss or compromise of information.\n\nThe firewall generates an alert that notifies designated personnel of the Indicators of Compromise (IOCs), which require real-time alerts. These messages should include a severity-level indicator or code as an indicator of the criticality of the incident. These indicators reflect the occurrence of a compromise or a potential compromise.\n\nSince these incidents require immediate action, these messages are assigned a critical or level 1 priority/severity, depending on the system's priority schema.\n\nCJCSM 6510.01B, \"Cyber Incident Handling Program\", lists nine Cyber Incident and Reportable Event Categories. DoW has determined that categories identified by CJCSM 6510.01B Major Indicators (category 1, 2, 4, or 7 detection events) will require an alert when an event is detected.\n\nAlerts may be transmitted, for example, telephonically, by electronic mail messages, or by text messaging. The firewall must either send the alert to a management console that is actively monitored by authorized personnel or use a messaging capability to send the alert directly to designated personnel.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Fortinet FortiGate Firewall",
             "dc:publisher": "DISA",

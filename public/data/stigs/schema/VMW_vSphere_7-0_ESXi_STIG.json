@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-11"
+      "+@date": "2026-09-09"
     },
     "title": "VMware vSphere 7.0 ESXi Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -2863,7 +2863,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256376r959010_rule",
+          "+@id": "SV-256376r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000002",
@@ -2902,7 +2902,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256377r959010_rule",
+          "+@id": "SV-256377r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000003",
@@ -2941,7 +2941,7 @@
         "title": "SRG-OS-000032-VMM-000130",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256378r958406_rule",
+          "+@id": "SV-256378r1272774_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000004",
@@ -3076,12 +3076,12 @@
         "title": "SRG-OS-000023-VMM-000060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256381r958390_rule",
+          "+@id": "SV-256381r1273666_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000007",
-          "title": "The ESXi host must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via the Direct Console User Interface (DCUI).",
-          "description": "<VulnDiscussion>Failure to display the DOD logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.\n\nSatisfies: SRG-OS-000023-VMM-000060, SRG-OS-000024-VMM-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The ESXi host must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system via the Direct Console User Interface (DCUI).",
+          "description": "<VulnDiscussion>Failure to display the DoW logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.\n\nSatisfies: SRG-OS-000023-VMM-000060, SRG-OS-000024-VMM-000070</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 ESXi",
             "dc:publisher": "DISA",
@@ -3107,12 +3107,12 @@
             "+@id": "F-59999r885923_fix"
           },
           "check": {
-            "+@system": "C-60056r885922_chk",
+            "+@system": "C-60056r1273665_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_ESXi_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Annotations.WelcomeMessage\" value and verify it contains the DOD logon banner below.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Annotations.WelcomeMessage\n\nBanner:\n\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{hostname} , {ip}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{esxproduct} {esxversion}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{memory} RAM{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:white}        {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By      {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  using this IS (which includes any device attached to this IS), you consent to the following conditions:                 {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited     {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law      {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          enforcement (LE), and counterintelligence (CI) investigations.                                                  {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       At any time, the USG may inspect and seize data stored on this IS.                                              {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       Communications using, or data stored on, this IS are not private, are subject to routine monitoring,            {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          interception, and search, and may be disclosed or used for any USG-authorized purpose.                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not     {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          for your personal benefit or privacy.                                                                           {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching    {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          or monitoring of the content of privileged communications, or work product, related to personal representation  {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work       {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          product are private and confidential. See User Agreement for details.                                           {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{align:left}{bgcolor:dark-grey}{color:white}  <F2> Accept Conditions and Customize System / View Logs{/align}{align:right}<F12> Accept Conditions and Shut Down/Restart  {bgcolor:black} {/color}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\n\nIf the \"Annotations.WelcomeMessage\" setting is not set to the specified banner, this is a finding."
+            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Annotations.WelcomeMessage\" value and verify it contains the DoW logon banner below.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Annotations.WelcomeMessage\n\nBanner:\n\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{hostname} , {ip}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{esxproduct} {esxversion}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:yellow}{memory} RAM{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:black}{color:white}        {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By      {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  using this IS (which includes any device attached to this IS), you consent to the following conditions:                 {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited     {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law      {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          enforcement (LE), and counterintelligence (CI) investigations.                                                  {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       At any time, the USG may inspect and seize data stored on this IS.                                              {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       Communications using, or data stored on, this IS are not private, are subject to routine monitoring,            {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          interception, and search, and may be disclosed or used for any USG-authorized purpose.                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not     {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          for your personal benefit or privacy.                                                                           {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}  -       Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching    {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          or monitoring of the content of privileged communications, or work product, related to personal representation  {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work       {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}          product are private and confidential. See User Agreement for details.                                           {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{align:left}{bgcolor:yellow}{color:black}                                                                                                                          {/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\\n{bgcolor:black} {/color}{align:left}{bgcolor:dark-grey}{color:white}  <F2> Accept Conditions and Customize System / View Logs{/align}{align:right}<F12> Accept Conditions and Shut Down/Restart  {bgcolor:black} {/color}{/color}{/bgcolor}{/align}\\n{bgcolor:black} {/color}{bgcolor:dark-grey}{color:black}                                                                                                                          {/color}{/bgcolor}\n\nIf the \"Annotations.WelcomeMessage\" setting is not set to the specified banner, this is a finding."
           }
         }
       },
@@ -3121,12 +3121,12 @@
         "title": "SRG-OS-000023-VMM-000060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256382r958390_rule",
+          "+@id": "SV-256382r1273668_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000008",
-          "title": "The ESXi host must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via Secure Shell (SSH).",
-          "description": "<VulnDiscussion>Failure to display the DOD logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The ESXi host must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system via Secure Shell (SSH).",
+          "description": "<VulnDiscussion>Failure to display the DoW logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 ESXi",
             "dc:publisher": "DISA",
@@ -3146,12 +3146,12 @@
             "+@id": "F-60000r885926_fix"
           },
           "check": {
-            "+@system": "C-60057r885925_chk",
+            "+@system": "C-60057r1273667_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_ESXi_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Config.Etc.issue\" value and verify it is set to the DOD logon banner below.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Config.Etc.issue\n\nIf the \"Config.Etc.issue\" setting (/etc/issue file) does not contain the logon banner exactly as shown below, this is a finding.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\""
+            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Config.Etc.issue\" value and verify it is set to the DoW logon banner below.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Config.Etc.issue\n\nIf the \"Config.Etc.issue\" setting (/etc/issue file) does not contain the logon banner exactly as shown below, this is a finding.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\""
           }
         }
       },
@@ -3160,11 +3160,11 @@
         "title": "SRG-OS-000023-VMM-000060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256383r958390_rule",
+          "+@id": "SV-256383r1273669_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000009",
-          "title": "The ESXi host SSH daemon must be configured with the DOD logon banner.",
+          "title": "The ESXi host SSH daemon must be configured with the DoW logon banner.",
           "description": "<VulnDiscussion>The warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers. Alternatively, systems whose ownership should not be obvious should ensure use of a banner that does not provide easy attribution.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 ESXi",
@@ -3199,7 +3199,7 @@
         "title": "SRG-OS-000033-VMM-000140",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256384r958408_rule",
+          "+@id": "SV-256384r1272775_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000010",
@@ -3238,7 +3238,7 @@
         "title": "SRG-OS-000107-VMM-000530",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256385r984206_rule",
+          "+@id": "SV-256385r1272782_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000012",
@@ -3277,7 +3277,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256386r959010_rule",
+          "+@id": "SV-256386r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000013",
@@ -3316,7 +3316,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256387r959010_rule",
+          "+@id": "SV-256387r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "ESXI-70-000015",
@@ -3355,7 +3355,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256388r959010_rule",
+          "+@id": "SV-256388r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000016",
@@ -3394,7 +3394,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256389r959010_rule",
+          "+@id": "SV-256389r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000020",
@@ -3433,7 +3433,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256390r959010_rule",
+          "+@id": "SV-256390r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000021",
@@ -3472,7 +3472,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256391r959010_rule",
+          "+@id": "SV-256391r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "ESXI-70-000022",
@@ -3511,7 +3511,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256392r959010_rule",
+          "+@id": "SV-256392r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000023",
@@ -3550,7 +3550,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256393r959010_rule",
+          "+@id": "SV-256393r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000025",
@@ -3589,7 +3589,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256394r959010_rule",
+          "+@id": "SV-256394r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "ESXI-70-000026",
@@ -3628,7 +3628,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256395r959010_rule",
+          "+@id": "SV-256395r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "ESXI-70-000027",
@@ -4232,12 +4232,12 @@
         "title": "SRG-OS-000355-VMM-001330",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256409r1038976_rule",
+          "+@id": "SV-256409r1273672_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000046",
           "title": "The ESXi host must configure NTP time synchronization.",
-          "description": "<VulnDiscussion>To ensure the accuracy of the system clock, it must be synchronized with an authoritative time source within DOD. Many system functions, including time-based logon and activity restrictions, automated reports, system logs, and audit records, depend on an accurate system clock. If there is no confidence in the correctness of the system clock, time-based functions may not operate as intended and records may be of diminished value.\n\nSatisfies: SRG-OS-000355-VMM-001330, SRG-OS-000356-VMM-001340</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To ensure the accuracy of the system clock, it must be synchronized with an authoritative time source within DoW. Many system functions, including time-based logon and activity restrictions, automated reports, system logs, and audit records, depend on an accurate system clock. If there is no confidence in the correctness of the system clock, time-based functions may not operate as intended and records may be of diminished value.\n\nSatisfies: SRG-OS-000355-VMM-001330, SRG-OS-000356-VMM-001340</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 ESXi",
             "dc:publisher": "DISA",
@@ -4256,19 +4256,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Time Configuration.\n\nUnder \"Network Time Protocol\", click \"Edit...\". Ensure the \"NTP Servers\" are authorized DOD time sources. \n\nEnsure the \"NTP Service Startup Policy\" is set to \"Start and stop with host\". \n\nEnsure the \"Enable\" checkbox, in the upper left, is checked. Click \"OK\".\n\nClick \"Edit\" to configure the NTP service to start and stop with the host and with authoritative DOD time sources.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following commands:\n\n$NTPServers = \"ntpserver1\",\"ntpserver2\"\nGet-VMHost | Add-VMHostNTPServer $NTPServers\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Set-VMHostService -Policy On\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Start-VMHostService",
-            "+@fixref": "F-60027r886007_fix"
+            "+content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Time Configuration.\n\nUnder \"Network Time Protocol\", click \"Edit...\". Ensure the \"NTP Servers\" are authorized DoW time sources. \n\nEnsure the \"NTP Service Startup Policy\" is set to \"Start and stop with host\". \n\nEnsure the \"Enable\" checkbox, in the upper left, is checked. Click \"OK\".\n\nClick \"Edit\" to configure the NTP service to start and stop with the host and with authoritative DoW time sources.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following commands:\n\n$NTPServers = \"ntpserver1\",\"ntpserver2\"\nGet-VMHost | Add-VMHostNTPServer $NTPServers\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Set-VMHostService -Policy On\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"} | Start-VMHostService",
+            "+@fixref": "F-60027r1273671_fix"
           },
           "fix": {
-            "+@id": "F-60027r886007_fix"
+            "+@id": "F-60027r1273671_fix"
           },
           "check": {
-            "+@system": "C-60084r886006_chk",
+            "+@system": "C-60084r1273670_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_ESXi_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Time Configuration.\n\nUnder \"Current Time Configuration\", verify \"Time Synchronization\" is set to \"Network Time Protocol\". \n\nUnder \"Network Time Protocol\", verify the \"NTP Servers\" are authorized DOD time sources.\n\nIf the ESXi host is not configured to pull time from authoritative DOD time sources, this is a finding.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following commands:\n\nGet-VMHost | Get-VMHostNTPServer\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"}\n\nIf the NTP service is not configured with authoritative DOD time sources or the service does not have a \"Policy\" of \"on\" or is stopped, this is a finding."
+            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Time Configuration.\n\nUnder \"Current Time Configuration\", verify \"Time Synchronization\" is set to \"Network Time Protocol\". \n\nUnder \"Network Time Protocol\", verify the \"NTP Servers\" are authorized DoW time sources.\n\nIf the ESXi host is not configured to pull time from authoritative DoW time sources, this is a finding.\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following commands:\n\nGet-VMHost | Get-VMHostNTPServer\nGet-VMHost | Get-VMHostService | Where {$_.Label -eq \"NTP Daemon\"}\n\nIf the NTP service is not configured with authoritative DoW time sources or the service does not have a \"Policy\" of \"on\" or is stopped, this is a finding."
           }
         }
       },
@@ -4277,7 +4277,7 @@
         "title": "SRG-OS-000366-VMM-001430",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256410r984242_rule",
+          "+@id": "SV-256410r1272790_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ESXI-70-000047",
@@ -4443,7 +4443,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256414r959010_rule",
+          "+@id": "SV-256414r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000053",
@@ -4482,7 +4482,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256415r959010_rule",
+          "+@id": "SV-256415r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000054",
@@ -4521,7 +4521,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256416r959010_rule",
+          "+@id": "SV-256416r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "ESXI-70-000055",
@@ -4560,7 +4560,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256417r959010_rule",
+          "+@id": "SV-256417r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000056",
@@ -4599,7 +4599,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256418r959010_rule",
+          "+@id": "SV-256418r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000057",
@@ -4638,7 +4638,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256419r959010_rule",
+          "+@id": "SV-256419r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000058",
@@ -4677,7 +4677,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256420r959010_rule",
+          "+@id": "SV-256420r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000059",
@@ -4716,7 +4716,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256421r959010_rule",
+          "+@id": "SV-256421r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ESXI-70-000060",
@@ -4755,7 +4755,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256422r959010_rule",
+          "+@id": "SV-256422r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000061",
@@ -4794,7 +4794,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256423r959010_rule",
+          "+@id": "SV-256423r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000062",
@@ -4833,7 +4833,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256424r959010_rule",
+          "+@id": "SV-256424r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000063",
@@ -4872,7 +4872,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256425r959010_rule",
+          "+@id": "SV-256425r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000064",
@@ -4911,7 +4911,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256426r959010_rule",
+          "+@id": "SV-256426r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000065",
@@ -4950,7 +4950,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256427r959010_rule",
+          "+@id": "SV-256427r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000070",
@@ -4989,7 +4989,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256428r959010_rule",
+          "+@id": "SV-256428r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ESXI-70-000072",
@@ -5028,7 +5028,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256429r959010_rule",
+          "+@id": "SV-256429r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ESXI-70-000074",
@@ -5067,7 +5067,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256430r959010_rule",
+          "+@id": "SV-256430r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000076",
@@ -5106,12 +5106,12 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256431r1067573_rule",
+          "+@id": "SV-256431r1273675_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000078",
-          "title": "The ESXi host must use DOD-approved certificates.",
-          "description": "<VulnDiscussion>The default self-signed host certificate issued by the VMware Certificate Authority (VMCA) must be replaced with a DOD-approved certificate when the host will be accessed directly, such as during a virtual machine (VM) console connection.\n\nThe use of a DOD certificate on the host assures clients the service they are connecting to is legitimate and properly secured.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The ESXi host must use DoW-approved certificates.",
+          "description": "<VulnDiscussion>The default self-signed host certificate issued by the VMware Certificate Authority (VMCA) must be replaced with a DoW-approved certificate when the host will be accessed directly, such as during a virtual machine (VM) console connection.\n\nThe use of a DoW certificate on the host assures clients the service they are connecting to is legitimate and properly secured.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target VMware vSphere 7.0 ESXi",
             "dc:publisher": "DISA",
@@ -5124,19 +5124,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Join the ESXi host to vCenter before replacing the certificate.\n\nObtain a DOD-issued certificate and private key for the host following the requirements below:\n\nKey size: 2048 bits or more (PEM encoded)\n\nKey format: PEM\nVMware supports PKCS8 and PKCS1 (RSA keys)\nx509 version 3\n\nSubjectAltName must contain DNS Name=<machine_FQDN>\n\nCRT (Base-64) format\n\nContains the following Key Usages: Digital Signature, Non Repudiation, Key Encipherment\n\nStart time of one day before the current time\n\nCN (and SubjectAltName) set to the host name (or IP address) that the ESXi host has in the vCenter Server inventory\n\nFrom the vSphere Web Client, select the ESXi host's vCenter Server >> Configure >> System >> Advanced Settings.\n\nSelect the \"vpxd.certmgmt.mode\" value and ensure it is set to \"custom\".\n\nPut the host into maintenance mode.\n\nTemporarily enable Secure Shell (SSH) on the host. Use Secure Copy Protocol (SCP) to transfer the new certificate and key to /tmp. SSH to the host. Back up the existing certificate and key:\n\n# mv /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak\n# mv /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak\n\nCopy the new certificate and key to \"/etc/vmware/ssl/\" and rename them to \"rui.crt\" and \"rui.key\" respectively.\n\nRestart management agents to implement the new certificate:\n\n# services.sh restart",
-            "+@fixref": "F-60049r886073_fix"
+            "+content": "Join the ESXi host to vCenter before replacing the certificate.\n\nObtain a DoW-issued certificate and private key for the host following the requirements below:\n\nKey size: 2048 bits or more (PEM encoded)\n\nKey format: PEM\nVMware supports PKCS8 and PKCS1 (RSA keys)\nx509 version 3\n\nSubjectAltName must contain DNS Name=<machine_FQDN>\n\nCRT (Base-64) format\n\nContains the following Key Usages: Digital Signature, Non Repudiation, Key Encipherment\n\nStart time of one day before the current time\n\nCN (and SubjectAltName) set to the host name (or IP address) that the ESXi host has in the vCenter Server inventory\n\nFrom the vSphere Web Client, select the ESXi host's vCenter Server >> Configure >> System >> Advanced Settings.\n\nSelect the \"vpxd.certmgmt.mode\" value and ensure it is set to \"custom\".\n\nPut the host into maintenance mode.\n\nTemporarily enable Secure Shell (SSH) on the host. Use Secure Copy Protocol (SCP) to transfer the new certificate and key to /tmp. SSH to the host. Back up the existing certificate and key:\n\n# mv /etc/vmware/ssl/rui.crt /etc/vmware/ssl/rui.crt.bak\n# mv /etc/vmware/ssl/rui.key /etc/vmware/ssl/rui.key.bak\n\nCopy the new certificate and key to \"/etc/vmware/ssl/\" and rename them to \"rui.crt\" and \"rui.key\" respectively.\n\nRestart management agents to implement the new certificate:\n\n# services.sh restart",
+            "+@fixref": "F-60049r1273674_fix"
           },
           "fix": {
-            "+@id": "F-60049r886073_fix"
+            "+@id": "F-60049r1273674_fix"
           },
           "check": {
-            "+@system": "C-60106r1067572_chk",
+            "+@system": "C-60106r1273673_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_ESXi_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Certificate.\n\nIf the issuer is not a DOD-approved certificate authority, or other AO-approved certificate authority, this is a finding.\n\nIf the host will never be accessed directly (virtual machine console connections bypass vCenter), this is not a finding."
+            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Certificate.\n\nIf the issuer is not a DoW-approved certificate authority or other AO-approved certificate authority, this is a finding.\n\nIf the host will never be accessed directly (virtual machine console connections bypass vCenter), this is not a finding."
           }
         }
       },
@@ -5145,7 +5145,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256432r959010_rule",
+          "+@id": "SV-256432r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000079",
@@ -5184,7 +5184,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256433r959010_rule",
+          "+@id": "SV-256433r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000081",
@@ -5223,7 +5223,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256434r959010_rule",
+          "+@id": "SV-256434r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000082",
@@ -5262,7 +5262,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256435r959010_rule",
+          "+@id": "SV-256435r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000083",
@@ -5301,7 +5301,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256436r959010_rule",
+          "+@id": "SV-256436r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000084",
@@ -5340,7 +5340,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256437r959010_rule",
+          "+@id": "SV-256437r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000085",
@@ -5379,7 +5379,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256438r959010_rule",
+          "+@id": "SV-256438r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000086",
@@ -5418,7 +5418,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256439r959010_rule",
+          "+@id": "SV-256439r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000087",
@@ -5457,7 +5457,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256440r959010_rule",
+          "+@id": "SV-256440r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000088",
@@ -5496,7 +5496,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256441r959010_rule",
+          "+@id": "SV-256441r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000089",
@@ -5535,7 +5535,7 @@
         "title": "SRG-OS-000033-VMM-000140",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256442r958408_rule",
+          "+@id": "SV-256442r1272775_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000090",
@@ -5574,7 +5574,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256443r959010_rule",
+          "+@id": "SV-256443r1273664_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000091",
@@ -5592,19 +5592,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nClick \"Edit\". Select the \"Security.PasswordMaxDays\" value and set it to \"90\".\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Security.PasswordMaxDays | Set-AdvancedSetting -Value \"90\"",
-            "+@fixref": "F-60061r919029_fix"
+            "+content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nClick \"Edit\". Select the \"Security.PasswordMaxDays\" value and set it to \"180\".\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Security.PasswordMaxDays | Set-AdvancedSetting -Value \"180\"",
+            "+@fixref": "F-60061r1273663_fix"
           },
           "fix": {
-            "+@id": "F-60061r919029_fix"
+            "+@id": "F-60061r1273663_fix"
           },
           "check": {
-            "+@system": "C-60118r886108_chk",
+            "+@system": "C-60118r1273662_chk",
             "check-content-ref": {
               "+@href": "VMware_vSphere_7.0_ESXi_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Security.PasswordMaxDays\" value and verify it is set to \"90\".\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Security.PasswordMaxDays\n\nIf the \"Security.PasswordMaxDays\" setting is not set to \"90\", this is a finding."
+            "check-content": "From the vSphere Client, go to Hosts and Clusters.\n\nSelect the ESXi Host >> Configure >> System >> Advanced System Settings.\n\nSelect the \"Security.PasswordMaxDays\" value and verify it is set to \"180\".\n\nor\n\nFrom a PowerCLI command prompt while connected to the ESXi host, run the following command:\n\nGet-VMHost | Get-AdvancedSetting -Name Security.PasswordMaxDays\n\nIf the \"Security.PasswordMaxDays\" setting is not set to \"180\", this is a finding."
           }
         }
       },
@@ -5613,7 +5613,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256444r959010_rule",
+          "+@id": "SV-256444r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000092",
@@ -5652,7 +5652,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256445r959010_rule",
+          "+@id": "SV-256445r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000093",
@@ -5691,7 +5691,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256446r959010_rule",
+          "+@id": "SV-256446r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000094",
@@ -5730,7 +5730,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256447r959010_rule",
+          "+@id": "SV-256447r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000095",
@@ -5779,7 +5779,7 @@
         "title": "SRG-OS-000480-VMM-002000",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256448r1051419_rule",
+          "+@id": "SV-256448r1272795_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000097",
@@ -5818,7 +5818,7 @@
         "title": "SRG-OS-000478-VMM-001980",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256449r959006_rule",
+          "+@id": "SV-256449r1138009_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ESXI-70-000274",

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-13"
+      "+@date": "2026-08-19"
     },
     "title": "Solaris 11 SPARC Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 7 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -7960,11 +7960,11 @@
         "title": "SRG-OS-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216251r958446_rule",
+          "+@id": "SV-216251r1259906_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-010120",
-          "title": "The operating system must generate audit records for the selected list of auditable events as defined in DoD list of events.",
+          "title": "The operating system must generate audit records for the selected list of auditable events as defined in DoW list of events.",
           "description": "<VulnDiscussion>Without auditing, individual system accesses cannot be tracked, and malicious activity cannot be detected and traced back to an individual account.\n\nWithout accurate time stamps, source, user, and activity information, malicious activity cannot be accurately tracked.\n\nWithout an audit reduction and reporting capability, users find it difficult to identify specific patterns of attack.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -10732,12 +10732,12 @@
         "title": "SRG-OS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216321r1038967_rule",
+          "+@id": "SV-216321r1260187_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-040010",
-          "title": "User passwords must be changed at least every 60 days.",
-          "description": "<VulnDiscussion>Limiting the lifespan of authenticators limits the period of time an unauthorized user has access to the system while using compromised credentials and reduces the period of time available for password-guessing attacks to run against a single password.\n\nSolaris 11.4 introduced new password security features that allow for a more granular approach to password duration parameters. The introduction of MAXDAYS, MINDAYS, and WARNDAYS allow the /etc/default/passwd configuration file to enforce a password change every 60 days.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "User passwords must be changed at least every 180 days.",
+          "description": "<VulnDiscussion>Limiting the lifespan of authenticators limits the period of time an unauthorized user has access to the system while using compromised credentials and reduces the period of time available for password-guessing attacks to run against a single password.\n\nSolaris 11.4 introduced new password security features that allow for a more granular approach to password duration parameters. The introduction of \"MAXDAYS\", \"MINDAYS\", and \"WARNDAYS\" allow the \"/etc/default/passwd\" configuration file to enforce a password change every 180 days.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
             "dc:publisher": "DISA",
@@ -10764,19 +10764,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The User Security role is required.\n\nFor Solaris 11, 11.1, 11.2, and 11.3:\n\nChange each username to enforce 56 day password changes.\n\n# pfexec passwd -x 56 [username]\n\n# pfedit /etc/default/passwd \n\nSearch for MAXWEEKS. Change the line to read:\n\nMAXWEEKS=8\n\nFor Solaris 11.4 or newer:\n\nChange each username to enforce 60 day password changes.\n\n# pfexec passwd -x 60 [username]\n\n# pfedit /etc/default/passwd \nNote: It is an error to set both the WEEKS and the DAYS variant for a given MIN/MAX/WARN variable.\n\nSearch for MAXDAYS. Change the line to read:\n\nMAXDAYS=60\n\nSearch for MAXWEEKS. Change the line to read:\n\n#MAXWEEKS=",
-            "+@fixref": "F-17555r622323_fix"
+            "+content": "The User Security role is required.\n\nFor Solaris 11, 11.1, 11.2, and 11.3:\n\nChange each username to enforce 175 day password changes.\n\n# pfexec passwd -x 175 [username]\n\n# pfedit /etc/default/passwd \n\nSearch for \"MAXWEEKS\". Change the line to read:\n\nMAXWEEKS=25\n\nFor Solaris 11.4 or newer:\n\nChange each username to enforce 180-day password changes.\n\n# pfexec passwd -x 180 [username]\n\n# pfedit /etc/default/passwd \nNote: It is an error to set both the WEEKS and the DAYS variant for a given MIN/MAX/WARN variable.\n\nSearch for \"MAXDAYS\". Change the line to read:\n\nMAXDAYS=180\n\nSearch for \"MAXWEEKS\". Change the line to read:\n\n#MAXWEEKS=",
+            "+@fixref": "F-17555r1259908_fix"
           },
           "fix": {
-            "+@id": "F-17555r622323_fix"
+            "+@id": "F-17555r1259908_fix"
           },
           "check": {
-            "+@system": "C-17557r986392_chk",
+            "+@system": "C-17557r1260186_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The root role is required.\n\nDetermine if user passwords are properly configured to be changed every 60 days.\n\nDetermine the OS version to be secured.\n# uname -v\n\nFor Solaris 11, 11.1, 11.2, and 11.3:\n\n# logins -ox |awk -F: '( $1 != \"root\" && $8 != \"LK\" && $8 != \"NL\" && ( $11 > “56\" || $11 < “1\" )) { print }'\n\nIf output is returned and the listed account is accessed via direct logon, this is a finding.\n\nCheck that /etc/default/password is configured to enforce password expiration every eight weeks or less.\n\n# grep \"^MAXWEEKS=\" /etc/default/passwd \n\nIf the command does not report MAXWEEKS=8 or less, this is a finding.\n\nFor Solaris 11.4 or newer:\n\n# logins -ox |awk -F: '( $1 != \"root\" && $8 != \"LK\" && $8 != \"NL\" && ($11 > \"60\"|| $11 < \"1\")) { print }'\n\nIf output is returned and the listed account is accessed via direct logon, this is a finding.\n\nCheck that /etc/default/password is configured to enforce password expiration every 60 days or less.\nNote: It is an error to set both the WEEKS and the DAYS variant for a given MIN/MAX/WARN variable.\n\n# grep \"^MAXDAYS=\" /etc/default/passwd \n\nIf the command does not report MAXDAYS=60 or less, this is a finding.\n\n# grep \"^MAXWEEKS=\" /etc/default/passwd \n\nIf output is returned, this is a finding."
+            "check-content": "The root role is required.\n\nDetermine if user passwords are properly configured to be changed every 180 days.\n\nDetermine the OS version to be secured.\n# uname -v\n\nFor Solaris 11, 11.1, 11.2, and 11.3:\n\n# logins -ox |awk -F: '( $1 != \"root\" && $8 != \"LK\" && $8 != \"NL\" && ( $11 > \"175\" || $11 < \"1\" )) { print }'\n\nIf output is returned and the listed account is accessed via direct logon, this is a finding.\n\nCheck that \"/etc/default/password\" is configured to enforce password expiration every 25 weeks or less.\n\n# grep \"^MAXWEEKS=\" /etc/default/passwd \n\nIf the command does not report \"MAXWEEKS=25\" or less, this is a finding.\n\nFor Solaris 11.4 or newer:\n\n# logins -ox |awk -F: '( $1 != \"root\" && $8 != \"LK\" && $8 != \"NL\" && ($11 > \"180\"|| $11 < \"1\")) { print }'\n\nIf output is returned and the listed account is accessed via direct logon, this is a finding.\n\nCheck that \"/etc/default/password\" is configured to enforce password expiration every 180 days or less.\nNote: It is an error to set both the WEEKS and the DAYS variant for a given MIN/MAX/WARN variable.\n\n# grep \"^MAXDAYS=\" /etc/default/passwd \n\nIf the command does not report \"MAXDAYS=180\" or less, this is a finding.\n\n# grep \"^MAXWEEKS=\" /etc/default/passwd \n\nIf output is returned, this is a finding."
           }
         }
       },
@@ -10785,12 +10785,12 @@
         "title": "SRG-OS-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216322r958364_rule",
+          "+@id": "SV-216322r1259910_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-040020",
           "title": "The operating system must automatically terminate temporary accounts within 72 hours.",
-          "description": "<VulnDiscussion>If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation. \n\nTemporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. \n\nIf temporary accounts are used, the operating system must be configured to automatically terminate these types of accounts after a DoD-defined time period of 72 hours.\n\nWhen temporary and emergency accounts are created, there is a risk the temporary account may remain in place and active after the need for the account no longer exists.\n\nTo address this, in the event temporary accounts are required, accounts designated as temporary in nature must be automatically terminated after 72 hours. Such a process and capability greatly reduces the risk of accounts being misused, hijacked, or data compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation. \n\nTemporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. \n\nIf temporary accounts are used, the operating system must be configured to automatically terminate these types of accounts after a DoW-defined time period of 72 hours.\n\nWhen temporary and emergency accounts are created, there is a risk the temporary account may remain in place and active after the need for the account no longer exists.\n\nTo address this, in the event temporary accounts are required, accounts designated as temporary in nature must be automatically terminated after 72 hours. Such a process and capability greatly reduces the risk of accounts being misused, hijacked, or data compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
             "dc:publisher": "DISA",
@@ -13658,11 +13658,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216395r1184793_rule",
+          "+@id": "SV-216395r1259913_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050380",
-          "title": "The operating system must display the DOD-approved system use notification message or banner before granting access to the system for general system logons.",
+          "title": "The operating system must display the DoW-approved system use notification message or banner before granting access to the system for general system logons.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13686,19 +13686,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nEdit the contents of these two files and ensure that the proper DOD banner message is viewable.\n\n# pfedit /etc/motd\n# pfedit /etc/issue\n\nThe DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.",
-            "+@fixref": "F-17629r1184338_fix"
+            "+content": "The root role is required.\n\nEdit the contents of these two files and ensure that the proper DoW banner message is viewable.\n\n# pfedit /etc/motd\n# pfedit /etc/issue\n\nThe DoW-required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.",
+            "+@fixref": "F-17629r1259912_fix"
           },
           "fix": {
-            "+@id": "F-17629r1184338_fix"
+            "+@id": "F-17629r1259912_fix"
           },
           "check": {
-            "+@system": "C-17631r1184337_chk",
+            "+@system": "C-17631r1259911_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the contents of these two files and check that the proper DOD banner message is configured.\n\n# cat /etc/motd\n# cat /etc/issue\n\nIf the DOD-approved banner text is not in the files, this is a finding."
+            "check-content": "Review the contents of these two files and check that the proper DoW banner message is configured.\n\n# cat /etc/motd\n# cat /etc/issue\n\nIf the DoW-approved banner text is not in the files, this is a finding."
           }
         }
       },
@@ -13707,11 +13707,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216396r958390_rule",
+          "+@id": "SV-216396r1259915_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050390",
-          "title": "The operating system must display the DoD approved system use notification message or banner for SSH connections.",
+          "title": "The operating system must display the DoW-approved system use notification message or banner for SSH connections.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13735,11 +13735,11 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nEdit the SSH configuration file.\n\n# pfedit /etc/ssh/sshd_config\n\nLocate the file containing:\n\nBanner\n\nChange the line to read:\n\nBanner /etc/issue\n\nEdit the /etc/issue file\n\n# pfedit /etc/issue\n\nThe DoD required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests -- not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nRestart the SSH service\n\n# svcadm restart svc:/network/ssh",
-            "+@fixref": "F-17630r371277_fix"
+            "+content": "The root role is required.\n\nEdit the SSH configuration file.\n\n# pfedit /etc/ssh/sshd_config\n\nLocate the file containing:\n\nBanner\n\nChange the line to read:\n\nBanner /etc/issue\n\nEdit the /etc/issue file\n\n# pfedit /etc/issue\n\nThe DoW-required text is:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests -- not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nRestart the SSH service\n\n# svcadm restart svc:/network/ssh",
+            "+@fixref": "F-17630r1259914_fix"
           },
           "fix": {
-            "+@id": "F-17630r371277_fix"
+            "+@id": "F-17630r1259914_fix"
           },
           "check": {
             "+@system": "C-17632r371276_chk",
@@ -13756,11 +13756,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216397r1184796_rule",
+          "+@id": "SV-216397r1259918_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050410",
-          "title": "The GNOME service must display the DOD-approved system use notification message or banner before granting access to the system.",
+          "title": "The GNOME service must display the DoW-approved system use notification message or banner before granting access to the system.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13788,19 +13788,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nIf the system does not use XWindows, this is not applicable.\n\n# pfedit /etc/issue \n\nInsert the proper DOD banner message text. The DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# pfedit /etc/gdm/Init/Default\n\nAdd the following content before the \"exit 0\" line of the file.\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue",
-            "+@fixref": "F-17631r1184341_fix"
+            "+content": "The root role is required.\n\nIf the system does not use XWindows, this is not applicable.\n\n# pfedit /etc/issue \n\nInsert the proper DoW banner message text. The DoW-required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# pfedit /etc/gdm/Init/Default\n\nAdd the following content before the \"exit 0\" line of the file.\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue",
+            "+@fixref": "F-17631r1259917_fix"
           },
           "fix": {
-            "+@id": "F-17631r1184341_fix"
+            "+@id": "F-17631r1259917_fix"
           },
           "check": {
-            "+@system": "C-17633r1184340_chk",
+            "+@system": "C-17633r1259916_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This item does not apply if a graphic login is not configured.\n\nLog in to the Gnome Graphical interface. If the approved banner message does not appear, this is a finding.\n\n# cat /etc/issue\n\n# grep /etc/gdm/Init/Default zenity\n\nIf /etc/issue does not contain that DOD-approved banner message or /etc/gdm/Init/Default does not contain the line:\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue\n\nthis is a finding."
+            "check-content": "This item does not apply if a graphic login is not configured.\n\nLog in to the Gnome Graphical interface. If the approved banner message does not appear, this is a finding.\n\n# cat /etc/issue\n\n# grep /etc/gdm/Init/Default zenity\n\nIf \"/etc/issue\" does not contain the DoW-approved banner message or \"/etc/gdm/Init/Default\" does not contain the line:\n\n/usr/bin/zenity --text-info --width=800 --height=300 \\\n--title=\"Security Message\" --filename=/etc/issue\n\nthis is a finding."
           }
         }
       },
@@ -13809,11 +13809,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216398r1184798_rule",
+          "+@id": "SV-216398r1259921_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "SOL-11.1-050430",
-          "title": "The FTP service must display the DOD-approved system use notification message or banner before granting access to the system.",
+          "title": "The FTP service must display the DoW-approved system use notification message or banner before granting access to the system.",
           "description": "<VulnDiscussion>Warning messages inform users who are attempting to log in to the system of their legal status regarding the system and must include the name of the organization that owns the system and any monitoring policies that are in place. As implementing a logon banner to deter inappropriate use can provide a foundation for legal action against abuse, this warning content should be set as appropriate.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -13837,19 +13837,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required. \n\nThe package: pkg:/service/network/ftp must be installed.\n\n# pfedit /etc/issue \n\nInsert the proper DOD banner message text. The DOD required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# echo \"DisplayConnect /etc/issue\" >> /etc/proftpd.conf\n\n# svcadm restart ftp",
-            "+@fixref": "F-17632r1184344_fix"
+            "+content": "The root role is required. \n\nThe package \"pkg:/service/network/ftp\" must be installed.\n\n# pfedit /etc/issue \n\nInsert the proper DoW banner message text. The DoW-required text is:\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential.  See User Agreement for details.\n# echo \"DisplayConnect /etc/issue\" >> /etc/proftpd.conf\n\n# svcadm restart ftp",
+            "+@fixref": "F-17632r1259920_fix"
           },
           "fix": {
-            "+@id": "F-17632r1184344_fix"
+            "+@id": "F-17632r1259920_fix"
           },
           "check": {
-            "+@system": "C-17634r1184343_chk",
+            "+@system": "C-17634r1259919_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine if the FTP server package is installed:\n\n# pkg list service/network/ftp \n\nIf the package is not installed, this check does not apply.\n\n# grep DisplayConnect /etc/proftpd.conf\n\nIf:\n\nDisplayConnect /etc/issue\n\ndoes not appear, this is a finding.\n\nIf /etc/issue does not contain the approved DOD text, this is a finding."
+            "check-content": "Determine if the FTP server package is installed:\n\n# pkg list service/network/ftp \n\nIf the package is not installed, this check does not apply.\n\n# grep DisplayConnect /etc/proftpd.conf\n\nIf \"DisplayConnect /etc/issue\" does not appear, this is a finding.\n\nIf \"/etc/issue\" does not contain the approved DoW text, this is a finding."
           }
         }
       },
@@ -14013,12 +14013,12 @@
         "title": "SRG-OS-000481",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216402r958358_rule",
+          "+@id": "SV-216402r1259922_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-060010",
           "title": "The operating system must use mechanisms for authentication to a cryptographic module meeting the requirements of applicable federal laws, Executive orders, directives, policies, regulations, standards, and guidance for such authentication.",
-          "description": "<VulnDiscussion>Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified, and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. \n\nApplications utilizing encryption are required to use approved encryption modules meeting the requirements of applicable federal laws, Executive orders, directives, policies, regulations, standards, and guidance. \n\nFIPS 140-2 is the current standard for validating cryptographic modules, and NSA Type-X (where X=1, 2, 3, 4) products are NSA-certified hardware based encryption modules.\n\nSatisfies: SRG-OS-000120, SRG-OS-000169</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Encryption is only as good as the encryption modules used. Unapproved cryptographic module algorithms cannot be verified, and cannot be relied upon to provide confidentiality or integrity, and DoW data may be compromised due to weak algorithms. \n\nApplications using encryption are required to use approved encryption modules meeting the requirements of applicable federal laws, Executive orders, directives, policies, regulations, standards, and guidance. \n\nFIPS 140-2 is the current standard for validating cryptographic modules, and NSA Type-X (where X=1, 2, 3, 4) products are NSA-certified hardware based encryption modules.\n\nSatisfies: SRG-OS-000120, SRG-OS-000169</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
             "dc:publisher": "DISA",
@@ -14062,11 +14062,11 @@
         "title": "SRG-OS-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216410r958408_rule",
+          "+@id": "SV-216410r1259923_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-060130",
-          "title": "The operating system must implement DoD-approved encryption to protect the confidentiality of remote access sessions.",
+          "title": "The operating system must implement DoW-approved encryption to protect the confidentiality of remote access sessions.",
           "description": "<VulnDiscussion>Remote access is any access to an organizational information system by a user (or an information system) communicating through an external, non-organization-controlled network (e.g., the Internet). Examples of remote access methods include dial-up, broadband, and wireless. \n\nUsing cryptography ensures confidentiality of the remote access connections.\n\nThe system will attempt to use the first cipher presented by the client that matches the server list. Listing the values \"strongest to weakest\" is a method to ensure the use of the strongest cipher available to secure the SSH connection.\n\nNote:  SSH in Solaris 11.GA-11.3 used Sun Microsystem’s proprietary SUNWssh. In Solaris 11.3 OpenSSH was offered as optional software and in Solaris 11.4 OpenSSH is the only SSH offered. Both use the same /etc/ssh/sshd_config file and both, by default do not include the ciphers line.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
@@ -16512,7 +16512,7 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216465r959010_rule",
+          "+@id": "SV-216465r1259926_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-090115",
@@ -16540,19 +16540,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The operator will ensure that a DoD approved PKI software is installed and operating continuously.",
-            "+@fixref": "F-17699r371484_fix"
+            "+content": "The operator will ensure that a DoW-approved PKI software is installed and operating continuously.",
+            "+@fixref": "F-17699r1259925_fix"
           },
           "fix": {
-            "+@id": "F-17699r371484_fix"
+            "+@id": "F-17699r1259925_fix"
           },
           "check": {
-            "+@system": "C-17701r371483_chk",
+            "+@system": "C-17701r1259924_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "The operator will ensure that a DoD approved PKI system is installed, configured, and properly operating. Ask the operator to document the PKI software installation and configuration.\n\nIf the operator is not able to provide a documented configuration for an installed PKI system or if the PKI system is not properly configured, maintained, or used, this is a finding."
+            "check-content": "The operator will ensure that a DoW-approved PKI system is installed, configured, and properly operating. Ask the operator to document the PKI software installation and configuration.\n\nIf the operator is not able to provide a documented configuration for an installed PKI system or if the PKI system is not properly configured, maintained, or used, this is a finding."
           }
         }
       },
@@ -18280,12 +18280,12 @@
         "title": "SRG-OS-000356",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-219986r1016282_rule",
+          "+@id": "SV-219986r1259929_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-090020",
-          "title": "The operating system must synchronize internal information system clocks with a server that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers or a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).",
-          "description": "<VulnDiscussion>To assure the accuracy of the system clock, it must be synchronized with an authoritative time source within DOD. Many system functions, including time-based login and activity restrictions, automated reports, system logs, and audit records depend on an accurate system clock. If there is no confidence in the correctness of the system clock, time-based functions may not operate as intended and records may be of diminished value.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The operating system must synchronize internal information system clocks with a server that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers or a time server designated for the appropriate DoW network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).",
+          "description": "<VulnDiscussion>To assure the accuracy of the system clock, it must be synchronized with an authoritative time source within DoW. Many system functions, including time-based login and activity restrictions, automated reports, system logs, and audit records depend on an accurate system clock. If there is no confidence in the correctness of the system clock, time-based functions may not operate as intended and records may be of diminished value.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Solaris 11 SPARC",
             "dc:publisher": "DISA",
@@ -18312,19 +18312,19 @@
             }
           ],
           "fixtext": {
-            "+content": "The root role is required.\n\nDetermine the zone to be secured.\n\n# zonename\n\nIf the command output is not \"global\", then NTP must be disabled.\n\n# svcadm disable ntp\n\nIf the output from \"zonename\" is \"global\", then NTP must be enabled.\n\nTo activate the ntpd daemon, the ntp.conf file must first be created.\n\n# cp /etc/inet/ntp.client /etc/inet/ntp.conf\n\n# pfedit /etc/inet/ntp.conf\n\nMake site-specific changes to this file as needed in the form.\n\nserver [ntpserver]\n\nLocate the line containing maxpoll (if it exists).\n\nDelete the line.\n\nStart the ntpd daemon.\n\n# svcadm enable ntp\n\nUse a local authoritative time server synchronizing to an authorized DOD time source, a USNO-based time server, or a GPS. Ensure all systems in the facility feed from one or more local time servers that feed from the authoritative time server.\n\nEdit the NTP configuration files and make the necessary changes to add the approved time servers per Solaris documentation.",
-            "+@fixref": "F-21695r986413_fix"
+            "+content": "The root role is required.\n\nDetermine the zone to be secured.\n\n# zonename\n\nIf the command output is not \"global\", then NTP must be disabled.\n\n# svcadm disable ntp\n\nIf the output from \"zonename\" is \"global\", then NTP must be enabled.\n\nTo activate the ntpd daemon, the \"ntp.conf\" file must first be created.\n\n# cp /etc/inet/ntp.client /etc/inet/ntp.conf\n\n# pfedit /etc/inet/ntp.conf\n\nMake site-specific changes to this file as needed in the form.\n\nserver [ntpserver]\n\nLocate the line containing \"maxpoll\" (if it exists).\n\nDelete the line.\n\nStart the ntpd daemon.\n\n# svcadm enable ntp\n\nUse a local authoritative time server synchronizing to an authorized DoW time source, a USNO-based time server, or a GPS. Ensure all systems in the facility feed from one or more local time servers that feed from the authoritative time server.\n\nEdit the NTP configuration files and make the necessary changes to add the approved time servers per Solaris documentation.",
+            "+@fixref": "F-21695r1259928_fix"
           },
           "fix": {
-            "+@id": "F-21695r986413_fix"
+            "+@id": "F-21695r1259928_fix"
           },
           "check": {
-            "+@system": "C-21696r986412_chk",
+            "+@system": "C-21696r1259927_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "NTP must be used and used only in the global zone. Determine the zone to be secured.\n\n# zonename\n\nIf the command output is not \"global\", then NTP must be disabled. Check the system for a running NTP daemon.\n\n# svcs -Ho state ntp\n\nIf NTP is online, this is a finding.\n\nIf the output from \"zonename\" is \"global\", then NTP must be enabled. Check the system for a running NTP daemon.\n\n# svcs -Ho state ntp\n\nIf NTP is not online, this is a finding.\n\nIf NTP is running, confirm the servers and peers or multicast client (as applicable) are local or an authoritative DOD source.\n\nFor the NTP daemon:\n\n# more /etc/inet/ntp.conf\n\nIf a nonlocal/nonauthoritative (non-DOD source, non-USNO-based, or non-GPS) time server is used, this is a finding.\n\nDetermine if the time synchronization frequency is correct.\n\n# grep \"maxpoll\" /etc/inet/ntp.conf\n\nIf the command returns \"File not found\" or any value for maxpoll, this is a finding.\n\nDetermine if the running NTP server is configured properly.\n\n# ntpq -p | awk '($6 ~ /[0-9]+/ && $6 > 86400) { print $1\" \"$6 }'\n\nThis will print out the name of any time server whose current polling time is greater than 24 hours (along with the actual value). If there is any output, this is a finding."
+            "check-content": "NTP must be used and used only in the global zone. Determine the zone to be secured.\n\n# zonename\n\nIf the command output is not \"global\", then NTP must be disabled. Check the system for a running NTP daemon.\n\n# svcs -Ho state ntp\n\nIf NTP is online, this is a finding.\n\nIf the output from \"zonename\" is \"global\", then NTP must be enabled. Check the system for a running NTP daemon.\n\n# svcs -Ho state ntp\n\nIf NTP is not online, this is a finding.\n\nIf NTP is running, confirm the servers and peers or multicast client (as applicable) are local or an authoritative DoW source.\n\nFor the NTP daemon:\n\n# more /etc/inet/ntp.conf\n\nIf a nonlocal/nonauthoritative (non-DoW source, non-USNO-based, or non-GPS) time server is used, this is a finding.\n\nDetermine if the time synchronization frequency is correct.\n\n# grep \"maxpoll\" /etc/inet/ntp.conf\n\nIf the command returns \"File not found\" or any value for \"maxpoll\", this is a finding.\n\nDetermine if the running NTP server is configured properly.\n\n# ntpq -p | awk '($6 ~ /[0-9]+/ && $6 > 86400) { print $1\" \"$6 }'\n\nThis will print out the name of any time server whose current polling time is greater than 24 hours (along with the actual value). If there is any output, this is a finding."
           }
         }
       },
@@ -18333,7 +18333,7 @@
         "title": "SRG-OS-000445",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-219987r958944_rule",
+          "+@id": "SV-219987r1259932_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-090250",
@@ -18361,19 +18361,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Install, configure, and run DoD-approved SCAP compliance checking software on a periodic basis. Review the output of the software and document any out-of-compliance issues.",
-            "+@fixref": "F-21696r371499_fix"
+            "+content": "Install, configure, and run DoW-approved SCAP compliance checking software on a periodic basis. Review the output of the software and document any out-of-compliance issues.",
+            "+@fixref": "F-21696r1259931_fix"
           },
           "fix": {
-            "+@id": "F-21696r371499_fix"
+            "+@id": "F-21696r1259931_fix"
           },
           "check": {
-            "+@system": "C-21697r371498_chk",
+            "+@system": "C-21697r1259930_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ask the operator if DoD-approved SCAP compliance checking software is installed and run on a periodic basis.\n\nIf DoD-approved SCAP compliance checking software is not installed and/or not run on a periodic basis, this is a finding."
+            "check-content": "Ask the operator if DoW-approved SCAP compliance checking software is installed and run on a periodic basis.\n\nIf DoW-approved SCAP compliance checking software is not installed and/or not run on a periodic basis, this is a finding."
           }
         }
       },
@@ -18431,7 +18431,7 @@
         "title": "SRG-OS-000445",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-224671r958944_rule",
+          "+@id": "SV-224671r1259935_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SOL-11.1-090270",
@@ -18459,19 +18459,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Install, configure, and run DoD-approved SCAP compliance checking software on a periodic basis. Review the output of the software and document any out-of-compliance issues.",
-            "+@fixref": "F-26348r462440_fix"
+            "+content": "Install, configure, and run DoW-approved SCAP compliance checking software on a periodic basis. Review the output of the software and document any out-of-compliance issues.",
+            "+@fixref": "F-26348r1259934_fix"
           },
           "fix": {
-            "+@id": "F-26348r462440_fix"
+            "+@id": "F-26348r1259934_fix"
           },
           "check": {
-            "+@system": "C-26360r462439_chk",
+            "+@system": "C-26360r1259933_chk",
             "check-content-ref": {
               "+@href": "Solaris_11_SPARC_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Ask the operator if DoD-approved SCAP compliance checking software is installed and run on a periodic basis.\n\nIf DoD-approved SCAP compliance checking software is not installed and/or not run on a periodic basis, this is a finding."
+            "check-content": "Ask the operator if DoW-approved SCAP compliance checking software is installed and run on a periodic basis.\n\nIf DoW-approved SCAP compliance checking software is not installed and/or not run on a periodic basis, this is a finding."
           }
         }
       },

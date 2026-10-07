@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-26"
+      "+@date": "2026-09-10"
     },
     "title": "IBM WebSphere Liberty Server Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -119,10 +119,6 @@
           },
           {
             "+@idref": "V-250338",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-250339",
             "+@selected": "true"
           },
           {
@@ -249,10 +245,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-250339",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-250340",
             "+@selected": "true"
           },
@@ -373,10 +365,6 @@
           },
           {
             "+@idref": "V-250338",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-250339",
             "+@selected": "true"
           },
           {
@@ -503,10 +491,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-250339",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-250340",
             "+@selected": "true"
           },
@@ -627,10 +611,6 @@
           },
           {
             "+@idref": "V-250338",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-250339",
             "+@selected": "true"
           },
           {
@@ -757,10 +737,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-250339",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-250340",
             "+@selected": "true"
           },
@@ -881,10 +857,6 @@
           },
           {
             "+@idref": "V-250338",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-250339",
             "+@selected": "true"
           },
           {
@@ -1011,10 +983,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-250339",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-250340",
             "+@selected": "true"
           },
@@ -1138,10 +1106,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-250339",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-250340",
             "+@selected": "true"
           },
@@ -1198,12 +1162,12 @@
         "title": "SRG-APP-000001-AS-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250322r960735_rule",
+          "+@id": "SV-250322r1265251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000010",
           "title": "Maximum in-memory session count must be set according to application requirements.",
-          "description": "<VulnDiscussion>Application management includes the ability to control the number of sessions that use an application by all accounts and/or account types. Limiting the number of allowed sessions is helpful in limiting risks related to Denial of Service attacks.\n\nApplication servers host and expose business logic and application processes. The application server must possess the capability to limit the maximum number of concurrent sessions in a manner that affects the entire application server or on an individual application basis. Although there is some latitude concerning the settings themselves, the settings should follow DoD-recommended values, but the settings should be configurable to allow for future DoD direction. While the DoD will specify recommended values, the values can be adjusted to accommodate the operational requirement of a given system.\n\nThe System Security Plan should be reviewed and the maximum number of concurrent sessions allowable and defined within that plan should be used in the httpSession element. For example, if the maximum number of concurrent sessions is defined in the System Security Plan as 5000, then the httpSession element in ${server.config.dir}/server.xml should be configured as: \n<httpSession maxInMemorySessionCount=\"5000\" allowOverflow=\"false\" />\n\nFor http session security settings to apply, the security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against. The servlet feature (servlet-3.1) must be defined in order to use a web application, and the ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry for authentication of the servlet users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Application management includes the ability to control the number of sessions that use an application by all accounts and/or account types. Limiting the number of allowed sessions is helpful in limiting risks related to Denial of Service attacks.\n\nApplication servers host and expose business logic and application processes. The application server must possess the capability to limit the maximum number of concurrent sessions in a manner that affects the entire application server or on an individual application basis. Although there is some latitude concerning the settings themselves, the settings should follow DoW-recommended values, but the settings should be configurable to allow for future DoW direction. While the DoW will specify recommended values, the values can be adjusted to accommodate the operational requirement of a given system.\n\nThe System Security Plan should be reviewed and the maximum number of concurrent sessions allowable and defined within that plan should be used in the httpSession element. For example, if the maximum number of concurrent sessions is defined in the System Security Plan as 5000, then the httpSession element in ${server.config.dir}/server.xml should be configured as: \n<httpSession maxInMemorySessionCount=\"5000\" allowOverflow=\"false\" />\n\nFor http session security settings to apply, the security feature (appSecurity-2.0) must be defined in order to configure a user registry for the servlet to authenticate against. The servlet feature (servlet-3.1) must be defined in order to use a web application, and the ldap feature (ldapRegistry-3.0) must be defined in order to configure an enterprise-level user registry for authentication of the servlet users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM WebSphere Liberty Server",
             "dc:publisher": "DISA",
@@ -1237,7 +1201,7 @@
         "title": "SRG-APP-000014-AS-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250323r960759_rule",
+          "+@id": "SV-250323r1265252_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000020",
@@ -1276,7 +1240,7 @@
         "title": "SRG-APP-000015-AS-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250324r960762_rule",
+          "+@id": "SV-250324r1265253_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000030",
@@ -1315,7 +1279,7 @@
         "title": "SRG-APP-000016-AS-000013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250325r1015250_rule",
+          "+@id": "SV-250325r1265254_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000040",
@@ -1408,7 +1372,7 @@
         "title": "SRG-APP-000033-AS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250326r1137578_rule",
+          "+@id": "SV-250326r1265255_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000050",
@@ -1447,7 +1411,7 @@
         "title": "SRG-APP-000109-AS-000070",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250327r1043188_rule",
+          "+@id": "SV-250327r1265256_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000230",
@@ -1492,7 +1456,7 @@
         "title": "SRG-APP-000119-AS-000079",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250328r960933_rule",
+          "+@id": "SV-250328r1265257_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000260",
@@ -1537,7 +1501,7 @@
         "title": "SRG-APP-000121-AS-000081",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250329r960939_rule",
+          "+@id": "SV-250329r1265258_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000280",
@@ -1576,7 +1540,7 @@
         "title": "SRG-APP-000126-AS-000085",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250330r960951_rule",
+          "+@id": "SV-250330r1265259_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000320",
@@ -1625,7 +1589,7 @@
         "title": "SRG-APP-000133-AS-000092",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250331r960960_rule",
+          "+@id": "SV-250331r1265260_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000340",
@@ -1664,12 +1628,12 @@
         "title": "SRG-APP-000142-AS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250332r1043177_rule",
+          "+@id": "SV-250332r1265261_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000370",
           "title": "The WebSphere Liberty Server must prohibit or restrict the use of nonsecure ports, protocols, modules, and/or services as defined in the PPSM CAL and vulnerability assessments.",
-          "description": "<VulnDiscussion>Some networking protocols may not meet organizational security requirements to protect data and components.\n\nApplication servers natively host a number of various features, such as management interfaces, httpd servers, and message queues. These features all run on TCPIP ports. This creates the potential that the vendor may choose to use port numbers or network services that have been deemed unusable by the organization. The application server must have the capability to both reconfigure and disable the assigned ports without adversely impacting application server operation capabilities. For a list of approved ports and protocols, reference the DoD ports and protocols website at https://powhatan.iiie.disa.mil/ports/cal.html.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Some networking protocols may not meet organizational security requirements to protect data and components.\n\nApplication servers natively host a number of various features, such as management interfaces, httpd servers, and message queues. These features all run on TCPIP ports. This creates the potential that the vendor may choose to use port numbers or network services that have been deemed unusable by the organization. The application server must have the capability to both reconfigure and disable the assigned ports without adversely impacting application server operation capabilities. For a list of approved ports and protocols, reference the DoW ports and protocols website.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM WebSphere Liberty Server",
             "dc:publisher": "DISA",
@@ -1703,7 +1667,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250333r1051118_rule",
+          "+@id": "SV-250333r1265262_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000380",
@@ -1742,7 +1706,7 @@
         "title": "SRG-APP-000148-AS-000101",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250334r1051118_rule",
+          "+@id": "SV-250334r1265263_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000381",
@@ -1781,7 +1745,7 @@
         "title": "SRG-APP-000149-AS-000102",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250335r1015469_rule",
+          "+@id": "SV-250335r1265264_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000390",
@@ -1834,7 +1798,7 @@
         "title": "SRG-APP-000171-AS-000119",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250336r1015470_rule",
+          "+@id": "SV-250336r1265265_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000440",
@@ -1887,7 +1851,7 @@
         "title": "SRG-APP-000172-AS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250337r961029_rule",
+          "+@id": "SV-250337r1265266_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000450",
@@ -1926,11 +1890,11 @@
         "title": "SRG-APP-000177-AS-000126",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250338r961044_rule",
+          "+@id": "SV-250338r1265269_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000500",
-          "title": "The WebSphere Liberty Server must use DoD-issued/signed certificates.",
+          "title": "The WebSphere Liberty Server must use DoW-issued/signed certificates.",
           "description": "<VulnDiscussion>The cornerstone of PKI is the private key used to encrypt or digitally sign information. The key by itself is a cryptographic value that does not contain specific user information, but the key can be mapped to a user. Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.\n\nSatisfies: SRG-APP-000177-AS-000126, SRG-APP-000427-AS-000264, SRG-APP-000514-AS-000137</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM WebSphere Liberty Server",
@@ -1954,76 +1918,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Do not use self-signed certificates in a production environment. Only import certificates signed by an authorized DoD CA or authorized for DoD use. \n\nObtain the signer certificate either as a Base 64-encoded ASCII file or as binary DER data. \n\nUsing the JDK’s ikeyman or keytool utility, open the default trusted keystore specified in the ${server.config.dir}/server.xml. \n\nClick on signer certificates and import the file that contains the DoD signed certificate.",
-            "+@fixref": "F-53727r795066_fix"
+            "+content": "Do not use self-signed certificates in a production environment. Only import certificates signed by an authorized DoW CA or authorized for DoW use. \n\nObtain the signer certificate either as a Base 64-encoded ASCII file or as binary DER data. \n\nUsing the JDK’s ikeyman or keytool utility, open the default trusted keystore specified in the ${server.config.dir}/server.xml. \n\nClick on signer certificates and import the file that contains the DoW signed certificate.",
+            "+@fixref": "F-53727r1265268_fix"
           },
           "fix": {
-            "+@id": "F-53727r795066_fix"
+            "+@id": "F-53727r1265268_fix"
           },
           "check": {
-            "+@system": "C-53773r850894_chk",
+            "+@system": "C-53773r1265267_chk",
             "check-content-ref": {
               "+@href": "IBM_WebSphere_Liberty_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As a privileged user with access to the ${server.config.dir}/server.xml file; search for SSLDefault in order to identify the default SSL configuration.\n\ngrep -i ssldefault server.xml\n\nIdentify the default ssl configuration by examining the sslRef flag.\n\nSAMPLE:\n <sslDefault sslRef=\"DefaultTLSSettings\" /> \n\nReview the default ssl configuration to identify the default truststore.\n\nSAMPLE:\n <ssl id=\"DefaultTLSSettings\" keyStoreRef=\"defaultKeyStore\" />\n       <keyStore id=\"LDAPTrustStore\" location=\"${server.config.dir}/liberty.ks\" type=\"JKS\" password=\"xxxxxxx\" />\n\nUse the java keytool or ikeyman utilities to open and examine the certificates stored in the truststore.\n\nIf the certificates are self signed or not signed by a DoD approved CA, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-250339",
-        "title": "SRG-APP-000179-AS-000129",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-250339r1193261_rule",
-          "+@weight": "10.0",
-          "+@severity": "high",
-          "version": "IBMW-LS-000520",
-          "title": "The WebSphere Liberty Server must use FIPS 140-2 approved encryption modules when authenticating users and processes.",
-          "description": "<VulnDiscussion>Application servers must use and meet requirements of the DOD Enterprise PKI infrastructure for application authentication. Encryption is only as good as the encryption modules used. Unapproved cryptographic module algorithms cannot be verified or relied upon to provide confidentiality or integrity, and DOD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target IBM WebSphere Liberty Server",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "IBM WebSphere Liberty Server",
-            "dc:identifier": "5424"
-          },
-          "ident": [
-            {
-              "+content": "CCI-000803",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-001188",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002418",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002422",
-              "+@system": "http://cyber.mil/cci"
-            },
-            {
-              "+content": "CCI-002450",
-              "+@system": "http://cyber.mil/cci"
-            }
-          ],
-          "fixtext": {
-            "+content": "There are two ways to meet this requirement. Only one method is required.\n\nIf IBM JDK 8 is installed and configured to run with WebSphere Liberty, proceed with method (I).\n\nIf IBM Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty, proceed with method (II). Currently IBM Semeru supports FIPS on RedHat Enterprise Linux.\n\nMethod (I) IBM JDK 8 is configured to run with WebSphere Liberty:\n\n1. Edit/create the ${server.config.dir}/jvm.options file. \nEdit/add the following two properties:\nDcom.ibm.jsse2.usefipsprovider=true \nDcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS \n\n2. Edit ${JAVA_HOME}/jre/lib/security/java.security file and locate the list of cryptographic providers. Edit/add the following four providers: \n\nsecurity.provider.1=com.ibm.jsse2.IBMJSSEProvider2\nsecurity.provider.2=com.ibm.crypto.plus.provider.IBMJCEPlusFIPS \nsecurity.provider.3=com.ibm.crypto.provider.IBMJCE\nsecurity.provider.4=com.ibm.crypto.plus.provider.IBMJCEPlus\n\nMethod (II) Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty. Requires RedHat Enterprise Linux as the Host Operating System.\n\n1. Log in as root or super user.\n\n2. Enable FIPS on the RedHat Enterprise Linux. \n$ fips-mode-setup --enable\n$ fips-mode-setup --check\n \n3. Update/create the ${server.config.dir}/jvm.options.\nEdit/add the following property:\nDsemeru.fips=true \n\n4. Install NSS packages. Run \"$ dnf install nss\".\n\n5. Import keystores to NSS Database by using \"pk12util\" command. Replace \"changeit\" for -W option to the desired password. \n\n$ pk12util -i resources/security/key.p12 -W changeit -d /etc/pki/nssdb\npk12util: PKCS12 IMPORT SUCCESSFUL\n\n6. Mark the imported certificates as a trusted certificate authority (CA).\n\n$ certutil -M -n default -t \"CT,CT,CT\" -d /etc/pki/nssdb\n\n7. List the contents of the NSS Database to confirm the alias name and the Trust Attributes.\n\n$ certutil -L -d /etc/pki/nssdb\nCertificate Nickname                                         Trust Attributes\n                                                                       SSL,S/MIME,JAR/XPI\ndefault                                                        CTu,Cu,Cu\n\n8. Create a config file (pkcs11cfg.cfg) with the contents below. It will be used by ${server.config.dir}/server.xml. \n\nname = NSS-FIPS\nlibrary = /usr/lib64/libsoftokn3.so\nslot = 3\nshowInfo = true\n\n9. Update the ${server.config.dir}/server.xml file to use the configuration file in its SSL configuration. \n\n<ssl id=\"defaultSSLConfig\"\n         keyStoreRef=\"defaultKeyStore\"\n         sslProtocol=\"TLSv1.2\" />    \n<keyStore id=\"defaultKeyStore\" password=\"password used in -W parameter earlier here\"\n         location=\"${server.config.dir}/pkcs11cfg.cfg\" type=\"PKCS11\"\n         fileBased=\"false\" provider=\"SunPKCS11-NSS-FIPS\"/>\n\n9.1 Find the <keyStore/> configuration referenced in the ssl configuration as \"keyStoreRef\". \n9.2 Set \"provider\" attribute to either \"SunPKCS11-NSS-FIPS\" or \"PKCS11-NSS-FIPS\".\n9.3 Set the \"type\" attribute to \"PKCS11\".\n9.4 Set the \"fileBased\" attribute to \"false\".\n9.5 Set the \"location\" attribute to point to the NSS keystore configuration created in step 8 (pkcs11.cfg.cfg).\n9.6 Verify the file is in a location accessible to Liberty.",
-            "+@fixref": "F-53728r1156550_fix"
-          },
-          "fix": {
-            "+@id": "F-53728r1156550_fix"
-          },
-          "check": {
-            "+@system": "C-53774r1192765_chk",
-            "check-content-ref": {
-              "+@href": "IBM_WebSphere_Liberty_Server_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Note: If FIPS 140-3 is configured in IBMW-LS-001200, then this is Not Applicable.\n\nThere are two ways to meet this requirement. Only one method is required.\n\nIf IBM JDK 8 is installed and configured to run with WebSphere Liberty, proceed with method (I).\n\nIf IBM Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty, proceed with method (II). Currently IBM Semeru supports FIPS on RedHat Enterprise Linux.\n\nMethod (I) IBM JDK 8 is configured to run with WebSphere Liberty:\n\n1. Review the ${server.config.dir}/jvm.options file. Verify FIPS is in use by checking the following lines:\n \nDcom.ibm.jsse2.usefipsprovider=true \nDcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS\n\nIf the properties are not set as shown in the ${server.config.dir}/jvm.options file, this is a finding.\n\n2. Open ${JAVA_HOME}/jre/lib/security/java.security file. Locate the list of cryptographic providers and confirm the following entries in the provider list:\n\ncom.ibm.jsse2.IBMJSSEProvider2\ncom.ibm.crypto.plus.provider.IBMJCEPlusFIPS\ncom.ibm.crypto.provider.IBMJCE\ncom.ibm.crypto.plus.provider.IBMJCEPlus\n\nIf the entries are not set as shown in the ${JAVA_HOME}/jre/lib/security/java.security file, this is a finding.\n\nMethod (II) Semeru Runtimes version 11 and above is installed and configured with WebSphere Liberty. Requires RedHat Enterprise Linux as the Host Operating System.\n\n1. Run the following command on the RedHat Enterprise Linux. Verify FIPS mode is enabled. \n# fips-mode-setup --check\nIf FIPS mode is not enabled, this is a finding.\n \n2. Review the ${server.config.dir}/jvm.options file. Verify \"semeru.fips\" property is set to true. \nDsemeru.fips=true\nIf the property is not set as shown in the ${server.config.dir}/jvm.options file, this is a finding.\n\n3. Confirm NSS packages are installed by running \"# dnf install nss\" in a terminal.\n\n# dnf install nss\nUpdating Subscription Management repositories.\nLast metadata expiration check: 0:56:30 ago on Wed 13 Sep 2023 07:29:35 AM PDT.\nPackage nss-3.79.0-11.el8_7.x86_64 is already installed.\nDependencies resolved.\nNothing to do.\nComplete!\n\nIf the command does not return output stating NSS is installed, this is a finding.\n\n4. Confirm NSS Database has the keystore imported by running \"# certutil -L -d /etc/pki/nssdb\" in a terminal. \n\n# certutil -L -d /etc/pki/nssdb\nCertificate Nickname                                         Trust Attributes\n                                                             SSL,S/MIME,JAR/XPI\ndefault                                                      CTu,Cu,Cu\n\nIf the command does not return the results as shown, this is a finding.\n\n5. Review the ${server.config.dir}/server.xml and confirm the following entries:\n\nname = NSS-FIPS\nlibrary = /usr/lib64/libsoftokn3.so\nslot = 3\nshowInfo = true\n\nIf the entries are not set as shown in the ${server.config.dir}/server.xml file, this is a finding.\n\n6. Review the ${server.config.dir}/server.xml file with the following steps:\n\n6.1 Locate <ssl> configuration that is specifying the default SSL configuration for Liberty.\n6.2 Locate the \"keyStoreRef\" attribute in the <ssl> configuration and find the referenced <keyStore> configuration. \n6.3 Verify the \"provider\" attribute is set to either \"SunPKCS11-NSS-FIPS\" or \"PKCS11-NSS-FIPS\" in the <keyStore> configuration. \n6.4 Verify the \"type\" attribute is set to \"PKCS11\".\n6.5 Verify the \"fileBased\" attribute is set to \"false\".\n6.6 Find the \"location\" attribute for the configuration file of NSS keystore database (In the example below, it is \"/tmp/pkcs11cfg.cfg\").\n6.7 Verify the file is in a location accessible to Liberty.\n\nSnippet of server.xml:\n<ssl id=\"defaultSSLConfig\" keyStoreRef=\"defaultKeyStore\" sslProtocol=\"TLSv1.2\" />\n<keyStore id=\"defaultKeyStore\" password=\"{xor}Lz4sLCgwLTsINis3\" location=\"/tmp/pkcs11cfg.cfg\" type=\"PKCS11\" fileBased=\"false\" provider=\"SunPKCS11-NSS-FIPS\" />\n\nIf the entries are not set as shown in the ${server.config.dir}/server.xml file, this is a finding."
+            "check-content": "As a privileged user with access to the ${server.config.dir}/server.xml file; search for SSLDefault in order to identify the default SSL configuration.\n\ngrep -i ssldefault server.xml\n\nIdentify the default ssl configuration by examining the sslRef flag.\n\nSAMPLE:\n <sslDefault sslRef=\"DefaultTLSSettings\" /> \n\nReview the default ssl configuration to identify the default truststore.\n\nSAMPLE:\n <ssl id=\"DefaultTLSSettings\" keyStoreRef=\"defaultKeyStore\" />\n       <keyStore id=\"LDAPTrustStore\" location=\"${server.config.dir}/liberty.ks\" type=\"JKS\" password=\"xxxxxxx\" />\n\nUse the java keytool or ikeyman utilities to open and examine the certificates stored in the truststore.\n\nIf the certificates are self signed or not signed by a DoW approved certificate authority (CA), this is a finding."
           }
         }
       },
@@ -2032,7 +1939,7 @@
         "title": "SRG-APP-000295-AS-000263",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250340r1043182_rule",
+          "+@id": "SV-250340r1265271_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000720",
@@ -2081,7 +1988,7 @@
         "title": "SRG-APP-000315-AS-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250341r1015252_rule",
+          "+@id": "SV-250341r1265272_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-000770",
@@ -2126,7 +2033,7 @@
         "title": "SRG-APP-000340-AS-000185",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250342r961353_rule",
+          "+@id": "SV-250342r1265273_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000790",
@@ -2165,7 +2072,7 @@
         "title": "SRG-APP-000357-AS-000038",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250343r961392_rule",
+          "+@id": "SV-250343r1265274_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000830",
@@ -2204,7 +2111,7 @@
         "title": "SRG-APP-000380-AS-000088",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250344r961461_rule",
+          "+@id": "SV-250344r1265275_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000910",
@@ -2243,7 +2150,7 @@
         "title": "SRG-APP-000400-AS-000246",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250345r961521_rule",
+          "+@id": "SV-250345r1265276_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-000970",
@@ -2282,7 +2189,7 @@
         "title": "SRG-APP-000428-AS-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250346r1067567_rule",
+          "+@id": "SV-250346r1265277_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001050",
@@ -2321,12 +2228,12 @@
         "title": "SRG-APP-000439-AS-000274",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250347r961632_rule",
+          "+@id": "SV-250347r1265278_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001110",
           "title": "The WebSphere Liberty Server must remove all export ciphers to protect the confidentiality and integrity of transmitted information.",
-          "description": "<VulnDiscussion>Export grade encryption suites are not strong and do not meet DoD requirements. The encryption for the session becomes easy for the attacker to break. Do not use export grade encryption.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Export grade encryption suites are not strong and do not meet DoW requirements. The encryption for the session becomes easy for the attacker to break. Do not use export grade encryption.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM WebSphere Liberty Server",
             "dc:publisher": "DISA",
@@ -2360,7 +2267,7 @@
         "title": "SRG-APP-000440-AS-000167",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250348r1137581_rule",
+          "+@id": "SV-250348r1265279_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001120",
@@ -2399,7 +2306,7 @@
         "title": "SRG-APP-000456-AS-000266",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250349r1137612_rule",
+          "+@id": "SV-250349r1265280_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001170",
@@ -2438,7 +2345,7 @@
         "title": "SRG-APP-000499-AS-000224",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-250350r961812_rule",
+          "+@id": "SV-250350r1265281_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IBMW-LS-001190",
@@ -2483,12 +2390,12 @@
         "title": "SRG-APP-000179-AS-000129",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-283668r1193262_rule",
+          "+@id": "SV-283668r1265284_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IBMW-LS-001200",
           "title": "The WebSphere Liberty Server must use FIPS 140-3-approved encryption modules when authenticating users and processes.",
-          "description": "<VulnDiscussion>Encryption is only as good as the encryption modules in use. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DOD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. FIPS 140-3-approved TLS versions include TLS V1.0 or greater. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Encryption is only as good as the encryption modules in use. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoW data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. FIPS 140-3-approved TLS versions include TLS V1.0 or greater. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target IBM WebSphere Liberty Server",
             "dc:publisher": "DISA",
@@ -2519,19 +2426,19 @@
             }
           ],
           "fixtext": {
-            "+content": "There are two ways to meet this requirement using FIPS 140-3. Only one method is required.\n\nIf IBM JDK 8 version 8.0.8.30 or later is installed and configured to run with WebSphere Liberty version 25.0.0.3 or later, proceed with method (I).\nIf IBM Semeru Runtimes version 11.0.29, 17.0.17, 21.0.9, 25.0.1 or higher is installed and configured with WebSphere Liberty version 25.0.0.12 or later, proceed with method (II).\n\nMethod (I) IBM JDK 8 (version 8.0.8.30 or later) with WebSphere Liberty (version 25.0.0.3 or later):\n\n1. If Liberty server is running, stop it.\n\n2. Edit/create the ${server.config.dir}/jvm.options file. Edit/add the following three properties:\n\n-Xenablefips140-3\n-Dcom.ibm.jsse2.usefipsprovider=true\n-Dcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS\n\n3. If there are existing LTPA keys, delete the ltpa.keys file before restarting the server to generate new FIPS 140-3-compliant keys.\n\nDefault location: ${server.output.dir}/resources/security/ltpa.keys\n\nA new ltpa.keys file will be automatically created when the Liberty server restarts with FIPS 140-3-compliant keys.\n\n4. Restart the Liberty server to enable FIPS 140-3.\n\n5. Verify TLS protocol is set to TLS 1.2 or TLS 1.3 in the ${server.config.dir}/server.xml file.\n\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.2\" />\nor\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.3\" />\n\nAlternative LTPA Key Creation Method:\nTo manually create LTPA keys with FIPS 140-3 approved algorithms using the securityUtility command:\n\n1. Export the required system properties:\n\nexport JVM_ARGS=\"-Xenablefips140-3 -Dcom.ibm.jsse2.usefipsprovider=true -Dcom.ibm.jsse2.usefipsProviderName=2. Run the securityUtility createLTPAKeys command:\nsecurityUtility createLTPAKeys --password=mypassword --passwordEncoding=aes\n\nImportant: If LTPA validation keys exist, delete these and generate new validation keys after FIPS 140-3 is enabled using the securityUtility createLTPAKeys command as shown above.\n\nMethod (II) IBM Semeru Runtimes with WebSphere Liberty (FIPS 140-3):\n\n1. Liberty server is running, stop it.\n\n2. Enable FIPS 140-3 using the securityUtility configureFIPS command. To enable across all servers, clients and tools (Installation level):\n\nsecurityUtility configureFIPS\nTo enable for a specific server:\nsecurityUtility configureFIPS --server=<server_name>\nTo enable for a specific client:\nsecurityUtility configureFIPS --client=<client_name>\n\nThis command configures the FIPS enablement requirements and creates a Java security properties file.\n\n3. (Optional) To create a custom profile in a specific location:\n\nsecurityUtility configureFIPS --customProfileFile=<file_path>\n\nThe default profile locations are:\n\n- Installation level: <Liberty install location>/wlp/etc/FIPS140-3-Liberty-Application.properties\n- Server level: <server root>/resources/security/FIPS140-3-Liberty-Application.properties\n- Client level: <client root>/resources/security/FIPS140-3-Liberty-Application.properties\n\n4. Restart the Liberty server to enable FIPS 140-3.\n\nWhen the server restarts after FIPS 140-3 is enabled:\n\n- A new ltpa.keys file is automatically created with FIPS-approved algorithms.\n- Existing ltpa.keys files are backed up to ltpa.keys.nofips.\n\n5. Verify TLS protocol is set to TLS 1.2 or TLS 1.3 in the ${server.config.dir}/server.xml file.\n\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.2\" />\nor\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.3\" />\n\n6. SAML Configuration: If SAML is used, configure only FIPS 140-3-approved signature algorithms in the ${server.config.dir}/server.xml file.\n\nApproved algorithms: SHA256, SHA384, SHA512, ECDSAwithSHA256, ECDSAwithSHA384, ECDSAwithSHA512\n\nExample:\n<samlWebSso20 id=\"defaultSP\" signatureMethodAlgorithm=\"SHA256\" />\n\nAlternative LTPA Key Creation Method:\nTo manually create LTPA keys with FIPS 140-3-approved algorithms:\n\n1. Configure FIPS 140-3 at the installation level (as shown in step 2 above).\n\n2. Run the securityUtility createLTPAKeys command:\n\nsecurityUtility createLTPAKeys --password=mypassword --passwordEncoding=aes\n\nImportant: If LTPA validation keys exist, delete these and generate new validation keys after FIPS 140-3 is enabled using the securityUtility createLTPAKeys command.",
-            "+@fixref": "F-88138r1193259_fix"
+            "+content": "Implementation for Cell Profile (Network Deployment):\n\n1. Back up the existing configuration:\nbackupConfig.sh <backup_directory>\n\n2. Stop all servers except the deployment manager:\nStop all node agents and application servers\nKeep only the deployment manager running\n\n3. Enable FIPS 140-3.\n\nOption A - Using Administrative Console:\n1. Click Security » SSL certificate and key management » Manage FIPS.\n2. Select “Enable FIPS 140-3”.\n3. Click “Apply”.\n\nOption B - Using Admin Command:\nAdminTask.enableFips('[-enableFips true -fipsLevel FIPS140-3 ]')\n\n1. Stop the deployment manager.\n2. Restart the deployment manager.\n3. Synchronize nodes. On each node, run:\nsyncNode.sh <dmgr_host> <dmgr_port>\n4. Start node agents and servers\n\nImplementation for Standalone Profile:\n\n1. Back up the existing configuration:\nbackupConfig.sh <backup_directory>\n\n2. Enable FIPS 140-3:\n\nOption A - Using Administrative Console:\n1. Click Security » SSL certificate and key management » Manage FIPS.\n2. Select “Enable FIPS 140-3”.\n3. Click “Apply”.\n\nOption B - Using Admin Command:\nAdminTask.enableFips('[-enableFips true -fipsLevel FIPS140-3 ]')\n\nFor both methods, restart the application server.",
+            "+@fixref": "F-88138r1265283_fix"
           },
           "fix": {
-            "+@id": "F-88138r1193259_fix"
+            "+@id": "F-88138r1265283_fix"
           },
           "check": {
-            "+@system": "C-88233r1192767_chk",
+            "+@system": "C-88233r1265282_chk",
             "check-content-ref": {
               "+@href": "IBM_WebSphere_Liberty_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If FIPS 140-2 is configured in IBMW-LS-000520, this is not applicable. This is allowed until 21 September 2026. If FIPS 140-2 is still in use after this date, this is a finding.\n\nThere are two ways to meet this requirement using FIPS 140-3. Only one method is required.\n\nIf IBM JDK 8 version 8.0.8.30 or later is installed and configured to run with WebSphere Liberty version 25.0.0.3 or later, proceed with method (I). \nIf IBM Semeru Runtimes version 11.0.29, 17.0.17, 21.0.9, 25.0.1 or higher is installed and configured with WebSphere Liberty version 25.0.0.12 or later, proceed with method (II).\n\nMethod (I) IBM JDK 8 (version 8.0.8.30 or later) with WebSphere Liberty (version 25.0.0.3 or later):\n\n1. Review the ${server.config.dir}/jvm.options file. Verify FIPS 140-3 is in use by checking the following lines:\n\n-Xenablefips140-3\n-Dcom.ibm.jsse2.usefipsprovider=true\n-Dcom.ibm.jsse2.usefipsProviderName=IBMJCEPlusFIPS\n\nIf the properties are not set as shown in the ${server.config.dir}/jvm.options file, this is a finding.\n\n2. Verify TLS protocol is set to TLS 1.2 or TLS 1.3 in the ${server.config.dir}/server.xml file.\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.2\" />\nor\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.3\" />\n\nIf TLS 1.2 or TLS 1.3 is not configured, this is a finding.\n\n3. Verify LTPA keys are FIPS 140-3 compliant. Verify the ltpa.keys file was generated after FIPS 140-3 was enabled or verify LTPA keys were created using the securityUtility createLTPAKeys command with FIPS 140-3 enabled.\n\nDefault location: ${server.output.dir}/resources/security/ltpa.keys\n\nIf LTPA keys were created before FIPS 140-3 was enabled and have not been regenerated, this is a finding.\n\n\nMethod (II) IBM Semeru Runtimes with WebSphere Liberty (FIPS 140-3):\n\n1. Verify FIPS 140-3 is configured by checking for the existence of the FIPS 140-3 profile file in one of the following locations:\n\n- Installation level: <Liberty install location>/wlp/etc/FIPS140-3-Liberty-Application.properties\n- Server level: <server root>/resources/security/FIPS140-3-Liberty-Application.properties\n- Client level: <client root>/resources/security/FIPS140-3-Liberty-Application.properties\n\nIf the FIPS 140-3 profile file does not exist, this is a finding.\n\n2. Review the FIPS 140-3 profile file and verify it contains the appropriate security provider configurations. The file should contain entries similar to:\n\nRestrictedSecurity.OpenJCEPlusFIPS.FIPS140-3-Liberty-Application.jce.provider.1 = com.ibm.crypto.plus.\n\nIf the profile file does not contain valid provider configurations, this is a finding.\n\n3. Verify TLS protocol is set to TLS 1.2 or TLS 1.3 in the ${server.config.dir}/server.xml file.\n\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.2\" />\nor\n<ssl id=\"defaultSSLConfig\" sslProtocol=\"TLSv1.3\" />\n\nIf TLS 1.2 or TLS 1.3 is not configured, this is a finding.\n\n4. Verify LTPA keys are FIPS 140-3 compliant. Verify the ltpa.keys file was generated after FIPS 140-3 was enabled. If an ltpa.keys.nofips backup file exists, verify new FIPS 140-3 compliant keys were generated.\n\nDefault location: ${server.output.dir}/resources/security/ltpa.keys\n\nIf LTPA keys were created before FIPS 140-3 was enabled and have not been regenerated, this is a\nfinding.\n\n5. SAML Configuration (FIPS 140-3 specific): If SAML is used, verify that only FIPS 140-3 approved signature algorithms are configured in the ${server.config.dir}/server.xml file:\n\nApproved algorithms: SHA256, SHA384, SHA512, ECDSAwithSHA256, ECDSAwithSHA384, ECDSAwithSHA512\n\nExample:\n<samlWebSso20 id=\"defaultSP\" signatureMethodAlgorithm=\"SHA256\" />\n\nIf SHA1 or other nonapproved algorithms are configured, this is a finding."
+            "check-content": "From the administrative console, click Security >> SSL certificate and key management >> Manage FIPS.\n\nIf \"Enable FIPS 140-3\" is not selected, this is a finding."
           }
         }
       }

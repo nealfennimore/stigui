@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2023-02-21"
+      "+@date": "2026-09-09"
     },
     "title": "VMware vSphere 7.0 vCenter Appliance Perfcharts Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 07 Mar 2023",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.4.0.34222",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1342,7 +1342,7 @@
         "title": "SRG-APP-000001-WSR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256611r888324_rule",
+          "+@id": "SV-256611r960735_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000001",
@@ -1369,7 +1369,7 @@
           "check": {
             "+@system": "C-60286r888322_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Connector/@connectionTimeout' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nconnectionTimeout=\"20000\"\n\nIf the output does not match the expected result, this is a finding."
@@ -1381,7 +1381,7 @@
         "title": "SRG-APP-000001-WSR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256612r888327_rule",
+          "+@id": "SV-256612r960735_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000002",
@@ -1408,7 +1408,7 @@
           "check": {
             "+@system": "C-60287r888325_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Executor/@maxThreads' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nmaxThreads=\"300\"\n\nIf the output does not match the expected result, this is a finding."
@@ -1420,7 +1420,7 @@
         "title": "SRG-APP-000001-WSR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256613r888330_rule",
+          "+@id": "SV-256613r960735_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000003",
@@ -1447,7 +1447,7 @@
           "check": {
             "+@system": "C-60288r888328_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Connector/@maxPostSize' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nXPath set is empty\n\nIf the output does not match the expected result, this is a finding."
@@ -1459,7 +1459,7 @@
         "title": "SRG-APP-000001-WSR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256614r888333_rule",
+          "+@id": "SV-256614r960735_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000004",
@@ -1492,7 +1492,7 @@
           "check": {
             "+@system": "C-60289r888331_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/webapps/statsreport/WEB-INF/web.xml | sed '2 s/xmlns=\".*\"//g' | xmllint --xpath '/web-app/session-config/cookie-config/http-only' -\n\nExpected result:\n\n<http-only>true</http-only>\n\nIf the output does not match the expected result, this is a finding."
@@ -1504,7 +1504,7 @@
         "title": "SRG-APP-000016-WSR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256615r888336_rule",
+          "+@id": "SV-256615r960765_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000005",
@@ -1573,7 +1573,7 @@
           "check": {
             "+@system": "C-60290r888334_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml | sed '2 s/xmlns=\".*\"//g' |  xmllint --xpath '/Server/Service/Engine/Host/Valve[@className=\"org.apache.catalina.valves.AccessLogValve\"]/@pattern' -\n\nExpected result:\n\npattern=\"%h %{X-Forwarded-For}i %l %u %t &quot;%r&quot; %s %b &quot;%{User-Agent}i&quot;\"\n\nIf the output does not match the expected result, this is a finding."
@@ -1585,7 +1585,7 @@
         "title": "SRG-APP-000089-WSR-000047",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256616r888339_rule",
+          "+@id": "SV-256616r960879_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000006",
@@ -1618,7 +1618,7 @@
           "check": {
             "+@system": "C-60291r888337_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep StreamRedirectFile /etc/vmware/vmware-vmon/svcCfgfiles/perfcharts.json\n\nExpected result:\n\n\"StreamRedirectFile\" : \"%VMWARE_LOG_DIR%/vmware/perfcharts/vmware-perfcharts-runtime.log\",\n\nIf the output does not match the expected result, this is a finding."
@@ -1630,7 +1630,7 @@
         "title": "SRG-APP-000118-WSR-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256617r888342_rule",
+          "+@id": "SV-256617r960930_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000007",
@@ -1667,7 +1667,7 @@
           "check": {
             "+@system": "C-60292r888340_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# find /storage/log/vmware/perfcharts/ -xdev -type f -a '(' -perm -o+w -o -not -user perfcharts -o -not -group users ')' -exec ls -ld {} \\;\n\nIf any files are returned, this is a finding."
@@ -1679,7 +1679,7 @@
         "title": "SRG-APP-000131-WSR-000051",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256618r888345_rule",
+          "+@id": "SV-256618r984351_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000008",
@@ -1706,7 +1706,7 @@
           "check": {
             "+@system": "C-60293r888343_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# rpm -V VMware-perfcharts|grep \"^..5......\"|grep -v -E \"\\.properties|\\.conf|\\.xml|\\.password\"\n\nIf any files are returned, this is a finding."
@@ -1718,7 +1718,7 @@
         "title": "SRG-APP-000131-WSR-000073",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256619r888348_rule",
+          "+@id": "SV-256619r984352_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000009",
@@ -1745,7 +1745,7 @@
           "check": {
             "+@system": "C-60294r888346_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# ls -A /usr/lib/vmware-perfcharts/tc-instance/webapps\n\nExpected result:\n\nstatsreport\n\nIf the output does not match the expected result, this is a finding."
@@ -1757,7 +1757,7 @@
         "title": "SRG-APP-000141-WSR-000015",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256620r888351_rule",
+          "+@id": "SV-256620r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000010",
@@ -1784,7 +1784,7 @@
           "check": {
             "+@system": "C-60295r888349_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep UserDatabaseRealm /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nIf the command produces any output, this is a finding."
@@ -1796,7 +1796,7 @@
         "title": "SRG-APP-000141-WSR-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256621r888354_rule",
+          "+@id": "SV-256621r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000011",
@@ -1823,7 +1823,7 @@
           "check": {
             "+@system": "C-60296r888352_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep \"package.access\" /usr/lib/vmware-perfcharts/tc-instance/conf/catalina.properties\n\nExpected result:\n\npackage.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.jasper.,org.apache.tomcat.\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -1835,7 +1835,7 @@
         "title": "SRG-APP-000141-WSR-000081",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256622r888357_rule",
+          "+@id": "SV-256622r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000012",
@@ -1862,7 +1862,7 @@
           "check": {
             "+@system": "C-60297r888355_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep -En '(x-csh<)|(x-sh<)|(x-shar<)|(x-ksh<)' /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml\n\nIf the command produces any output, this is a finding."
@@ -1874,7 +1874,7 @@
         "title": "SRG-APP-000141-WSR-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256623r888360_rule",
+          "+@id": "SV-256623r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000013",
@@ -1901,7 +1901,7 @@
           "check": {
             "+@system": "C-60298r888358_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command: \n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/servlet-mapping/servlet-name[text()=\"jsp\"]/parent::servlet-mapping' -\n\nExpected result:\n\n<servlet-mapping>\n    <servlet-name>jsp</servlet-name>\n    <url-pattern>*.jsp</url-pattern>\n    <url-pattern>*.jspx</url-pattern>\n</servlet-mapping>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -1913,7 +1913,7 @@
         "title": "SRG-APP-000141-WSR-000085",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256624r888363_rule",
+          "+@id": "SV-256624r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000014",
@@ -1940,7 +1940,7 @@
           "check": {
             "+@system": "C-60299r888361_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command: \n\n# grep -n 'webdav' /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml\n\nIf the command produces any output, this is a finding."
@@ -1952,7 +1952,7 @@
         "title": "SRG-APP-000141-WSR-000086",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256625r888366_rule",
+          "+@id": "SV-256625r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000015",
@@ -1979,7 +1979,7 @@
           "check": {
             "+@system": "C-60300r888364_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command: \n\n# grep JreMemoryLeakPreventionListener /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\n<Listener className=\"org.apache.catalina.core.JreMemoryLeakPreventionListener\"/>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -1991,7 +1991,7 @@
         "title": "SRG-APP-000141-WSR-000087",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256626r888369_rule",
+          "+@id": "SV-256626r960963_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000016",
@@ -2018,7 +2018,7 @@
           "check": {
             "+@system": "C-60301r888367_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# find /usr/lib/vmware-perfcharts/tc-instance/webapps/ -type l -ls\n\nIf the command produces any output, this is a finding."
@@ -2030,7 +2030,7 @@
         "title": "SRG-APP-000211-WSR-000030",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256627r888372_rule",
+          "+@id": "SV-256627r1138072_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000017",
@@ -2063,7 +2063,7 @@
           "check": {
             "+@system": "C-60302r888370_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# find /usr/lib/vmware-perfcharts/tc-instance/webapps/ -xdev -type f -a '(' -not -user root -a -not -user perfcharts -o -not -group root ')' -exec ls -la {} \\;\n\nIf the command produces any output, this is a finding."
@@ -2075,7 +2075,7 @@
         "title": "SRG-APP-000225-WSR-000140",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256628r888375_rule",
+          "+@id": "SV-256628r961122_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000018",
@@ -2102,7 +2102,7 @@
           "check": {
             "+@system": "C-60303r888373_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command line, run the following command:\n\n# grep EXIT_ON_INIT_FAILURE /usr/lib/vmware-perfcharts/tc-instance/conf/catalina.properties\n\nExpected result:\n\norg.apache.catalina.startup.EXIT_ON_INIT_FAILURE = true\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2114,7 +2114,7 @@
         "title": "SRG-APP-000246-WSR-000149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256629r888378_rule",
+          "+@id": "SV-256629r961152_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000019",
@@ -2141,7 +2141,7 @@
           "check": {
             "+@system": "C-60304r888376_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Connector/@acceptCount' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nacceptCount=\"300\"\n\nIf the output does not match the expected result, this is a finding."
@@ -2153,7 +2153,7 @@
         "title": "SRG-APP-000251-WSR-000157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256630r888381_rule",
+          "+@id": "SV-256630r961158_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000020",
@@ -2180,7 +2180,7 @@
           "check": {
             "+@system": "C-60305r888379_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Connector/@URIEncoding' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nURIEncoding=\"UTF-8\"\n\nIf the output does not match the expected result, this is a finding."
@@ -2192,7 +2192,7 @@
         "title": "SRG-APP-000251-WSR-000157",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256631r888384_rule",
+          "+@id": "SV-256631r961158_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000021",
@@ -2219,7 +2219,7 @@
           "check": {
             "+@system": "C-60306r888382_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n#  xmllint --format /usr/lib/vmware-perfcharts/tc-instance/webapps/statsreport/WEB-INF/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/filter-mapping/filter-name[text()=\"setCharacterEncodingFilter\"]/parent::filter-mapping' -\n\nExpected result:\n\n<filter-mapping>\n    <filter-name>setCharacterEncodingFilter</filter-name>\n    <url-pattern>/*</url-pattern>\n</filter-mapping>\n\nIf the output is does not match the expected result, this is a finding.\n\nAt the command prompt, run the following command:\n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/webapps/statsreport/WEB-INF/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/filter/filter-name[text()=\"setCharacterEncodingFilter\"]/parent::filter' -\n\nExpected result:\n\n   <filter>\n      <filter-name>setCharacterEncodingFilter</filter-name>\n      <filter-class>\n         org.apache.catalina.filters.SetCharacterEncodingFilter\n      </filter-class>\n      <init-param>\n         <param-name>encoding</param-name>\n         <param-value>UTF-8</param-value>\n      </init-param>\n      <init-param>\n         <param-name>ignore</param-name>\n         <param-value>true</param-value>\n      </init-param>\n      <async-supported>true</async-supported>\n   </filter>\n\nIf the output is does not match the expected result, this is a finding."
@@ -2231,7 +2231,7 @@
         "title": "SRG-APP-000266-WSR-000142",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256632r888387_rule",
+          "+@id": "SV-256632r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000022",
@@ -2258,7 +2258,7 @@
           "check": {
             "+@system": "C-60307r888385_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n \n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/welcome-file-list' -\n\nExpected result:\n\n<welcome-file-list>\n    <welcome-file>index.html</welcome-file>\n    <welcome-file>index.htm</welcome-file>\n    <welcome-file>index.jsp</welcome-file>\n  </welcome-file-list>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2270,7 +2270,7 @@
         "title": "SRG-APP-000266-WSR-000142",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256633r888390_rule",
+          "+@id": "SV-256633r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000023",
@@ -2297,7 +2297,7 @@
           "check": {
             "+@system": "C-60308r888388_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '//param-name[text()=\"listings\"]/parent::init-param' -\n\nExpected result:\n\n<init-param>\n      <param-name>listings</param-name>\n      <param-value>false</param-value>\n</init-param>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2309,7 +2309,7 @@
         "title": "SRG-APP-000266-WSR-000159",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256634r888393_rule",
+          "+@id": "SV-256634r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000024",
@@ -2336,7 +2336,7 @@
           "check": {
             "+@system": "C-60309r888391_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n#  xmllint --format /usr/lib/vmware-perfcharts/tc-instance/webapps/statsreport/WEB-INF/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/error-page/exception-type[\"text()=java.lang.Throwable\"]/parent::error-page' -\n\nExpected result:\n\n<error-page>\n    <exception-type>java.lang.Throwable</exception-type>\n    <location>/http_error.jsp</location>\n</error-page>\n\nIf the output does not match the expected result, this is a finding."
@@ -2348,7 +2348,7 @@
         "title": "SRG-APP-000266-WSR-000159",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256635r888396_rule",
+          "+@id": "SV-256635r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000025",
@@ -2375,7 +2375,7 @@
           "check": {
             "+@system": "C-60310r888394_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Engine/Host/Valve[@className=\"org.apache.catalina.valves.ErrorReportValve\"]' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\n<Valve className=\"org.apache.catalina.valves.ErrorReportValve\" showServerInfo=\"false\" showReport=\"false\"/>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2387,7 +2387,7 @@
         "title": "SRG-APP-000266-WSR-000159",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256636r888399_rule",
+          "+@id": "SV-256636r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000026",
@@ -2414,7 +2414,7 @@
           "check": {
             "+@system": "C-60311r888397_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --xpath '/Server/Service/Connector/@server' /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nExpected result:\n\nserver=\"Anonymous\"\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2426,7 +2426,7 @@
         "title": "SRG-APP-000266-WSR-000160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256637r888402_rule",
+          "+@id": "SV-256637r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000027",
@@ -2453,7 +2453,7 @@
           "check": {
             "+@system": "C-60312r888400_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep allowTrace /usr/lib/vmware-perfcharts/tc-instance/conf/server.xml\n\nIf \"allowTrace\" is set to \"true\", this is a finding.\n\nIf no line is returned, this is not a finding."
@@ -2465,7 +2465,7 @@
         "title": "SRG-APP-000266-WSR-000160",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256638r888405_rule",
+          "+@id": "SV-256638r961167_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000028",
@@ -2492,7 +2492,7 @@
           "check": {
             "+@system": "C-60313r888403_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n \n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '//param-name[text()=\"debug\"]/parent::init-param' -\n\nExpected result:\n\n<init-param>\n      <param-name>debug</param-name>\n      <param-value>0</param-value>\n</init-param>\n\nIf the output of the command does not match the expected result, this is a finding.\n\nIf no lines is returned, this is not a finding."
@@ -2504,7 +2504,7 @@
         "title": "SRG-APP-000357-WSR-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256639r888408_rule",
+          "+@id": "SV-256639r961392_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000029",
@@ -2531,7 +2531,7 @@
           "check": {
             "+@system": "C-60314r888406_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# rpm -V VMware-perfcharts|grep log4j|grep \"^..5......\"\n\nIf the command returns any output, this is a finding."
@@ -2543,7 +2543,7 @@
         "title": "SRG-APP-000358-WSR-000163",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256640r888411_rule",
+          "+@id": "SV-256640r961395_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000030",
@@ -2576,7 +2576,7 @@
           "check": {
             "+@system": "C-60315r888409_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# rpm -V VMware-visl-integration|grep vmware-services-perfcharts.conf|grep \"^..5......\"\n\nIf the command returns any output, this is a finding."
@@ -2588,7 +2588,7 @@
         "title": "SRG-APP-000383-WSR-000175",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256641r888414_rule",
+          "+@id": "SV-256641r961470_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000031",
@@ -2615,7 +2615,7 @@
           "check": {
             "+@system": "C-60316r888412_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep '^bio\\.' /usr/lib/vmware-perfcharts/tc-instance/conf/catalina.properties\n\nExpected result:\n\nbio.http.port=13080\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2627,7 +2627,7 @@
         "title": "SRG-APP-000435-WSR-000147",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256642r888417_rule",
+          "+@id": "SV-256642r961620_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000032",
@@ -2654,7 +2654,7 @@
           "check": {
             "+@system": "C-60317r888415_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# grep base.shutdown.port /usr/lib/vmware-perfcharts/tc-instance/conf/catalina.properties\n\nExpected result:\n\nbase.shutdown.port=-1\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2666,7 +2666,7 @@
         "title": "SRG-APP-000439-WSR-000155",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256643r888420_rule",
+          "+@id": "SV-256643r961632_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000033",
@@ -2693,7 +2693,7 @@
           "check": {
             "+@system": "C-60318r888418_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n \n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/webapps/statsreport/WEB-INF/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/session-config/cookie-config/secure' -\n\nExpected result:\n\n<secure>true</secure>\n\nIf the output of the command does not match the expected result, this is a finding."
@@ -2705,7 +2705,7 @@
         "title": "SRG-APP-000516-WSR-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-256644r888423_rule",
+          "+@id": "SV-256644r961863_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "VCPF-70-000034",
@@ -2732,7 +2732,7 @@
           "check": {
             "+@system": "C-60319r888421_chk",
             "check-content-ref": {
-              "+@href": "U_VMW_vSphere_7-0_vCA_Perfcharts_STIG_V1R1_Manual-xccdf.xml",
+              "+@href": "VMware_vSphere_7.0_vCA_Perfcharts_STIG.xml",
               "+@name": "M"
             },
             "check-content": "At the command prompt, run the following command:\n\n# xmllint --format /usr/lib/vmware-perfcharts/tc-instance/conf/web.xml | sed 's/xmlns=\".*\"//g' | xmllint --xpath '/web-app/servlet/servlet-name[text()=\"default\"]/../init-param/param-name[text()=\"readonly\"]/../param-value[text()=\"false\"]' -\n\nExpected result:\n\nXPath set is empty\n\nIf the output of the command does not match the expected result, this is a finding."

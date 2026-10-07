@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-25"
+      "+@date": "2026-08-25"
     },
     "title": "Symantec Edge SWG NDM Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -172,6 +172,10 @@
           {
             "+@idref": "V-279283",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
+            "+@selected": "true"
           }
         ]
       },
@@ -298,6 +302,10 @@
           },
           {
             "+@idref": "V-279283",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
             "+@selected": "true"
           }
         ]
@@ -426,6 +434,10 @@
           {
             "+@idref": "V-279283",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
+            "+@selected": "true"
           }
         ]
       },
@@ -552,6 +564,10 @@
           },
           {
             "+@idref": "V-279283",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
             "+@selected": "true"
           }
         ]
@@ -680,6 +696,10 @@
           {
             "+@idref": "V-279283",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
+            "+@selected": "true"
           }
         ]
       },
@@ -806,6 +826,10 @@
           },
           {
             "+@idref": "V-279283",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
             "+@selected": "true"
           }
         ]
@@ -934,6 +958,10 @@
           {
             "+@idref": "V-279283",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
+            "+@selected": "true"
           }
         ]
       },
@@ -1060,6 +1088,10 @@
           },
           {
             "+@idref": "V-279283",
+            "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
             "+@selected": "true"
           }
         ]
@@ -1188,6 +1220,10 @@
           {
             "+@idref": "V-279283",
             "+@selected": "true"
+          },
+          {
+            "+@idref": "V-288474",
+            "+@selected": "true"
           }
         ]
       }
@@ -1294,12 +1330,12 @@
         "title": "SRG-APP-000033-NDM-000212",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279250r1170680_rule",
+          "+@id": "SV-279250r1262689_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SYME-ND-000170",
           "title": "The Edge SWG must be configured to assign appropriate user roles or access levels to authenticated users.",
-          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are preconfigured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an information system security manager (ISSM) may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM's user persona to the audit security group. This is still considered privileged access, but the ISSM's security group is more restrictive than the network administrator's security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user's directory service group membership.\n\nSatisfies: SRG-APP-000033-NDM-000212, SRG-APP-000038-NDM-000213, SRG-APP-000340-NDM-000288, SRG-APP-000378-NDM-000302, SRG-APP-000380-NDM-000304, SRG-APP-000516-NDM-000335</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DoW systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nSome network devices are preconfigured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an information system security manager (ISSM) may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM's user persona to the audit security group. This is still considered privileged access, but the ISSM's security group is more restrictive than the network administrator's security group.\n\nNetwork devices that rely on AAA brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically, based on each user's directory service group membership.\n\nSatisfies: SRG-APP-000033-NDM-000212, SRG-APP-000038-NDM-000213, SRG-APP-000340-NDM-000288, SRG-APP-000378-NDM-000302, SRG-APP-000380-NDM-000304, SRG-APP-000516-NDM-000335</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Symantec Edge SWG NDM",
             "dc:publisher": "DISA",
@@ -1338,11 +1374,11 @@
             }
           ],
           "fixtext": {
-            "+content": "1. In the Edge SWG Web UI, navigate to the VPM.\n2. Click \"Add Layer\".\n3. Scroll down and select \"Admin Access\", then click \"Add\".\n4. Locate the Admin Access Layer (1) layer that was added and click \"Add rule\".\n5. Inside of the rule, under \"Source\", left-click and select \"Set\".\n6. Click \"Add new Object\".\n7. Select \"Group\".\n8. Under the group field, type in the full LDAPS Distinguished Name (DN) for the admin group. For example: \"CN=roadcom.admins.gsg,OU=BROADCOM,OU=Vendors, DC=dod,DC=local\"\n9. Under the \"Authentication Realm\", select the \"CAC certificate\" realm.\n10. Click \"Apply\", then click \"Set\".\n11. In the same rule, left-click in the \"Service\" field and click \"Set\".\n12. Select \"Service Name: HTTPS-console\" and click \"Set\".\n13. In the same rule, left-click in the \"Action\" field and click \"Set\".\n14. Select the action \"Allow Read/Write Access\" and click \"Set\".\n15. Repeat these steps to add various read-only or read-write groups for the HTTPS-console.\n16. For the SSH-Console click \"Add rule\".\n17. Inside of the rule, under \"Source\", left-click and select \"Set\".\n18. Click \"Add new Object\".\n19. Select \"Group\".\n20. Under the \"Group\" field, type in the full LDAPS Distinguished Name (DN) for the admin group. For example: CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors, DC=dod,DC=local\n21. Under the \"Authentication Realm\", select the \"LDAPS\" realm. Do not select the CAC certificate realm.\n22. Click \"Apply\", then click \"Set\".\n23. In the same rule, left-click in the \"Service\" field and click \"Set\".\n24. Select \"Service Name: SSH-console\", and then click \"Set\".\n25. In the same rule, left-click in the \"Action\" field and click \"Set\".\n26. Select the action \"Allow Read/Write Access\" and click \"Set\".\n27. Repeat these steps to add various read-only or read-write groups for the SSH-console.",
-            "+@fixref": "F-83705r1170679_fix"
+            "+content": "1. In the Edge SWG Web UI, navigate to the VPM.\n2. Click \"Add Layer\".\n3. Scroll down and select \"Admin Access\", then click \"Add\".\n4. Locate the Admin Access Layer (1) layer that was added and click \"Add rule\".\n5. Inside of the rule, under \"Source\", left-click and select \"Set\".\n6. Click \"Add new Object\".\n7. Select \"Group\".\n8. Under the group field, type in the full LDAPS Distinguished Name (DN) for the admin group. For example: \"CN=roadcom.admins.gsg,OU=BROADCOM,OU=Vendors, DC=DoW,DC=local\"\n9. Under the \"Authentication Realm\", select the \"CAC certificate\" realm.\n10. Click \"Apply\", then click \"Set\".\n11. In the same rule, left-click in the \"Service\" field and click \"Set\".\n12. Select \"Service Name: HTTPS-console\" and click \"Set\".\n13. In the same rule, left-click in the \"Action\" field and click \"Set\".\n14. Select the action \"Allow Read/Write Access\" and click \"Set\".\n15. Repeat these steps to add various read-only or read-write groups for the HTTPS-console.\n16. For the SSH-Console click \"Add rule\".\n17. Inside of the rule, under \"Source\", left-click and select \"Set\".\n18. Click \"Add new Object\".\n19. Select \"Group\".\n20. Under the \"Group\" field, type in the full LDAPS Distinguished Name (DN) for the admin group. For example: CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors, DC=DoW,DC=local\n21. Under the \"Authentication Realm\", select the \"LDAPS\" realm. Do not select the CAC certificate realm.\n22. Click \"Apply\", then click \"Set\".\n23. In the same rule, left-click in the \"Service\" field and click \"Set\".\n24. Select \"Service Name: SSH-console\", and then click \"Set\".\n25. In the same rule, left-click in the \"Action\" field and click \"Set\".\n26. Select the action \"Allow Read/Write Access\" and click \"Set\".\n27. Repeat these steps to add various read-only or read-write groups for the SSH-console.",
+            "+@fixref": "F-83705r1262635_fix"
           },
           "fix": {
-            "+@id": "F-83705r1170679_fix"
+            "+@id": "F-83705r1262635_fix"
           },
           "check": {
             "+@system": "C-83800r1170678_chk",
@@ -1359,7 +1395,7 @@
         "title": "SRG-APP-000080-NDM-000220",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279251r1192886_rule",
+          "+@id": "SV-279251r1262690_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SYME-ND-000190",
@@ -1455,11 +1491,11 @@
             }
           ],
           "fixtext": {
-            "+content": "In the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under the \"Authentication\" section under \"Configuration and Realms and Domains\", click \"Add Realm and LDAP\".\n2. Add a name.\n3. Under \"Primary Server\", enter the fully qualified domain name (FDQN) of the LDAPS primary domain controller (e.g., dc1.dod.mil), then enter the port number, e.g., 636.\n4. Click \"Enable SSL\".\n5. Select the SSL device profile created in SYME-ND-000800.\n6. Under \"User attribute Type\": userPrincipalName.\n7. Click \"Add DN\".\n8. Enter the path of the domain (e.g., dc=dod,dc=mil).\n9. Click \"Show\" under \"Advanced Settings\".\n10. Click \"Use the same refresh time for all\" and set the refresh time to 10 seconds.\n11. Set the Inactivity Timeout to 600 seconds.\n12. Select \"Local\" for Group Comparison. \n13. Under Alternate Server, type the secondary LDAPS domain controller (e.g., dc2.dod.mil), then enter the port number, e.g., 636.\n14. Under \"Search\", click \"only Authorized\" and add the search user and password (i.e., the LDAPS service account) in DN format (e.g., CN=broadcom_svc,OU=BROADCOM,DC=dod,DC=mil)\n15. Under \"Groups\" select \"user\" for membership type and attribute as member of.\n16. Under \"Object Classes\" ensure \"container\" is selected.\n17. Click the \"test Configuration\" to ensure all configuration has been entered correctly.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under the Authentication section under \"Configuration and Realms and Domains\", click \"Add Realm and Certificate\".\n2. Make the name: \"CAC\"\n3. Under username enter: $(SubjectAltName.OtherName)\n4. Under full username enter: $(SubjectAltName.OtherName.1)\n5. Ensure \"Authorization Realm\" is checked and the previous LDAPS realm is selected. \n6. Under \"Authorization Username\", select \"Determined by Search\".\n7. Ensure the LDAPS search realm is selected.\n8. Enter the following in the search filter: (userPrincipalName=$(cs-username)) and ensure the user attribute \"Use FQDN\" is selected.\n9. Click \"Show\" advanced settings.\n10. Ensure \"Use persistent cookies\" and \"Verify the IP address in the cookie\" are not checked.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under \"Services\", click \"Proxy Services\".\n2. Click \"Add Service\".\n3. Name the service \"CAC-MC-Notify\".\n4. Under \"Proxy type\", select \"HTTPS Reverse Proxy\".\n5. Under \"Key Ring and CCL\", use those created under SYME-ND-000800.\n6. Ensure SSL version is TLS 1.2 or 1.3 only.\n7. Under \"Listeners\", add the management IPv4 address intercepting on port 444.\n8. Under \"Listeners\", add the management IPv6 address intercepting on port 444.\n\nIn the Edge SWG Web UI, navigate to the VPM.\n\n1. Go to the Symantec web portal to download the CPL text file called \"AdminLoginBanner.txt\", which will be used at https://knowledge.broadcom.com/external/article/388134.\n2. Click \"Add Layer\". \n3. Select \"CPL\".\n4. Download the exact CPL file hosted on the Symantec website. \n5. Click \"Apply Policy\" and ensure it loaded correctly.\n\nGo back to the main portion of the VPM.\n\n1. Click \"Add Layer\".\n2. Scroll down and select \"Admin Access\", then click \"Add\".\n3. Locate the Admin Access Layer (1) that was added and click \"Add rule\".\n4. Inside of the rule, under \"Source\", left-click and select \"Set\".\n5. Click \"Add new Object\".\n6. Select \"Group\".\n7. Under \"Group\" type in the full LDAPS full Distinguished Name (DN) for the admin group. e.g., CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors,DC=dod,DC=local\n8. Under the \"Authentication Realm\", select the \"CAC Certificate Realm\".\n9. Click \"Apply\", then click \"Set\".\n10. In the same rule, left-click in the \"Service\" field and click \"Set\".\n11. Select Service Name: HTTPS-console and click \"Set\".\n12. In the same rule, left-click in the \"Action\" field and click \"Set\".\n13. Select the action \"Allow Read/Write Access\" and click \"Set\".\n14. Repeat these steps to add various read-only or read-write groups for the HTTPS-console.\n15. For the SSH-Console click \"Add rule\".\n16. Inside of the rule, under \"Source\", left-click and select \"Set\".\n17. Click \"Add new Object\".\n18. Select \"Group\".\n19. Under the \"Group\" field type in the full LDAPS full Distinguished Name (DN) for the admin group. e.g., CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors,DC=dod,DC=local\n20. Under the \"Authentication Realm\", select the \"LDAPS\" realm; do not select the CAC certificate realm.\n21. Click \"Apply\", then click \"Set\".\n22. In the same rule, left-click in the \"Service\" field and click \"Set\".\n23. Select \"Service Name: SSH-console\" and click \"Set\".\n24. In the same rule, left-click in the \"Action\" field and click \"Set\".\n25. Select the action \"Allow Read/Write Access\" and click \"Set\".\n26. Repeat these steps to add various read-only or read-write groups for the SSH-console.\n27. Click \"Apply Policy\" and ensure it loaded correctly.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under \"Services\", click \"Management Services\".\n2. Click to edit the HTTPS-Console.\n3. Ensure the keyring and CCL are those created in SYME-ND-000800.\n4. Check \"Verify Client\" and select \"Apply then save\".\n5. Close, then re-open the browser, then go to the URL associated with the login banner, https://proxy.dod.mil:444.\n6. Once the login banner is presented, click \"Accept\".\n7. Select the CAC certificate. Provide the PIN. The user must be authenticated.\n\nNote: If it is unsuccessful, it is possible the LDAPS credential is not valid, the group does not match, or there is an OCSP revocation issue.",
-            "+@fixref": "F-83706r1192885_fix"
+            "+content": "In the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under the \"Authentication\" section under \"Configuration and Realms and Domains\", click \"Add Realm and LDAP\".\n2. Add a name.\n3. Under \"Primary Server\", enter the fully qualified domain name (FDQN) of the LDAPS primary domain controller (e.g., dc1.DoW.mil), then enter the port number, e.g., 636.\n4. Click \"Enable SSL\".\n5. Select the SSL device profile created in SYME-ND-000800.\n6. Under \"User attribute Type\": userPrincipalName.\n7. Click \"Add DN\".\n8. Enter the path of the domain (e.g., dc=DoW,dc=mil).\n9. Click \"Show\" under \"Advanced Settings\".\n10. Click \"Use the same refresh time for all\" and set the refresh time to 10 seconds.\n11. Set the Inactivity Timeout to 600 seconds.\n12. Select \"Local\" for Group Comparison. \n13. Under Alternate Server, type the secondary LDAPS domain controller (e.g., dc2.DoW.mil), then enter the port number, e.g., 636.\n14. Under \"Search\", click \"only Authorized\" and add the search user and password (i.e., the LDAPS service account) in DN format (e.g., CN=broadcom_svc,OU=BROADCOM,DC=DoW,DC=mil)\n15. Under \"Groups\" select \"user\" for membership type and attribute as member of.\n16. Under \"Object Classes\" ensure \"container\" is selected.\n17. Click the \"test Configuration\" to ensure all configuration has been entered correctly.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under the Authentication section under \"Configuration and Realms and Domains\", click \"Add Realm and Certificate\".\n2. Make the name: \"CAC\"\n3. Under username enter: $(SubjectAltName.OtherName)\n4. Under full username enter: $(SubjectAltName.OtherName.1)\n5. Ensure \"Authorization Realm\" is checked and the previous LDAPS realm is selected. \n6. Under \"Authorization Username\", select \"Determined by Search\".\n7. Ensure the LDAPS search realm is selected.\n8. Enter the following in the search filter: (userPrincipalName=$(cs-username)) and ensure the user attribute \"Use FQDN\" is selected.\n9. Click \"Show\" advanced settings.\n10. Ensure \"Use persistent cookies\" and \"Verify the IP address in the cookie\" are not checked.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under \"Services\", click \"Proxy Services\".\n2. Click \"Add Service\".\n3. Name the service \"CAC-MC-Notify\".\n4. Under \"Proxy type\", select \"HTTPS Reverse Proxy\".\n5. Under \"Key Ring and CCL\", use those created under SYME-ND-000800.\n6. Ensure SSL version is TLS 1.2 or 1.3 only.\n7. Under \"Listeners\", add the management IPv4 address intercepting on port 444.\n8. Under \"Listeners\", add the management IPv6 address intercepting on port 444.\n\nIn the Edge SWG Web UI, navigate to the VPM.\n\n1. Go to the Symantec web portal to download the CPL text file called \"AdminLoginBanner.txt\", which will be used at https://knowledge.broadcom.com/external/article/388134.\n2. Click \"Add Layer\". \n3. Select \"CPL\".\n4. Download the exact CPL file hosted on the Symantec website. \n5. Click \"Apply Policy\" and ensure it loaded correctly.\n\nGo back to the main portion of the VPM.\n\n1. Click \"Add Layer\".\n2. Scroll down and select \"Admin Access\", then click \"Add\".\n3. Locate the Admin Access Layer (1) that was added and click \"Add rule\".\n4. Inside of the rule, under \"Source\", left-click and select \"Set\".\n5. Click \"Add new Object\".\n6. Select \"Group\".\n7. Under \"Group\" type in the full LDAPS full Distinguished Name (DN) for the admin group. e.g., CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors,DC=DoW,DC=local\n8. Under the \"Authentication Realm\", select the \"CAC Certificate Realm\".\n9. Click \"Apply\", then click \"Set\".\n10. In the same rule, left-click in the \"Service\" field and click \"Set\".\n11. Select Service Name: HTTPS-console and click \"Set\".\n12. In the same rule, left-click in the \"Action\" field and click \"Set\".\n13. Select the action \"Allow Read/Write Access\" and click \"Set\".\n14. Repeat these steps to add various read-only or read-write groups for the HTTPS-console.\n15. For the SSH-Console click \"Add rule\".\n16. Inside of the rule, under \"Source\", left-click and select \"Set\".\n17. Click \"Add new Object\".\n18. Select \"Group\".\n19. Under the \"Group\" field type in the full LDAPS full Distinguished Name (DN) for the admin group. e.g., CN=broadcom.admins.gsg,OU=BROADCOM,OU=Vendors,DC=DoW,DC=local\n20. Under the \"Authentication Realm\", select the \"LDAPS\" realm; do not select the CAC certificate realm.\n21. Click \"Apply\", then click \"Set\".\n22. In the same rule, left-click in the \"Service\" field and click \"Set\".\n23. Select \"Service Name: SSH-console\" and click \"Set\".\n24. In the same rule, left-click in the \"Action\" field and click \"Set\".\n25. Select the action \"Allow Read/Write Access\" and click \"Set\".\n26. Repeat these steps to add various read-only or read-write groups for the SSH-console.\n27. Click \"Apply Policy\" and ensure it loaded correctly.\n\nIn the Edge SWG Web UI, navigate to the Configuration tab.\n\n1. Under \"Services\", click \"Management Services\".\n2. Click to edit the HTTPS-Console.\n3. Ensure the keyring and CCL are those created in SYME-ND-000800.\n4. Check \"Verify Client\" and select \"Apply then save\".\n5. Close, then re-open the browser, then go to the URL associated with the login banner, https://proxy.DoW.mil:444.\n6. Once the login banner is presented, click \"Accept\".\n7. Select the CAC certificate. Provide the PIN. The user must be authenticated.\n\nNote: If it is unsuccessful, it is possible the LDAPS credential is not valid, the group does not match, or there is an OCSP revocation issue.",
+            "+@fixref": "F-83706r1262637_fix"
           },
           "fix": {
-            "+@id": "F-83706r1192885_fix"
+            "+@id": "F-83706r1262637_fix"
           },
           "check": {
             "+@system": "C-83801r1170681_chk",
@@ -1476,7 +1512,7 @@
         "title": "SRG-APP-000027-NDM-000209",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279252r1170685_rule",
+          "+@id": "SV-279252r1262691_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SYME-ND-000410",
@@ -1528,11 +1564,11 @@
             }
           ],
           "fixtext": {
-            "+content": "1. In the Edge SWG Web UI, navigate to the Administration tab.\n2. Select the \"Logging\" and \"Event Logging\" areas.\nNote: This section sets the \"SSL Keyring\", which is needed for the \"SSL Device Profile\". Once the SSL Device Profile has been created properly, scroll down to the \"Syslog Loghosts\".\n3. Click \"Add loghost\".\n4. Click \"TLS\".\n5. Enter the fully qualified domain name of the log server.\n6. Enter the port, by default TLS syslog is 6514.\n7. Under \"SSL Device Profile\" select the profile associated with the DOD PKI certificate and key created previously.\n8. Click \"Add\".\n9. Scroll down to \"Default Notifications\", ensure \"Syslog\" is set to \"Enabled\", and the \"Level\" is \"All Messages\".\n10. On the syslog server, ensure the server is receiving the messages and troubleshoot any TLS-related communications issues.",
-            "+@fixref": "F-83707r1170684_fix"
+            "+content": "1. In the Edge SWG Web UI, navigate to the Administration tab.\n2. Select the \"Logging\" and \"Event Logging\" areas.\nNote: This section sets the \"SSL Keyring\", which is needed for the \"SSL Device Profile\". Once the SSL Device Profile has been created properly, scroll down to the \"Syslog Loghosts\".\n3. Click \"Add loghost\".\n4. Click \"TLS\".\n5. Enter the fully qualified domain name of the log server.\n6. Enter the port, by default TLS syslog is 6514.\n7. Under \"SSL Device Profile\" select the profile associated with the DoW PKI certificate and key created previously.\n8. Click \"Add\".\n9. Scroll down to \"Default Notifications\", ensure \"Syslog\" is set to \"Enabled\", and the \"Level\" is \"All Messages\".\n10. On the syslog server, ensure the server is receiving the messages and troubleshoot any TLS-related communications issues.",
+            "+@fixref": "F-83707r1262639_fix"
           },
           "fix": {
-            "+@id": "F-83707r1170684_fix"
+            "+@id": "F-83707r1262639_fix"
           },
           "check": {
             "+@system": "C-83802r1170683_chk",
@@ -1588,12 +1624,12 @@
         "title": "SRG-APP-000068-NDM-000215",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279254r1170689_rule",
+          "+@id": "SV-279254r1262692_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SYME-ND-000510",
-          "title": "The Edge SWG must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the device.",
-          "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.\n\nSatisfies: SRG-APP-000068-NDM-000215, SRG-APP-000069-NDM-000216</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Edge SWG must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the device.",
+          "description": "<VulnDiscussion>Display of the DoW-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.\n\nSatisfies: SRG-APP-000068-NDM-000215, SRG-APP-000069-NDM-000216</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Symantec Edge SWG NDM",
             "dc:publisher": "DISA",
@@ -1612,11 +1648,11 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"serial-console\".\n4. Enter \"inline pre-authentication-terms ~\", then press enter.\n5. Paste the exact required text below along with the EOF marker of ~:\n\nYou are accessing a U.S. Government (USG) Information System (IS)\nthat is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS),\nyou consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE, or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communication and work product are private and confidential. See User Agreement for details.\n~\n6. Enter \"exit\".\n7. Enter \"ssh-console\".\n8. Enter \"inline pre-authentication-terms ~\".\n9. Paste the exact DOD required text below along with the EOF marker of ~:\n\nYou are accessing a U.S. Government (USG) Information System (IS)\nthat is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS),\nyou consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE, or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communication and work product are private and confidential. See User Agreement for details.\n~\n\nNote: To add the required login banner for the HTTPS-console, the complete required fix detailed in SYME-ND-000190 must first be implemented.",
-            "+@fixref": "F-83709r1170688_fix"
+            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"serial-console\".\n4. Enter \"inline pre-authentication-terms ~\", then press enter.\n5. Paste the exact required text below along with the EOF marker of ~:\n\nYou are accessing a U.S. Government (USG) Information System (IS)\nthat is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS),\nyou consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE, or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communication and work product are private and confidential. See User Agreement for details.\n~\n6. Enter \"exit\".\n7. Enter \"ssh-console\".\n8. Enter \"inline pre-authentication-terms ~\".\n9. Paste the exact DoW required text below along with the EOF marker of ~:\n\nYou are accessing a U.S. Government (USG) Information System (IS)\nthat is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS),\nyou consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE, or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communication and work product are private and confidential. See User Agreement for details.\n~\n\nNote: To add the required login banner for the HTTPS-console, the complete required fix detailed in SYME-ND-000190 must first be implemented.",
+            "+@fixref": "F-83709r1262641_fix"
           },
           "fix": {
-            "+@id": "F-83709r1170688_fix"
+            "+@id": "F-83709r1262641_fix"
           },
           "check": {
             "+@system": "C-83804r1170524_chk",
@@ -1633,7 +1669,7 @@
         "title": "SRG-APP-000096-NDM-000226",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279255r1170692_rule",
+          "+@id": "SV-279255r1262693_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SYME-ND-000530",
@@ -1693,11 +1729,11 @@
             }
           ],
           "fixtext": {
-            "+content": "1. In the Edge SWG Web UI, navigate to the Administration tab.\n2. Select the \"Logging\" and \"Event Logging\" areas.\nNote: This section sets the \"SSL Keyring\", which is needed for the \"SSL Device Profile\".\n3. Once the SSL Device Profile has been created properly, scroll down to the \"Syslog Loghosts\".\n4. Click \"Add loghost\".\n5. Click \"TLS\".\n6. Enter the fully qualified domain name of the log server.\n7. Enter the port, by default TLS syslog is 6514.\n8. Under \"SSL Device Profile\", select the profile associated with the DOD PKI certificate and key created previously.\n9. Click \"Add\".\n10. Scroll down to \"Default Notifications\". Ensure that \"Syslog\" is set to \"Enabled\" and the \"Level\" is \"All Messages\".\n11. On the syslog server, ensure the server is receiving the messages and troubleshoot any TLS-related communications issues.",
-            "+@fixref": "F-83710r1170691_fix"
+            "+content": "1. In the Edge SWG Web UI, navigate to the Administration tab.\n2. Select the \"Logging\" and \"Event Logging\" areas.\nNote: This section sets the \"SSL Keyring\", which is needed for the \"SSL Device Profile\".\n3. Once the SSL Device Profile has been created properly, scroll down to the \"Syslog Loghosts\".\n4. Click \"Add loghost\".\n5. Click \"TLS\".\n6. Enter the fully qualified domain name of the log server.\n7. Enter the port, by default TLS syslog is 6514.\n8. Under \"SSL Device Profile\", select the profile associated with the DoW PKI certificate and key created previously.\n9. Click \"Add\".\n10. Scroll down to \"Default Notifications\". Ensure that \"Syslog\" is set to \"Enabled\" and the \"Level\" is \"All Messages\".\n11. On the syslog server, ensure the server is receiving the messages and troubleshoot any TLS-related communications issues.",
+            "+@fixref": "F-83710r1262643_fix"
           },
           "fix": {
-            "+@id": "F-83710r1170691_fix"
+            "+@id": "F-83710r1262643_fix"
           },
           "check": {
             "+@system": "C-83805r1170690_chk",
@@ -1837,11 +1873,11 @@
         "title": "SRG-APP-000166-NDM-000254",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279259r1170541_rule",
+          "+@id": "SV-279259r1262701_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SYME-ND-000615",
-          "title": "The Edge SWG must enforce a 60-day password lifetime.",
+          "title": "The Edge SWG must enforce a 180-day password lifetime.",
           "description": "<VulnDiscussion>Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Symantec Edge SWG NDM",
@@ -1855,19 +1891,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"security local-user-list edit local\".\n4. Enter \"max-password-age 60\".",
-            "+@fixref": "F-83714r1170540_fix"
+            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"security local-user-list edit local\".\n4. Enter \"max-password-age 180\".",
+            "+@fixref": "F-83714r1262700_fix"
           },
           "fix": {
-            "+@id": "F-83714r1170540_fix"
+            "+@id": "F-83714r1262700_fix"
           },
           "check": {
-            "+@system": "C-83809r1170539_chk",
+            "+@system": "C-83809r1262699_chk",
             "check-content-ref": {
               "+@href": "Symantec_Edge_SWG_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"security local-user-list edit local\".\n4. Enter \"view\".\n\nIf the \"Password expiration:\" and \"Max password age:\" do not state \"60 days\", this is a finding."
+            "check-content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"security local-user-list edit local\".\n4. Enter \"view\".\n\nIf the \"Password expiration:\" and \"Max password age:\" do not state \"180 days\", this is a finding."
           }
         }
       },
@@ -2276,12 +2312,12 @@
         "title": "SRG-APP-000435-NDM-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279271r1170700_rule",
+          "+@id": "SV-279271r1262694_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SYME-ND-000740",
           "title": "The Edge SWG must be configured to protect against known types of denial-of-service (DoS) attacks by employing organization-defined security safeguards.",
-          "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DOD level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DoW level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Symantec Edge SWG NDM",
             "dc:publisher": "DISA",
@@ -2364,7 +2400,7 @@
         "title": "SRG-APP-000516-NDM-000344",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279273r1170704_rule",
+          "+@id": "SV-279273r1262695_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SYME-ND-000800",
@@ -2392,19 +2428,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"ssl\".\n4. Enter \"create fips keyring show fips-keyring 2048\". The \"fips-keyring\" name can be changed to whatever the site wants to use.\n5. Enter \"create signing-request fips-keyring\".\n6. Enter \"view signing-request fips-keyring\". Copy the signing request PEM data and provide it to the CA for certificate issuance.\n7. Once the DOD CA issues/signs the certificate for the keyring type \"inline certificate fips-keyring ~\", paste the raw certificate data into a text editor, then press enter. Ensure the \"~\" is present at the end of the inserted text.\n8. For each LDAP server, CA certificate, and CAC authentication CA certificate, issue the following command: \"inline fips ca-certificate DODCA1 ~\". Ensure the ~ is entered at the end of the certificate data paste. Note: DODCA1 is used as an example.\n9. Repeat the \"inline fips ca-certificate\" command for all CA certificates in use for LDAPS and CAC authentication.\n10. Create a new FIPS-enabled CCL by entering: \"create fips ccl fips-ccl\". The fips-ccl name can be changed to whatever the site wants to use.\n11. Enter \"edit ccl fips-ccl\".\n12. Enter \"add\", then enter all the CAs added in all previous steps.\n13. Create an SSL device profile by entering: \"create fips ssl-device-profile fips-profile fips-keyring\". The \"fips-profile\" name can be changed to whatever the site wants to use.",
-            "+@fixref": "F-83728r1170579_fix"
+            "+content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Enter \"ssl\".\n4. Enter \"create fips keyring show fips-keyring 2048\". The \"fips-keyring\" name can be changed to whatever the site wants to use.\n5. Enter \"create signing-request fips-keyring\".\n6. Enter \"view signing-request fips-keyring\". Copy the signing request PEM data and provide it to the CA for certificate issuance.\n7. Once the DoW CA issues/signs the certificate for the keyring type \"inline certificate fips-keyring ~\", paste the raw certificate data into a text editor, then press enter. Ensure the \"~\" is present at the end of the inserted text.\n8. For each LDAP server, CA certificate, and CAC authentication CA certificate, issue the following command: \"inline fips ca-certificate DODCA1 ~\". Ensure the ~ is entered at the end of the certificate data paste. Note: DODCA1 is used as an example.\n9. Repeat the \"inline fips ca-certificate\" command for all CA certificates in use for LDAPS and CAC authentication.\n10. Create a new FIPS-enabled CCL by entering: \"create fips ccl fips-ccl\". The fips-ccl name can be changed to whatever the site wants to use.\n11. Enter \"edit ccl fips-ccl\".\n12. Enter \"add\", then enter all the CAs added in all previous steps.\n13. Create an SSL device profile by entering: \"create fips ssl-device-profile fips-profile fips-keyring\". The \"fips-profile\" name can be changed to whatever the site wants to use.",
+            "+@fixref": "F-83728r1262647_fix"
           },
           "fix": {
-            "+@id": "F-83728r1170579_fix"
+            "+@id": "F-83728r1262647_fix"
           },
           "check": {
-            "+@system": "C-83823r1170703_chk",
+            "+@system": "C-83823r1262646_chk",
             "check-content-ref": {
               "+@href": "Symantec_Edge_SWG_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Issue the command \"ssl\", then issue the command \"view keyring\".\n4. Find the keyrings that state: \"FIPS compliant: yes\".\n\n1. Log in to the Edge SWG Web UI.\n2. Navigate to the Configuration tab. \n3. Click the SSL, and then keyrings section.\n\nIf the keyring in use was not FIPS compliant from step #3 above, this is a finding.\n\nClick the keyring in use.\n\nIf the certificate in the keyring was not issued by a DOD certificate authority this is a finding."
+            "check-content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"enable\" and \"configure terminal\".\n3. Issue the command \"ssl\", then issue the command \"view keyring\".\n4. Find the keyrings that state: \"FIPS compliant: yes\".\n\n1. Log in to the Edge SWG Web UI.\n2. Navigate to the Configuration tab. \n3. Click the SSL, and then keyrings section.\n\nIf the keyring in use was not FIPS compliant from step #3 above, this is a finding.\n\nClick the keyring in use.\n\nIf the certificate in the keyring was not issued by a DoW certificate authority this is a finding."
           }
         }
       },
@@ -2452,7 +2488,7 @@
         "title": "SRG-APP-000516-NDM-000351",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279275r1170586_rule",
+          "+@id": "SV-279275r1207744_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SYME-ND-000820",
@@ -2606,6 +2642,45 @@
               "+@name": "M"
             },
             "check-content": "1. Log in to the Edge SWG SSH CLI.\n2. Enter \"show configuration\".\n3. Move down the configuration to the \"security password-policy\" section.\n\nIf the configuration \"security password-policy\" is not set to \"prohibit-common-words\", this is a finding."
+          }
+        }
+      },
+      {
+        "+@id": "V-288474",
+        "title": "SRG-APP-000096-NDM-000226",
+        "description": "<GroupDescription></GroupDescription>",
+        "Rule": {
+          "+@id": "SV-288474r1262698_rule",
+          "+@weight": "10.0",
+          "+@severity": "medium",
+          "version": "SYME-ND-001045",
+          "title": "The Edge SWG must enable monitoring and alerts while using the Broadcom Content Analysis System.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. \n\nAudit records can be generated from various components within the application (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the application will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "reference": {
+            "dc:title": "DPMS Target Symantec Edge SWG NDM",
+            "dc:publisher": "DISA",
+            "dc:type": "DPMS Target",
+            "dc:subject": "Symantec Edge SWG NDM",
+            "dc:identifier": "5726"
+          },
+          "ident": {
+            "+content": "CCI-000169",
+            "+@system": "http://cyber.mil/cci"
+          },
+          "fixtext": {
+            "+content": "Configure an ICAP service with secure connections and ICAP feedback enabled for interactive and noninteractive traffic with the following steps:\n\n1. Go to Configuration >> Content Analysis >> ICAP.\n2. Click \"Add,\" and \"ICAP Service\".\n3. Enter the service URL. For example: icap://cas.mil/ICAP-service\n4. Click \"Threat Protection.\"\n5. Enter \"250\" for \"Maximum number of connections.\"\n6. Enter \"65535\" for \"Connection timeout.\"\n7. Enable \"Defer scanning at threshold,\" and enter \"80%\".\n8. Enable \"Notify administrator when virus detected (email msg),\" and click \"Use exception page from the Edge SWG (ProxySG).\"\n9. Under Ports, select only \"Support secure ICAP connections,\" enter the port as \"11344\", and select the proper DoW CA-signed \"SSL Device Profile.\"\n10. Under ICAP options, select \"Response,\" \"enable preview,\" and send the following:\na. Authenticated Groups.\nb. Authenticated User.\nc. Client Address.\nd. Server Address.\ne. Server Country.\nf. Threat Risk Level.\ng. URL Categories.\n11. Click \"apply\" and \"save\".\n12. Go to Configuration >> Content Analysis >> ICAP.\n13. Under \"Interactive Traffic,\" enable \"Provide ICAP feedback during ICAP scanning for interactive traffic,\" and select \"5 seconds\" with a \"Return patience page,\" feedback type.\n14. Under \"Non-Interactive Traffic,\" enable \"Provide ICAP feedback during ICAP scanning for non-interactive traffic,\" and select \"5 seconds\" with a \"Trickle object data from start,\" feedback type.\n15. Click \"save\" and \"save\".",
+            "+@fixref": "F-93068r1262697_fix"
+          },
+          "fix": {
+            "+@id": "F-93068r1262697_fix"
+          },
+          "check": {
+            "+@system": "C-93163r1262696_chk",
+            "check-content-ref": {
+              "+@href": "Symantec_Edge_SWG_NDM_STIG.xml",
+              "+@name": "M"
+            },
+            "check-content": "Verify an ICAP service is configured with secure connections and ICAP feedback enabled for interactive and noninteractive traffic with the following steps:\n\nThis is not applicable unless using the Broadcom Content Analysis System.\n\n1. Go to Configuration >> Content Analysis >> ICAP and select the \"ICAP Feedback\" tab/section.\n2. If there is no ICAP service configured, this is a finding.\n3. If an ICAP service is configured, but it is using \"plain ICAP Connections,\" then this is a finding.\n4. Under \"Interactive Traffic,\" if \"Provide ICAP feedback during ICAP scanning for interactive traffic\" is not enabled, this is also a finding.\n5. Under \"Non-Interactive Traffic,\" if \"Provide ICAP feedback during ICAP scanning for non-interactive traffic\" is not enabled, this is a finding.\n\nIf any of the above conditions are not met, this is a finding."
           }
         }
       }

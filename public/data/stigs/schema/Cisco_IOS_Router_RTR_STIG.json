@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-08-19"
+      "+@date": "2026-09-01"
     },
     "title": "Cisco IOS Router RTR Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 4 Benchmark Date: 01 Oct 2025",
+        "+content": "Release: 5 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5.1",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3430,7 +3430,7 @@
         "title": "SRG-NET-000018-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216551r1117236_rule",
+          "+@id": "SV-216551r1137893_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000010",
@@ -3532,7 +3532,7 @@
         "title": "SRG-NET-000019-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216556r1117237_rule",
+          "+@id": "SV-216556r1137913_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000060",
@@ -4079,7 +4079,7 @@
         "title": "SRG-NET-000019-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216571r1117237_rule",
+          "+@id": "SV-216571r1137906_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000230",
@@ -4128,7 +4128,7 @@
         "title": "SRG-NET-000202-RTR-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216572r1117241_rule",
+          "+@id": "SV-216572r1137935_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-RT-000240",
@@ -4177,7 +4177,7 @@
         "title": "SRG-NET-000019-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216573r1117237_rule",
+          "+@id": "SV-216573r1137907_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000250",
@@ -4324,12 +4324,12 @@
         "title": "SRG-NET-000019-RTR-000008",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216576r1117237_rule",
+          "+@id": "SV-216576r1269397_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-RT-000280",
           "title": "The Cisco perimeter router must be configured to protect an enclave connected to an approved gateway by using an inbound filter that only permits packets with destination addresses within the sites address space.",
-          "description": "<VulnDiscussion>Enclaves with approved gateway connections must take additional steps to ensure there is no compromise on the enclave network or NIPRNet. Without verifying the destination address of traffic coming from the site's approved gateway, the perimeter router could be routing transit data from the internet into the NIPRNet. This could also make the perimeter router vulnerable to a denial-of-service (DoS) attack and provide a back door into the NIPRNet. The DOD enclave must ensure the ingress filter applied to external interfaces on a perimeter router connecting to an approved gateway is secure through filters permitting packets with a destination address belonging to the DOD enclave's address block.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Enclaves with approved gateway connections must take additional steps to ensure there is no compromise on the enclave network or NIPRNet. Without verifying the destination address of traffic coming from the site's approved gateway, the perimeter router could be routing transit data from the internet into the NIPRNet. This could also make the perimeter router vulnerable to a denial-of-service (DoS) attack and provide a back door into the NIPRNet. The DoW enclave must ensure the ingress filter applied to external interfaces on a perimeter router connecting to an approved gateway is secure through filters permitting packets with a destination address belonging to the DoW enclave's address block.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Router RTR",
             "dc:publisher": "DISA",
@@ -4352,19 +4352,19 @@
             }
           ],
           "fixtext": {
-            "+content": "This requirement is not applicable for the DODIN backbone.\n\nConfigure the ingress ACL of the perimeter router connected to an approved gateway to only permit packets with destination addresses of the site's NIPRNet address space or a destination address belonging to the address block assigned by the approved gateway network service provider as shown in the example below.\n\nR5(config)#ip access-list extended FILTER_ISP\nR5(config-ext-nacl)#permit tcp any any established\nR5(config-ext-nacl)#permit icmp host x.12.1.16 host x.12.1.17 echo\nR5(config-ext-nacl)#permit icmp host x.12.1.16 host x.12.1.17 echo-reply\nR5(config-ext-nacl)#permit tcp any host x.12.1.22 eq www\nR5(config-ext-nacl)#permit tcp any host x.12.1.23 eq www\nR5(config-ext-nacl)#permit 50 any host x.12.1.24\nR5(config-ext-nacl)#permit 51 any host x.12.1.24\nR5(config-ext-nacl)#deny ip any any log-input\nR5(config-ext-nacl)#end",
-            "+@fixref": "F-17807r1050871_fix"
+            "+content": "This requirement is not applicable for the DOWIN backbone.\n\nConfigure the ingress ACL of the perimeter router connected to an approved gateway to only permit packets with destination addresses of the site's NIPRNet address space or a destination address belonging to the address block assigned by the approved gateway network service provider as shown in the example below.\n\nR5(config)#ip access-list extended FILTER_ISP\nR5(config-ext-nacl)#permit tcp any any established\nR5(config-ext-nacl)#permit icmp host x.12.1.16 host x.12.1.17 echo\nR5(config-ext-nacl)#permit icmp host x.12.1.16 host x.12.1.17 echo-reply\nR5(config-ext-nacl)#permit tcp any host x.12.1.22 eq www\nR5(config-ext-nacl)#permit tcp any host x.12.1.23 eq www\nR5(config-ext-nacl)#permit 50 any host x.12.1.24\nR5(config-ext-nacl)#permit 51 any host x.12.1.24\nR5(config-ext-nacl)#deny ip any any log-input\nR5(config-ext-nacl)#end",
+            "+@fixref": "F-17807r1269396_fix"
           },
           "fix": {
-            "+@id": "F-17807r1050871_fix"
+            "+@id": "F-17807r1269396_fix"
           },
           "check": {
-            "+@system": "C-17811r1050870_chk",
+            "+@system": "C-17811r1269395_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Router_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN backbone.\n\nStep 1: Verify the interface connecting to ISP has an inbound ACL as shown in the example below.\n\ninterface GigabitEthernet0/2\n description Link to ISP\n ip address x.22.1.15 255.255.255.240\n ip access-group FILTER_ISP in\n\nStep 2: Verify that the ACL only allows traffic to specific destination addresses (i.e., enclave’s NIPRNet address space) as shown in the example below.\n\nip access-list extended FILTER_ISP\n permit tcp any any established\n permit icmp host x.12.1.16 host x.12.1.17 echo\n permit icmp host x.12.1.16 host x.12.1.17 echo-reply\n permit tcp any host x.12.1.22 eq www\n permit tcp any host x.12.1.23 eq www\n permit 50 any host x.12.1.24\n permit 51 any host x.12.1.24\n deny   ip any any log-input\n\nNote: An approved gateway is any external connection from a DOD NIPRNet enclave to an internet service provider, network owned by a contractor, or non-DOD federal agency that has been approved by either the DOD CIO or the DOD Component CIO. This approved gateway requirement does not apply to commercial cloud connections when the cloud service provider (CSP) network is connected via the NIPRNet Boundary Cloud Access Point (BCAP).\n\nIf the ingress ACL bound to the interface connecting to an approved gateway permits packets with addresses other than those specified, such as destination addresses of the site's NIPRNet address space or a destination address belonging to the address block assigned by the approved gateway network service provider, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN backbone.\n\nStep 1: Verify the interface connecting to ISP has an inbound ACL as shown in the example below.\n\ninterface GigabitEthernet0/2\n description Link to ISP\n ip address x.22.1.15 255.255.255.240\n ip access-group FILTER_ISP in\n\nStep 2: Verify that the ACL only allows traffic to specific destination addresses (i.e., enclave’s NIPRNet address space) as shown in the example below.\n\nip access-list extended FILTER_ISP\n permit tcp any any established\n permit icmp host x.12.1.16 host x.12.1.17 echo\n permit icmp host x.12.1.16 host x.12.1.17 echo-reply\n permit tcp any host x.12.1.22 eq www\n permit tcp any host x.12.1.23 eq www\n permit 50 any host x.12.1.24\n permit 51 any host x.12.1.24\n deny   ip any any log-input\n\nNote: An approved gateway is any external connection from a DoW NIPRNet enclave to an internet service provider, network owned by a contractor, or non-DoW federal agency that has been approved by either the DoW CIO or the DoW Component CIO. This approved gateway requirement does not apply to commercial cloud connections when the cloud service provider (CSP) network is connected via the NIPRNet Boundary Cloud Access Point (BCAP).\n\nIf the ingress ACL bound to the interface connecting to an approved gateway permits packets with addresses other than those specified, such as destination addresses of the site's NIPRNet address space or a destination address belonging to the address block assigned by the approved gateway network service provider, this is a finding."
           }
         }
       },
@@ -4373,7 +4373,7 @@
         "title": "SRG-NET-000019-RTR-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216577r1117237_rule",
+          "+@id": "SV-216577r1137919_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "CISC-RT-000290",
@@ -4422,7 +4422,7 @@
         "title": "SRG-NET-000019-RTR-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216578r1117237_rule",
+          "+@id": "SV-216578r1137922_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000300",
@@ -4471,11 +4471,11 @@
         "title": "SRG-NET-000205-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216580r1007822_rule",
+          "+@id": "SV-216580r1269400_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000320",
-          "title": "The Cisco perimeter router must be configured to filter traffic destined to the enclave in accordance with the guidelines contained in DoD Instruction 8551.1.",
+          "title": "The Cisco perimeter router must be configured to filter traffic destined to the enclave in accordance with the guidelines contained in DoW Instruction 8551.1.",
           "description": "<VulnDiscussion>Vulnerability assessments must be reviewed by the System Administrator, and protocols must be approved by the Information Assurance (IA) staff before entering the enclave.\n\nAccess control lists (ACLs) are the first line of defense in a layered security approach. They permit authorized packets and deny unauthorized packets based on port or service type. They enhance the posture of the network by not allowing packets to reach a potential target within the security domain. The lists provided are highly susceptible ports and services that should be blocked or limited as much as possible without adversely affecting customer requirements. Auditing packets attempting to penetrate the network but that are stopped by an ACL will allow network administrators to broaden their protective ring and more tightly define the scope of operation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Router RTR",
@@ -4499,19 +4499,19 @@
             }
           ],
           "fixtext": {
-            "+content": "This requirement is not applicable for the DODIN Backbone.\n\nConfigure the router to use an inbound ACL on all external interfaces as shown in the example below to restrict traffic in accordance with the guidelines contained in DOD Instruction 8551.1.\n\nR1(config)#ip access-list extended EXTERNAL_ACL_INBOUND\nR1(config-ext-nacl)#permit tcp any any established\nR1(config-ext-nacl)#permit tcp host x.11.1.1 eq bgp host x.11.1.2    \nR1(config-ext-nacl)#permit tcp host x.11.1.1 host x.11.1.2 eq bgp\nR1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo\nR1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo-reply\n…\n…    < must be in accordance with DoD Instruction 8551.1>\n…\nR1(config-ext-nacl)#deny ip any any log-input\nR1(config-ext-nacl)#exit\nR1(config)#int g0/2\nR1(config-if)#ip access-group EXTERNAL_ACL_INBOUND in",
-            "+@fixref": "F-17811r287122_fix"
+            "+content": "This requirement is not applicable for the DOWIN Backbone.\n\nConfigure the router to use an inbound ACL on all external interfaces as shown in the example below to restrict traffic in accordance with the guidelines contained in DoW Instruction 8551.1.\n\nR1(config)#ip access-list extended EXTERNAL_ACL_INBOUND\nR1(config-ext-nacl)#permit tcp any any established\nR1(config-ext-nacl)#permit tcp host x.11.1.1 eq bgp host x.11.1.2    \nR1(config-ext-nacl)#permit tcp host x.11.1.1 host x.11.1.2 eq bgp\nR1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo\nR1(config-ext-nacl)#permit icmp host x.11.1.1 host x.11.1.2 echo-reply\n…\n…    < must be in accordance with DoW Instruction 8551.1>\n…\nR1(config-ext-nacl)#deny ip any any log-input\nR1(config-ext-nacl)#exit\nR1(config)#int g0/2\nR1(config-if)#ip access-group EXTERNAL_ACL_INBOUND in",
+            "+@fixref": "F-17811r1269399_fix"
           },
           "fix": {
-            "+@id": "F-17811r287122_fix"
+            "+@id": "F-17811r1269399_fix"
           },
           "check": {
-            "+@system": "C-17815r287121_chk",
+            "+@system": "C-17815r1269398_chk",
             "check-content-ref": {
               "+@href": "Cisco_IOS_Router_RTR_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This requirement is not applicable for the DODIN Backbone.\n\nReview the router configuration to verify that the ingress ACL is in accordance with DoD 8551.1.\n\nStep 1: Verify that an inbound ACL is configured on all external interfaces.\n\ninterface GigabitEthernet0/2\n ip address x.11.1.2 255.255.255.254\n ip access-group EXTERNAL_ACL_INBOUND in\n\nStep 2. Review the inbound ACL to verify that it is filtering traffic in accordance with DoD 8551.1.\n\nip access-list extended EXTERNAL_ACL_INBOUND\n permit tcp any any established\n permit tcp host x.11.1.1 eq bgp host x.11.1.2\n permit tcp host x.11.1.1 host x.11.1.2 eq bgp\n permit icmp host x.11.1.1 host x.11.1.2 echo\n permit icmp host x.11.1.1 host x.11.1.2 echo-reply\n …\n …    < must be in accordance with DoD Instruction 8551.1>\n …\ndeny   ip any any log-input\n\nIf the router does not filter traffic in accordance with the guidelines contained in DoD 8551.1, this is a finding."
+            "check-content": "This requirement is not applicable for the DOWIN Backbone.\n\nReview the router configuration to verify that the ingress ACL is in accordance with DoW 8551.1.\n\nStep 1: Verify that an inbound ACL is configured on all external interfaces.\n\ninterface GigabitEthernet0/2\n ip address x.11.1.2 255.255.255.254\n ip access-group EXTERNAL_ACL_INBOUND in\n\nStep 2. Review the inbound ACL to verify that it is filtering traffic in accordance with DoW 8551.1.\n\nip access-list extended EXTERNAL_ACL_INBOUND\n permit tcp any any established\n permit tcp host x.11.1.1 eq bgp host x.11.1.2\n permit tcp host x.11.1.1 host x.11.1.2 eq bgp\n permit icmp host x.11.1.1 host x.11.1.2 echo\n permit icmp host x.11.1.1 host x.11.1.2 echo-reply\n …\n …    < must be in accordance with DoW Instruction 8551.1>\n …\ndeny   ip any any log-input\n\nIf the router does not filter traffic in accordance with the guidelines contained in DoW 8551.1, this is a finding."
           }
         }
       },
@@ -4916,7 +4916,7 @@
         "title": "SRG-NET-000019-RTR-000011",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216590r1117237_rule",
+          "+@id": "SV-216590r1137925_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000420",
@@ -4965,7 +4965,7 @@
         "title": "SRG-NET-000019-RTR-000012",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216591r1117237_rule",
+          "+@id": "SV-216591r1137928_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000430",
@@ -5161,7 +5161,7 @@
         "title": "SRG-NET-000018-RTR-000002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216597r1117236_rule",
+          "+@id": "SV-216597r1137894_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000490",
@@ -5210,7 +5210,7 @@
         "title": "SRG-NET-000018-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216598r1117236_rule",
+          "+@id": "SV-216598r1137895_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000500",
@@ -5259,7 +5259,7 @@
         "title": "SRG-NET-000018-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216599r1117236_rule",
+          "+@id": "SV-216599r1137896_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000510",
@@ -5308,7 +5308,7 @@
         "title": "SRG-NET-000018-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216600r1117236_rule",
+          "+@id": "SV-216600r1137897_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000520",
@@ -5406,7 +5406,7 @@
         "title": "SRG-NET-000018-RTR-000006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216602r1117236_rule",
+          "+@id": "SV-216602r1137898_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000540",
@@ -5455,7 +5455,7 @@
         "title": "SRG-NET-000018-RTR-000010",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216603r1117236_rule",
+          "+@id": "SV-216603r1137905_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000550",
@@ -6337,12 +6337,12 @@
         "title": "SRG-NET-000019-RTR-000003",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216622r1117237_rule",
+          "+@id": "SV-216622r1269401_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000790",
           "title": "The Cisco multicast router must be configured to disable Protocol Independent Multicast (PIM) on all interfaces that are not required to support multicast routing.",
-          "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. Limiting where, within the network, a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DoD IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and thereby knows which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>If multicast traffic is forwarded beyond the intended boundary, it is possible that it can be intercepted by unauthorized or unintended personnel. Limiting where, within the network, a given multicast group's data is permitted to flow is an important first step in improving multicast security. \n\nA scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"; that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. \n\nAs stated in the DoW IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.\" Therefore, it is imperative that the network engineers have documented their multicast topology and thereby knows which interfaces are enabled for multicast. Once this is done, the zones can be scoped as required.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Cisco IOS Router RTR",
             "dc:publisher": "DISA",
@@ -6386,7 +6386,7 @@
         "title": "SRG-NET-000019-RTR-000004",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216623r1117237_rule",
+          "+@id": "SV-216623r1137911_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CISC-RT-000800",
@@ -6435,7 +6435,7 @@
         "title": "SRG-NET-000019-RTR-000005",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216624r1117237_rule",
+          "+@id": "SV-216624r1137912_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000810",
@@ -6533,7 +6533,7 @@
         "title": "SRG-NET-000019-RTR-000013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216626r1117237_rule",
+          "+@id": "SV-216626r1137930_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000830",
@@ -6582,7 +6582,7 @@
         "title": "SRG-NET-000019-RTR-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216627r1117237_rule",
+          "+@id": "SV-216627r1137932_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000840",
@@ -6974,7 +6974,7 @@
         "title": "SRG-NET-000018-RTR-000007",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216635r1117236_rule",
+          "+@id": "SV-216635r1137900_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000920",
@@ -7023,7 +7023,7 @@
         "title": "SRG-NET-000018-RTR-000008",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216636r1117236_rule",
+          "+@id": "SV-216636r1137902_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000930",
@@ -7072,7 +7072,7 @@
         "title": "SRG-NET-000018-RTR-000009",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-216637r1117236_rule",
+          "+@id": "SV-216637r1137903_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CISC-RT-000940",

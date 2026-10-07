@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-05"
+      "+@date": "2026-08-31"
     },
     "title": "Soaring Software Solutions TCMax 9.x Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Feb 2026",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1081,11 +1081,11 @@
         "title": "SRG-APP-000174",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281375r1186155_rule",
+          "+@id": "SV-281375r1268569_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCMA-09-000071",
-          "title": "TCMax must enforce a 60-day maximum password lifetime restriction.",
+          "title": "TCMax must enforce a 180-day maximum password lifetime restriction.",
           "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.\n\nThis requirement does not include emergency administration accounts, which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Soaring Software Solutions TCMax 9.x",
@@ -1099,19 +1099,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Using an account of appropriate privileges to access TCMax, go to Settings >> User Options.\n\n2. Click the \"Configure\" menu option at the top of the window, then click \"Account Security Policy\". \n\n3. Ensure \"Enable Password Enforcement Policy\" is checked.\n\n4. Set \"Days Until Password Expires\" to \"60\" or fewer.",
-            "+@fixref": "F-85841r1186154_fix"
+            "+content": "1. Using an account of appropriate privileges to access TCMax, go to Settings >> User Options.\n\n2. Click the \"Configure\" menu option at the top of the window, then click \"Account Security Policy\". \n\n3. Ensure \"Enable Password Enforcement Policy\" is checked.\n\n4. Set \"Days Until Password Expires\" to \"180\" or fewer.",
+            "+@fixref": "F-85841r1268568_fix"
           },
           "fix": {
-            "+@id": "F-85841r1186154_fix"
+            "+@id": "F-85841r1268568_fix"
           },
           "check": {
-            "+@system": "C-85936r1186153_chk",
+            "+@system": "C-85936r1268567_chk",
             "check-content-ref": {
               "+@href": "Soaring_Software_Solutions_TCMax_9.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Using an account of appropriate privileges to access TCMax, go to Settings >> User Options.\n\n2. Click the \"Configure\" menu option at the top of the window, then click \"Account Security Policy\".\n\nIf \"Enable Password Enforcement Policy\" is unchecked, this is a finding.\n\nIf \"Days Until Password Expires\" is more than \"60\", this is a finding."
+            "check-content": "1. Using an account of appropriate privileges to access TCMax, go to Settings >> User Options.\n\n2. Click the \"Configure\" menu option at the top of the window, then click \"Account Security Policy\".\n\nIf \"Enable Password Enforcement Policy\" is unchecked, this is a finding.\n\nIf \"Days Until Password Expires\" is more than \"180\", this is a finding."
           }
         }
       },
@@ -1189,12 +1189,12 @@
         "title": "SRG-APP-000391",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-281377r1186158_rule",
+          "+@id": "SV-281377r1268570_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TCMA-09-000165",
           "title": "TCMax must accept personal identity verification (PIV) credentials.",
-          "description": "<VulnDiscussion>Using PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDOD has mandated using the common access card (CAC) to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nSatisfies: SRG-APP-000391, SRG-APP-000392</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Using PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoW has mandated using the common access card (CAC) to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nSatisfies: SRG-APP-000391, SRG-APP-000392</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Soaring Software Solutions TCMax 9.x",
             "dc:publisher": "DISA",

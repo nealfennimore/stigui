@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-26"
+      "+@date": "2026-08-31"
     },
     "title": "Database Security Requirements Guide",
-    "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Requirements Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 6 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -5328,12 +5328,12 @@
         "title": "SRG-APP-000033",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206521r1137654_rule",
+          "+@id": "SV-206521r1268161_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000033-DB-000084",
           "title": "The DBMS must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
-          "description": "<VulnDiscussion>Authentication with a DOD-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nThis requirement also applies to Zero Trust initiatives.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -5426,12 +5426,12 @@
         "title": "SRG-APP-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206523r960879_rule",
+          "+@id": "SV-206523r1268163_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000089-DB-000064",
-          "title": "The DBMS must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS must provide audit record generation capability for DoW-defined auditable events within all DBMS/database components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -5454,11 +5454,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Deploy a DBMS that supports the DoD minimum set of auditable events.\n\nConfigure the DBMS to generate audit records for at least the DoD minimum set of events.",
-            "+@fixref": "F-6783r291238_fix"
+            "+content": "Deploy a DBMS that supports the DoW minimum set of auditable events.\n\nConfigure the DBMS to generate audit records for at least the DoW minimum set of events.",
+            "+@fixref": "F-6783r1268162_fix"
           },
           "fix": {
-            "+@id": "F-6783r291238_fix"
+            "+@id": "F-6783r1268162_fix"
           },
           "check": {
             "+@system": "C-6783r291237_chk",
@@ -6896,12 +6896,12 @@
         "title": "SRG-APP-000164",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206555r981946_rule",
+          "+@id": "SV-206555r1268160_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000164-DB-000401",
-          "title": "If DBMS authentication, using passwords, is employed, the DBMS must enforce the DOD standards for password complexity and lifetime.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and AO-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If DBMS authentication, using passwords, is employed, the DBMS must enforce the DoW standards for password complexity and lifetime.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and authorizing official (AO) approved.\n\nThe DoW standard for authentication is DoW-approved Public Key Infrastructure (PKI) certificates. Authentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -6924,19 +6924,19 @@
             }
           ],
           "fixtext": {
-            "+content": "If the use of passwords is not needed, configure the DBMS to prevent their use if it is capable of this; if it is not, institute policies and procedures to prohibit their use.\n\nIf the DBMS can inherit password complexity rules from the operating system or access control program, configure it to do so.\n\nOtherwise, use DBMS configuration parameters and/or custom code to enforce the following rules for passwords:\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 60 days.\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\ne. Number of password changes before an old one may be reused: Minimum of five.",
-            "+@fixref": "F-6815r981945_fix"
+            "+content": "If the use of passwords is not needed, configure the DBMS to prevent their use if it is capable of this; if it is not, institute policies and procedures to prohibit their use.\n\nIf the DBMS can inherit password complexity rules from the operating system or access control program, configure it to do so.\n\nOtherwise, use DBMS configuration parameters and/or custom code to enforce the following rules for passwords:\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\ne. Number of password changes before an old one may be reused: Minimum of five.",
+            "+@fixref": "F-6815r1268159_fix"
           },
           "fix": {
-            "+@id": "F-6815r981945_fix"
+            "+@id": "F-6815r1268159_fix"
           },
           "check": {
-            "+@system": "C-6815r981944_chk",
+            "+@system": "C-6815r1268158_chk",
             "check-content-ref": {
               "+@href": "Database_Generic_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "If DBMS authentication, using passwords, is not employed, this is not a finding.\n\nIf the DBMS is configured to inherit password complexity and lifetime rules from the operating system or access control program, this is not a finding.\n\nReview the DBMS settings relating to password complexity. Determine whether the following rules are enforced. If any are not, this is a finding.\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\n\nReview the DBMS settings relating to password lifetime. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 60 days.\nb. Password lifetime limits for noninteractive accounts: Minimum 24 hours, maximum 365 days.\nc. Number of password changes before an old one may be reused: Minimum of five."
+            "check-content": "If DBMS authentication, using passwords, is not employed, this is not a finding.\n\nIf the DBMS is configured to inherit password complexity and lifetime rules from the operating system or access control program, this is not a finding.\n\nReview the DBMS settings relating to password complexity. Determine whether the following rules are enforced. If any are not, this is a finding.\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\n\nReview the DBMS settings relating to password lifetime. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nb. Password lifetime limits for noninteractive accounts: Minimum 24 hours, maximum 365 days.\nc. Number of password changes before an old one may be reused: Minimum of five."
           }
         }
       },
@@ -6945,12 +6945,12 @@
         "title": "SRG-APP-000171",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206556r981949_rule",
+          "+@id": "SV-206556r1268164_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000171-DB-000074",
           "title": "The DBMS must for password-based authentication, store passwords using an approved salted key derivation function, preferably using a keyed hash.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the DBMS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved Public Key Infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the DBMS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -6994,12 +6994,12 @@
         "title": "SRG-APP-000172",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206557r961029_rule",
+          "+@id": "SV-206557r1268165_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000172-DB-000075",
           "title": "If passwords are used for authentication, the DBMS must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -7043,12 +7043,12 @@
         "title": "SRG-APP-000175",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206558r961038_rule",
+          "+@id": "SV-206558r1268166_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000175-DB-000067",
-          "title": "The DBMS, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA).  Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate.  Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path.  Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS, when utilizing Public Key Infrastructure (PKI)-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -7092,12 +7092,12 @@
         "title": "SRG-APP-000176",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206559r961041_rule",
+          "+@id": "SV-206559r1268167_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000176-DB-000068",
-          "title": "The DBMS must enforce authorized access to all PKI private keys stored/utilized by the DBMS.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man in the middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS must enforce authorized access to all Public Key Infrastructure (PKI) private keys stored/utilized by the DBMS.",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man in the middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2- or 140-3- validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -7141,12 +7141,12 @@
         "title": "SRG-APP-000177",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206560r961044_rule",
+          "+@id": "SV-206560r1268168_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000177-DB-000069",
-          "title": "The DBMS must map the PKI-authenticated identity to an associated user account.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a DBMS user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS must map the Public Key Infrastructure (PKI)-authenticated identity to an associated user account.",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a DBMS user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -7190,12 +7190,12 @@
         "title": "SRG-APP-000178",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206561r961047_rule",
+          "+@id": "SV-206561r1268169_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "SRG-APP-000178-DB-000083",
           "title": "The DBMS must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the DBMS, such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis calls for review of applications, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed, and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the DBMS, such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis calls for review of applications, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed, and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -8954,12 +8954,12 @@
         "title": "SRG-APP-000389",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206600r1050788_rule",
+          "+@id": "SV-206600r1268170_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000389-DB-000372",
           "title": "The DBMS must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication of an interactive user is the presentation of a Common Access Card (CAC) or other physical token bearing a valid, current, DOD-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DOD, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication of an interactive user is the presentation of a common access card (CAC) or other physical token bearing a valid, current, DoW-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoW, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -9052,12 +9052,12 @@
         "title": "SRG-APP-000427",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206603r1193220_rule",
+          "+@id": "SV-206603r1268173_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000427-DB-000385",
-          "title": "The DBMS must only accept end entity certificates issued by DOD PKI or DOD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
-          "description": "<VulnDiscussion>Only DOD-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place that are sufficient for DOD systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and risk issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DOD-approved PKIs is published at https://www.cyber.mil/pki-pke.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS must only accept end entity certificates issued by DoW Public Key Infrastructure (PKI) or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
+          "description": "<VulnDiscussion>Only DoW-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place that are sufficient for DoW systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and risk issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoW-approved PKIs is published at https://www.cyber.mil/pki-pke.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -9080,19 +9080,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Revoke trust in any certificates not issued by a DOD-approved certificate authority. Configure the DBMS to accept only DOD and DOD-approved PKI end-entity certificates.",
-            "+@fixref": "F-6863r1193219_fix"
+            "+content": "Revoke trust in any certificates not issued by a DoW-approved certificate authority. Configure the DBMS to accept only DoW and DoW-approved PKI end-entity certificates.",
+            "+@fixref": "F-6863r1268172_fix"
           },
           "fix": {
-            "+@id": "F-6863r1193219_fix"
+            "+@id": "F-6863r1268172_fix"
           },
           "check": {
-            "+@system": "C-6863r1193218_chk",
+            "+@system": "C-6863r1268171_chk",
             "check-content-ref": {
               "+@href": "Database_Generic_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "If the DBMS will accept non-DOD approved PKI end-entity certificates, this is a finding."
+            "check-content": "If the DBMS will accept non-DoW approved PKI end-entity certificates, this is a finding."
           }
         }
       },
@@ -11012,12 +11012,12 @@
         "title": "SRG-APP-000516",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-206643r961863_rule",
+          "+@id": "SV-206643r1268176_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000516-DB-000363",
-          "title": "The DBMS must be configured in accordance with the security configuration settings based on DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
-          "description": "<VulnDiscussion>Configuring the DBMS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DBMS must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
+          "description": "<VulnDiscussion>Configuring the DBMS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Database Generic",
             "dc:publisher": "DISA",
@@ -11040,19 +11040,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the DBMS in accordance with DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs and IAVMs.",
-            "+@fixref": "F-6903r291598_fix"
+            "+content": "Configure the DBMS in accordance with DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs and IAVMs.",
+            "+@fixref": "F-6903r1268175_fix"
           },
           "fix": {
-            "+@id": "F-6903r291598_fix"
+            "+@id": "F-6903r1268175_fix"
           },
           "check": {
-            "+@system": "C-6903r291597_chk",
+            "+@system": "C-6903r1268174_chk",
             "check-content-ref": {
               "+@href": "Database_Generic_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the DBMS documentation and configuration to determine if the DBMS is configured in accordance with DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs and IAVMs.\n\nIf the DBMS is not configured in accordance with security configuration settings, this is a finding."
+            "check-content": "Review the DBMS documentation and configuration to determine if the DBMS is configured in accordance with DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs and IAVMs.\n\nIf the DBMS is not configured in accordance with security configuration settings, this is a finding."
           }
         }
       },

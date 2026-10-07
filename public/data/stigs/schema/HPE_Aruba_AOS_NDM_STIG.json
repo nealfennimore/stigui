@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-10-29"
+      "+@date": "2026-08-25"
     },
     "title": "HPE Aruba Networking AOS NDM Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 22 Oct 2024",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1554,12 +1554,12 @@
         "title": "SRG-APP-000033-NDM-000212",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266909r1039960_rule",
+          "+@id": "SV-266909r1264014_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000212",
           "title": "AOS must be configured to assign appropriate user roles or access levels to authenticated users.",
-          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DOD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access. \n \nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. \n \nSome network devices are preconfigured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an information system security manager (ISSM) may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM's user persona to the audit security group. This is still considered privileged access, but the ISSM's security group is more restrictive than the network administrator's security group. \n \nNetwork devices that rely on authentication, authorization, and accounting (AAA) brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically based on each user's directory service group membership.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Successful identification and authentication must not automatically give an entity full access to a network device or security domain. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DoW systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access. \n \nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset or set of resources. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. \n \nSome network devices are preconfigured with security groups. Other network devices enable operators to create custom security groups with custom permissions. For example, an information system security manager (ISSM) may require read-only access to audit the network device. Operators may create an audit security group, define permissions and access levels for members of the group, and then assign the ISSM's user persona to the audit security group. This is still considered privileged access, but the ISSM's security group is more restrictive than the network administrator's security group. \n \nNetwork devices that rely on authentication, authorization, and accounting (AAA) brokers for authentication and authorization services may need to identify the available security groups or access levels available on the network devices and convey that information to the AAA operator. Once the AAA broker identifies the user persona on the centralized directory service, the user's security group memberships can be retrieved. The AAA operator may need to create a mapping that links target security groups from the directory service to the appropriate security groups or access levels on the network device. Once these mappings are configured, authorizations can happen dynamically based on each user's directory service group membership.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -1573,13 +1573,13 @@
           },
           "fixtext": {
             "+content": "Configure AOS using the web interface:  \n \nNavigate to Configuration >> System >> Admin tab and expand the \"Admin Authentication Options\".  \n \nSelect root for the Default role.  \n \nCheck the \"Enable\" checkbox.  \n \nSelect the enterprise Server group that is configured for admin authorization.  \n \nClick Submit >> Pending Changes >> Deploy changes.",
-            "+@fixref": "F-70736r1039960_fix"
+            "+@fixref": "F-70736r1264013_fix"
           },
           "fix": {
-            "+@id": "F-70736r1039960_fix"
+            "+@id": "F-70736r1264013_fix"
           },
           "check": {
-            "+@system": "C-70833r1039959_chk",
+            "+@system": "C-70833r1264012_chk",
             "check-content-ref": {
               "+@href": "HPE_Aruba_Networking_AOS_NDM_STIG.xml",
               "+@name": "M"
@@ -1677,12 +1677,12 @@
         "title": "SRG-APP-000068-NDM-000215",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266912r1039757_rule",
+          "+@id": "SV-266912r1264016_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000215",
-          "title": "AOS must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the device.",
-          "description": "<VulnDiscussion>Display of the DOD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. \n \nSystem use notifications are required only for access via logon interfaces with human users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "AOS must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the device.",
+          "description": "<VulnDiscussion>Display of the DoW-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. \n \nSystem use notifications are required only for access via logon interfaces with human users.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -1702,12 +1702,12 @@
             "+@id": "F-70739r1039756_fix"
           },
           "check": {
-            "+@system": "C-70836r1039755_chk",
+            "+@system": "C-70836r1264015_chk",
             "check-content-ref": {
               "+@href": "HPE_Aruba_Networking_AOS_NDM_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the AOS configuration with the following command: \nshow banner \n \nIf the Standard Mandatory DOD Notice and Consent Banner is not set, this is a finding."
+            "check-content": "Verify the AOS configuration with the following command: \nshow banner \n \nIf the Standard Mandatory DoW Notice and Consent Banner is not set, this is a finding."
           }
         }
       },
@@ -1716,12 +1716,12 @@
         "title": "SRG-APP-000069-NDM-000216",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266913r1039760_rule",
+          "+@id": "SV-266913r1264017_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000216",
-          "title": "AOS must retain the Standard Mandatory DOD Notice and Consent Banner on the screen until the administrator acknowledges the usage conditions and takes explicit actions to log on for further access.",
-          "description": "<VulnDiscussion>The banner must be acknowledged by the administrator prior to the device allowing the administrator access to the network device. This provides assurance that the administrator has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the administrator, DOD will not be in compliance with system use notifications required by law.  \n \nTo establish acceptance of the network administration policy, a click-through banner at management session logon is required. The device must prevent further activity until the administrator executes a positive action to manifest agreement. \n \nIn the case of command line interface (CLI) access using a terminal client, entering the username and password when the banner is presented is considered an explicit action of acknowledgement. Entering the username, viewing the banner, and then entering the password is also acceptable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "AOS must retain the Standard Mandatory DoW Notice and Consent Banner on the screen until the administrator acknowledges the usage conditions and takes explicit actions to log on for further access.",
+          "description": "<VulnDiscussion>The banner must be acknowledged by the administrator prior to the device allowing the administrator access to the network device. This provides assurance that the administrator has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the administrator, DoW will not be in compliance with system use notifications required by law.  \n \nTo establish acceptance of the network administration policy, a click-through banner at management session logon is required. The device must prevent further activity until the administrator executes a positive action to manifest agreement. \n \nIn the case of command line interface (CLI) access using a terminal client, entering the username and password when the banner is presented is considered an explicit action of acknowledgement. Entering the username, viewing the banner, and then entering the password is also acceptable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -1755,7 +1755,7 @@
         "title": "SRG-APP-000142-NDM-000245",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266928r1039805_rule",
+          "+@id": "SV-266928r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000245",
@@ -1794,12 +1794,12 @@
         "title": "SRG-APP-000149-NDM-000247",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266929r1039808_rule",
+          "+@id": "SV-266929r1264019_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000247",
-          "title": "AOS must be configured to use DOD public key infrastructure (PKI) as multifactor authentication (MFA) for interactive logins.",
-          "description": "<VulnDiscussion>MFA is when two or more factors are used to confirm the identity of an individual who is requesting access to digital information resources. Valid factors include something the individual knows (e.g., username and password), something the individual has (e.g., a smart card or token), or something the individual is (e.g., a fingerprint or biometric).  \n \nLegacy information system environments only use a single factor for authentication, typically a username and password combination. Although two pieces of data are used in a username and password combination, this is still considered single factor because an attacker can obtain access by learning what the user knows. Common attacks against single-factor authentication are attacks on user passwords. These attacks include brute force password guessing, password spraying, and password credential stuffing.  \n \nMFA, along with strong user account hygiene, helps mitigate the threat of having account passwords discovered by an attacker. Even in the event of a password compromise, with MFA implemented and required for interactive login, the attacker still needs to acquire something the user has or replicate a piece of the user's biometric digital presence. \n \nPrivate industry recognizes and uses a wide variety of MFA solutions. However, DOD PKI is the only prescribed method approved for DOD organizations to implement MFA. For authentication purposes, centralized DOD certificate authorities (CA) issue PKI certificate key pairs (public and private) to individuals using the prescribed x.509 format. The private certificates that have been generated by the issuing CA are downloaded and saved to smart cards which, within DOD, are referred to as common access cards (CAC) or personal identity verification (PIV) cards. This happens at designated DOD badge facilities. The CA maintains a record of the corresponding public keys for use with PKI-enabled environments. Privileged user smart cards, or \"alternate tokens\", function in the same manner, so this requirement applies to all interactive user sessions (authorized and privileged users). \n \nNote: This requirement is used in conjunction with a centralized authentication server (e.g., Authentication, Authorization, and Accounting [AAA], Remote Authentication Dial-In User Service [RADIUS], Lightweight Directory Access Protocol [LDAP]), a separate but equally important requirement. The MFA configuration of this requirement provides identification and the first phase of authentication (the challenge and validated response, thereby confirming the PKI certificate that was presented by the user). The centralized authentication server will provide the second phase of authentication (the digital presence of the PKI ID as a valid user in the requested security domain) and authorization. The centralized authentication server will map validated PKI identities to valid user accounts and determine access levels for authenticated users based on security group membership and role. In cases where the centralized authentication server is not used by the network device for user authorization, the network device must map the authenticated identity to the user account for PKI-based authentication.\n\nSatisfies: SRG-APP-000149-NDM-000247, SRG-APP-000080-NDM-000220, SRG-APP-000153-NDM-000249, SRG-APP-000177-NDM-000263</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "AOS must be configured to use DoW public key infrastructure (PKI) as multifactor authentication (MFA) for interactive logins.",
+          "description": "<VulnDiscussion>MFA is when two or more factors are used to confirm the identity of an individual who is requesting access to digital information resources. Valid factors include something the individual knows (e.g., username and password), something the individual has (e.g., a smart card or token), or something the individual is (e.g., a fingerprint or biometric).  \n \nLegacy information system environments only use a single factor for authentication, typically a username and password combination. Although two pieces of data are used in a username and password combination, this is still considered single factor because an attacker can obtain access by learning what the user knows. Common attacks against single-factor authentication are attacks on user passwords. These attacks include brute force password guessing, password spraying, and password credential stuffing.  \n \nMFA, along with strong user account hygiene, helps mitigate the threat of having account passwords discovered by an attacker. Even in the event of a password compromise, with MFA implemented and required for interactive login, the attacker still needs to acquire something the user has or replicate a piece of the user's biometric digital presence. \n \nPrivate industry recognizes and uses a wide variety of MFA solutions. However, DoW PKI is the only prescribed method approved for DoW organizations to implement MFA. For authentication purposes, centralized DoW certificate authorities (CA) issue PKI certificate key pairs (public and private) to individuals using the prescribed x.509 format. The private certificates that have been generated by the issuing CA are downloaded and saved to smart cards which, within DoW, are referred to as common access cards (CAC) or personal identity verification (PIV) cards. This happens at designated DoW badge facilities. The CA maintains a record of the corresponding public keys for use with PKI-enabled environments. Privileged user smart cards, or \"alternate tokens\", function in the same manner, so this requirement applies to all interactive user sessions (authorized and privileged users). \n \nNote: This requirement is used in conjunction with a centralized authentication server (e.g., Authentication, Authorization, and Accounting [AAA], Remote Authentication Dial-In User Service [RADIUS], Lightweight Directory Access Protocol [LDAP]), a separate but equally important requirement. The MFA configuration of this requirement provides identification and the first phase of authentication (the challenge and validated response, thereby confirming the PKI certificate that was presented by the user). The centralized authentication server will provide the second phase of authentication (the digital presence of the PKI ID as a valid user in the requested security domain) and authorization. The centralized authentication server will map validated PKI identities to valid user accounts and determine access levels for authenticated users based on security group membership and role. In cases where the centralized authentication server is not used by the network device for user authorization, the network device must map the authenticated identity to the user account for PKI-based authentication.\n\nSatisfies: SRG-APP-000149-NDM-000247, SRG-APP-000080-NDM-000220, SRG-APP-000153-NDM-000249, SRG-APP-000177-NDM-000263</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -1830,11 +1830,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure AOS using the web interface:  \n \n1. Navigate to Configuration >> System >> Admin and expand \"Admin Authentication Servers\".  \n2. Click on the plus sign (+) under \"All Servers\" and configure the type of authentication server. Provide the Name, Type, and IP address. Click \"Submit\".  \n3. Select the created authentication server and configure the required attributes for LDAP: \n \nAdmin-dn <username> \nAdmin-passwd <password> \nRe-type admin-passwd <password> \nAuth port: 636 \nBase-dn: cn/ou=<container>,dc=<level>,dc=<mil> \nKey-attribute: userPrincipalName \n \n4. Click \"Submit.\"  \n5. Repeat this process and configure a second authentication server.  \n6. Click \"Pending Changes\" and then \"Deploy changes\".  \n7. Click on the plus sign (+) under \"Server Groups\" and add a server group.  \n8. Click \"Submit\".  \n9. Select the created server group and click the plus sign (+) in the Server Group <server group name> box.  \n10. Add the first configured authentication server.  \n11. Reselect the created server group and click the plus sign (+) in the Server Group <server group name> box.  \n12. Click Submit >> Pending Changes >> Deploy Changes. \n13. Navigate to Management User. \n14. Click on \"Show users with certificate authentication\". Click on the plus sign (+).  \n15. Configure each Trusted CA certificate name for any DOD Root CA that provides trust for admin users.  \n16. Select External server for the Authentication server.  \n17. Click Submit >> Pending Changes >> Deploy Changes.  \n18. Expand \"Admin Authentication Options\". Check \"Enable\" and \"Client certificate\". Select the Server group created earlier.  \n19. Click Submit >> Pending Changes >> Deploy Changes.",
-            "+@fixref": "F-70756r1039807_fix"
+            "+content": "Configure AOS using the web interface:  \n \n1. Navigate to Configuration >> System >> Admin and expand \"Admin Authentication Servers\".  \n2. Click on the plus sign (+) under \"All Servers\" and configure the type of authentication server. Provide the Name, Type, and IP address. Click \"Submit\".  \n3. Select the created authentication server and configure the required attributes for LDAP: \n \nAdmin-dn <username> \nAdmin-passwd <password> \nRe-type admin-passwd <password> \nAuth port: 636 \nBase-dn: cn/ou=<container>,dc=<level>,dc=<mil> \nKey-attribute: userPrincipalName \n \n4. Click \"Submit.\"  \n5. Repeat this process and configure a second authentication server.  \n6. Click \"Pending Changes\" and then \"Deploy changes\".  \n7. Click on the plus sign (+) under \"Server Groups\" and add a server group.  \n8. Click \"Submit\".  \n9. Select the created server group and click the plus sign (+) in the Server Group <server group name> box.  \n10. Add the first configured authentication server.  \n11. Reselect the created server group and click the plus sign (+) in the Server Group <server group name> box.  \n12. Click Submit >> Pending Changes >> Deploy Changes. \n13. Navigate to Management User. \n14. Click on \"Show users with certificate authentication\". Click on the plus sign (+).  \n15. Configure each Trusted CA certificate name for any DoW Root CA that provides trust for admin users.  \n16. Select External server for the Authentication server.  \n17. Click Submit >> Pending Changes >> Deploy Changes.  \n18. Expand \"Admin Authentication Options\". Check \"Enable\" and \"Client certificate\". Select the Server group created earlier.  \n19. Click Submit >> Pending Changes >> Deploy Changes.",
+            "+@fixref": "F-70756r1264018_fix"
           },
           "fix": {
-            "+@id": "F-70756r1039807_fix"
+            "+@id": "F-70756r1264018_fix"
           },
           "check": {
             "+@system": "C-70853r1039806_chk",
@@ -2124,12 +2124,12 @@
         "title": "SRG-APP-000175-NDM-000262",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266938r1039835_rule",
+          "+@id": "SV-266938r1264020_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000262",
-          "title": "AOS must be configured to use DOD-approved Online Certificate Status Protocol (OCSP) responders or Certificate Revocation Lists (CRLs) to validate certificates used for public key infrastructure (PKI)-based authentication.",
-          "description": "<VulnDiscussion>Once issued by a DOD certificate authority (CA), PKI certificates are typically valid for three years or less within the DOD. However, there are many reasons a certificate may become invalid before the prescribed expiration date. For example, an employee may leave or be terminated and still possess the smartcard on which the PKI certificates were stored. Another example is that a smartcard containing PKI certificates may become lost or stolen. A more serious issue could be that the CA or server that issued the PKI certificates has become compromised, thereby jeopardizing every certificate keypair that was issued by the CA. These examples of revocation use cases and many more can be researched further using internet cybersecurity resources. \n \nPKI user certificates presented as part of the identification and authentication criteria (e.g., DOD PKI as multifactor authentication [MFA]) must be checked for validity by network devices. For example, valid PKI certificates are digitally signed by a trusted DOD CA. Additionally, valid PKI certificates are not expired, and valid certificates have not been revoked by a DOD CA. \n \nNetwork devices can verify the validity of PKI certificates by checking with an authoritative CA. One method of checking the status of PKI certificates is to query databases referred to as CRLs. These are lists that are published, updated, and maintained by authoritative DOD CAs. For example, once certificates are expired or revoked, issuing CAs place the certificates on a CRL. Organizations can download these lists periodically (i.e., daily or weekly) and store them locally on the devices themselves or onto another nearby local enclave resource. Storing them locally ensures revocation status can be checked even if internet connectivity is severed at the enclave's point of presence. However, CRLs can be large in storage size, and the use of CRLs can tax some computing resources. \n \nAnother method of validating certificate status is to use the OCSP. Using OCSP, a requestor (i.e., the network device the user is trying to authenticate to) sends a request to an authoritative CA challenging the validity of a certificate that has been presented for identification and authentication. The CA receives the request and sends a digitally signed response indicating the status of the user's certificate as valid, revoked, or unknown. Network devices should only allow access for responses that indicate the certificates presented by the user were considered valid by an approved DOD CA. OCSP is the preferred method because it is fast, provides the most current status, and is lightweight.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "AOS must be configured to use DoW-approved Online Certificate Status Protocol (OCSP) responders or Certificate Revocation Lists (CRLs) to validate certificates used for public key infrastructure (PKI)-based authentication.",
+          "description": "<VulnDiscussion>Once issued by a DoW certificate authority (CA), PKI certificates are typically valid for three years or less within the DoW. However, there are many reasons a certificate may become invalid before the prescribed expiration date. For example, an employee may leave or be terminated and still possess the smartcard on which the PKI certificates were stored. Another example is that a smartcard containing PKI certificates may become lost or stolen. A more serious issue could be that the CA or server that issued the PKI certificates has become compromised, thereby jeopardizing every certificate keypair that was issued by the CA. These examples of revocation use cases and many more can be researched further using internet cybersecurity resources. \n \nPKI user certificates presented as part of the identification and authentication criteria (e.g., DoW PKI as multifactor authentication [MFA]) must be checked for validity by network devices. For example, valid PKI certificates are digitally signed by a trusted DoW CA. Additionally, valid PKI certificates are not expired, and valid certificates have not been revoked by a DoW CA. \n \nNetwork devices can verify the validity of PKI certificates by checking with an authoritative CA. One method of checking the status of PKI certificates is to query databases referred to as CRLs. These are lists that are published, updated, and maintained by authoritative DoW CAs. For example, once certificates are expired or revoked, issuing CAs place the certificates on a CRL. Organizations can download these lists periodically (i.e., daily or weekly) and store them locally on the devices themselves or onto another nearby local enclave resource. Storing them locally ensures revocation status can be checked even if internet connectivity is severed at the enclave's point of presence. However, CRLs can be large in storage size, and the use of CRLs can tax some computing resources. \n \nAnother method of validating certificate status is to use the OCSP. Using OCSP, a requestor (i.e., the network device the user is trying to authenticate to) sends a request to an authoritative CA challenging the validity of a certificate that has been presented for identification and authentication. The CA receives the request and sends a digitally signed response indicating the status of the user's certificate as valid, revoked, or unknown. Network devices should only allow access for responses that indicate the certificates presented by the user were considered valid by an approved DoW CA. OCSP is the preferred method because it is fast, provides the most current status, and is lightweight.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -2163,12 +2163,12 @@
         "title": "SRG-APP-000179-NDM-000265",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266940r1039841_rule",
+          "+@id": "SV-266940r1264021_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000265",
           "title": "AOS must use FIPS 140-2/140-3 approved algorithms for authentication to a cryptographic module.",
-          "description": "<VulnDiscussion>Unapproved mechanisms that are used for authentication to the cryptographic module are not validated and therefore cannot be relied on to provide confidentiality or integrity, and DOD data may be compromised. \n \nNetwork devices using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules. \n \nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules use authentication that meets DOD requirements. However, authentication algorithms must configure security processes to use only authentication algorithms that are FIPS-approved and recommended by the National Institute of Standards and Technology (NIST).\n\nSatisfies: SRG-APP-000179-NDM-000265, SRG-APP-000224-NDM-000270, SRG-APP-000411-NDM-000330, SRG-APP-000412-NDM-000331</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Unapproved mechanisms that are used for authentication to the cryptographic module are not validated and therefore cannot be relied on to provide confidentiality or integrity, and DoW data may be compromised. \n \nNetwork devices using encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules. \n \nFIPS 140-2/140-3 is the current standard for validating that mechanisms used to access cryptographic modules use authentication that meets DoW requirements. However, authentication algorithms must configure security processes to use only authentication algorithms that are FIPS-approved and recommended by the National Institute of Standards and Technology (NIST).\n\nSatisfies: SRG-APP-000179-NDM-000265, SRG-APP-000224-NDM-000270, SRG-APP-000411-NDM-000330, SRG-APP-000412-NDM-000331</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -2261,7 +2261,7 @@
         "title": "SRG-APP-000329-NDM-000287",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266948r1039865_rule",
+          "+@id": "SV-266948r1137878_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000287",
@@ -2394,12 +2394,12 @@
         "title": "SRG-APP-000373-NDM-000298",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266953r1039880_rule",
+          "+@id": "SV-266953r1264022_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000298",
           "title": "AOS must be configured to synchronize internal information system clocks using redundant authoritative time sources.",
-          "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions.  \n \nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must use an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891. \n \nDOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions.  \n \nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must use an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891. \n \nDoW-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoW network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -2556,12 +2556,12 @@
         "title": "SRG-APP-000435-NDM-000315",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266961r1039904_rule",
+          "+@id": "SV-266961r1264023_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000315",
           "title": "AOS must be configured to protect against known types of denial-of-service (DoS) attacks by employing organization-defined security safeguards.",
-          "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. \n \nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks. \n \nThe security safeguards cannot be defined at the DOD level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. \n \nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks. \n \nThe security safeguards cannot be defined at the DoW level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS NDM",
             "dc:publisher": "DISA",
@@ -2634,7 +2634,7 @@
         "title": "SRG-APP-000170-NDM-000329",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266967r1039961_rule",
+          "+@id": "SV-266967r1043189_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000329",
@@ -2673,7 +2673,7 @@
         "title": "SRG-APP-000516-NDM-000334",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266968r1039963_rule",
+          "+@id": "SV-266968r1207743_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000334",
@@ -2718,7 +2718,7 @@
         "title": "SRG-APP-000516-NDM-000336",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266970r1039931_rule",
+          "+@id": "SV-266970r1137887_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000336",
@@ -2847,7 +2847,7 @@
         "title": "SRG-APP-000516-NDM-000344",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266973r1039940_rule",
+          "+@id": "SV-266973r1264025_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000344",
@@ -2871,11 +2871,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure AOS with the following commands: \ncrypto pki csr rsa key_len 2048 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email> \nshow crypto pki csr \n \n1. Use DOD PKI to generate a public certificate based on the CSR. \n2. Using the web GUI, navigate to Configuration >> System >> Certificates > Import Certificates.  \n3. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\". \n4. Click Pending Changes >> Deploy Changes. \n5. Navigate to Configuration >> System >> Admin >> Admin Authentication Options and choose the imported certificate under \"Server Certificate\".  \n6. Click Submit >> Pending Changes >> Deploy Changes.",
-            "+@fixref": "F-70800r1039939_fix"
+            "+content": "Configure AOS with the following commands: \ncrypto pki csr rsa key_len 2048 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email> \nshow crypto pki csr \n \n1. Use DoW PKI to generate a public certificate based on the CSR. \n2. Using the web GUI, navigate to Configuration >> System >> Certificates > Import Certificates.  \n3. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\". \n4. Click Pending Changes >> Deploy Changes. \n5. Navigate to Configuration >> System >> Admin >> Admin Authentication Options and choose the imported certificate under \"Server Certificate\".  \n6. Click Submit >> Pending Changes >> Deploy Changes.",
+            "+@fixref": "F-70800r1264024_fix"
           },
           "fix": {
-            "+@id": "F-70800r1039939_fix"
+            "+@id": "F-70800r1264024_fix"
           },
           "check": {
             "+@system": "C-70897r1039938_chk",
@@ -2892,7 +2892,7 @@
         "title": "SRG-APP-000148-NDM-000346",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266975r1039946_rule",
+          "+@id": "SV-266975r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-ND-000346",
@@ -2976,7 +2976,7 @@
         "title": "SRG-APP-000516-NDM-000350",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266977r1039952_rule",
+          "+@id": "SV-266977r1137890_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-ND-000350",

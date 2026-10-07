@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-12-19"
+      "+@date": "2026-09-01"
     },
     "title": "Domain Name System (DNS) Security Requirements Guide",
-    "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Requirements Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 28 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -4402,12 +4402,12 @@
         "title": "SRG-APP-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205157r960735_rule",
+          "+@id": "SV-205157r1266553_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000001-DNS-000001",
           "title": "The DNS implementation must limit the number of concurrent sessions for zone transfers to the number of secondary name servers.",
-          "description": "<VulnDiscussion>Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) to the DNS implementation. \n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed denial of service, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.\n\nPrimary name servers also make outbound connection to secondary name servers to provide zone transfers and accept inbound connection requests from clients wishing to provide a dynamic update. Primary name servers should explicitly limit zone transfers to only be made to designated secondary name servers. Because zone transfers involve the transfer of entire zones and use TCP connections, they place substantial demands on network resources relative to normal DNS queries. Errant or malicious frequent zone transfer requests on the name servers of the enterprise can overload the master zone server and result in DoS to legitimate users. Primary name servers should be configured to limit the hosts from which they will accept dynamic updates.\n\nAdditionally, the number of concurrent clients, especially TCP clients, needs to be kept to a level that does not risk placing the system in a DoS state.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Limiting the number of concurrent sessions reduces the risk of denial of service (DoS) to the DNS implementation. \n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed DoS, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.\n\nPrimary name servers also make outbound connection to secondary name servers to provide zone transfers and accept inbound connection requests from clients wishing to provide a dynamic update. Primary name servers should explicitly limit zone transfers to only be made to designated secondary name servers. Because zone transfers involve the transfer of entire zones and use TCP connections, they place substantial demands on network resources relative to normal DNS queries. Errant or malicious frequent zone transfer requests on the name servers of the enterprise can overload the master zone server and result in DoS to legitimate users. Primary name servers should be configured to limit the hosts from which they will accept dynamic updates.\n\nAdditionally, the number of concurrent clients, especially TCP clients, needs to be kept to a level that does not risk placing the system in a DoS state.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
@@ -4425,24 +4425,24 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000054",
+              "+content": "CCI-001095",
               "+@system": "http://cyber.mil/cci"
             }
           ],
           "fixtext": {
-            "+content": "Configure the DNS primary server to explicitly specify which hosts to which it sends zone transfers.",
-            "+@fixref": "F-5424r392388_fix"
+            "+content": "Configure the DNS primary server to explicitly specify the target hosts for zone transfers.",
+            "+@fixref": "F-5424r1266552_fix"
           },
           "fix": {
-            "+@id": "F-5424r392388_fix"
+            "+@id": "F-5424r1266552_fix"
           },
           "check": {
-            "+@system": "C-5424r392387_chk",
+            "+@system": "C-5424r1266551_chk",
             "check-content-ref": {
               "+@href": "DNS_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the DNS server configuration and ensure a limit has been defined for the number of outbound zone transfers to only be allowed to the specified secondary name servers.\n\nIf the DNS server configuration does not explicitly specify which hosts to which it sends zone transfers, this is a finding."
+            "check-content": "Review the DNS server configuration and ensure a limit has been defined for the number of outbound zone transfers and that transfers are restricted to the specified secondary name servers.\n\nIf the DNS server configuration does not explicitly specify the target hosts for zone transfers, this is a finding."
           }
         }
       },
@@ -4451,7 +4451,7 @@
         "title": "SRG-APP-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205158r960735_rule",
+          "+@id": "SV-205158r1266554_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000001-DNS-000115",
@@ -4474,7 +4474,7 @@
               "+@system": "http://cyber.mil/legacy"
             },
             {
-              "+content": "CCI-000054",
+              "+content": "CCI-001095",
               "+@system": "http://cyber.mil/cci"
             }
           ],
@@ -4500,12 +4500,12 @@
         "title": "SRG-APP-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205160r960879_rule",
+          "+@id": "SV-205160r1266557_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000089-DNS-000005",
-          "title": "The DNS server implementation must be configured to provide audit record generation capability for DoD-defined auditable events within all DNS server components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.\n\nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records. \n\nThe DoD has defined the list of events for which the application will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DNS server implementation must be configured to provide audit record generation capability for DoW-defined auditable events within all DNS server components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.\n\nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records. \n\nThe DoW has defined the list of events for which the application will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
@@ -4529,13 +4529,13 @@
           ],
           "fixtext": {
             "+content": "Configure the DNS server to generate audit events for successful and unsuccessful logon attempts, privileged activities and system-level access within all DNS server components.",
-            "+@fixref": "F-5427r392397_fix"
+            "+@fixref": "F-5427r1266556_fix"
           },
           "fix": {
-            "+@id": "F-5427r392397_fix"
+            "+@id": "F-5427r1266556_fix"
           },
           "check": {
-            "+@system": "C-5427r392396_chk",
+            "+@system": "C-5427r1266555_chk",
             "check-content-ref": {
               "+@href": "DNS_SRG.xml",
               "+@name": "M"
@@ -6566,12 +6566,12 @@
         "title": "SRG-APP-000427",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205213r961596_rule",
+          "+@id": "SV-205213r1266560_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000427-DNS-000060",
-          "title": "If the DNS server is using SIG(0), the DNS server implementation must only allow the use of DoD PKI-established certificate authorities for verification of the establishment of protected transactions.",
-          "description": "<VulnDiscussion>Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates. \n\nSIG(0) relies on PKI-based authentication, so if SIG(0) is being used, this requirement is applicable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If the DNS server is using SIG(0), the DNS server implementation must only allow the use of DoW PKI-established certificate authorities for verification of the establishment of protected transactions.",
+          "description": "<VulnDiscussion>Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoW systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoW-approved CA, trust of this CA has not been established.\n\nThe DoW will only accept PKI certificates obtained from a DoW-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates. \n\nSIG(0) relies on PKI-based authentication, so if SIG(0) is being used, this requirement is applicable.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
@@ -6594,19 +6594,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the DNS server to only allow the use of DoD PKI-established certificate authorities for verification of the establishment of protected transactions.",
-            "+@fixref": "F-5480r392553_fix"
+            "+content": "Configure the DNS server to only allow the use of DoW PKI-established certificate authorities for verification of the establishment of protected transactions.",
+            "+@fixref": "F-5480r1266559_fix"
           },
           "fix": {
-            "+@id": "F-5480r392553_fix"
+            "+@id": "F-5480r1266559_fix"
           },
           "check": {
-            "+@system": "C-5480r392552_chk",
+            "+@system": "C-5480r1266558_chk",
             "check-content-ref": {
               "+@href": "DNS_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "If the DNS server is using SIG(0), review the DNS server implementation configuration to determine if the DNS server only allows the use of DoD PKI-established certificate authorities for verification of the establishment of protected transactions. If the DNS server allows the use of other certificate authorities, this is a finding."
+            "check-content": "If the DNS server is using SIG(0), review the DNS server implementation configuration to determine if the DNS server only allows the use of DoW PKI-established certificate authorities for verification of the establishment of protected transactions. If the DNS server allows the use of other certificate authorities, this is a finding."
           }
         }
       },
@@ -7938,12 +7938,12 @@
         "title": "SRG-APP-000516",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-205253r961863_rule",
+          "+@id": "SV-205253r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000516-DNS-000500",
-          "title": "The DNS server implementation must be configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
-          "description": "<VulnDiscussion>Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements.\n\nConfiguring the DNS server implementation to follow organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The DNS server implementation must be configured in accordance with the security configuration settings based on DoW security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
+          "description": "<VulnDiscussion>Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements.\n\nConfiguring the DNS server implementation to follow organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
@@ -7966,19 +7966,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the DNS server to be in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
-            "+@fixref": "F-5520r392673_fix"
+            "+content": "Configure the DNS server to be in accordance with the security configuration settings based on DoW security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
+            "+@fixref": "F-5520r1266562_fix"
           },
           "fix": {
-            "+@id": "F-5520r392673_fix"
+            "+@id": "F-5520r1266562_fix"
           },
           "check": {
-            "+@system": "C-5520r392672_chk",
+            "+@system": "C-5520r1266561_chk",
             "check-content-ref": {
               "+@href": "DNS_SRG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the DNS server implementation configuration to determine if the DNS server is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If the DNS server is not configured in accordance with these settings, this is a finding."
+            "check-content": "Review the DNS server implementation configuration to determine if the DNS server is configured in accordance with the security configuration settings based on DoW security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If the DNS server is not configured in accordance with these settings, this is a finding."
           }
         }
       },
@@ -9196,12 +9196,12 @@
         "title": "SRG-APP-000015",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279958r1156983_rule",
+          "+@id": "SV-279958r1266564_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000015-DNS-000097",
           "title": "The DNS implementation must be conformant to the IETF DNS specification.",
-          "description": "<VulnDiscussion>Any DNS implementation must be designed to be able to conform to the Internet Engineering Task Force (IETF) specification. DoD utilizes many different DNS servers, and it is essential that core capabilities of all are compatible. DNS servers that do not provide services compliant to the DNS RFCs may cause denial of service issues.\n\nThe server must be compliant to the IETF standard so as to provide the right balance between performance and integrity of the DNS system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Any DNS implementation must be designed to be able to conform to the Internet Engineering Task Force (IETF) specification. DoW utilizes many different DNS servers, and it is essential that core capabilities of all are compatible. DNS servers that do not provide services compliant to the DNS RFCs may cause denial of service issues.\n\nThe server must be compliant to the IETF standard so as to provide the right balance between performance and integrity of the DNS system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
@@ -9469,12 +9469,12 @@
         "title": "SRG-APP-000435",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-279965r1157004_rule",
+          "+@id": "SV-279965r1266565_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "SRG-APP-000435-DNS-000047",
           "title": "The DNS implementation must prohibit recursion on authoritative name servers.",
-          "description": "<VulnDiscussion>A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.\n\nDNSSEC ensures that the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DoD, and many resolvers either haven’t been updated or don’t support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be used when providing external DNS resolution to internal clients.   </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.\n\nDNSSEC ensures that the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DoW, and many resolvers either haven’t been updated or don’t support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be used when providing external DNS resolution to internal clients.   </VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target DNS",
             "dc:publisher": "DISA",
