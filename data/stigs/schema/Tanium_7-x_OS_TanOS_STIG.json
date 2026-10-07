@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2025-02-11"
+      "+@date": "2026-08-31"
     },
     "title": "Tanium 7.x Operating System on TanOS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 02 Apr 2025",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -1273,11 +1273,11 @@
         "title": "SRG-OS-000023",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254840r958390_rule",
+          "+@id": "SV-254840r1268599_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-000075",
-          "title": "The Tanium Operating System (TanOS) must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.",
+          "title": "The Tanium Operating System (TanOS) must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system.",
           "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for operating system that can accommodate banners of 1300 characters:\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\"I've read & consent to terms in IS user agreem't.\"</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
@@ -1291,19 +1291,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Create a .txt file composed of the DOD-authorized warning banner verbiage.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n2. Name the file \"banner_ssh.txt\".\n\n3. Use SFTP to upload the HTML banner file to the /incoming folder.\n\n4. Access the Tanium Server interactively.\n \n5. Log on to the TanOS server with the tanadmin role, or any additional user with administrative privileges.\n\n6. Enter A: Appliance Configuration Menu >> A: Security >> 3: Configure SSH Banner and follow the prompts.\n\n7. Log off and back on to the Tanium Server to confirm application.",
-            "+@fixref": "F-58397r870366_fix"
+            "+content": "1. Create a .txt file composed of the DoW-authorized warning banner verbiage.\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n2. Name the file \"banner_ssh.txt\".\n\n3. Use SFTP to upload the HTML banner file to the /incoming folder.\n\n4. Access the Tanium Server interactively.\n \n5. Log on to the TanOS server with the tanadmin role, or any additional user with administrative privileges.\n\n6. Enter A: Appliance Configuration Menu >> A: Security >> 3: Configure SSH Banner and follow the prompts.\n\n7. Log off and back on to the Tanium Server to confirm application.",
+            "+@fixref": "F-58397r1268598_fix"
           },
           "fix": {
-            "+@id": "F-58397r870366_fix"
+            "+@id": "F-58397r1268598_fix"
           },
           "check": {
-            "+@system": "C-58453r870365_chk",
+            "+@system": "C-58453r1268597_chk",
             "check-content-ref": {
               "+@href": "Tanium_7.x_OS_on_TanOS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Access the Tanium Server interactively. \n\n2. Verify DOD use notification displayed prior to login. \n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf a DOD-approved use notification banner does not display prior to logon, this is a finding."
+            "check-content": "1. Access the Tanium Server interactively. \n\n2. Verify DoW use notification displayed prior to login. \n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nIf a DoW-approved use notification banner does not display prior to logon, this is a finding."
           }
         }
       },
@@ -1435,11 +1435,11 @@
         "title": "SRG-OS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254844r1038967_rule",
+          "+@id": "SV-254844r1268596_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-000275",
-          "title": "The Tanium Operating System (TanOS) must enforce a 60-day maximum password lifetime restriction.",
+          "title": "The Tanium Operating System (TanOS) must enforce a 180-day maximum password lifetime restriction.",
           "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the operating system does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the operating system passwords could be compromised.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
@@ -1459,19 +1459,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"C\" for \"User Administration Menu\".\n\n4. Press \"L\" for \"Local Tanium User Management\".\n\n5. Press \"B\" for \"Security Policy Local Authentication Service\".\n\n6. Type \"Yes\".\n\n7. Press \"Enter\" to accept the current value for \"Define the minimum password in days [0 - 20]\".\n\n8. Set the value of \"Define the maximum password lifetime in days [0-300]\" to \"60\".\n\n9. Press \"Enter\" to accept the current values for the rest of the options.\n\n10. Type \"Yes\" to apply the new security policy.",
-            "+@fixref": "F-58401r866072_fix"
+            "+content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"C\" for \"User Administration Menu\".\n\n4. Press \"L\" for \"Local Tanium User Management\".\n\n5. Press \"B\" for \"Security Policy Local Authentication Service\".\n\n6. Type \"Yes\".\n\n7. Press \"Enter\" to accept the current value for \"Define the minimum password in days [0 - 20]\".\n\n8. Set the value of \"Define the maximum password lifetime in days [0-300]\" to \"180\".\n\n9. Press \"Enter\" to accept the current values for the rest of the options.\n\n10. Type \"Yes\" to apply the new security policy.",
+            "+@fixref": "F-58401r1268595_fix"
           },
           "fix": {
-            "+@id": "F-58401r866072_fix"
+            "+@id": "F-58401r1268595_fix"
           },
           "check": {
-            "+@system": "C-58457r866071_chk",
+            "+@system": "C-58457r1268594_chk",
             "check-content-ref": {
               "+@href": "Tanium_7.x_OS_on_TanOS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"C\" for \"User Administration Menu\".\n\n4. Press \"L\" for \"Local Tanium User Management\".\n\n5. Press \"B\" for \"Security Policy Local Authentication Service\".\n\nIf the \"Password Maximum Age (days)\" is not set to \"60\", this is a finding."
+            "check-content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"C\" for \"User Administration Menu\".\n\n4. Press \"L\" for \"Local Tanium User Management\".\n\n5. Press \"B\" for \"Security Policy Local Authentication Service\".\n\nIf the \"Password Maximum Age (days)\" is not set to \"180\", this is a finding."
           }
         }
       },
@@ -1525,12 +1525,12 @@
         "title": "SRG-OS-000105",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254847r986546_rule",
+          "+@id": "SV-254847r1268600_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TANS-OS-000325",
           "title": "The Tanium Operating System (TanOS) must use multifactor authentication for network access to privileged accounts.",
-          "description": "<VulnDiscussion>Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. \n\nMultifactor authentication requires using two or more factors to achieve authentication. \n\nFactors include: (i) Something a user knows (e.g., password/PIN); (ii) Something a user has (e.g., cryptographic identification device, token); or (iii) Something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user. \n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the internet). \n\nThe DOD CAC with DOD-approved PKI is an example of multifactor authentication.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. \n\nMultifactor authentication requires using two or more factors to achieve authentication. \n\nFactors include: (i) Something a user knows (e.g., password/PIN); (ii) Something a user has (e.g., cryptographic identification device, token); or (iii) Something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user. \n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the internet). \n\nThe DoW CAC with DoW-approved PKI is an example of multifactor authentication.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
             "dc:publisher": "DISA",
@@ -1570,12 +1570,12 @@
         "title": "SRG-OS-000106",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254848r986547_rule",
+          "+@id": "SV-254848r1268601_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-000330",
           "title": "The Tanium Operating System (TanOS) must use multifactor authentication for network access to nonprivileged accounts.",
-          "description": "<VulnDiscussion>To assure accountability and prevent unauthenticated access, nonprivileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nMultifactor authentication uses two or more factors to achieve authentication. \n\nFactors include:(i) Something you know (e.g., password/PIN); (ii) Something you have (e.g., cryptographic identification device, token); or (iii) Something you are (e.g., biometric). \n\nA nonprivileged account is any information system account with authorizations of a nonprivileged user. \n\nNetwork access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.\n\nThe DOD CAC with DOD-approved PKI is an example of multifactor authentication.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To assure accountability and prevent unauthenticated access, nonprivileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nMultifactor authentication uses two or more factors to achieve authentication. \n\nFactors include:(i) Something you know (e.g., password/PIN); (ii) Something you have (e.g., cryptographic identification device, token); or (iii) Something you are (e.g., biometric). \n\nA nonprivileged account is any information system account with authorizations of a nonprivileged user. \n\nNetwork access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.\n\nThe DoW CAC with DoW-approved PKI is an example of multifactor authentication.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
             "dc:publisher": "DISA",
@@ -1615,12 +1615,12 @@
         "title": "SRG-OS-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254849r971535_rule",
+          "+@id": "SV-254849r1268602_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-000385",
           "title": "The Tanium Operating System (TanOS) must use FIPS-validated SHA-2 or higher hash function to protect the integrity of hash message authentication code (HMAC), Key Derivation Functions (KDFs), Random Bit Generation, and hash-only applications.",
-          "description": "<VulnDiscussion>To protect the integrity of the authenticator and authentication mechanism used for the cryptographic module used by the network device, the application, operating system, or protocol must be configured to use one of the following hash functions for hashing the password or other authenticator in accordance with SP 800-131Ar1: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.\n\nThis requirement also include HMAC, KDFs, Random Bit Generation, and hash-only applications (e.g., hashing passwords and use for compute a checksum). For digital signature verification, SP800-131Ar1 allows SHA-1 for legacy use only, but this is discouraged by DOD.\n\nSeparate requirements for configuring applications and protocols used by each product (e.g., SNMPv3, SSH, NTP, and other protocols and applications that require server/client authentication) are required to implement this requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>To protect the integrity of the authenticator and authentication mechanism used for the cryptographic module used by the network device, the application, operating system, or protocol must be configured to use one of the following hash functions for hashing the password or other authenticator in accordance with SP 800-131Ar1: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.\n\nThis requirement also include HMAC, KDFs, Random Bit Generation, and hash-only applications (e.g., hashing passwords and use for compute a checksum). For digital signature verification, SP800-131Ar1 allows SHA-1 for legacy use only, but this is discouraged by DoW.\n\nSeparate requirements for configuring applications and protocols used by each product (e.g., SNMPv3, SSH, NTP, and other protocols and applications that require server/client authentication) are required to implement this requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
             "dc:publisher": "DISA",
@@ -1810,11 +1810,11 @@
         "title": "SRG-OS-000228",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254855r958586_rule",
+          "+@id": "SV-254855r1268605_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-000605",
-          "title": "The publicly accessible Tanium Operating System (TanOS) must display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.",
+          "title": "The publicly accessible Tanium Operating System (TanOS) must display the Standard Mandatory DoW Notice and Consent Banner before granting access to the system.",
           "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the publicly accessible operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for operating system that can accommodate banners of 1300 characters:\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\"I've read & consent to terms in IS user agreem't\".</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
@@ -1846,19 +1846,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Use SFTP to copy a file named \"banner_ssh.txt\" containing the Standard Mandatory DOD Notice and Consent Banner to the /incoming folder.\n\n2. Access the TanOS interactively.\n\n3. Enter \"A\" to go to the \"Appliance Configuration\" menu.\n\n4. Enter \"A\" to go to the \"Security\" menu.\n\n5. Enter \"3\" to add the banner file.",
-            "+@fixref": "F-58412r870371_fix"
+            "+content": "1. Use SFTP to copy a file named \"banner_ssh.txt\" containing the Standard Mandatory DoW Notice and Consent Banner to the /incoming folder.\n\n2. Access the TanOS interactively.\n\n3. Enter \"A\" to go to the \"Appliance Configuration\" menu.\n\n4. Enter \"A\" to go to the \"Security\" menu.\n\n5. Enter \"3\" to add the banner file.",
+            "+@fixref": "F-58412r1268604_fix"
           },
           "fix": {
-            "+@id": "F-58412r870371_fix"
+            "+@id": "F-58412r1268604_fix"
           },
           "check": {
-            "+@system": "C-58468r870370_chk",
+            "+@system": "C-58468r1268603_chk",
             "check-content-ref": {
               "+@href": "Tanium_7.x_OS_on_TanOS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Access the TanOS interactively.\n\nIf the Standard Mandatory DOD Notice and Consent Banner is not displayed at logon, this is a finding."
+            "check-content": "1. Access the TanOS interactively.\n\nIf the Standard Mandatory DoW Notice and Consent Banner is not displayed at logon, this is a finding."
           }
         }
       },
@@ -2252,11 +2252,11 @@
         "title": "SRG-OS-000355",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254865r1067747_rule",
+          "+@id": "SV-254865r1268606_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-001095",
-          "title": "The Tanium operating system (TanOS) must, for networked systems, compare internal information system clocks at least every 24 hours with a server synchronized to one of the redundant United States Naval Observatory (USNO) time servers or a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).",
+          "title": "The Tanium operating system (TanOS) must, for networked systems, compare internal information system clocks at least every 24 hours with a server synchronized to one of the redundant United States Naval Observatory (USNO) time servers or a time server designated for the appropriate DoW network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).",
           "description": "<VulnDiscussion>Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside of the configured acceptable allowance (drift) may be inaccurate. \n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. \n\nOrganizations should consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
@@ -2297,7 +2297,7 @@
         "title": "SRG-OS-000356",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254866r1067750_rule",
+          "+@id": "SV-254866r1068277_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-001100",
@@ -2328,12 +2328,12 @@
             "+@id": "F-58423r1067749_fix"
           },
           "check": {
-            "+@system": "C-58479r1067748_chk",
+            "+@system": "C-58479r1068276_chk",
             "check-content-ref": {
               "+@href": "Tanium_7.x_OS_on_TanOS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"A\" for \"Appliance Configuration Menu,\" and then press \"Enter\".\n\n4. Press \"3\" for \"NTP Configuration,\" and then press \"Enter\".\n\nIf there is no address listed for \"Currently configured ntp servers:\", this is a finding.\n\nThe status is reported differently in different versions of TanOS.\n\nTanOS <= 1.7.1:\nIf the \"Current NTP Status\" does not list a status of \"Synchronized to NTP Server (\n) at stratum #\" and \"Time correct to within # ms\", this is a finding.\n\nTanOS >= 1.7.2:\nIf the \"Current NTP Status\" does not list a status of \"Normal\", this is a finding."
+            "check-content": "1. Access the Tanium Server interactively.\n\n2. Log on to the TanOS server with the tanadmin role.\n\n3. Press \"A\" for \"Appliance Configuration Menu,\" and then press \"Enter\".\n\n4. Press \"3\" for \"NTP Configuration,\" and then press \"Enter\".\n\nIf there is no address listed for \"Currently configured ntp servers:\", this is a finding.\n\nThe status is reported differently in different versions of TanOS.\n\nTanOS <= 1.7.1:\nIf the \"Current NTP Status\" does not list a status of \"Synchronized to NTP Server (<address>) at stratum #\" and \"Time correct to within # ms\", this is a finding.\n\nTanOS >= 1.7.2:\nIf the \"Current NTP Status\" does not list a status of \"Normal\", this is a finding."
           }
         }
       },
@@ -2342,12 +2342,12 @@
         "title": "SRG-OS-000357",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254867r1015860_rule",
+          "+@id": "SV-254867r1268607_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-001105",
           "title": "The Tanium Operating System (TanOS) must be configured to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.",
-          "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes it's time to a more accurate source. The system must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done in CCI-001891.\n\nDOD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: A time server designated for the appropriate DOD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes it's time to a more accurate source. The system must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done in CCI-001891.\n\nDoW-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: A time server designated for the appropriate DoW network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Tanium 7.x OS on TanOS",
             "dc:publisher": "DISA",
@@ -2465,7 +2465,7 @@
         "title": "SRG-OS-000439",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254871r958940_rule",
+          "+@id": "SV-254871r1117152_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "TANS-OS-001515",
@@ -2504,7 +2504,7 @@
         "title": "SRG-OS-000550",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-254873r959036_rule",
+          "+@id": "SV-254873r1117273_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "TANS-OS-001760",

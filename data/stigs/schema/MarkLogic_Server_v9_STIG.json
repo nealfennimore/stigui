@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-04"
+      "+@date": "2026-08-31"
     },
     "title": "MarkLogic Server v9 Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW)  information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 2 Benchmark Date: 24 Oct 2024",
+        "+content": "Release: 3 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -3047,7 +3047,7 @@
         "title": "SRG-APP-000023-DB-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220340r960768_rule",
+          "+@id": "SV-220340r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-000200",
@@ -3096,12 +3096,12 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220341r960792_rule",
+          "+@id": "SV-220341r1268374_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ML09-00-000300",
           "title": "MarkLogic Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
-          "description": "<VulnDiscussion>Authentication with a DoD-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nMarkLogic Server uses a role-based security model. A user’s privileges and permissions are based on the roles assigned to the user. For background information on understanding the security model in MarkLogic Server, see Security Guide.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nMarkLogic Server uses a role-based security model. A user’s privileges and permissions are based on the roles assigned to the user. For background information on understanding the security model in MarkLogic Server, see Security Guide.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -3145,7 +3145,7 @@
         "title": "SRG-APP-000080-DB-000063",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220342r960864_rule",
+          "+@id": "SV-220342r1268377_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-000400",
@@ -3173,19 +3173,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure MarkLogic audit logs to ensure auditing includes details identifying the individual user.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Set the audit enabled field to true.\n5. Configure the settings to meet DoD minimum requirements for protection against a user falsely repudiating.",
-            "+@fixref": "F-22046r401478_fix"
+            "+content": "Configure MarkLogic audit logs to ensure auditing includes details identifying the individual user.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Set the audit enabled field to true.\n5. Configure the settings to meet DoW minimum requirements for protection against a user falsely repudiating.",
+            "+@fixref": "F-22046r1268376_fix"
           },
           "fix": {
-            "+@id": "F-22046r401478_fix"
+            "+@id": "F-22046r1268376_fix"
           },
           "check": {
-            "+@system": "C-22057r531248_chk",
+            "+@system": "C-22057r1268375_chk",
             "check-content-ref": {
               "+@href": "MarkLogic_Server_v9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the configuration of audit logs to determine whether auditing includes details identifying the individual user. If it does not, this is a finding.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Inspect the audit-enabled field. A value of false means there is no auditing identifying the individual user and this is a finding. \n5. If audit enabled field is true, but the settings do not meet the DoD minimum requirements for non-repudiation, this is a finding."
+            "check-content": "Review the configuration of audit logs to determine whether auditing includes details identifying the individual user. If it does not, this is a finding.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Inspect the audit-enabled field. A value of false means there is no auditing identifying the individual user and this is a finding. \n5. If audit enabled field is true, but the settings do not meet the DoW minimum requirements for non-repudiation, this is a finding."
           }
         }
       },
@@ -3194,12 +3194,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220343r960879_rule",
+          "+@id": "SV-220343r1268380_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-000500",
-          "title": "MarkLogic Server must be configured to provide audit record generation capability for DoD-defined auditable events within all DBMS/database components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.\n\nMarkLogic Server includes an auditing capability. Auditing can be enabled to capture security-relevant events to monitor suspicious database activity or to satisfy applicable auditing requirements. The generation of audit events can be configured by including or excluding MarkLogic Server roles, users, or documents based on URI. Some actions that can be audited are the following:\n- Startup and shutdown of MarkLogic Server\n- Adding or removing roles from a user\n- Usage of amps\n- Starting and stopping the auditing system\n\nFor the complete list of auditable events and their descriptions, see Auditing Events in the Administrator's Guide:\nhttps://docs.marklogic.com/guide/admin/auditing</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MarkLogic Server must be configured to provide audit record generation capability for DoW-defined auditable events within all DBMS/database components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.\n\nMarkLogic Server includes an auditing capability. Auditing can be enabled to capture security-relevant events to monitor suspicious database activity or to satisfy applicable auditing requirements. The generation of audit events can be configured by including or excluding MarkLogic Server roles, users, or documents based on URI. Some actions that can be audited are the following:\n- Startup and shutdown of MarkLogic Server\n- Adding or removing roles from a user\n- Usage of amps\n- Starting and stopping the auditing system\n\nFor the complete list of auditable events and their descriptions, see Auditing Events in the Administrator's Guide:\nhttps://docs.marklogic.com/guide/admin/auditing</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -3222,19 +3222,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure MarkLogic to generate audit records for at least the DoD minimum or organization-defined set of events.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Set the audit enabled field to true.\n5. Configure the auditable events to meet DoD minimum requirements.",
-            "+@fixref": "F-22047r401481_fix"
+            "+content": "Configure MarkLogic to generate audit records for at least the DoW minimum or organization-defined set of events.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Set the audit enabled field to true.\n5. Configure the auditable events to meet DoW minimum requirements.",
+            "+@fixref": "F-22047r1268379_fix"
           },
           "fix": {
-            "+@id": "F-22047r401481_fix"
+            "+@id": "F-22047r1268379_fix"
           },
           "check": {
-            "+@system": "C-22058r401480_chk",
+            "+@system": "C-22058r1268378_chk",
             "check-content-ref": {
               "+@href": "MarkLogic_Server_v9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check DBMS auditing to determine whether organization-defined auditable events are being audited by the system.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Inspect the audit enabled field. A value of false means there is no auditing and this is a finding. \n5. If audit enabled field is true, but the selected auditable events do not meet DoD minimum requirements, this is a finding."
+            "check-content": "Check DBMS auditing to determine whether organization-defined auditable events are being audited by the system.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Groups icon.\n2. Click the group in which the configuration to check resides (e.g., Default).\n3. Click the Auditing icon on the left tree menu.\n4. Inspect the audit enabled field. A value of false means there is no auditing and this is a finding. \n5. If audit enabled field is true, but the selected auditable events do not meet DoW minimum requirements, this is a finding."
           }
         }
       },
@@ -3439,7 +3439,7 @@
         "title": "SRG-APP-000109-DB-000049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220348r960915_rule",
+          "+@id": "SV-220348r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-001600",
@@ -3782,7 +3782,7 @@
         "title": "SRG-APP-000133-DB-000179",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220355r960960_rule",
+          "+@id": "SV-220355r1268382_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-002500",
@@ -3810,11 +3810,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement procedures to monitor for unauthorized changes to DBMS software libraries, related software application libraries, and configuration files. If a third-party automated tool is not employed, an automated job that reports file information on the directories and files of interest and compares them to the baseline report for the same will meet the requirement. \n\nThe supplemental file \"ml-filechange-mon.sh\" can be used to meet this requirement. \n- Edit the ml-filechange-mon.sh script with the correct email addresses and notification level.\n- Place the script in a location that can be accessed by the cron daemon.\n- Edit the crontab, and configure the script to run frequently enough to meet DoD minimum requirements.",
-            "+@fixref": "F-22059r401517_fix"
+            "+content": "Implement procedures to monitor for unauthorized changes to DBMS software libraries, related software application libraries, and configuration files. If a third-party automated tool is not employed, an automated job that reports file information on the directories and files of interest and compares them to the baseline report for the same will meet the requirement. \n\nThe supplemental file \"ml-filechange-mon.sh\" can be used to meet this requirement. \n- Edit the ml-filechange-mon.sh script with the correct email addresses and notification level.\n- Place the script in a location that can be accessed by the cron daemon.\n- Edit the crontab, and configure the script to run frequently enough to meet DoW minimum requirements.",
+            "+@fixref": "F-22059r1268381_fix"
           },
           "fix": {
-            "+@id": "F-22059r401517_fix"
+            "+@id": "F-22059r1268381_fix"
           },
           "check": {
             "+@system": "C-22070r401516_chk",
@@ -4125,7 +4125,7 @@
         "title": "SRG-APP-000142-DB-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220362r960966_rule",
+          "+@id": "SV-220362r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-003400",
@@ -4174,7 +4174,7 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220363r960969_rule",
+          "+@id": "SV-220363r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-003500",
@@ -4223,12 +4223,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220364r1018604_rule",
+          "+@id": "SV-220364r1268373_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-003600",
-          "title": "If MarkLogic Server authentication using passwords is employed, MarkLogic Server must enforce the DOD standards for password complexity and lifetime.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable, and must be documented and Authorizing Official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.\n\nTypes of Authentication\nControl the authentication scheme for HTTP, WebDAV, ODBC, and XDBC App Servers.\n- Basic authentication is the typical authentication scheme for web applications. A user is prompted for a username and password when accessing an application page. In basic mode, the password is obfuscated but not encrypted.\n- Digest authentication works the same way as basic, but offers encryption of passwords sent over the network. A user is prompted for a username and password when accessing an application page.\n- The digest-basic authentication scheme uses the more secure digest scheme whenever possible, but reverts to basic authentication when needed. Some older browsers, for example, do not support digest authentication. The digest-basic scheme is also useful if basic authentication was previously used, but must be migrated to digest. The first time a user accesses the server after changing from basic to digest-basic authentication scheme, the server computes the digest password by extracting the relevant information from the credentials supplied in basic mode.\n- Certificate-based authentication requires internal and external users and HTTPS clients to authenticate to MarkLogic Server via a client certificate, either in addition to, or rather than a password.\n- Application-level authentication bypasses all authentication and automatically logs all users in as a specified default user. Specify the default user in the Admin Interface, and any users accessing the server automatically inherit the security attributes (roles, privileges, default permissions) of the default user. Application-level authentication is available on HTTP, ODBC, and WebDAV servers.\n- In Kerberos Ticket, the user is authenticated by Kerberos and a Kerberos session ticket is used to authenticate the user to access MarkLogic Server.\n- When SAML authentication is used, a client requests a resource from MarkLogic Server with no security context. MarkLogic redirects the authentication request to an Identity Provider, the Identity Provider prompts the user to login, if necessary, and sends the authentication request back to MarkLogic Server (the Service Provider) for validation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If MarkLogic Server authentication using passwords is employed, MarkLogic Server must enforce the DoW standards for password complexity and lifetime.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable, and must be documented and authorizing official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.\n\nTypes of Authentication\nControl the authentication scheme for HTTP, WebDAV, ODBC, and XDBC App Servers.\n- Basic authentication is the typical authentication scheme for web applications. A user is prompted for a username and password when accessing an application page. In basic mode, the password is obfuscated but not encrypted.\n- Digest authentication works the same way as basic, but offers encryption of passwords sent over the network. A user is prompted for a username and password when accessing an application page.\n- The digest-basic authentication scheme uses the more secure digest scheme whenever possible, but reverts to basic authentication when needed. Some older browsers, for example, do not support digest authentication. The digest-basic scheme is also useful if basic authentication was previously used, but must be migrated to digest. The first time a user accesses the server after changing from basic to digest-basic authentication scheme, the server computes the digest password by extracting the relevant information from the credentials supplied in basic mode.\n- Certificate-based authentication requires internal and external users and HTTPS clients to authenticate to MarkLogic Server via a client certificate, either in addition to, or rather than a password.\n- Application-level authentication bypasses all authentication and automatically logs all users in as a specified default user. Specify the default user in the Admin Interface, and any users accessing the server automatically inherit the security attributes (roles, privileges, default permissions) of the default user. Application-level authentication is available on HTTP, ODBC, and WebDAV servers.\n- In Kerberos Ticket, the user is authenticated by Kerberos and a Kerberos session ticket is used to authenticate the user to access MarkLogic Server.\n- When SAML authentication is used, a client requests a resource from MarkLogic Server with no security context. MarkLogic redirects the authentication request to an Identity Provider, the Identity Provider prompts the user to login, if necessary, and sends the authentication request back to MarkLogic Server (the Service Provider) for validation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -4255,19 +4255,19 @@
             }
           ],
           "fixtext": {
-            "+content": "If the use of passwords is not needed, configure MarkLogic to prevent password use.\n\nIf the DBMS can inherit password complexity rules from the operating system or access control program, configure it to do so using one of the following methods: \n1. Configure the MarkLogic server to use Kerberos, SAML, or Certificate based authentication. \n2. Develop plugin to enforce password complexity. Examples can be found in MarkLogic Application Developers Guide.\n\nPlugins must enforce the following rules for passwords:\n\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length (eight)\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 60 days\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days\ne. Number of password changes before an old one may be reused: Minimum of five\n\nDevelop a custom extension that enforces the password complexity and lifetime.\nSee https://docs.marklogic.com/guide/app-dev/plugins#id_91783",
-            "+@fixref": "F-22068r998232_fix"
+            "+content": "If the use of passwords is not needed, configure MarkLogic to prevent password use.\n\nIf the DBMS can inherit password complexity rules from the operating system or access control program, configure it to do so using one of the following methods: \n1. Configure the MarkLogic server to use Kerberos, SAML, or Certificate based authentication. \n2. Develop plugin to enforce password complexity. Examples can be found in MarkLogic Application Developers Guide.\n\nPlugins must enforce the following rules for passwords:\n\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numeric\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length (eight)\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days\ne. Number of password changes before an old one may be reused: Minimum of five\n\nDevelop a custom extension that enforces the password complexity and lifetime.\nRefer to https://docs.marklogic.com/guide/app-dev/plugins#id_91783",
+            "+@fixref": "F-22068r1268372_fix"
           },
           "fix": {
-            "+@id": "F-22068r998232_fix"
+            "+@id": "F-22068r1268372_fix"
           },
           "check": {
-            "+@system": "C-22079r998231_chk",
+            "+@system": "C-22079r1268371_chk",
             "check-content-ref": {
               "+@href": "MarkLogic_Server_v9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review MarkLogic settings to see if password authentication is being used, and whether password complexity and lifetime rules are being enforced.\n\nCheck for MarkLogic Password Plugin from the MarkLogic Query Console with a user that holds administrative-level privileges.\n1. Select \"XQuery\" in the Query Type drop down and copy the following code into the window:\nxquery version \"1.0-ml\"; \nimport module namespace plugin = \"http://marklogic.com/extension/plugin\" at \"/MarkLogic/plugin/plugin.xqy\";\n\nplugin:plugins(\"http://marklogic.com/xdmp/security/password-check\")\n2. Run the script. If the script returns \"your query returned an empty sequence\", then no password plugin is present.\n3. If the script returns a file name or file names (e.g., password-check-minimum-length.xqy), then review the file/s in the <MarkLogic Home>/Plugins directory to verify compliance with DOD minimum password requirements.\n4. Log in to the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n5. Click the Groups icon.\n6. Click the group in which the App Server to be checked resides (e.g., Default).\n7. Click the App Servers icon on the left tree menu.\n8. Select each of the App Servers.\n9. Inspect the selected authentication method, if \"basic\", \"digestbasic\", or \"digest\" is selected and there is not a custom password plugin, or if the password plugin does not meet DOD minimum requirements, this is a finding."
+            "check-content": "Review MarkLogic settings to see if password authentication is being used, and whether password complexity and lifetime rules are being enforced.\n\nCheck for MarkLogic Password Plugin from the MarkLogic Query Console with a user that holds administrative-level privileges.\n1. Select \"XQuery\" in the Query Type drop down and copy the following code into the window:\nxquery version \"1.0-ml\"; \nimport module namespace plugin = \"http://marklogic.com/extension/plugin\" at \"/MarkLogic/plugin/plugin.xqy\";\n\nplugin:plugins(\"http://marklogic.com/xdmp/security/password-check\")\n2. Run the script. If the script returns \"your query returned an empty sequence\", then no password plugin is present.\n3. If the script returns a file name or file names (e.g., password-check-minimum-length.xqy), then review the file(s) in the <MarkLogic Home>/Plugins directory to verify compliance with DoW minimum password requirements.\n4. Log in to the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n5. Click the Groups icon.\n6. Click the group in which the App Server to be checked resides (e.g., Default).\n7. Click the App Servers icon on the left tree menu.\n8. Select each of the App Servers.\n9. Inspect the selected authentication method, if \"basic\", \"digestbasic\", or \"digest\" is selected and there is not a custom password plugin, or if the password plugin does not meet DoW minimum requirements, this is a finding."
           }
         }
       },
@@ -4276,12 +4276,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220365r961029_rule",
+          "+@id": "SV-220365r1268383_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ML09-00-003800",
           "title": "If passwords are used for authentication, the MarkLogic Server must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, passwords must be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.\n\nMarkLogic Types of Authentication:\nBasic*\nDigest\nDigest-Basic*\nCertificate\nApplication Level\nKerberos Ticket\nSAML\n* Indicates that the authentication method allows the username and password to be transmitted in clear text.\n\nFor more information on the types of authentication MarkLogic offers, follow this link:\nhttps://docs.marklogic.com/9.0/guide/security/authentication#id_14250</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, passwords must be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.\n\nMarkLogic Types of Authentication:\nBasic*\nDigest\nDigest-Basic*\nCertificate\nApplication Level\nKerberos Ticket\nSAML\n* Indicates that the authentication method allows the username and password to be transmitted in clear text.\n\nFor more information on the types of authentication MarkLogic offers, follow this link:\nhttps://docs.marklogic.com/9.0/guide/security/authentication#id_14250</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -4325,12 +4325,12 @@
         "title": "SRG-APP-000175-DB-000067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220366r961038_rule",
+          "+@id": "SV-220366r1268384_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-003900",
           "title": "MarkLogic Server, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity, and revocation status for each certificate in the certification path. Revocation status information resource/or CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nA certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity, and revocation status for each certificate in the certification path. Revocation status information resource/or CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -4374,12 +4374,12 @@
         "title": "SRG-APP-000176-DB-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220367r961041_rule",
+          "+@id": "SV-220367r1268385_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ML09-00-004000",
           "title": "MarkLogic Server must enforce authorized access to all PKI private keys stored/utilized by the DBMS.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system’s clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -4525,7 +4525,7 @@
         "title": "SRG-APP-000211-DB-000122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220370r961095_rule",
+          "+@id": "SV-220370r1137655_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-004500",
@@ -4574,7 +4574,7 @@
         "title": "SRG-APP-000224-DB-000384",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220371r961119_rule",
+          "+@id": "SV-220371r1043181_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-004800",
@@ -4672,7 +4672,7 @@
         "title": "SRG-APP-000243-DB-000374",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220373r961149_rule",
+          "+@id": "SV-220373r1137658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-005500",
@@ -4770,7 +4770,7 @@
         "title": "SRG-APP-000313-DB-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220375r961272_rule",
+          "+@id": "SV-220375r1138541_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-006400",
@@ -4819,7 +4819,7 @@
         "title": "SRG-APP-000314-DB-000310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220376r961275_rule",
+          "+@id": "SV-220376r1138542_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-006500",
@@ -5264,12 +5264,12 @@
         "title": "SRG-APP-000427-DB-000385",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220386r961596_rule",
+          "+@id": "SV-220386r1268388_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-008400",
-          "title": "MarkLogic Server must only accept end-entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
-          "description": "<VulnDiscussion>Only DoD-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place sufficient for DoD systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoD-approved PKIs is published at https://public.cyber.mil/pki-pke/interoperability/.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MarkLogic Server must only accept end-entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
+          "description": "<VulnDiscussion>Only DoW-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place sufficient for DoW systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoW-approved PKIs is published at https://public.cyber.mil/pki-pke/interoperability/.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -5292,19 +5292,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure MarkLogic to accept only DoD and DoD-approved PKI end-entity certificates by revoking trust in any certificates not issued by a DoD-approved certificate authority.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Security icon.\n2. Click the Certificate Authorities icon.\n3. Remove all PKI end-entity certificates not approved by DoD.",
-            "+@fixref": "F-22090r401610_fix"
+            "+content": "Configure MarkLogic to accept only DoW and DoW-approved PKI end-entity certificates by revoking trust in any certificates not issued by a DoW-approved certificate authority.\n\nPerform the fix from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Security icon.\n2. Click the Certificate Authorities icon.\n3. Remove all PKI end-entity certificates not approved by DoW.",
+            "+@fixref": "F-22090r1268387_fix"
           },
           "fix": {
-            "+@id": "F-22090r401610_fix"
+            "+@id": "F-22090r1268387_fix"
           },
           "check": {
-            "+@system": "C-22101r401609_chk",
+            "+@system": "C-22101r1268386_chk",
             "check-content-ref": {
               "+@href": "MarkLogic_Server_v9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review MarkLogic settings to determine whether the server will accept non-DoD approved PKI end-entity certificates, this is a finding.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Security icon.\n2. Click the Certificate Authorities icon.\n3. If there are any PKI end-entity certificates that are not DoD approved, this is a finding."
+            "check-content": "Review MarkLogic settings to determine whether the server will accept non-DoW approved PKI end-entity certificates, this is a finding.\n\nPerform the check from the MarkLogic Server Admin Interface with a user that holds administrative-level privileges.\n\n1. Click the Security icon.\n2. Click the Certificate Authorities icon.\n3. If there are any PKI end-entity certificates that are not DoW approved, this is a finding."
           }
         }
       },
@@ -5411,7 +5411,7 @@
         "title": "SRG-APP-000456-DB-000390",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220389r1001008_rule",
+          "+@id": "SV-220389r1137667_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-009200",
@@ -6636,7 +6636,7 @@
         "title": "SRG-APP-000514-DB-000381",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220414r961857_rule",
+          "+@id": "SV-220414r1137660_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-012000",
@@ -6685,7 +6685,7 @@
         "title": "SRG-APP-000514-DB-000382",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220415r961857_rule",
+          "+@id": "SV-220415r1137661_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-012100",
@@ -6734,7 +6734,7 @@
         "title": "SRG-APP-000514-DB-000383",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220416r961857_rule",
+          "+@id": "SV-220416r1137664_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-012200",
@@ -6832,12 +6832,12 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-220418r961863_rule",
+          "+@id": "SV-220418r1268391_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ML09-00-012400",
-          "title": "MarkLogic Server must be configured in accordance with the security configuration settings based on DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
-          "description": "<VulnDiscussion>Configuring the DBMS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MarkLogic Server must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
+          "description": "<VulnDiscussion>Configuring the DBMS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MarkLogic Server v9",
             "dc:publisher": "DISA",
@@ -6860,19 +6860,19 @@
             }
           ],
           "fixtext": {
-            "+content": "From the list of applicable DoD security configuration and implementation guidance, address the items that the MarkLogic Server configuration does not meet.",
-            "+@fixref": "F-22122r401706_fix"
+            "+content": "From the list of applicable DoW security configuration and implementation guidance, address the items that the MarkLogic Server configuration does not meet.",
+            "+@fixref": "F-22122r1268390_fix"
           },
           "fix": {
-            "+@id": "F-22122r401706_fix"
+            "+@id": "F-22122r1268390_fix"
           },
           "check": {
-            "+@system": "C-22133r401705_chk",
+            "+@system": "C-22133r1268389_chk",
             "check-content-ref": {
               "+@href": "MarkLogic_Server_v9_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Determine the applicable DoD security configuration and implementation guidance for the deployment environment. Asses the MarkLogic Server documentation and configuration in accordance with the applicable guidance.\n\nIf MarkLogic is not configured in accordance with security configuration settings, this is a finding."
+            "check-content": "Determine the applicable DoW security configuration and implementation guidance for the deployment environment. Asses the MarkLogic Server documentation and configuration in accordance with the applicable guidance.\n\nIf MarkLogic is not configured in accordance with security configuration settings, this is a finding."
           }
         }
       },
@@ -6881,7 +6881,7 @@
         "title": "SRG-APP-000456-DB-000400",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265874r999528_rule",
+          "+@id": "SV-265874r1138543_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ML09-00-012500",

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-23"
+      "+@date": "2026-09-01"
     },
     "title": "Apple macOS 26 (Tahoe) Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 4 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -6112,7 +6112,7 @@
         "title": "SRG-OS-000002-GPOS-00002",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277034r1148554_rule",
+          "+@id": "SV-277034r1268212_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000012",
@@ -6251,7 +6251,7 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277037r1148563_rule",
+          "+@id": "SV-277037r1268215_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000023",
@@ -6275,19 +6275,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure the macOS system to display the Standard Mandatory DOD Notice and Consent Banner before granting remote access to the operating system by creating a text file containing the required DOD text with the following commands:\n\nbannerText=\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n/bin/echo \"${bannerText}\" > /etc/banner",
-            "+@fixref": "F-81097r1148562_fix"
+            "+content": "Configure the macOS system to display the Standard Mandatory DoW Notice and Consent Banner before granting remote access to the operating system by creating a text file containing the required DoW text with the following commands:\n\nbannerText=\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\n/bin/echo \"${bannerText}\" > /etc/banner",
+            "+@fixref": "F-81097r1268024_fix"
           },
           "fix": {
-            "+@id": "F-81097r1148562_fix"
+            "+@id": "F-81097r1268024_fix"
           },
           "check": {
-            "+@system": "C-81192r1148561_chk",
+            "+@system": "C-81192r1268023_chk",
             "check-content-ref": {
               "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the macOS system is configured to display the Standard Mandatory DOD Notice and Consent Banner before granting remote access to the operating system with the following commands:\n\nbannerText=\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\ntest \"$(cat /etc/banner)\" = \"$bannerText\" && echo \"1\" || echo \"0\"\n\nIf the test does not return a \"1\", this is a finding."
+            "check-content": "Verify the macOS system is configured to display the Standard Mandatory DoW Notice and Consent Banner before granting remote access to the operating system with the following commands:\n\nbannerText=\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\ntest \"$(cat /etc/banner)\" = \"$bannerText\" && echo \"1\" || echo \"0\"\n\nIf the test does not return a \"1\", this is a finding."
           }
         }
       },
@@ -6296,7 +6296,7 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277038r1148566_rule",
+          "+@id": "SV-277038r1268215_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000024",
@@ -6341,11 +6341,11 @@
         "title": "SRG-OS-000023-GPOS-00006",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277039r1148569_rule",
+          "+@id": "SV-277039r1268215_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000025",
-          "title": "The macOS system must display the Standard Mandatory DOD Notice and Consent Banner at the login window.",
+          "title": "The macOS system must display the Standard Mandatory DoW Notice and Consent Banner at the login window.",
           "description": "<VulnDiscussion>Displaying a standardized and approved use notification before granting access to the operating system ensures that users are provided with privacy and security notification verbiage that is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.\n\nThe policy banner will show if a \"PolicyBanner.rtf\" or \"PolicyBanner.rtfd\" exists in the \"/Library/Security\" folder.\n\nThe banner must be formatted in accordance with DTM-08-060.\n\nSatisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007, SRG-OS-000228-GPOS-00088</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Apple macOS 26 (Tahoe)",
@@ -6528,7 +6528,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277042r1148578_rule",
+          "+@id": "SV-277042r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000033",
@@ -6684,7 +6684,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277046r1184568_rule",
+          "+@id": "SV-277046r1268222_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-000054",
@@ -6749,7 +6749,7 @@
         "title": "SRG-OS-000033-GPOS-00014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277047r1148593_rule",
+          "+@id": "SV-277047r1268222_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-000057",
@@ -7191,7 +7191,7 @@
         "title": "SRG-OS-000355-GPOS-00143",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277057r1148623_rule",
+          "+@id": "SV-277057r1268028_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-000170",
@@ -7222,12 +7222,12 @@
             "+@id": "F-81117r1148622_fix"
           },
           "check": {
-            "+@system": "C-81212r1148621_chk",
+            "+@system": "C-81212r1268027_chk",
             "check-content-ref": {
               "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the macOS system is configured to use an authorized time server with the following command:\n\n/usr/bin/osascript -l JavaScript << EOS\n$.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\\\n.objectForKey('timeServer').js\nEOS\n\nIf the result is not an authoritative time server that is synchronized with redundant USNO time servers as designated for the appropriate DOD network, this is a finding."
+            "check-content": "Verify the macOS system is configured to use an authorized time server with the following command:\n\n/usr/bin/osascript -l JavaScript << EOS\n$.NSUserDefaults.alloc.initWithSuiteName('com.apple.MCX')\\\n.objectForKey('timeServer').js\nEOS\n\nIf the result is not an authoritative time server that is synchronized with redundant USNO time servers as designated for the appropriate DoW network, this is a finding."
           }
         }
       },
@@ -7397,7 +7397,7 @@
         "title": "SRG-OS-000032-GPOS-00013",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277061r1148635_rule",
+          "+@id": "SV-277061r1268219_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-001002",
@@ -8849,7 +8849,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277085r1148707_rule",
+          "+@id": "SV-277085r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002001",
@@ -8888,7 +8888,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277086r1148710_rule",
+          "+@id": "SV-277086r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002003",
@@ -9005,7 +9005,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277089r1149391_rule",
+          "+@id": "SV-277089r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002006",
@@ -9083,7 +9083,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277091r1149419_rule",
+          "+@id": "SV-277091r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002008",
@@ -9122,7 +9122,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277092r1148728_rule",
+          "+@id": "SV-277092r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002009",
@@ -9528,7 +9528,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277102r1148758_rule",
+          "+@id": "SV-277102r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002022",
@@ -10008,7 +10008,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277114r1149392_rule",
+          "+@id": "SV-277114r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002050",
@@ -10125,7 +10125,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277117r1148803_rule",
+          "+@id": "SV-277117r1268241_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-002060",
@@ -10242,7 +10242,7 @@
         "title": "SRG-OS-000366-GPOS-00153",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277120r1148812_rule",
+          "+@id": "SV-277120r1268241_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "APPL-26-002064",
@@ -10488,7 +10488,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277126r1148830_rule",
+          "+@id": "SV-277126r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002100",
@@ -10527,7 +10527,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277127r1149415_rule",
+          "+@id": "SV-277127r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002110",
@@ -11118,7 +11118,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277142r1148878_rule",
+          "+@id": "SV-277142r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-002271",
@@ -11167,7 +11167,7 @@
         "title": "SRG-OS-000403-GPOS-00182",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277143r1148881_rule",
+          "+@id": "SV-277143r1268247_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-003001",
@@ -11251,12 +11251,12 @@
         "title": "SRG-OS-000076-GPOS-00044",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277145r1149409_rule",
+          "+@id": "SV-277145r1268211_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-003008",
-          "title": "The macOS system must restrict maximum password lifetime to 60 days.",
-          "description": "<VulnDiscussion>The macOS must be configured to enforce a maximum password lifetime limit of at least 60 days.\n\nThis rule ensures that users are forced to change their passwords frequently enough to prevent malicious users from gaining and maintaining access to the system.\n\nNote: The guidance for password-based authentication in NIST 800-53 (Rev 5) and NIST 800-63B states that complexity rules must be organizationally defined. The values defined are based on common complexity values, but each organization may define its own password complexity rules.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The macOS system must restrict maximum password lifetime to 180 days.",
+          "description": "<VulnDiscussion>The macOS must be configured to enforce a maximum password lifetime limit of at least 180 days.\n\nThis rule ensures that users are forced to change their passwords frequently enough to prevent malicious users from gaining and maintaining access to the system.\n\nNote: The guidance for password-based authentication in NIST 800-53 (Rev 5) and NIST 800-63B states that complexity rules must be organizationally defined. The values defined are based on common complexity values, but each organization may define its own password complexity rules.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Apple macOS 26 (Tahoe)",
             "dc:publisher": "DISA",
@@ -11269,19 +11269,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure the macOS system to restrict maximum password lifetime to 60 days by installing the \"com.apple.mobiledevice.passwordpolicy\" configuration profile.",
-            "+@fixref": "F-81205r1148886_fix"
+            "+content": "Configure the macOS system to restrict maximum password lifetime to 180 days by installing the \"com.apple.mobiledevice.passwordpolicy\" configuration profile.",
+            "+@fixref": "F-81205r1268021_fix"
           },
           "fix": {
-            "+@id": "F-81205r1148886_fix"
+            "+@id": "F-81205r1268021_fix"
           },
           "check": {
-            "+@system": "C-81300r1149364_chk",
+            "+@system": "C-81300r1268020_chk",
             "check-content-ref": {
               "+@href": "Apple_macOS_26_(Tahoe)__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the macOS system is configured to restrict maximum password lifetime to 60 days with the following command:\n\n/usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()=\"policyAttributeExpiresEveryNDays\"]/following-sibling::*[1]/text()' - | /usr/bin/awk '{ if ($1 <= 60 ) {print \"pass\"} else {print \"fail\"}}' | /usr/bin/uniq\n\nIf the result is not \"pass\" or fewer, this is a finding."
+            "check-content": "Verify the macOS system is configured to restrict maximum password lifetime to 180 days with the following command:\n\n/usr/bin/pwpolicy -getaccountpolicies 2> /dev/null | /usr/bin/tail +2 | /usr/bin/xmllint --xpath '//dict/key[text()=\"policyAttributeExpiresEveryNDays\"]/following-sibling::*[1]/text()' - | /usr/bin/awk '{ if ($1 <= 180 ) {print \"pass\"} else {print \"fail\"}}' | /usr/bin/uniq\n\nIf the result is not \"pass\" or fewer, this is a finding."
           }
         }
       },
@@ -11568,7 +11568,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277152r1148908_rule",
+          "+@id": "SV-277152r1268228_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-003050",
@@ -11621,7 +11621,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277153r1148911_rule",
+          "+@id": "SV-277153r1268228_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-003051",
@@ -11674,7 +11674,7 @@
         "title": "SRG-OS-000105-GPOS-00052",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277154r1148914_rule",
+          "+@id": "SV-277154r1268228_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-003052",
@@ -12494,7 +12494,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277172r1148968_rule",
+          "+@id": "SV-277172r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-005058",
@@ -12621,7 +12621,7 @@
         "title": "SRG-OS-000080-GPOS-00048",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277175r1149394_rule",
+          "+@id": "SV-277175r1268226_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-005070",
@@ -12793,7 +12793,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277179r1148989_rule",
+          "+@id": "SV-277179r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-005110",
@@ -12832,7 +12832,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277180r1149396_rule",
+          "+@id": "SV-277180r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-005120",
@@ -12871,7 +12871,7 @@
         "title": "SRG-OS-000480-GPOS-00227",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-277181r1148995_rule",
+          "+@id": "SV-277181r1268251_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "APPL-26-005130",

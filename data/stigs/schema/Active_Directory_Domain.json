@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-11"
+      "+@date": "2026-09-01"
     },
     "title": "Active Directory Domain Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 7 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 8 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1414,12 +1414,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243466r959010_rule",
+          "+@id": "SV-243466r1266527_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "AD.0001",
           "title": "Membership to the Enterprise Admins group must be restricted to accounts used only to manage the Active Directory Forest.",
-          "description": "<VulnDiscussion>The Enterprise Admins group is a highly privileged group.  Personnel who are system administrators must log on to Active Directory systems only using accounts with the level of authority necessary. Only system administrator accounts used exclusively to manage the Active Directory Forest may be members of the Enterprise Admins group. A separation of administrator responsibilities helps mitigate the risk of privilege escalation resulting from credential theft attacks.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The Enterprise Admins (EA) group is a highly privileged group. To prevent forest-wide credential theft, Active Directory system administrators must strictly adhere to the principles of separation of duties and least privilege. EA group membership must be restricted to dedicated accounts used solely for forest-level management. Authenticating EA credentials on standard workstations or member servers exposes them to harvesting attacks, which can lead to complete forest compromise. Isolating administrative roles and restricting EA account usage directly mitigates these lateral movement and privilege escalation risks.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -1442,19 +1442,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Create the necessary documentation that identifies the members of the Enterprise Admins group.  Ensure that each member has a separate unique account that can only be used to manage the Active Directory Forest.  Remove any Enterprise Admin accounts from other administrator groups.",
-            "+@fixref": "F-46698r723432_fix"
+            "+content": "Create the necessary documentation that identifies the members of the Enterprise Admins group. \nIsolate Enterprise Admin accounts by restricting them from concurrent membership in other privileged or administrative groups. \nEnsure administrators use a separate, dedicated, and unique account reserved strictly for Active Directory Forest management.",
+            "+@fixref": "F-46698r1266526_fix"
           },
           "fix": {
-            "+@id": "F-46698r723432_fix"
+            "+@id": "F-46698r1266526_fix"
           },
           "check": {
-            "+@system": "C-46741r723431_chk",
+            "+@system": "C-46741r1266525_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review the Enterprise Admins group in Active Directory Users and Computers.  Any accounts that are members of the Enterprise Admins group must be documented with the IAO.  Each Enterprise Administrator must have a separate unique account specifically for managing the Active Directory forest.  \n\nIf any account listed in the Enterprise Admins group is a member of other administrator groups including the Domain Admins group, domain member server administrators groups, or domain workstation administrators groups, this is a finding."
+            "check-content": "Review the Enterprise Admins group in Active Directory Users and Computers. \nAny accounts that are members of the Enterprise Admins group must be documented with the IAO. \nEach EA must have a separate unique account specifically for managing the Active Directory forest.  \n\nIf any account listed in the Enterprise Admins group is a member of other highly privileged groups, such as the Domain Admins, Schema Admins, domain member server administrators groups (i.e., Backup Operators and Server Operators), or local workstation administrator delegation groups, this is a finding."
           }
         }
       },
@@ -1659,7 +1659,7 @@
         "title": "SRG-OS-000112",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243471r1186313_rule",
+          "+@id": "SV-243471r1186315_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0008",
@@ -1694,7 +1694,7 @@
             "+@id": "F-46703r854326_fix"
           },
           "check": {
-            "+@system": "C-46746r1186312_chk",
+            "+@system": "C-46746r1186314_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
@@ -1855,7 +1855,7 @@
         "title": "SRG-OS-000076",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243476r1038967_rule",
+          "+@id": "SV-243476r1266530_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "AD.0016",
@@ -1883,19 +1883,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Windows Server 2016 with domain functional levels of Windows Server 2016:\n\nOpen \"Active Directory Administrative Center\".\n\nRight-click on the domain name and select \"Properties\".\n\nSelect \"Enable rolling of expiring NTLM secrets during sign on, for users who are required to use Microsoft Passport or smart card for interactive sign on\".\n\nActive Directory domains not at a Windows Server 2016 domain functional level:\n\nRotate the NT hash for smart card-enforced accounts every 60 days.\n\nThis can be accomplished with the use of scripts.\n\nDOD PKI-PKE has provided a script under PKI and PKE Tools at https://cyber.mil/pki-pke/tools-configuration-files/. Refer to the User Guide for additional information.\n\nNSA has also provided a PowerShell script with Pass-the-Hash guidance at https://github.com/nsacyber/Pass-the-Hash-Guidance. Running the \"Invoke-SmartcardHashRefresh\" cmdlet in the \"PtHTools\" module will trigger a change of the underlying NT hash. Refer to the site for additional information.\n\nManually rolling the NT hash requires disabling and reenabling the \"Smart Card required for interactive logon\" option for each smart card-enforced account, which is not practical for large groups of users.",
-            "+@fixref": "F-46708r1026172_fix"
+            "+content": "Windows Server 2016 with domain functional levels of Windows Server 2016:\n\nOpen \"Active Directory Administrative Center\".\n\nRight-click on the domain name and select \"Properties\".\n\nSelect \"Enable rolling of expiring NTLM secrets during sign on, for users who are required to use Microsoft Passport or smart card for interactive sign on\".\n\nActive Directory domains not at a Windows Server 2016 domain functional level:\n\nRotate the NT hash for smart card-enforced accounts every 60 days.\n\nThis can be accomplished with the use of scripts.\n\nDoW PKI-PKE has provided a script under PKI and PKE Tools at https://cyber.mil/pki-pke/tools-configuration-files/. Refer to the User Guide for additional information.\n\nNSA has also provided a PowerShell script with Pass-the-Hash guidance at https://github.com/nsacyber/Pass-the-Hash-Guidance. Running the \"Invoke-SmartcardHashRefresh\" cmdlet in the \"PtHTools\" module will trigger a change of the underlying NT hash. Refer to the site for additional information.\n\nManually rolling the NT hash requires disabling and reenabling the \"Smart Card required for interactive logon\" option for each smart card-enforced account, which is not practical for large groups of users.",
+            "+@fixref": "F-46708r1266529_fix"
           },
           "fix": {
-            "+@id": "F-46708r1026172_fix"
+            "+@id": "F-46708r1266529_fix"
           },
           "check": {
-            "+@system": "C-46751r1026171_chk",
+            "+@system": "C-46751r1266528_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Windows Server 2016 with a domain functional level of Windows Server 2016:\n\nOpen \"Active Directory Administrative Center\".\n\nRight-click on the domain name and select \"Properties\".\n\nIf the \"Domain functional level:\" is not \"Windows Server 2016\", another method must be used to reset the NT hashes. See below for other options.\n\nIf the \"Domain functional level:\" is \"Windows Server 2016\" and \"Enable rolling of expiring NTLM secrets during sign on, for users who are required to use Microsoft Passport or smart card for interactive sign on\" is not checked, this is a finding.\n\nActive Directory domains with a domain functional level below Windows Server 2016:\n\nVerify the organization rotates the NT hash for smart card-enforced accounts every 60 days.  \n\nThis can be accomplished with the use of scripts.  \n\nDOD PKI-PKE has provided a script under PKI and PKE Tools at https://cyber.mil/pki-pke/tools-configuration-files/. Refer to the User Guide for additional information.\n\nNSA has also provided a PowerShell script with Pass-the-Hash guidance at https://github.com/nsacyber/Pass-the-Hash-Guidance. Running the \"Invoke-SmartcardHashRefresh\" cmdlet in the \"PtHTools\" module will trigger a change of the underlying NT hash. Refer to the site for additional information.\n\nManually rolling the NT hash requires disabling and reenabling the \"Smart Card required for interactive logon\" option for each smart card-enforced account, which is not practical for large groups of users.\n\nIf NT hashes for smart card-enforced accounts are not rotated every 60 days, this is a finding."
+            "check-content": "Windows Server 2016 with a domain functional level of Windows Server 2016:\n\nOpen \"Active Directory Administrative Center\".\n\nRight-click on the domain name and select \"Properties\".\n\nIf the \"Domain functional level:\" is not \"Windows Server 2016\", another method must be used to reset the NT hashes. See below for other options.\n\nIf the \"Domain functional level:\" is \"Windows Server 2016\" and \"Enable rolling of expiring NTLM secrets during sign on, for users who are required to use Microsoft Passport or smart card for interactive sign on\" is not checked, this is a finding.\n\nActive Directory domains with a domain functional level below Windows Server 2016:\n\nVerify the organization rotates the NT hash for smart card-enforced accounts every 60 days.  \n\nThis can be accomplished with the use of scripts.  \n\nDoW PKI-PKE has provided a script under PKI and PKE Tools at https://cyber.mil/pki-pke/tools-configuration-files/. Refer to the User Guide for additional information.\n\nNSA has also provided a PowerShell script with Pass-the-Hash guidance at https://github.com/nsacyber/Pass-the-Hash-Guidance. Running the \"Invoke-SmartcardHashRefresh\" cmdlet in the \"PtHTools\" module will trigger a change of the underlying NT hash. Refer to the site for additional information.\n\nManually rolling the NT hash requires disabling and reenabling the \"Smart Card required for interactive logon\" option for each smart card-enforced account, which is not practical for large groups of users.\n\nIf NT hashes for smart card-enforced accounts are not rotated every 60 days, this is a finding."
           }
         }
       },
@@ -2149,12 +2149,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243482r959010_rule",
+          "+@id": "SV-243482r1266533_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "AD.0180",
-          "title": "Interconnections between DoD directory services of different classification levels must use a cross-domain solution that is approved for use with inter-classification trusts.",
-          "description": "<VulnDiscussion>If a robust cross-domain solution is not used, then it could permit unauthorized access to classified data. To support secure access between resources of different classification levels, the solution must meet discretionary access control requirements. There are currently, no DOD- approved solutions. \n\nFurther Policy Details: Do not define trust relationships between domains, forests, or realms with resources at different classification levels. The configuration of a trust relationship is one of the steps used to allow users in one AD domain to access resources in another domain, forest, or Kerberos realm. (This check does not apply to trusts with non-DoD organizations since these trusts are examined in a previous check.)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Interconnections between DoW directory services of different classification levels must use a cross-domain solution that is approved for use with inter-classification trusts.",
+          "description": "<VulnDiscussion>If a robust cross-domain solution is not used, then it could permit unauthorized access to classified data. To support secure access between resources of different classification levels, the solution must meet discretionary access control requirements. There are currently, no DoW- approved solutions. \n\nFurther Policy Details: Do not define trust relationships between domains, forests, or realms with resources at different classification levels. The configuration of a trust relationship is one of the steps used to allow users in one AD domain to access resources in another domain, forest, or Kerberos realm. (This check does not apply to trusts with non-DoW organizations since these trusts are examined in a previous check.)</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -2177,19 +2177,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Delete the trust relationship that is defined between entities with resources at different DoD classification levels.",
-            "+@fixref": "F-46714r723480_fix"
+            "+content": "Delete the trust relationship that is defined between entities with resources at different DoW classification levels.",
+            "+@fixref": "F-46714r1266532_fix"
           },
           "fix": {
-            "+@id": "F-46714r723480_fix"
+            "+@id": "F-46714r1266532_fix"
           },
           "check": {
-            "+@system": "C-46757r723479_chk",
+            "+@system": "C-46757r1266531_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Refer to the list of identified trusts and the trust documentation provided by the site representative. (Obtained in V-8530)\n\n2. For each of the identified trusts between DoD organizations, compare the classification level (unclassified, confidential, secret, and top secret) of the domain being reviewed with the classification level of the other trust party as noted in the documentation.\n\n3. If the classification level of the domain being reviewed is different than the classification level of any of the entities for which a trust relationship is defined, then this is a finding."
+            "check-content": "1. Refer to the list of identified trusts and the trust documentation provided by the site representative. (Obtained in V-8530)\n\n2. For each of the identified trusts between DoW organizations, compare the classification level (unclassified, confidential, secret, and top secret) of the domain being reviewed with the classification level of the other trust party as noted in the documentation.\n\n3. If the classification level of the domain being reviewed is different than the classification level of any of the entities for which a trust relationship is defined, then this is a finding."
           }
         }
       },
@@ -2198,12 +2198,12 @@
         "title": "SRG-OS-000480",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243483r959010_rule",
+          "+@id": "SV-243483r1266535_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "AD.0181",
-          "title": "A controlled interface must have interconnections among DoD information systems operating between DoD and non-DoD systems or networks.",
-          "description": "<VulnDiscussion>The configuration of an AD trust relationship is one of the steps used to allow users in one domain to access resources in another domain, forest, or Kerberos realm. When a trust is defined between a DoD organization and a non-DoD organization, the security posture of the two organizations might be significantly different. If the non-DoD organization maintained a less secure environment and that environment were compromised, the presence of the AD trust might allow the DoD environment to be compromised also.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "A controlled interface must have interconnections among DoW information systems operating between DoW and non-DoW systems or networks.",
+          "description": "<VulnDiscussion>The configuration of an AD trust relationship is one of the steps used to allow users in one domain to access resources in another domain, forest, or Kerberos realm. When a trust is defined between a DoW organization and a non-DoW organization, the security posture of the two organizations might be significantly different. If the non-DoW organization maintained a less secure environment and that environment were compromised, the presence of the AD trust might allow the DoW environment to be compromised also.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -2233,12 +2233,12 @@
             "+@id": "F-46715r723483_fix"
           },
           "check": {
-            "+@system": "C-46758r723558_chk",
+            "+@system": "C-46758r1266534_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Refer to the list of identified trusts obtained in a previous check (V8530).\n\n2. For each of the identified trusts, determine if the other trust party is a non-DoD entity. For example, if the fully qualified domain name of the other party does not end in \".mil\", the other party is probably not a DoD entity.\n\n3. Review the local documentation approving the external network connection and documentation indicating explicit approval of the trust by the DAA.\n\n4. The external network connection documentation is maintained by the IAO\\NSO for compliance with the Network Infrastructure STIG.\n\n5. If any trust is defined with a non-DoD system and there is no documentation indicating approval of the external network connection and explicit DAA approval of the trust, then this is a finding."
+            "check-content": "1. Refer to the list of identified trusts obtained in a previous check (V8530).\n\n2. For each of the identified trusts, determine if the other trust party is a non-DoW entity. For example, if the fully qualified domain name of the other party does not end in \".mil\", the other party is probably not a DoW entity.\n\n3. Review the local documentation approving the external network connection and documentation indicating explicit approval of the trust by the DAA.\n\n4. The external network connection documentation is maintained by the IAO\\NSO for compliance with the Network Infrastructure STIG.\n\n5. If any trust is defined with a non-DoW system and there is no documentation indicating approval of the external network connection and explicit DAA approval of the trust, then this is a finding."
           }
         }
       },
@@ -2786,12 +2786,12 @@
         "title": "SRG-OS-000423",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-243495r958908_rule",
+          "+@id": "SV-243495r1266538_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "DS00.1140_AD",
           "title": "A VPN must be used to protect directory network traffic for directory service implementation spanning enclave boundaries.",
-          "description": "<VulnDiscussion>The normal operation of AD requires the use of IP network ports and protocols to support queries, replication, user authentication, and resource authorization services. At a minimum, LDAP or LDAPS is usually required for communication with every domain controller. DoD Ports, Protocols, and Services Management (PPSM) policy restricts the use of LDAP, LDAPS, and many of the AD-related protocols across enclave boundaries because vulnerabilities exist in the protocols or service implementations. To comply with the restrictions and address the vulnerabilities, a VPN implementation may be used. If AD data traverses enclave network boundaries using a vulnerable protocol or service without the protection provided by a VPN, that data might be subject to tampering or interception.\n\nFurther Policy Details: Implement a VPN or other network protection solution in accordance with the Network Infrastructure STIG that protects AD data in transit across DoD enclave boundaries. VPN requirements will include registering the VPN and connection points with the PPSM. Current guidance is available in the Network Infrastructure STIG and from the PPSM.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The normal operation of AD requires the use of IP network ports and protocols to support queries, replication, user authentication, and resource authorization services. At a minimum, LDAP or LDAPS is usually required for communication with every domain controller. DoW Ports, Protocols, and Services Management (PPSM) policy restricts the use of LDAP, LDAPS, and many of the AD-related protocols across enclave boundaries because vulnerabilities exist in the protocols or service implementations. To comply with the restrictions and address the vulnerabilities, a VPN implementation may be used. If AD data traverses enclave network boundaries using a vulnerable protocol or service without the protection provided by a VPN, that data might be subject to tampering or interception.\n\nFurther Policy Details: Implement a VPN or other network protection solution in accordance with the Network Infrastructure STIG that protects AD data in transit across DoW enclave boundaries. VPN requirements will include registering the VPN and connection points with the PPSM. Current guidance is available in the Network Infrastructure STIG and from the PPSM.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Active Directory Domain",
             "dc:publisher": "DISA",
@@ -2814,19 +2814,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Implement a VPN or other network protection solution in accordance with the Network Infrastructure STIG that protects AD data in transit across DoD enclave boundaries.",
-            "+@fixref": "F-46727r723519_fix"
+            "+content": "Implement a VPN or other network protection solution in accordance with the Network Infrastructure STIG that protects AD data in transit across DoW enclave boundaries.",
+            "+@fixref": "F-46727r1266537_fix"
           },
           "fix": {
-            "+@id": "F-46727r723519_fix"
+            "+@id": "F-46727r1266537_fix"
           },
           "check": {
-            "+@system": "C-46770r723518_chk",
+            "+@system": "C-46770r1266536_chk",
             "check-content-ref": {
               "+@href": "Active_Directory_Domain_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Review the site's network diagram(s) to determine if domain controllers for the domain are located in multiple enclaves. The object is to determine if network traffic is traversing enclave network boundaries.\n\n2. Request information about RODC or ADAM instances are installed. In particular, request details of Active Diretory functionality installed or extended into the DMZ or configured/allowed to cross the sites outbound firewall boundary. Ensure communications and replication traffic is encrypted.\n\n3. If domain controllers are not located in multiple enclaves, then this check is not applicable.\n\n4. If domain controllers are located in multiple enclaves, verify that a VPN is used to transport the network traffic (replication, user logon, queries, etc.).\n\n5. If a VPN solution is not used to transport directory network traffic across enclave boundaries, then this is a finding.\n\n6. If the ADAM mode is in use and a migration plan for converting to RODC is not in place, then this is a finding."
+            "check-content": "1. Review the site's network diagram(s) to determine if domain controllers for the domain are located in multiple enclaves. The object is to determine if network traffic is traversing enclave network boundaries.\n\n2. Request information about RODC or ADAM instances that are installed. In particular, request details of Active Directory functionality installed or extended into the DMZ or configured/allowed to cross the sites outbound firewall boundary. Ensure communications and replication traffic is encrypted.\n\n3. If domain controllers are not located in multiple enclaves, this check is not applicable.\n\n4. If domain controllers are located in multiple enclaves, verify that a VPN is used to transport the network traffic (replication, user logon, queries, etc.).\n\n5. If a VPN solution is not used to transport directory network traffic across enclave boundaries, this is a finding.\n\n6. If the ADAM mode is in use and a migration plan for converting to RODC is not in place, this is a finding."
           }
         }
       },

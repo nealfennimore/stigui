@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-03-02"
+      "+@date": "2026-08-25"
     },
     "title": "MariaDB Enterprise 10.x Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 6 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -4009,7 +4009,7 @@
         "title": "SRG-APP-000023-DB-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253667r1136896_rule",
+          "+@id": "SV-253667r1263669_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-000200",
@@ -4034,12 +4034,12 @@
             "+@id": "F-57070r1136895_fix"
           },
           "check": {
-            "+@system": "C-57119r1136894_chk",
+            "+@system": "C-57119r1263668_chk",
             "check-content-ref": {
               "+@href": "MariaDB_Enterprise_10.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If all accounts are authenticated by the organization-level authentication/access mechanism, such as LDAP, Kerberos, or Active Directory, and not by MariaDB, this is not a finding.\n\nIf any accounts are managed by the DBMS, review the system documentation for justification and approval of these accounts.\n\nIf any DBMS-managed accounts exist that are not documented and approved, this is a finding.\n\nAs the OS administrator, review the configuration in the /etc/pam.conf file or the /etc/pam.d directory. If there are no configuration file(s), this is a finding. \nExample for LDAP authentication and authorization via PAM would be /etc/pam.d/mariadb_ldap: \n\n#############################\nauth         required     pam_ldap.so\naccount    required     pam_ldap.so\n#############################\n\nVerify that PAM is installed:\n\nMariaDB> SHOW PLUGINS;\n\nIf pam is not listed as active, this is a finding.\n\nTo find users not using PAM plugin for authentication: \n\nMariaDB> SELECT user, host, plugin FROM mysql.user WHERE plugin != 'pam';\n\nIf any users are returned, this is a finding."
+            "check-content": "If all accounts are authenticated by the organization-level authentication/access mechanism, such as LDAP, Kerberos, or Active Directory, and not by MariaDB, this is not a finding.\n\nIf any accounts are managed by the DBMS, review the system documentation for justification and approval of these accounts.\n\nAs the OS administrator, review the configuration in the /etc/pam.conf file or the /etc/pam.d directory. \nIf there are no configuration file(s), this is a finding. \n\nExample for LDAP authentication and authorization via PAM would be /etc/pam.d/mariadb_ldap: \n\n#############################\nauth         required     pam_ldap.so\naccount    required     pam_ldap.so\n#############################\n\nVerify that PAM is installed:\n\nMariaDB> SHOW PLUGINS;\n\nIf pam is not listed as active, this is a finding.\n\nTo find users not using PAM plugin for authentication: \n\nMariaDB> SELECT user, host, plugin FROM mysql.user WHERE plugin != 'pam';\n\nIf any DBMS-managed accounts exist that are not documented and approved, this is a finding."
           }
         }
       },
@@ -4048,12 +4048,12 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253668r1137654_rule",
+          "+@id": "SV-253668r1263670_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-000300",
           "title": "MariaDB must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
-          "description": "<VulnDiscussion>Authentication with a DOD-approved PKI certificate does not necessarily imply authorization to access MariaDB. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems, including databases, must be properly configured to implement access control policies.\n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If MariaDB does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved PKI certificate does not necessarily imply authorization to access MariaDB. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies.\n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If MariaDB does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -4126,12 +4126,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253670r960879_rule",
+          "+@id": "SV-253670r1263672_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-000500",
-          "title": "MariaDB must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within MariaDB (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which MariaDB will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MariaDB must provide audit record generation capability for DoW-defined auditable events within all DBMS/database components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within MariaDB (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which MariaDB will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -4144,11 +4144,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure MariaDB to generate audit records for at least the DoD minimum set of events.\n\nEdit the mariadb-enterprise.cnf configuration file located in /etc/my.cnf.d/.\n\nUnder [mariadb], add the following: \n\nserver_audit_logging = ON \n\nSave the configuration file. This change will not take effect until MariaDB Enterprise Server is restarted. \n\nUsing the MariaDB Enterprise Audit plugin, MariaDB can be configured to audit these requests. \n\nThe MariaDB Enterprise Audit plugin can be configured to audit these changes. \n\nUpdate necessary audit filters. Ex: \n\nMariaDB> DELETE FROM mysql.server_audit_filters WHERE filtername = 'default';\n\nMariaDB> INSERT INTO mysql.server_audit_filters (filtername, rule)\n   VALUES ('default',\n      JSON_COMPACT(\n         '{\n            \"connect_event\": [\n               \"CONNECT\",\n               \"DISCONNECT\"\n            ],\n            \"query_event\": [\n                \"ALL\"\n            ]\n         }'\n      ));\n\nMore information about MariaDB auditing can be found here: https://mariadb.com/docs/security/mariadb-enterprise-audit/",
-            "+@fixref": "F-57073r841534_fix"
+            "+content": "Configure MariaDB to generate audit records for at least the DoW minimum set of events.\n\nEdit the mariadb-enterprise.cnf configuration file located in /etc/my.cnf.d/.\n\nUnder [mariadb], add the following: \n\nserver_audit_logging = ON \n\nSave the configuration file. This change will not take effect until MariaDB Enterprise Server is restarted. \n\nUsing the MariaDB Enterprise Audit plugin, MariaDB can be configured to audit these requests. \n\nThe MariaDB Enterprise Audit plugin can be configured to audit these changes. \n\nUpdate necessary audit filters. Ex: \n\nMariaDB> DELETE FROM mysql.server_audit_filters WHERE filtername = 'default';\n\nMariaDB> INSERT INTO mysql.server_audit_filters (filtername, rule)\n   VALUES ('default',\n      JSON_COMPACT(\n         '{\n            \"connect_event\": [\n               \"CONNECT\",\n               \"DISCONNECT\"\n            ],\n            \"query_event\": [\n                \"ALL\"\n            ]\n         }'\n      ));\n\nMore information about MariaDB auditing can be found here: https://mariadb.com/docs/security/mariadb-enterprise-audit/",
+            "+@fixref": "F-57073r1263671_fix"
           },
           "fix": {
-            "+@id": "F-57073r841534_fix"
+            "+@id": "F-57073r1263671_fix"
           },
           "check": {
             "+@system": "C-57122r841533_chk",
@@ -5101,12 +5101,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253695r1018598_rule",
+          "+@id": "SV-253695r1263667_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-003700",
-          "title": "If MariaDB authentication, using passwords, is employed, then MariaDB must enforce the DOD standards for password complexity.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native MariaDB authentication may be used only when circumstances make it unavoidable; and must be documented and Authorizing Official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For MariaDB, the rules must be enforced using available configuration parameters or custom code.\n\nBy default, MariaDB Enterprise Server has the simple_password_check plugin installed and enabled. However, the default password requirements are eight character minimum, one numeric character, and one special character.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If MariaDB authentication, using passwords, is employed, then MariaDB must enforce the DoW standards for password complexity.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native MariaDB authentication may be used only when circumstances make it unavoidable; and must be documented and authorizing official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For MariaDB, the rules must be enforced using available configuration parameters or custom code.\n\nBy default, MariaDB Enterprise Server has the simple_password_check plugin installed and enabled. However, the default password requirements are eight character minimum, one numeric character, and one special character.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5132,12 +5132,12 @@
             "+@id": "F-57098r841609_fix"
           },
           "check": {
-            "+@system": "C-57147r998222_chk",
+            "+@system": "C-57147r1263666_chk",
             "check-content-ref": {
               "+@href": "MariaDB_Enterprise_10.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check the simple_password_check plugin variables to ensure they match the password requirements. \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'simple_password_check_%';\n\nDetermine whether the following rules are enforced. If they do not meet the following password requirements, this is a finding. \n\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numerics\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)\n\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight."
+            "check-content": "Check the simple_password_check plugin variables to ensure they match the password requirements. \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'simple_password_check_%';\n\nDetermine whether the following rules are enforced. If they do not meet the following password requirements, this is a finding. \n\nMinimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase\n- Lowercase\n- Numerics\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <)"
           }
         }
       },
@@ -5146,12 +5146,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253696r1018599_rule",
+          "+@id": "SV-253696r1263675_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-003750",
-          "title": "If MariaDB authentication using passwords is employed, MariaDB must enforce the DOD standards for password lifetime.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native MariaDB authentication may be used only when circumstances make it unavoidable and must be documented and Authorizing Official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For MariaDB, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If MariaDB authentication using passwords is employed, MariaDB must enforce the DoW standards for password lifetime.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native MariaDB authentication may be used only when circumstances make it unavoidable and must be documented and authorizing official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For MariaDB, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5170,19 +5170,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Locate the MariaDB Enterprise Server configuration file (mariadb-enterprise.cnf) that contains the password variables within /etc/my.cnf.d/. Edit the variables. \n\nExample: \n\ndefault_password_lifetime = 60",
-            "+@fixref": "F-57099r841612_fix"
+            "+content": "Locate the MariaDB Enterprise Server configuration file (mariadb-enterprise.cnf) that contains the password variables within /etc/my.cnf.d/. Edit the variables. \n\nExample: \n\ndefault_password_lifetime = 180",
+            "+@fixref": "F-57099r1263674_fix"
           },
           "fix": {
-            "+@id": "F-57099r841612_fix"
+            "+@id": "F-57099r1263674_fix"
           },
           "check": {
-            "+@system": "C-57148r841611_chk",
+            "+@system": "C-57148r1263673_chk",
             "check-content-ref": {
               "+@href": "MariaDB_Enterprise_10.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check the default password lifetime variable to verify it matches the password requirement. \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'default_password_lifetime%';\n\nIf the value returned is not 60 or less, this is a finding."
+            "check-content": "Check the default password lifetime variable to verify it matches the password requirement. \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'default_password_lifetime%';\n\nIf the value returned is not 180 or less, this is a finding."
           }
         }
       },
@@ -5191,12 +5191,12 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253697r1018600_rule",
+          "+@id": "SV-253697r1263676_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-003800",
           "title": "If passwords are used for authentication, MariaDB must store only hashed, salted representations of passwords.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires Authorizing Official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the MariaDB.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires authorizing official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the MariaDB.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5236,12 +5236,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253698r961029_rule",
+          "+@id": "SV-253698r1263677_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-003900",
           "title": "If passwords are used for authentication, MariaDB must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires authorizing official (AO)  approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5275,12 +5275,12 @@
         "title": "SRG-APP-000175-DB-000067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253699r961038_rule",
+          "+@id": "SV-253699r1263678_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-004000",
           "title": "MariaDB, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nA certificate's certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nA certificate's certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5314,12 +5314,12 @@
         "title": "SRG-APP-000176-DB-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253700r961041_rule",
+          "+@id": "SV-253700r1263679_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-004100",
           "title": "MariaDB must enforce authorized access to all PKI private keys stored/used by the DBMS.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the MariaDB-stored private keys are used to authenticate MariaDB to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man in the middle attacks against the MariaDB system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 validated cryptographic modules.\n\nAll access to the private key(s) of MariaDB must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the MariaDB s private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the MariaDB-stored private keys are used to authenticate MariaDB to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man in the middle attacks against the MariaDB system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 validated cryptographic modules.\n\nAll access to the private key(s) of MariaDB must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the MariaDB s private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5353,12 +5353,12 @@
         "title": "SRG-APP-000177-DB-000069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253701r961044_rule",
+          "+@id": "SV-253701r1263680_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-004200",
           "title": "MariaDB must map PKI ID to an associated user account.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates. Once a PKI is validated, it is mapped to the DBMS user account for the authentication identity and then can be used for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. Once a PKI is validated, it is mapped to the DBMS user account for the authentication identity and then can be used for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5392,12 +5392,12 @@
         "title": "SRG-APP-000178-DB-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253702r961047_rule",
+          "+@id": "SV-253702r1263681_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-004300",
           "title": "MariaDB must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.",
-          "description": "<VulnDiscussion>The DoD standard for authentication is DoD-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the DBMS, such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis calls for review of applications, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the DBMS, such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis calls for review of applications, which will require collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -5431,7 +5431,7 @@
         "title": "SRG-APP-000179-DB-000114",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253703r1136902_rule",
+          "+@id": "SV-253703r1263683_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "MADB-10-004400",
@@ -5449,11 +5449,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If crypto.fips_enabled = 0, for Red Hat Linux, configure the operating system to implement DOD-approved encryption by following the steps below:\n\nTo enable strict FIPS compliance, the fips=1 kernel option must be added to the kernel command line during system installation so key generation is done with FIPS-approved algorithms and continuous monitoring tests in place.\n\nEnable FIPS mode with the following command:\n# sudo fips-mode-setup --enable\n\nModify the kernel command line of the current kernel in the \"grub.cfg\" file by adding the following option to the GRUB_CMDLINE_LINUX key in the \"/etc/default/grub\" file and then rebuild the \"grub.cfg\" file:\nfips=1\n\nChanges to \"/etc/default/grub\" require rebuilding the \"grub.cfg\" file as follows:\nOn BIOS-based machines, use the following command:\n# sudo grub2-mkconfig -o /boot/grub2/grub.cfg\n\nOn UEFI-based machines, use the following command:\n# sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg\n\nIf /boot or /boot/efi reside on separate partitions, the kernel parameter \"boot=<partition of /boot or /boot/efi>\" must be added to the kernel command line. Identify a partition by running the df /boot or df /boot/efi command:\n# sudo df /boot\n\nFilesystem 1K-blocks Used Available Use% Mounted on\n/dev/sda1 495844 53780 416464 12% /boot\n\nTo ensure the \"boot=\" configuration option will work even if device naming changes occur between boots, identify the universally unique identifier (UUID) of the partition with the following command:\n# sudo blkid /dev/sda1\n/dev/sda1: UUID=\"05c000f1-a213-759e-c7a2-f11b7424c797\" TYPE=\"ext4\"\n\nFor the example above, append the following string to the kernel command line:\nboot=UUID=05c000f1-a213-759e-c7a2-f11b7424c797\n\nReboot the system for the changes to take effect.\n\nMore information can be found here:\nRedHat: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/chap-federal_standards_and_regulations\nUbuntu: https://security-certs.docs.ubuntu.com/en/fips",
-            "+@fixref": "F-57106r1136901_fix"
+            "+content": "If crypto.fips_enabled = 0, for Red Hat Linux, configure the operating system to implement DoW-approved encryption by following the steps below:\n\nTo enable strict FIPS compliance, the fips=1 kernel option must be added to the kernel command line during system installation so key generation is done with FIPS-approved algorithms and continuous monitoring tests in place.\n\nEnable FIPS mode with the following command:\n# sudo fips-mode-setup --enable\n\nModify the kernel command line of the current kernel in the \"grub.cfg\" file by adding the following option to the GRUB_CMDLINE_LINUX key in the \"/etc/default/grub\" file and then rebuild the \"grub.cfg\" file:\nfips=1\n\nChanges to \"/etc/default/grub\" require rebuilding the \"grub.cfg\" file as follows:\nOn BIOS-based machines, use the following command:\n# sudo grub2-mkconfig -o /boot/grub2/grub.cfg\n\nOn UEFI-based machines, use the following command:\n# sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg\n\nIf /boot or /boot/efi reside on separate partitions, the kernel parameter \"boot=<partition of /boot or /boot/efi>\" must be added to the kernel command line. Identify a partition by running the df /boot or df /boot/efi command:\n# sudo df /boot\n\nFilesystem 1K-blocks Used Available Use% Mounted on\n/dev/sda1 495844 53780 416464 12% /boot\n\nTo ensure the \"boot=\" configuration option will work even if device naming changes occur between boots, identify the universally unique identifier (UUID) of the partition with the following command:\n# sudo blkid /dev/sda1\n/dev/sda1: UUID=\"05c000f1-a213-759e-c7a2-f11b7424c797\" TYPE=\"ext4\"\n\nFor the example above, append the following string to the kernel command line:\nboot=UUID=05c000f1-a213-759e-c7a2-f11b7424c797\n\nReboot the system for the changes to take effect.\n\nMore information can be found here:\nRedHat: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/chap-federal_standards_and_regulations\nUbuntu: https://security-certs.docs.ubuntu.com/en/fips",
+            "+@fixref": "F-57106r1263682_fix"
           },
           "fix": {
-            "+@id": "F-57106r1136901_fix"
+            "+@id": "F-57106r1263682_fix"
           },
           "check": {
             "+@system": "C-57155r1136900_chk",
@@ -6613,12 +6613,12 @@
         "title": "SRG-APP-000389-DB-000372",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253735r1050788_rule",
+          "+@id": "SV-253735r1263684_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-008200",
           "title": "MariaDB must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication of an interactive user is the presentation of a Common Access Card (CAC) or other physical token bearing a valid, current, DOD-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization.\n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n  (i) When authenticators change; \n (ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n (v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DOD, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication of an interactive user is the presentation of a common access card (CAC) or other physical token bearing a valid, current, DoW-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization.\n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n  (i) When authenticators change; \n (ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n (v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoW, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -6736,12 +6736,12 @@
         "title": "SRG-APP-000427-DB-000385",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-253738r1193220_rule",
+          "+@id": "SV-253738r1263687_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "MADB-10-008500",
-          "title": "MariaDB must only accept end entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
-          "description": "<VulnDiscussion>Only DoD-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place that are sufficient for DoD systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoD-approved PKIs is published at https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf.\n\nThis requirement focuses on communications protection for the MariaDB session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "MariaDB must only accept end entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
+          "description": "<VulnDiscussion>Only DoW-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place that are sufficient for DoW systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoW-approved PKIs is published at https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf.\n\nThis requirement focuses on communications protection for the MariaDB session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target MariaDB Enterprise 10.x",
             "dc:publisher": "DISA",
@@ -6754,19 +6754,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke trust in any certificates not issued by a DoD-approved certificate authority.   \n \nConfigure MariaDB to accept only DoD and DoD-approved PKI end-entity certificates.",
-            "+@fixref": "F-57141r841738_fix"
+            "+content": "Revoke trust in any certificates not issued by a DoW-approved certificate authority.   \n \nConfigure MariaDB to accept only DoW and DoW-approved PKI end-entity certificates.",
+            "+@fixref": "F-57141r1263686_fix"
           },
           "fix": {
-            "+@id": "F-57141r841738_fix"
+            "+@id": "F-57141r1263686_fix"
           },
           "check": {
-            "+@system": "C-57190r841737_chk",
+            "+@system": "C-57190r1263685_chk",
             "check-content-ref": {
               "+@href": "MariaDB_Enterprise_10.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "As the database administrator, check the following variables: \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'ssl_ca';\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'ssl_cert'; \n\nThe Value column will show the fully qualified file name of the ssl_ca and ssl_cert respectively. The issuer can be found by running the following command:\n$ openssl x509 -in  fully-qualified-file-name-of-ssl_ca  -noout -issuer\n$ openssl x509 -in  fully-qualified-file-name-of-ssl_cert  -noout -issuer\n \nThe issuer should be checked against the authoritative list of DoD-approved PKIs, which is published at https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf.\n\nIf the DBMS will accept non-DoD approved PKI end-entity certificates, this is a finding."
+            "check-content": "As the database administrator, check the following variables: \n\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'ssl_ca';\nMariaDB> SHOW GLOBAL VARIABLES LIKE 'ssl_cert'; \n\nThe Value column will show the fully qualified file name of the ssl_ca and ssl_cert respectively. The issuer can be found by running the following command:\n$ openssl x509 -in  fully-qualified-file-name-of-ssl_ca  -noout -issuer\n$ openssl x509 -in  fully-qualified-file-name-of-ssl_cert  -noout -issuer\n \nThe issuer should be checked against the authoritative list of DoW-approved PKIs, which is published at https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf.\n\nIf the DBMS will accept non-DoW approved PKI end-entity certificates, this is a finding."
           }
         }
       },

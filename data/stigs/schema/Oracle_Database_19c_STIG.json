@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-02-25"
+      "+@date": "2026-08-25"
     },
     "title": "Oracle Database 19c Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Apr 2026",
+        "+content": "Release: 6 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -3785,12 +3785,12 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270500r1167734_rule",
+          "+@id": "SV-270500r1263646_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-001000",
           "title": "Oracle Database must enforce approved authorizations for logical access to the system in accordance with applicable policy.",
-          "description": "<VulnDiscussion>Authentication with a DOD-approved public key infrastructure (PKI) certificate does not necessarily imply authorization to access the database management system (DBMS). To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nSatisfies: SRG-APP-000033-DB-000084, SRG-APP-000340-DB-000304</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved public key infrastructure (PKI) certificate does not necessarily imply authorization to access the database management system (DBMS). To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.\n\nSatisfies: SRG-APP-000033-DB-000084, SRG-APP-000340-DB-000304</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3875,12 +3875,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270502r1167738_rule",
+          "+@id": "SV-270502r1263647_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-001800",
           "title": "Oracle Database must provide audit record generation capability for organization-defined auditable events within the database.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the database management system (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDOD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n(ii) Access actions, such as successful and unsuccessful login attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logins from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the database management system (DBMS) (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n(ii) Access actions, such as successful and unsuccessful login attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logins from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -3953,11 +3953,11 @@
         "title": "SRG-APP-000091-DB-000066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270504r1167741_rule",
+          "+@id": "SV-270504r1263650_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-002000",
-          "title": "Oracle Database must generate audit records for the DOD-selected list of auditable events, when successfully accessed, added, modified, or deleted, to the extent such information is available.",
+          "title": "Oracle Database must generate audit records for the DoW-selected list of auditable events, when successfully accessed, added, modified, or deleted, to the extent such information is available.",
           "description": "<VulnDiscussion>Audit records can be generated from various components within the information system, such as network interfaces, hard disks, modems, etc. From an application perspective, certain specific application functionalities may be audited, as well.\n\nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records (i.e., auditable events, timestamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, file names involved, and access control or flow control rules invoked).\n\nOrganizations may define the organizational personnel accountable for determining which application components must provide auditable events.\n\nAuditing provides accountability for changes made to the database management system (DBMS) configuration or its objects and data. It provides a means to discover suspicious activity and unauthorized changes. Without auditing, a compromise may go undetected and without a means to determine accountability.\n\nThe Department of Defense has established the following as the minimum set of auditable events:\n- When privileges/permissions are retrieved, added, modified or deleted.\n- When unsuccessful attempts to retrieve, add, modify, delete privileges/permissions occur.\n- Enforcement of access restrictions associated with changes to the configuration of the database(s).\n- When security objects are accessed, modified, or deleted.\n- When unsuccessful attempts to access, modify, or delete security objects occur.\n- When categories of information (e.g., classification levels/security levels) are accessed, created, modified, or deleted.\n- When unsuccessful attempts to access, create, modify, or delete categorized information occur.\n- All privileged activities or other system-level access.\n- When unsuccessful attempts to execute privileged activities or other system-level access occurs.\n- When successful or unsuccessful access to any other objects occur as specifically defined by the site.\n\nSatisfies: SRG-APP-000091-DB-000066, SRG-APP-000091-DB-000325, SRG-APP-000492-DB-000333, SRG-APP-000494-DB-000344, SRG-APP-000494-DB-000345, SRG-APP-000495-DB-000326, SRG-APP-000495-DB-000327, SRG-APP-000495-DB-000328, SRG-APP-000495-DB-000329, SRG-APP-000496-DB-000334, SRG-APP-000496-DB-000335, SRG-APP-000498-DB-000346, SRG-APP-000498-DB-000347, SRG-APP-000499-DB-000330, SRG-APP-000499-DB-000331, SRG-APP-000501-DB-000336, SRG-APP-000501-DB-000337, SRG-APP-000502-DB-000348, SRG-APP-000502-DB-000349, SRG-APP-000503-DB-000350, SRG-APP-000503-DB-000351, SRG-APP-000504-DB-000354, SRG-APP-000504-DB-000355, SRG-APP-000505-DB-000352, SRG-APP-000506-DB-000353, SRG-APP-000507-DB-000357, SRG-APP-000508-DB-000358</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
@@ -3971,19 +3971,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Both Standard and Unified Auditing are allowed in Oracle Database 19c.\nThe default is mixed auditing mode.\nThe predefined policy ORA_SECURECONFIG is enabled by default in mixed mode.\n\nConfigure the DBMS's auditing settings to include auditing of events on the DOD-selected list of auditable events.\n\n1. Successful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels).\n\nTo audit granting and revocation of any privilege:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT;\nCREATE AUDIT POLICY <policy_name> ACTIONS REVOKE;\n\nTo audit grants of object privileges on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT ON <schema>.<object>;\n\nIf Oracle Label Security is enabled, this will audit all OLS administrative actions:\nCREATE AUDIT POLICY <policy_name> ACTIONS COMPONENT = OLS ALL;\n\n2. Successful and unsuccessful logon attempts, privileged activities or other system-level access.\n \nTo audit all user logon attempts:\nCREATE AUDIT POLICY <policy_name> ACTIONS LOGON;\n\nTo audit only logon attempts using administrative privileges (e.g., AS SYSDBA):\nAUDIT POLICY <policy_name> BY sys, sysoper, sysbackup, sysdg, syskm;\n\n3. Starting and ending time for user access to the system, concurrent logons from different workstations.\n\nThis policy will audit all logon and logoff events. An individual session is identified in the UNIFIED_AUDIT_TRAIL by the tuple (DBID, INSTANCE_ID, SESSIONID) and the start and end time will be indicated by the EVENT_TIMESTAMP of the logon and logoff events:\n\nCREATE AUDIT POLICY <policy_name> ACTIONS logon, logoff;\n\n4. Successful and unsuccessful accesses to objects.\n\nTo audit all accesses to a specific table:\nCREATE AUDIT POLICY <policy_name> ACTIONS select, insert, delete, alter ON <schema>.<object>; \n\nDifferent actions are defined for other object types. To audit all supported actions on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS all ON <schema>.<object>;\n \n5. All program initiations.\n\nTo audit execution of any PL/SQL program unit:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute;\n\nTo audit execution of a specific function, procedure, or package:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute ON <schema>.<object>;\n\n6. All direct access to the information system.\n[Not applicable to Database audit. Monitor using OS auditing.]\n\n7. All account creations, modifications, disabling, and terminations.\n\nTo audit all user administration actions:\nCREATE AUDIT POLICY <policy_name> actions create user, alter user, drop user, change password;\n\n8. All kernel module loads, unloads, and restarts.\n[Not applicable to Database audit. Monitor using OS auditing.]\n \n9. All database parameter changes.\n\nTo audit any database parameter changes, dynamic or static:\nCREATE AUDIT POLICY <policy_name> ACTIONS alter database, alter system, create spfile;\n\nApplying the Policy:\n\nThe following command will enable the policy in all database sessions and audit both successful and unsuccessful actions:\nAUDIT POLICY <policy_name>;\n\nTo audit only unsuccessful actions, add the WHENEVER NOT SUCCESSFUL modifier:\nAUDIT POLICY <policy_name> WHENEVER NOT SUCCESSFUL;\n\nEither command above can be limited to only database sessions started by a specific user as follows:\nAUDIT POLICY <policy_name> BY <user>;\nAUDIT POLICY <policy_name> BY <user> WHENEVER NOT SUCCESSFUL;",
-            "+@fixref": "F-74438r1167740_fix"
+            "+content": "Both Standard and Unified Auditing are allowed in Oracle Database 19c.\nThe default is mixed auditing mode.\nThe predefined policy ORA_SECURECONFIG is enabled by default in mixed mode.\n\nConfigure the DBMS's auditing settings to include auditing of events on the DoW-selected list of auditable events.\n\n1. Successful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels).\n\nTo audit granting and revocation of any privilege:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT;\nCREATE AUDIT POLICY <policy_name> ACTIONS REVOKE;\n\nTo audit grants of object privileges on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS GRANT ON <schema>.<object>;\n\nIf Oracle Label Security is enabled, this will audit all OLS administrative actions:\nCREATE AUDIT POLICY <policy_name> ACTIONS COMPONENT = OLS ALL;\n\n2. Successful and unsuccessful logon attempts, privileged activities or other system-level access.\n \nTo audit all user logon attempts:\nCREATE AUDIT POLICY <policy_name> ACTIONS LOGON;\n\nTo audit only logon attempts using administrative privileges (e.g., AS SYSDBA):\nAUDIT POLICY <policy_name> BY sys, sysoper, sysbackup, sysdg, syskm;\n\n3. Starting and ending time for user access to the system, concurrent logons from different workstations.\n\nThis policy will audit all logon and logoff events. An individual session is identified in the UNIFIED_AUDIT_TRAIL by the tuple (DBID, INSTANCE_ID, SESSIONID) and the start and end time will be indicated by the EVENT_TIMESTAMP of the logon and logoff events:\n\nCREATE AUDIT POLICY <policy_name> ACTIONS logon, logoff;\n\n4. Successful and unsuccessful accesses to objects.\n\nTo audit all accesses to a specific table:\nCREATE AUDIT POLICY <policy_name> ACTIONS select, insert, delete, alter ON <schema>.<object>; \n\nDifferent actions are defined for other object types. To audit all supported actions on a specific object:\nCREATE AUDIT POLICY <policy_name> ACTIONS all ON <schema>.<object>;\n \n5. All program initiations.\n\nTo audit execution of any PL/SQL program unit:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute;\n\nTo audit execution of a specific function, procedure, or package:\nCREATE AUDIT POLICY <policy_name> ACTIONS execute ON <schema>.<object>;\n\n6. All direct access to the information system.\n[Not applicable to Database audit. Monitor using OS auditing.]\n\n7. All account creations, modifications, disabling, and terminations.\n\nTo audit all user administration actions:\nCREATE AUDIT POLICY <policy_name> actions create user, alter user, drop user, change password;\n\n8. All kernel module loads, unloads, and restarts.\n[Not applicable to Database audit. Monitor using OS auditing.]\n \n9. All database parameter changes.\n\nTo audit any database parameter changes, dynamic or static:\nCREATE AUDIT POLICY <policy_name> ACTIONS alter database, alter system, create spfile;\n\nApplying the Policy:\n\nThe following command will enable the policy in all database sessions and audit both successful and unsuccessful actions:\nAUDIT POLICY <policy_name>;\n\nTo audit only unsuccessful actions, add the WHENEVER NOT SUCCESSFUL modifier:\nAUDIT POLICY <policy_name> WHENEVER NOT SUCCESSFUL;\n\nEither command above can be limited to only database sessions started by a specific user as follows:\nAUDIT POLICY <policy_name> BY <user>;\nAUDIT POLICY <policy_name> BY <user> WHENEVER NOT SUCCESSFUL;",
+            "+@fixref": "F-74438r1263649_fix"
           },
           "fix": {
-            "+@id": "F-74438r1167740_fix"
+            "+@id": "F-74438r1263649_fix"
           },
           "check": {
-            "+@system": "C-74537r1167739_chk",
+            "+@system": "C-74537r1263648_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Check Oracle Database settings to determine if auditing is being performed on the DOD-required list of auditable events supplied in the discussion.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\n\nOr the following SQL query:\n\ncol display_value format a10\ncol default_value format a10\nSELECT inst_id, con_id, display_value, default_value, isdefault\nFROM sys.gv_$parameter WHERE name = 'audit_trail';\n\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\ncol value format a10\nSELECT inst_id, con_id, value\nFROM sys.gv_$option\nWHERE parameter = 'Unified Auditing';\n\nIf Oracle returns a value something other than \"TRUE\", this is a finding.\n\nUnified Audit supports named audit policies, which are defined using the CREATE AUDIT POLICY statement. A policy specifies the actions that should be audited and the objects to which it should apply. If no specific objects are included in the policy definition, it applies to all objects.\n\nA named policy is enabled using the AUDIT POLICY statement. It can be enabled for all users, for specific users only, or for all except a specified list of users. The policy can audit successful actions, unsuccessful actions, or both.\n\nVerifying existing audit policy: existing Unified Audit policies are listed in the view AUDIT_UNIFIED_POLICIES. The AUDIT_OPTION column contains one of the actions specified in a CREATE AUDIT POLICY statement. The AUDIT_OPTION_TYPE column contains \"STANDARD ACTION\" for a policy that applies to all objects or \"OBJECT ACTION\" for a policy that audits actions on a specific object.\n\nSELECT policy_name\nFROM sys.audit_unified_policies\nWHERE audit_option = 'GRANT'\nAND audit_option_type= 'STANDARD ACTION';\n\n\nTo find policies that audit privilege grants on specific objects:\n\ncol policy_name format a20\ncol object_schema format a20\ncol object_name format a30\nSELECT policy_name, object_schema, object_name \nFROM sys.audit_unified_policies \nWHERE audit_option = 'GRANT'\nAND audit_option_type = 'OBJECT ACTION';\n\n\nThe view AUDIT_UNIFIED_ENABLED_POLICIES shows which Unified Audit policies are enabled. The ENABLED_OPT and USER_NAME columns show the users for whom the policy is enabled or \"ALL USERS\". The SUCCESS and FAILURE columns indicate if the policy is enabled for successful or unsuccessful actions, respectively.\n\ncol entity_name format a30\nSELECT policy_name, enabled_option, entity_name, success, failure\nFROM sys.audit_unified_enabled_policies;\n\nIf auditing is not being performed for all the events listed above, this is a finding."
+            "check-content": "Check Oracle Database settings to determine if auditing is being performed on the DoW-required list of auditable events supplied in the discussion.\n\nIf Standard Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\nSHOW PARAMETER AUDIT_TRAIL\n\nOr the following SQL query:\n\ncol display_value format a10\ncol default_value format a10\nSELECT inst_id, con_id, display_value, default_value, isdefault\nFROM sys.gv_$parameter WHERE name = 'audit_trail';\n\nIf Oracle returns the value \"NONE\", this is a finding.\n\nTo confirm Oracle audit is capturing information on the required events, review the contents of the SYS.AUD$ table or the audit file, whichever is in use. If auditable events are not listed, this is a finding.\n\nIf Unified Auditing is used:\nTo verify Oracle is configured to capture audit data, enter the following SQL*Plus command:\n\ncol value format a10\nSELECT inst_id, con_id, value\nFROM sys.gv_$option\nWHERE parameter = 'Unified Auditing';\n\nIf Oracle returns a value something other than \"TRUE\", this is a finding.\n\nUnified Audit supports named audit policies, which are defined using the CREATE AUDIT POLICY statement. A policy specifies the actions that should be audited and the objects to which it should apply. If no specific objects are included in the policy definition, it applies to all objects.\n\nA named policy is enabled using the AUDIT POLICY statement. It can be enabled for all users, for specific users only, or for all except a specified list of users. The policy can audit successful actions, unsuccessful actions, or both.\n\nVerifying existing audit policy: existing Unified Audit policies are listed in the view AUDIT_UNIFIED_POLICIES. The AUDIT_OPTION column contains one of the actions specified in a CREATE AUDIT POLICY statement. The AUDIT_OPTION_TYPE column contains \"STANDARD ACTION\" for a policy that applies to all objects or \"OBJECT ACTION\" for a policy that audits actions on a specific object.\n\nSELECT policy_name\nFROM sys.audit_unified_policies\nWHERE audit_option = 'GRANT'\nAND audit_option_type= 'STANDARD ACTION';\n\n\nTo find policies that audit privilege grants on specific objects:\n\ncol policy_name format a20\ncol object_schema format a20\ncol object_name format a30\nSELECT policy_name, object_schema, object_name \nFROM sys.audit_unified_policies \nWHERE audit_option = 'GRANT'\nAND audit_option_type = 'OBJECT ACTION';\n\n\nThe view AUDIT_UNIFIED_ENABLED_POLICIES shows which Unified Audit policies are enabled. The ENABLED_OPT and USER_NAME columns show the users for whom the policy is enabled or \"ALL USERS\". The SUCCESS and FAILURE columns indicate if the policy is enabled for successful or unsuccessful actions, respectively.\n\ncol entity_name format a30\nSELECT policy_name, enabled_option, entity_name, success, failure\nFROM sys.audit_unified_enabled_policies;\n\nIf auditing is not being performed for all the events listed above, this is a finding."
           }
         }
       },
@@ -4597,12 +4597,12 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270520r1115964_rule",
+          "+@id": "SV-270520r1263651_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-008400",
-          "title": "Oracle Database must be configured in accordance with the security configuration settings based on DOD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
-          "description": "<VulnDiscussion>Configuring the database management system (DBMS) to implement organizationwide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DOD that reflects the most restrictive security posture consistent with operational requirements. In addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. Oracle Database must be configured in compliance with guidance from all such relevant sources, with specific emphasis on the database security standards of each organization.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Oracle Database must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
+          "description": "<VulnDiscussion>Configuring the database management system (DBMS) to implement organizationwide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements. In addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. Oracle Database must be configured in compliance with guidance from all such relevant sources, with specific emphasis on the database security standards of each organization.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -4753,12 +4753,12 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270524r1112471_rule",
+          "+@id": "SV-270524r1263630_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009200",
           "title": "The Oracle REMOTE_OS_ROLES parameter must be set to FALSE.",
-          "description": "<VulnDiscussion>Setting REMOTE_OS_ROLES to TRUE allows operating system groups to control Oracle roles. The default value of FALSE causes roles to be identified and managed by the database. If REMOTE_OS_ROLES is set to TRUE, a remote user could impersonate another operating system user over a network connection. \n \nDOD requires the REMOTE_OS_ROLES to be set to FALSE.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Setting REMOTE_OS_ROLES to TRUE allows operating system groups to control Oracle roles. The default value of FALSE causes roles to be identified and managed by the database. If REMOTE_OS_ROLES is set to TRUE, a remote user could impersonate another operating system user over a network connection. \n \nDoW requires the REMOTE_OS_ROLES to be set to FALSE.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -4771,19 +4771,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set the parameter to FALSE for all instances. If using Oracle Multitenant, set the value to FALSE for the container database and all pluggable databases will be set to FALSE as well. \n\nALTER SYSTEM SET remote_os_roles = FALSE scope=spfile; \n\nsid='container_name' is optional \n\nRestart the database for the change to take effect.",
-            "+@fixref": "F-74458r1064849_fix"
+            "+content": "Set the parameter to FALSE for all instances. If using Oracle Multitenant, set the value to FALSE for the container database and all pluggable databases will be set to FALSE as well.\n\nsqlplus connect as sysdba\n\nALTER SYSTEM SET remote_os_roles=FALSE SCOPE=spfile SID='*';\nSHUTDOWN IMMEDIATE;\nSTARTUP;\n\nSID='*' is required if the database is a RAC database.\n\nIf the parameter value is different in different containers it cannot be brought into compliance using ALTER SYSTEM: Open a Service Request with Oracle Support.",
+            "+@fixref": "F-74458r1263629_fix"
           },
           "fix": {
-            "+@id": "F-74458r1064849_fix"
+            "+@id": "F-74458r1263629_fix"
           },
           "check": {
-            "+@system": "C-74557r1112470_chk",
+            "+@system": "C-74557r1263628_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify the current status of the remote_os_roles parameter use the SQL statement: \n\nIf using a non-CDB database:\n\nFrom SQL*Plus:\n \nCOLUMN name format a20 \nCOLUMN parameter_value format a20 \n\nSELECT name, con_id, value AS PARAMETER_VALUE \nFROM sys.v_$parameter \nWHERE vp.name = 'remote_os_roles' \nORDER BY 1; \n\nIf the PARAMETER_VALUE is not FALSE, that is a finding.\n\nIf using a CDB database:\n\nFrom SQL*Plus (in the CDB database):\n \nCOLUMN name format a20 \nCOLUMN parameter_value format a20 \n\nSELECT name, inst_id, con_id, value AS PARAMETER_VALUE \nFROM sys.gv_$parameter \t\nWHERE vp.name = 'remote_os_roles' \nORDER BY 1; \n\nIn the CDB database, if the PARAMETER_VALUE is not FALSE, that is a finding."
+            "check-content": "To verify the current status of the remote_os_roles parameter use the SQL statement: \n\nsqlplus connect as sysdba\n\nSELECT gp.inst_id, gp.con_id, gp.value AS PARAMETER_VALUE\nFROM sys.gv_$parameter gp\nWHERE gp.name = 'remote_os_roles'\nORDER BY 1;\n\nFor every standalone instance or container database, if the PARAMETER_VALUE is not FALSE, that is a finding."
           }
         }
       },
@@ -4792,7 +4792,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270525r1112473_rule",
+          "+@id": "SV-270525r1263633_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009300",
@@ -4810,19 +4810,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Enable SQL92 security.\n\nFrom SQL*Plus:\n\nalter system set sql92_security = TRUE scope = spfile;\n\nThe above SQL*Plus command will set the parameter to take effect at next system startup.",
-            "+@fixref": "F-74459r1064852_fix"
+            "+content": "Enable SQL92 security.\n\nConnect to the database:\nsqlplus connect as sysdba\n\nALTER SYSTEM SET sql92_security=TRUE SCOPE=spfile SID='*';\nSHUTDOWN IMMEDIATE;\nSTARTUP;\n\nSID='*' is required if the database is a RAC database.",
+            "+@fixref": "F-74459r1263632_fix"
           },
           "fix": {
-            "+@id": "F-74459r1064852_fix"
+            "+@id": "F-74459r1263632_fix"
           },
           "check": {
-            "+@system": "C-74558r1112472_chk",
+            "+@system": "C-74558r1263631_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify the current status of the SQL92_SECURITY parameter use the SQL statement: \n\nIf using a non-CDB database: \nFrom SQL*Plus:\n\nselect value from v$parameter where name = 'sql92_security';\n\nIf using a CDB database:\nFrom SQL*Plus:\n\ncolumn name format a20\ncolumn parameter_value format a20\n\nSELECT name, inst_id, con_id, value AS PARAMETER_VALUE \nFROM sys.gv_$parameter \nWHERE name = 'sql92_security' \nORDER BY 1;\n\nCheck Result:\n\nThe CDB database and all PDBs must be checked.\n\nIf the value returned is set to FALSE, this is a finding.\n\nIf the parameter is set to TRUE or does not exist, this is not a finding.\n\nIn any instance or container, if the PARAMETER_VALUE is not TRUE, that is a finding."
+            "check-content": "To determine the current setting run the SQL statement:\n\nConnect the  database:\nsqlplus connect as sysdba\n\nSELECT inst_id, con_id, value\nFROM sys.gv_$parameter\nWHERE name = 'sql92_security';\n\nIf the value for any instance or container returned is FALSE, this is a finding.\n\nIf the value for any instance or container is TRUE or does not exist (NULL), this is not a finding."
           }
         }
       },
@@ -4870,7 +4870,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270527r1065266_rule",
+          "+@id": "SV-270527r1263636_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009500",
@@ -4888,19 +4888,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke assignment of privileges with the WITH ADMIN OPTION from unauthorized users and regrant them without the option.\n\nFrom SQL*Plus:\n\nrevoke [privilege name] from user [username];\n\nReplace [privilege name] with the named privilege and [username] with the named user.\n\nRestrict use of the WITH ADMIN OPTION to authorized administrators.\n\nDocument authorized privilege assignments with the WITH ADMIN OPTION in the system documentation.",
-            "+@fixref": "F-74461r1064858_fix"
+            "+content": "Revoke assignment of privileges with the WITH ADMIN OPTION from unauthorized users and regrant them without the option.\n\nFrom SQL*Plus:\n\nrevoke [privilege name] from user [username];\n\nReplace [privilege name] with the named privilege and [username] with the named user.\n\nRe-grant the revoked privileges without specifying WITH ADMIN OPTION if they are otherwise authorized to have the privilege but are not authorized as administrators to administer the privilege.\n\nRestrict use of the WITH ADMIN OPTION to authorized administrators.\n\nDocument authorized privilege assignments with the WITH ADMIN OPTION in the system documentation.",
+            "+@fixref": "F-74461r1263635_fix"
           },
           "fix": {
-            "+@id": "F-74461r1064858_fix"
+            "+@id": "F-74461r1263635_fix"
           },
           "check": {
-            "+@system": "C-74560r1065265_chk",
+            "+@system": "C-74560r1263634_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "A default Oracle Database installation provides a set of predefined administrative accounts and nonadministrative accounts. These are accounts that have special privileges required to administer areas of the database, such as the CREATE ANY TABLE or ALTER SESSION privilege or EXECUTE privileges on packages owned by the SYS schema. The default tablespace for administrative accounts is either SYSTEM or SYSAUX. Nonadministrative user accounts only have the minimum privileges needed to perform their jobs. Their default tablespace is USERS.\n\nTo protect these accounts from unauthorized access, the installation process expires and locks most of these accounts, except where noted below. The database administrator is responsible for unlocking and resetting these accounts, as required.\n\nNonadministrative Accounts - Expired and locked:\nAPEX_PUBLIC_USER, DIP, FLOWS_040100*, FLOWS_FILES, MDDATA, SPATIAL_WFS_ADMIN_USR, XS$NULL\n\nAdministrative Accounts - Expired and Locked:\nANONYMOUS, CTXSYS, EXFSYS, LBACSYS, MDSYS, OLAPSYS, ORACLE_OCM, ORDDATA, OWBSYS, ORDPLUGINS, ORDSYS, OUTLN, SI_INFORMTN_SCHEMA, SPATIAL_CSW_ADMIN_USR, WK_TEST, WK_SYS, WKPROXY, WMSYS, XDB\n\nAdministrative Accounts - Open:\nDBSNMP, MGMT_VIEW, SYS, SYSMAN, SYSTEM, SYSKM\n\n*Subject to change based on version installed.\n\nRun the SQL query:\n\nFrom SQL*Plus:\nselect grantee, privilege from dba_sys_privs \nwhere grantee not in (<list of nonapplicable accounts>)\nand admin_option = 'YES'\nand grantee not in\n(select grantee from dba_role_privs where granted_role = 'DBA');\n\n(With respect to the list of special accounts that are excluded from this requirement, it is expected that the DBA will maintain the list to suit local circumstances, adding special accounts as necessary and removing any that are not supposed to be in use in the Oracle deployment that is under review.)\n\nIf any accounts that are not authorized to have the ADMIN OPTION are listed, this is a finding."
+            "check-content": "Use the following query to identify users with the ADMIN option.\n\nsqlplus connect as sysdba\n\nSELECT con_id, grantee, privilege\nFROM sys.cdb_sys_privs \nWHERE admin_option = 'YES'\nAND (con_id, grantee) NOT IN (\n  SELECT con_id, username \n  FROM sys.cdb_users WHERE oracle_maintained = 'Y')\nAND grantee not in ('DV_ACCTMGR', 'SCHEDULER_ADMIN', 'AQ_ADMINISTRATOR_ROLE')\nORDER BY 1,2,3;\n\nIf any accounts that are not authorized to have the ADMIN OPTION are listed, this is a finding."
           }
         }
       },
@@ -4909,7 +4909,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270528r1064862_rule",
+          "+@id": "SV-270528r1263639_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009600",
@@ -4927,19 +4927,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke any system privileges assigned to PUBLIC:\n\nFrom SQL*Plus:\n\nrevoke [system privilege] from PUBLIC;\n\nReplace [system privilege] with the named system privilege.\n\nNote: System privileges are not granted to PUBLIC by default and would indicate a custom action.",
-            "+@fixref": "F-74462r1064861_fix"
+            "+content": "Revoke any system privileges assigned to PUBLIC in any containers in which they are found.\n\nsqlplus connect as sysdba\n\nREVOKE [system_privilege] FROM PUBLIC;\n\nReplace [system privilege] with the named system privilege.",
+            "+@fixref": "F-74462r1263638_fix"
           },
           "fix": {
-            "+@id": "F-74462r1064861_fix"
+            "+@id": "F-74462r1263638_fix"
           },
           "check": {
-            "+@system": "C-74561r1064860_chk",
+            "+@system": "C-74561r1263637_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "From SQL*Plus:\n\nSelect privilege from dba_sys_privs where grantee = 'PUBLIC';\n\nIf any records are returned, this is a finding."
+            "check-content": "To determine the current setting run the SQL statement:\n\nsqlplus connect as sysdba\n\nSELECT con_id, privilege\nFROM sys.cdb_sys_privs \nWHERE grantee = 'PUBLIC'\nORDER BY 1,2;\n\nSystem privileges are not granted to PUBLIC by default and would indicate a custom action.\n\nIf any records are returned, this is a finding."
           }
         }
       },
@@ -4948,7 +4948,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270529r1065268_rule",
+          "+@id": "SV-270529r1263642_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-009700",
@@ -4966,19 +4966,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke assignment of roles with the WITH ADMIN OPTION from unauthorized grantees and regrant them without the option if required.\n\nSQL statements to remove the admin option from an unauthorized grantee:\nrevoke <role name> from <grantee>;\ngrant <role name> to <grantee>;\n\nRestrict use of the WITH ADMIN OPTION to authorized administrators.\n\nDocument authorized role assignments with the WITH ADMIN OPTION in the system documentation.",
-            "+@fixref": "F-74463r1064864_fix"
+            "+content": "Revoke assignment of roles with the WITH ADMIN OPTION from unauthorized grantees and regrant them without the option if required.\n\nSQL statements to remove the admin option from an unauthorized grantee:\nREVOKE [privilege name] FROM [grantee];\n\nRe-grant the revoked privileges without specifying WITH ADMIN OPTION if they are otherwise authorized to have the privilege but are not authorized as administrators to administer the privilege.\n\nRestrict use of the WITH ADMIN OPTION to authorized administrators.\n\nDocument authorized role assignments with the WITH ADMIN OPTION in the system documentation.",
+            "+@fixref": "F-74463r1263641_fix"
           },
           "fix": {
-            "+@id": "F-74463r1064864_fix"
+            "+@id": "F-74463r1263641_fix"
           },
           "check": {
-            "+@system": "C-74562r1065267_chk",
+            "+@system": "C-74562r1263640_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "A default Oracle Database installation provides a set of predefined administrative accounts and nonadministrative accounts. These are accounts that have special privileges required to administer areas of the database, such as the CREATE ANY TABLE or ALTER SESSION privilege or EXECUTE privileges on packages owned by the SYS schema. The default tablespace for administrative accounts is either SYSTEM or SYSAUX. Nonadministrative user accounts only have the minimum privileges needed to perform their jobs. Their default tablespace is USERS.\n\nTo protect these accounts from unauthorized access, the installation process expires and locks most of these accounts, except where noted below. The database administrator is responsible for unlocking and resetting these accounts, as required.\n\nNon-Administrative Accounts - Expired and locked:\nAPEX_PUBLIC_USER, DIP, FLOWS_040100*, FLOWS_FILES, MDDATA, SPATIAL_WFS_ADMIN_USR, XS$NULL\n\nAdministrative Accounts - Expired and Locked:\nANONYMOUS, CTXSYS, EXFSYS, LBACSYS, MDSYS, OLAPSYS, ORACLE_OCM, ORDDATA, OWBSYS, ORDPLUGINS, ORDSYS, OUTLN, SI_INFORMTN_SCHEMA, SPATIAL_CSW_ADMIN_USR, WK_TEST, WK_SYS, WKPROXY, WMSYS, XDB\n\nAdministrative Accounts - Open:\nDBSNMP, MGMT_VIEW, SYS, SYSMAN, SYSTEM\n\n*Subject to change based on version installed.\n\nRun the SQL statement:\n\nselect grantee||': '||granted_role from dba_role_privs\nwhere grantee not in\n(<list of nonapplicable accounts>)\nand admin_option = 'YES' \nand grantee not in\n(select distinct owner from dba_objects)\nand grantee not in\n(select grantee from dba_role_privs\nwhere granted_role = 'DBA')\norder by grantee;\n\n(With respect to the list of special accounts that are excluded from this requirement, it is expected that the DBA will maintain the list to suit local circumstances, adding special accounts as necessary and removing any that are not supposed to be in use in the Oracle deployment that is under review.)\n\nReview the system documentation to confirm any grantees listed are information system security officer (ISSO)-authorized DBA accounts or application administration roles.\n\nIf any grantees listed are not authorized and documented, this is a finding."
+            "check-content": "Use the following query to identify users with the ADMIN option.\n\nsqlplus connect as sysdba\n\nSELECT con_id, grantee, granted_role\nFROM sys.cdb_role_privs \nWHERE admin_option = 'YES'\nAND (con_id, grantee) NOT IN (\n  SELECT con_id, username \n  FROM sys.cdb_users WHERE oracle_maintained = 'Y')\nAND (con_id, grantee) NOT IN (\n  SELECT con_id, role\n  FROM sys.cdb_roles WHERE oracle_maintained = 'Y')\nAND (grantee) not in ('PDBUSER')\nORDER BY 1,2,3;\n\nReview the system documentation to confirm any grantees listed are information system security officer (ISSO)-authorized DBA accounts or application administration roles.\n\nIf any grantees listed are not authorized and documented, this is a finding."
           }
         }
       },
@@ -6202,12 +6202,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270561r1112485_rule",
+          "+@id": "SV-270561r1263653_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-013900",
-          "title": "Oracle Database must enforce the DOD standards for password complexity.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native database management system (DBMS) authentication may be used only when circumstances make it unavoidable; and must be documented and authorizing official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.\n\nNote that user authentication and account management must be done via an enterprise-wide mechanism whenever possible. Examples of enterprise-level authentication/access mechanisms include, but are not limited to, Active Directory and LDAP. This requirement applies to cases where it is necessary to have accounts directly managed by Oracle.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Oracle Database must enforce the DoW standards for password complexity.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native database management system (DBMS) authentication may be used only when circumstances make it unavoidable; and must be documented and authorizing official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.\n\nNote that user authentication and account management must be done via an enterprise-wide mechanism whenever possible. Examples of enterprise-level authentication/access mechanisms include, but are not limited to, Active Directory and LDAP. This requirement applies to cases where it is necessary to have accounts directly managed by Oracle.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6220,11 +6220,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, no fix to the DBMS is required.\n\nIf any user accounts are managed by Oracle, develop, test, and implement a password verification function that enforces DOD requirements.\n\nOracle supplies a sample function called ORA12C_STIG_VERIFY_FUNCTION. This can be used as the starting point for a customized function. The script file is found in the following location on the server depending on OS:\n\nWindows:\n%ORACLE_HOME%\\RDBMS\\ADMIN\\catpvf.sql\n\nUnix/Linux:\n$ORACLE_HOME/rdbms/admin/catpvf.sql",
-            "+@fixref": "F-74495r1112484_fix"
+            "+content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, no fix to the DBMS is required.\n\nIf any user accounts are managed by Oracle, develop, test, and implement a password verification function that enforces DoW requirements.\n\nOracle supplies a sample function called ORA12C_STIG_VERIFY_FUNCTION. This can be used as the starting point for a customized function. The script file is found in the following location on the server depending on OS:\n\nWindows:\n%ORACLE_HOME%\\RDBMS\\ADMIN\\catpvf.sql\n\nUnix/Linux:\n$ORACLE_HOME/rdbms/admin/catpvf.sql",
+            "+@fixref": "F-74495r1263652_fix"
           },
           "fix": {
-            "+@id": "F-74495r1112484_fix"
+            "+@id": "F-74495r1263652_fix"
           },
           "check": {
             "+@system": "C-74594r1065287_chk",
@@ -6241,11 +6241,11 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270562r1064964_rule",
+          "+@id": "SV-270562r1263656_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-014600",
-          "title": "Procedures for establishing temporary passwords that meet DOD password requirements for new accounts must be defined, documented, and implemented.",
+          "title": "Procedures for establishing temporary passwords that meet DoW password requirements for new accounts must be defined, documented, and implemented.",
           "description": "<VulnDiscussion>Password maximum lifetime is the maximum period of time, (typically in days) a user's password may be in effect before the user is forced to change it.\n\nPasswords need to be changed at specific policy-based intervals as per policy. Any password, no matter how complex, can eventually be cracked.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.\n\nNew accounts authenticated by passwords that are created without a password or with an easily guessed password are vulnerable to unauthorized access. Procedures for creating new accounts with passwords should include the required assignment of a temporary password to be modified by the user upon first use.\n\nNote that user authentication and account management must be done via an enterprise-wide mechanism whenever possible. Examples of enterprise-level authentication/access mechanisms include, but are not limited to, Active Directory and LDAP With respect to Oracle, this requirement applies to cases where it is necessary to have accounts directly managed by Oracle.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
@@ -6259,19 +6259,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Implement procedures for assigning temporary passwords to user accounts.\n\nProcedures should include instructions to meet current DOD password length and complexity requirements and provide a secure method to relay the temporary password to the user.",
-            "+@fixref": "F-74496r1064963_fix"
+            "+content": "Implement procedures for assigning temporary passwords to user accounts.\n\nProcedures should include instructions to meet current DoW password length and complexity requirements and provide a secure method to relay the temporary password to the user.",
+            "+@fixref": "F-74496r1263655_fix"
           },
           "fix": {
-            "+@id": "F-74496r1064963_fix"
+            "+@id": "F-74496r1263655_fix"
           },
           "check": {
-            "+@system": "C-74595r1064962_chk",
+            "+@system": "C-74595r1263654_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, this is not a finding.\n\nWhere accounts are authenticated using passwords, review procedures and implementation evidence for creation of temporary passwords.\n\nIf the procedures or evidence do not exist or do not enforce passwords to meet DOD password requirements, this is a finding."
+            "check-content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, this is not a finding.\n\nWhere accounts are authenticated using passwords, review procedures and implementation evidence for creation of temporary passwords.\n\nIf the procedures or evidence do not exist or do not enforce passwords to meet DoW password requirements, this is a finding."
           }
         }
       },
@@ -6280,7 +6280,7 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270563r1064967_rule",
+          "+@id": "SV-270563r1263645_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-014700",
@@ -6298,19 +6298,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "For user accounts managed by Oracle, modify DBMS settings to force users to periodically change their passwords. For example, using \"PPPPPP\" to stand for a profile name:\n\nALTER PROFILE PPPPPP LIMIT PASSWORD_LIFE_TIME 35 PASSWORD_GRACE_TIME 0;\n\nDo this for each profile applied to user accounts.\n\nNote: Although the DOD requirement is for a password change every 60 days, using a value of 35 facilitates the use of PASSWORD_LIFE_TIME as a means of locking accounts inactive for 35 days. But if 35 is not a practical or acceptable limit for password lifetime, set it to the standard DOD value of 60.\n\nWhere a password lifetime longer than 60 is needed, document the reasons and obtain information system security officer (ISSO) approval.",
-            "+@fixref": "F-74497r1064966_fix"
+            "+content": "For user accounts managed by Oracle, modify DBMS settings to force users to periodically change their passwords. For example, using \"PPPPPP\" to stand for a profile name:\n\nALTER PROFILE PPPPPP LIMIT PASSWORD_LIFE_TIME 180 PASSWORD_GRACE_TIME 0;\n\nDo this for each profile applied to user accounts.\n\nWhere a password lifetime longer than 180 is needed, document the reasons and obtain information system security officer (ISSO) approval.",
+            "+@fixref": "F-74497r1263644_fix"
           },
           "fix": {
-            "+@id": "F-74497r1064966_fix"
+            "+@id": "F-74497r1263644_fix"
           },
           "check": {
-            "+@system": "C-74596r1064965_chk",
+            "+@system": "C-74596r1263643_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, this is not a finding.\n\nReview database management system (DBMS) settings to determine if passwords must be changed periodically. Run the following script:\n\nSELECT p1.profile,\nCASE DECODE(p1.limit, 'DEFAULT', p3.limit, p1.limit) WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE\nCASE DECODE(p2.limit, 'DEFAULT', p4.limit, p2.limit) WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE\nTO_CHAR(DECODE(p1.limit, 'DEFAULT', p3.limit, p1.limit) + DECODE(p2.limit, 'DEFAULT', p4.limit, p2.limit))\nEND\nEND effective_life_time\nFROM dba_profiles p1, dba_profiles p2, dba_profiles p3, dba_profiles p4\nWHERE p1.profile=p2.profile\nAND p3.profile='DEFAULT'\nAND p4.profile='DEFAULT'\nAND p1.resource_name='PASSWORD_LIFE_TIME'\nAND p2.resource_name='PASSWORD_GRACE_TIME'\nAND p3.resource_name='PASSWORD_LIFE_TIME' -- from DEFAULT profile\nAND p4.resource_name='PASSWORD_GRACE_TIME' -- from DEFAULT profile\norder by 1;\n\nIf the EFFECTIVE_LIFE_TIME is greater than 60 for any profile applied to user accounts, and the need for this has not been documented and approved, this is a finding.\n\nIf PASSWORD_LIFE_TIME or PASSWORD_GRACE_TIME is set to \"UNLIMITED\", this is a finding."
+            "check-content": "If all user accounts are authenticated by the OS or an enterprise-level authentication/access mechanism, and not by Oracle, this is not a finding.\n\nReview database management system (DBMS) settings to determine if passwords must be changed periodically. Run the following script:\n\nSELECT p1.profile,\nCASE DECODE(p1.limit, 'DEFAULT', p3.limit, p1.limit) WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE\nCASE DECODE(p2.limit, 'DEFAULT', p4.limit, p2.limit) WHEN 'UNLIMITED' THEN 'UNLIMITED' ELSE\nTO_CHAR(DECODE(p1.limit, 'DEFAULT', p3.limit, p1.limit) + DECODE(p2.limit, 'DEFAULT', p4.limit, p2.limit))\nEND\nEND effective_life_time\nFROM dba_profiles p1, dba_profiles p2, dba_profiles p3, dba_profiles p4\nWHERE p1.profile=p2.profile\nAND p3.profile='DEFAULT'\nAND p4.profile='DEFAULT'\nAND p1.resource_name='PASSWORD_LIFE_TIME'\nAND p2.resource_name='PASSWORD_GRACE_TIME'\nAND p3.resource_name='PASSWORD_LIFE_TIME' -- from DEFAULT profile\nAND p4.resource_name='PASSWORD_GRACE_TIME' -- from DEFAULT profile\norder by 1;\n\nIf the EFFECTIVE_LIFE_TIME is greater than 180 for any profile applied to user accounts, and the need for this has not been documented and approved, this is a finding.\n\nIf PASSWORD_LIFE_TIME or PASSWORD_GRACE_TIME is set to \"UNLIMITED\", this is a finding."
           }
         }
       },
@@ -6319,12 +6319,12 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270564r1136919_rule",
+          "+@id": "SV-270564r1263657_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-014800",
           "title": "Oracle Database must, for password-based authentication, store passwords using an approved salted key derivation function, preferably using a keyed hash.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate and requires authorizing official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the database management system (DBMS).\n\nDatabase passwords stored in clear text are vulnerable to unauthorized disclosure. Database passwords must always be encoded or encrypted when stored internally or externally to the DBMS.\n\nTransport Layer Security (TLS) is the successor protocol to Secure Sockets Layer (SSL). Although the Oracle configuration parameters have names that include \"SSL\", such as SSL_VERSION and SSL_CIPHER_SUITES, they refer to TLS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate and requires authorizing official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the database management system (DBMS).\n\nDatabase passwords stored in clear text are vulnerable to unauthorized disclosure. Database passwords must always be encoded or encrypted when stored internally or externally to the DBMS.\n\nTransport Layer Security (TLS) is the successor protocol to Secure Sockets Layer (SSL). Although the Oracle configuration parameters have names that include \"SSL\", such as SSL_VERSION and SSL_CIPHER_SUITES, they refer to TLS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6358,12 +6358,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270565r1136921_rule",
+          "+@id": "SV-270565r1263658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-014900",
           "title": "If passwords are used for authentication, the Oracle Database must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDatabase management system (DBMS) passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.\n\nTransport Layer Security (TLS) is the successor protocol to Secure Sockets Layer (SSL). Although the Oracle configuration parameters have names including \"SSL\", such as SSL_VERSION and SSL_CIPHER_SUITES, they refer to TLS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved public key infrastructure (PKI) certificates.\n\nAuthentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDatabase management system (DBMS) passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.\n\nTransport Layer Security (TLS) is the successor protocol to Secure Sockets Layer (SSL). Although the Oracle configuration parameters have names including \"SSL\", such as SSL_VERSION and SSL_CIPHER_SUITES, they refer to TLS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6436,12 +6436,12 @@
         "title": "SRG-APP-000177-DB-000069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270567r1064979_rule",
+          "+@id": "SV-270567r1263659_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-015300",
           "title": "Oracle Database must map the authenticated identity to the user account using public key infrastructure (PKI)-based authentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a database management system (DBMS) user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a database management system (DBMS) user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6475,12 +6475,12 @@
         "title": "SRG-APP-000178-DB-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270568r1136925_rule",
+          "+@id": "SV-270568r1263660_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-015400",
           "title": "When using command-line tools such as Oracle SQL*Plus, which can accept a plain-text password, users must use an alternative logon method that does not expose the password.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved public key infrastructure (PKI) certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the database management system (DBMS), such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis requires reviewing applications, which will involve collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved public key infrastructure (PKI) certificates.\n\nNormally, with PKI authentication, the interaction with the user for authentication will be handled by a software component separate from the database management system (DBMS), such as ActivIdentity ActivClient. However, in cases where the DBMS controls the interaction, this requirement applies.\n\nTo prevent the compromise of authentication information such as passwords and PINs during the authentication process, the feedback from the system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided authentication secrets when typed into the system is a method used in addressing this risk. \n\nDisplaying asterisks when a user types in a password or a smart card PIN is an example of obscuring feedback of authentication secrets.\n\nThis requires reviewing applications, which will involve collaboration with the application developers. It is recognized that in many cases, the database administrator (DBA) is organizationally separate from the application developers, and may have limited, if any, access to source code. Nevertheless, protections of this type are so important to the secure operation of databases that they must not be ignored. At a minimum, the DBA must attempt to obtain assurances from the development organization that this issue has been addressed and must document what has been discovered.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6709,12 +6709,12 @@
         "title": "SRG-APP-000231-DB-000154",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270574r1192921_rule",
+          "+@id": "SV-270574r1263626_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-016800",
           "title": "Oracle Database must take steps to protect data at rest and ensure confidentiality and integrity of application data.",
-          "description": "<VulnDiscussion>This control is intended to address the confidentiality and integrity of information at rest in nonmobile devices and covers user information and system information. Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an organizational information system. Applications and application users generate information throughout the course of their application use.\n\nUser-generated data and application-specific configuration data must be protected. Configurations and/or rule sets for firewalls, gateways, intrusion detection/prevention systems, and filtering routers and authenticator content are examples of system information likely requiring protection. Organizations may choose to employ different mechanisms to achieve confidentiality and integrity protections, as appropriate.\n\nIf the confidentiality and integrity of application data is not protected, the data will be open to compromise and unauthorized modification.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This control is intended to address the confidentiality and integrity of information at rest in nonmobile devices and covers user information and system information. Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an organizational information system. Applications and application users generate information throughout the course of their application use.\n\nUser-generated data and application-specific configuration data must be protected. Configurations and/or rule sets for firewalls, gateways, intrusion detection/prevention systems, and filtering routers and authenticator content are examples of system information likely requiring protection. Organizations may choose to employ different mechanisms to achieve confidentiality and integrity protections, as appropriate.\n\nIf the confidentiality and integrity of application data is not protected, the data will be open to compromise and unauthorized modification.\n\nOracle recommends using Transparent Data Encryption, which is part of Oracle Advanced Security Option, to protect data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -6734,12 +6734,12 @@
             "+@id": "F-74508r1064999_fix"
           },
           "check": {
-            "+@system": "C-74607r1192920_chk",
+            "+@system": "C-74607r1263625_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Review system documentation to determine whether the system handles classified information. If the system does not handle classified information, the severity of this check is downgraded to CAT II. \n \nIf the application owner and authorizing official (AO) have determined that encryption of data at rest is required, verify the data on secondary devices is encrypted. \n \nIf full-disk encryption is being used, this is not a finding. \n\nIf data encryption is required, verify that the data is encrypted before being put on the secondary device. To ensure that the appropriate controls are in place, discuss the precautions taken with the site database administrators (DBAs) and system administrators (SAs) and try to modify data at rest.\n\nOracle recommends using Transparent Data Encryption, which is part of Oracle Advanced Security Option, to protect data.\n\nTo verify the data is encrypted, upon an auditor's request, Oracle provides views that document the encryption status of the database. For TDE column encryption, use the view \"dba_encrypted_columns\", which lists the owner, table name, column name, encryption algorithm, and salt for all encrypted columns. For TDE tablespace encryption, the following SQL statement lists all encrypted tablespaces with their encryption algorithm and corresponding, encrypted, data files. Issue the following commands to verify the data at rest is encrypted.\n\n$ sqlplus connect as sysdba\n\nSQL> SELECT t.name \"TSName\",\ne.encryptionalg \"Algorithm\",\nd.file_name \"File Name\"\nFROM v$tablespace t,\nv$encrypted_tablespaces e,\ndba_data_files d\nWHERE t.ts# = e.ts#\nand t.name = d.tablespace_name;\n\nThe next SQL statement lists the table owner, tables within encrypted tablespaces, and the encryption algorithm:\n\nSQL> SELECT a.owner \"Owner\",\na.table_name \"Table Name\",\ne.encryptionalg \"Algorithm\"\nFROM dba_tables a,\nv$encrypted_tablespaces e\nWHERE a.tablespace_name in (select t.name from v$tablespace t, v$encrypted_tablespaces e where t.ts# = e.ts#);\n\nFor each database where encryption is required, verify that encryption is in effect. If it is not, this is a finding."
+            "check-content": "Review system documentation to determine whether the system handles classified information. If the system does not handle classified information, the severity of this check is downgraded to CAT II. \n \nIf the application owner and authorizing official (AO) have determined that encryption of data at rest is required, verify the data on secondary devices is encrypted. \n \nIf full-disk encryption is being used, this is not a finding. \n\nIf data encryption is required, verify the data is encrypted before being put on the secondary device. To ensure the appropriate controls are in place, discuss the precautions taken with the site database administrators (DBAs) and system administrators (SAs).\n\nThe following SQL statement lists all tablespaces and whether not they are encrypted:\n\n$ sqlplus connect as sysdba\n\nSELECT TABLESPACE_NAME, ENCRYPTED\nFROM DBA_TABLESPACES\nWHERE CONTENTS NOT IN ('TEMPORARY', 'UNDO')\nAND TABLESPACE_NAME NOT IN ('SYSTEM', 'SYSAUX');\n\nFor each tablespace where encryption is required, verify encryption is in effect. If it is not, this is a finding."
           }
         }
       },
@@ -6748,9 +6748,9 @@
         "title": "SRG-APP-000428-DB-000386",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270575r1065003_rule",
+          "+@id": "SV-270575r1263627_rule",
           "+@weight": "10.0",
-          "+@severity": "medium",
+          "+@severity": "high",
           "version": "O19C-00-016900",
           "title": "Oracle Database must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components.",
           "description": "<VulnDiscussion>Database management systems (DBMSs) handling data requiring data at rest protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest. These cryptographic mechanisms may be native to the DBMS or implemented via additional software or operating system/file system settings, as appropriate to the situation.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields). \n\nThe decision whether and what to encrypt rests with the data owner and is also influenced by the physical measures taken to secure the equipment and media on which the information resides.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
@@ -6904,12 +6904,12 @@
         "title": "SRG-APP-000441-DB-000378",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270579r1065015_rule",
+          "+@id": "SV-270579r1263661_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "O19C-00-017700",
           "title": "Oracle Database must employ cryptographic mechanisms preventing the unauthorized disclosure of information during transmission unless the transmitted data is otherwise protected by alternative physical measures.",
-          "description": "<VulnDiscussion>Preventing the disclosure of transmitted information requires that applications take measures to employ some form of cryptographic mechanism to protect the information during transmission. This is usually achieved using Transport Layer Security (TLS), secure sockets layer (SSL) virtual private network (VPN), or IPsec tunnel.\n\nAlternative physical protection measures include Protected Distribution Systems (PDS). PDS are used to transmit unencrypted classified NSI through an area of lesser classification or control. Inasmuch as the classified NSI is unencrypted, the PDS must provide adequate electrical, electromagnetic, and physical safeguards to deter exploitation. Refer to NSTSSI No. 7003 for additional details on a PDS.\n\nInformation in transmission is particularly vulnerable to attack. If the database management system (DBMS) does not employ cryptographic mechanisms preventing unauthorized disclosure of information during transit, the information may be compromised.\n\nSHA-1 is in the process of being removed from service within the DOD and its use is to be limited during the transition to SHA-2. Use of SHA-1 for digital signature generation is prohibited. Allowable uses during the transition include CHECKSUM usage and verification of legacy certificate signatures. SHA-1 is considered a temporary solution during legacy application transitionary periods and should not be engineered into new applications. SHA-2 is the path forward for DOD.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Preventing the disclosure of transmitted information requires that applications take measures to employ some form of cryptographic mechanism to protect the information during transmission. This is usually achieved using Transport Layer Security (TLS), secure sockets layer (SSL) virtual private network (VPN), or IPsec tunnel.\n\nAlternative physical protection measures include Protected Distribution Systems (PDS). PDS are used to transmit unencrypted classified NSI through an area of lesser classification or control. Inasmuch as the classified NSI is unencrypted, the PDS must provide adequate electrical, electromagnetic, and physical safeguards to deter exploitation. Refer to NSTSSI No. 7003 for additional details on a PDS.\n\nInformation in transmission is particularly vulnerable to attack. If the database management system (DBMS) does not employ cryptographic mechanisms preventing unauthorized disclosure of information during transit, the information may be compromised.\n\nSHA-1 is in the process of being removed from service within the DoW and its use is to be limited during the transition to SHA-2. Use of SHA-1 for digital signature generation is prohibited. Allowable uses during the transition include CHECKSUM usage and verification of legacy certificate signatures. SHA-1 is considered a temporary solution during legacy application transitionary periods and should not be engineered into new applications. SHA-2 is the path forward for DoW.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Oracle Database 19c",
             "dc:publisher": "DISA",
@@ -7177,7 +7177,7 @@
         "title": "SRG-APP-000845-DB-000220",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-270587r1112489_rule",
+          "+@id": "SV-270587r1263663_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-019800",
@@ -7195,11 +7195,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "If any user accounts are managed by Oracle, develop, test, and implement a password verification function that enforces DOD requirements.\n\nConfigure the password verify function to verify when users create or update passwords, that the passwords are not found on the list of commonly-used, expected, or compromised passwords in IA-5 (1) (a).\n\nOracle supplies a sample function called ORA12C_STIG_VERIFY_FUNCTION. This can be used as the starting point for a customized function. The script file is found in the following location on the server depending on OS:\n\nWindows:\n%ORACLE_HOME%\\RDBMS\\ADMIN\\catpvf.sql\n\nUnix/Linux:\n$ORACLE_HOME/rdbms/admin/catpvf.sql",
-            "+@fixref": "F-74521r1112488_fix"
+            "+content": "If any user accounts are managed by Oracle, develop, test, and implement a password verification function that enforces DoW requirements.\n\nConfigure the password verify function to verify when users create or update passwords, that the passwords are not found on the list of commonly-used, expected, or compromised passwords in IA-5 (1) (a).\n\nOracle supplies a sample function called ORA12C_STIG_VERIFY_FUNCTION. This can be used as the starting point for a customized function. The script file is found in the following location on the server depending on OS:\n\nWindows:\n%ORACLE_HOME%\\RDBMS\\ADMIN\\catpvf.sql\n\nUnix/Linux:\n$ORACLE_HOME/rdbms/admin/catpvf.sql",
+            "+@fixref": "F-74521r1263662_fix"
           },
           "fix": {
-            "+@id": "F-74521r1112488_fix"
+            "+@id": "F-74521r1263662_fix"
           },
           "check": {
             "+@system": "C-74620r1065037_chk",
@@ -7294,7 +7294,7 @@
         "title": "SRG-APP-000516-DB-000363",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-275999r1115962_rule",
+          "+@id": "SV-275999r1263665_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "O19C-00-020500",
@@ -7319,12 +7319,12 @@
             "+@id": "F-80042r1112491_fix"
           },
           "check": {
-            "+@system": "C-80137r1115961_chk",
+            "+@system": "C-80137r1263664_chk",
             "check-content-ref": {
               "+@href": "Oracle_Database_19c_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Use the SQL statement below to obtain information on each currently existing Control File:\n\nSELECT name\nFROM sys.v$controlfile\nORDER BY 1;\n\nOracle Best Practice:\nOracle recommends a minimum of three Oracle Control Files and each stored on a separate physical and logical device (RAID 1 + 0).  \n\nDOD guidance recommends:\nEach control file must be located on a separate physical and logical (virtual) storage device.\n\nConsult with the storage administrator, system administrator, or database administrator to determine whether the mount points or partitions referenced in the file paths indicate separate physical disks or directories on RAID devices.\n\nNote: Distinct does not equal dedicated. May share directory space with other Oracle database instances if present.\n\nIf the minimum of three control files is not met, this is a finding."
+            "check-content": "Use the SQL statement below to obtain information on each currently existing Control File:\n\nSELECT name\nFROM sys.v$controlfile\nORDER BY 1;\n\nOracle Best Practice:\nOracle recommends a minimum of three Oracle Control Files and each stored on a separate physical and logical device (RAID 1 + 0).  \n\nDoW guidance recommends:\nEach control file must be located on a separate physical and logical (virtual) storage device.\n\nConsult with the storage administrator, system administrator, or database administrator to determine whether the mount points or partitions referenced in the file paths indicate separate physical disks or directories on RAID devices.\n\nNote: Distinct does not equal dedicated. May share directory space with other Oracle database instances if present.\n\nIf the minimum of three control files is not met, this is a finding."
           }
         }
       },

@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-13"
+      "+@date": "2026-08-24"
     },
     "title": "Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 6 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 7 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -3613,12 +3613,12 @@
         "title": "SRG-APP-000068-CTR-000120",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257516r960843_rule",
+          "+@id": "SV-257516r1262597_rule",
           "+@weight": "10.0",
           "+@severity": "low",
           "version": "CNTR-OS-000130",
-          "title": "OpenShift must display the Standard Mandatory DOD Notice and Consent Banner before granting access to platform components.",
-          "description": "<VulnDiscussion>OpenShift has countless components where different access levels are needed. To control access, the user must first log into the component and then be presented with a DOD-approved use notification banner before granting access to the component. This guarantees privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "OpenShift must display the Standard Mandatory DoW Notice and Consent Banner before granting access to platform components.",
+          "description": "<VulnDiscussion>OpenShift has countless components where different access levels are needed. To control access, the user must first log into the component and then be presented with a DoW-approved use notification banner before granting access to the component. This guarantees privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
             "dc:publisher": "DISA",
@@ -3631,19 +3631,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "The following command will create a configmap that displays the DOD Notice and Consent Banner when logging in using the OpenShift CLI tool by executing the following:\n\necho 'apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: motd\n  namespace: openshift\ndata:\n  message: \"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\\n\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\n\\n-At any time, the USG may inspect and seize data stored on this IS.\\n\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\n\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\n\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"' | oc apply -f -",
-            "+@fixref": "F-61175r921490_fix"
+            "+content": "The following command will create a configmap that displays the DoW Notice and Consent Banner when logging in using the OpenShift CLI tool by executing the following:\n\necho 'apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: motd\n  namespace: openshift\ndata:\n  message: \"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:\\n\\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\\n\\n-At any time, the USG may inspect and seize data stored on this IS.\\n\\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\\n\\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\\n\\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"' | oc apply -f -",
+            "+@fixref": "F-61175r1262596_fix"
           },
           "fix": {
-            "+@id": "F-61175r921490_fix"
+            "+@id": "F-61175r1262596_fix"
           },
           "check": {
-            "+@system": "C-61251r921489_chk",
+            "+@system": "C-61251r1262595_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "To verify the OpenShift CLI tool is configured to display the DOD Notice and Consent Banner, do either of the following steps:\n\nLog in to OpenShift using the oc CLI tool.\n\noc login -u <USER> <OPENSHIFT_URL>\nenter password when prompted\n\nIf the DOD Notice and Consent Banner is not displayed, this is a finding.\n\nOr\n\nVerify that motd config map exists and contains the DOD Notice and Consent Banner by executing the following:\n\noc describe configmap/motd -n openshift\n\nIf the configmap does not exist, or it does not contain the DOD Notice and Consent Banner text in the message data attribute, this is a finding."
+            "check-content": "To verify the OpenShift CLI tool is configured to display the DoW Notice and Consent Banner, do either of the following steps:\n\nLog in to OpenShift using the oc CLI tool.\n\noc login -u <USER> <OPENSHIFT_URL>\nenter password when prompted\n\nIf the DoW Notice and Consent Banner is not displayed, this is a finding.\n\nOr\n\nVerify that motd config map exists and contains the DoW Notice and Consent Banner by executing the following:\n\noc describe configmap/motd -n openshift\n\nIf the configmap does not exist, or it does not contain the DoW Notice and Consent Banner text in the message data attribute, this is a finding."
           }
         }
       },
@@ -3652,11 +3652,11 @@
         "title": "SRG-APP-000089-CTR-000150",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257517r1208201_rule",
+          "+@id": "SV-257517r1262598_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000150",
-          "title": "OpenShift must generate audit records for all DOD-defined auditable events within all components in the platform.",
+          "title": "OpenShift must generate audit records for all DoW-defined auditable events within all components in the platform.",
           "description": "<VulnDiscussion>The OpenShift Platform supports three audit levels: Default, WriteRequestBodies, and AllRequestBodies. The identities of the users are logged for all three audit levels log level. The WriteRequestBodies will log the metadata and the request body for any create, update, or patch request. The AllRequestBodies will log the metadata and the request body for all read and write requests. As this generates a significant number of logs, this level is only to be used as needed. To capture sufficient data to investigate an issue, it is required to set the audit level to WriteRequestBodies.\n\nFor more detailed documentation on what is being logged, refer to https://docs.openshift.com/container-platform/4.8/security/audit-log-view.html.\n\nSatisfies: SRG-APP-000089-CTR-000150, SRG-APP-000090-CTR-000155, SRG-APP-000101-CTR-000205, SRG-APP-000510-CTR-001310, SRG-APP-000516-CTR-000790</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
@@ -4725,12 +4725,12 @@
         "title": "SRG-APP-000156-CTR-000380",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257542r960993_rule",
+          "+@id": "SV-257542r1262599_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000440",
           "title": "OpenShift must use FIPS-validated SHA-1 or higher hash function to provide replay-resistant authentication mechanisms for network access to privileged accounts.",
-          "description": "<VulnDiscussion>A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAnti-replay is a cryptographically based mechanism; thus, it must use FIPS-approved algorithms. An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Note that the anti-replay service is implicit when data contains monotonically increasing sequence numbers and data integrity is assured. Use of DOD PKI is inherently compliant with this requirement for user and device access. Use of Transport Layer Security (TLS), including application protocols such as HTTPS and DNSSEC, that use TLS/SSL as the underlying security protocol is also complaint.\n\nConfigure the information system to use the hash message authentication code (HMAC) algorithm for authentication services to Kerberos, SSH, web management tool, and any other access method.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAnti-replay is a cryptographically based mechanism; thus, it must use FIPS-approved algorithms. An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Note that the anti-replay service is implicit when data contains monotonically increasing sequence numbers and data integrity is assured. Use of DoW PKI is inherently compliant with this requirement for user and device access. Use of Transport Layer Security (TLS), including application protocols such as HTTPS and DNSSEC, that use TLS/SSL as the underlying security protocol is also complaint.\n\nConfigure the information system to use the hash message authentication code (HMAC) algorithm for authentication services to Kerberos, SSH, web management tool, and any other access method.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Red Hat OpenShift Container Platform 4.x",
             "dc:publisher": "DISA",
@@ -5767,7 +5767,7 @@
         "title": "SRG-APP-000429-CTR-001060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257564r1050650_rule",
+          "+@id": "SV-257564r1262594_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000780",
@@ -5785,11 +5785,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Set API encryption type by executing the following:\n\noc edit apiserver\n\nSet the encryption field type to aescbc:\nspec:\n  encryption:\n    type: aescbc \n\nAdditional details about the configuration can be found in the documentation:\nhttps://docs.openshift.com/container-platform/4.8/security/encrypting-etcd.html",
-            "+@fixref": "F-61223r921634_fix"
+            "+content": "Set API encryption type by executing the following:\n\noc edit apiserver\n\nSet the encryption field type to aescbc:\nspec:\n  encryption:\n    type: aescbc \n\nAdditional details about the configuration can be found in the OpenShift documentation.",
+            "+@fixref": "F-61223r1262593_fix"
           },
           "fix": {
-            "+@id": "F-61223r921634_fix"
+            "+@id": "F-61223r1262593_fix"
           },
           "check": {
             "+@system": "C-61299r921633_chk",
@@ -6401,7 +6401,7 @@
         "title": "SRG-APP-000504-CTR-001280",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-257580r961827_rule",
+          "+@id": "SV-257580r1262592_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "CNTR-OS-000980",
@@ -6426,12 +6426,12 @@
             "+@id": "F-61239r921682_fix"
           },
           "check": {
-            "+@system": "C-61315r921681_chk",
+            "+@system": "C-61315r1262591_chk",
             "check-content-ref": {
               "+@href": "Red_Hat_OpenShift_Container_Platform_4.x_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the audit rules capture loading and unloading of kernel modules by executing the following:\n \nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -e module-load -e module-unload -e module-change /etc/audit/rules.d/* /etc/audit/audit.rules' 2>/dev/null; done\n\nConfirm the following rules exist on each node.\n\n-a always,exit -F arch=b32 -S init_module,finit_module -F key=module-load\n-a always,exit -F arch=b64 -S init_module,finit_module -F key=module-load\n-a always,exit -F arch=b32 -S delete_module -F key=module-unload\n-a always,exit -F arch=b64 -S delete_module -F key=module-unload\n-a always,exit -F arch=b32 -S delete_module -k module-change\n-a always,exit -F arch=b64 -S delete_module -k module-change\n-a always,exit -F arch=b32 -S finit_module -k module-change\n-a always,exit -F arch=b64 -S finit_module -k module-change\n-a always,exit -F arch=b32 -S init_module -k module-change\n-a always,exit -F arch=b64 -S init_module -k module-change\n\nIf the above rules are not listed for each node, this is a finding."
+            "check-content": "Verify the audit rules capture loading and unloading of kernel modules by executing the following:\n \nfor node in $(oc get node -oname); do oc debug $node -- chroot /host /bin/bash -c 'echo -n \"$HOSTNAME \"; grep -e module-load -e module-unload -e module-change /etc/audit/rules.d/* /etc/audit/audit.rules' 2>/dev/null; done\n\nConfirm the following rules exist on each node.\n-a always,exit -F arch=b64 -S delete_module -F key=module-unload\n-a always,exit -F arch=b64 -S init_module,finit_module -F key=module-load\n-a always,exit -F arch=b32 -S init_module,finit_module -F key=module-load\n-a always,exit -F arch=b32 -S delete_module -F key=module-unload\n\nIf the above rules are not listed for each node, this is a finding."
           }
         }
       },

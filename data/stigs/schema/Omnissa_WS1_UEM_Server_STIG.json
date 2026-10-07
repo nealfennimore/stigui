@@ -13,7 +13,7 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-06-15"
+      "+@date": "2026-08-31"
     },
     "title": "Omnissa WS1 UEM Server Security Technical Implementation Guide",
     "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 May 2026",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1233,12 +1233,12 @@
         "title": "SRG-APP-000174-UEM-000104",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-284354r1224097_rule",
+          "+@id": "SV-284354r1268805_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "OMW1-00-012200",
-          "title": "The Omnissa WS1 UEM server must enforce a 60-day maximum password lifetime restriction.",
-          "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals.  \n \nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.  \n \nThis requirement does not include emergency administration accounts, which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.  \n \nSatisfies: FMT_SMF.1(2)b  \nReference: PP-MDM-431024</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Omnissa WS1 UEM server must enforce a 180-day maximum password lifetime restriction.",
+          "description": "<VulnDiscussion>Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised.\n\nThis requirement does not include emergency administration accounts, which are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.\n\nSatisfies: FMT_SMF.1(2)b  \nReference: PP-MDM-431024</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Omnissa WS1 UEM Server",
             "dc:publisher": "DISA",
@@ -1251,19 +1251,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Authenticate to the Workspace ONE UEM console as an administrator. \n \n1. Navigate to Groups & Settings >> All Settings >> Admin >> Console Security >> Passwords. \n2. Configure \"Password Expiration Period (days)\" to \"60\" or less. \n3. Click \"Save\". \n \nNote: If this procedure is not seen on the console, the CSP is managing the setting. Contact the CSP to implement the required setting.",
-            "+@fixref": "F-88823r1211924_fix"
+            "+content": "Authenticate to the Workspace ONE UEM console as an administrator. \n \n1. Navigate to Groups & Settings >> All Settings >> Admin >> Console Security >> Passwords. \n2. Configure \"Password Expiration Period (days)\" to \"180\" or less. \n3. Click \"Save\". \n \nNote: If this procedure is not seen on the console, the CSP is managing the setting. Contact the CSP to implement the required setting.",
+            "+@fixref": "F-88823r1268519_fix"
           },
           "fix": {
-            "+@id": "F-88823r1211924_fix"
+            "+@id": "F-88823r1268519_fix"
           },
           "check": {
-            "+@system": "C-88918r1211923_chk",
+            "+@system": "C-88918r1268518_chk",
             "check-content-ref": {
               "+@href": "Omnissa_WS1_UEM_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Authenticate to the Workspace ONE UEM console as an administrator. \n \nNavigate to Groups & Settings >> All Settings >> Admin >> Console Security >> Passwords. \n \nIf \"Password Expiration Period (days)\" is not set to \"60\" (or less), this is a finding. \n \nNote: If this procedure is not seen on the console, the Cloud Service Provider (CSP) is managing the setting. Contact the CSP to review the required setting."
+            "check-content": "Authenticate to the Workspace ONE UEM console as an administrator. \n \nNavigate to Groups & Settings >> All Settings >> Admin >> Console Security >> Passwords. \n \nIf \"Password Expiration Period (days)\" is not set to \"180\" (or less), this is a finding. \n \nNote: If this procedure is not seen on the console, the Cloud Service Provider (CSP) is managing the setting. Contact the CSP to review the required setting."
           }
         }
       },

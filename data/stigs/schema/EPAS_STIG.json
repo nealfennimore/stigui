@@ -12,11 +12,11 @@
     "+@xml:lang": "en",
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
-      "+content": "deprecated",
-      "+@date": "2024-08-27"
+      "+content": "accepted",
+      "+@date": "2026-09-03"
     },
     "title": "EnterpriseDB Postgres Advanced Server (EPAS) Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 24 Jul 2024",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -4405,7 +4405,7 @@
         "title": "SRG-APP-000023-DB-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259211r960768_rule",
+          "+@id": "SV-259211r1043176_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-000700",
@@ -4444,12 +4444,12 @@
         "title": "SRG-APP-000033-DB-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259212r960792_rule",
+          "+@id": "SV-259212r1268196_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-000800",
           "title": "The EDB Postgres Advanced Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
-          "description": "<VulnDiscussion>Authentication with a DOD-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DOD-approved PKIs, all DOD systems, including databases, must be properly configured to implement access control policies.\n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Authentication with a DoW-approved PKI certificate does not necessarily imply authorization to access the DBMS. To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoW-approved PKIs, all DoW systems, including databases, must be properly configured to implement access control policies.\n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.\n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems. If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -4522,12 +4522,12 @@
         "title": "SRG-APP-000089-DB-000064",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259214r960879_rule",
+          "+@id": "SV-259214r1268197_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-001000",
-          "title": "The EDB Postgres Advanced Server must provide audit record generation capability for DOD-defined auditable events within all EDB Postgres Advanced Server/database components.",
-          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDOD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The EDB Postgres Advanced Server must provide audit record generation capability for DoW-defined auditable events within all EDB Postgres Advanced Server/database components.",
+          "description": "<VulnDiscussion>Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoW has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -4990,7 +4990,7 @@
         "title": "SRG-APP-000109-DB-000049",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259226r960915_rule",
+          "+@id": "SV-259226r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-002300",
@@ -5029,7 +5029,7 @@
         "title": "SRG-APP-000109-DB-000321",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259227r960915_rule",
+          "+@id": "SV-259227r1043188_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-002400",
@@ -5692,7 +5692,7 @@
         "title": "SRG-APP-000142-DB-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259244r960966_rule",
+          "+@id": "SV-259244r1043177_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-004100",
@@ -5731,7 +5731,7 @@
         "title": "SRG-APP-000148-DB-000103",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259245r960969_rule",
+          "+@id": "SV-259245r1051115_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-004200",
@@ -5770,12 +5770,12 @@
         "title": "SRG-APP-000164-DB-000401",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259246r1015716_rule",
+          "+@id": "SV-259246r1271104_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004250",
-          "title": "If DBMS authentication, using passwords, is employed, EDB Postgres Advanced Server must enforce the DOD standards for password complexity and lifetime.",
-          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable, and must be documented and Authorizing Official (AO)-approved.\n\nThe DOD standard for authentication is DOD-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DOD standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "If DBMS authentication, using passwords, is employed, EDB Postgres Advanced Server must enforce the DoW standards for password complexity and lifetime.",
+          "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable, and must be documented and authorizing official (AO)-approved.\n\nThe DoW standard for authentication is DoW-approved PKI certificates. Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -5794,11 +5794,11 @@
             }
           ],
           "fixtext": {
-            "+content": "After creating a password verification function, configure the default profile to use it and the other required password related settings.\n\nTo facilitate checking that a new password is sufficiently different from a previously used one, the dod_verify_password function uses the Levenshtein function, which is available as part of the PostgreSQL fuzzystrmatch extension.\n\nBefore creating the password verification function, check whether the fuzzystrmatch extension is installed by executing the following SQL query as enterprisedb:\n\n SELECT extname FROM pg_extension;\n\nIf \"fuzzystrmatch\" is not listed, execute the following SQL to install the extension as enterprisedb:\n\n CREATE EXTENSION fuzzystrmatch;\n\nWith the fuzzystrmatch extension installed, execute the following SQL statements as enterprisedb:\n\n CREATE OR REPLACE FUNCTION sys.dod_verify_password(user_name varchar2, new_password varchar2, old_password varchar2) \n RETURN boolean IMMUTABLE \n IS \n pwd_length integer := NVL( length(new_password), 0 );\n\n min_length integer := 15;\n min_lower integer := 1;\n min_upper integer := 1;\n min_numeric integer := 1;\n min_special integer := 1;\n min_diff integer := ceil(min_length::numeric / 2);\n\n cnt_lower integer := 0;\n cnt_upper integer := 0;\n cnt_numeric integer := 0;\n cnt_special integer := 0;\n\n cnt_diff integer := 0;\n\n i integer ;\n curr_char CHAR(1);\n\n BEGIN\n\n --\n -- Check Length of new password\n --\n IF ( pwd_length < min_length ) \n THEN \n raise_application_error(-20001, 'Password is too short. Password must be at least '||min_length||' characters long.'); \n END IF;\n\n --\n -- Get count of each character type in new password.\n --\n FOR i in 1..pwd_length LOOP\n curr_char := substr(new_password, i, 1);\n\n IF ( curr_char SIMILAR TO '[a-z]' ) THEN\n cnt_lower := cnt_lower + 1;\n ELSIF ( curr_char SIMILAR TO '[A-Z]' ) THEN\n cnt_upper := cnt_upper + 1;\n ELSIF ( curr_char SIMILAR TO '[0-9]' ) THEN\n cnt_numeric := cnt_numeric + 1;\n ELSE\n cnt_special := cnt_special + 1;\n END IF;\n END LOOP;\n\n --\n -- Calculate Levenshtein difference between old and new password\n --\n cnt_diff := levenshtein( old_password, new_password );\n\n -- Check if new password has minimum number of lowercase characters\n IF cnt_lower < min_lower THEN\n raise_application_error(-20004, 'Password must contain at least '||min_lower||' lowercase character(s)'); \n END IF;\n\n -- Check if new password has minimum number of uppercase characters\n IF cnt_upper < min_upper THEN\n raise_application_error(-20003, 'Password must contain at least '||min_upper||' uppercase character(s)'); \n END IF;\n\n -- Check if new password has minimum number of numeric characters\n IF cnt_numeric < min_numeric THEN\n raise_application_error(-20005, 'Password must contain at least '||min_numeric||' numeric character(s)'); \n END IF;\n\n -- Check if new password has minimum number of special characters\n IF cnt_special < min_special THEN\n raise_application_error(-20006, 'Password must contain at least '||min_special||' special character(s)'); \n END IF;\n\n -- Check if new password differs from old password by minimum number of required characters\n IF cnt_diff < min_diff THEN\n raise_application_error(-20007, 'Password must differ from old password by at least '||min_diff||' character(s)'); \n END IF;\n\n\n RETURN true; \n END; \n\n ALTER FUNCTION sys.dod_verify_password(varchar2, varchar2, varchar2) OWNER TO enterprisedb;\n\nNext, execute the following statement (or a variant of this) to set the default profile for DOD standards:\n\n ALTER PROFILE DEFAULT LIMIT\n FAILED_LOGIN_ATTEMPTS 3 \n PASSWORD_LOCK_TIME 1\n PASSWORD_LIFE_TIME 60\n PASSWORD_GRACE_TIME 3\n PASSWORD_REUSE_TIME 180\n PASSWORD_REUSE_MAX 5\n PASSWORD_VERIFY_FUNCTION dod_verify_password;\n\nNote that the above statement assumes that the password verification function is named \"dod_verify_password\". If the function was created with a different name, update the ALTER PROFILE statement above as appropriate.",
-            "+@fixref": "F-62894r938790_fix"
+            "+content": "After creating a password verification function, configure the default profile to use it and the other required password related settings.\n\nTo facilitate checking that a new password is sufficiently different from a previously used one, the \"DOD_verify_password\" function uses the Levenshtein function, which is available as part of the PostgreSQL \"fuzzystrmatch\" extension.\n\nBefore creating the password verification function, check whether the \"fuzzystrmatch\" extension is installed by executing the following SQL query as enterprisedb:\n\n SELECT extname FROM pg_extension;\n\nIf \"fuzzystrmatch\" is not listed, execute the following SQL to install the extension as enterprisedb:\n\n CREATE EXTENSION fuzzystrmatch;\n\nWith the \"fuzzystrmatch\" extension installed, execute the following SQL statements as enterprisedb:\n\n CREATE OR REPLACE FUNCTION sys.DOD_verify_password(user_name varchar2, new_password varchar2, old_password varchar2) \n RETURN boolean IMMUTABLE \n IS \n pwd_length integer := NVL( length(new_password), 0 );\n\n min_length integer := 15;\n min_lower integer := 1;\n min_upper integer := 1;\n min_numeric integer := 1;\n min_special integer := 1;\n min_diff integer := ceil(min_length::numeric / 2);\n\n cnt_lower integer := 0;\n cnt_upper integer := 0;\n cnt_numeric integer := 0;\n cnt_special integer := 0;\n\n cnt_diff integer := 0;\n\n i integer ;\n curr_char CHAR(1);\n\n BEGIN\n\n --\n -- Check Length of new password\n --\n IF ( pwd_length < min_length ) \n THEN \n raise_application_error(-20001, 'Password is too short. Password must be at least '||min_length||' characters long.'); \n END IF;\n\n --\n -- Get count of each character type in new password.\n --\n FOR i in 1..pwd_length LOOP\n curr_char := substr(new_password, i, 1);\n\n IF ( curr_char SIMILAR TO '[a-z]' ) THEN\n cnt_lower := cnt_lower + 1;\n ELSIF ( curr_char SIMILAR TO '[A-Z]' ) THEN\n cnt_upper := cnt_upper + 1;\n ELSIF ( curr_char SIMILAR TO '[0-9]' ) THEN\n cnt_numeric := cnt_numeric + 1;\n ELSE\n cnt_special := cnt_special + 1;\n END IF;\n END LOOP;\n\n --\n -- Calculate Levenshtein difference between old and new password:\n --\n cnt_diff := levenshtein( old_password, new_password );\n\n -- Check if new password has minimum number of lowercase characters:\n IF cnt_lower < min_lower THEN\n raise_application_error(-20004, 'Password must contain at least '||min_lower||' lowercase character(s)'); \n END IF;\n\n -- Check if new password has minimum number of uppercase characters:\n IF cnt_upper < min_upper THEN\n raise_application_error(-20003, 'Password must contain at least '||min_upper||' uppercase character(s)'); \n END IF;\n\n -- Check if new password has minimum number of numeric characters:\n IF cnt_numeric < min_numeric THEN\n raise_application_error(-20005, 'Password must contain at least '||min_numeric||' numeric character(s)'); \n END IF;\n\n -- Check if new password has minimum number of special characters:\n IF cnt_special < min_special THEN\n raise_application_error(-20006, 'Password must contain at least '||min_special||' special character(s)'); \n END IF;\n\n -- Check if new password differs from old password by minimum number of required characters:\n IF cnt_diff < min_diff THEN\n raise_application_error(-20007, 'Password must differ from old password by at least '||min_diff||' character(s)'); \n END IF;\n\n\n RETURN true; \n END; \n\n ALTER FUNCTION sys.DOD_verify_password(varchar2, varchar2, varchar2) OWNER TO enterprisedb;\n\nNext, execute the following statement (or a variant of this) to set the default profile for DoW standards:\n\n ALTER PROFILE DEFAULT LIMIT\n FAILED_LOGIN_ATTEMPTS 3 \n PASSWORD_LOCK_TIME 1\n PASSWORD_LIFE_TIME 180\n PASSWORD_GRACE_TIME 3\n PASSWORD_REUSE_TIME 180\n PASSWORD_REUSE_MAX 5\n PASSWORD_VERIFY_FUNCTION DOD_verify_password;\n\nNote that the above statement assumes that the password verification function is named \"DOD_verify_password\". If the function was created with a different name, update the \"ALTER PROFILE\" statement above as appropriate.",
+            "+@fixref": "F-62894r1271103_fix"
           },
           "fix": {
-            "+@id": "F-62894r938790_fix"
+            "+@id": "F-62894r1271103_fix"
           },
           "check": {
             "+@system": "C-62985r998210_chk",
@@ -5815,12 +5815,12 @@
         "title": "SRG-APP-000171-DB-000074",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259247r1015717_rule",
+          "+@id": "SV-259247r1268200_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004300",
           "title": "If passwords are used for authentication, the EDB Postgres Advanced Server must store only hashed, salted representations of passwords.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires Authorizing Official ( AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the DBMS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, database passwords stored in clear text, using reversible encryption, or using unsalted hashes would be vulnerable to unauthorized disclosure. Database passwords must always be in the form of one-way, salted hashes when stored internally or externally to the DBMS.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -5860,12 +5860,12 @@
         "title": "SRG-APP-000172-DB-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259248r961029_rule",
+          "+@id": "SV-259248r1268201_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004400",
           "title": "If passwords are used for authentication, the EDB Postgres Advanced Server must transmit only encrypted representations of passwords.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires authorizing official (AO) approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -5899,12 +5899,12 @@
         "title": "SRG-APP-000175-DB-000067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259249r961038_rule",
+          "+@id": "SV-259249r1268202_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-004500",
           "title": "The EDB Postgres Advanced Server, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates.\n\nA certificate's certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates.\n\nA certificate's certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.\n\nDatabase Management Systems that do not validate certificates by performing RFC 5280-compliant certification path validation are in danger of accepting certificates that are invalid and/or counterfeit. This could allow unauthorized access to the database.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -5938,12 +5938,12 @@
         "title": "SRG-APP-000176-DB-000068",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259250r961041_rule",
+          "+@id": "SV-259250r1268203_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004600",
           "title": "The EDB Postgres Advanced Server must enforce authorized access to all PKI private keys stored/used by the EDB Postgres Advanced Server.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2 or 140-3 validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. PKI certificate-based authentication is performed by requiring the certificate holder to cryptographically prove possession of the corresponding private key.\n\nIf the private key is stolen, an attacker can use the private key(s) to impersonate the certificate holder. In cases where the DBMS-stored private keys are used to authenticate the DBMS to the system's clients, loss of the corresponding private keys would allow an attacker to successfully perform undetected man-in-the-middle attacks against the DBMS system and its clients.\n\nBoth the holder of a digital certificate and the issuing authority must take careful measures to protect the corresponding private key. Private keys should always be generated and protected in FIPS 140-2- or 140-3-validated cryptographic modules.\n\nAll access to the private key(s) of the DBMS must be restricted to authorized and authenticated users. If unauthorized users have access to one or more of the DBMS's private keys, an attacker could gain access to the key(s) and use them to impersonate the database on the network or otherwise perform unauthorized actions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -5977,12 +5977,12 @@
         "title": "SRG-APP-000177-DB-000069",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259251r961044_rule",
+          "+@id": "SV-259251r1268204_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-004700",
           "title": "The DBMS must map the PKI-authenticated identity to an associated user account.",
-          "description": "<VulnDiscussion>The DOD standard for authentication is DOD-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a DBMS user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication is DoW-approved PKI certificates. Once a PKI certificate has been validated, it must be mapped to a DBMS user account for the authenticated identity to be meaningful to the DBMS and useful for authorization decisions.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -6016,7 +6016,7 @@
         "title": "SRG-APP-000178-DB-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259252r961047_rule",
+          "+@id": "SV-259252r1268169_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004800",
@@ -6055,7 +6055,7 @@
         "title": "SRG-APP-000178-DB-000083",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259253r961047_rule",
+          "+@id": "SV-259253r1268169_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-004810",
@@ -6211,7 +6211,7 @@
         "title": "SRG-APP-000211-DB-000122",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259257r961095_rule",
+          "+@id": "SV-259257r1137655_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-005100",
@@ -6250,7 +6250,7 @@
         "title": "SRG-APP-000220-DB-000149",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259258r961113_rule",
+          "+@id": "SV-259258r1043179_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-005200",
@@ -6367,7 +6367,7 @@
         "title": "SRG-APP-000243-DB-000128",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259261r961149_rule",
+          "+@id": "SV-259261r1137656_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-005900",
@@ -6406,7 +6406,7 @@
         "title": "SRG-APP-000243-DB-000374",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259262r961149_rule",
+          "+@id": "SV-259262r1137658_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-006100",
@@ -6640,7 +6640,7 @@
         "title": "SRG-APP-000295-DB-000305",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259268r961221_rule",
+          "+@id": "SV-259268r1043182_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-006700",
@@ -6679,7 +6679,7 @@
         "title": "SRG-APP-000311-DB-000308",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259269r961269_rule",
+          "+@id": "SV-259269r1138540_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-006900",
@@ -6718,7 +6718,7 @@
         "title": "SRG-APP-000313-DB-000309",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259270r961272_rule",
+          "+@id": "SV-259270r1138541_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-007000",
@@ -6757,7 +6757,7 @@
         "title": "SRG-APP-000314-DB-000310",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259271r961275_rule",
+          "+@id": "SV-259271r1138542_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-007100",
@@ -7315,12 +7315,12 @@
         "title": "SRG-APP-000389-DB-000372",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259287r1015720_rule",
+          "+@id": "SV-259287r1268205_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-008800",
           "title": "The EDB Postgres Advanced Server must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
-          "description": "<VulnDiscussion>The DOD standard for authentication of an interactive user is the presentation of a Common Access Card (CAC) or other physical token bearing a valid, current, DOD-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization.\n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DOD, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The DoW standard for authentication of an interactive user is the presentation of a common access card (CAC) or other physical token bearing a valid, current, DoW-issued Public Key Infrastructure (PKI) certificate, coupled with a Personal Identification Number (PIN) to be entered by the user at the beginning of each session and whenever reauthentication is required.\n\nWithout reauthentication, users may access resources or perform tasks for which they do not have authorization.\n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoW, the minimum circumstances requiring reauthentication are privilege escalation and role changes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -7360,7 +7360,7 @@
         "title": "SRG-APP-000416-DB-000380",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259288r962034_rule",
+          "+@id": "SV-259288r1117186_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-009000",
@@ -7399,12 +7399,12 @@
         "title": "SRG-APP-000427-DB-000385",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259289r961596_rule",
+          "+@id": "SV-259289r1268208_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-009100",
-          "title": "The EDB Postgres Advanced Server must only accept end entity certificates issued by DOD PKI or DOD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
-          "description": "<VulnDiscussion>Only DOD-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place which are sufficient for DOD systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DOD-approved PKIs is published at http://iase.disa.mil/pki-pke/interoperability.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The EDB Postgres Advanced Server must only accept end entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
+          "description": "<VulnDiscussion>Only DoW-approved external PKIs have been evaluated to ensure that they have security controls and identity vetting procedures in place which are sufficient for DoW systems to rely on the identity asserted in the certificate. PKIs lacking sufficient security controls and identity vetting procedures risk being compromised and issuing certificates that enable adversaries to impersonate legitimate users. \n\nThe authoritative list of DoW-approved PKIs is published at https://cyber.mil/pki-pke/interoperability.\n\nThis requirement focuses on communications protection for the DBMS session rather than for the network packet.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target EDB Postgres Advanced Server",
             "dc:publisher": "DISA",
@@ -7417,19 +7417,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Revoke trust in any certificates not issued by a DOD-approved certificate authority.\n\nContact the organization's certificate issuer and request a new certificate that is issued by a DOD-approved certificate authority.",
-            "+@fixref": "F-62937r938919_fix"
+            "+content": "Revoke trust in any certificates not issued by a DoW-approved certificate authority.\n\nContact the organization's certificate issuer and request a new certificate that is issued by a DoW-approved certificate authority.",
+            "+@fixref": "F-62937r1268207_fix"
           },
           "fix": {
-            "+@id": "F-62937r938919_fix"
+            "+@id": "F-62937r1268207_fix"
           },
           "check": {
-            "+@system": "C-63028r938918_chk",
+            "+@system": "C-63028r1268206_chk",
             "check-content-ref": {
               "+@href": "EDB_Postgres_Advanced_Server_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify that the root.crt certificate was issued by a valid DOD entity.\n\n> openssl x509 -in /<PGDATA directory>/root.crt -text | grep -i \"issuer\". The default path for the PostgreSQL data directory (PGDATA) is /var/lib/edb/as<version>/data, but this will vary according to local circumstances.\n\nExample:\n> openssl x509 -in /var/lib/edb/as15/data/root.crt -text | grep -i \"issuer\"\n\nIf any issuers are listed that are not approved DOD certificate authorities, this is a finding."
+            "check-content": "Verify the \"root.crt\" certificate was issued by a valid DoW entity.\n\n> openssl x509 -in /<PGDATA directory>/root.crt -text | grep -i \"issuer\". The default path for the PostgreSQL data directory (PGDATA) is /var/lib/edb/as<version>/data, but this will vary according to local circumstances.\n\nExample:\n> openssl x509 -in /var/lib/edb/as15/data/root.crt -text | grep -i \"issuer\"\n\nIf any issuers are listed that are not approved DoW certificate authorities, this is a finding."
           }
         }
       },
@@ -7438,7 +7438,7 @@
         "title": "SRG-APP-000428-DB-000386",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259290r961599_rule",
+          "+@id": "SV-259290r1018552_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-009200",
@@ -7477,7 +7477,7 @@
         "title": "SRG-APP-000429-DB-000387",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259291r961602_rule",
+          "+@id": "SV-259291r1018553_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-009300",
@@ -7633,7 +7633,7 @@
         "title": "SRG-APP-000456-DB-000390",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259295r1001008_rule",
+          "+@id": "SV-259295r1137667_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-009900",
@@ -8803,7 +8803,7 @@
         "title": "SRG-APP-000514-DB-000381",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259325r961857_rule",
+          "+@id": "SV-259325r1137660_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-012700",
@@ -8842,7 +8842,7 @@
         "title": "SRG-APP-000514-DB-000382",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259326r961857_rule",
+          "+@id": "SV-259326r1137661_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-012800",
@@ -8881,7 +8881,7 @@
         "title": "SRG-APP-000514-DB-000383",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259327r961857_rule",
+          "+@id": "SV-259327r1137664_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "EPAS-00-012900",
@@ -8959,7 +8959,7 @@
         "title": "SRG-APP-000456-DB-000400",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265883r999555_rule",
+          "+@id": "SV-265883r1138543_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "EPAS-00-013200",

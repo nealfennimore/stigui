@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-05-08"
+      "+@date": "2026-08-19"
     },
     "title": "Mozilla Firefox Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 8 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 9 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -1384,12 +1384,12 @@
         "title": "SRG-APP-000177",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251547r1067550_rule",
+          "+@id": "SV-251547r1260193_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000003",
           "title": "Firefox must be configured to ask which certificate to present to a website when a certificate is required.",
-          "description": "<VulnDiscussion>When a website asks for a certificate for user authentication, Firefox must be configured to have the user choose which certificate to present. Websites within DOD require user authentication for access, which increases security for DOD information. Access will be denied to the user if certificate management is not configured.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>When a website asks for a certificate for user authentication, Firefox must be configured to have the user choose which certificate to present. Websites within DoW require user authentication for access, which increases security for DoW information. Access will be denied to the user if certificate management is not configured.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -1579,12 +1579,12 @@
         "title": "SRG-APP-000141",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251552r960963_rule",
+          "+@id": "SV-251552r1260195_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000008",
           "title": "Firefox must be configured to not use a password store with or without a master password.",
-          "description": "<VulnDiscussion>Firefox can be set to store passwords for sites visited by the user. These individual passwords are stored in a file and can be protected by a master password. Autofill of the password can then be enabled when the site is visited. This feature could also be used to autofill the certificate PIN, which could lead to compromise of DoD information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Firefox can be set to store passwords for sites visited by the user. These individual passwords are stored in a file and can be protected by a master password. Autofill of the password can then be enabled when the site is visited. This feature could also be used to autofill the certificate PIN, which could lead to compromise of DoW information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -1598,10 +1598,10 @@
           },
           "fixtext": {
             "+content": "Windows group policy:\n1. Open the group policy editor tool with \"gpedit.msc\".\n2. Navigate to Policy Path: Computer Configuration\\Administrative Templates\\Mozilla\\Firefox\nPolicy Name: PasswordManager\nPolicy State: Disabled\n\nmacOS \"plist\" file:\nAdd the following:\n<key>PasswordManagerEnabled</key>\n<false/>\n\nLinux \"policies.json\" file:\nAdd the following in the policies section:\n\"PasswordManagerEnabled\": false",
-            "+@fixref": "F-54941r822410_fix"
+            "+@fixref": "F-54941r1260194_fix"
           },
           "fix": {
-            "+@id": "F-54941r822410_fix"
+            "+@id": "F-54941r1260194_fix"
           },
           "check": {
             "+@system": "C-54987r807126_chk",
@@ -1852,12 +1852,12 @@
         "title": "SRG-APP-000175",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251560r1067559_rule",
+          "+@id": "SV-251560r1260192_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000016",
-          "title": "Firefox must have the DOD root certificates installed.",
-          "description": "<VulnDiscussion>The DOD root certificates will ensure that the trust chain is established for server certificates issued from the DOD Certificate Authority (CA).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Firefox must have the DoW root certificates installed.",
+          "description": "<VulnDiscussion>The DoW root certificates will ensure that the trust chain is established for server certificates issued from the DoW Certificate Authority (CA).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -1870,19 +1870,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Install the DOD root certificates. Other AO-approved certificates may also be used. Certificates designed for SIPRNet may be used as appropriate.\n\nOn Windows, import certificates from the operating system by using Certificates >> Import Enterprise Roots (Certificates) via policy or Group Policy Object (GPO).",
-            "+@fixref": "F-54949r1067558_fix"
+            "+content": "Install the DoW root certificates. Other AO-approved certificates may also be used. Certificates designed for SIPRNet may be used as appropriate.\n\nOn Windows, import certificates from the operating system by using Certificates >> Import Enterprise Roots (Certificates) via policy or Group Policy Object (GPO).",
+            "+@fixref": "F-54949r1260191_fix"
           },
           "fix": {
-            "+@id": "F-54949r1067558_fix"
+            "+@id": "F-54949r1260191_fix"
           },
           "check": {
-            "+@system": "C-54995r1067557_chk",
+            "+@system": "C-54995r1260190_chk",
             "check-content-ref": {
               "+@href": "Mozilla_Firefox_2021_VERSION_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Type \"about:preferences#privacy\" in the browser window. \n\nScroll down to the bottom and select \"View Certificates...\".\n\nIn the Certificate Manager window, select the \"Authorities\" tab.\n\nScroll through the Certificate Name list to the U.S. Government heading. Look for the entries for DOD Root CA 3, DOD Root CA 4, and DOD Root CA 5.\n\nIf there are entries for DOD Root CA 3, DOD Root CA 4, and DOD Root CA 5, select them individually.\n\nClick \"View\".\n\nVerify the issuer name is \"US Government\".\n\nIf there are no entries for the appropriate DOD root certificates, this is a finding. If other AO-approved certificates are used, this is not a finding. If SIPRNet-specific certificates are used, this is not a finding.\n\nNote: In a Windows environment, use of policy setting \"security.enterprise_roots.enabled=true\" will point Firefox to the Windows Trusted Root Certification Authority Store. This is not a finding. It can also be set via the policy Certificates >> ImportEnterpriseRoots, which can be verified via \"about:policies\"."
+            "check-content": "Type \"about:preferences#privacy\" in the browser window. \n\nScroll down to the bottom and select \"View Certificates...\".\n\nIn the Certificate Manager window, select the \"Authorities\" tab.\n\nScroll through the Certificate Name list to the U.S. Government heading. Look for the entries for DOD Root CA 3, DOD Root CA 5, and DOD Root CA 6.\n\nIf there are entries for DOD Root CA 3, DOD Root CA 5, and DOD Root CA 6, select them individually.\n\nClick \"View\".\n\nVerify the issuer name is \"US Government\".\n\nIf there are no entries for the appropriate DoW root certificates, this is a finding. If other AO-approved certificates are used, this is not a finding. If SIPRNet-specific certificates are used, this is not a finding.\n\nNote: In a Windows environment, use of policy setting \"security.enterprise_roots.enabled=true\" will point Firefox to the Windows Trusted Root Certification Authority Store. This is not a finding. It can also be set via the policy Certificates >> ImportEnterpriseRoots, which can be verified via \"about:policies\"."
           }
         }
       },
@@ -2359,12 +2359,12 @@
         "title": "SRG-APP-000141",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-251577r960963_rule",
+          "+@id": "SV-251577r1260196_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000033",
           "title": "Firefox must be configured so that DNS over HTTPS is disabled.",
-          "description": "<VulnDiscussion>DNS over HTTPS has generally not been adopted in the DoD. DNS is tightly controlled.\n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include, but are not limited to, advertising software or browser plug-ins not related to requirements or providing a wide array of functionality not required for every mission, but cannot be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>DNS over HTTPS has generally not been adopted in the DoW. DNS is tightly controlled.\n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of nonessential capabilities include, but are not limited to, advertising software or browser plug-ins not related to requirements or providing a wide array of functionality not required for every mission, but cannot be disabled.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -2554,12 +2554,12 @@
         "title": "SRG-APP-000141",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-252909r960963_rule",
+          "+@id": "SV-252909r1260198_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "FFOX-00-000039",
           "title": "Firefox Studies must be disabled.",
-          "description": "<VulnDiscussion>Studies try out different features and ideas before they are released to all Firefox users. Testing beta software is not in the DoD user's mission.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Studies try out different features and ideas before they are released to all Firefox users. Testing beta software is not in the DoW user's mission.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Mozilla Firefox 2021 VERSION",
             "dc:publisher": "DISA",
@@ -2579,7 +2579,7 @@
             "+@id": "F-56312r832312_fix"
           },
           "check": {
-            "+@system": "C-56362r836407_chk",
+            "+@system": "C-56362r1260197_chk",
             "check-content-ref": {
               "+@href": "Mozilla_Firefox_2021_VERSION_STIG.xml",
               "+@name": "M"

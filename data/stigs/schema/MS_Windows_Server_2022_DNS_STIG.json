@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-06-03"
+      "+@date": "2026-08-27"
     },
     "title": "Microsoft Windows Server Domain Name System (DNS) Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 5 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 6 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -355,10 +355,6 @@
           },
           {
             "+@idref": "V-259411",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259412",
             "+@selected": "true"
           },
           {
@@ -689,10 +685,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259412",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259414",
             "+@selected": "true"
           },
@@ -1017,10 +1009,6 @@
           },
           {
             "+@idref": "V-259411",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259412",
             "+@selected": "true"
           },
           {
@@ -1351,10 +1339,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259412",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259414",
             "+@selected": "true"
           },
@@ -1679,10 +1663,6 @@
           },
           {
             "+@idref": "V-259411",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259412",
             "+@selected": "true"
           },
           {
@@ -2013,10 +1993,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259412",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259414",
             "+@selected": "true"
           },
@@ -2341,10 +2317,6 @@
           },
           {
             "+@idref": "V-259411",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-259412",
             "+@selected": "true"
           },
           {
@@ -2675,10 +2647,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259412",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259414",
             "+@selected": "true"
           },
@@ -3006,10 +2974,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-259412",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-259414",
             "+@selected": "true"
           },
@@ -3034,7 +2998,7 @@
         "title": "SRG-APP-000001-DNS-000115",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259334r960735_rule",
+          "+@id": "SV-259334r1266554_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000001",
@@ -3202,7 +3166,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259338r1028386_rule",
+          "+@id": "SV-259338r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000006",
@@ -3358,11 +3322,11 @@
         "title": "SRG-APP-000383-DNS-000047",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259342r1156949_rule",
+          "+@id": "SV-259342r1266544_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000010",
-          "title": "Forwarders on an authoritative Windows DNS Server, if enabled for external resolution, must forward only to an internal, non-Active Directory (AD)-integrated DNS server or to the DOD Enterprise Recursive Services (ERS).",
+          "title": "Forwarders on an authoritative Windows DNS Server, if enabled for external resolution, must forward only to an internal, non-Active Directory (AD)-integrated DNS server or to the DoW Enterprise Recursive Services (ERS).",
           "description": "<VulnDiscussion>A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to nonexistent hosts (which constitutes a denial of service) or hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server Domain Name System",
@@ -3376,19 +3340,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nReplace the forwarders being used with another DOD-managed DNS server or the DOD ERS.\n\nDeselect \"Use root hints if no forwarders are available\".",
-            "+@fixref": "F-62989r939730_fix"
+            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nReplace the forwarders being used with another DoW-managed DNS server or the DoW ERS.\n\nDeselect \"Use root hints if no forwarders are available\".",
+            "+@fixref": "F-62989r1266543_fix"
           },
           "fix": {
-            "+@id": "F-62989r939730_fix"
+            "+@id": "F-62989r1266543_fix"
           },
           "check": {
-            "+@system": "C-63081r939729_chk",
+            "+@system": "C-63081r1266542_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: If the Windows DNS Server is in the classified network, this check is not applicable. If forwarders are not being used, this is not applicable.\n\nNote: In Windows DNS Server, if forwarders are configured, the recursion setting must also be enabled because disabling recursion will disable forwarders.\n\nIf forwarders are not used, recursion must be disabled. In both cases, the use of root hints must be disabled.\n\nLog on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nReview the IP address(es) for the forwarder(s) use.\n\nIf the DNS server does not forward to another DOD-managed DNS server or to the DOD ERS, this is a finding.\n\nIf \"Use root hints if no forwarders are available\" is selected, this is a finding."
+            "check-content": "Note: If the Windows DNS Server is in the classified network, this check is not applicable. If forwarders are not being used, this is not applicable.\n\nNote: In Windows DNS Server, if forwarders are configured, the recursion setting must also be enabled because disabling recursion will disable forwarders.\n\nIf forwarders are not used, recursion must be disabled. In both cases, the use of root hints must be disabled.\n\nLog on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nPress the Windows key + R and execute \"dnsmgmt.msc\".\n\nOn the opened DNS Manager snap-in from the left pane, right-click on the server name for the DNS server and select \"Properties\".\n\nClick the \"Forwarders\" tab.\n\nReview the IP address(es) for the forwarder(s) use.\n\nIf the DNS server does not forward to another DoW-managed DNS server or to the DoW ERS, this is a finding.\n\nIf \"Use root hints if no forwarders are available\" is selected, this is a finding."
           }
         }
       },
@@ -3787,7 +3751,7 @@
         "title": "SRG-APP-000516-DNS-000092",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259353r961863_rule",
+          "+@id": "SV-259353r1266546_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000022",
@@ -3812,12 +3776,12 @@
             "+@id": "F-63000r939763_fix"
           },
           "check": {
-            "+@system": "C-63092r939762_chk",
+            "+@system": "C-63092r1266545_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Consult with the system administrator to review the external Windows DNS Server's DOD approved firewall policy.\n\nThe inbound TCP and UDP ports 53 rule should be configured to only restrict IP addresses from the internal network.\n\nIf the DOD-approved firewall policy is not configured with the restriction, consult with the network firewall administrator to confirm the restriction on the network firewall.\n\nIf neither the DNS server's DOD approved firewall policy nor the network firewall is configured to block internal hosts from querying the external DNS server, this is a finding."
+            "check-content": "Consult with the system administrator to review the external Windows DNS Server's DoW approved firewall policy.\n\nThe inbound TCP and UDP ports 53 rule should be configured to only restrict IP addresses from the internal network.\n\nIf the DoW-approved firewall policy is not configured with the restriction, consult with the network firewall administrator to confirm the restriction on the network firewall.\n\nIf neither the DNS server's DoW approved firewall policy nor the network firewall is configured to block internal hosts from querying the external DNS server, this is a finding."
           }
         }
       },
@@ -4060,7 +4024,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259360r961863_rule",
+          "+@id": "SV-259360r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000031",
@@ -4099,7 +4063,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259361r1018796_rule",
+          "+@id": "SV-259361r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000032",
@@ -4216,7 +4180,7 @@
         "title": "SRG-APP-000001-DNS-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259365r960735_rule",
+          "+@id": "SV-259365r1266553_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000037",
@@ -4540,7 +4504,7 @@
         "title": "SRG-APP-000420-DNS-000053",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259374r1156950_rule",
+          "+@id": "SV-259374r1266541_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000046",
@@ -4564,19 +4528,19 @@
             }
           ],
           "fixtext": {
-            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account. \n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nSelect \"Use the following IP address\" and populate with an IP address, subnet mask, and default gateway.",
-            "+@fixref": "F-63021r1081083_fix"
+            "+content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account. \n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\nSelect \"Use the following IP address\" and populate with an IPv4 address, subnet mask, and default gateway. \nClick \"Ok\".\n\nOr\n\nSelect \"Internet Protocol Version 6 (TCP/IPv6)\" and click \"Properties\".\nSelect \"Use the following IP address\" and populate with an IPv6 address, subnet prefix length (typically 64), and default gateway.\nClick \"Ok\".",
+            "+@fixref": "F-63021r1266540_fix"
           },
           "fix": {
-            "+@id": "F-63021r1081083_fix"
+            "+@id": "F-63021r1266540_fix"
           },
           "check": {
-            "+@system": "C-63113r1081082_chk",
+            "+@system": "C-63113r1266539_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\n\nVerify the \"Use the following IP address\" is selected, with an IP address, subnet mask, and default gateway assigned.\n\nIf the \"Use the following IP address\" is not selected with a configured IP address, subnet mask, and default gateway, this is a finding."
+            "check-content": "Log on to the DNS server using the Domain Admin or Enterprise Admin account or Local Administrator account.\n\nUse \"ipconfig /all\" to identify all network adapters. \nor\nLocate the \"Network Internet Access\" icon, right-click on it, and select \"Open Network & Sharing Center\".\n\nClick \"Change adapter settings\".\n\nRight-click on the Ethernet and click \"Properties\".\n\nSelect \"Internet Protocol Version 4 (TCP/IPv4)\" and click \"Properties\".\nVerify the \"Use the following IP address\" is selected, with an IPv4 address, subnet mask, and default gateway assigned.\n\nOr\n\nSelect \"Internet Protocol Version 4 (TCP/IPv6)\" and click \"Properties\".\nVerify the \"Use the following IP address\" is selected, with an IPv6 address, subnet prefix length, and default gateway assigned.\n\nIf the \"Use the following IP address\" is not selected with a configured IP address (either IPv4 or IPv6), subnet mask (or prefix length), and default gateway, this is a finding."
           }
         }
       },
@@ -5260,12 +5224,12 @@
         "title": "SRG-APP-000427-DNS-000060",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259392r961596_rule",
+          "+@id": "SV-259392r1266560_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000064",
-          "title": "The Windows DNS Server must use an approved DOD PKI certificate authority.",
-          "description": "<VulnDiscussion>Untrusted certificate authorities (CA) can issue certificates, but the certificates may be issued by organizations or individuals that seek to compromise DOD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DOD-approved CA, trust of this CA has not been established.\n\nThe DOD will only accept PKI certificates obtained from a DOD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates.\n\nTSIG and SIG(0) are not configurable in Windows DNS Server. To meet the requirement for authentication between Windows DNS Servers, IPsec must be implemented between the Windows DNS Servers.\n\nNote: If multiple certificates from the same CA are present on the DNS server, IPsec authentication might fail due to an incorrect certificate being chosen. For this purpose, an Active Directory Certificate Services (AD CS) role must be installed and configured as an Enterprise certificate authority (CA).\n\nRefer to the Microsoft Windows Server DNS Overview.pdf for references on deploying certificates for this procedure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Windows DNS Server must use an approved DoW PKI certificate authority.",
+          "description": "<VulnDiscussion>Untrusted certificate authorities (CA) can issue certificates, but the certificates may be issued by organizations or individuals that seek to compromise DoW systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoW-approved CA, trust of this CA has not been established.\n\nThe DoW will only accept PKI certificates obtained from a DoW-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates.\n\nTSIG and SIG(0) are not configurable in Windows DNS Server. To meet the requirement for authentication between Windows DNS Servers, IPsec must be implemented between the Windows DNS Servers.\n\nNote: If multiple certificates from the same CA are present on the DNS server, IPsec authentication might fail due to an incorrect certificate being chosen. For this purpose, an Active Directory Certificate Services (AD CS) role must be installed and configured as an Enterprise certificate authority (CA).\n\nRefer to the Microsoft Windows Server DNS Overview.pdf for references on deploying certificates for this procedure.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Microsoft Windows Server Domain Name System",
             "dc:publisher": "DISA",
@@ -5857,7 +5821,7 @@
         "title": "SRG-APP-000473-DNS-000072",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-259407r961734_rule",
+          "+@id": "SV-259407r1266550_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "WDNS-22-000079",
@@ -5875,19 +5839,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Install an approved DOD system monitoring solution.",
-            "+@fixref": "F-63054r939925_fix"
+            "+content": "Install an approved DoW system monitoring solution.",
+            "+@fixref": "F-63054r1266549_fix"
           },
           "fix": {
-            "+@id": "F-63054r939925_fix"
+            "+@id": "F-63054r1266549_fix"
           },
           "check": {
-            "+@system": "C-63146r939924_chk",
+            "+@system": "C-63146r1266548_chk",
             "check-content-ref": {
               "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
               "+@name": "M"
             },
-            "check-content": "This functionality should be performed by an approved and properly configured DOD system monitoring solution. \n\nIf all required DOD products are not installed and /or the installed productions are not enabled, this is a finding."
+            "check-content": "This functionality should be performed by an approved and properly configured DoW system monitoring solution. \n\nIf all required DoW products are not installed and /or the installed productions are not enabled, this is a finding."
           }
         }
       },
@@ -6044,45 +6008,6 @@
               "+@name": "M"
             },
             "check-content": "Review the DNS implementation's authentication methods and settings to determine if multifactor authentication is used to gain nonlocal access for maintenance and diagnostics.\n\nIf multifactor authentication is not used, this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-259412",
-        "title": "SRG-APP-000226-DNS-000032",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-259412r961125_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "WDNS-22-000094",
-          "title": "In the event of a system failure, the Windows DNS Server must preserve any information necessary to determine cause of failure and any information necessary to return to operations with least disruption to mission processes.",
-          "description": "<VulnDiscussion>Failure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. Preserving application state information helps to facilitate application restart and return to the operational mode of the organization with less disruption to mission-essential processes.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Microsoft Windows Server Domain Name System",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Microsoft Windows Server Domain Name System",
-            "dc:identifier": "5576"
-          },
-          "ident": {
-            "+content": "CCI-001665",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "Configure the policy value for Computer Configuration >> Windows Settings >> Security Settings >> Advanced Audit Policy Configuration >> System Audit Policies >> Object Access >> Audit File System with \"Failure\" selected.",
-            "+@fixref": "F-63059r939940_fix"
-          },
-          "fix": {
-            "+@id": "F-63059r939940_fix"
-          },
-          "check": {
-            "+@system": "C-63151r939939_chk",
-            "check-content-ref": {
-              "+@href": "Microsoft_Windows_Server_Domain_Name_System__STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Use the AuditPol tool to review the current Audit Policy configuration:\n\nOpen a Command Prompt with elevated privileges (\"Run as Administrator\").\n\nEnter \"AuditPol /get /category:*\".\n\nCompare the AuditPol settings with the following. If the system does not audit the following, this is a finding.\n\nObject Access >> File System - Failure"
           }
         }
       },

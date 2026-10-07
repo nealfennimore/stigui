@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-10-29"
+      "+@date": "2026-08-25"
     },
     "title": "HPE Aruba Networking AOS VPN Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 22 Oct 2024",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -913,12 +913,12 @@
         "title": "SRG-NET-000063-VPN-000220",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266983r1040715_rule",
+          "+@id": "SV-266983r1264043_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000220",
           "title": "AOS, when used as a VPN Gateway, must be configured to use IPsec with SHA-2 at 384 bits or greater for hashing to protect the integrity of remote access sessions.",
-          "description": "<VulnDiscussion>Without strong cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nSHA-1 is considered a compromised hashing standard and is being phased out of use by industry and government standards. DOD systems must not be configured to use SHA-1 for integrity of remote access sessions. \n\nThe remote access VPN provides access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nSatisfies: SRG-NET-000063-VPN-000220, SRG-NET-000074-VPN-000250, SRG-NET-000168-VPN-000600, SRG-NET-000230-VPN-000780</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without strong cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nSHA-1 is considered a compromised hashing standard and is being phased out of use by industry and government standards. DoW systems must not be configured to use SHA-1 for integrity of remote access sessions. \n\nThe remote access VPN provides access to DoW nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nSatisfies: SRG-NET-000063-VPN-000220, SRG-NET-000074-VPN-000250, SRG-NET-000168-VPN-000600, SRG-NET-000230-VPN-000780</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",
@@ -966,12 +966,12 @@
         "title": "SRG-NET-000164-VPN-000560",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266984r1040891_rule",
+          "+@id": "SV-266984r1264045_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000560",
           "title": "AOS, when used as a VPN Gateway and using public key infrastructure (PKI)-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
-          "description": "<VulnDiscussion>Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted. To meet this requirement, the information system must create trusted channels between itself and remote trusted authorized IT product (e.g., syslog server) entities that protect the confidentiality and integrity of communications. The information system must create trusted paths between itself and remote administrators and users that protect the confidentiality and integrity of communications.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is most often used in the context of public key infrastructures, X.509 digital certificates, and Domain Name System Security Extensions (DNSSEC). However, applications that do not use a trusted path are not approved for nonlocal and remote management of DOD information systems.\n\nUse of SSHv2 to establish a trusted channel is approved. Use of FTP, TELNET, HTTP, and SNMPV1 is not approved because they violate the trusted channel rule set. Use of web management tools that are not validated by common criteria may also violate the trusted channel rule set.\n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a certificate authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA.\n\nThis requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted. To meet this requirement, the information system must create trusted channels between itself and remote trusted authorized IT product (e.g., syslog server) entities that protect the confidentiality and integrity of communications. The information system must create trusted paths between itself and remote administrators and users that protect the confidentiality and integrity of communications.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is most often used in the context of public key infrastructures, X.509 digital certificates, and Domain Name System Security Extensions (DNSSEC). However, applications that do not use a trusted path are not approved for nonlocal and remote management of DoW information systems.\n\nUse of SSHv2 to establish a trusted channel is approved. Use of FTP, TELNET, HTTP, and SNMPV1 is not approved because they violate the trusted channel rule set. Use of web management tools that are not validated by common criteria may also violate the trusted channel rule set.\n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a certificate authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA.\n\nThis requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",
@@ -991,12 +991,12 @@
             "+@id": "F-70811r1040717_fix"
           },
           "check": {
-            "+@system": "C-70908r1040891_chk",
+            "+@system": "C-70908r1264044_chk",
             "check-content-ref": {
               "+@href": "HPE_Aruba_Networking_AOS_VPN_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Verify the AOS configuration with the following command:\nshow crypto-local pki trusted CA\n\n2. Note the name(s) of each trust CA.\nshow crypto-local pki trustedCA <name>\n\n3. Verify that each trusted CA is a valid DOD PKI CA. \n\nIf the trusted CAs are not DOD PKI or no DOD PKI CAs are present, this is a finding."
+            "check-content": "1. Verify the AOS configuration with the following command:\nshow crypto-local pki trusted CA\n\n2. Note the name(s) of each trust CA.\nshow crypto-local pki trustedCA <name>\n\n3. Verify that each trusted CA is a valid DoW PKI CA. \n\nIf the trusted CAs are not DoW PKI or no DoW PKI CAs are present, this is a finding."
           }
         }
       },
@@ -1005,12 +1005,12 @@
         "title": "SRG-NET-000317-VPN-001090",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266985r1040721_rule",
+          "+@id": "SV-266985r1264046_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "ARBA-VN-001090",
           "title": "AOS, when used as an IPsec VPN Gateway, must use Advanced Encryption Standard (AES) encryption for the Internet Key Exchange (IKE) proposal to protect confidentiality of remote access sessions.",
-          "description": "<VulnDiscussion>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAES is the Federal Information Processing Standard (FIPS)-validated cipher block cryptographic algorithm approved for use in DOD. For an algorithm implementation to be listed on a FIPS 140-2/140-3 cryptographic module validation certificate as an approved security function, the algorithm implementation must meet all the requirements of FIPS 140-2/140-3 and must successfully complete the cryptographic algorithm validation process. Currently, the National Institute of Standards and Technology (NIST) has approved the following confidentiality modes to be used with approved block ciphers in a series of special publications: ECB, CBC, OFB, CFB, CTR, XTS-AES, FF1, FF3, CCM, GCM, KW, KWP, and TKW.\n\nSatisfies: SRG-NET-000317-VPN-001090, SRG-NET-000371-VPN-001650, SRG-NET-000400-VPN-001940, SRG-NET-000525-VPN-002330</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DoW nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAES is the Federal Information Processing Standard (FIPS)-validated cipher block cryptographic algorithm approved for use in DoW. For an algorithm implementation to be listed on a FIPS 140-2/140-3 cryptographic module validation certificate as an approved security function, the algorithm implementation must meet all the requirements of FIPS 140-2/140-3 and must successfully complete the cryptographic algorithm validation process. Currently, the National Institute of Standards and Technology (NIST) has approved the following confidentiality modes to be used with approved block ciphers in a series of special publications: ECB, CBC, OFB, CFB, CTR, XTS-AES, FF1, FF3, CCM, GCM, KW, KWP, and TKW.\n\nSatisfies: SRG-NET-000317-VPN-001090, SRG-NET-000371-VPN-001650, SRG-NET-000400-VPN-001940, SRG-NET-000525-VPN-002330</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",
@@ -1054,7 +1054,7 @@
         "title": "SRG-NET-000352-VPN-001460",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266986r1040894_rule",
+          "+@id": "SV-266986r1264048_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-001460",
@@ -1072,11 +1072,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DOD PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates.\n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, \"ServerCert\" type, and click \"Submit\". \n5. Navigate to Configuration >> System >> Admin and choose the imported certificate under \"Server Certificate\" and click \"Submit\". \n6. Click Pending Changes >> Deploy Changes. \n\nconfigure terminal\ncrypto ipsec transform-set <name> esp-aes256-gcm\ncrypto isakmp policy <#>\nauthentication ecdsa-384\nencryption aes256\ngroup 20\nhash sha2-384-192\nprf prf-hmac-sha384\nversion v2\nexit\ncrypto-local ipsec-map <name> <priority>\nset transform-set <set created earlier name>\n<configure VPN settings as needed>\nexit\nwrite memory",
-            "+@fixref": "F-70813r1040894_fix"
+            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DoW PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates.\n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, \"ServerCert\" type, and click \"Submit\". \n5. Navigate to Configuration >> System >> Admin and choose the imported certificate under \"Server Certificate\" and click \"Submit\". \n6. Click Pending Changes >> Deploy Changes. \n\nconfigure terminal\ncrypto ipsec transform-set <name> esp-aes256-gcm\ncrypto isakmp policy <#>\nauthentication ecdsa-384\nencryption aes256\ngroup 20\nhash sha2-384-192\nprf prf-hmac-sha384\nversion v2\nexit\ncrypto-local ipsec-map <name> <priority>\nset transform-set <set created earlier name>\n<configure VPN settings as needed>\nexit\nwrite memory",
+            "+@fixref": "F-70813r1264047_fix"
           },
           "fix": {
-            "+@id": "F-70813r1040894_fix"
+            "+@id": "F-70813r1264047_fix"
           },
           "check": {
             "+@system": "C-70910r1040722_chk",
@@ -1171,12 +1171,12 @@
         "title": "SRG-NET-000041-VPN-000110",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266989r1040733_rule",
+          "+@id": "SV-266989r1264050_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000110",
-          "title": "The Remote Access VPN Gateway and/or client must display the Standard Mandatory DOD Notice and Consent Banner before granting remote access to the network.",
-          "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the network ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nIn most VPN implementations, the banner is configured in the management backplane (NDM Security Requirements Guide) and serves as the presentation for the VPN client connection as well as for administrator logon to the device management tool/backplane.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist. This requirement applies to VPN gateways that have the concept of a user account and have the logon function residing on the VPN gateway.\n\nThe banner must be formatted in accordance with applicable DOD policy. Use the following verbiage for VPN gateways that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-NET-000041-VPN-000110, SRG-NET-000042-VPN-000120, SRG-NET-000043-VPN-000130</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Remote Access VPN Gateway and/or client must display the Standard Mandatory DoW Notice and Consent Banner before granting remote access to the network.",
+          "description": "<VulnDiscussion>Display of a standardized and approved use notification before granting access to the network ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nIn most VPN implementations, the banner is configured in the management backplane (NDM Security Requirements Guide) and serves as the presentation for the VPN client connection as well as for administrator logon to the device management tool/backplane.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist. This requirement applies to VPN gateways that have the concept of a user account and have the logon function residing on the VPN gateway.\n\nThe banner must be formatted in accordance with applicable DoW policy. Use the following verbiage for VPN gateways that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-NET-000041-VPN-000110, SRG-NET-000042-VPN-000120, SRG-NET-000043-VPN-000130</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",
@@ -1222,12 +1222,12 @@
             "+@id": "F-70816r1040732_fix"
           },
           "check": {
-            "+@system": "C-70913r1040731_chk",
+            "+@system": "C-70913r1264049_chk",
             "check-content-ref": {
               "+@href": "HPE_Aruba_Networking_AOS_VPN_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Verify the AOS configuration with the following command:\nshow bannervia\n\nIf the Standard Mandatory DOD Notice and Consent Banner is not set, this is a finding."
+            "check-content": "Verify the AOS configuration with the following command:\nshow bannervia\n\nIf the Standard Mandatory DoW Notice and Consent Banner is not set, this is a finding."
           }
         }
       },
@@ -1314,7 +1314,7 @@
         "title": "SRG-NET-000019-VPN-000040",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266992r1040904_rule",
+          "+@id": "SV-266992r1138024_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000040",
@@ -1392,7 +1392,7 @@
         "title": "SRG-NET-000166-VPN-000580",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266994r1040748_rule",
+          "+@id": "SV-266994r1264052_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000580",
@@ -1410,11 +1410,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DOD PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates. \n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\".\n5. Click Pending Changes >> Deploy Changes.\n\nContinue configuring with the CLI:\nconfigure terminal\ncrypto-local isakmp ca-certificate <CA certificate name>\ncrypto-local isakmp certificate-group server-certificate <EC certificate name> ca-certificate <CA certificate name>\nwrite memory\n\ncrypto dynamic-map <name> <priority>\nversion v2\nset pfs group20\nset transform-set default-gcm256\nset security-association lifetime seconds 28800\nexit\nwrite memory\n\naaa authentication-server radius <name>\nhost <A.B.C.D or X:X:X:X::X or hostname>\nkey <preshared key>\nenable\nexit\nwrite memory\n\naaa server-group <name>\nauth-server <name>\nexit\nwrite memory\n\nip access-list session <name>\nany any any permit \nipv6 any any any permit\nexit\nwrite memory\n\nuser-role <name>\naccess-list session <name>\nexit\nwrite memory\n\naaa authentication via auth-profile <name>\ndefault-role <name>\nclient-cert-enable\nserver-group <name>\nexit\nwrite memory\n\naaa authentication via connection-profile <name>\nauth-profile <name>\nenable-fips\nikev2-policy 10009\nikev2-proto\nikev2auth eap-tls\nipsecv2-cryptomap map <name> number <priority>\nmax-timeout value <0-65535>\nsuiteb-crypto\nvalidate-server-cert\nexit\nwrite memory\n\naaa authentication via web-auth default\nauth-profile <name>\nexit\nwrite memory\n\nuser-role <name>\nvia <name>\nexit\nwrite memory",
-            "+@fixref": "F-70821r1040747_fix"
+            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DoW PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates. \n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\".\n5. Click Pending Changes >> Deploy Changes.\n\nContinue configuring with the CLI:\nconfigure terminal\ncrypto-local isakmp ca-certificate <CA certificate name>\ncrypto-local isakmp certificate-group server-certificate <EC certificate name> ca-certificate <CA certificate name>\nwrite memory\n\ncrypto dynamic-map <name> <priority>\nversion v2\nset pfs group20\nset transform-set default-gcm256\nset security-association lifetime seconds 28800\nexit\nwrite memory\n\naaa authentication-server radius <name>\nhost <A.B.C.D or X:X:X:X::X or hostname>\nkey <preshared key>\nenable\nexit\nwrite memory\n\naaa server-group <name>\nauth-server <name>\nexit\nwrite memory\n\nip access-list session <name>\nany any any permit \nipv6 any any any permit\nexit\nwrite memory\n\nuser-role <name>\naccess-list session <name>\nexit\nwrite memory\n\naaa authentication via auth-profile <name>\ndefault-role <name>\nclient-cert-enable\nserver-group <name>\nexit\nwrite memory\n\naaa authentication via connection-profile <name>\nauth-profile <name>\nenable-fips\nikev2-policy 10009\nikev2-proto\nikev2auth eap-tls\nipsecv2-cryptomap map <name> number <priority>\nmax-timeout value <0-65535>\nsuiteb-crypto\nvalidate-server-cert\nexit\nwrite memory\n\naaa authentication via web-auth default\nauth-profile <name>\nexit\nwrite memory\n\nuser-role <name>\nvia <name>\nexit\nwrite memory",
+            "+@fixref": "F-70821r1264051_fix"
           },
           "fix": {
-            "+@id": "F-70821r1040747_fix"
+            "+@id": "F-70821r1264051_fix"
           },
           "check": {
             "+@system": "C-70918r1040746_chk",
@@ -1431,7 +1431,7 @@
         "title": "SRG-NET-000138-VPN-000490",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266995r1040751_rule",
+          "+@id": "SV-266995r1264054_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000490",
@@ -1459,11 +1459,11 @@
             }
           ],
           "fixtext": {
-            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DOD PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates. \n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\".\n5. Click Pending Changes >> Deploy Changes.\n\nContinue configuring with the CLI:\nconfigure terminal\ncrypto-local isakmp ca-certificate <CA certificate name>\ncrypto-local isakmp certificate-group server-certificate <EC certificate name> ca-certificate <CA certificate name>\nwrite memory\n\ncrypto dynamic-map <name> <priority>\nversion v2\nset pfs group20\nset transform-set default-gcm256\nset security-association lifetime seconds 28800\nexit\nwrite memory\n\naaa authentication-server radius <name>\nhost <A.B.C.D or X:X:X:X::X or hostname>\nkey <preshared key>\nenable\nexit\nwrite memory\n\naaa server-group <name>\nauth-server <name>\nexit\nwrite memory\n\nip access-list session <name>\nany any any permit \nipv6 any any any permit\nexit\nwrite memory\n\nuser-role <name>\naccess-list session <name>\nexit\nwrite memory\n\naaa authentication via auth-profile <name>\ndefault-role <name>\nclient-cert-enable\nserver-group <name>\nexit\nwrite memory\n\naaa authentication via connection-profile <name>\nauth-profile <name>\nenable-fips\nikev2-policy 10009\nikev2-proto\nikev2auth eap-tls\nipsecv2-cryptomap map <name> number <priority>\nmax-timeout value <0-65535>\nsuiteb-crypto\nvalidate-server-cert\nexit\nwrite memory\n\naaa authentication via web-auth default\nauth-profile <name>\nexit\nwrite memory\n\nuser-role <name>\nvia <name>\nexit\nwrite memory",
-            "+@fixref": "F-70822r1040750_fix"
+            "+content": "Configure AOS with the following commands:\n\n1. crypto pki csr ec curve_name secp384r1 common_name <common_name> country <US> state_or_province <state> city <city> organization <org> unit <unit> email <email>\nshow crypto pki csr\n2. Use DoW PKI to generate a public certificate based on the CSR.\n3. Using the web GUI, navigate to Configuration >> System >> Certificates >> Import Certificates. \n4. Click the plus sign (+) and enter \"Certificate name:\", browse to the public certificate file, choose the appropriate format, select Certificate type: \"ServerCert\", and click \"Submit\".\n5. Click Pending Changes >> Deploy Changes.\n\nContinue configuring with the CLI:\nconfigure terminal\ncrypto-local isakmp ca-certificate <CA certificate name>\ncrypto-local isakmp certificate-group server-certificate <EC certificate name> ca-certificate <CA certificate name>\nwrite memory\n\ncrypto dynamic-map <name> <priority>\nversion v2\nset pfs group20\nset transform-set default-gcm256\nset security-association lifetime seconds 28800\nexit\nwrite memory\n\naaa authentication-server radius <name>\nhost <A.B.C.D or X:X:X:X::X or hostname>\nkey <preshared key>\nenable\nexit\nwrite memory\n\naaa server-group <name>\nauth-server <name>\nexit\nwrite memory\n\nip access-list session <name>\nany any any permit \nipv6 any any any permit\nexit\nwrite memory\n\nuser-role <name>\naccess-list session <name>\nexit\nwrite memory\n\naaa authentication via auth-profile <name>\ndefault-role <name>\nclient-cert-enable\nserver-group <name>\nexit\nwrite memory\n\naaa authentication via connection-profile <name>\nauth-profile <name>\nenable-fips\nikev2-policy 10009\nikev2-proto\nikev2auth eap-tls\nipsecv2-cryptomap map <name> number <priority>\nmax-timeout value <0-65535>\nsuiteb-crypto\nvalidate-server-cert\nexit\nwrite memory\n\naaa authentication via web-auth default\nauth-profile <name>\nexit\nwrite memory\n\nuser-role <name>\nvia <name>\nexit\nwrite memory",
+            "+@fixref": "F-70822r1264053_fix"
           },
           "fix": {
-            "+@id": "F-70822r1040750_fix"
+            "+@id": "F-70822r1264053_fix"
           },
           "check": {
             "+@system": "C-70919r1040749_chk",
@@ -1480,12 +1480,12 @@
         "title": "SRG-NET-000213-VPN-000721",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266996r1040892_rule",
+          "+@id": "SV-266996r1264055_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000721",
           "title": "The Remote Access VPN Gateway must terminate remote access network connections after an organization-defined time period.",
-          "description": "<VulnDiscussion>This requirement is in response to the DOD Office of Inspector General Audit of Maintaining Cybersecurity in the Coronavirus Disease-2019 Telework Environment.\n\nBest practice is to terminate inactive user sessions after a period; however, when setting timeouts to any VPN connection, the organization must consider the risk to the mission and the purpose of the VPN. VPN connections that provide user access to the network are the prime candidates for VPN session termination and are the primary focus of this requirement.\n\nTo determine if and when the VPN connections warrant termination, the organization must perform a risk assessment to identify the use case for the VPN and determine if periodic VPN session termination puts the mission at significant risk.\n\nThe organization must document the results and the determination of the risk assessment in the VPN section of the System Security Plan. The organization must also configure VPN session terminations in accordance with the risk assessment.\n\nTerminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. Quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. \n\nThis requirement applies to any network element that tracks individual sessions (e.g., stateful inspection firewall, ALG, or VPN).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>This requirement is in response to the DoW Office of Inspector General Audit of Maintaining Cybersecurity in the Coronavirus Disease-2019 Telework Environment.\n\nBest practice is to terminate inactive user sessions after a period; however, when setting timeouts to any VPN connection, the organization must consider the risk to the mission and the purpose of the VPN. VPN connections that provide user access to the network are the prime candidates for VPN session termination and are the primary focus of this requirement.\n\nTo determine if and when the VPN connections warrant termination, the organization must perform a risk assessment to identify the use case for the VPN and determine if periodic VPN session termination puts the mission at significant risk.\n\nThe organization must document the results and the determination of the risk assessment in the VPN section of the System Security Plan. The organization must also configure VPN session terminations in accordance with the risk assessment.\n\nTerminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. Quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level and deallocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. \n\nThis requirement applies to any network element that tracks individual sessions (e.g., stateful inspection firewall, ALG, or VPN).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",
@@ -1603,12 +1603,12 @@
         "title": "SRG-NET-000205-VPN-000710",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-266999r1040763_rule",
+          "+@id": "SV-266999r1264056_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "ARBA-VN-000710",
           "title": "AOS, when used as a VPN Gateway, must be configured to route sessions to an intrusion detection and prevention system (IDPS) for inspection.",
-          "description": "<VulnDiscussion>Remote access devices, such as those providing remote access to network devices and information systems, that lack automated capabilities increase risk and make remote user access management difficult at best.\n\nRemote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyberattacks and ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities from a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>Remote access devices, such as those providing remote access to network devices and information systems, that lack automated capabilities increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoW nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyberattacks and ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities from a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target HPE Aruba Networking AOS VPN",
             "dc:publisher": "DISA",

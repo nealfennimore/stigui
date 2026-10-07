@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2026-06-03"
+      "+@date": "2026-09-01"
     },
     "title": "Infoblox 8.x DNS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,7 +34,7 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 3 Benchmark Date: 01 Jul 2026",
+        "+content": "Release: 4 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
@@ -326,10 +326,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-233927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-233928",
             "+@selected": "true"
           }
@@ -610,10 +606,6 @@
           },
           {
             "+@idref": "V-233926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-233927",
             "+@selected": "true"
           },
           {
@@ -900,10 +892,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-233927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-233928",
             "+@selected": "true"
           }
@@ -1184,10 +1172,6 @@
           },
           {
             "+@idref": "V-233926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-233927",
             "+@selected": "true"
           },
           {
@@ -1474,10 +1458,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-233927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-233928",
             "+@selected": "true"
           }
@@ -1758,10 +1738,6 @@
           },
           {
             "+@idref": "V-233926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-233927",
             "+@selected": "true"
           },
           {
@@ -2048,10 +2024,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-233927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-233928",
             "+@selected": "true"
           }
@@ -2332,10 +2304,6 @@
           },
           {
             "+@idref": "V-233926",
-            "+@selected": "true"
-          },
-          {
-            "+@idref": "V-233927",
             "+@selected": "true"
           },
           {
@@ -2622,10 +2590,6 @@
             "+@selected": "true"
           },
           {
-            "+@idref": "V-233927",
-            "+@selected": "true"
-          },
-          {
             "+@idref": "V-233928",
             "+@selected": "true"
           }
@@ -2638,7 +2602,7 @@
         "title": "SRG-APP-000001-DNS-000001",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233855r1082600_rule",
+          "+@id": "SV-233855r1266553_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-100001",
@@ -2677,7 +2641,7 @@
         "title": "SRG-APP-000001-DNS-000115",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233856r960735_rule",
+          "+@id": "SV-233856r1266554_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-100002",
@@ -2833,12 +2797,12 @@
         "title": "SRG-APP-000383-DNS-000047",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233860r1156949_rule",
+          "+@id": "SV-233860r1266489_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400002",
           "title": "Recursion must be disabled on Infoblox DNS service members that are configured as External Authoritative DNS service members.",
-          "description": "<VulnDiscussion>External Authoritative DNS service members should *only* be providing External Authoritative and no other \"DNS Service\". Internal Authoritative servers commonly require that recursion is enabled in order to resolve DNS that is located on a different server (whether it's via forwarding, the Internet, STUB'ing, etc.)\n\nA potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to nonexistent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains must be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running split DNS: internal name server and external name server.\n\nThe use of DNSSEC ensures the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DOD, and many resolvers either have not been updated or do not support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be use when providing external DNS resolution to internal clients.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>External Authoritative DNS service members should *only* be providing External Authoritative and no other \"DNS Service\". Internal Authoritative servers commonly require that recursion is enabled in order to resolve DNS that is located on a different server (whether it's via forwarding, the Internet, STUB'ing, etc.)\n\nA potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to nonexistent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains must be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running split DNS: internal name server and external name server.\n\nThe use of DNSSEC ensures the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DoW, and many resolvers either have not been updated or do not support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be use when providing external DNS resolution to internal clients.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -2872,7 +2836,7 @@
         "title": "SRG-APP-000516-DNS-000078",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233861r961863_rule",
+          "+@id": "SV-233861r1266426_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400003",
@@ -2897,12 +2861,12 @@
             "+@id": "F-37011r611104_fix"
           },
           "check": {
-            "+@system": "C-37046r611103_chk",
+            "+@system": "C-37046r1266425_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click on the \"DNSSEC\" tab, and review the \"Signature Validity\" setting.  \n3. Validate that the Signature Validity is configured for a range of no less than two days and no more than one week. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the \"Signature Validity\" period is less than two days or greater than one week, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click on the \"DNSSEC\" tab, and review the \"Signature Validity\" setting.  \n3. Validate that the Signature Validity is configured for a range of no less than two days and no more than one week. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the \"Signature Validity\" period is less than two days or greater than one week, this is a finding."
           }
         }
       },
@@ -2911,7 +2875,7 @@
         "title": "SRG-APP-000516-DNS-000084",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233862r1156952_rule",
+          "+@id": "SV-233862r1266429_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400004",
@@ -2929,19 +2893,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS Properties.\n2. Toggle Advanced Mode and edit the \"DNSSEC\" tab.\n3. Ensure \"Resource Record Type for Nonexistent Proof\" is set to NSEC3. \n4. Re-sign all DNSSEC zones that previously used NSEC.",
-            "+@fixref": "F-37012r1082611_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS Properties.\n2. Toggle Advanced Mode and select the \"DNSSEC\" tab.\n3. Ensure \"Resource Record Type for Nonexistent Proof\" is set to NSEC3. \n4. Re-sign all DNSSEC zones that previously used NSEC.",
+            "+@fixref": "F-37012r1266428_fix"
           },
           "fix": {
-            "+@id": "F-37012r1082611_fix"
+            "+@id": "F-37012r1266428_fix"
           },
           "check": {
-            "+@system": "C-37047r1082610_chk",
+            "+@system": "C-37047r1266427_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.\n\n1. Review the zone configuration and confirm that, if DNSSEC is enabled NSEC3 is used.\n2. Navigate to Data Management >> DNS >> Grid DNS Properties. Toggle Advanced Mode and review the \"DNSSEC\" tab.\n3. Ensure \"Resource Record Type for Nonexistent Proof\" is set to NSEC3.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n5. Review zone data or use Global Search string \".\". Type \"Equals NSEC Record\" to verify no undesired NSEC records exist. \n\nIf NSEC records exist in an active zone, or NSEC3 is not configured, this is a finding."
+            "check-content": "1. Review the zone configuration and confirm that, if DNSSEC is enabled NSEC3 is used.\n2. Navigate to Data Management >> DNS >> Grid DNS Properties. Toggle Advanced Mode and review the \"DNSSEC\" tab.\n3. Ensure \"Resource Record Type for Nonexistent Proof\" is set to NSEC3.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n5. Review zone data or use Global Search string \".\". \n6. Enter \"Equals NSEC Record\" to verify no undesired NSEC records exist. \n\nIf NSEC records exist in an active zone, or NSEC3 is not configured, this is a finding."
           }
         }
       },
@@ -3067,7 +3031,7 @@
         "title": "SRG-APP-000516-DNS-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233866r1156954_rule",
+          "+@id": "SV-233866r1266431_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400008",
@@ -3092,12 +3056,12 @@
             "+@id": "F-37016r611119_fix"
           },
           "check": {
-            "+@system": "C-37051r1082622_chk",
+            "+@system": "C-37051r1266430_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Validate that DNSSEC is enabled using the check box.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf \"Enable DNSSEC\" is not configured, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Validate that DNSSEC is enabled using the check box.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf \"Enable DNSSEC\" is not configured, this is a finding."
           }
         }
       },
@@ -3106,7 +3070,7 @@
         "title": "SRG-APP-000516-DNS-000090",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233867r1082626_rule",
+          "+@id": "SV-233867r1266433_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-400009",
@@ -3131,12 +3095,12 @@
             "+@id": "F-37017r1082625_fix"
           },
           "check": {
-            "+@system": "C-37052r1082624_chk",
+            "+@system": "C-37052r1266432_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. For Infoblox Grids that run in FIPS mode, this requirement is Not Applicable.\n\n1. Review FIPS requirements to ensure the proper algorithms are used.\n2. Navigate to Data Management >> DNS >> Grid DNS properties.\n3. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n4. Validate that all Key Signing Keys (KSKs) and ZSKs use FIPS-approved algorithms.\n5. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf FIPS-approved algorithms are not used for the KSKs and ZSKs, this is a finding.\n\nIf DSA is used, this is a finding."
+            "check-content": "Note: For Infoblox Grids that run in FIPS mode, this requirement is Not Applicable.\n\n1. Review FIPS requirements to ensure the proper algorithms are used.\n2. Navigate to Data Management >> DNS >> Grid DNS properties.\n3. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n4. Validate that all Key Signing Keys (KSKs) and ZSKs use FIPS-approved algorithms.\n5. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf FIPS-approved algorithms are not used for the KSKs and ZSKs, this is a finding.\n\nIf DSA is used, this is a finding."
           }
         }
       },
@@ -3574,7 +3538,7 @@
         "title": "SRG-APP-000516-DNS-000112",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233879r1156961_rule",
+          "+@id": "SV-233879r1266435_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-400021",
@@ -3599,12 +3563,12 @@
             "+@id": "F-37029r1082652_fix"
           },
           "check": {
-            "+@system": "C-37064r1082651_chk",
+            "+@system": "C-37064r1266434_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\nBy default, KSK and ZSK private keys are stored on the Grid Master within the Infoblox database. No clients should be permitted to use the Grid Master DNS service.  \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone and clicking \"Edit\" and selecting the \"DNSName Servers\" tab. \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding.\n\nIf a Hardware Security Module (HSM) is configured, KSK and ZSK private keys are encrypted and stored on the HSM, this is not a finding."
+            "check-content": "By default, KSK and ZSK private keys are stored on the Grid Master within the Infoblox database. No clients should be permitted to use the Grid Master DNS service.  \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone and clicking \"Edit\" and selecting the \"DNSName Servers\" tab. \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding.\n\nIf a Hardware Security Module (HSM) is configured, KSK and ZSK private keys are encrypted and stored on the HSM, this is not a finding."
           }
         }
       },
@@ -3652,7 +3616,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233882r961863_rule",
+          "+@id": "SV-233882r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-400024",
@@ -3677,12 +3641,12 @@
             "+@id": "F-37032r611167_fix"
           },
           "check": {
-            "+@system": "C-37067r611166_chk",
+            "+@system": "C-37067r1266436_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Navigate to Grid >> Grid Manager >> Members tab. \n2. Review the Grid Master network configuration and verify placement on an OOB network. \n3. Review services enabled on the Grid Master and verify that no client services are enabled.  \n4. The only acceptable service allowed is DNS when the Grid uses DNSSEC signed zones. The Grid Master must have DNS enabled to sign DNSSEC zones.  \n\nIf DNSSEC is enabled, verify that the Grid Master is marked as \"Stealth\" for any zone.\n\nIf an Infoblox Grid Member does not use the MGMT port for configuration through an OOB connection, this is a finding."
+            "check-content": "1. Navigate to Grid >> Grid Manager >> Members tab. \n2. Review the Grid Master network configuration and verify placement on an OOB network. \n3. Review services enabled on the Grid Master and verify that no client services are enabled.  \n4. The only acceptable service allowed is DNS when the Grid uses DNSSEC signed zones. The Grid Master must have DNS enabled to sign DNSSEC zones.  \n\nIf DNSSEC is enabled, verify that the Grid Master is marked as \"Stealth\" for any zone.\n\nIf an Infoblox Grid Member does not use the MGMT port for configuration through an OOB connection, this is a finding."
           }
         }
       },
@@ -3691,12 +3655,12 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233883r961863_rule",
+          "+@id": "SV-233883r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-400025",
-          "title": "Infoblox systems must enforce current DoD password restrictions.",
-          "description": "<VulnDiscussion>The Infoblox systems must be configured to meet current DoD password policy when using the Infoblox Local User Database as the authentication source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "Infoblox systems must enforce current DoW password restrictions.",
+          "description": "<VulnDiscussion>The Infoblox systems must be configured to meet current DoW password policy when using the Infoblox Local User Database as the authentication source.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -3716,12 +3680,12 @@
             "+@id": "F-37033r611170_fix"
           },
           "check": {
-            "+@system": "C-37068r611169_chk",
+            "+@system": "C-37068r1266490_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "1. Navigate to Administration >> Administrators >> Authentication Policy. \n2. If the only authentication type under \"Authenticate users in this order\" is \"Local User Database\", perform the following additional validation: \n3. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration.  \n4. Select the \"Password\" tab. \n5. Verify the settings are configured in accordance with current DoD Policy.  \n\nIf the Infoblox system is configured to use a remote authentication system (Active Directory, RADIUS, TACACS+, or LDAP) that enforces password policy, or the password settings meet current guidance, this is not a finding."
+            "check-content": "1. Navigate to Administration >> Administrators >> Authentication Policy. \n2. If the only authentication type under \"Authenticate users in this order\" is \"Local User Database\", perform the following additional validation: \n3. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties, if using a stand-alone configuration.  \n4. Select the \"Password\" tab. \n5. Verify the settings are configured in accordance with current DoW Policy.  \n\nIf the Infoblox system is configured to use a remote authentication system (Active Directory, RADIUS, TACACS+, or LDAP) that enforces password policy, or the password settings meet current guidance, this is not a finding."
           }
         }
       },
@@ -3730,7 +3694,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233884r961863_rule",
+          "+@id": "SV-233884r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400026",
@@ -3769,12 +3733,12 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233885r961863_rule",
+          "+@id": "SV-233885r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400027",
-          "title": "The Infoblox system must display the approved DoD notice and consent banner.",
-          "description": "<VulnDiscussion>Configuration of the DoD notice and consent banner requires all administrators to acknowledge the current DoD notice and consent by clicking an \"Accept\" button.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Infoblox system must display the approved DoW notice and consent banner.",
+          "description": "<VulnDiscussion>Configuration of the DoW notice and consent banner requires all administrators to acknowledge the current DoW notice and consent by clicking an \"Accept\" button.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -3794,12 +3758,12 @@
             "+@id": "F-37035r611176_fix"
           },
           "check": {
-            "+@system": "C-37070r611175_chk",
+            "+@system": "C-37070r1266492_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Navigation to the HTTPS interface on the Grid Master using a web browser will display the current DoD banner. \n\n1. If an administrator is currently logged in, click on the drop-down menu adjacent to the administrator's name in the upper right side and select \"Logout\". \n2. Open a new session to the Infoblox system and review the banner presented. \n3. The banner text of the document MUST read:  \n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:   -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.  -At any time, the USG may inspect and seize data stored on this IS.   -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.  -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.  -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential. See User Agreement for details.\"  \n\nIf the correct banner is not displayed, this is a finding."
+            "check-content": "Navigation to the HTTPS interface on the Grid Master using a web browser will display the current DoW banner. \n\n1. If an administrator is currently logged in, click on the drop-down menu adjacent to the administrator's name in the upper right side and select \"Logout\". \n2. Open a new session to the Infoblox system and review the banner presented. \n3. The banner text of the document MUST read:  \n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:   -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.  -At any time, the USG may inspect and seize data stored on this IS.   -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG authorized purpose.  -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.  -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants.  Such communications and work product are private and confidential. See User Agreement for details.\"  \n\nIf the correct banner is not displayed, this is a finding."
           }
         }
       },
@@ -3808,7 +3772,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233886r961863_rule",
+          "+@id": "SV-233886r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400028",
@@ -3826,11 +3790,11 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration.  \n2. Select the \"Security\", \"Advanced\" tab. Click \"Enable Security Banner\". \n3. Use the drop-down menus to select the Security Level and Security Level Color appropriate for each level. \n4. Additional text can be entered if required by DoD or local policy.  \n5. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n6. Administrators should log out and close the web browser. \n7. It may be necessary to clear the web browser cache for the banner to display or update on a session opened shortly after reconfiguration.",
-            "+@fixref": "F-37036r611179_fix"
+            "+content": "1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration.  \n2. Select the \"Security\", \"Advanced\" tab. Click \"Enable Security Banner\". \n3. Use the drop-down menus to select the Security Level and Security Level Color appropriate for each level. \n4. Additional text can be entered if required by DoW or local policy.  \n5. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n6. Administrators should log out and close the web browser. \n7. It may be necessary to clear the web browser cache for the banner to display or update on a session opened shortly after reconfiguration.",
+            "+@fixref": "F-37036r1266494_fix"
           },
           "fix": {
-            "+@id": "F-37036r611179_fix"
+            "+@id": "F-37036r1266494_fix"
           },
           "check": {
             "+@system": "C-37071r611178_chk",
@@ -3847,12 +3811,12 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233887r961863_rule",
+          "+@id": "SV-233887r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400029",
-          "title": "The Infoblox system must be configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
-          "description": "<VulnDiscussion>Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements. Configuring the DNS server implementation to follow organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "title": "The Infoblox system must be configured in accordance with the security configuration settings based on DoW security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
+          "description": "<VulnDiscussion>Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements. Configuring the DNS server implementation to follow organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoW that reflects the most restrictive security posture consistent with operational requirements.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -3886,7 +3850,7 @@
         "title": "SRG-APP-000516-DNS-000500",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233888r1082658_rule",
+          "+@id": "SV-233888r1266563_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400030",
@@ -3925,7 +3889,7 @@
         "title": "SRG-APP-000347-DNS-000041",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233889r1156946_rule",
+          "+@id": "SV-233889r1266440_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400031",
@@ -3949,19 +3913,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\".\n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37039r1082660_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\".\n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37039r1266439_fix"
           },
           "fix": {
-            "+@id": "F-37039r1082660_fix"
+            "+@id": "F-37039r1266439_fix"
           },
           "check": {
-            "+@system": "C-37074r1082659_chk",
+            "+@system": "C-37074r1266438_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\nValidate that DNSSEC validation is enabled:\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Validate that DNSSEC validation is enabled:\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -3970,7 +3934,7 @@
         "title": "SRG-APP-000348-DNS-000042",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233890r1156947_rule",
+          "+@id": "SV-233890r1266443_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400032",
@@ -3994,19 +3958,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\".\n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37040r1082663_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\".\n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37040r1266442_fix"
           },
           "fix": {
-            "+@id": "F-37040r1082663_fix"
+            "+@id": "F-37040r1266442_fix"
           },
           "check": {
-            "+@system": "C-37075r1082662_chk",
+            "+@system": "C-37075r1266441_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\nValidate that DNSSEC validation is enabled:\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Validate that DNSSEC validation is enabled:\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -4105,7 +4069,7 @@
         "title": "SRG-APP-000420-DNS-000053",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233893r1156950_rule",
+          "+@id": "SV-233893r1266446_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400035",
@@ -4129,19 +4093,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37043r611200_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37043r1266445_fix"
           },
           "fix": {
-            "+@id": "F-37043r611200_fix"
+            "+@id": "F-37043r1266445_fix"
           },
           "check": {
-            "+@system": "C-37078r1082671_chk",
+            "+@system": "C-37078r1266444_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.\n\n1. Validate that DNSSEC validation is enabled by navigating to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Validate that DNSSEC validation is enabled.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -4150,12 +4114,12 @@
         "title": "SRG-APP-000421-DNS-000054",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233894r1082674_rule",
+          "+@id": "SV-233894r1266449_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400036",
           "title": "The Infoblox DNS service member must provide data integrity protection artifacts for internal name/address resolution queries.",
-          "description": "<VulnDiscussion>The major threat associated with DNS forged responses or failures is the integrity of the DNS data returned in the response. The principle of DNSSEC is to mitigate this threat by providing data origin authentication, establishing trust in the source. This requirement enables remote clients to obtain origin authentication and integrity verification assurances for the host/service name to network address resolution information obtained through the service. \n\nA DNS server is an example of an information system providing name/address resolution service. Digital signatures and cryptographic keys are examples of additional artifacts. DNS resource records are examples of authoritative data. Applications other than the DNS to map between host/service names and network addresses must provide other means to ensure the authenticity and integrity of response data. \n\nIn the case of DNS, employ DNSSEC to provide an additional data origin and integrity artifacts along with the authoritative data the system returns in response to DNS name/address resolution queries. DNSSEC is intended for third-party authenticity determination. Attempting to utilize DNSSEC internally was never an intended use case as it would require every consumer to have a third-party validating resolver installed along with a mechanism for periodic trust anchor distribution/update. It is recommended for external zones only.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The major threat associated with DNS forged responses or failures is the integrity of the DNS data returned in the response. The principle of DNSSEC is to mitigate this threat by providing data origin authentication, establishing trust in the source. This requirement enables remote clients to obtain origin authentication and integrity verification assurances for the host/service name to network address resolution information obtained through the service. \n\nA DNS server is an example of an information system providing name/address resolution service. Digital signatures and cryptographic keys are examples of additional artifacts. DNS resource records are examples of authoritative data. Applications other than the DNS to map between host/service names and network addresses must provide other means to ensure the authenticity and integrity of response data. \n\nIn the case of DNS, employ DNSSEC to provide additional data origin and integrity artifacts along with the authoritative data the system returns in response to DNS name/address resolution queries. DNSSEC is intended for third-party authenticity determination. Attempting to utilize DNSSEC internally was never an intended use case as it would require every consumer to have a third-party validating resolver installed along with a mechanism for periodic trust anchor distribution/update. It is recommended for external zones only.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -4174,19 +4138,19 @@
             }
           ],
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37044r611203_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37044r1266448_fix"
           },
           "fix": {
-            "+@id": "F-37044r611203_fix"
+            "+@id": "F-37044r1266448_fix"
           },
           "check": {
-            "+@system": "C-37079r1082673_chk",
+            "+@system": "C-37079r1266447_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Validate that DNSSEC validation is enabled by navigating to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Validate that DNSSEC validation is enabled.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -4285,7 +4249,7 @@
         "title": "SRG-APP-000142-DNS-000014",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233897r1082679_rule",
+          "+@id": "SV-233897r1266451_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-400039",
@@ -4310,12 +4274,12 @@
             "+@id": "F-37047r611212_fix"
           },
           "check": {
-            "+@system": "C-37082r1082678_chk",
+            "+@system": "C-37082r1266450_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.\n\nBy default, all services other than those required for management are disabled. Validate that no additional services have been enabled for DNS members.\n\n1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the \"Services\" tab and review each service and member status at the top of the panel.\n\nDepending on purchased options, Infoblox DNS service members may be running DNS and optionally running services supporting DNS and security operations such as DNS Traffic Control, Threat Protection, Threat Analytics, and TAXII services. \n\nUse of these additional Infoblox services is not a finding.\n\nIf any unnecessary services such as file distribution services are enabled on the DNS members, this is a finding.\n\nNote: Once DNSSEC is enabled, the DNS service will be required to be running on the Grid Master, and it will be placed into stealth mode."
+            "check-content": "By default, all services other than those required for management are disabled. Validate that no additional services have been enabled for DNS members.\n\n1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the \"Services\" tab and review each service and member status at the top of the panel.\n\nDepending on purchased options, Infoblox DNS service members may be running DNS and optionally running services supporting DNS and security operations such as DNS Traffic Control, Threat Protection, Threat Analytics, and TAXII services. \n\nUse of these additional Infoblox services is not a finding.\n\nIf any unnecessary services such as file distribution services are enabled on the DNS members, this is a finding.\n\nNote: Once DNSSEC is enabled, the DNS service will be required to be running on the Grid Master, and it will be placed into stealth mode."
           }
         }
       },
@@ -4519,7 +4483,7 @@
         "title": "SRG-APP-000176-DNS-000094",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233903r1082697_rule",
+          "+@id": "SV-233903r1266498_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-500006",
@@ -4544,12 +4508,12 @@
             "+@id": "F-37053r1082696_fix"
           },
           "check": {
-            "+@system": "C-37088r1082695_chk",
+            "+@system": "C-37088r1266497_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\nBy default, ZSK private keys are stored encrypted within the Infoblox database on the Grid Master. The Grid Master will by default enable the DNS service when DNSSEC is enabled for internal processing. Clients must not be permitted to use the Grid Master DNS service. Refer to the Infoblox STIG Overview document for additional information on HSM usage. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone, clicking \"Edit\", and selecting the \"DNS service members\" tab. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding."
+            "check-content": "Note: For an Infoblox Grid that is strictly utilized for recursive/caching DNS versus Public Authoritative DNS, this requirement is Not Applicable.\n\nBy default, ZSK private keys are stored encrypted within the Infoblox database on the Grid Master. The Grid Master will by default enable the DNS service when DNSSEC is enabled for internal processing. Clients must not be permitted to use the Grid Master DNS service. Refer to the Infoblox STIG Overview document for additional information on HSM usage. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone, clicking \"Edit\", and selecting the \"DNS service members\" tab. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding."
           }
         }
       },
@@ -4558,7 +4522,7 @@
         "title": "SRG-APP-000176-DNS-000096",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233904r1083000_rule",
+          "+@id": "SV-233904r1266455_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-500007",
@@ -4583,12 +4547,12 @@
             "+@id": "F-37054r1082999_fix"
           },
           "check": {
-            "+@system": "C-37089r1082698_chk",
+            "+@system": "C-37089r1266454_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\nBy default, ZSK private keys are stored encrypted within the Infoblox database on the Grid Master. The Grid Master will by default enable the DNS service when DNSSEC is enabled for internal processing. Clients must not be permitted to use the Grid Master DNS service. Refer to the Infoblox STIG Overview document for additional information on HSM usage. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone, clicking \"Edit\", and selecting the \"DNS service members\" tab. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding."
+            "check-content": "Note: For an Infoblox Grid that is strictly utilized for Recursive/Caching DNS versus Public Authoritative DNS, this requirement is Not Applicable.\n\nBy default, ZSK private keys are stored encrypted within the Infoblox database on the Grid Master. The Grid Master will by default enable the DNS service when DNSSEC is enabled for internal processing. Clients must not be permitted to use the Grid Master DNS service. Refer to the Infoblox STIG Overview document for additional information on HSM usage. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review each zone by selecting the zone, clicking \"Edit\", and selecting the \"DNS service members\" tab. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf the Grid Master is a listed DNS service member and not marked \"Stealth\", this is a finding."
           }
         }
       },
@@ -4636,7 +4600,7 @@
         "title": "SRG-APP-000514-DNS-000075",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233906r1137676_rule",
+          "+@id": "SV-233906r1266458_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "IDNS-8X-700001",
@@ -4654,19 +4618,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Note: Ensure DNSSEC is configured to meet all other STIG requirements prior to signing a zone to avoid signing with an unapproved configuration.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Configure FIPS-compliant algorithms. \n4. Follow manual key rollover procedures and update all noncompliant KSKs and ZSKs to use FIPS-approved algorithms.",
-            "+@fixref": "F-37056r1082702_fix"
+            "+content": "Note: Ensure DNSSEC is configured to meet all other STIG requirements prior to signing a zone to avoid signing with an unapproved configuration.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Configure FIPS-compliant algorithms. \n4. Follow manual key rollover procedures and update all noncompliant KSKs and ZSKs to use FIPS-approved algorithms.",
+            "+@fixref": "F-37056r1266457_fix"
           },
           "fix": {
-            "+@id": "F-37056r1082702_fix"
+            "+@id": "F-37056r1266457_fix"
           },
           "check": {
-            "+@system": "C-37091r1082701_chk",
+            "+@system": "C-37091r1266456_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.\n\nNote: For Infoblox Grids that run in FIPS mode, this requirement is Not Applicable. Refer to the Administrator Guide for more information on FIPS Mode.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Validate that all Key Signing Keys (KSKs) and Zone Signing Keys (ZSKs) use FIPS-approved algorithms.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf non-FIPS-approved algorithms are in use, this is a finding."
+            "check-content": "Note: For Infoblox Grids that run in FIPS mode, this requirement is Not Applicable. Refer to the Administrator Guide for more information on FIPS Mode.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Validate that all Key Signing Keys (KSKs) and Zone Signing Keys (ZSKs) use FIPS-approved algorithms.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf non-FIPS-approved algorithms are in use, this is a finding."
           }
         }
       },
@@ -4675,12 +4639,12 @@
         "title": "SRG-APP-000213-DNS-000024",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233907r961101_rule",
+          "+@id": "SV-233907r1266460_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700002",
           "title": "The Infoblox system must provide additional data origin artifacts along with the authoritative data the system returns in response to external name/address resolution queries.",
-          "description": "<VulnDiscussion>The underlying feature in the major threat associated with DNS query/response (i.e., forged response or response failure) is the integrity of DNS data returned in the response. The security objective is to verify the integrity of each response received. An integral part of integrity verification is to ensure that valid data has originated from the right source. Establishing trust in the source is called data origin authentication. \n\nThe security objectives, and consequently the security services, that are required for securing the DNS query/response transaction are data origin authentication and data integrity verification. \n\nThe specification for a digital signature mechanism in the context of the DNS infrastructure is in the Internet Engineering Task Force's (IETF's) Domain Name System Security Extension (DNSSEC) standard. In DNSSEC, trust in the public key (for signature verification) of the source is established not by going to a third party or a chain of third parties (as in public key infrastructure [PKI] chaining), but by starting from a trusted zone (such as the root zone) and establishing the chain of trust down to the current source of response through successive verifications of signature of the public key of a child by its parent. The public key of the trusted zone is called the trust anchor.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>The underlying feature in the major threat associated with DNS query/response (i.e., forged response or response failure) is the integrity of DNS data returned in the response. The security objective is to verify the integrity of each response received. An integral part of integrity verification is to ensure that valid data has originated from the right source. Establishing trust in the source is called data origin authentication. \n\nThe security objectives, and consequently the security services, required for securing the DNS query/response transaction are data origin authentication and data integrity verification. \n\nThe specification for a digital signature mechanism in the context of the DNS infrastructure is in the Internet Engineering Task Force's (IETF's) Domain Name System Security Extension (DNSSEC) standard. In DNSSEC, trust in the public key (for signature verification) of the source is established not by going to a third party or a chain of third parties (as in public key infrastructure [PKI] chaining), but by starting from a trusted zone (such as the root zone) and establishing the chain of trust down to the current source of response through successive verifications of signature of the public key of a child by its parent. The public key of the trusted zone is called the trust anchor.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target Infoblox 8.x DNS",
             "dc:publisher": "DISA",
@@ -4700,12 +4664,12 @@
             "+@id": "F-37057r611242_fix"
           },
           "check": {
-            "+@system": "C-37092r611241_chk",
+            "+@system": "C-37092r1266459_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click on \"DNSSEC\" tab, and verify that \"Enable DNSSEC\" is enabled. \n3. Navigate to Data Management >> DNS >> Zones. Verify that the \"Signed\" column is displayed.\n4. Validate that all external authoritative zones are signed by displaying \"Yes\".\n5. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf DNSSEC is not enabled and external authoritative zones are not signed, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click the \"DNSSEC\" tab, and verify that \"Enable DNSSEC\" is enabled. \n3. Navigate to Data Management >> DNS >> Zones. Verify that the \"Signed\" column is displayed.\n4. Validate that all external authoritative zones are signed by displaying \"Yes\".\n5. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf DNSSEC is not enabled and external authoritative zones are not signed, this is a finding."
           }
         }
       },
@@ -4714,7 +4678,7 @@
         "title": "SRG-APP-000422-DNS-000055",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233908r1082705_rule",
+          "+@id": "SV-233908r1266463_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700003",
@@ -4732,19 +4696,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37058r611245_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37058r1266462_fix"
           },
           "fix": {
-            "+@id": "F-37058r611245_fix"
+            "+@id": "F-37058r1266462_fix"
           },
           "check": {
-            "+@system": "C-37093r1082704_chk",
+            "+@system": "C-37093r1266461_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Verify that DNSSEC validation is enabled by navigating to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Verify that DNSSEC validation is enabled.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab.\n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -4753,7 +4717,7 @@
         "title": "SRG-APP-000214-DNS-000025",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233909r1082708_rule",
+          "+@id": "SV-233909r1266465_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700004",
@@ -4778,12 +4742,12 @@
             "+@id": "F-37059r1082707_fix"
           },
           "check": {
-            "+@system": "C-37094r1082706_chk",
+            "+@system": "C-37094r1266464_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\nInfoblox systems within a Grid configuration automatically publish DS records to the parent zone when the child zone is signed. \n\nIf all External-facing DNS service members for parent and child zones are within an Infoblox Grid, this is not a finding. \n\n1. Review the parent External zones hosted on the External-facing Infoblox server for which the child zone is on the same Infoblox Grid.  \n2. Verify that each zone includes the DS records for the child zone.  \n\nIf DS records are not published in the parent zone for DNSSEC signed zones, this is a finding."
+            "check-content": "Infoblox systems within a Grid configuration automatically publish DS records to the parent zone when the child zone is signed. \n\nIf all External-facing DNS service members for parent and child zones are within an Infoblox Grid, this is not a finding. \n\n1. Review the parent External zones hosted on the External-facing Infoblox server for which the child zone is on the same Infoblox Grid.  \n2. Verify that each zone includes the DS records for the child zone.  \n\nIf DS records are not published in the parent zone for DNSSEC signed zones, this is a finding."
           }
         }
       },
@@ -4792,7 +4756,7 @@
         "title": "SRG-APP-000214-DNS-000079",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233910r961104_rule",
+          "+@id": "SV-233910r1266468_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700005",
@@ -4810,19 +4774,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click on \"DNSSEC\" tab, and edit the \"Signature Validity\" setting to a period between two days and one week.  \n3. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n4. Any zones that used an incorrect value should perform a ZSK rollover to update the inception and expiration dates with the new value.  \n5. Navigate to Data Management >> DNS and select the \"Zones\" tab.  \n6. Using the zone selection check boxes and the DNSSEC drop-down menu, select \"Rollover Zone-Signing Key\".\n7. When prompted, select \"Roll Over\".\n8. Perform a service restart if necessary.",
-            "+@fixref": "F-37060r611251_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click the \"DNSSEC\" tab, and edit the \"Signature Validity\" setting to a period between two days and one week.  \n3. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n4. Any zones that used an incorrect value should perform a ZSK rollover to update the inception and expiration dates with the new value.  \n5. Navigate to Data Management >> DNS and select the \"Zones\" tab.  \n6. Using the zone selection check boxes and the DNSSEC drop-down menu, select \"Rollover Zone-Signing Key\".\n7. When prompted, select \"Roll Over\".\n8. Perform a service restart if necessary.",
+            "+@fixref": "F-37060r1266467_fix"
           },
           "fix": {
-            "+@id": "F-37060r611251_fix"
+            "+@id": "F-37060r1266467_fix"
           },
           "check": {
-            "+@system": "C-37095r611250_chk",
+            "+@system": "C-37095r1266466_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click on \"DNSSEC\" tab, and review the \"Signature Validity\" setting. \n3. Validate that the Signature Validity is configured for a range of no less than two days and no more than one week. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf the Signature Validity period is less than two days or greater than one week, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Grid DNS properties. \n2. Toggle Advanced Mode, click the \"DNSSEC\" tab, and review the \"Signature Validity\" setting. \n3. Validate that the Signature Validity is configured for a range of no less than two days and no more than one week. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf the Signature Validity period is less than two days or greater than one week, this is a finding."
           }
         }
       },
@@ -4870,7 +4834,7 @@
         "title": "SRG-APP-000215-DNS-000026",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233912r1083002_rule",
+          "+@id": "SV-233912r1266471_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700007",
@@ -4888,19 +4852,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "Note: Ensure DNSSEC is configured to meet all other STIG requirements prior to signing a zone to avoid signing with an unapproved configuration.  \n\nThe Authoritative Fix applies to external-facing authoritative zones:\n\nAuthoritative Fix: \n1. Navigate to Data Management >> DNS >> Zones.  \n2. Select the appropriate zone using the check box. From the \"DNSSEC\" drop-down menu, select \"Sign Zones\". \n3. Follow prompts to acknowledge zone signing.   \n4. Perform a service restart if necessary.\n\nRecursive Fix:  \n1. Navigate to Data Management >> DNS >> Zones.   \n2. Edit \"Grid DNS Properties\", toggle Advanced Mode, and select the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC Validation\" options.  \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen.  \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37062r1083001_fix"
+            "+content": "Note: Ensure DNSSEC is configured to meet all other STIG requirements prior to signing a zone to avoid signing with an unapproved configuration.  \n\nThe Authoritative Fix applies to external-facing authoritative zones:\n\nAuthoritative Fix: \n1. Navigate to Data Management >> DNS >> Zones.  \n2. Select the appropriate zone using the check box. From the \"DNSSEC\" drop-down menu, select \"Sign Zones\". \n3. Follow prompts to acknowledge zone signing.   \n4. Perform a service restart if necessary.\n\nRecursive Fix:  \n1. Navigate to Data Management >> DNS >> Zones.   \n2. Edit \"Grid DNS Properties\", toggle Advanced Mode, and then select the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC Validation\" options.  \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen.  \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37062r1266470_fix"
           },
           "fix": {
-            "+@id": "F-37062r1083001_fix"
+            "+@id": "F-37062r1266470_fix"
           },
           "check": {
-            "+@system": "C-37097r1082712_chk",
+            "+@system": "C-37097r1266469_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.\n\nThe Authoritative Check applies to external-facing authoritative zones:\n\n1. Navigate to Data Management >> DNS >> Zones.\nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the \"Zones\" tab.\n2. Verify that external authoritative zones are DNSSEC signed.\n\nRecursive Check: \n1. Navigate to Data Management >> DNS. \n2. Edit \"Grid DNS Properties\", toggle Advanced Mode, and select the DNSSEC tab.\n3. Validate that both \"Enable DNSSEC\" and \"Enable DNSSEC Validation\" options are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf DNSSEC is not used for authoritative DNS and enabled for recursive clients, this is a finding."
+            "check-content": "The Authoritative Check applies to external-facing authoritative zones:\n\n1. Navigate to Data Management >> DNS >> Zones.\nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the \"Zones\" tab.\n2. Verify that external authoritative zones are DNSSEC signed.\n\nRecursive Check: \n1. Navigate to Data Management >> DNS. \n2. Edit \"Grid DNS Properties\", toggle Advanced Mode, and then select the DNSSEC tab.\n3. Validate that both \"Enable DNSSEC\" and \"Enable DNSSEC Validation\" options are enabled.\n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.\n\nIf DNSSEC is not used for authoritative DNS and enabled for recursive clients, this is a finding."
           }
         }
       },
@@ -4909,7 +4873,7 @@
         "title": "SRG-APP-000423-DNS-000056",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233913r1082717_rule",
+          "+@id": "SV-233913r1266474_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700008",
@@ -4941,19 +4905,19 @@
             }
           ],
           "fixtext": {
-            "+content": "For Internal Recursive DNS service members resolving internal queries to external DNS sources:\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37063r1082716_fix"
+            "+content": "For Internal Recursive DNS service members resolving internal queries to external DNS sources:\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37063r1266473_fix"
           },
           "fix": {
-            "+@id": "F-37063r1082716_fix"
+            "+@id": "F-37063r1266473_fix"
           },
           "check": {
-            "+@system": "C-37098r1082715_chk",
+            "+@system": "C-37098r1266472_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Validate that DNSSEC validation is enabled by navigating to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "Validate that DNSSEC validation is enabled.\n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -5040,7 +5004,7 @@
         "title": "SRG-APP-000219-DNS-000030",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233919r1082730_rule",
+          "+@id": "SV-233919r1266477_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700014",
@@ -5058,19 +5022,19 @@
             "+@system": "http://cyber.mil/cci"
           },
           "fixtext": {
-            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
-            "+@fixref": "F-37069r611278_fix"
+            "+content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Enable both \"Enable DNSSEC\" and \"Enable DNSSEC validation\". \n4. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n5. Perform a service restart if necessary.",
+            "+@fixref": "F-37069r1266476_fix"
           },
           "fix": {
-            "+@id": "F-37069r611278_fix"
+            "+@id": "F-37069r1266476_fix"
           },
           "check": {
-            "+@system": "C-37104r1082729_chk",
+            "+@system": "C-37104r1266475_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click on the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Grid DNS properties.\n2. Toggle Advanced Mode and click the \"DNSSEC\" tab. \n3. Verify that both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are enabled. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf both \"Enable DNSSEC\" and \"Enable DNSSEC validation\" are not enabled, this is a finding."
           }
         }
       },
@@ -5196,7 +5160,7 @@
         "title": "SRG-APP-000439-DNS-000063",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233923r1082737_rule",
+          "+@id": "SV-233923r1266479_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700018",
@@ -5221,12 +5185,12 @@
             "+@id": "F-37073r1082736_fix"
           },
           "check": {
-            "+@system": "C-37108r611289_chk",
+            "+@system": "C-37108r1266478_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Verify that DNSSEC is enabled by navigating to Data Management >> DNS >> Grid DNS properties tab. \n2. Toggle Advanced Mode and review the \"DNSSEC\" tab to verify that DNSSEC is enabled. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf DNSSEC validation is not enabled, this is a finding."
+            "check-content": "Verify that DNSSEC is enabled.\n \n1. Navigate to Data Management >> DNS >> Grid DNS properties tab. \n2. Toggle Advanced Mode and review the \"DNSSEC\" tab to verify that DNSSEC is enabled. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf DNSSEC validation is not enabled, this is a finding."
           }
         }
       },
@@ -5235,7 +5199,7 @@
         "title": "SRG-APP-000440-DNS-000065",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233924r1137675_rule",
+          "+@id": "SV-233924r1266481_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700019",
@@ -5260,12 +5224,12 @@
             "+@id": "F-37074r611293_fix"
           },
           "check": {
-            "+@system": "C-37109r611292_chk",
+            "+@system": "C-37109r1266480_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable.  \n\n1. Verify that DNSSEC is enabled by navigating to Data Management >> DNS >> Grid DNS properties tab. \n2. Toggle Advanced Mode and review the \"DNSSEC\" tab to verify that DNSSEC is enabled. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf DNSSEC validation is not enabled, this is a finding."
+            "check-content": "Verify that DNSSEC is enabled.\n \n1. Navigate to Data Management >> DNS >> Grid DNS properties tab. \n2. Toggle Advanced Mode and review the \"DNSSEC\" tab to verify that DNSSEC is enabled. \n3. When complete, click \"Cancel\" to exit the \"Properties\" screen. \n\nIf DNSSEC validation is not enabled, this is a finding."
           }
         }
       },
@@ -5274,7 +5238,7 @@
         "title": "SRG-APP-000441-DNS-000066",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233925r1082741_rule",
+          "+@id": "SV-233925r1266483_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700020",
@@ -5299,12 +5263,12 @@
             "+@id": "F-37075r1082740_fix"
           },
           "check": {
-            "+@system": "C-37110r1082739_chk",
+            "+@system": "C-37110r1266482_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review all external-facing authoritative zones. \nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the \"Zones\" tab. \n3. Verify that external authoritative zones are DNSSEC signed.  \n\nIf DNSSEC is not used for authoritative DNS, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Zones.  \n2. Review all external-facing authoritative zones. \nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the \"Zones\" tab. \n3. Verify that external authoritative zones are DNSSEC signed.  \n\nIf DNSSEC is not used for authoritative DNS, this is a finding."
           }
         }
       },
@@ -5313,7 +5277,7 @@
         "title": "SRG-APP-000442-DNS-000067",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233926r1082744_rule",
+          "+@id": "SV-233926r1266485_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-700021",
@@ -5338,51 +5302,12 @@
             "+@id": "F-37076r1082743_fix"
           },
           "check": {
-            "+@system": "C-37111r1082742_chk",
+            "+@system": "C-37111r1266484_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Note: For Infoblox DNS systems on a classified network, this requirement is Not Applicable. \n\n1. Navigate to Data Management >> DNS >> Zones.  \n2. Review all external-facing authoritative zones.  \nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the Zones tab. Verify that external authoritative zones are DNSSEC signed.\n\nIf DNSSEC is not used for authoritative DNS this is a finding."
-          }
-        }
-      },
-      {
-        "+@id": "V-233927",
-        "title": "SRG-APP-000275-DNS-000040",
-        "description": "<GroupDescription></GroupDescription>",
-        "Rule": {
-          "+@id": "SV-233927r961185_rule",
-          "+@weight": "10.0",
-          "+@severity": "medium",
-          "version": "IDNS-8X-800001",
-          "title": "The Infoblox system must notify the ISSO and ISSM in the event of failed security verification tests.",
-          "description": "<VulnDiscussion>Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes but is not limited to establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters. If personnel are not notified of failed security verification tests, they will not be able to take corrective action, and the unsecure condition(s) will remain. Notifications provided by information systems include messages to local computer consoles and/or hardware indications, such as lights.\n\nThe Infoblox system must be configured to generate audit records whenever a self-test fails.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-          "reference": {
-            "dc:title": "DPMS Target Infoblox 8.x DNS",
-            "dc:publisher": "DISA",
-            "dc:type": "DPMS Target",
-            "dc:subject": "Infoblox 8.x DNS",
-            "dc:identifier": "5251"
-          },
-          "ident": {
-            "+content": "CCI-001294",
-            "+@system": "http://cyber.mil/cci"
-          },
-          "fixtext": {
-            "+content": "1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the Monitoring tab. \n3. Enable \"Log to External Syslog Servers\" using the check box. \n4. Configure an \"External Syslog Server\".  \n5. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen.  \n6. Perform a service restart if necessary. \n7. Review the SYSLOG data on the remote SYSLOG server to validate operation.",
-            "+@fixref": "F-37077r611302_fix"
-          },
-          "fix": {
-            "+@id": "F-37077r611302_fix"
-          },
-          "check": {
-            "+@system": "C-37112r611301_chk",
-            "check-content-ref": {
-              "+@href": "Infoblox_8.x_DNS_STIG.xml",
-              "+@name": "M"
-            },
-            "check-content": "Infoblox systems are capable of providing notifications via remote SYSLOG, SNMP, and SMTP. \n\n1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the Monitoring tab.  \n3. Verify that \"Log to External Syslog Servers\" is enabled and an External Syslog Server is configured. \n4. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf no external notifications are enabled, this is a finding."
+            "check-content": "1. Navigate to Data Management >> DNS >> Zones.  \n2. Review all external-facing authoritative zones.  \nNote: To add \"Signed\" column, select an existing column >> down arrow >> Columns >> Edit Columns. Set the \"Signed\" check box to \"Visible\" and select \"Apply\". DNSSEC signing status will be displayed in the Zones tab. Verify that external authoritative zones are DNSSEC signed.\n\nIf DNSSEC is not used for authoritative DNS this is a finding."
           }
         }
       },
@@ -5391,7 +5316,7 @@
         "title": "SRG-APP-000474-DNS-000073",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-233928r1082747_rule",
+          "+@id": "SV-233928r1266488_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "IDNS-8X-800002",
@@ -5404,24 +5329,30 @@
             "dc:subject": "Infoblox 8.x DNS",
             "dc:identifier": "5251"
           },
-          "ident": {
-            "+content": "CCI-002702",
-            "+@system": "http://cyber.mil/cci"
-          },
+          "ident": [
+            {
+              "+content": "CCI-002702",
+              "+@system": "http://cyber.mil/cci"
+            },
+            {
+              "+content": "CCI-001294",
+              "+@system": "http://cyber.mil/cci"
+            }
+          ],
           "fixtext": {
-            "+content": "1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration.  \n2. Select the \"Monitoring\" tab.  \n3. Enable \"Log to External Syslog Servers\" using the check box. \n4. Configure an \"External Syslog Server\".\n5. Click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n6. Navigate to DNS >> DNS Management and select Grid or System DNS Properties if using a stand-alone configuration.  \n7. Toggle Advanced Mode and select the \"Logging\" tab.  \n8. Enable the \"dnssec\" SYSLOG category. \n9. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n10. Perform a service restart if necessary.",
-            "+@fixref": "F-37078r1082746_fix"
+            "+content": "1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a standalone configuration.  \n2. Select the \"Monitoring\" tab.  \n3. Enable \"Log to External Syslog Servers\" using the check box. \n4. Configure an \"External Syslog Server\".\n5. Click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n6. Navigate to DNS >> DNS Management and select Grid or System DNS Properties if using a standalone configuration.  \n7. Toggle Advanced Mode and select the \"Logging\" tab.  \n8. Enable the \"dnssec\" SYSLOG category. \n9. When complete, click \"Save & Close\" to save the changes and exit the \"Properties\" screen. \n10. Perform a service restart if necessary.",
+            "+@fixref": "F-37078r1266487_fix"
           },
           "fix": {
-            "+@id": "F-37078r1082746_fix"
+            "+@id": "F-37078r1266487_fix"
           },
           "check": {
-            "+@system": "C-37113r1082745_chk",
+            "+@system": "C-37113r1266486_chk",
             "check-content-ref": {
               "+@href": "Infoblox_8.x_DNS_STIG.xml",
               "+@name": "M"
             },
-            "check-content": "Infoblox systems are capable of providing notifications via remote SYSLOG, SNMP, and SMTP. \n\n1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the \"Monitoring\" tab. \n3. Verify that \"Log to External Syslog Servers\" is enabled and an External Syslog Server is configured. \n4. Click \"Cancel\" to exit the \"Properties\" screen.  \n5. Navigate to DNS >> DNS Management and select Grid or System DNS Properties if using a stand-alone configuration.  \n6. Toggle Advanced Mode and select the \"Logging\" tab. Validate that the \"dnssec\" SYSLOG category is enabled. \n7. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf DNSSEC is not configured to send external notifications to a valid external SYSLOG server, this is a finding."
+            "check-content": "Infoblox systems are capable of providing notifications via remote SYSLOG, SNMP, and SMTP. \n\n1. Navigate to Grid >> Grid Manager >> Grid Properties, or System >> System Manager >> System Properties if using a stand-alone configuration. \n2. Select the \"Monitoring\" tab. \n3. Verify that \"Log to External Syslog Servers\" is enabled and an External Syslog Server is configured. \n4. Click \"Cancel\" to exit the \"Properties\" screen.  \n5. Navigate to DNS >> DNS Management and select Grid or System DNS Properties if using a standalone configuration.  \n6. Toggle Advanced Mode and select the \"Logging\" tab. Validate that the \"dnssec\" SYSLOG category is enabled. \n7. When complete, click \"Cancel\" to exit the \"Properties\" screen.  \n\nIf DNSSEC is not configured to send external notifications to a valid external SYSLOG server, this is a finding."
           }
         }
       }

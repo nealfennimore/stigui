@@ -13,10 +13,10 @@
     "+@xmlns": "http://checklists.nist.gov/xccdf/1.1",
     "status": {
       "+content": "accepted",
-      "+@date": "2024-09-09"
+      "+@date": "2026-09-02"
     },
     "title": "F5 BIG-IP TMOS DNS Security Technical Implementation Guide",
-    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DOD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+    "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of War (DoW) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
     "notice": {
       "+@id": "terms-of-use",
       "+@xml:lang": "en"
@@ -34,11 +34,11 @@
     },
     "plain-text": [
       {
-        "+content": "Release: 1 Benchmark Date: 26 Sep 2024",
+        "+content": "Release: 2 Benchmark Date: 30 Sep 2026",
         "+@id": "release-info"
       },
       {
-        "+content": "3.5",
+        "+content": "3.5.2",
         "+@id": "generator"
       },
       {
@@ -550,12 +550,12 @@
         "title": "SRG-APP-000383-DNS-000047",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265980r1024486_rule",
+          "+@id": "SV-265980r1270693_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-DN-300011",
           "title": "The F5 BIG-IP DNS implementation must prohibit recursion on authoritative name servers.",
-          "description": "<VulnDiscussion>A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to nonexistent hosts (which constitutes a denial of service), or worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains must be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.\n\nDNSSEC ensures that the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DOD, and many resolvers either have not been updated or do not support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be used when providing external DNS resolution to internal clients.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+          "description": "<VulnDiscussion>A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to nonexistent hosts (which constitutes a denial of service), or worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains must be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.\n\nDNSSEC ensures that the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DoW, and many resolvers either have not been updated or do not support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be used when providing external DNS resolution to internal clients.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
           "reference": {
             "dc:title": "DPMS Target F5 BIG-IP TMOS DNS",
             "dc:publisher": "DISA",
@@ -628,7 +628,7 @@
         "title": "SRG-APP-000516-DNS-000089",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265982r1024488_rule",
+          "+@id": "SV-265982r1156954_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-DN-300013",
@@ -795,7 +795,7 @@
         "title": "SRG-APP-000516-DNS-000109",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265985r1024493_rule",
+          "+@id": "SV-265985r1156959_rule",
           "+@weight": "10.0",
           "+@severity": "medium",
           "version": "F5BI-DN-300016",
@@ -996,7 +996,7 @@
         "title": "SRG-APP-000219-DNS-000028",
         "description": "<GroupDescription></GroupDescription>",
         "Rule": {
-          "+@id": "SV-265990r1024864_rule",
+          "+@id": "SV-265990r1043178_rule",
           "+@weight": "10.0",
           "+@severity": "high",
           "version": "F5BI-DN-300036",
